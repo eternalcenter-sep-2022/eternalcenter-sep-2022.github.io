@@ -1,0 +1,6085 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Database (数据库) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/database/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 13 Sep 2022 12:49:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] MariaDB &#038; MySQL 规划表结构的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-table-structure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 22 Jul 2021 08:08:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16925</guid>
+
+					<description><![CDATA[1) 确保表里的字段都缺一不可（也就是具有原子性）2) 确保表里的字段都和主键直接相关]]></description>
+										<content:encoded><![CDATA[
+<p>1) 确保表里的字段都缺一不可（也就是具有原子性）<br>2) 确保表里的字段都和主键直接相关</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] MariaDB &#038; MySQL 事务</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-transaction/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Jul 2021 07:55:17 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16863</guid>
+
+					<description><![CDATA[内容一：事务的作用 事务的作用是保护数据的安全性 内容二：MariaDB &#38; MySQL 事务的 4 大特性 2.1 原子性（Atomicity） 一系列操作被看作一个事务，这个事务里面的所有操作要么全部失败，要么全部成功，如果在操作的过程中出现中断，则立刻进行 rollback 2.2 一致性（Consistency） 一系列操作被看作一个事务，在事务开始前和结束后，整个库的完整逻辑约束不能被打破，例如：一个人向另一个人转账，不能出现一个人转账成功另一个人没有收到转账，或者一个人转账失败另一个人收到转账的情况 2.3 隔离性（Isolation） 主要解决并发的情况，避免不同的人，在相同的时间，查看到的数据的不一致性，避免以下情况的发生：1) 脏读：一个事务读取了另一个事务更新、提交并撤销的数据，导致此事务看到的数据是错误的2) 不可重复读：一个事务多次读取了另一个事务多次更新并提交的数据，导致此事务看到的数据是来回变化的3) 幻读：一个事务在批量修改所有数据，但是在修改的过程中另一个事务又往里面插入了数据，导致此事务在修改完成之后，意外发现还有一条数据没有修改 2.4 持久性（Durability） 事务结束后，所有更新都将被保存，不能回滚 内容三：MariaDB &#38; MySQL 事务隔离级别 3.1 MariaDB &#38; MySQL 事务隔离级别的特点 事务隔离级别 脏读 不可重复读 幻读 读未提交（read-uncommitted） 是 是 是 不可重复读（read-committed） 否 是 是 可重复读（repeatable-read） 否 否 是 串行化（serializable） 否 否 否 3.2 MariaDB &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mariadb-mysql-transaction/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] MariaDB &#038; MySQL 事务"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-事务的作用">内容一：事务的作用</h3>
+
+
+
+<p>事务的作用是保护数据的安全性</p>
+
+
+
+<h3 id="内容二-mariadb-mysql-事务的-4-大特性2-1-原子性-atomicity">内容二：MariaDB &amp; MySQL 事务的 4 大特性</h3>
+
+
+
+<h4 id="内容二-mariadb-mysql-事务的-4-大特性2-1-原子性-atomicity">2.1 原子性（Atomicity）</h4>
+
+
+
+<p>一系列操作被看作一个事务，这个事务里面的所有操作要么全部失败，要么全部成功，如果在操作的过程中出现中断，则立刻进行 rollback</p>
+
+
+
+<h4 id="2-2-一致性-consistency">2.2 一致性（Consistency）</h4>
+
+
+
+<p>一系列操作被看作一个事务，在事务开始前和结束后，整个库的完整逻辑约束不能被打破，例如：一个人向另一个人转账，不能出现一个人转账成功另一个人没有收到转账，或者一个人转账失败另一个人收到转账的情况</p>
+
+
+
+<h4 id="2-3-隔离性-isolation">2.3 隔离性（Isolation）</h4>
+
+
+
+<p>主要解决并发的情况，避免不同的人，在相同的时间，查看到的数据的不一致性，避免以下情况的发生：<br>1) 脏读：一个事务读取了另一个事务更新、提交并撤销的数据，导致此事务看到的数据是错误的<br>2) 不可重复读：一个事务多次读取了另一个事务多次更新并提交的数据，导致此事务看到的数据是来回变化的<br>3) 幻读：一个事务在批量修改所有数据，但是在修改的过程中另一个事务又往里面插入了数据，导致此事务在修改完成之后，意外发现还有一条数据没有修改</p>
+
+
+
+<h4 id="2-4-持久性-durability">2.4 持久性（Durability）</h4>
+
+
+
+<p>事务结束后，所有更新都将被保存，不能回滚</p>
+
+
+
+<h3 id="内容三-mariadb-mysql-事务隔离级别3-1-mariadb-mysql-事务隔离级别的特点">内容三：MariaDB &amp; MySQL 事务隔离级别</h3>
+
+
+
+<h4 id="内容三-mariadb-mysql-事务隔离级别3-1-mariadb-mysql-事务隔离级别的特点">3.1 MariaDB &amp; MySQL 事务隔离级别的特点</h4>
+
+
+
+<figure class="wp-block-table"><table><tbody><tr><td>事务隔离级别</td><td>脏读</td><td>不可重复读</td><td>幻读</td></tr><tr><td>读未提交（read-uncommitted）</td><td>是</td><td>是</td><td>是</td></tr><tr><td>不可重复读（read-committed）</td><td>否</td><td>是</td><td>是</td></tr><tr><td>可重复读（repeatable-read）</td><td>否</td><td>否</td><td>是</td></tr><tr><td>串行化（serializable）</td><td>否</td><td>否</td><td>否</td></tr></tbody></table></figure>
+
+
+
+<h4 id="3-2-mariadb-mysql-默认的事务隔离级别">3.2 MariaDB &amp; MySQL 默认的事务隔离级别</h4>
+
+
+
+<p>可重复读 repeatable-read</p>
+
+
+
+<h4 id="3-3-查看目前所使用的事务隔离的方法">3.3 查看目前所使用的事务隔离的方法</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; select @@tx_isolation;
++-----------------+
+| @@tx_isolation  |
++-----------------+
+| REPEATABLE-READ |
++-----------------+
+1 row in set (0.001 sec)</code></pre>
+
+
+
+<p>（补充：这里以查看 MariaDB 目前所使用的事务隔离为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] MariaDB &#038; MySQL 多表关系</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-multi-table-relation/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 30 Jun 2021 09:03:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16308</guid>
+
+					<description><![CDATA[内容一：一对一关系 1.1 通常实现方法 唯一外键 1.2 典型案例 学生表和学生证表 内容二：一对多关系 2.1 通常实现方法 主外键 2.2 典型案例 学生表和班级表 内容三：多对多关系 3.1 通常实现方法 中间表加联合主键 （补充：联合主键是指一张表中有两个主键，这两个主键叫联合主键，每一条数据里的联合主键可以相互之间拼凑成一个新的主键，联合主键可以重复，只要保证这个新的主键唯一即可） 3.2 典型案例 学生和课程]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：一对一关系</h3>
+
+
+
+<h4>1.1 通常实现方法</h4>
+
+
+
+<p>唯一外键</p>
+
+
+
+<h4>1.2 典型案例</h4>
+
+
+
+<p>学生表和学生证表</p>
+
+
+
+<h3>内容二：一对多关系</h3>
+
+
+
+<h4>2.1 通常实现方法</h4>
+
+
+
+<p>主外键</p>
+
+
+
+<h4>2.2 典型案例</h4>
+
+
+
+<p>学生表和班级表</p>
+
+
+
+<h3>内容三：多对多关系</h3>
+
+
+
+<h4>3.1 通常实现方法</h4>
+
+
+
+<p>中间表加联合主键</p>
+
+
+
+<p>（补充：联合主键是指一张表中有两个主键，这两个主键叫联合主键，每一条数据里的联合主键可以相互之间拼凑成一个新的主键，联合主键可以重复，只要保证这个新的主键唯一即可）</p>
+
+
+
+<h4>3.2 典型案例</h4>
+
+
+
+<p>学生和课程</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 05:53:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14333</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 开启系统的 selinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;执行本脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 开启系统的 selinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;执行本脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 openSUSE 15 版本<br>2. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#判断所需文件是否存在
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "没有网页数据备份，无法继续"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "没有网站公钥，无法继续"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "没有网站私钥，无法继续"
+	exit 2
+fi
+
+#更新系统
+zypper ref
+zypper -n update
+
+#确保必需软件已经安装
+zypper -n in tar
+zypper -n in firewalld
+
+
+#部署 Nginx
+zypper -n in nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen 443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        root /srv/www/htdocs;
+
+        location / {
+            index index.php;
+            try_files $uri $uri/ /index.php$is_args$args;
+            if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+            if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+            if (!-f $request_filename){rewrite (.) /index.php;}
+        }
+
+        location ~ \.php$ {
+            include fastcgi_params;
+	    include fastcgi.conf;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME /srv/www/htdocs/$fastcgi_script_name;
+
+        }
+	
+	location ~ ^/\.user\.ini {
+            deny all;
+        }
+
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+            expires 30d;
+        }
+
+        error_page  404              /404.html;
+    }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+
+rm -rf /srv/www/htdocs/*
+tar -xvf $webtar -C /srv/www/htdocs/ &amp;&amp; rm -rf $webtar
+
+zypper -n in policycoreutils
+
+systemctl start nginx
+systemctl enable nginx
+
+#部署 MariaDB
+zypper -n in mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf
+
+systemctl start mariadb
+systemctl enable mariadb
+
+chown -R mysql:mysql /var/lib/mysql
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+        rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#部署 PHP
+zypper -n in php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib
+useradd php-fpm -s /sbin/nologin
+groupadd php-fpm
+chown -R php-fpm:php-fpm /srv/www/htdocs
+cp /etc/php7/fpm/php-fpm.conf.default /etc/php7/fpm/php-fpm.conf
+
+sed -i /"^user =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php7/fpm/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php7/fpm/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php7/fpm/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php7/fpm/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#提高系统性能
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#打开防火墙
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#限制日志占用空间
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#删除此脚本
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#重启系统
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 数据的显示 （通过自带应用 admin 实现） （SQLite 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-admin-data-view/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 30 Apr 2021 07:49:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[SQLite]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14191</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 （补充：在此次操作发生时，最新的 python 版本是 3.6.12） 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-admin-data-view/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 数据的显示 （通过自带应用 admin 实现） （SQLite 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3>步骤二：安装 Django</h3>
+
+
+
+<h4>2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 python 版本是 3.6.12）</p>
+
+
+
+<h4>2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4>2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4>2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3>步骤三：创建 mysite 项目</h3>
+
+
+
+<h4>3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4>3.2 mysite 项目的目录</h4>
+
+
+
+<h5>3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5>3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5>3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3>步骤四：创建 users 应用</h3>
+
+
+
+<h4>4.1 创建 users 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp users</code></pre>
+
+
+
+<h4>4.2 users 应用的目录</h4>
+
+
+
+<h5>4.2.1 显示 users 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5>4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) users/app.py 此 Django 应用的容器<br>2) users/__init__.py 空文件，通知 python 此项目是 1 个 python 包<br>3) users/admin.py 此 Django 应用自带的后台管理相关的类<br>4) users/app.py 此 Django 应用指定应用名的文件<br>5) users/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) users/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) users/test.py 此 Django 应用的测试文档<br>8) users/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h3>步骤五：实现注册功能</h3>
+
+
+
+<h4>5.1 在 users 应用数据库模板中添加 users 类</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class user(models.Model):
+    tname = models.CharField(max_length=30,unique=True)
+    tpassword = models.CharField(max_length=30)</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 tname 和 tpassword 两个字符，长度为 30 个字节，其中一个为唯一为例<br>2) 主键可以不用设置，默认会自动生成一个 ID 主键<br>3) 默认表名会生成 &lt;应用名&gt;_&lt;模型类名&gt;，在这里就是 users_user<br>4) 指定要生成的表名的设置方法是：</p>
+
+
+
+<pre class="wp-block-code"><code>    class Meta:
+        db_table = '&lt;table name&gt;'</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>5.2 在 users 应用中添加一个 html 模板</h4>
+
+
+
+<p>创建 mysite/users/templates/users/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/users/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="un"&gt;User: &lt;/label&gt;&lt;input type="text" name="uname" id="un"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="up"&gt;Password: &lt;/label&gt;&lt;input type="password" name="upassword" id="up"/&gt;
+        &lt;/p&gt;
+        &lt;input type="submit" value="register"/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成一个用户名输入栏，赋值给 uname<br>2) 生成一个密码输入栏，赋值给 upassword<br>3) 生成一个 register 提交按钮<br>为例<br>）</p>
+
+
+
+<h4>5.3 在 users 应用中添加一个网页返回值的模块并将符合的数值插入数据库</h4>
+
+
+
+<p>将 mysite/users/views.py 里的内容全部修改如下:</p>
+
+
+
+<pre class="wp-block-code"><code>from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from .models import user
+
+# Create your views here.
+
+def register(request):
+    if request.method=="GET":
+        return render(request,'users/register.html')
+    else:
+        uname = request.POST.get('uname','')
+        upassword = request.POST.get('upassword','')
+
+        if uname.strip()!='' and upassword.strip()!='':
+        # confirm whether uname and upassword are null
+            nuser = user(tname=uname,tpassword=upassword)
+
+            nuser.save()
+            return HttpResponse('success!')
+        else:
+            return HttpResponse('fail')
+
+    return HttpResponse('fail')
+</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 设置 register 模块并返回 users/register.html<br>2) 设置 register 模块当网页返回模式是 POST 且 uname 和 upassword 都为非空时将数据存入数据库<br>为例<br>）</p>
+
+
+
+<h4>5.4 在 users 应用中添加一个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^register', register),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 register 链接对应 register 模块为例）</p>
+
+
+
+<h4>5.5 在 mysite 应用中添加一个链接并链接 users 的链接</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#coding=utf-8
+from django.conf.urls import url, include
+from users.views import register
+
+urlpatterns = &#91;
+......
+    url(r'^users/', include('users.urls')),
+]</code></pre>
+
+
+
+<h4>5.6 在 mysite 应用中导入 users 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>INSTALLED_APPS = &#91;
+......
+    'users',
+]</code></pre>
+
+
+
+<h4>5.7 将 Django 的模板导入 SQLite 数据库</h4>
+
+
+
+<h5>5.7.1 生成牵引文件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'users':
+  users/migrations/0001_initial.py
+    - Create model user</code></pre>
+
+
+
+<p>（补充：这里以将 users 应用的 model 模块转换成牵引文件为例）</p>
+
+
+
+<h5>5.7.2 将牵引文件导入 SQLite 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying users.0001_initial... OK</code></pre>
+
+
+
+<h3>步骤六：在 admin 应用中添加数据展示</h3>
+
+
+
+<h4>6.1 在 users 应用数据库模板中添加显示数据的配置</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    def __str__(self):
+        return u'users:%s'%self.tname</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以将 user 类里的 tname 字段以 users:&lt;tname value&gt; 的列表形式显示为例<br>2) u 在 return u&#8217;users:%s&#8217;%self.tname 里代表正则的意思<br>）</p>
+
+
+
+<h4>6.2 在 Django 应用的 admin 应用中导入数据库模版中的 user 类</h4>
+
+
+
+<p>在 mysite/users/admin.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from .models import user
+
+admin.site.register(user)</code></pre>
+
+
+
+<p>（补充：这里以导入 models 的 user 类为例）</p>
+
+
+
+<h4>6.3 设置 admin 应用的语言和时区</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+LANGUAGE_CODE = 'zh-Hans'
+
+TIME_ZONE = 'Asia/Shanghai'
+......</code></pre>
+
+
+
+<p>（补充：这里设置语言为汉语，时区为上海为例）</p>
+
+
+
+<h4>6.4 创建 admin 应用的用户</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py createsuperuser
+Username (leave blank to use 'root'): eternalcenter
+Email address: eternalcenter@eternalcenter.com
+Password: 
+Password (again): 
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+This password is entirely numeric.
+Bypass password validation and create user anyway? &#91;y/N]: y
+Superuser created successfully.</code></pre>
+
+
+
+<h3>步骤七：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3>步骤八：测试注册功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/users/register/</code></pre>
+
+
+
+<p>2) 当用户名输入 eternalcenter，密码输入密码 1 点击 “register” 时，返回 successful</p>
+
+
+
+<h3>步骤九：使用 admin 模块显示 SQLite 数据库里的数据</h3>
+
+
+
+<p>1) 打开网页：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/admin/</code></pre>
+
+
+
+<p>2) 使用创建的 admin 模块的用户登录<br>3) 点击 “Users”<br>4) 可以看到一条 users:eternalcenter 的数据</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 注册功能的实现 （SQLite 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-register-sqlite/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 29 Apr 2021 08:34:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[SQLite]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14163</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 （补充：在此次操作发生时，最新的 python 版本是 3.6.12） 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-register-sqlite/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 注册功能的实现 （SQLite 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 python 版本是 3.6.12）</p>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-users-应用4-1-创建-users-应用">步骤四：创建 users 应用</h3>
+
+
+
+<h4 id="步骤四-创建-users-应用4-1-创建-users-应用">4.1 创建 users 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp users
+</code></pre>
+
+
+
+<h4 id="4-2-users-应用的目录4-2-1-显示-users-应用的目录">4.2 users 应用的目录</h4>
+
+
+
+<h5 id="4-2-users-应用的目录4-2-1-显示-users-应用的目录">4.2.1 显示 users 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) users/app.py 此 Django 应用的容器<br>2) users/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) users/admin.py 此 Django 应用自带的后台管理相关的类<br>4) users/app.py 此 Django 应用指定应用名的文件<br>5) users/migrations.py 此 Django 应用通过 Python 代码生成数据库表时里面会产生一些迁移文件<br>6) users/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) users/test.py 此 Django 应用的测试文档<br>8) users/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h3 id="步骤五-实现-user-应用的层级多链接5-1-在-mysite-应用中添加一个链接并链接-users-的链接">步骤五：实现 user 应用的层级多链接</h3>
+
+
+
+<h4 id="步骤五-实现-user-应用的层级多链接5-1-在-mysite-应用中添加一个链接并链接-users-的链接">5.1 在 mysite 应用中添加 1 个链接并链接 users 的链接</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url, include
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^users/', include('users.urls')),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 page 链接对应 users 应用的链接为例）</p>
+
+
+
+<h4 id="5-2-在-mysite-应用中导入-users-应用">5.2 在 mysite 应用中导入 users 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'users',
+]
+......</code></pre>
+
+
+
+<p>（补充：这里以导入 users 应用为例）</p>
+
+
+
+<h3 id="步骤六-实现连接-sqlite-数据库6-1-在-users-应用数据库模板中添加-user-类">步骤六：实现连接 SQLite 数据库</h3>
+
+
+
+<h4 id="步骤六-实现连接-sqlite-数据库6-1-在-users-应用数据库模板中添加-user-类">6.1 在 users 应用数据库模板中添加 user 类</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class user(models.Model):
+    tname = models.CharField(max_length=30,unique=True)
+    tpassword = models.CharField(max_length=30)</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 tname 和 tpassword 两个字符，长度为 30 个字节，其中一个为唯一为例<br>2) 主键可以不用设置，默认会自动生成一个 ID 主键<br>3) 默认表名会生成 &lt;应用名&gt;_&lt;模型类名&gt;，在这里就是 users_user<br>4) 指定要生成的表明的设置方法是：</p>
+
+
+
+<pre class="wp-block-code"><code>    class Meta:
+        db_table = '&lt;table name&gt;'</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="6-2-将-django-的模板导入-sqlite-数据库6-2-1-生成牵引文件">6.2 将 Django 的模板导入 SQLite 数据库</h4>
+
+
+
+<h5 id="6-2-将-django-的模板导入-sqlite-数据库6-2-1-生成牵引文件">6.2.1 生成牵引文件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'users':
+  users/migrations/0001_initial.py
+    - Create model user</code></pre>
+
+
+
+<p>（补充：这里以将 users 应用的 model 模块转换成牵引文件为例）</p>
+
+
+
+<h5 id="6-2-2-将牵引文件导入-sqlite-数据库">6.2.2 将牵引文件导入 SQLite 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying users.0001_initial... OK</code></pre>
+
+
+
+<h3 id="步骤七-实现注册功能7-1-在-users-应用中添加一个注册功能的-html-模板">步骤七：实现注册功能</h3>
+
+
+
+<h4 id="步骤七-实现注册功能7-1-在-users-应用中添加一个注册功能的-html-模板">7.1 在 users 应用中添加 1 个注册功能的 HTML 模板</h4>
+
+
+
+<p>创建 mysite/users/templates/users/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/users/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="un"&gt;User: &lt;/label&gt;&lt;input type="text" name="uname" id="un"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="up"&gt;Password: &lt;/label&gt;&lt;input type="password" name="upassword" id="up"/&gt;
+        &lt;/p&gt;
+        &lt;input type="submit" value="register"/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成 1 个用户名输入栏，赋值给 uname<br>2) 生成 1 个密码输入栏，赋值给 upassword<br>3) 生成 1 个 register 提交按钮<br>为例<br>）</p>
+
+
+
+<h4 id="7-2-在-users-应用中添加一个网页返回值的模块并将符合的数值插入数据库">7.2 在 users 应用中添加 1 个网页返回值的模块并将符合的数值插入数据库</h4>
+
+
+
+<p>将 mysite/users/views.py 里的内容全部修改如下:</p>
+
+
+
+<pre class="wp-block-code"><code>from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from .models import user
+
+# Create your views here.
+
+def register(request):
+    if request.method=="GET":
+        return render(request,'users/register.html')
+    else:
+        uname = request.POST.get('uname','')
+        upassword = request.POST.get('upassword','')
+
+        if uname.strip()!='' and upassword.strip()!='':
+        # confirm whether uname and upassword are null
+            nuser = user(tname=uname,tpassword=upassword)
+
+            nuser.save()
+            return HttpResponse('success!')
+        else:
+            return HttpResponse('fail')
+
+    return HttpResponse('fail')</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 设置 register 模块并返回 users/register.html<br>2) 从 users/register.html 中获取 uname 和 upassword 值<br>3) 设置 register 模块当网页返回模式是 POST 且 uname 和 upassword 都为非空时将数据存入数据库<br>为例<br>）</p>
+
+
+
+<h4 id="7-3-在-users-应用中添加一个链接并设置对应的模块">7.3 在 users 应用中添加 1 个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^register', register),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 register 链接对应 register 模块为例）</p>
+
+
+
+<h3 id="步骤八-启动-django-服务">步骤八：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3 id="步骤九-测试注册功能">步骤九：测试注册功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/users/register/</code></pre>
+
+
+
+<p>2) 当用户名输入 eternalcenter，密码输入密码 1 点击 “register” 时，返回 successful</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] MariaDB 的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-install/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 05 Oct 2020 07:04:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11192</guid>
+
+					<description><![CDATA[步骤一：系统环境要求 服务器系统要配置好可用的软件源 2.1 CentOS&#38;RHEL 安装 MariaDB 2.2 openSUSE&#38;SUSE 安装 MariaDB]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统要配置好可用的软件源</p>
+
+
+
+<h4>2.1 CentOS&amp;RHEL 安装 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb mariadb-devel mariadb-server</code></pre>
+
+
+
+<h4>2.2 openSUSE&amp;SUSE 安装 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper -n mariadb mariadb-devel mariadb-server</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 在 MariaDB &#038; MySQL 的配置文件里设置部分安全策略</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-mariadb-mysql-securtiy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 12 Apr 2020 08:22:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Database (数据库)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8736</guid>
+
+					<description><![CDATA[介绍： 作者:朱明宇名称:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略作用:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略 使用方法:1. 确认 MariaDB &#38; MySQL 已提前装好2. 在此脚本的分割线内写入相应的内容3. 给此脚本增加执行权限4. 执行此脚本 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<p>作者:朱明宇<br>名称:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略<br>作用:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略</p>
+
+
+
+<p>使用方法:<br>1. 确认 MariaDB &amp; MySQL 已提前装好<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本增加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+#At the system level, start the database as a MySQL user
+chown -R mysql /var/lib/mysql
+sed -i '/^user=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a user=mysql' /etc/my.cnf.d/mariadb-server.cnf
+
+#Disable client local data reading at the system level
+sed -i '/^local-infile=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a local-infile=0' /etc/my.cnf.d/mariadb-server.cnf
+
+#At the system level, remote login of database is prohibited
+sed -i '/^bind-address=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a bind-address=127.0.0.1' /etc/my.cnf.d/mariadb-server.cnf
+
+#Restart database
+systemctl restart mariadb ; systemctl restart mysql</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Apr 2020 15:29:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8720</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. dbuser=&#8221;ec&#8221; &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 CentOS 8 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#Limit log space
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 Mar 2020 14:03:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8681</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 1) 服务器的系统需要是 openSUSE 15 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本） 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）</p>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = nouser
+group = nouser
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = php-fpm
+group = users
+listen = 127.0.0.1:9000
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 以 php-fpm 用户和 users 用户组的身份启动 php-fpm<br>2) 让 php-fpm 监听本地 9000 端口为例<br>）</p>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下（/srv/www/htdocs）<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jan 2020 14:59:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8078</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例） 3.1.3 启动 nginx 网页服务 3.2 MariaDB &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<pre class="wp-block-code"><code>1) 服务器的系统需要是 CentOS Linux 8 版本
+2) 服务器要关闭防火墙
+3) 服务器要关闭 SELinux
+4) 服务器系统要配置好可用的软件源</code></pre>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;www]
+user = php-fpm
+group = php-fpm
+listen = 127.0.0.1:9000</code></pre>
+
+
+
+<p>（补充：这里以让 php-fpm 监听本地 9000 端口为例）</p>
+
+
+
+<h5>3.3.4 启动 PHP 连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start php-fpm</code></pre>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 索引的设置 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-index/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:47:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7956</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>mysql 设置索引
+
+1.添加PRIMARY KEY（主键索引）
+
+ 语法：ALTER TABLE `表名` ADD PRIMARY KEY ( `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )
+
+
+2.添加UNIQUE(唯一索引)
+
+语法：ALTER TABLE `表名` ADD UNIQUE ( `列名称`)
+
+mysql&gt;ALTER TABLE `table_name` ADD UNIQUE ( `column`)
+
+3.添加INDEX(普通索引)
+
+语法：ALTER TABLE `表名` ADD INDEX index_name ( `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column` )
+
+4.添加FULLTEXT(全文索引)
+
+语法：ALTER TABLE `表名` ADD FULLTEXT ( `列名称`)
+
+mysql&gt;ALTER TABLE `table_name` ADD FULLTEXT ( `column`)
+
+5.添加多列索引
+
+语法：ALTER TABLE `表名` ADD INDEX index_name ( `列名称`, `列名称`, `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )
+
+ 
+
+想要查看表有几个字段设置了索引
+
+语法；SHOW INDEX FROM `表名`
+
+mysql&gt;SHOW INDEX FROM `cccinfo`
+————————————————
+版权声明：本文为CSDN博主「z793397795」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/z793397795/article/details/91491546</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img width="1009" height="225" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置.png" alt="" class="wp-image-7957" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置.png 1009w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置-300x67.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置-768x171.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 用户和权限的管理 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-user/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:41:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7953</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MySQL用户管理和权限管理
+
+在项目中，一个数据库有很多人需要使用，不能所有的人都使用相同的权限，如果人比较多，一人一个用户也很难管理。一般来说，会分超级管理员权限，管理员权限，读写权限，只读权限等，这样方便管理。当然，具体怎么管理权限根据实际情况来确定。
+
+无论如何，都需要创建多个用户来管理权限。
+
+root 是数据库的超级管理员用户，对于普通开发人员来说，权限太大了，如果不小心做了一些不可逆的操作，后果是非常严重的，并且还不容易查出责任人。
+
+所以 root 用户不会让开发人员使用，一般会由 DBA 或运维人员统一管理，如果没有 DBA，统一由超级管理员 root 来分配。
+
+1. 查看所有用户
+
+MySQL 中所有的用户及权限信息都存储在默认数据库 mysql 的 user 表中。
+
+进入 mysql 数据库，通过 desc user; 可以查看 user 表的结构。
+
+    use mysql;
+    desc user;
+
+可以看到 user 中有40多个字段，字段非常多，只要关注主要字段就行了。
+
+其中的主要字段有：
+
+host: 允许访问的主机地址，localhost 为本机，% 为任何主机。
+user: 用户名。
+authentication_string: 加密后的密码值。
+
+使用 select * from user; 查看 user 表中当前有哪些用户。
+
+select host,user,authentication_string from user;
+
+在安装 MySQL 后，有三个默认的用户。
+
+2. 创建用户
+
+使用 create user '用户名'@'访问主机' identified by '密码'; 创建用户。
+
+create user 'admin'@'localhost' identified by 'Mysql!123';
+
+创建用户后，查看用户，多了刚才创建的 admin，创建成功。
+
+3. 查看用户权限
+
+使用 show grants for '用户名'@'访问主机'; 查看用户的权限。
+
+show grants for 'admin'@'localhost';
+
+在创建用户的时候，如果没有指定权限，默认会赋予 USAGE 权限，这个权限很小，几乎为0，只有连接数据库和查询information_schema 数据库的权限。虽然 *.* 表示所有数据库的所有表，但因为 USAGE 的限制，不能操作所有数据库。
+
+退出 root 用户，登录到 admin 用户，只能看到 information_schema 数据库。
+
+4. 给用户授权
+
+创建 admin 用户，目的是创建一个管理员，所以要给 admin 授权。退出 admin ，重新登录 root 。
+
+在授权时，常用的权限有 CREATE、ALTER、DROP、INSERT、UPDATE、DELETE、SELECT，ALL PRIVILEGES 表示所有权限。
+
+通过 数据库.数据表 指定对哪个数据库的哪个表授权，*.* 表示所有数据库中的所有表。
+
+通过 '用户名'@'访问主机' 来表示用户可以从哪些主机登录， ‘%’ 表示可以从任何主机登录。
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 来给数据库用户授权。
+
+grant all privileges on *.* to 'admin'@'localhost' identified by 'Mysql!123';
+
+给 admin 用户授权后，权限从 USAGE 变成了 ALL PRIVILEGES ，表示 admin 拥有了所有权限。
+
+如果授权没有生效，记得刷新一下权限，使权限生效。
+
+flush privileges；
+
+再重新登陆到 admin 用户上，可以操作所有数据库了。
+
+给用户授权的时候，必须要指定 '用户名'@'访问主机' 来指定用户。如果 '访问主机' 不相同，不是给用户授权，而是创建一个同名同密码的用户，这个用户与原用户可以登陆的主机不相同，权限不同。
+
+grant all privileges on *.* to 'admin'@'%' identified by 'Mysql!123';
+
+执行上面的语句后，user 表中有两个 admin 用户，用户名和密码都一样，但可以登陆的主机不一样。第一次创建的 admin 访问主机是 localhost，执行上面的语句时指定的访问主机是 % ，访问主机不一样，MySQL 会创建两个用户。虽然用户名密码相同，但这是两个不同的用户，两个用户的权限不一样。给两个用户指定不同的权限，在两个用户都有权限的主机登录时，局部用户的权限会覆盖全局用户的权限，当在 localhost 登录时，'admin'@'localhost' 的权限会覆盖 'admin'@'%' 的权限。
+
+对于可以从任何主机登录的用户，在查看用户权限时，可以使用 show grants for 用户名; 来查看权限，指定主机的用户在查看权限时，要跟上访问主机才能查看权限。
+
+5. 创建用户并授权
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 来创建一个用户并指定权限，与上面授权使用的语句相同。
+
+grant create,select on *.* to 'creater'@'%' identified by 'Mysql!123';
+
+创建了一个有读写权限的用户 creater，这个用户拥有所有数据库的 SELECT 和 CREATE 权限，可以从任何主机登录数据库。
+
+6. 修改用户的权限
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 修改用户的权限，其实前面的授权就是修改权限。
+
+grant all privileges on *.* to 'creater'@'%' identified by 'Mysql!123';
+
+修改用户的权限后，creater 的权限从 SELECT 和 CREATE 权限变成了 ALL PRIVILEGES。
+
+7. 删除用户
+
+使用 drop user '用户名'@'访问主机'; 来删除用户。
+
+drop user 'admin'@'localhost';
+
+执行删除操作后，user 表中不再有该用户。
+
+8. 修改用户名和访问主机
+
+使用 rename user '用户名'@'访问主机' to '新用户名'@'新访问主机'; 来修改用户名和用户的访问主机。
+
+rename user 'creater'@'%' to 'create'@'localhost';
+
+修改之后，creater 用户改名 create ，访问主机从 % 变成了 localhost 。
+
+9. 修改用户密码　　
+
+使用 set password for '用户名'@'访问主机' = password('新密码'); 修改用户的密码。
+
+set password for 'create'@'localhost'=password('Mysql@123');
+
+上面创建的 admin 用户和 create 用户密码相同，现在给 create 修改密码，使密码不一样。
+
+以上就是对数据库用户和权限管理的基本操作。这些操作都是对 mysql 数据库中的 user 表进行操作，所以上面的大部分操作都还有另外一种方法，就是通过对 mysql.user 表的增删改查语句来实现。
+————————————————
+版权声明：本文为CSDN博主「Python碎片」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_43790276/article/details/102674936</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1011" height="195" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理.png" alt="" class="wp-image-7954" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理.png 1011w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理-300x58.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理-768x148.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 数据的查询 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-select/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:15:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7950</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MySQL基本查询语句
+
+MySQL基本查询语句是掌握MySQL数据查询的基本操作，处理数据所必要掌握的，提高处理数据的能力，速度要熟练掌握基本的查询语句。
+
+1.limit字句
+
+select * from limit 3；查询前三条数据
+
+select * from limit 5，3；查询从第5+1条开始的后三条数据
+
+2.函数：平均数，总和，最大值，最小值和总信息数
+
+平均数：select AVG(age) as 平均 from info；查询info表的平均年龄
+
+总和：select SUM(age) as 年龄总和 from lx;查询lx表格的年龄的总和
+
+最大值：select MAX(age) as 最大年龄 from lx; 查询lx表格里年龄的最大值
+
+最小值：select MIN(age) as 最小年龄 from lx; 查询lx表格中的年龄的最小值
+
+总信息数：select COUNT(*) as 总人数 from lx; 查询lx中的信息条数
+
+3.where子句中的经常使用的运算符：比较运算符和逻辑运算符
+
+比较运算符：
+大于&gt; 小于&lt; 小于等于&lt;= 大于等于&gt;= 等于 = 不等于&lt;&gt; !=
+
+区间 ：between…and…
+1.select age from student where age&gt;=18 and age&lt;=22;等价于
+2.select age from student where age between 18 and 22;
+
+查想查的信息：in
+select age from student where age in(19,20,50);
+查年龄是19.20.50的人
+
+模糊查询：like
+select age from student where name like ‘王%’; 查询姓王的人 %表示任意长度任意字符
+
+不为空：is null
+
+逻辑运算符：
+同时成立：and。任一成立：or。不成立：not
+
+4.笛卡尔积：
+select 表1.name,表2.score from 表1 s(表1缩写),表2 g(表2缩写) where s.id = g.gradeId；
+
+5.表连接
+内连接：select s.name,g.score from student s inner join grade g on s.id=g.gradeId；
+
+左外连接：select s.name,g.score from student s Left join grade g on s.id=g.gradeId
+
+左外连接：select s.name,g.score from student s right join grade g on s.id=g.gradeId
+————————————————
+版权声明：本文为CSDN博主「我是超级小白」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/lady88888888/article/details/103018101</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1014" height="193" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询.png" alt="" class="wp-image-7951" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询-300x57.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询-768x146.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 表结构的修改 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-alter/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:07:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7947</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MYSQL的修改表结构SQL语句：
+
+-- 查看创表语句
+SHOW CREATE TABLE t_login;
+
+-- 查看表结构
+desc t_login1;
+
+-- 增加列
+ALTER TABLE t_login1 ADD COLUMN COL_1 VARCHAR(10);
+
+-- 修改列
+ALTER TABLE t_login1 MODIFY COLUMN COL_1 INT(10);
+
+-- 修改列名称
+ALTER TABLE t_login1 CHANGE COL_1 COL_2 VARCHAR(50);
+
+-- 删除列
+ALTER TABLE t_login1 DROP COLUMN COL_2;
+
+-- 修改整个表的字符集
+ALTER TABLE t_login1 DEFAULT CHARACTER SET UTF8;
+
+-- 修改某个字段的字符集
+ALTER TABLE t_login1  CHANGE stu_num stu_num varchar(20) CHARACTER SET utf8;
+————————————————
+版权声明：本文为CSDN博主「h_j_c_123」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/h_j_c_123/article/details/95035434</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1014" height="165" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构.png" alt="" class="wp-image-7948" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构-300x49.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构-768x125.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群 Redis 数据库的添加和删除</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster-node/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 13:37:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7234</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 现有的 Redis 集群redis7 IP 地址:192.168.1.57 端口号：1057redis8 IP 地址:192.168.1.58 端口号：1058 （补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057） 1.2 服务器列表简介 redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中 步骤二：系统环境要求 1) 所有服务器的系统都需要是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster-node/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群 Redis 数据库的添加和删除"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-left has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-cluster/">Redis 数据库集群的搭建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>现有的 Redis 集群<br>redis7 IP 地址:192.168.1.57 端口号：1057<br>redis8 IP 地址:192.168.1.58 端口号：1058</p>
+
+
+
+<p>（补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057）</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<p>（注意：现有的 Redis 集群因为已经是创建好了的，所以不用执行以上操作）</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-安装软件包">3.2.6 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：将 Redis 数据库添加到别的集群</h3>
+
+
+
+<h4 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis7 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.57
+......
+port 1057
+......
+daemonize yes
+......
+pidfile /var/run/redis_1057.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1057.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.57 是本机的 IP 地址<br>3) 这里的 port 1057 代表数据库使用到的端口是 1057，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1057.pid 代表使用的 PID 文件是 /var/run/redis_1057.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1057.conf 代表使用的数据库配置文件是 nodes-1057.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.58
+......
+port 1058
+......
+daemonize yes
+......
+pidfile /var/run/redis_1058.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1058.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.58 是本机的 IP 地址<br>3) 这里的 port 1058 代表数据库使用到的端口是 1058，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1058.pid 代表使用的 PID 文件是 /var/run/redis_1058.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1058.conf 代表使用的数据库配置文件是 nodes-1058.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3 将 redis7 和 redis8 添加到现有的 Redis 集群中</h4>
+
+
+
+<h5 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3.1 显示现有集群的状况</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-2-添加-redis7-并将其视为主数据库">4.3.2 添加 redis7 并将其视为主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.57:1057 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-3-添加-redis8-并将其视为从数据库">4.3.3 添加 redis8 并将其视为从数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.58:1058 192.168.1.51:1051 --cluster-slave</code></pre>
+
+
+
+<h5 id="4-3-4-确认-redis7-和-redis8-已经加入到了集群中">4.3.4 确认 redis7 和 redis8 已经加入到了集群中</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 2 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 0 keys | 0 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots: (0 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4 让新加入的 redis 数据库也能存储数据</h4>
+
+
+
+<h5 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4.1 重新分配集群的存储块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 10bb6a5732f629ee62801417cb44ddb670e99e86
+......
+Source node #1: all
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h5 id="4-4-2-确认集群的存储块已经覆盖所有主数据库">4.4.2 确认集群的存储块已经覆盖所有主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 2 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;1365-5460] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots:&#91;0-1364],&#91;5461-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-将部分-redis-数据库从集群中删除">步骤五：将部分 Redis 数据库从集群中删除</h3>
+
+
+
+<p>（这里以删除 redis7 和 redis8 为例）</p>
+
+
+
+<h4 id="5-1-将存储块从要被删除的-redis-主数据库里拿走">5.1 将存储块从要被删除的 redis 主数据库里拿走</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+......
+Source node #1: 10bb6a5732f629ee62801417cb44ddb670e99e86
+Source node #2: done
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h4 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2 将部分 Redis 数据库从集群中删除</h4>
+
+
+
+<h5 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2.1 将作为主库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.57:1057 10bb6a5732f629ee62801417cb44ddb670e99e86
+&gt;&gt;&gt; Removing node 10bb6a5732f629ee62801417cb44ddb670e99e86 from cluster 192.168.1.57:1057
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</code></pre>
+
+
+
+<h5 id="5-2-2-将作为从库的-redis-数据库从集群中删除">5.2.2 将作为从库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.58:1058 023abbc600cd4fb1ca8bb7ce8c45099e186041f8
+&gt;&gt;&gt; Removing node 023abbc600cd4fb1ca8bb7ce8c45099e186041f8 from cluster 192.168.1.58:1058
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...
+&gt;&gt;&gt; SHUTDOWN the node.</code></pre>
+
+
+
+<h4 id="5-3-确认部分-redis-数据库已经从集群中删除">5.3 确认部分 Redis 数据库已经从集群中删除</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Nov 2019 14:55:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6867</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 redis1 IP 地址:192.168.1.51 端口号：1051redis2 IP 地址:192.168.1.52 端口号：1052redis3 IP 地址:192.168.1.53 端口号：1053redis4 IP 地址:192.168.1.54 端口号：1054redis5 IP 地址:192.168.1.55 端口号：1055redis6 IP 地址:192.168.1.56 端口号：1056 1.2 服务器列表简介 1) 总共 6 个数据库，3 个为主库，3 个为从库2) 如果 1 个主库宕掉则它的从库自动成为主库3) 宕掉的主库修复好后会成为新主库的从库4) 如果半数或者半数以上的主库宕掉，集群则无法使用 （注意： Redis 集群最少要有 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a rel="noreferrer noopener" href="https://redis.io/" target="_blank">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>redis1 IP 地址:192.168.1.51 端口号：1051<br>redis2 IP 地址:192.168.1.52 端口号：1052<br>redis3 IP 地址:192.168.1.53 端口号：1053<br>redis4 IP 地址:192.168.1.54 端口号：1054<br>redis5 IP 地址:192.168.1.55 端口号：1055<br>redis6 IP 地址:192.168.1.56 端口号：1056</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 总共 6 个数据库，3 个为主库，3 个为从库<br>2) 如果 1 个主库宕掉则它的从库自动成为主库<br>3) 宕掉的主库修复好后会成为新主库的从库<br>4) 如果半数或者半数以上的主库宕掉，集群则无法使用</p>
+
+
+
+<p>（注意： Redis 集群最少要有 3 个主库）</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名<br>7) 至少要有一台服务器可以访问外网</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-配置软件包">3.2.6 配置软件包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：搭建 Redis 数据库集群</h3>
+
+
+
+<h4 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 1051
+......
+daemonize yes
+......
+pidfile /var/run/redis_1051.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1051.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.51 是本机的 IP 地址<br>3) 这里的 port 1051 代表数据库使用到的端口是 1051，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1051.pid 代表使用的 PID 文件是 /var/run/redis_1051.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1051.conf 代表使用的数据库配置文件是 nodes-1051.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.52
+......
+port 1052
+......
+daemonize yes
+......
+pidfile /var/run/redis_1052.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1052.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.52 是本机的 IP 地址<br>3) 这里的 port 1052 代表数据库使用到的端口是 1052，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1052.pid 代表使用的 PID 文件是 /var/run/redis_1052.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1052.conf 代表使用的数据库配置文件是 nodes-1052.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.53
+......
+port 1053
+......
+daemonize yes
+......
+pidfile /var/run/redis_1053.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1053.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.53 是本机的 IP 地址<br>3) 这里的 port 1053 代表数据库使用到的端口是 1053，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1053.pid 代表使用的 PID 文件是 /var/run/redis_1053.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1053.conf 代表使用的数据库配置文件是 nodes-1053.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.54
+......
+port 1054
+......
+daemonize yes
+......
+pidfile /var/run/redis_1054.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1054.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.54 是本机的 IP 地址<br>3) 这里的 port 1054 代表数据库使用到的端口是 1054，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1054.pid 代表使用的 PID 文件是 /var/run/redis_1054.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1054.conf 代表使用的数据库配置文件是 nodes-1054.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.55
+......
+port 1055
+......
+daemonize yes
+......
+pidfile /var/run/redis_1055.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1055.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.55 是本机的 IP 地址<br>3) 这里的 port 1055 代表数据库使用到的端口是 1055，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1055.pid 代表使用的 PID 文件是 /var/run/redis_1055.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1055.conf 代表使用的数据库配置文件是 nodes-1055.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.56
+......
+port 1056
+......
+daemonize yes
+......
+pidfile /var/run/redis_1056.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1056.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.56 是本机的 IP 地址<br>3) 这里的 port 1056 代表数据库使用到的端口是 1056，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1056.pid 代表使用的 PID 文件是 /var/run/redis_1056.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1056.conf 代表使用的数据库配置文件是 nodes-1056.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-显示目前的集群信息">4.3 显示目前的集群信息</h4>
+
+
+
+<p>（此步骤可以在任意服务器上操作，这里以在 redis1 上操作为例）</p>
+
+
+
+<h5 id="4-3-1-进入数据库">4.3.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-3-2-显示数据库是否可用">4.3.2 显示数据库是否可用</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; ping
+PONG</code></pre>
+
+
+
+<h5 id="4-3-3-显示集群信息">4.3.3 显示集群信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:fail
+cluster_slots_assigned:0
+cluster_slots_ok:0
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:1
+cluster_size:0
+cluster_current_epoch:0
+cluster_my_epoch:0
+cluster_stats_messages_sent:0
+cluster_stats_messages_received:0</code></pre>
+
+
+
+<h4 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4 部署 Redis 集群环境</h4>
+
+
+
+<h5 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4.1 部署 Ruby 脚本运行环境</h5>
+
+
+
+<p>（此步骤可以在任意服务器上操作，但是这台服务器必须要可以访问外网，这里以在 redisA 上操作为例）</p>
+
+
+
+<h5 id="4-4-1-1-安装-ruby">4.4.1.1 安装 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install ruby rubygems ruby-devel</code></pre>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2 升级 Ruby</h5>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2.1 解压 Ruby 安装包</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf rubygems-3.0.6.tgz </code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-2-进入-ruby-安装包目录">4.4.1.2.2 进入 Ruby 安装包目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd rubygems-3.0.6</code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-3-升级-ruby">4.4.1.2.3 升级 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ruby setup.rb</code></pre>
+
+
+
+<h5 id="4-4-1-3-安装-redis-模块">4.4.1.3 安装 Redis 模块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># gem install redis -v 3.3.5
+Fetching: redis-3.3.5.gem (100%)
+Successfully installed redis-3.3.5
+Parsing documentation for redis-3.3.5
+Installing ri documentation for redis-3.3.5
+1 gem installed</code></pre>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2 部署 Redis 集群文件</h5>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2.1 创建 Redis 集群文件的目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-2-复制-redis-集群文件">4.4.2.2 复制 Redis 集群文件</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp redis-5.0.5/src/redis-trib.rb /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-3-给-redis-集群文件添加执行权限">4.4.2.3 给 Redis 集群文件添加执行权限</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /root/bin/redis-trib.rb</code></pre>
+
+
+
+<h4 id="4-5-创建-redis-集群">4.5 创建 Redis 集群</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster create 192.168.1.51:1051 192.168.1.52:1052 192.168.1.53:1053 192.168.1.54:1054 192.168.1.55:1055 192.168.1.56:1056 --cluster-replicas 1
+&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...
+Master&#91;0] -&gt; Slots 0 - 5460
+Master&#91;1] -&gt; Slots 5461 - 10922
+Master&#91;2] -&gt; Slots 10923 - 16383
+Adding replica 192.168.1.55:1055 to 192.168.1.51:1051
+Adding replica 192.168.1.56:1056 to 192.168.1.52:1052
+Adding replica 192.168.1.54:1054 to 192.168.1.53:1053
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+...
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6 显示集群中主机状态信息的方法</h4>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1 方法一</h5>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-6-1-2-显示集群整体信息">4.6.1.2 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:1
+cluster_stats_messages_ping_sent:30858
+cluster_stats_messages_pong_sent:29942
+cluster_stats_messages_sent:60800
+cluster_stats_messages_ping_received:29937
+cluster_stats_messages_pong_received:30858
+cluster_stats_messages_meet_received:5
+cluster_stats_messages_received:60800</code></pre>
+
+
+
+<h5 id="4-6-1-3-显示集群主从关系">4.6.1.3 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; cluster nodes
+eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055@11055 slave 5d030ec05f9de86ebeedc1b035b2122addaa61d8 0 1574754846521 5 connected
+a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054@11054 slave c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 0 1574754846000 4 connected
+fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056@11056 slave 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 0 1574754845819 6 connected
+5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051@11051 master - 0 1574754846822 1 connected 0-5460
+7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052@11052 master - 0 1574754846000 2 connected 5461-10922
+c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053@11053 myself,master - 0 1574754844000 3 connected 10923-16383</code></pre>
+
+
+
+<h5 id="4-6-1-4-退出数据库">4.6.1.4 退出数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; quit</code></pre>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2 方法二</h5>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2.1 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster info 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.</code></pre>
+
+
+
+<h5 id="4-6-2-2-显示集群主从关系">4.6.2.2 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">步骤五：Redis 集群创建失败的解决办法</h3>
+
+
+
+<h4 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">5.1 关闭所有 Redis服务器的 Redis 服务</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdowm</code></pre>
+
+
+
+<h4 id="5-2-删除所有原来的-redis-数据">5.2 删除所有原来的 Redis 数据</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/lib/redis/6379/*</code></pre>
+
+
+
+<h4 id="5-3-重启-redis-数据库">5.3 重启 Redis 数据库</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="5-4-按照前面的步骤重新执行创建集群">5.4 按照前面的步骤重新执行创建集群</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">步骤六：测试 Redis 集群</h3>
+
+
+
+<h4 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1 数据同步测试</h4>
+
+
+
+<h5 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.52 -p 1052</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.53 -p 1053</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.54 -p 1054</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.55 -p 1055</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.56 -p 1056</code></pre>
+
+
+
+<h5 id="6-1-2-确认现在的-redis-数据库都是空的">6.1.2 确认现在的 Redis 数据库都是空的</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *</code></pre>
+
+
+
+<h5 id="6-1-3-在主-redis-数据库上插入数据">6.1.3 在主 Redis 数据库上插入数据</h5>
+
+
+
+<p>（补充：本次的主数据库是 redis1、redis2、redis3）</p>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; set aa 101
+-&gt; Redirected to slot &#91;15495] located at 192.168.1.53:1053
+OK</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.52:1052&gt; set bb 102
+-&gt; Redirected to slot &#91;3300] located at 192.168.1.51:1051
+OK</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; set ff 103
+-&gt; Redirected to slot &#91;7365] located at 192.168.1.52:1052
+OK</code></pre>
+
+
+
+<h5 id="6-1-4-查看刚插入的数据">6.1.4 查看刚插入的数据</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 对应的从库会自动同步主库的数据<br>2) 本次的主数据库是 redis1（从库是 redis5）、redis2（从库是 redis6）、redis3（从库是 redis4)<br>)</p>
+
+
+
+<h4 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2 高可用测试</h4>
+
+
+
+<h5 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2.1 模拟此时主库宕机后，对应的从库会自动升级为主库但需要 5 分钟的时间</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdown</code></pre>
+
+
+
+<h5 id="6-2-2-等待-5-分钟后显示集群主从关系">6.2.2 等待 5 分钟后显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+
+
+
+<h5 id="6-2-3-主库恢复后会成为新主库的从库">6.2.3 主库恢复后会成为新主库的从库</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h5 id="6-2-4-再次显示集群主从关系">6.2.4 再次显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] MariaDB &#038; MySQL 安全调优思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-security/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 21 Nov 2019 15:45:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6648</guid>
+
+					<description><![CDATA[内容一：数据库运行环境安全 1.1 保证运行数据库的系统是安全的 （步骤略） 1.2 以最小权限用户运行数据库 1.2.1 停止数据库 （补充：这里以停止 MariaDB 数据库为例） 1.2.2 修改数据库目录的 （补充：MariaDB&#38;MySQL 数据库数据默认存放位置是 /var/lib/mysql） 1.2.3 修改配置文件 在： 下面添加： （补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例） 1.2.4 启动数据库 （补充：这里以启动 MariaDB 数据库为例） 1.3 将数据库版本升级到更新的版本 （步骤略） 内容二：数据库库安全 2.1 删除所有不用的库 2.1.1 查看所有库的列表 2.1.2 删除测试库 2.2 删除所有测试库 2.2.1 方法一：手动删除所有测试库 2.2.1.1 查看所有库的列表 2.2.1.2 删除测试库 2.2.2 方法二：使用工具删除所有测试库 2.3 禁用客户端本地数据被读取 2.3.1 修改配置文件 在： &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mariadb-mysql-security/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] MariaDB &#038; MySQL 安全调优思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：数据库运行环境安全</h3>
+
+
+
+<h4>1.1 保证运行数据库的系统是安全的</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>1.2 以最小权限用户运行数据库</h4>
+
+
+
+<h5>1.2.1 停止数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb</code></pre>
+
+
+
+<p>（补充：这里以停止 MariaDB 数据库为例）</p>
+
+
+
+<h5>1.2.2 修改数据库目录的</h5>
+
+
+
+<pre class="wp-block-code"><code># chown -R mysql /var/lib/mysql</code></pre>
+
+
+
+<p>（补充：MariaDB&amp;MySQL 数据库数据默认存放位置是 /var/lib/mysql）</p>
+
+
+
+<h5>1.2.3 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>user=mysql
+......</code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<h5>1.2.4 启动数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<p>（补充：这里以启动 MariaDB 数据库为例）</p>
+
+
+
+<h4>1.3 将数据库版本升级到更新的版本</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>内容二：数据库库安全</h3>
+
+
+
+<h4>2.1 删除所有不用的库</h4>
+
+
+
+<h5>2.1.1 查看所有库的列表</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show databases;</code></pre>
+
+
+
+<h5>2.1.2 删除测试库</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; drop database &lt;database&gt;</code></pre>
+
+
+
+<h4>2.2 删除所有测试库</h4>
+
+
+
+<h5>2.2.1 方法一：手动删除所有测试库</h5>
+
+
+
+<h5>2.2.1.1 查看所有库的列表</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show databases;</code></pre>
+
+
+
+<h5>2.2.1.2 删除测试库</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; drop database &lt;database&gt;</code></pre>
+
+
+
+<h5>2.2.2 方法二：使用工具删除所有测试库</h5>
+
+
+
+<pre class="wp-block-code"><code># sudo mysql_secure_installation</code></pre>
+
+
+
+<h4>2.3 禁用客户端本地数据被读取</h4>
+
+
+
+<h5>2.3.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>local-infile=0
+......</code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<p>（注意：此参数对 MariaDB 数据库无效）</p>
+
+
+
+<h5>2.3.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h4>2.4 保护数据的本地存储</h4>
+
+
+
+<p>思路如下：<br>1) 使用加密的文件系统存储存放数据库的数据文件<br>2) 使用数据库之外的存储加密产品<br>3) 使用其他加密产品实现适当的数据保护</p>
+
+
+
+<h3>内容三：数据库登录安全</h3>
+
+
+
+<h4>3.1 限制数据的导入导出</h4>
+
+
+
+<h5>3.1.1 案例一：禁止数据的导入导出</h5>
+
+
+
+<h5>3.1.1.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>secure_file_priv=null
+...... </code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<p>（注意：此参数对 MariaDB 数据库无效）</p>
+
+
+
+<h5>3.1.1.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5>3.1.2 案例二：只允许将数据从 /root 目录导入或导出到 /root 目录</h5>
+
+
+
+<h5>3.1.2.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>secure_file_priv=/root/
+...... </code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<p>（注意：此参数对 MariaDB 数据库无效）</p>
+
+
+
+<h5>3.1.2.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5>3.1.3 案例三：不对数据作出导入和导出的限制</h5>
+
+
+
+<h5>3.1.3.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>删除以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+secure_file_priv=*
+...... </code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<p>（注意：此参数对 MariaDB 数据库无效）</p>
+
+
+
+<h5>3.1.3.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h4>3.2 删除无用和不需要的用户</h4>
+
+
+
+<h5>3.2.1 查看所有用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; select user,host from mysql.user;</code></pre>
+
+
+
+<h5>3.2.2 删除不需要的用户</h5>
+
+
+
+<h5>3.2.2.1 方法一：使用 drop 命令删除用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; drop &lt;user&gt;;</code></pre>
+
+
+
+<h5>3.2.2.2 方法二：使用 delete 命令删除用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; delete from mysql.user where user='&lt;user&gt;' and host='&lt;host&gt;';</code></pre>
+
+
+
+<h4>3.3 强制用户使用强密码</h4>
+
+
+
+<h5>3.3.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>plugin-load=validate_password.so
+......</code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<h5>3.3.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5>3.3.3 确保 validate_password_policy 被设置的参数是 MEDIUM</h5>
+
+
+
+<h5>3.3.3.1 进入数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5>3.3.3.2 查看 validate_password_policy 参数</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show variables like 'validate_password_policy';
++--------------------------+--------+
+| Variable_name            | Value  |
++--------------------------+--------+
+| validate_password.policy | MEDIUM |
+| validate_password_policy | MEDIUM |
++--------------------------+--------+
+2 rows in set (0.01 sec)</code></pre>
+
+
+
+<p>（补充：MEDIUM 的含义是密码最小的长度是 8 ，并且必须要有一个特殊字符和一个数字）</p>
+
+
+
+<h4>3.4 设置用户密码有效期</h4>
+
+
+
+<h5>3.4.1 对于 MariaDB 和 MySQL 5.7 及以下的版本无法设置有效期，只能定期修改密码</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; alter user 'root'@'localhost' identified by '&lt;password&gt;';</code></pre>
+
+
+
+<h5>3.4.2 设置用户默认有效期的方法</h5>
+
+
+
+<h5>3.4.2.1 修改用户密码默认的自动过期时间</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; set global default_password_lifetime=&lt;number&gt;;</code></pre>
+
+
+
+<p>（补充：这里的数字代表天数）</p>
+
+
+
+<h5>3.4.2.2 让用户密码立刻过期</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; aleter user '&lt;user&gt;'@'&lt;host&gt;' password expire;</code></pre>
+
+
+
+<h5>3.4.2.3 让用户密码永不过期</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; aleter user '&lt;user&gt;'@'&lt;host&gt;' password expire never;</code></pre>
+
+
+
+<p>（补充：建议普通用户每 90 天修改一次密码，敏感用户每 30 天修改一次密码，服务用户每 365 天修改一次密码）</p>
+
+
+
+<h4>3.5 删除无密码用户</h4>
+
+
+
+<h5>3.5.1 方法一：手动删除无密码用户</h5>
+
+
+
+<h5>3.5.1.1 查看无密码用户</h5>
+
+
+
+<h5>3.5.1.1.1 MariaDB 和 MySQL 5.7 及以下版本查看无密码用户的方法</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; select user, host, password from mysql.user;</code></pre>
+
+
+
+<h5>3.5.1.1.2 MySQL 8.0 及以上版本查看无密码用户的方法</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; select user, host, authentication_string from mysql.user;</code></pre>
+
+
+
+<h5>3.5.1.2 手动删除不需要的用户的方法</h5>
+
+
+
+<h5>3.5.1.2.1 手动删除用户的第一种方法：使用 drop 命令删除用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; drop user &lt;user&gt;;</code></pre>
+
+
+
+<h5>3.5.1.2.2 手动删除用户的第二种方法：使用 delete 命令删除用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; delete from mysql.user where user='&lt;user&gt;' and host='&lt;host&gt;';</code></pre>
+
+
+
+<h5>3.5.2 方法二：使用工具删除无密码用户</h5>
+
+
+
+<pre class="wp-block-code"><code># sudo mysql_secure_installation</code></pre>
+
+
+
+<h4>3.6 禁止非 root 用户 拥有 mysql.user 表访问权限</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; show grants for root@localhost \G;
+&gt; select * from mysql.user where user='test' \G;</code></pre>
+
+
+
+<h4>3.7 让用户只拥有最小但够用的权限</h4>
+
+
+
+<h5>3.7.1 查看所有用户</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; select user,host from mysql.user;</code></pre>
+
+
+
+<h5>3.7.2 数据库权限层级</h5>
+
+
+
+<p>1) 全局层级权限：是指整个数据库级别的权限，存储在 mysql.user 表中<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant all on *.* ......
+&gt; show grants for &lt;user&gt;;
+&gt; select * from mysql.user where user='&lt;user&gt;'\G;</code></pre>
+
+
+
+<p>2) 库级层级权限：是指数据库中某个库的权限，存储在 mysql.db 和 mysql.host 表中<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant all on &lt;database&gt;.* ......
+&gt; show grants for &lt;user&gt;;
+&gt; select * from mysql.db where user='&lt;user&gt;'\G;</code></pre>
+
+
+
+<p>3) 表级层级权限：是指数据库中某个库的某个表的权限，存储在 mysql.tables_priv 表中<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant all on &lt;database&gt;.&lt;table&gt; ......
+&gt; show grants for &lt;user&gt;;
+&gt; select * from mysql.tables_priv where user='&lt;user&gt;'\G;</code></pre>
+
+
+
+<p>4) 列级层级权限：是指数据库中某个库的某个表的某一单列的权限，存储在 mysql.columns_priv 表中<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant select(&lt;field&gt;,&lt;field&gt;) on &lt;database&gt;.&lt;table&gt; ......
+&gt; show grants for &lt;user&gt;;
+&gt; select * from mysql.columns_priv where user='&lt;user&gt;'\G;</code></pre>
+
+
+
+<p>5) 子程序层级权限：适用于已存储的子程序<br>create routing, alter routing, execute 和 grant 权限适用于已存储的子程序<br>create routing, alter routing, execute 和 grant 权限可以被授予为全局层级和数据库层级<br>alter routing, execute 和 grant 权限可以被授予为子程序层级，并存储在 mysql.procs_priv 表中<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant execute on &lt;subroutine&gt; &lt;database&gt;.&lt;table&gt; ......
+&gt; show grants for &lt;user&gt;;
+&gt; select * from mysql.procs_priv where user='&lt;user&gt;'\G;</code></pre>
+
+
+
+<h5>3.7.3 查看每一个用户的权限</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show grants for '&lt;user&gt;'@'&lt;host&gt;';</code></pre>
+
+
+
+<h5>3.7.4 删除用户多余的权限</h5>
+
+
+
+<p>如果有全局权限(如： FILE,PROCESS,SUPER, or SHUTDOWN 等权限)，就删除这些权限<br>格式：</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; revoke &lt;privilege&gt; on *.* from &lt;user&gt;@&lt;host&gt;;
+&gt; flush privileages;</code></pre>
+
+
+
+<h3>内容四：数据库网络安全</h3>
+
+
+
+<h4>4.1 禁止或者限制远程登录</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>(<br>补充：<br>查看可以远程登录的用户的案例</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; select user, host from mysql.user where host not in ('::1','127.0.0.1','localhost');</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>4.1.1 禁止远程登录</h4>
+
+
+
+<h5>4.1.1.1 通过 MariaDB &amp; MySQL 的配置文件禁止远程登录</h5>
+
+
+
+<h5>4.1.1.1.1 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>skip-networking
+bind-address=127.0.0.1
+......</code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<p>（注意：加入 skip-networking 这一行会让 MariaDB&amp;MySQL 不再使用和监听任何端口）</p>
+
+
+
+<h5>4.1.1.1.2 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5>4.1.1.2 通过防火墙禁止远程登录</h5>
+
+
+
+<h5>4.1.2 如果非要进行远程登录则要限制远程登录</h5>
+
+
+
+<h5>4.1.2.1 限制访问数据库 TCP 端口的具体 IP 地址</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（补充：MariaDB&amp;MySQL 数据库的默认端口号是 3306）</p>
+
+
+
+<h5>4.1.2.2 禁止有较大权限的用户被远程登录</h5>
+
+
+
+<p>1) 有 grant option 权限的用户<br>2) 被给予了全局权限像是 grant all on <em>.</em> 权限的用户<br>3) 一个可以访问 mysql.user 表的用户</p>
+
+
+
+<h4>4.2 对网络数据进行加密传输</h4>
+
+
+
+<h5>4.2.1 生成 SSL</h5>
+
+
+
+<h5>4.2.1.1 创建 CA 证书</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl genrsa 2048 &gt; ca-key.pem
+Generating RSA private key, 2048 bit long modulus
+..+++
+...................................+++
+e is 65537 (0x10001)
+
+# openssl req -new -x509 -nodes -days 3600 -key ca-key.pem -out ca.pem
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) &#91;XX]:
+State or Province Name (full name) &#91;]:
+Locality Name (eg, city) &#91;Default City]:
+Organization Name (eg, company) &#91;Default Company Ltd]:
+Organizational Unit Name (eg, section) &#91;]:
+Common Name (eg, your name or your server's hostname) &#91;]:ca
+Email Address &#91;]:</code></pre>
+
+
+
+<p>（注意：创建 CA 证书、服务端证书、客户端证书时 Common Name 必须要有值，且必须相互不一样）</p>
+
+
+
+<h5>4.2.1.2 创建服务端证书，并去除加密，并使用刚刚的 CA 证书进行签名</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -newkey rsa:2048 -days 3600 -nodes -keyout server-key.pem -out server-req.pem
+Generating a 2048 bit RSA private key
+.............+++
+...+++
+writing new private key to 'server-key.pem'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) &#91;XX]:
+State or Province Name (full name) &#91;]:
+Locality Name (eg, city) &#91;Default City]:
+Organization Name (eg, company) &#91;Default Company Ltd]:
+Organizational Unit Name (eg, section) &#91;]:
+Common Name (eg, your name or your server's hostname) &#91;]:
+Email Address &#91;]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password &#91;]:
+An optional company name &#91;]:
+
+# openssl rsa -in server-key.pem -out server-key.pem
+writing RSA key
+
+# openssl x509 -req -in server-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out server-cert.pem
+Signature ok
+subject=/C=XX/L=Default City/O=Default Company Ltd
+Getting CA Private Key</code></pre>
+
+
+
+<p>（注意：创建 CA 证书、服务端证书、客户端证书时 Common Name 必须要有值，且必须相互不一样）</p>
+
+
+
+<h5>4.2.1.3 创建客户端证书，并去除加密，并使用刚刚的 CA 证书进行签名</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -newkey rsa:2048 -days 3600 -nodes -keyout client-key.pem -out client-req.pem
+Generating a 2048 bit RSA private key
+..................+++
+..............................................+++
+writing new private key to 'client-key.pem'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) &#91;XX]:
+State or Province Name (full name) &#91;]:
+Locality Name (eg, city) &#91;Default City]:
+Organization Name (eg, company) &#91;Default Company Ltd]:
+Organizational Unit Name (eg, section) &#91;]:
+Common Name (eg, your name or your server's hostname) &#91;]:
+Email Address &#91;]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password &#91;]:
+An optional company name &#91;]:
+
+# openssl rsa -in client-key.pem -out client-key.pem
+writing RSA key
+
+# openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out client-cert.pem
+Signature ok
+subject=/C=XX/L=Default City/O=Default Company Ltd
+Getting CA Private Key</code></pre>
+
+
+
+<h5>4.2.1.4 对生成的证书进行验证</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl verify -CAfile ca.pem server-cert.pem client-cert.pem
+server-cert.pem: OK
+client-cert.pem: OK</code></pre>
+
+
+
+<h5>4.2.2 将 SSL 添加到 MariaDB &amp; MySQL</h5>
+
+
+
+<h5>4.2.2.1 将 SSL 放在指定的位置</h5>
+
+
+
+<pre class="wp-block-code"><code># mv ca.pem /home/mysql/sslconfig/ca.pem
+# mv server-cert.pem /home/mysql/sslconfig/server-cert.pem
+# mv server-key.pem /home/mysql/sslconfig/server-key.pem</code></pre>
+
+
+
+<h5>4.2.2.2 修改配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>在：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>ssl-ca=/home/mysql/sslconfig/ca.pem
+ssl-cert=/home/mysql/sslconfig/server-cert.pem
+ssl-key=/home/mysql/sslconfig/server-key.pem
+......</code></pre>
+
+
+
+<p>（补充：这里以 MariaDB 数据库的配置文件是 /etc/my.cnf 为例）</p>
+
+
+
+<h5>4.2.3 重启数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5>4.2.4 验证 SSL</h5>
+
+
+
+<h5>4.2.4.1 查看 have_ssl 和 ssl 变量</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show variables like 'have_%ssl';
+&gt; show variables like '%ssl%';</code></pre>
+
+
+
+<p>（补充：如果它们的参数为 yes ,表示服务端已经开启 SSL）</p>
+
+
+
+<h5>4.2.4.2 查看 SSL 的状态</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; show status like 'ssl_cipher'</code></pre>
+
+
+
+<p>（补充：如果出现 “SSL:Cipher in use is DHE-RSA-AES256-SHA“ 则表示客户端已经使用 SSL 连接了）</p>
+
+
+
+<h5>4.2.5 确保所有数据库用户使用 SSL</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant usage on &lt;database&gt;.&lt;table&gt; to '&lt;user&gt;'@'&lt;host&gt;' reouter ssl;</code></pre>
+
+
+
+<h5>4.2.6 用户通过 SSL 连接数据库的方法</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; mysql -u &lt;user&gt; -p -h &lt;host&gt; --ssl-ca=/home/mysql/sslconfig/ca.pem</code></pre>
+
+
+
+<h3>内容五：开启审计</h3>
+
+
+
+<h4>5.1 开启审计</h4>
+
+
+
+<h5>5.1.1 MariaDB 和 MySQL 5.7 及以下版本开启审计的方法</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; set global log_warning=2;</code></pre>
+
+
+
+<h5>5.1.2 MySQL 8.0 及以上版本开启审计的方法</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; set global general_log = on;
+&gt; set global log_timestamps = SYSTEM;</code></pre>
+
+
+
+<h5>5.2 查看 MariaDB &amp; MySQL 日志</h5>
+
+
+
+<pre class="wp-block-code"><code># find /I "Access denied for user" &lt;logfile_name&gt;.log
+# grep -i 'Access denied for user' &lt;logfile_name&gt;.log</code></pre>
+
+
+
+<p>（补充：中止连接、失败连接、尝试连接都将被写进日志）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] MariaDB &#038; MySQL root 密码的重置</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-password-reset/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 11 Nov 2019 14:58:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6592</guid>
+
+					<description><![CDATA[注意： 在重置 MariaDB &#38; MySQL 的 root 密码之前要先安装 MariaDB &#38; MySQL 正文： 步骤一：免密进入数据库 1.1 在 MariaDB&#38;MySQL 文件中添加免密登录参数 将部分内容修改如下： 1.2 使修改的配置生效 1.2.1 MariaDB 使修改的配置生效 （注意：只有当重置 MariaDB 的时候才执行这一步） 1.2.2 MySQL 使修改的配置生效 （注意：只有当重置 MariaDB 的时候才执行这一步） 步骤二：将 root 密码设置为空 2.1 不使用密码进入数据库 （补充：当提示输入密码时直接敲回车） 2.2 清空 root 用户密码 2.2.1 MariaDB 和 MySQL 5.7 及以下的版本将 root 密码设置为空 （注意：只有当是重置 MariaDB 和 MySQL 5.7 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mariadb-mysql-password-reset/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] MariaDB &#038; MySQL root 密码的重置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在重置 MariaDB &amp; MySQL 的 root 密码之前要先安装 MariaDB &amp; MySQL</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/mariadb-install/">MariaDB 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/mysql-install-yum/">MySQL 的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：免密进入数据库</h3>
+
+
+
+<h4>1.1 在 MariaDB&amp;MySQL 文件中添加免密登录参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]
+skip-grant-tables
+......</code></pre>
+
+
+
+<h4>1.2 使修改的配置生效</h4>
+
+
+
+<h5>1.2.1 MariaDB 使修改的配置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（注意：只有当重置 MariaDB 的时候才执行这一步）</p>
+
+
+
+<h5>1.2.2 MySQL 使修改的配置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mysqld</code></pre>
+
+
+
+<p>（注意：只有当重置 MariaDB 的时候才执行这一步）</p>
+
+
+
+<h3>步骤二：将 root 密码设置为空</h3>
+
+
+
+<h4>2.1 不使用密码进入数据库</h4>
+
+
+
+<pre class="wp-block-code"><code># mysql -u root -p</code></pre>
+
+
+
+<p>（补充：当提示输入密码时直接敲回车）</p>
+
+
+
+<h4>2.2 清空 root 用户密码</h4>
+
+
+
+<h5>2.2.1 MariaDB 和 MySQL 5.7 及以下的版本将 root 密码设置为空</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; update mysql.user set password='' where user='root';</code></pre>
+
+
+
+<p>（注意：只有当是重置 MariaDB 和 MySQL 5.7 及以下版本密码的时候才需要执行这一步）</p>
+
+
+
+<h5>2.2.2 MySQL 8.0 及以上的版本将 root 密码设置为空</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt; update mysql.user set authentication_string='' where user='root';</code></pre>
+
+
+
+<p>（注意：只有当是重置 MySQL 8.0 及以上版本密码的时候才需要执行这一步）</p>
+
+
+
+<h4>2.3 退出数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; quit;</code></pre>
+
+
+
+<h3>步骤三：给 root 设置新密码</h3>
+
+
+
+<h4>3.1 在 MariaDB&amp;MySQL 文件中将免密登录参数注释掉</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/my.cnf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;mysqld]
+# skip-grant-tables
+......</code></pre>
+
+
+
+<h4>3.2 使修改的配置生效</h4>
+
+
+
+<h5>3.2.1 MariaDB 使修改的配置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（注意：只有当重置 MariaDB 的时候才执行这一步）</p>
+
+
+
+<h5>3.2.2 MySQL 使修改的配置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mysqld</code></pre>
+
+
+
+<p>（注意：只有当重置 MySQL 的时候才执行这一步）</p>
+
+
+
+<h4>3.3 进入数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; mysql -u root -p</code></pre>
+
+
+
+<p>（补充：当提示输入密码时直接敲回车）</p>
+
+
+
+<h4>3.4 给 root 设置新密码</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; alter user 'root'@'localhost' identified by '&lt;password&gt;';</code></pre>
+
+
+
+<h4>3.5 退出数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; quit;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] MySQL 的安装 （通过 RPM 软件包实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mysql-install-rpm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Nov 2019 10:38:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6586</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL： https://dev.mysql.com/downloads/mysql/ 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统需要有软件源 步骤二：部署安装 MySQL 的环境 2.1 删除系统上的 MariaDB 2.2 确保当前目录下拥有如下安装包 （补充：这里要安装的是 MySQL 是 8.0.18 社区版） 步骤三：安装 MySQL 数据库 步骤四：启动 MySQL 数据库 步骤五：修改 MySQL 数据库的 root 密码 5.1 显示初始的 root 密码 （补充：这里查出来的密码是 wAA!w,?e#M2J） 5.2 进入数据库 （补充：这里使用的密码是 wAA!w,?e#M2J） 5.3 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mysql-install-rpm/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] MySQL 的安装 （通过 RPM 软件包实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noreferrer noopener">https://dev.mysql.com/downloads/mysql/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统需要有软件源</p>
+
+
+
+<h3 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">步骤二：部署安装 MySQL 的环境</h3>
+
+
+
+<h4 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">2.1 删除系统上的 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb
+# rm -rf /var/lib/mysql/*
+# rpm -e --nodeps mariadb-server mariadb </code></pre>
+
+
+
+<h4 id="2-2-确保当前目录下拥有如下安装包">2.2 确保当前目录下拥有如下安装包</h4>
+
+
+
+<pre class="wp-block-code"><code># ls
+mysql-community-client-8.0.18-1.el7.x86_64.rpm
+mysql-community-common-8.0.18-1.el7.x86_64.rpm
+mysql-community-devel-8.0.18-1.el7.x86_64.rpm
+mysql-community-libs-8.0.18-1.el7.x86_64.rpm
+mysql-community-server-8.0.18-1.el7.x86_64.rpm</code></pre>
+
+
+
+<p>（补充：这里要安装的是 MySQL 是 8.0.18 社区版）</p>
+
+
+
+<h3 id="步骤三-安装-mysql-数据库">步骤三：安装 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall mysql-community-*</code></pre>
+
+
+
+<h3 id="步骤四-启动-mysql-数据库">步骤四：启动 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mysqld</code></pre>
+
+
+
+<h3 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">步骤五：修改 MySQL 数据库的 root 密码</h3>
+
+
+
+<h4 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">5.1 显示初始的 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code># grep 'temporary password' /var/log/mysqld.log 
+2019-11-09T09:37:31.347523Z 5 &#91;Note] &#91;MY-010454] &#91;Server] A temporary password is generated for root@localhost: wAA!w,?e#M2J</code></pre>
+
+
+
+<p>（补充：这里查出来的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-2-进入数据库">5.2 进入数据库</h4>
+
+
+
+<pre class="wp-block-code"><code># mysql -u root -p'wAA!w,?e#M2J'</code></pre>
+
+
+
+<p>（补充：这里使用的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-3-修改-root-密码">5.3 修改 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; alter user user() identified by '&lt;password&gt;';</code></pre>
+
+
+
+<h4 id="5-4-退出数据库">5.4 退出数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; quit;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

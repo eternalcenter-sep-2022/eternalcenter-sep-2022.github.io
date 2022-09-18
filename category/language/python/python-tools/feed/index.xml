@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python Tools (工具) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/python/python-tools/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 12:27:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Python 一个脚本调用另一个脚本的函数</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-function-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 26 Jul 2021 12:46:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17101</guid>
+
+					<description><![CDATA[介绍 使用方法：1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下2. 给此脚本添加执行权限3. 用 python3 命令执行第一个脚本 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<p>使用方法：<br>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下<br>2. 给此脚本添加执行权限<br>3. 用 python3 命令执行第一个脚本</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>from test_sub import * 
+
+a=2
+b=3
+
+out=nsum(a,b)
+
+print(out)</code></pre>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>def nsum(x,y):
+    out = x + y
+    return(out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python  一个脚本调用另一个脚本</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-script-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 12:19:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16911</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下2. 给 2 个脚本添加执行权限3. 用 python3 命令执行第 1 个脚本 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下<br>2. 给 2 个脚本添加执行权限<br>3. 用 python3 命令执行第 1 个脚本</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+
+test=subprocess.Popen(&#91;'python3', './test_sub.py'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+out=test.decode().strip()
+
+print(out)</code></pre>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>def sum(a,b):
+    return(a + b)
+
+c = 4
+b = 2
+
+print(sum(c,b))</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 随意生成一个 json 文件</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-json/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 25 Feb 2020 12:59:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8521</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 注意 此脚本不能命名为 json.py 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本不能命名为 json.py</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+import json
+hostlist = {}
+hostlist&#91;"web"] = &#91;"192.168.100.101", "192.168.100.102"]
+
+hostlist&#91;"db"] = {
+        "hosts" :&#91;"192.168.100.121", "192.168.100.122"],
+        "vars" :{"ansible_ssh_user":"root", "ansible_ssh_pass":"1"}
+        }
+
+hostlist&#91;"192.168.100.110"] = {
+        "ansible_ssh_user":"root", "ansible_ssh_pass":"pwd"
+        }
+
+print(json.dumps(hostlist))</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

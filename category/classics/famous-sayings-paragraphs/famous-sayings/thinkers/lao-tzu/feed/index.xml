@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Laozi (老子) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/classics/famous-sayings-paragraphs/famous-sayings/thinkers/lao-tzu/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sat, 11 Jun 2022 15:04:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Laozi (老子)：</title>
+		<link>https://eternalcenter-sep-2022.github.io/laozi-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Jan 2019 15:13:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Laozi (老子)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1212</guid>
+
+					<description><![CDATA[Give a man a fish and you feed him for a day. 授人以鱼，不如授人以渔。]]></description>
+										<content:encoded><![CDATA[
+<p>Give a man a fish and you feed him for a day.</p>
+
+
+
+<p>授人以鱼，不如授人以渔。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

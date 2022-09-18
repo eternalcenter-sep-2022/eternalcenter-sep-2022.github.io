@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Nginx Upgradation (升级) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/website-service/nginx/nginx-upgradation/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 07:05:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] Nginx 的升级</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-upgrade/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 06 Feb 2019 13:00:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Upgradation (升级)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2627</guid>
+
+					<description><![CDATA[软件准备： 在 Nginx 官网上下载搭建集群所需软件 Nginx： http://nginx.org/en/download.html 正文： 步骤一：确认升级目标 1) 在不停掉老进程的情况下，启动新进程2) 老进程负责处理仍然没有处理完的请求，但不再接受处理请求3) 新进程接受新请求4) 老进程处理完所有请求，关闭所有连接后，停止 （注意：建议升级的版本不要太大，否则服务可能会无法启动） 步骤二：安装一个旧版本的 Nginx （补充：1) 这里以编译安装 nginx-1.6 为例2) 如果已经安装了旧版本的 Nginx 这一步可以忽略） 步骤三：安装一个较新版本的 Nginx （补充：这里以编译 nginx-1.8 为例） （注意：这里只编译不安装） 步骤四：升级 Nginx 4.1 显示升级之前的版本 4.2 备份旧版本的 Nginx 执行程序 4.3 替换旧的 Nginx 执行程序 4.4 使 Nginx 的旧版本停止进程 4.5 显示 Nginx 日志目录会生成一个 nginx.pid.oldbin 文件，存放旧版本 nginx 的 pid 号 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-upgrade/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Nginx 的升级"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Nginx 官网上下载搭建集群所需软件 Nginx：</p>
+
+
+
+<p class="has-text-align-center"><a href="http://nginx.org/en/download.html" target="_blank" rel="noreferrer noopener">http://nginx.org/en/download.html</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-确认升级目标">步骤一：确认升级目标</h3>
+
+
+
+<p>1) 在不停掉老进程的情况下，启动新进程<br>2) 老进程负责处理仍然没有处理完的请求，但不再接受处理请求<br>3) 新进程接受新请求<br>4) 老进程处理完所有请求，关闭所有连接后，停止</p>
+
+
+
+<p>（注意：建议升级的版本不要太大，否则服务可能会无法启动）</p>
+
+
+
+<h3 id="步骤二-安装一个旧版本的-nginx">步骤二：安装一个旧版本的 Nginx</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install pcre-devel zlib-devel
+# useradd -M -s /sbin/nologin nginx
+# tar -zxvf nginx-1.6.0.tar.gz -C /usr/src/
+# cd /usr/src/nginx-1.6.0/
+# ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx &amp;&amp; make &amp;&amp; make install
+# /usr/local/nginx/sbin/nginx</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以编译安装 nginx-1.6 为例<br>2) 如果已经安装了旧版本的 Nginx 这一步可以忽略<br>）</p>
+
+
+
+<h3 id="步骤三-安装一个较新版本的-nginx">步骤三：安装一个较新版本的 Nginx</h3>
+
+
+
+<pre class="wp-block-code"><code># tar -zxvf nginx-1.8.1.tar.gz -C /usr/src/
+# cd /usr/src/nginx-1.8.1/
+# ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx &amp;&amp; make</code></pre>
+
+
+
+<p>（补充：这里以编译 nginx-1.8 为例）</p>
+
+
+
+<p>（注意：这里只编译不安装）</p>
+
+
+
+<h3 id="步骤四-升级-nginx-4-1-显示升级之前的版本">步骤四：升级 Nginx</h3>
+
+
+
+<h4 id="步骤四-升级-nginx-4-1-显示升级之前的版本">4.1 显示升级之前的版本</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -v
+# nginx version: nginx/1.6.0</code></pre>
+
+
+
+<h4 id="4-2-备份旧版本的-nginx-执行程序">4.2 备份旧版本的 Nginx 执行程序</h4>
+
+
+
+<pre class="wp-block-code"><code># mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.old</code></pre>
+
+
+
+<h4 id="4-3-替换旧的-nginx-执行程序">4.3 替换旧的 Nginx 执行程序</h4>
+
+
+
+<pre class="wp-block-code"><code># cp /usr/src/nginx-1.8.1/objs/nginx /usr/local/nginx/sbin/</code></pre>
+
+
+
+<h4 id="4-4-使-nginx-的旧版本停止进程">4.4 使 Nginx 的旧版本停止进程</h4>
+
+
+
+<pre class="wp-block-code"><code># kill -USR2 `cat /usr/local/nginx/logs/nginx.pid`</code></pre>
+
+
+
+<h4 id="4-5-显示-nginx-日志目录会生成一个-nginx-pid-oldbin-文件-存放旧版本-nginx-的-pid-号">4.5 显示 Nginx 日志目录会生成一个 nginx.pid.oldbin 文件，存放旧版本 nginx 的 pid 号</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /usr/local/nginx/logs/
+access.log  error.log  nginx.pid  nginx.pid.oldbin</code></pre>
+
+
+
+<h4 id="4-6-显示-nginx-升级后的版本信息">4.6 显示 Nginx 升级后的版本信息</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -v
+nginx version: nginx/1.8.1</code></pre>
+
+
+
+<h4 id="4-7-运行-nginx-之后显示它的运行状态">4.7 运行 Nginx ，之后显示它的运行状态</h4>
+
+
+
+<pre class="wp-block-code"><code>/usr/local/nginx/sbin/nginx
+# netstat -aupt | grep nginx
+getnameinfo failed
+tcp        0      0 *:http                      *:*                         LISTEN      6963/nginx </code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

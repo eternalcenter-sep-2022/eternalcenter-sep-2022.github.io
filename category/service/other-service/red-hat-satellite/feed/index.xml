@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Red Hat Satellite &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/red-hat-satellite/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 06:03:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] 解决 Red Hat Satellite 发布新版本 Content Views 时报错 “Unable to find content with the ID &#8220;&#8230;&#8230;&#8221;”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-unable-to-find-content-with-the-id/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 13 Jul 2022 07:10:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26764</guid>
+
+					<description><![CDATA[报错代码 分析 当 Content Views 里包含有问题的软件源时，发布新版本 Content View 时就会报此类错误 解决方法 步骤一：根据报错时出现的 ID 显示出问题的软件名称 （补充：这里以显示 ID 9210 的软件名称为例） 步骤二：给服务器系统打一个快照 （步骤略） 步骤三：强制停止出问题的任务 Monitor &#8211;&#62; Tasks &#8211;&#62; Paused &#8211;&#62; &#8220;select the task which publish a new Content View version&#8221; &#8211;&#62; Cancel (注意：操作前需要确保左上角的组织是否正确) 或者： 步骤三：将出问题的软件源从要布新版本的 Content Views 里删除 Content &#8211;&#62; Content Views &#8211;&#62; &#8220;select the Content View which whill &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/debug-unable-to-find-content-with-the-id/" class="more-link">Continue reading<span class="screen-reader-text"> "[排错] 解决 Red Hat Satellite 发布新版本 Content Views 时报错 “Unable to find content with the ID &#8220;&#8230;&#8230;&#8221;”"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>报错代码</h1>
+
+
+
+<pre class="wp-block-code"><code>Unable to find content with the ID "......"</code></pre>
+
+
+
+<h1>分析</h1>
+
+
+
+<p>当 Content Views 里包含有问题的软件源时，发布新版本 Content View 时就会报此类错误</p>
+
+
+
+<h1>解决方法</h1>
+
+
+
+<h3>步骤一：根据报错时出现的 ID 显示出问题的软件名称</h3>
+
+
+
+<pre class="wp-block-code"><code># su - postgres -c "psql candlepin -c \"select uuid, content_id, contentUrl, label, type, vendor from cp2_content where content_id = '9210'\""</code></pre>
+
+
+
+<p>（补充：这里以显示 ID 9210 的软件名称为例）</p>
+
+
+
+<h3>步骤二：给服务器系统打一个快照</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤三：强制停止出问题的任务</h3>
+
+
+
+<p>Monitor &#8211;&gt; Tasks &#8211;&gt; Paused &#8211;&gt; &#8220;select the task which publish a new Content View version&#8221; &#8211;&gt; Cancel</p>
+
+
+
+<p>(注意：操作前需要确保左上角的组织是否正确)</p>
+
+
+
+<p>或者：</p>
+
+
+
+<div class="wp-container-1 wp-block-buttons">
+<div class="wp-block-button aligncenter is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-task-forced-stop/" style="border-radius:0px">Red Hat Satellite 无法停止任务的强制停止</a></div>
+</div>
+
+
+
+<h3>步骤三：将出问题的软件源从要布新版本的 Content Views 里删除</h3>
+
+
+
+<p>Content &#8211;&gt; Content Views &#8211;&gt; &#8220;select the Content View which whill publish a new version&#8221; &#8211;&gt; Yum Content &#8211;&gt; Repository &#8211;&gt; &#8220;select the repository which is error&#8221; &#8211;&gt; Remove Repositories</p>
+
+
+
+<h3>步骤四：重新发布新版本的 Content Views</h3>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite 无法停止任务的强制停止</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-task-forced-stop/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:43:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23740</guid>
+
+					<description><![CDATA[步骤一：打一个快照 （步骤略） 步骤二：显示运行结果是错误的任务 （补充：从这里可以看出运行结果是错误的任务标签是 Actions::Katello::ContentView::Publish） 步骤三：强制停止 Red Hat Satellite 无法停止的任务 （补充：这里以强制停止标签为 Actions::Katello::ContentView::Publish 的任务为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：打一个快照</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：显示运行结果是错误的任务</h3>
+
+
+
+<pre class="wp-block-code"><code># sudo su - postgres -c "psql -d foreman -c 'select label,count(label),state,result from foreman_tasks_tasks where state &lt;&gt; '\''stopped'\'' group by label,state,result ORDER BY label;'"
+                        label                         | count |   state   | result  
+------------------------------------------------------+-------+-----------+---------
+ Actions::Katello::ContentView::Publish               |     1 | paused    | error
+ ......</code></pre>
+
+
+
+<p>（补充：从这里可以看出运行结果是错误的任务标签是 Actions::Katello::ContentView::Publish）</p>
+
+
+
+<h3>步骤三：强制停止 Red Hat Satellite 无法停止的任务</h3>
+
+
+
+<pre class="wp-block-code"><code># foreman-rake foreman_tasks:cleanup TASK_SEARCH='label = Actions::Katello::ContentView::Publish' STATES='paused' VERBOSE=true</code></pre>
+
+
+
+<p>（补充：这里以强制停止标签为 Actions::Katello::ContentView::Publish 的任务为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite Content View 信息的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-cv-display/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 06:38:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23638</guid>
+
+					<description><![CDATA[步骤一：显示所有 Content View 的 ID 步骤二：显示某 1 个 Content View 的详细信息 （补充：这里以显示 ID 为 10 的 Content View 的信息为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：显示所有 Content View 的 ID</h3>
+
+
+
+<pre class="wp-block-code"><code># hammer content-view list
+
+----------------|---------------------------|--------------------------------------|-----------|---------------------|---------------------------------------------------------------------------------
+CONTENT VIEW ID | NAME                      | LABEL                                | COMPOSITE | LAST PUBLISHED      | REPOSITORY IDS                                                                  
+----------------|---------------------------|--------------------------------------|-----------|---------------------|---------------------------------------------------------------------------------
+10              | test_CV                   | test_CV                              | false     | 2022/06/23 20:20:20 | 61525, 16812, 61524, 16814, 16813, 16811, 16816, 16817, 6578, 231, 8, 9, 131,...</code></pre>
+
+
+
+<h3>步骤二：显示某 1 个 Content View 的详细信息</h3>
+
+
+
+<pre class="wp-block-code"><code># hammer content-view info --id 10</code></pre>
+
+
+
+<p>（补充：这里以显示 ID 为 10 的 Content View 的信息为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite 打补丁或升级</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-patch-upgrade/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Apr 2022 09:01:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23278</guid>
+
+					<description><![CDATA[步骤一：备份系统 1.1 关闭 Red Hat Satellite 服务 1.2 备份系统 （补充：这里以备份虚拟环境下的 Red Hat Satellite 为例） 1.2.1 关闭系统 1.2.2 给系统打快照 （步骤略） 1.2.3 启动系统 （步骤略） 步骤二：升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁 2.1 检测可升级 RedHat Satellite 版本 2.2 预检测升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁是否能成功 （注意：如果是升级 Red Hat Satellite 的话就指定最新的版本，如果是给 Red Hat Satellite 打补丁的话就选择当前的版本） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-patch-upgrade/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Red Hat Satellite 打补丁或升级"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：备份系统</h3>
+
+
+
+<h4>1.1 关闭 Red Hat Satellite 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># satellite-maintain service stop</code></pre>
+
+
+
+<h4>1.2 备份系统</h4>
+
+
+
+<p>（补充：这里以备份虚拟环境下的 Red Hat Satellite 为例）</p>
+
+
+
+<h5>1.2.1 关闭系统</h5>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>1.2.2 给系统打快照</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5>1.2.3 启动系统</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁</h3>
+
+
+
+<h4>2.1 检测可升级 RedHat Satellite 版本</h4>
+
+
+
+<pre class="wp-block-code"><code># satellite-maintain upgrade list-versions</code></pre>
+
+
+
+<h4>2.2 预检测升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁是否能成功</h4>
+
+
+
+<pre class="wp-block-code"><code># satellite-maintain upgrade check --target-version 6.10.z</code></pre>
+
+
+
+<p>（注意：如果是升级 Red Hat Satellite 的话就指定最新的版本，如果是给 Red Hat Satellite 打补丁的话就选择当前的版本）</p>
+
+
+
+<p>（补充：这里以指定 6.10.z 版本的 Red Hat Satellite 为例）</p>
+
+
+
+<h4>2.3 升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁</h4>
+
+
+
+<pre class="wp-block-code"><code># satellite-maintain upgrade run --target-version 6.10.z</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 只有当预检测升级 Red Hat Satellite 或给 Red Hat Satellite 打补丁成功后才能接着执行此步骤<br>2) 如果是升级 Red Hat Satellite 的话就指定最新的版本，如果是给 Red Hat Satellite 打补丁的话就选择当前的版本<br>）</p>
+
+
+
+<p>（补充：这里以指定 6.10.z 版本的 Red Hat Satellite 为例）</p>
+
+
+
+<h3>步骤三：重启 Red Hat Satellite</h3>
+
+
+
+<h4>3.1 关闭 Red Hat Satellite 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># satellite-maintain service stop</code></pre>
+
+
+
+<h4>3.2 重启 Red Hat Satellite</h4>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[[内容] Linux 官方软件库列表 （RHEL 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/official-software-repository-list-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 23 Apr 2022 15:24:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23248</guid>
+
+					<description><![CDATA[内容一：基础软件源 内容二：Red Hat Satellite Tool 软件源 （补充：这里以 Red Hat Satellite Tool 6.10 软件源为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：基础软件源</h3>
+
+
+
+<pre class="wp-block-code"><code>rhel-8-for-x86_64-baseos-rpms</code></pre>
+
+
+
+<pre class="wp-block-code"><code>rhel-8-for-x86_64-appstream-rpms</code></pre>
+
+
+
+<h3>内容二：Red Hat Satellite Tool 软件源</h3>
+
+
+
+<pre class="wp-block-code"><code>satellite-tools-6.10-for-rhel-8-x86_64-rpms</code></pre>
+
+
+
+<p>（补充：这里以 Red Hat Satellite Tool 6.10 软件源为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[STEP] Red Hat Satellite client register</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-register/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 18 Jan 2022 14:41:36 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21287</guid>
+
+					<description><![CDATA[Step One: Add domain name resolution into /etc/hosts Add the following: Step Two: Install katello-ca-consumer-latest.noarch.rpm 2.1 Download katello-ca-consumer-latest.noarch.rpm 2.2 Install katello-ca-consumer-latest.noarch.rpm Step Three: Register to Red Hat Satellite Server Step Four: Install katello-host-tools, katello-host-tools-tracer and katello-agent 4.1 Enable rhel-*-satellite-tools-*-rpms repo or satellite-tools-*-rhel-*-rpms RHEL 7: RHEL 8: 4.2 Install katello-host-tools, katello-host-tools-tracer and katello-agent Step Five: Check &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-register/" class="more-link">Continue reading<span class="screen-reader-text"> "[STEP] Red Hat Satellite client register"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>Step One: Add domain name resolution into /etc/hosts</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/hosts</code></pre>
+
+
+
+<p>Add the following:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&lt;Redhat Satellite IP address&gt; &lt;Redhat Satellite Server FQDN&gt;</code></pre>
+
+
+
+<h3>Step Two: Install katello-ca-consumer-latest.noarch.rpm</h3>
+
+
+
+<h4>2.1 Download katello-ca-consumer-latest.noarch.rpm</h4>
+
+
+
+<pre class="wp-block-code"><code># curl --insecure --output katello-ca-consumer-latest.noarch.rpm https://&lt;Redhat/ Satellite Server FQDN&gt;/pub/katello-ca-consumer-latest.noarch.rpm</code></pre>
+
+
+
+<h4>2.2 Install katello-ca-consumer-latest.noarch.rpm</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall katello-ca-consumer-latest.noarch.rpm</code></pre>
+
+
+
+<h3>Step Three: Register to Red Hat Satellite Server</h3>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager register --org="&lt;organization&gt;" --activationkey="&lt;activation key&gt;"</code></pre>
+
+
+
+<h3>Step Four: Install katello-host-tools, katello-host-tools-tracer and katello-agent</h3>
+
+
+
+<h4>4.1 Enable rhel-*-satellite-tools-*-rpms repo or satellite-tools-*-rhel-*-rpms</h4>
+
+
+
+<p>RHEL 7:</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=rhel-\*-satellite-tools-\*-rpms</code></pre>
+
+
+
+<p>RHEL 8:</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=satellite-tools-\*-rhel-\*-rpms
+# subscription-manager repos --disable=satellite-tools-\*-rhel-\*-eus-rpms</code></pre>
+
+
+
+<h4>4.2 Install katello-host-tools, katello-host-tools-tracer and katello-agent</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install katello-host-tools; yum -y install katello-host-tools-tracer; yum -y install katello-agent</code></pre>
+
+
+
+<h3>Step Five: Check</h3>
+
+
+
+<h4>5.1 Check registration information</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager identity</code></pre>
+
+
+
+<h4>5.2 Check license</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager list --consumed</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite Server 客户端注册的取消</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-server-client-unregister/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 18 Jan 2022 13:54:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21280</guid>
+
+					<description><![CDATA[步骤一：取消 Red Hat Satellite Server 客户端的注册 步骤二：清理 Red Hat Satellite Server 客户端的注册信息]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：取消 Red Hat Satellite Server 客户端的注册</h3>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager unregister</code></pre>
+
+
+
+<h3>步骤二：清理 Red Hat Satellite Server 客户端的注册信息 </h3>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager clean</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Red Hat Satellite 客户端注册成功但是无法获取软件源</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-red-hat-satellite-repo-restore/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Nov 2021 12:36:40 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18179</guid>
+
+					<description><![CDATA[报错代码 解决方法 步骤一：确保 /etc/pki/product/69.pem 文件的存在，且权限和下面的一致 步骤二：确保 /etc/pki/product-default/69.pem 文件的存在，且权限和下面的一致 步骤三：如果步骤一和步骤二中的文件不存在 3.1 可以从其他正常的客户端那里拷贝 （步骤略） 3.2 可以从以下网址里下载 https://access.redhat.com/labs/rhpc/]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos
+This system has no repositories available through subscriptions.</code></pre>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：确保 /etc/pki/product/69.pem 文件的存在，且权限和下面的一致</h3>
+
+
+
+<pre class="wp-block-code"><code># ls -l /etc/pki/product/69.pem
+-rw-r----- 1 root root 2159 Nov  5 17:36 /etc/pki/product/69.pem</code></pre>
+
+
+
+<h3>步骤二：确保 /etc/pki/product-default/69.pem 文件的存在，且权限和下面的一致</h3>
+
+
+
+<pre class="wp-block-code"><code># ls -l /etc/pki/product-default/69.pem
+-rw-r----- 1 644 root 2159 Nov  5 17:36 /etc/pki/product-default/69.pem</code></pre>
+
+
+
+<h3>步骤三：如果步骤一和步骤二中的文件不存在</h3>
+
+
+
+<h4>3.1 可以从其他正常的客户端那里拷贝</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>3.2 可以从以下网址里下载</h4>
+
+
+
+<p class="has-text-align-left"><a href="https://access.redhat.com/labs/rhpc/" target="_blank" rel="noreferrer noopener">https://access.redhat.com/labs/rhpc/</a></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite 客户端 UUID 的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-uuid/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Nov 2021 12:34:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18176</guid>
+
+					<description><![CDATA[步骤一：规划拓扑 1.1 服务器列表 Red Hat Satellite 服务端Red Hat Satellite 客户端 1.2 服务器列表简介 Red Hat Satellite 客户端注册到 Red Hat Satellite 服务端获取软件和补丁 步骤二：获取 Red Hat Satellite 客户端的 UUID （只在 Red Hat Satellite 客户端执行以下步骤） 步骤三：确认 Red Hat Satellite 客户端的 UUID 在服务端中出现 （只在 Red Hat Satellite 服务端执行以下步骤） 步骤四：显示 Red Hat Satellite 客户端在服务端中的具体信息 （只在 Red Hat Satellite 服务端执行以下步骤） （补充：在 vim &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-uuid/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Red Hat Satellite 客户端 UUID 的显示"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-规划拓扑-1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑-1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>Red Hat Satellite 服务端<br>Red Hat Satellite 客户端</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>Red Hat Satellite 客户端注册到 Red Hat Satellite 服务端获取软件和补丁</p>
+
+
+
+<h3 id="步骤二-获取-red-hat-satellite-客户端的-uuid">步骤二：获取 Red Hat Satellite 客户端的 UUID</h3>
+
+
+
+<p>（只在 Red Hat Satellite 客户端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager facts --list | grep -i UUID</code></pre>
+
+
+
+<h3 id="步骤三-确认-red-hat-satellite-客户端的-uuid-在服务端中出现">步骤三：确认 Red Hat Satellite 客户端的 UUID 在服务端中出现</h3>
+
+
+
+<p>（只在 Red Hat Satellite 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/rhsm/rhsm.log | grep -i &lt;client's UUID&gt;</code></pre>
+
+
+
+<h3 id="步骤四-显示-red-hat-satellite-客户端在服务端中的具体信息">步骤四：显示 Red Hat Satellite 客户端在服务端中的具体信息</h3>
+
+
+
+<p>（只在 Red Hat Satellite 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /var/log/rhsm/rhsm.log</code></pre>
+
+
+
+<p>（补充：在 vim 中查找对应客户端的 UUID 并联系上下文进行显示）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite Virt-who 账号或密码的更换</title>
+		<link>https://eternalcenter-sep-2022.github.io/virt-who-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Nov 2021 12:23:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18168</guid>
+
+					<description><![CDATA[内容一：Virt-who 账号的作用 1) Virt-who 的作用是让 Red Hat Satellite 服务器能判断虚拟机在哪一台物理机上运行2) Redhat 的无限量 license 必须要让虚拟机在 license 所在的物理机上运行才能获得软件和补丁3) Virt-who 必须正常无限连 license 才能生效4) 而 Virt-who 账号的作用就是有权限登录对应的平台，让 Red Hat Satellite 服务器能判断虚拟机在哪一台物理机上运行 内容二：修改 Virt-who 账号或密码 2.1 进入 Virt-who 的配置页面 登录 Satellite 网页 &#8211;> 基础架构 &#8211;> Virt-who Configurations &#8211;> 对应的 Name 的编辑 2.2 修改账号和密码 （步骤略） 内容三：重新部署 Virt-who 3.1 进入 Virt-who 的 Deploy &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/virt-who-change/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Red Hat Satellite Virt-who 账号或密码的更换"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Virt-who 账号的作用</h3>
+
+
+
+<p>1) Virt-who 的作用是让 Red Hat Satellite 服务器能判断虚拟机在哪一台物理机上运行<br>2) Redhat 的无限量 license 必须要让虚拟机在 license 所在的物理机上运行才能获得软件和补丁<br>3) Virt-who 必须正常无限连 license 才能生效<br>4) 而 Virt-who 账号的作用就是有权限登录对应的平台，让 Red Hat Satellite 服务器能判断虚拟机在哪一台物理机上运行</p>
+
+
+
+<h3>内容二：修改 Virt-who 账号或密码</h3>
+
+
+
+<h4>2.1 进入 Virt-who 的配置页面</h4>
+
+
+
+<p>登录 Satellite 网页  &#8211;> 基础架构 &#8211;> Virt-who Configurations &#8211;> 对应的 Name 的编辑 </p>
+
+
+
+<h4>2.2 修改账号和密码</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>内容三：重新部署 Virt-who</h3>
+
+
+
+<h4>3.1 进入 Virt-who 的 Deploy 页面 </h4>
+
+
+
+<p>登录 Satellite 网页 &#8211;> 基础架构 &#8211;> Virt-who Configurations &#8211;> 对应的 Name &#8211;> Deploy </p>
+
+
+
+<h4>3.2 执行里面的步骤</h4>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Red Hat Satellite 客户端设置 （软件源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-repository-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 28 May 2019 10:57:49 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4725</guid>
+
+					<description><![CDATA[步骤一：软件源所对应的系统版本设置 1.1 显示客户端服务器现在正在使用的软件源库所对应的系统版本 （只在 client servers 上执行以下步骤） 1.2 显示客户端服务器所有可以使用的软件源所对应的系统版本 （只在 client servers 上执行以下步骤） 步骤二：修改客户端服务器的软件源对应的系统版本 2.1 修改对应系统版本的格式 （只在 client servers 上执行以下步骤） 2.2 修改对应系统版本的案例 （只在 client servers 上执行以下步骤） （补充：这里的 7.5 是 1 个系统的版本号） （注意：这里如果低版本的系统选择了高版本的软件源库，则在更新软件的过程中可能会直接升级系统） 步骤三：在选择了 1 个系统版本之后选择里面的软件源 3.1 显示软件源 3.1.1 显示客户端服务器目前正在使用的软件源 （只在 client servers 上执行以下步骤） 3.1.2 显示客户端服务器所有可以用的软件源和正在使用的软件源 （只在 client servers 上执行以下步骤） 3.2 让客户端服务器启用 1 个软件源 3.2.1 启用 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-repository-source/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Red Hat Satellite 客户端设置 （软件源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-软件源库所对应的系统版本设置-1-1-显示客户端服务器现在正在使用的软件源库所对应的系统版本">步骤一：软件源所对应的系统版本设置</h3>
+
+
+
+<h4 id="步骤一-软件源库所对应的系统版本设置-1-1-显示客户端服务器现在正在使用的软件源库所对应的系统版本">1.1 显示客户端服务器现在正在使用的软件源库所对应的系统版本</h4>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager release --show</code></pre>
+
+
+
+<h4 id="1-2-显示客户端服务器所有可以使用的软件源库所对应的系统版本">1.2 显示客户端服务器所有可以使用的软件源所对应的系统版本</h4>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager release –-list</code></pre>
+
+
+
+<h3 id="步骤二-修改客户端服务器的软件源库对应的系统版本-2-1-修改对应系统版本的格式">步骤二：修改客户端服务器的软件源对应的系统版本</h3>
+
+
+
+<h4 id="步骤二-修改客户端服务器的软件源库对应的系统版本-2-1-修改对应系统版本的格式">2.1 修改对应系统版本的格式</h4>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager release --set=&lt;system version number&gt;</code></pre>
+
+
+
+<h4 id="2-2-修改对应系统版本的案例">2.2 修改对应系统版本的案例</h4>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager release -–set=7.5 </code></pre>
+
+
+
+<p>（补充：这里的 7.5 是 1 个系统的版本号）</p>
+
+
+
+<p>（注意：这里如果低版本的系统选择了高版本的软件源库，则在更新软件的过程中可能会直接升级系统）</p>
+
+
+
+<h3 id="步骤三-在选择了一个系统版本之后选择里面的软件源-3-1-显示软件源-3-1-1-显示客户端服务器目前正在使用的软件源">步骤三：在选择了 1 个系统版本之后选择里面的软件源</h3>
+
+
+
+<h4 id="步骤三-在选择了一个系统版本之后选择里面的软件源-3-1-显示软件源-3-1-1-显示客户端服务器目前正在使用的软件源">3.1 显示软件源</h4>
+
+
+
+<h5 id="步骤三-在选择了一个系统版本之后选择里面的软件源-3-1-显示软件源-3-1-1-显示客户端服务器目前正在使用的软件源">3.1.1 显示客户端服务器目前正在使用的软件源</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --list-enable</code></pre>
+
+
+
+<h5 id="3-1-2-显示客户端服务器所有可以用的软件源和正在使用的软件源">3.1.2 显示客户端服务器所有可以用的软件源和正在使用的软件源</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --list</code></pre>
+
+
+
+<h4 id="3-2-让客户端服务器启用一个软件源-3-2-1-启用一个软件源的格式">3.2 让客户端服务器启用 1 个软件源</h4>
+
+
+
+<h5 id="3-2-让客户端服务器启用一个软件源-3-2-1-启用一个软件源的格式">3.2.1 启用 1 个软件源的格式</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=&lt;software source name&gt;</code></pre>
+
+
+
+<h5 id="3-2-2-启用一个软件源的案例">3.2.2 启用 1 个软件源的案例</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=rhel-7-server-satellite-tools-6.3-rpms</code></pre>
+
+
+
+<p>（补充：这里以启动 rhel-7-server-satellite-tools-6.3-rpms 软件源为例）</p>
+
+
+
+<h4 id="3-3-让客户端服务器禁用一个软件源-3-3-1-禁用一个软件源的格式">3.3 让客户端服务器禁用 1 个软件源</h4>
+
+
+
+<h5 id="3-3-让客户端服务器禁用一个软件源-3-3-1-禁用一个软件源的格式">3.3.1 禁用 1 个软件源的格式</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --disable=&lt;software source name&gt;</code></pre>
+
+
+
+<h5 id="3-3-2-禁用一个软件源的案例">3.3.2 禁用 1 个软件源的案例</h5>
+
+
+
+<p>（只在 client servers 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos –disable=rhel-7-server-satellite-tools-6.2-rpms</code></pre>
+
+
+
+<p>（补充：这里以禁止 rhel-7-server-satellite-tools-6.3-rpms 软件源为例）</p>
+
+
+
+<h4>3.4 让客户端服务器同时启用或禁用 1 个或多个软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms;subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms;subscription-manager repos --disable=satellite-tools-6.10-for-rhel-8-x86_64-rpms</code></pre>
+
+
+
+<p>（补充：这里以启动 rhel-8-for-x86_64-baseos-rpms;subscription-manager 软件源和 rhel-8-for-x86_64-appstream-rpms;subscription-manager 软件源，禁用 satellite-tools-6.10-for-rhel-8-x86_64-rpms 软件源为例）</p>
+
+
+
+<h4 id="3-4-刷新所有的设置">3.5 刷新所有的设置</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager refresh</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

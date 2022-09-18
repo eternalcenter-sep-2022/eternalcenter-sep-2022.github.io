@@ -1,0 +1,1352 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python Basic (基础) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/python/python-basic/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 20 Jun 2022 12:47:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Python splite 字符串切割</title>
+		<link>https://eternalcenter-sep-2022.github.io/splite/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 10 Aug 2021 08:34:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17313</guid>
+
+					<description><![CDATA[内容一：splite 的格式 内容二：splite 的使用案例 2.1 案例一：以一行行的方式进行分割 （补充：这里以给 string 字符串以一行行的方式进行分割为例） 2.2 案例二：制作表格 （补充：这里以给 string 字符串制成表格为例） 2.3 案例三：以空格的方式进行分割 或者： （补充：这里以给 string 字符串以空格的方式进行分割为例） 2.4 案例四：以空格的方式进行分割，并截取第 1 个单词 （补充：这里以给 string 字符串以空格的方式进行分割，并截取第 1 个单词为例） 2.5 案例五：以空格的方式进行分割，并截取最后 1 个单词 （补充：这里以给 string 字符串以空格的方式进行分割，并截取最后 1 个单词为例） 2.6 案例六：以字母进行分割 （补充：这里以给 string 字符串以字母的方式进行分割为例） （注意：要先导入 re 函数） 2.7 案例七：以冒号 “:” 进行分割 （补充：这里以给 string 字符串以冒号 “:” 的方式进行分割为例） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/splite/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Python splite 字符串切割"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：splite 的格式</h3>
+
+
+
+<pre class="wp-block-code"><code>&lt;character string&gt;.splite('&lt;separator&gt;', &lt;split several times&gt;)&#91;&lt;which number of word place&gt;]</code></pre>
+
+
+
+<h3>内容二：splite 的使用案例</h3>
+
+
+
+<h4>2.1 案例一：以一行行的方式进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite('\n')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以一行行的方式进行分割为例）</p>
+
+
+
+<h4>2.2 案例二：制作表格</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite('\t')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串制成表格为例）</p>
+
+
+
+<h4>2.3 案例三：以空格的方式进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite(, -1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割为例）</p>
+
+
+
+<h4>2.4 案例四：以空格的方式进行分割，并截取第 1 个单词</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()&#91;0]</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割，并截取第 1 个单词为例）</p>
+
+
+
+<h4>2.5 案例五：以空格的方式进行分割，并截取最后 1 个单词</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()&#91;-1]</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割，并截取最后 1 个单词为例）</p>
+
+
+
+<h4>2.6 案例六：以字母进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = re.split(r"&#91;^A-Za-z]", line.strip())</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以字母的方式进行分割为例）</p>
+
+
+
+<p>（注意：要先导入 re 函数）</p>
+
+
+
+<h4>2.7 案例七：以冒号 “:” 进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.splite(':')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割为例）</p>
+
+
+
+<h4>2.8 案例八：以冒号 “:” 进行分割，只分割 1 次，并从开头开始计数</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.splite(':', 1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割，只分割 1 次，并从开头开始计数为例）</p>
+
+
+
+<h4>2.9 案例九：以冒号 “:” 进行分割，只分割 1 次，并从末尾开始计数</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.rsplite(':', 1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割，只分割 1 次，并从末尾开始计数为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python 可变参数和参数解包</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-variable-parameters-and-parameter-unpacking/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Jul 2021 06:39:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16575</guid>
+
+					<description><![CDATA[内容一：可变参数和参数解包区别 1) 可变参数是在形参中，通过 ，* 来实现2) 参数解包是在实参中，通过 ，* 来实现 内容二：可变参数的使用案例 2.1 进入 Python3 环境 2.2 创建 1 个输出可变参数内容的对象 （补充：1) 这里以创建 demo 对象为例2) 这里 1 个 * 代表接收的是 1 个元组，2 个 ** 代表接收的是 1 个键值对从而形成 1 个字典） 2.3 测试输出可变参数内容的对象 （补充：这里 2 个小括号 “()” 是指元组，2 个大括号是 “{}” 是指字典） 2.4 让输出可变参数内容的对象处理元组 （补充：这里以处理元组 1，2，3 为例） 2.5 让输出可变参数内容的对象处理元组和字典 （补充：这里以处理元组 1，2，3 和字典 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/python-variable-parameters-and-parameter-unpacking/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Python 可变参数和参数解包"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：可变参数和参数解包区别</h3>
+
+
+
+<p>1) 可变参数是在形参中，通过 <em>，</em>* 来实现<br>2) 参数解包是在实参中，通过 <em>，</em>* 来实现</p>
+
+
+
+<h3>内容二：可变参数的使用案例</h3>
+
+
+
+<h4>2.1 进入 Python3 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># python3
+&gt;&gt;&gt; </code></pre>
+
+
+
+<h4>2.2 创建 1 个输出可变参数内容的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def demo(*args,**kwargs):
+...     print(args)
+...     print(kwargs)
+... </code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 demo 对象为例<br>2) 这里 1 个 * 代表接收的是 1 个元组，2 个 ** 代表接收的是 1 个键值对从而形成 1 个字典<br>）</p>
+
+
+
+<h4>2.3 测试输出可变参数内容的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo()
+()
+{}</code></pre>
+
+
+
+<p>（补充：这里 2 个小括号 “()” 是指元组，2 个大括号是 “{}” 是指字典）</p>
+
+
+
+<h4>2.4 让输出可变参数内容的对象处理元组</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3)
+(1, 2, 3)
+{}</code></pre>
+
+
+
+<p>（补充：这里以处理元组 1，2，3 为例）</p>
+
+
+
+<h4>2.5 让输出可变参数内容的对象处理元组和字典</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3,c='2')
+(1, 2, 3)
+{'c': '2'}</code></pre>
+
+
+
+<p>（补充：这里以处理元组 1，2，3 和字典 c=&#8217;2&#8242; 为例）</p>
+
+
+
+<h3>内容三：参数解包的使用案例</h3>
+
+
+
+<h4>3.1 进入 Python3 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># python3
+&gt;&gt;&gt; </code></pre>
+
+
+
+<h4>3.2 创建 1 个进行参数解包的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def demo(a,b,c):
+...     print(a,b,c)
+...</code></pre>
+
+
+
+<h4>3.3 测试进行参数解包的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3)
+1 2 3</code></pre>
+
+
+
+<h4>3.4 让进行参数解包的对象处理元组</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; args = (1,2,3)
+&gt;&gt;&gt; demo(*args)
+1 2 3</code></pre>
+
+
+
+<h4>3.5 让进行参数解包的对象处理字典</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; kwargs1 = { 'a':'a1','b':'b2','c':'c3'}
+&gt;&gt;&gt; demo(**kwargs1)
+a1 b2 c3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 生成 UUID 的方法 （Python 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/uuid-python/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 26 Jun 2021 14:29:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16121</guid>
+
+					<description><![CDATA[步骤一：进入 Python 环境 步骤二：导入 UUID 模块 步骤三：生成 UUID 步骤四：生成 UUID 并以十六进制进行显示]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：进入 Python 环境</h3>
+
+
+
+<pre class="wp-block-code"><code># python3</code></pre>
+
+
+
+<h3>步骤二：导入 UUID 模块</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; import uuid</code></pre>
+
+
+
+<h3>步骤三：生成 UUID</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; uuid.uuid4()</code></pre>
+
+
+
+<h3>步骤四：生成 UUID 并以十六进制进行显示</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; uuid.uuid4().get_hex()</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] pip 工具的安装 （MacBook Air 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/macbook-air-pip/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 06:17:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer (系统电脑)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14337</guid>
+
+					<description><![CDATA[内容一：安装 pip2 1.1 下载 pip2 1.2 安装 pip2 1.3 删除 pip2 1.4 显示安装的 pip2 1.4.1 显示在 python 里有没有 pip 安装包 （补充：这里以 Python 版本是 2.7 为例） 1.4.2 显示有没有 pip2 命令 1.4.3 升级 pip2 内容二：安装 pip3 2.1 准备安装 pip3 所需的环境 2.1.1 安装 python3 2.1.1.1 输入 python3 命令 2.1.1.2 在弹出的对话框里安装 python3 （步骤略） 2.1.2 安装 xcode 2.1.2.1 输入 xcode-select &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/macbook-air-pip/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] pip 工具的安装 （MacBook Air 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-安装-pip2-1-1-下载-pip2">内容一：安装 pip2</h3>
+
+
+
+<h4 id="内容一-安装-pip2-1-1-下载-pip2">1.1 下载 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ curl 'https://bootstrap.pypa.io/pip/2.7/get-pip.py' &gt; get-pip.py
+</code></pre>
+
+
+
+<h4 id="1-2-安装-pip2">1.2 安装 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ sudo python get-pip.py</code></pre>
+
+
+
+<h4 id="1-3-删除-pip2">1.3 删除 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ rm get-pip.py</code></pre>
+
+
+
+<h4 id="1-4-显示安装的-pip2-1-4-1-显示在-python-里有没有-pip-安装包">1.4 显示安装的 pip2</h4>
+
+
+
+<h5 id="1-4-显示安装的-pip2-1-4-1-显示在-python-里有没有-pip-安装包">1.4.1 显示在 python 里有没有 pip 安装包</h5>
+
+
+
+<pre class="wp-block-code"><code>$ ls /Library/Python/2.7/site-packages/</code></pre>
+
+
+
+<p>（补充：这里以 Python 版本是 2.7 为例）</p>
+
+
+
+<h5 id="1-4-2-显示有没有-pip2-命令">1.4.2 显示有没有 pip2 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ which pip2</code></pre>
+
+
+
+<h5 id="1-4-3-升级-pip2">1.4.3 升级 pip2</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo pip2 install --upgrade pip</code></pre>
+
+
+
+<h3 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">内容二：安装 pip3</h3>
+
+
+
+<h4 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1 准备安装 pip3 所需的环境</h4>
+
+
+
+<h5 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1.1 安装 python3</h5>
+
+
+
+<h5 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1.1.1 输入 python3 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ python3</code></pre>
+
+
+
+<h5 id="2-1-1-2-在弹出的对话框里安装-python3">2.1.1.2 在弹出的对话框里安装 python3</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="2-1-2-安装-xcode-2-1-2-1-输入-xcode-select-install-命令">2.1.2 安装 xcode</h5>
+
+
+
+<h5 id="2-1-2-安装-xcode-2-1-2-1-输入-xcode-select-install-命令">2.1.2.1 输入 xcode-select &#8211;install 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ xcode-select --install</code></pre>
+
+
+
+<h5 id="2-1-2-2-在弹出的对话框里安装-xcode">2.1.2.2 在弹出的对话框里安装 xcode</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="2-2-安装-pip3-2-2-1-下载-pip3">2.2 安装 pip3</h4>
+
+
+
+<h5 id="2-2-安装-pip3-2-2-1-下载-pip3">2.2.1 下载 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ curl 'https://bootstrap.pypa.io/pip/get-pip.py' &gt; get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-2-安装-pip3">2.2.2 安装 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo python get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-3-删除-pip3">2.2.3 删除 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ rm get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-4-显示安装的-pip3-2-2-4-1-显示在-python-里有没有-pip-安装包">2.2.4 显示安装的 pip3</h5>
+
+
+
+<h5 id="2-2-4-显示安装的-pip3-2-2-4-1-显示在-python-里有没有-pip-安装包">2.2.4.1 显示在 python 里有没有 pip 安装包</h5>
+
+
+
+<pre class="wp-block-code"><code>$ ls /Library/Python/3.8/site-packages/</code></pre>
+
+
+
+<p>（补充：这里以 Python 版本是 3.8 为例）</p>
+
+
+
+<h5 id="2-2-4-2-显示有没有-pip3-命令">2.2.4.2 显示有没有 pip3 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ which pip3</code></pre>
+
+
+
+<h5 id="2-2-4-3-升级-pip3">2.2.4.3 升级 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo pip3 install --upgrade pip</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 正则表达式 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/regular-expression/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 16 Jun 2020 15:21:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9786</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>shell正则表达式应用
+
+正则表达式
+一、 什么是正则表达式
+
+  什么是正则表达式？正则表达式是用于描述字符排列和匹配模式的一种语法规则。在很多程序设计语言中都支持利用正则表达式来进行字符串的操作，不同语言中的正则表达式略有不同，但是毕竟都是正则，其本质思想都是一致的，当我们掌握了shell中的正则后，再去看python或者perl里面的正则表达式时，会发现其实都是一样的东东。
+
+　　在shell的一些命令中，有些并不支持正则表达式，但是它们支持Linux里面的通配符，那么通配符又是什么东东呢，它跟正则表达式又有什么关系？
+
+　　正则表达式用来在文件中匹配符合条件的字符串，正则是包含匹配。grep、awk、sed等命令都支持正则表达式。通配符用来匹配符合条件的文件名，通配符是完全匹配。ls、find、cp这些命令不支持正则表达式，所以只能使用shell自己的通配符来进行匹配了。
+
+Shell通配符主要是下面三个：
+
+*  匹配任意字符
+
+?  匹配任意一个字符 
+
+     &#91;]  匹配匹配中括号中的一个字符
+
+                                                                         
+
+首先，正则表达式是用来匹配文件中文本的字符串，而通配符是用来匹配符合条件的文件名；其次正则表达式是包含匹配，只要包含正则中的字符串，就匹配，而通配符是完全匹配，也就是说，必须要与条件中的字符串一模一样才会匹配。 
+
+说了这么多，其实正则表达式主要用于字符串的模式分割、匹配、查找及替换操作，下面来关注一下正则表达式基本的元字符和它的作用。 
+二、正则表达式基本的元字符
+
+元字符
+	
+
+作用
+	
+
+举例说明
+
+*
+	
+
+前一个字符匹配0次或者任意多次
+	
+
+"a*" 匹配所有内容，包括空白行 
+"aa*" 匹配至少包含一个a的行
+"aaa*" 匹配最后包含两个连续a的字符串
+"aaaaa*"匹配最少包含4个连续a的字符串
+
+.
+	
+
+匹配除了换行符外的任意一个字符
+	
+
+"s..d" 匹配在s和d这两个字母之间一定有两个
+
+字符的单词
+"s.*d" 匹配在s和d字母之间有任意字符
+".*" 匹配所有内容
+
+^
+	
+
+匹配行首
+	
+
+"^hello" 匹配以hello开头的行
+"^M" 匹配以大写“M”开头的行
+
+$
+	
+
+匹配行尾
+	
+
+"hello$" 匹配以hello结尾的行 
+"n$" 匹配以小写“n”结尾的行
+"^$" 匹配空白行
+
+ 
+
+&#91;]
+	
+
+匹配中括号中指定的任意一个字符，只匹配一
+个字符
+	
+
+"&#91;aeiou]" 匹配任意一个元音字母，
+"&#91;0-9]" 匹配任意一位数字，
+"&#91;a-z]&#91;0-9]" 匹配小写字母和一位数字构成的两位字符。
+"s&#91;ao]id" 匹配s和i字母中，要么是a，要么是o
+
+"&#91;0-9]"  匹配任意一个数字
+
+"^&#91;a-z]" 匹配小写字母开头的行
+
+&#91;^]
+	
+
+匹配中括号的字符以外的任意一个字符
+	
+
+"&#91;^0-9]" 匹配任意一位非数字字符，
+"&#91;^a-z]" 表示任意一位非小写字母
+"^&#91;^a-z]"  匹配不是小写字母开头的行
+"^&#91;^a-zA-Z]" 匹配不是字母开头的行
+
+\
+	
+
+转义符。用于将特殊符号的含义取消
+	
+
+"\.$" 匹配使用"."结尾的行
+
+\{n\}
+	
+
+表示其前面的字符恰好出现n次
+	
+
+"&#91;0-9]\{4\}" 匹配4位数字，
+"&#91;1]&#91;3-8]&#91;0-9]\{9\}" 匹配手机号码
+"a\{3\}"  匹配a字母连续出现3次的字符串
+"&#91;0-9]\{3\}" 匹配包含连续的3个数字的字符串
+
+\{n,\}
+	
+
+表示其前面的字符出现不小于n次
+	
+
+"&#91;0-9]\{2,\}" 表示两位及以上的数字。
+"&#91;0-9]\{3,\}&#91;a-z]" 匹配最少用连续3个数字开头
+
+的字符串
+
+\{n,m\}
+	
+
+表示其前面的字符至少出现n次，最多出现
+m次
+	
+
+"&#91;a-z]\{6,8\}" 匹配6到8位的小写字母。
+"sa\{1,3\}i" 匹配在字母s和i直接有最少一个a，
+
+最多三个a
+
+( )
+	
+
+ 
+	
+
+ 
+
+{ }
+	
+
+指定字符出现的次数
+	
+
+ 
+
+?
+	
+
+匹配一个字符0或1次，等价于 {0,1}
+	
+
+ 
+
++
+	
+
+匹配一个字符1或多次，等价于{1,}
+	
+
+ 
+
+|
+	
+
+ 
+	
+
+ 
+三、shell常用正则表达式
+
+ “^\d+$” //非负整数（正整数 + 0）  
+“^&#91;0-9]*&#91;1-9]&#91;0-9]*$” //正整数  
+“^((-\d+)|(0+))$” //非正整数（负整数 + 0）  
+“^-&#91;0-9]*&#91;1-9]&#91;0-9]*$” //负整数  
+“^-?\d+$” //整数  
+“^\d+(\.\d+)?$” //非负浮点数（正浮点数 + 0）  
+“^((&#91;0-9]+\.&#91;0-9]*&#91;1-9]&#91;0-9]*)|(&#91;0-9]*&#91;1-9]&#91;0-9]*\.&#91;0-9]+)|(&#91;0-9]*&#91;1-9]&#91;0-9]*))$” //正浮点数  
+“^((-\d+(\.\d+)?)|(0+(\.0+)?))$” //非正浮点数（负浮点数 + 0）  
+“^(-((&#91;0-9]+\.&#91;0-9]*&#91;1-9]&#91;0-9]*)|(&#91;0-9]*&#91;1-9]&#91;0-9]*\.&#91;0-9]+)|(&#91;0-9]*&#91;1-9]&#91;0-9]*)))$” //负浮点数  
+“^(-?\d+)(\.\d+)?$” //浮点数  
+“^&#91;A-Za-z]+$” //由26个英文字母组成的字符串  
+“^&#91;A-Z]+$” //由26个英文字母的大写组成的字符串  
+“^&#91;a-z]+$” //由26个英文字母的小写组成的字符串  
+“^&#91;A-Za-z0-9]+$” //由数字和26个英文字母组成的字符串  
+“^\w+$” //由数字、26个英文字母或者下划线组成的字符串  
+“^&#91;\w-]+(\.&#91;\w-]+)*@&#91;\w-]+(\.&#91;\w-]+)+$” //email地址  
+“^&#91;a-zA-z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\S*)?$” //url  
+/^(d{2}|d{4})-((0(&#91;1-9]{1}))|(1&#91;1|2]))-((&#91;0-2](&#91;1-9]{1}))|(3&#91;0|1]))$/   //  年-月-日  
+/^((0(&#91;1-9]{1}))|(1&#91;1|2]))/((&#91;0-2](&#91;1-9]{1}))|(3&#91;0|1]))/(d{2}|d{4})$/   // 月/日/年  
+“^(&#91;w-.]+)@((&#91;&#91;0-9]{1,3}.&#91;0-9]{1,3}.&#91;0-9]{1,3}.)|((&#91;w-]+.)+))(&#91;a-zA-Z]{2,4}|&#91;0-9]{1,3})(]?)$”   //Emil  
+/^((\+?&#91;0-9]{2,4}\-&#91;0-9]{3,4}\-)|(&#91;0-9]{3,4}\-))?(&#91;0-9]{7,8})(\-&#91;0-9]+)?$/     //电话号码  
+“^(d{1,2}|1dd|2&#91;0-4]d|25&#91;0-5]).(d{1,2}|1dd|2&#91;0-4]d|25&#91;0-5]).(d{1,2}|1dd|2&#91;0-4]d|25&#91;0-5]).(d{1,2}|1dd|2&#91;0-4]d|25&#91;0-5])$”   //IP地址  
+
+匹配中文字符的正则表达式： &#91;\u4e00-\u9fa5]  
+匹配双字节字符(包括汉字在内)：&#91;^\x00-\xff]  
+匹配空行的正则表达式：\n&#91;\s| ]*\r  
+匹配HTML标记的正则表达式：/&lt;(.*)>.*&lt;\/\1>|&lt;(.*) \/>/  
+匹配首尾空格的正则表达式：(^\s*)|(\s*$)  
+匹配Email地址的正则表达式：\w+(&#91;-+.]\w+)*@\w+(&#91;-.]\w+)*\.\w+(&#91;-.]\w+)*  
+匹配网址URL的正则表达式：^&#91;a-zA-z]+://(\\w+(-\\w+)*)(\\.(\\w+(-\\w+)*))*(\\?\\S*)?$  
+匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^&#91;a-zA-Z]&#91;a-zA-Z0-9_]{4,15}$  
+匹配国内电话号码：(\d{3}-|\d{4}-)?(\d{8}|\d{7})?  
+匹配腾讯QQ号：^&#91;1-9]*&#91;1-9]&#91;0-9]*$  
+四、元字符及其在正则表达式上下文中的行为 
+
+\ 将下一个字符标记为一个特殊字符、或一个原义字符、或一个后向引用、或一个八进制转义符。 
+ 
+ 
+^ 匹配输入字符串的开始位置。如果设置了 RegExp 对象的Multiline 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。 
+ 
+ 
+$ 匹配输入字符串的结束位置。如果设置了 RegExp 对象的Multiline 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。 
+ 
+ 
+* 匹配前面的子表达式零次或多次。 
+ 
+ 
++ 匹配前面的子表达式一次或多次。+ 等价于 {1,}。 
+ 
+ 
+? 匹配前面的子表达式零次或一次。? 等价于 {0,1}。 
+ 
+ 
+{n} n 是一个非负整数，匹配确定的n 次。 
+ 
+ 
+{n,} n 是一个非负整数，至少匹配n 次。 
+ 
+ 
+{n,m} m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。在逗号和两个数之间不能有空格。 
+ 
+ 
+? 当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。 
+ 
+ 
+. 匹配除 “\n” 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '&#91;.\n]' 的模式。  
+(pattern) 匹配pattern 并获取这一匹配。 
+ 
+ 
+(?:pattern) 匹配pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。 
+ 
+ 
+(?=pattern) 正向预查，在任何匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。 
+ 
+ 
+(?!pattern) 负向预查，与(?=pattern)作用相反 
+ 
+ 
+x|y 匹配 x 或 y。 
+ 
+ 
+&#91;xyz] 字符集合。 
+ 
+ 
+&#91;^xyz] 负值字符集合。 
+ 
+ 
+&#91;a-z] 字符范围，匹配指定范围内的任意字符。 
+ 
+ 
+&#91;^a-z] 负值字符范围，匹配任何不在指定范围内的任意字符。 
+ 
+ 
+\b 匹配一个单词边界，也就是指单词和空格间的位置。 
+ 
+ 
+\B 匹配非单词边界。 
+ 
+ 
+\cx 匹配由x指明的控制字符。 
+ 
+ 
+\d 匹配一个数字字符。等价于 &#91;0-9]。 
+ 
+ 
+\D 匹配一个非数字字符。等价于 &#91;^0-9]。 
+ 
+ 
+\f 匹配一个换页符。等价于 \x0c 和 \cL。 
+ 
+ 
+\n 匹配一个换行符。等价于 \x0a 和 \cJ。 
+ 
+ 
+\r 匹配一个回车符。等价于 \x0d 和 \cM。 
+ 
+ 
+\s 匹配任何空白字符，包括空格、制表符、换页符等等。等价于&#91; \f\n\r\t\v]。 
+ 
+ 
+\S 匹配任何非空白字符。等价于 &#91;^ \f\n\r\t\v]。 
+ 
+ 
+\t 匹配一个制表符。等价于 \x09 和 \cI。 
+ 
+ 
+\v 匹配一个垂直制表符。等价于 \x0b 和 \cK。 
+ 
+ 
+\w 匹配包括下划线的任何单词字符。等价于'&#91;A-Za-z0-9_]'。 
+ 
+ 
+\W 匹配任何非单词字符。等价于 '&#91;^A-Za-z0-9_]'。 
+ 
+ 
+\xn 匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。 
+ 
+ 
+\num 匹配 num，其中num是一个正整数。对所获取的匹配的引用。 
+ 
+ 
+\n 标识一个八进制转义值或一个后向引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为后向引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。 
+ 
+ 
+\nm 标识一个八进制转义值或一个后向引用。如果 \nm 之前至少有is preceded by at least nm 个获取得子表达式，则 nm 为后向引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的后向引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。 
+ 
+ 
+\nml 如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。 
+ 
+ 
+\un 匹配 n，其中 n 是一个用四个十六进制数字表示的Unicode字符。 
+ 
+ 
+
+匹配中文字符的正则表达式： &#91;u4e00-u9fa5] 
+ 
+ 
+匹配双字节字符(包括汉字在内)：&#91;^x00-xff] 
+ 
+ 
+匹配空行的正则表达式：n&#91;s| ]*r 
+ 
+ 
+匹配HTML标记的正则表达式：/&lt;(.*)>.*&lt;/1>|&lt;(.*) />/ 
+ 
+ 
+匹配首尾空格的正则表达式：(^s*)|(s*$) 
+ 
+ 
+匹配Email地址的正则表达式：w+(&#91;-+.]w+)*@w+(&#91;-.]w+)*.w+(&#91;-.]w+)* 
+ 
+ 
+匹配网址URL的正则表达式：http://(&/#91;w-]+.)+&#91;w-]+(/&#91;w- ./?%&amp;=]*)? 
+ 
+ 
+
+利用正则表达式限制网页表单里的文本框输入内容： 
+
+ 用正则表达式限制只能输入中文：οnkeyup=”value=value.replace(/&#91;^u4E00-u9FA5]/g,”)” onbeforepaste=”clipboardData.setData('text',clipboardData.getData('text').replace(/&#91;^u4E00-u9FA5]/g,”))” 
+ 
+ 
+用正则表达式限制只能输入全角字符： οnkeyup=”value=value.replace(/&#91;^uFF00-uFFFF]/g,”)” onbeforepaste=”clipboardData.setData('text',clipboardData.getData('text').replace(/&#91;^uFF00-uFFFF]/g,”))” 
+ 
+ 
+用正则表达式限制只能输入数字：οnkeyup=”value=value.replace(/&#91;^d]/g,”) “onbeforepaste=”clipboardData.setData('text',clipboardData.getData('text').replace(/&#91;^d]/g,”))” 
+ 
+ 
+用正则表达式限制只能输入数字和英文：οnkeyup=”value=value.replace(/&#91;W]/g,”) “onbeforepaste=”clipboardData.setData('text',clipboardData.getData('text').replace(/&#91;^d]/g,”))” 
+  
+五、其他常用正则表达式 
+
+ 
+ 
+匹配中文字符的正则表达式： &#91;\u4e00-\u9fa5] 
+ 
+ 
+匹配双字节字符(包括汉字在内)：&#91;^\x00-\xff] 
+ 
+ 
+匹配空行的正则表达式：\n&#91;\s| ]*\r 
+ 
+ 
+匹配HTML标记的正则表达式：/&lt;(.*)>.*&lt;\/\1>|&lt;(.*) \/>/ 
+ 
+ 
+匹配首尾空格的正则表达式：(^\s*)|(\s*$) 
+ 
+ 
+匹配IP地址的正则表达式：/(\d+)\.(\d+)\.(\d+)\.(\d+)/g // 
+ 
+ 
+匹配Email地址的正则表达式：\w+(&#91;-+.]\w+)*@\w+(&#91;-.]\w+)*\.\w+(&#91;-.]\w+)* 
+ 
+ 
+匹配网址URL的正则表达式：http://(/&#91;\w-]+\.)+&#91;\w-]+(/&#91;\w- ./?%&amp;=]*)? 
+ 
+ 
+
+sql语句：^(select|drop|delete|create|update|insert).*$ 
+
+ 
+ 
+1、非负整数：^\d+$ 
+ 
+ 
+2、正整数：^&#91;0-9]*&#91;1-9]&#91;0-9]*$ 
+ 
+ 
+3、非正整数：^((-\d+)|(0+))$ 
+ 
+ 
+4、负整数：^-&#91;0-9]*&#91;1-9]&#91;0-9]*$ 
+ 
+ 
+5、整数：^-?\d+$ 
+ 
+ 
+6、非负浮点数：^\d+(\.\d+)?$ 
+ 
+ 
+7、正浮点数：^((0-9)+\.&#91;0-9]*&#91;1-9]&#91;0-9]*)|(&#91;0-9]*&#91;1-9]&#91;0-9]*\.&#91;0-9]+)| (&#91;0-9]*&#91;1-9]&#91;0-9]*))$ 
+ 
+ 
+8、非正浮点数：^((-\d+\.\d+)?)|(0+(\.0+)?))$ 
+ 
+ 
+9、负浮点数：^(-((正浮点数正则式)))$ 
+ 
+ 
+10、英文字符串：^&#91;A-Za-z]+$ 
+ 
+ 
+11、英文大写串：^&#91;A-Z]+$ 
+ 
+ 
+12、英文小写串：^&#91;a-z]+$ 
+ 
+ 
+13、英文字符数字串：^&#91;A-Za-z0-9]+$ 
+ 
+ 
+14、英数字加下划线串：^\w+$ 
+ 
+ 
+15、E-mail地址：^&#91;\w-]+(\.&#91;\w-]+)*@&#91;\w-]+(\.&#91;\w-]+)+$ 
+ 
+ 
+16、URL：^&#91;a-zA-Z]+://(\w+(-\w+)*)(\.(\w+(-\w+)*))*(\?\s*)?$  
+或：^http:\/\/&#91;A-Za-z0-9]+\.&#91;A-Za-z0-9]+&#91;\/=\?%\-&amp;_~`@&#91;\]\':+!]*(&#91;^&amp; lt;>\"\"])*$ 
+ 
+ 
+17、邮政编码：^&#91;1-9]\d{5}$ 
+ 
+ 
+18、中文：^&#91;\u0391-\uFFE5]+$ 
+ 
+ 
+19、电话号码：^((\d2,3
+)|(\d{3}\-))?(0\d2,3|0\d{2,3}-)?&#91;1-9] \d{6,7}(\-\d{1,4})?$ 
+ 
+ 
+20、手机号码：^((\d2,3)|(\d{3}\-))?13\d{9}$ 
+ 
+ 
+21、双字节字符(包括汉字在内)：^\x00-\xff 
+ 
+22、匹配首尾空格：(^\s*)|(\s*$)（像vbscript那样的trim函数） 
+ 
+23、匹配HTML标记：&lt;(.*)>.*&lt;\/\1>|&lt;(.*) \/> 
+ 
+24、匹配空行：\n&#91;\s| ]*\r 
+ 
+25、提取信息中的网络链接：(h|H)(r|R)(e|E)(f|F) *= *('|”)?(\w|\\|\/|\.)+('|”| *|>)? 
+ 
+26、提取信息中的邮件地址：\w+(&#91;-+.]\w+)*@\w+(&#91;-.]\w+)*\.\w+(&#91;-.]\w+)* 
+ 
+27、提取信息中的图片链接：(s|S)(r|R)(c|C) *= *('|”)?(\w|\\|\/|\.)+('|”| *|>)? 
+ 
+28、提取信息中的IP地址：(\d+)\.(\d+)\.(\d+)\.(\d+) 
+ 
+29、提取信息中的中国手机号码：(86)*0*13\d{9} 
+ 
+30、提取信息中的中国固定电话号码：(\d3,4|\d{3,4}-|\s)?\d{8} 
+ 
+31、提取信息中的中国电话号码（包括移动和固定电话）：(\d3,4|\d{3,4}-|\s)?\d{7,14} 
+ 
+32、提取信息中的中国邮政编码：&#91;1-9]{1}(\d+){5} 
+ 
+33、提取信息中的浮点数（即小数）：(-?\d*)\.?\d+ 
+ 
+34、提取信息中的任何数字 ：(-?\d*)(\.\d+)? 
+ 
+35、IP：(\d+)\.(\d+)\.(\d+)\.(\d+) 
+ 
+36、电话区号：/^0\d{2,3}$/ 
+ 
+37、腾讯QQ号：^&#91;1-9]*&#91;1-9]&#91;0-9]*$ 
+ 
+38、帐号(字母开头，允许5-16字节，允许字母数字下划线)：^&#91;a-zA-Z]&#91;a-zA-Z0-9_]{4,15}$ 
+ 
+39、中文、英文、数字及下划线：^&#91;\u4e00-\u9fa5_a-zA-Z0-9]+$
+————————————————
+版权声明：本文为CSDN博主「WingoPower」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_38382148/java/article/details/78644011</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img width="1012" height="188" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/regular-expression-版权声明证明.png" alt="" class="wp-image-9787" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/regular-expression-版权声明证明.png 1012w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/regular-expression-版权声明证明-300x56.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/regular-expression-版权声明证明-768x143.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python 字符串的拼接 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-splicing/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2020 14:36:22 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8883</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>Python中字符串拼接的N种方法
+
+python拼接字符串一般有以下几种方法：
+
+①直接通过（+）操作符拼接
+
+s = 'Hello'+' '+'World'+'!'
+print(s)
+
+    1
+    2
+
+输出结果：Hello World!
+
+使用这种方式进行字符串连接的操作效率低下，因为python中使用 + 拼接两个字符串时会生成一个新的字符串，生成新的字符串就需要重新申请内存，当拼接字符串较多时自然会影响效率。
+
+②通过str.join()方法拼接
+
+strlist=&#91;'Hello',' ','World','!']
+print(''.join(strlist))
+
+    1
+    2
+
+输出结果：Hello World!
+
+这种方式一般常使用在将集合转化为字符串，”.join()其中”可以是空字符，也可以是任意其他字符，当是任意其他字符时，集合中字符串会被该字符隔开，例如：
+
+​strlist=&#91;'Hello',' ','World','!']
+print(','.join(strlist))
+
+    1
+    2
+
+输出结果：Hello, ,World,!
+
+③通过str.format()方法拼接
+
+s='{} {}!'.format('Hello','World')
+print(s)
+
+    1
+    2
+
+输出结果：Hello World!
+
+通过这种方式拼接字符串需要注意的是字符串中{}的数量要和format方法参数数量一致，否则会报错。如果你依然在编程的世界里迷茫，不知道自己的未来规划可以加入我们的Python秋秋裙去784掉758文214字看看前辈们如何学习的！交流经验！自己是一名高级python开发工程师，从基础的python脚本到web开发、爬虫、django、数据挖掘等，零基础到项目实战的资料都有整理。送给每一位python的小伙伴！分享一些学习的方法和需要注意的小细节
+
+④通过(%)操作符拼接
+
+s = '%s %s!' % ('Hello', 'World')
+print(s)
+
+    1
+    2
+
+输出结果：Hello World!
+
+这种方式与str.format()使用方式基本一致。
+
+⑤通过()多行拼接
+
+s = (
+    'Hello'
+    ' '
+    'World'
+    '!'
+)
+print(s)
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+
+输出结果：Hello World!
+
+python遇到未闭合的小括号，自动将多行拼接为一行。
+
+⑥通过string模块中的Template对象拼接
+
+from string import Template
+s = Template('${s1} ${s2}!') 
+print(s.safe_substitute(s1='Hello',s2='World')) 
+
+    1
+    2
+    3
+
+输出结果：Hello World!
+
+Template的实现方式是首先通过Template初始化一个字符串。这些字符串中包含了一个个key。通过调用substitute或safe_subsititute，将key值与方法中传递过来的参数对应上，从而实现在指定的位置导入字符串。这种方式的好处是不需要担心参数不一致引发异常，如：
+
+from string import Template
+s = Template('${s1} ${s2} ${s3}!') 
+print(s.safe_substitute(s1='Hello',s2='World')) 
+
+    1
+    2
+    3
+
+输出结果：Hello World ${s3}!
+
+⑦通过F-strings拼接
+
+在python3.6.2版本中，PEP 498 提出一种新型字符串格式化机制，被称为“字符串插值”或者更常见的一种称呼是**F-strings，**F-strings提供了一种明确且方便的方式将python表达式嵌入到字符串中来进行格式化：
+
+s1='Hello'
+s2='World'
+print(f'{s1} {s2}!')
+
+    1
+    2
+    3
+
+输出结果：Hello World!
+
+在F-strings中我们也可以执行函数：
+
+def power(x):
+    return x*x
+x=4
+print(f'{x} * {x} = {power(x)}')
+
+    1
+    2
+    3
+    4
+
+输出结果：4 * 4 = 16
+
+而且F-strings的运行速度很快，比%-string和str.format()这两种格式化方法都快得多。
+————————————————
+版权声明：本文为CSDN博主「Python编程KK」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/meiguanxi7878/java/article/details/95384330</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1009" height="180" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/04/版权声明证明-Python-字符串拼接.png" alt="" class="wp-image-8884" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/04/版权声明证明-Python-字符串拼接.png 1009w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/04/版权声明证明-Python-字符串拼接-300x54.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/04/版权声明证明-Python-字符串拼接-768x137.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python3 模块的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/python3-module/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2020 13:40:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8873</guid>
+
+					<description><![CDATA[（补充：这里以安装 paramiko 模块为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># pip3 install paramiko</code></pre>
+
+
+
+<p>（补充：这里以安装 paramiko 模块为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python3 模块的显示 （显示已安装的模块）</title>
+		<link>https://eternalcenter-sep-2022.github.io/python3-module-show/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 30 Apr 2020 13:32:04 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8869</guid>
+
+					<description><![CDATA[方法一：在系统环境中显示 方法二：在 Python3 环境下显示 2.1 进入 Python3 模式 2.2 显示所有已安装的模块 2.3 退出 Python3 模式]]></description>
+										<content:encoded><![CDATA[
+<h3 id="方法一-在系统环境中显示">方法一：在系统环境中显示</h3>
+
+
+
+<pre class="wp-block-code"><code>$ pydoc modules</code></pre>
+
+
+
+<h3 id="方法二-在-python3-环境下显示2-1-进入-python3-模式">方法二：在 Python3 环境下显示</h3>
+
+
+
+<h4 id="方法二-在-python3-环境下显示2-1-进入-python3-模式">2.1 进入 Python3 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># python3</code></pre>
+
+
+
+<h4 id="2-2-显示所有已安装的模块">2.2 显示所有已安装的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; help('modules')</code></pre>
+
+
+
+<h4 id="2-3-退出-python3-模式">2.3 退出 Python3 模式</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit()</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

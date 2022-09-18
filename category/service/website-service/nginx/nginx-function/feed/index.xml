@@ -1,0 +1,1451 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Nginx Function (功能) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/website-service/nginx/nginx-function/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 14:57:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Nginx 端口转发的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/%e5%86%85%e5%ae%b9-nginx-%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e7%9a%84%e8%ae%be%e7%bd%ae/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Apr 2021 08:38:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14036</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 重定向之前要先安装 Nginx 正文： 将部分内容修改如下： （补充：这里以1) 将 server_name 设置为 172.16.0.2282) 监听 80 端口3) 将 8000 端口转发到 80 端口为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 重定向之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+server {
+listen 80 default_server;
+listen &#91;::]:80 default_server;
+server_name  172.16.0.228;
+......
+location / {
+proxy_pass http://127.0.0.1:8000;/
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server_name 设置为 172.16.0.228<br>2) 监听 80 端口<br>3) 将 8000 端口转发到 80 端口为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2021 09:24:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing and High Availability Tool (集群负载均衡加高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Keepalived]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx + Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Website Service Redundant Agent Cluster (网站服务冗余代理集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13543</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：拓扑图 1.1 服务器列表 client enp1s0: 172.16.1.99 proxy1 enp1s0: 172.16.0.101enp7s0: 172.16.1.101virtual IP: 172.16.1.100 proxy2 enp1s0: 172.16.0.102enp7s0: 172.16.1.102 web1 enp1s0: 172.16.0.11 web2 enp1s0: 172.16.0.12 1.2 拓扑图 1.3 拓扑图简介 1) web1 安装 Nginx，web2 安装 Apache 实现网站服务2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑图</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client enp1s0: 172.16.1.99</p>
+
+
+
+<p>proxy1 enp1s0: 172.16.0.101<br>enp7s0: 172.16.1.101<br>virtual IP: 172.16.1.100</p>
+
+
+
+<p>proxy2 enp1s0: 172.16.0.102<br>enp7s0: 172.16.1.102</p>
+
+
+
+<p>web1 enp1s0: 172.16.0.11</p>
+
+
+
+<p>web2 enp1s0: 172.16.0.12</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                      proxy1                                       web1
+                      enp7s0:172.16.1.101 enp1s0:172.16.0.101      enp1s0:172.16.0.11
+                      virtual IP:172.16.1.100
+client
+enp1s0:172.16.1.99
+                      proxy2                                       web2
+                      enp7s0:172.16.1.102 enp1s0:172.16.0.102      enp1s0:172.16.0.12</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>1) web1 安装 Nginx，web2 安装 Apache 实现网站服务<br>2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡<br>3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 网卡上，如果 proxy1 宕机或者检测到自己 Nginx 代理进程死掉，则虚拟 IP 172.16.1.90 则挂在 proxy2 的 enp7s0 网卡上实现高可用<br>4) 如果 web1 和 web2 中有一台服务器宕机，则 proxy1 和 proxy2 会自动不再向这台服务器请求网站服务，直到它恢复正常<br>5) 最终达到的效果是 client 向虚拟 IP 请求网站服务，此时如果 proxy1 正常就代表虚拟 IP 轮询调度 web1 和 web2 上的网站服务，再返回给 client。如果 proxy1 宕机则由 proxy2 代表虚拟 IP 完成次操作</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) client 的 enp1s0 网卡、proxy1 的 enp7s0 网卡和 proxy2 的 enp7s0 网卡要可以相互 ping 通自己和对方的 IP<br>7) proxy1 的 enp1s0 网卡、proxy2 的 enp1s0 网卡、web1 的 enp1s0 网卡和 web2 的 enp1s0 网卡要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：搭建网站服务</h3>
+
+
+
+<h4>3.1 在 web1 上搭建网站服务</h4>
+
+
+
+<h5>3.1.1 在 web1 上安装 Nginx</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 给 web1 制定网页</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web1 &gt; /usr/share/nginx/html/index.html</code></pre>
+
+
+
+<h5>3.1.3 启动 Nginx 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h4>3.2 在 web2 上搭建网站服务</h4>
+
+
+
+<h5>3.2.1 在 web2 上安装 Apache</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 给 web2 制定网页</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web2 &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 Apache 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now httpd</code></pre>
+
+
+
+<h3>步骤四：搭建代理服务</h3>
+
+
+
+<h4>4.1 安装 Nginx</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h4>4.2 修改 Nginx 配置文件</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+    upstream webserver {
+        server 172.16.0.11:80;
+        server 172.16.0.12:80;
+    }
+......
+    server {
+        listen       80;
+
+        location / {
+        proxy_pass http://webserver;/
+        }
+    }
+......
+}</code></pre>
+
+
+
+<h4>4.3 启动 Nginx 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h3>步骤五：搭建高可用服务</h3>
+
+
+
+<h4>5.1 安装 Keepalived</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install keepalived</code></pre>
+
+
+
+<h4>5.2 创建 Keepalived 检查脚本</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/keepalived/nginx_check.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+    systemctl stop nginx
+    sleep 5
+    if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+        systemctl stop keepalived
+    fi
+fi</code></pre>
+
+
+
+<p>（补充：这里以检测 Nginx 没启动就启动 Nginx，5 秒后 Nginx 要是还没有启动就关闭 keepalived 为例）</p>
+
+
+
+<h4>5.3 修改 proxy1 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 101
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 101，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.4 修改 proxy2 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 99
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 99，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.5 启动 Keepalived 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now keepalived.service</code></pre>
+
+
+
+<h3>步骤六：测试网站负载均衡加高可用</h3>
+
+
+
+<h4>6.1 正常情况下测试网站服务</h4>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+
+
+
+<h4>6.2 在单节点故障的情况下测试网站服务</h4>
+
+
+
+<h5>6.2.1 关闭 proxy1、proxy2、web1、web2 中的任意一台服务器</h5>
+
+
+
+<p>（只在 proxy1、proxy2、web1、web2 中的任意一台服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>6.2.2 测试网站服务</h5>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 的使用 （开启网页目录结构）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-index/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jul 2020 13:32:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10205</guid>
+
+					<description><![CDATA[注意： 在开启 Nginx 网页目录结构之前要先安装 Nginx 正文： 内容一：开启 Nginx 目录结构的目的 默认安装了 Nginx 之后，被访问的网页只会显示一张 Nginx 的欢迎页面或者 404有时候我们需要让网页现实网页根目录中的文件和目录，用于提供 http 下载等功能，这个时候就需要开启 Nginx 的目录结构 内容二：开启 Nginx 目录结构的方法 将部分内容修改如下： （补充：1) 这里是在 localtion 下面添加开启目录结构的参数2) 这里的 autoindex on 表示开启目录结构3) 这里的 autoindex_exact_size on 表示显示文件大小4) 这里的 autoindex_localtime on 表示显示服务器的时间5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码6) 这里的 add_header Content-Disposition attachment 表示文件可下载） 或者： 将部分内容修改如下： （补充：1) 这里是在 server 下面添加开启目录结构的参数2) 这里的 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-index/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Nginx 的使用 （开启网页目录结构）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在开启 Nginx 网页目录结构之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：开启 Nginx 目录结构的目的</h3>
+
+
+
+<p>默认安装了 Nginx 之后，被访问的网页只会显示一张 Nginx 的欢迎页面或者 404<br>有时候我们需要让网页现实网页根目录中的文件和目录，用于提供 http 下载等功能，这个时候就需要开启 Nginx 的目录结构</p>
+
+
+
+<h3>内容二：开启 Nginx 目录结构的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+server {
+......
+location /{
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+}
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 localtion 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+server {
+......
+location /{
+......
+}
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 server 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+server {
+......
+location /{
+......
+}
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 http 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 认证 （输入密码后才能访问网页）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-authenticate/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Sep 2019 10:45:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5714</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 认证以后才能登录网页之前要先安装 Nginx 正文： 步骤一：生成登录网页的用户和密码 1.1 安装生成登录网页用户和密码的工具 1.2 生成一个登录网页的用户，同时删除所有旧有的用户 （补充：这里以删除原来的所有用户新增 zhuming1 用户为例） 1.3 增加一个新的登录网页的用户 （补充：这里以新增 zhumingyu2 用户为例） 步骤二：修改 Nginx 的配置文件 将部分内容修改如下： 步骤三：启动 Nginx 服务 步骤四：此时访问网页就必须输入用户名和密码 （步骤略） （补充：可以输入刚刚添加的 zhumingyu1 和 zhumingyu2 的用户名和密码）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 认证以后才能登录网页之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：生成登录网页的用户和密码</h3>
+
+
+
+<h4>1.1 安装生成登录网页用户和密码的工具</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd-tools</code></pre>
+
+
+
+<h4>1.2 生成一个登录网页的用户，同时删除所有旧有的用户</h4>
+
+
+
+<pre class="wp-block-code"><code># htpasswd -c /usr/local/nginx/pass zhumingyu1</code></pre>
+
+
+
+<p>（补充：这里以删除原来的所有用户新增 zhuming1 用户为例）</p>
+
+
+
+<h4>1.3 增加一个新的登录网页的用户</h4>
+
+
+
+<pre class="wp-block-code"><code># htpasswd /usr/local/nginx/pass zhumingyu2</code></pre>
+
+
+
+<p>（补充：这里以新增 zhumingyu2 用户为例）</p>
+
+
+
+<h3>步骤二：修改 Nginx 的配置文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+server {
+listen 80;
+server_name localhost;
+auth_basic "input password";
+auth_basic_user_file “/usr/local/nginx/pass”;
+location /{
+root html;
+root html;
+index index.html index.htm;
+}
+......
+}
+......</code></pre>
+
+
+
+<h3>步骤三：启动 Nginx 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx</code></pre>
+
+
+
+<h3>步骤四：此时访问网页就必须输入用户名和密码</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（补充：可以输入刚刚添加的 zhumingyu1 和 zhumingyu2 的用户名和密码）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 虚拟机主机的设置 （设置多域名、IP 地址或端口）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Sep 2019 10:42:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5711</guid>
+
+					<description><![CDATA[注意： 在添加 Nginx 域名、IP 地址或端口的虚拟机主机之前要先安装 Nginx 正文： 将部分内容修改如下： （补充：这里以将本地的 80 端口设置为 www.eternalcenter.com 的虚拟机为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在添加 Nginx 域名、IP 地址或端口的虚拟机主机之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+Server {
+Listen 80;
+Server_name www.eternlcenter.com;
+Location / {
+Root www;
+Index index.html index.html;
+}
+}
+......</code></pre>
+
+
+
+<p>（补充：这里以将本地的 80 端口设置为 www.eternalcenter.com 的虚拟机为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx SSL 的设置 （HTTPS）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-ssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 05 Sep 2019 06:13:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5700</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 重定向之前要先安装 Nginx 正文： 步骤一：生成网站所使用的私钥和公钥 步骤二：修改 Nginx 的配置文件 将部分内容修改如下：]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 重定向之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-5 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h4>步骤一：生成网站所使用的私钥和公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># cd /usr/local/nginx/conf
+# openssl genrsa &gt; cert.key
+# openssl req -new -x509 -key cert.key &gt; cert.pem</code></pre>
+
+
+
+<h4>步骤二：修改 Nginx 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+server {
+listen 443
+server_name www.c.com;
+ssl_certificate     cert.pem;
+ssl_certificate_key cert.key;
+
+location /{
+root html;
+index index.html index.htm;
+}
+......
+}
+......</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 代理的设置 （HTTP 和 SSH）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-agent-set/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 05 Sep 2019 06:04:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Other Service Cluster (其它服务集群)]]></category>
+		<category><![CDATA[Other Service Load Balancing Cluster (其它服务负载均衡集群)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SSH + Nginx]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5698</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 代理之前要先安装 Nginx 正文： 内容一：设置 Nginx HTTP 代理 将部分内容修改如下： 或者： 内容二：设置 Nginx SSH 代理 将部分内容修改如下：]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 代理之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-6 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：设置 Nginx HTTP 代理</h3>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+upstream webserver {
+   server 192.168.1.100:80;
+   server 192.168.1.200:80;
+}
+.....
+server {
+listen 80;
+server_name www.eternalcenter.com;
+location / {
+proxy_pass http://webserver;/
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+upstream webserver {
+Server    192.168.2.100    weight=1    max_fails=1  fail_timeout=30;
+Server    192.168.2.200    weight=2    max_fails=2  fail_timeout=30;
+Server    192.168.2.101    down;
+}
+.....
+server {
+listen 80;
+server_name www.eternalcenter.com;
+location / {
+proxy_pass http://webserver;/
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<h3>内容二：设置 Nginx SSH 代理</h3>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>stream {
+upstream backend {
+server 192.168.1.100:22;
+server 192.168.1.200:22;
+}
+server{
+listen 222;
+proxy_connect_timeout 1s;
+proxy_pass backend;
+}
+}
+
+http{
+......
+}</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 重定向的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-redirect/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 04 Sep 2019 12:00:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5694</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 重定向之前要先安装 Nginx 正文： 内容一：Nginx 重定向的常用变量和参数 1.1 Nginx 重定向的常用变量 1.2 Nginx 重定向的常用参数 rewrite 旧地址 新地址 [选项]last 不再读其他 rewrite 类似与 shell 的 continuebreak 不再读取其他语句，结束请求 类似于 shell 的 breakredirect 临时重定向permament 永久重定向 内容二：Nginx 重定向的案例 2.1 案例一：将域名或 IP 重定向到别的域名或 IP 将部分内容修改如下： （补充：这里以将本地的 80 端口重定向到 www.eternalcenter.com 为例） 2.2 案例二：将域名以及域名下面的子地址指向到别的域名以及它的子地址并一一对应 将部分内容修改如下： （补充：这里以将本地的 80 端口及其子地址重定向到 www.eternalcenter.com 及其子地址为例） 2.3 案例三：将指向本地 a.html &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-redirect/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Nginx 重定向的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 重定向之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-7 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：Nginx 重定向的常用变量和参数</h3>
+
+
+
+<h4>1.1 Nginx 重定向的常用变量</h4>
+
+
+
+<pre class="wp-block-code"><code>#log_format  main  '$remote_addr - $remote_user &#91;$time_local] "$request" '
+#'$status $body_bytes_sent "$http_referer" '
+#'"$http_user_agent" "$http_x_forwarded_for"';</code></pre>
+
+
+
+<h4>1.2 Nginx 重定向的常用参数</h4>
+
+
+
+<p>rewrite 旧地址 新地址 [选项]<br>last 不再读其他 rewrite 类似与 shell 的 continue<br>break 不再读取其他语句，结束请求 类似于 shell 的 break<br>redirect 临时重定向<br>permament 永久重定向</p>
+
+
+
+<h3>内容二：Nginx 重定向的案例</h3>
+
+
+
+<h4>2.1 案例一：将域名或 IP 重定向到别的域名或 IP</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        rewrite ^/ http://www.eternalcenter.com/;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以将本地的 80 端口重定向到 www.eternalcenter.com 为例）</p>
+
+
+
+<h4>2.2 案例二：将域名以及域名下面的子地址指向到别的域名以及它的子地址并一一对应</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        rewrite ^/(.*)$ http://www.eternalcenter.com/$1;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以将本地的 80 端口及其子地址重定向到 www.eternalcenter.com 及其子地址为例）</p>
+
+
+
+<h4>2.3 案例三：将指向本地 a.html 的文件指向本地文件 b.html</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+            rewrite /a.html /b.html;
+        }
+......
+        }
+......</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+            rewrite /a.html /b.html redirect;
+        }
+......
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以将本地的 80 端口下的 a.html 重定向到 b.html 为例）</p>
+
+
+
+<h4>2.4 案例四：不同的浏览器返回不通的网页</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        if ($http_user_agent ~* firefox){
+        Rewrite ^(.*)$ /firefox/$1;
+        }
+......
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以将 $http_user_agent 变量包含 firefox 的访问重定向到 /firefox/ 下对应的文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 第三方软件源的使用 （通过 webtatic 安装 php）（CentOS Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/webtatic-centos-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 14 Apr 2019 08:45:44 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4074</guid>
+
+					<description><![CDATA[内容一：为什么使用第三方软件源 本地搭建的软件源往往会有以下缺点： 1) 软件不够全，需要使用的软件没有2) 软件版本不够高，在功能、性能和安全方面达不到要求3) 使用第三方网络软件源有时可以解决以上问题 内容二：webtatic 2.1 webtatic 源简介 1) webtatic 是一个致力于将实现 web 服务的各类软件2) webtatic 通过 yum 安装3) webtatic 是一个免费的开源 yum 源项目 （注意：1) webtatic 项目并没有在社区认可的软件源列表中：2) 社区认可的软件源列表网址：https://wiki.centos.org/zh/AdditionalResources/Repositories） 2.2 使用 webtatic 的方法 （注意：1) 如果过去已经使用了其他的第三方 yum 源，最好先删除原来的第三方 yum 源2) 如果过去已经安装了相应的软件，最好先删除这些软件而不是使用第三方 yum 源对他们进行升级） 2.2.1 安装 webtatic 的 epel 2.2.2 安装 webtatic 2.2.3 清理原来的 yum 源缓存 2.2.4 此时可以开始安装软件了 2.2.4.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/webtatic-centos-rhel/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] 第三方软件源的使用 （通过 webtatic 安装 php）（CentOS Linux &#038; RHEL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-为什么使用第三方软件源">内容一：为什么使用第三方软件源</h3>
+
+
+
+<p>本地搭建的软件源往往会有以下缺点：</p>
+
+
+
+<p>1) 软件不够全，需要使用的软件没有<br>2) 软件版本不够高，在功能、性能和安全方面达不到要求<br>3) 使用第三方网络软件源有时可以解决以上问题</p>
+
+
+
+<h3 id="内容二-webtatic-2-1-webtatic-源简介">内容二：webtatic</h3>
+
+
+
+<h4 id="内容二-webtatic-2-1-webtatic-源简介">2.1 webtatic 源简介</h4>
+
+
+
+<p>1) webtatic 是一个致力于将实现 web 服务的各类软件<br>2) webtatic 通过 yum 安装<br>3) webtatic 是一个免费的开源 yum 源项目</p>
+
+
+
+<p>（<br>注意：<br>1) webtatic 项目并没有在社区认可的软件源列表中：<br>2) 社区认可的软件源列表网址：https://wiki.centos.org/zh/AdditionalResources/Repositories<br>）</p>
+
+
+
+<h4 id="2-2-使用-webtatic-的方法">2.2 使用 webtatic 的方法</h4>
+
+
+
+<p>（<br>注意：<br>1) 如果过去已经使用了其他的第三方 yum 源，最好先删除原来的第三方 yum 源<br>2) 如果过去已经安装了相应的软件，最好先删除这些软件而不是使用第三方 yum 源对他们进行升级<br>）</p>
+
+
+
+<h5 id="2-2-1-安装-webtatic-的-epel">2.2.1 安装 webtatic 的 epel</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm</code></pre>
+
+
+
+<h5 id="2-2-2-安装-webtatic">2.2.2 安装 webtatic</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</code></pre>
+
+
+
+<h5 id="2-2-3-清理原来的-yum-源缓存">2.2.3 清理原来的 yum 源缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h5 id="2-2-4-此时可以开始安装软件了-2-2-4-1-显示所有软件列表">2.2.4 此时可以开始安装软件了</h5>
+
+
+
+<h5 id="2-2-4-此时可以开始安装软件了-2-2-4-1-显示所有软件列表">2.2.4.1 显示所有软件列表</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all</code></pre>
+
+
+
+<h5 id="2-2-4-2-安装想要的软件爱你">2.2.4.2 安装想要的软件爱你</h5>
+
+
+
+<p># yum install &lt;softeware&gt;</p>
+
+
+
+<h5 id="2-2-5-删除-webtatic">2.2.5 删除 webtatic</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -e epel-release ;; rpm -e webtatic-release</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

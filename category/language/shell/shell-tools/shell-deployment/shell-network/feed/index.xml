@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Network (网络) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-deployment/shell-network/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 10:14:43 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 只对某个 IP 地址开放 TCP 22 端口 （iptables 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-iptables-22-port-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 15 Jul 2020 02:29:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9996</guid>
+
+					<description><![CDATA[介绍 基本信息 名称：只对某个 IP 地址开放 TCP 22 端口作用：只对某个 IP 地址开放 TCP 22 端口 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本分割线里的变量 ipaddress=192.168.1.1 #要开放 TCP 22 端口的 IP 地址 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>名称：只对某个 IP 地址开放 TCP 22 端口<br>作用：只对某个 IP 地址开放 TCP 22 端口</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>ipaddress=192.168.1.1 #要开放 TCP 22 端口的 IP 地址</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+ipaddress=192.168.1.1
+####################### Separator ########################
+
+systemctl stop firewalld
+systemctl disable firewalld
+
+yum -y install iptables-services
+zypper -n install iptables
+
+systemctl enable iptables
+systemctl start iptables
+
+sysctl -w net.ipv4.ip_forward=1
+iptables -t filter -F
+iptables -t nat -F
+
+iptables -P OUTPUT ACCEPT
+#iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT
+
+iptables -t filter -A INPUT -j ACCEPT -s $ipaddress -p tcp --destination-port 22
+iptables -t filter -A INPUT -j DROP -p tcp --destination-port 22
+
+service iptables save
+systemctl restart iptables</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 取消所有已开放的端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-all-number-ports-remove/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:49:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9954</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：取消所有已开放的端口策略作用：取消所有已开放的端口策略 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：取消所有已开放的端口策略<br>作用：取消所有已开放的端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for i in `firewall-cmd --list-all | grep ports | egrep &#91;0-9] | awk -F':' '{print $2}'`
+do
+        pports=`echo $i | awk -F'/' '{print $1}'`
+        ptus=`echo $i | awk -F'/' '{print $2}'`
+
+        firewall-cmd --remove-port=$pports/$ptus --permanent
+
+done
+
+firewall-cmd --add-service=ssh --permanent
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 开放所有正处于监听状态的端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-listening-number-ports-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:24:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9939</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：开放所有正处于监听状态的端口策略作用：开放所有正处于监听状态的端口策略 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：开放所有正处于监听状态的端口策略<br>作用：开放所有正处于监听状态的端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for k in `ss -ntulap |grep 0.0.0.0 | grep LISTEN | awk '{print $5}' | awk -F':' '{print $2}'`
+do 
+        firewall-cmd --add-port=$k/tcp --permanent
+done
+
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量对多个 IP 地址开发多个端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-number-ports-rich-rules-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:20:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9937</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量对多个 IP 地址开发多个端口策略作用：批量对多个 IP 地址开发多个端口策略 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1.ips=&#8221;192.168.2.1 192.168.1.0/24&#8243; #要开放端口的 IP 地址2.ports&#8221;22 3306 8080-8090&#8243; #要开放的端口 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量对多个 IP 地址开发多个端口策略<br>作用：批量对多个 IP 地址开发多个端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1.ips=&#8221;192.168.2.1 192.168.1.0/24&#8243; #要开放端口的 IP 地址<br>2.ports&#8221;22 3306 8080-8090&#8243; #要开放的端口</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+ips="192.168.2.1 192.168.1.0/24"
+ports"22 3306 8080-8090"
+
+####################### Separator ########################
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for i in $ips
+do
+        for j in $ports
+        do
+                firewall-cmd --add-rich-rule="rule family="ipv4" source address="$i" port protocol="tcp" port="$j" accept" --permanent
+        done
+        echo $i done
+        echo
+done
+
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

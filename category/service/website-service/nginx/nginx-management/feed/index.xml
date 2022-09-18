@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Nginx Management (管理) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/website-service/nginx/nginx-management/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 10:26:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 博客 WordPress 数据去隐私化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 16:12:50 +0000</pubDate>
+				<category><![CDATA[Automation Maintenance (自动化运维)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19868</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：Shell 博客 WordPress 数据去隐私化作用：修改 WordPress 备份中某个用户的密码并再次进行备份 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份6. newfilename=clone-eternalcenter-backup #新备份的文件名7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户8. newpw=eternalcenter #新的用户密码9. dbuser=ec #用于连接数据库的用户10. dbuserpw=eternalcenter #用于连接数据库的密码11. db=ec #网站数据库数据在数据库中的库 注意 1. 本地需要已经搭建好 LNMP 平台2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 博客 WordPress 数据去隐私化"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：Shell 博客 WordPress 数据去隐私化<br>作用：修改 WordPress 备份中某个用户的密码并再次进行备份</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录<br>4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份<br>5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份<br>6. newfilename=clone-eternalcenter-backup #新备份的文件名<br>7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户<br>8. newpw=eternalcenter #新的用户密码<br>9. dbuser=ec #用于连接数据库的用户<br>10. dbuserpw=eternalcenter #用于连接数据库的密码<br>11. db=ec #网站数据库数据在数据库中的库</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限<br>3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8220;drop database $db;&#8221;“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+cpath="/srv/www/htdocs"
+sqlfile=eternalcenter/eternalcenter.sql
+tarfile=eternalcenter/eternalcenter.tar.gz
+newfilename=clone-eternalcenter-backup
+user='Mingyu Zhu'
+newpw=eternalcenter
+dbuser=ec
+dbuserpw=eternalcenter
+db=ec
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+dir=`pwd`
+
+sudo systemctl stop nginx
+sudo systemctl stop php-fpm
+
+mkdir -p $path/$newfilename-$date &amp;&gt; /dev/null
+
+mysql -uroot -p'eternalcenter' -e "drop database $db;"
+mysql -uroot -p'eternalcenter' -e "create database $db;"
+mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+mysql -uroot -p'eternalcenter' -e "grant all privileges on $db.* to \"$dbuser\"@'localhost';"
+mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+mysql -uroot -p'eternalcenter' -e "update $db.ec_users set user_pass = md5(\'$newpw\') where user_login = \'$user\';"
+sudo rm -rf $cpath/*
+sudo tar -zxvf $tarfile -C $cpath &amp;&gt; /dev/null
+cd $cpath
+sudo sed -i "s/define('DB_PASSWORD', .*);/define('DB_PASSWORD', \'$dbuserpw\');/" wp-config.php
+
+mysqldump -uroot -p'eternalcenter' $db &gt; $path/$newfilename-$date/$newfilename-$date.sql
+sudo tar -zcvf $path/$newfilename-$date/$newfilename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+cd $dir
+
+sudo systemctl start nginx
+sudo systemctl start php-fpm
+
+cd $dir</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程 LNMP 的网站数据库备份到本地</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 14:48:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19861</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程 LNMP 的网站数据库备份到本地作用：将远程 LNMP 的网站数据库备份到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥4. whost=&#8221;eternalcenter.com&#8221; #远程服务器5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录 注意 1. 远程需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程 LNMP 的网站数据库备份到本地"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程 LNMP 的网站数据库备份到本地<br>作用：将远程 LNMP 的网站数据库备份到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥<br>4. whost=&#8221;eternalcenter.com&#8221; #远程服务器<br>5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录<br>7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 远程需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限<br>4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+key="~/.ssh/eternalcenter"
+
+whost="eternalcenter.com"
+wpath="/usr/share/nginx/html"
+wcache="/cache"
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+
+echo "copy eternalcenter data from website to local server"
+ping -c3 -i0.4 $whost &gt; /dev/null
+if &#91; $? -eq 0 ];then
+
+        ssh -i $key $whost "
+        mkdir $wcache &amp;&gt; /dev/null
+        rm -rf $wcache/* &amp;&gt; /dev/null
+        mysqldump -uroot -p'eternalcenter' ec &gt; $wcache/$filename-$date.sql
+        cd $wpath
+        sudo tar -zcvf $wcache/$filename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+        "
+
+        mkdir -p $path/$date &amp;&gt; /dev/null
+        scp -i $key $whost:$wcache/$filename-$date* $path/$date
+
+fi
+echo</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程服务器的 LNMP 备份在本地复原</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 15:05:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19609</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程服务器的 LNMP 备份还原到本地作用：将远程服务器的 LNMP 备份还原到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. tmppath=/cache #本地用于备份数据的目录2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录3. key=”~/.ssh/eternalcenter” #本地私钥4. tmpfile=tmpfile.txt #用于存储记录的文件5. dbuser=ec #网站在数据库中的用户6. ruser=eternalcenter #用于远程服务器的用户7. rhost=eternalcenter.com #远程服务器8. rcache=”/cache” #远程服务器用于备份数据的目录 注意 1. 本地需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限3. 执行此脚本的用户需要有 sudo systemctl 权限4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &#60; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程服务器的 LNMP 备份在本地复原"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程服务器的 LNMP 备份还原到本地<br>作用：将远程服务器的 LNMP 备份还原到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. tmppath=/cache #本地用于备份数据的目录<br>2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录<br>3. key=”~/.ssh/eternalcenter” #本地私钥<br>4. tmpfile=tmpfile.txt #用于存储记录的文件<br>5. dbuser=ec #网站在数据库中的用户<br>6. ruser=eternalcenter #用于远程服务器的用户<br>7. rhost=eternalcenter.com #远程服务器<br>8. rcache=”/cache” #远程服务器用于备份数据的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有 sudo systemctl 权限<br>4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &lt; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root 用户的密码，需要修改成本地 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+tmppath=/cache
+webpath=/usr/share/nginx/html
+key="~/.ssh/eternalcenter"
+tmpfile=tmpfile.txt
+dbuser=ec
+
+ruser=eternalcenter
+rhost=eternalcenter.com
+rcache="/cache"
+
+####################### Separator ########################
+
+nowdirectory=`pwd`
+
+a=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+sleep 10
+b=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+
+if &#91; $a -eq 0 ];then
+	echo "no file"
+fi
+
+if &#91; $a -ne $b ];then
+        echo "backup is running now"
+        exit
+fi
+
+c=0
+
+if &#91; -f $tmpfile ];then
+        c=`cat $tmpfile`
+fi
+
+if &#91; $a -eq $c ];then
+        echo "no new file"
+        exit
+fi
+
+echo $a &gt; $tmpfile
+
+sqlfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep sql | tail -1" | awk '{print $NF}'`
+if &#91; $? -eq 0 ]; then
+
+        tarfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep tar | tail -1" | awk '{print $NF}'`
+        if &#91; $? -eq 0 ]; then
+
+                rm -rf $tmppath/*
+                mkdir $tmppatch &amp;&gt; /dev/null
+
+                echo $sqlfile
+                echo $tarfile
+
+                scp -i $key $ruser@$rhost:$rcache/$sqlfile $tmppath
+                scp -i $key $ruser@$rhost:$rcache/$tarfile $tmppath
+
+#                sudo systemctl stop nginx
+#                sudo systemctl stop php-fpm
+
+                cd $tmppath
+
+                mysql -uroot -p'eternalcenter' -e "drop database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "create database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "grant all privileges on $dbuser.* to \"$dbuser\"@\"localhost\";"
+                mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+
+                sudo rm -rf $webpath/*
+                sudo tar -zxvf $tarfile -C $webpath/ &amp;&gt; /dev/null
+
+#                sudo systemctl start nginx
+#                sudo systemctl start php-fpm
+
+                cd $nowdirectory
+
+        fi
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 信息的显示 （显示版本和已安装的模块） （源码安装版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-info-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 10 Aug 2021 06:22:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17309</guid>
+
+					<description><![CDATA[注意： 只有源码安装的 Nginx 才能使用此方法 步骤一：Nginx 版本的显示 步骤二：Nginx 版本和已安装模块的显示]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>只有源码安装的 Nginx 才能使用此方法</p>
+
+
+
+<h3 id="步骤一-nginx-版本的显示">步骤一：Nginx 版本的显示</h3>
+
+
+
+<pre class="wp-block-code"><code>nginx version: nginx/1.18.0</code></pre>
+
+
+
+<h3 id="步骤二-nginx-版本和已安装模块的显示">步骤二：Nginx 版本和已安装模块的显示</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -V
+nginx version: nginx/1.18.0
+built by gcc 8.3.1 20191121 (Red Hat 8.3.1-5) (GCC) 
+built with OpenSSL 1.1.1g FIPS  21 Apr 2020
+TLS SNI support enabled
+configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux Nginx  源码安装包的管理 （通过 systemd 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/systemctl-service/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 17 Oct 2019 14:32:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5912</guid>
+
+					<description><![CDATA[注意： 在通过 systemd 管理源码安装的软件或自制 rpm 包安装的软件（以 Nginx 为例）之前，先要源码安装 Nginx 或者自制 rpm 包安装 Nginx 正文： 步骤一：创建 Nginx 的 systemd 文件 创建以下内容： 步骤二：导入新创建的 Nginx systemd 配置文件 步骤三：使用 systemd 管理 Nginx 3.1 使用 systemd 启动 Nginx 3.2 使用 systemd 开机自启 Nginx 3.3 使用 systemd 显示 Nginx 的状态]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在通过 systemd 管理源码安装的软件或自制 rpm 包安装的软件（以 Nginx 为例）之前，先要源码安装 Nginx 或者自制 rpm 包安装 Nginx</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/rpm-make/">Linux rpm 软件包的制作<br>（通过 rpm-build 实现）<br>（Nginx 版）</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-创建-nginx-的-systemd-文件">步骤一：创建 Nginx 的 systemd 文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/nginx.service </code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+
+Description=nginx server daemon
+
+Documentation=man:nginx(8)
+
+After=network.target
+
+&#91;Service]
+
+Type=forking
+
+ExecStart=/usr/local/nginx/sbin/nginx
+
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+
+ExecStop=/usr/local/nginx/sbin/nginx -s stop
+
+PrivateTmp=true
+
+&#91;Install]
+
+WantedBy=multi-user.target</code></pre>
+
+
+
+<h3 id="步骤二-导入新创建的-nginx-systemd-配置文件">步骤二：导入新创建的 Nginx systemd 配置文件</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h3 id="步骤三-使用-systemd-管理-ngixn3-1-使用-systemd-启动-nginx">步骤三：使用 systemd 管理 Nginx</h3>
+
+
+
+<h4 id="步骤三-使用-systemd-管理-ngixn3-1-使用-systemd-启动-nginx">3.1 使用 systemd 启动 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx.service</code></pre>
+
+
+
+<h4 id="3-2-使用-systemd-开机自启-nginx">3.2 使用 systemd 开机自启 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nginx.service</code></pre>
+
+
+
+<h4 id="3-3-使用-systemd-显示-nginx-的状态">3.3 使用 systemd 显示 Nginx 的状态</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl status nginx.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 日志的切割</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-log-cut/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Sep 2019 11:15:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5733</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 自动化日志切割并保存之前要先安装 Nginx 正文： 内容一：切割 Nginx 日志的原理 内容二：切割 Nginx 日志的 Shell 脚本 创建以下内容： 内容三：设置 Nginx 日志切割的自动化任务 （补充：这里以每周五的 3 点 3 分执行 /usr/local/nginx/nginxlog.sh 命令为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 自动化日志切割并保存之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：切割 Nginx 日志的原理</h3>
+
+
+
+<pre class="wp-block-code"><code># mv access.log access2.log
+# kill -USR1 $(cat /usr/local/nginx/logs/nginx.pid)</code></pre>
+
+
+
+<h3>内容二：切割 Nginx 日志的 Shell 脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># mkdir -p /usr/local/nginx/
+# vim /usr/local/nginx/nginxlog.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+date=$(date +%Y%m%d)
+logpath=/usr/local/nginx/logs
+mv $logpath/access.log $logpath/access-$date.log
+mv $logpath/error.log   $logpath/error-$date.log
+kill -USR1 $(cat $logpath/nginx.pid)</code></pre>
+
+
+
+<h3>内容三：设置 Nginx 日志切割的自动化任务</h3>
+
+
+
+<pre class="wp-block-code"><code># crontab -e
+03 03 * * 5 /usr/local/nginx/nginxlog.sh</code></pre>
+
+
+
+<p>（补充：这里以每周五的 3 点 3 分执行 /usr/local/nginx/nginxlog.sh 命令为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Nginx 访问网页时报错 414 （数据包头缓存错误）</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-nginx-414/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Sep 2019 10:47:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5716</guid>
+
+					<description><![CDATA[报错代码 解决方法 将部分内容修改如下：]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>414</code></pre>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>.....
+http{
+client_header_buffer_size 1k;
+large_client_header_buffers 4 4k;
+......
+}</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] LNMP 常见错误的解决</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-debug/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2019 13:30:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5692</guid>
+
+					<description><![CDATA[错误一：网页显示 “an error occure” 应该是没有启动 php-fpm，需要启动 php-fpm 错误二：直接下载网页程序 没有动静分离，需要重新配置 Nginx 的配置文件 错误三：网页显示 “File not found” 网页程序放错目录，需要将网页程序放到正确的目录 错误四：网页显示空白 1) PHP 网页程序写错，需要修改 PHP 网页程序2) 运行 php-fpm 的用户对于网页程序没有足够多的权限]]></description>
+										<content:encoded><![CDATA[
+<h3>错误一：网页显示 “an error occure”</h3>
+
+
+
+<p>应该是没有启动 php-fpm，需要启动 php-fpm</p>
+
+
+
+<h3>错误二：直接下载网页程序</h3>
+
+
+
+<p>没有动静分离，需要重新配置 Nginx 的配置文件</p>
+
+
+
+<h3>错误三：网页显示 “File not found”</h3>
+
+
+
+<p>网页程序放错目录，需要将网页程序放到正确的目录</p>
+
+
+
+<h3>错误四：网页显示空白</h3>
+
+
+
+<p>1) PHP 网页程序写错，需要修改 PHP 网页程序<br>2) 运行 php-fpm 的用户对于网页程序没有足够多的权限</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] LNMP 文件清单</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-file/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2019 13:27:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5689</guid>
+
+					<description><![CDATA[注意： 在管理 LNMP 文件之前先要搭建 LNMP 正文： 内容一：LNMP 平台配置文件和日志的存放目录 1.1 Nginx 的配置文件存放目录 1.2 php-fpm 的配置文件存放目录 内容二：LNMP 日志的存放目录 2.1 Nginx 的日志存放目录 2.2 Nginx 的错误日志存放目录 2.3 PHP 的错误日志存放目录]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在管理 LNMP 文件之前先要搭建 LNMP</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-8/">Shell <br>自动化部署 LNMP + SSL 平台<br>（CentOS 8 版）</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：LNMP 平台配置文件和日志的存放目录</h3>
+
+
+
+<h4>1.1 Nginx 的配置文件存放目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<h4>1.2 php-fpm 的配置文件存放目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /etc/php-fpm.d/www.conf</code></pre>
+
+
+
+<h3>内容二：LNMP 日志的存放目录</h3>
+
+
+
+<h4>2.1 Nginx 的日志存放目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /usr/local/nginx/logs/access.log</code></pre>
+
+
+
+<h4>2.2 Nginx 的错误日志存放目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /usr/local/nginx/logs/error.log</code></pre>
+
+
+
+<h4>2.3 PHP 的错误日志存放目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /var/log/php-fpm/www-error.log</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] php-fpm 相关命令</title>
+		<link>https://eternalcenter-sep-2022.github.io/php-fpm-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2019 13:06:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5682</guid>
+
+					<description><![CDATA[注意： 在使用 php-fpm 命令之前要先安装 php-fpm 正文： 内容一：启动 php-fpm 服务 内容二：停止 php-fpm 服务 内容三：启动 php-fpm 服务 内容四：显示被安装 php-fpm 的版本和模块 内容五：显示 php-fpm 的安装目录]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 php-fpm 命令之前要先安装 php-fpm</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/lnmp-build-centos-8/">LNMP 平台的搭建 <br>（CentOS 8 版）</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-启动-php-fpm-服务">内容一：启动 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl start php-fpm</code></pre>
+
+
+
+<h3 id="内容二-停止-php-fpm-服务">内容二：停止 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop php-fpm</code></pre>
+
+
+
+<h3 id="内容三-启动-php-fpm-服务">内容三：启动 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart php-fpm</code></pre>
+
+
+
+<h3 id="内容四-显示被安装-php-fpm-的版本和模块">内容四：显示被安装 php-fpm 的版本和模块</h3>
+
+
+
+<pre class="wp-block-code"><code># php -m</code></pre>
+
+
+
+<h3 id="内容五-显示-php-fpm-的安装目录">内容五：显示 php-fpm 的安装目录</h3>
+
+
+
+<pre class="wp-block-code"><code># whereis php</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Linux  RPM 软件包的制作 （通过 rpm-build 实现） （Nginx 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/rpm-make/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 02 Sep 2019 11:28:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5623</guid>
+
+					<description><![CDATA[注意： 文中的很多信息例如软件的名称等是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 软件准备： 在 Nginx 官网上下载搭建集群所需软件 Nginx： http://nginx.org/en/download.html 正文： 步骤一：系统环境要求 1) 服务器的系统是 CentOS 7 版本2) 服务器系统要配置好 YUM 源 步骤二：准备 rpm-build 软件 2.1 安装 rpm-build 2.2 生成 rpm-build 目录 2.3 显示生成的 rpm-build 目录 步骤三：制作 Nginx 软件的 RPM 包 3.1 将 Nginx 的源码安装包放在固定的位置 （补充：这里要安装的 Nginx 版本是 1.16.1） 3.2 制作 Nginx 的 nginx.spec 文件 将部分内容修改如下： （补充：1) 这里的 Name:nginx &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/rpm-make/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Linux  RPM 软件包的制作 （通过 rpm-build 实现） （Nginx 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>文中的很多信息例如软件的名称等是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Nginx 官网上下载搭建集群所需软件 Nginx：</p>
+
+
+
+<p class="has-text-align-center"><a href="http://nginx.org/en/download.html" target="_blank" rel="noreferrer noopener">http://nginx.org/en/download.html</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统是 CentOS 7 版本<br>2) 服务器系统要配置好 YUM 源</p>
+
+
+
+<h3 id="步骤二-准备-rpm-build-软件2-1-安装-rpm-build">步骤二：准备 rpm-build 软件</h3>
+
+
+
+<h4 id="步骤二-准备-rpm-build-软件2-1-安装-rpm-build">2.1 安装 rpm-build</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install rpm-build</code></pre>
+
+
+
+<h4 id="2-2-生成-rpm-build-目录">2.2 生成 rpm-build 目录</h4>
+
+
+
+<pre class="wp-block-code"><code># rpmbuild -ba nginx.spec
+error: failed to stat /root/nginx.spec: No such file or directory</code></pre>
+
+
+
+<h4 id="2-3-显示生成的-rpm-build-目录">2.3 显示生成的 rpm-build 目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls /root/rpmbuild/
+BUILD  BUILDROOT  RPMS	SOURCES  SPECS	SRPMS</code></pre>
+
+
+
+<h3 id="步骤三-制作-nginx-软件的-rpm-包3-1-将-nginx-的源码安装包放在固定的位置">步骤三：制作 Nginx 软件的 RPM 包</h3>
+
+
+
+<h4 id="步骤三-制作-nginx-软件的-rpm-包3-1-将-nginx-的源码安装包放在固定的位置">3.1 将 Nginx 的源码安装包放在固定的位置</h4>
+
+
+
+<pre class="wp-block-code"><code># cp nginx-1.16.1.tar.gz /root/rpmbuild/SOURCES/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Nginx 版本是 1.16.1）</p>
+
+
+
+<h4 id="3-2-制作-nginx-的-nginx-spec-文件">3.2 制作 Nginx 的 nginx.spec 文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /root/rpmbuild/SPECS/nginx.spec</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>Name:nginx
+Version:1.16.1
+Release:1.0
+Summary:Nginx is a web server software.
+......
+License:GPL
+URL:www.nginx.org
+Source0:%{name}-%{version}.tar
+......
+%description
+nginx is an HTTP and reverse proxy server ......
+......
+%post
+useradd nginx
+......
+%prep
+%setup -q
+......
+%build
+./configure --user=nginx --group=nginx --with-http_ssl_module
+make %{?_smp_mflags}
+%install
+make install DESTDIR=%{buildroot}
+......
+%files
+......
+%doc
+/usr/local/nginx/*
+......
+%changelog</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 Name:nginx 是指软件名称是 nginx<br>2) 这里的 Version:1.16.1 是指软件的版本是 1.16.1<br>3) 这里的 Release:1.0 是指发布的版本是 1。0<br>4) 这里的 Summary: Nginx is a web server software. 是指软件的描述是 Summary: Nginx is a web server software.<br>5) 这里的 License:GPL 是指软件使用的协议是 GPL<br>6) 这里的 URL:www.nginx.org 是指软件的官网是 www.nginx.org<br>7) 这里的 Source0:%{name}-%{version}.tar 是指软件源码文件的名称<br>8) 这里的 #BuildRequires: 是指软件编译安装时需要的依赖包，这里没有内容<br>9) 这里的 #Requires: 是指软件安装时所需要的依赖包，这里没有内容<br>10) 这里的 %description 是指软件的详细描述，这里没有内容<br>11) 这里的</p>
+
+
+
+<pre class="wp-block-code"><code>%post
+useradd nginx</code></pre>
+
+
+
+<p>是指软件安装后创建 nginx 用户</p>
+
+
+
+<p>12) 这里的 %prep 是指软件安装前的准备，这里没有内容<br>13) 这里的 %setup –q 是指自动解压软件的源码包，并 cd 进入刚刚解压出来的目录<br>14) 这里的</p>
+
+
+
+<pre class="wp-block-code"><code>%build
+./configure
+make %{?_smp_mflags}</code></pre>
+
+
+
+<p>是指对源码安装包进行配置<br>15) 这里的</p>
+
+
+
+<pre class="wp-block-code"><code>%install
+make install DESTDIR=%{buildroot}</code></pre>
+
+
+
+<p>是指对源码安装包进行编译安装<br>16) 这里的</p>
+
+
+
+<pre class="wp-block-code"><code>%files
+%doc
+/usr/local/nginx/*</code></pre>
+
+
+
+<p>是指将源码安装包安装到 /usr/local/nginx/ 目录里<br>）</p>
+
+
+
+<h4 id="3-4-安装-nginx-软件的依赖包">3.4 安装 Nginx 软件的依赖包</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc pcre-devel openssl-devel</code></pre>
+
+
+
+<h4 id="3-5-生成-nginx-rpm-软件包">3.5 生成 Nginx rpm 软件包</h4>
+
+
+
+<pre class="wp-block-code"><code># rpmbuild -ba /root/rpmbuild/SPECS/nginx.spec</code></pre>
+
+
+
+<h4 id="3-6-显示新生成的-nginx-rpm-软件包">3.6 显示新生成的 Nginx rpm 软件包</h4>
+
+
+
+<pre class="wp-block-code"><code># rpm -qpi /root/rpmbuild/RPMS/x86_64/nginx-1.16.1-1.0.x86_64.rpm</code></pre>
+
+
+
+<h3 id="步骤四-使用新生成的-nginx-rpm-软件包4-1-安装刚刚新生成的-nginx-rpm-软件包">步骤四：使用新生成的 Nginx rpm 软件包</h3>
+
+
+
+<h4 id="步骤四-使用新生成的-nginx-rpm-软件包4-1-安装刚刚新生成的-nginx-rpm-软件包">4.1 安装刚刚新生成的 Nginx rpm 软件包</h4>
+
+
+
+<pre class="wp-block-code"><code># rpm -ivh /root/rpmbuild/RPMS/x86_64/nginx-1.16.1-1.0.x86_64.rpm</code></pre>
+
+
+
+<h4 id="4-2-启动-nginx-服务">4.2 启动 Nginx 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx</code></pre>
+
+
+
+<h4 id="4-3-显示-nginx-服务的启动状态4-3-1-显示-nginx-网页是否可以访问">4.3 显示 Nginx 服务的启动状态</h4>
+
+
+
+<h5 id="4-3-显示-nginx-服务的启动状态4-3-1-显示-nginx-网页是否可以访问">4.3.1 显示 Nginx 网页是否可以访问</h5>
+
+
+
+<pre class="wp-block-code"><code># curl http://127.0.0.1/</code></pre>
+
+
+
+<h5 id="4-3-2-显示-nginx-的端口有没有启动">4.3.2 显示 Nginx 的端口有没有启动</h5>
+
+
+
+<pre class="wp-block-code"><code># ss -ntulap | grep 80</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Nginx 的使用 （管理命令）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 06 Feb 2019 12:59:25 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2625</guid>
+
+					<description><![CDATA[注意： 在使用 Nginx 命令之前要先安装 Nginx 正文： 内容一：启动 Nginx 服务 内容二：停止 Nginx 服务 内容三：重启 Nginx 服务 内容四：显示被安装 Nginx 的版本和模块 内容五：创建 Nginx 快捷方式]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Nginx 命令之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-5 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-启动-nginx-服务">内容一：启动 Nginx 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx</code></pre>
+
+
+
+<h3 id="内容二-停止-nginx-服务">内容二：停止 Nginx 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -s stop</code></pre>
+
+
+
+<h3 id="内容三-重启-nginx-服务">内容三：重启 Nginx 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/ngixn -s reload</code></pre>
+
+
+
+<h3 id="内容四-显示被安装-nginx-的版本和模块">内容四：显示被安装 Nginx 的版本和模块</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -V</code></pre>
+
+
+
+<h3 id="内容五-创建-nginx-快捷方式">内容五：创建 Nginx 快捷方式</h3>
+
+
+
+<pre class="wp-block-code"><code># ln -s /usr/local/nginx/sbin/nginx /sbin/nginx</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[生产] Shell 将网站的全量数据备份到本电脑并运行 （Mac 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-backup-mac/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Feb 2019 16:25:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2546</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将网站的全量数据备份到本电脑并运行（Mac 版）作用：将一台 Web 服务器上的网页文件和数据库数据全量备份到本地 Mac 主机，再通过本地的 Mac 主机 Web 服务将它跑起来 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 可以设置定时任务让他定期自动执行，也就是（sudo crontab -e） 脚本分割线里的变量 1. user=root #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限2. ip=8.8.8.8 # Web 服务器的 IP3. dbadmin=root #Web 服务器备份 MariaDB 数据库的数据库用户4. dbpassword=&#8221;&#8216;123456&#8242;&#8221; #Web 服务器备份MariaDB 数据库的用户的密码5. path=/backup #本地主机放置备份的目录6. filename=backup #备份文件的中间名7. cache=/cache #Web服务器用来缓存备份的目录，请确保这个目录没有其他用途，且能被登录 Web 服务器的用户创建8. html=/web-file #本地主机存放网页文件的目录，请确保当前的 Mac 系统用户对他有写和执行权限否则请更改网页文件的目录 注意 1. 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-backup-mac/" class="more-link">Continue reading<span class="screen-reader-text"> "[生产] Shell 将网站的全量数据备份到本电脑并运行 （Mac 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将网站的全量数据备份到本电脑并运行（Mac 版）<br>作用：将一台 Web 服务器上的网页文件和数据库数据全量备份到本地 Mac 主机，再通过本地的 Mac 主机 Web 服务将它跑起来</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 可以设置定时任务让他定期自动执行，也就是（sudo crontab -e）</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. user=root #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限<br>2. ip=8.8.8.8 # Web 服务器的 IP<br>3. dbadmin=root #Web 服务器备份 MariaDB 数据库的数据库用户<br>4. dbpassword=&#8221;&#8216;123456&#8242;&#8221; #Web 服务器备份MariaDB 数据库的用户的密码<br>5. path=/backup #本地主机放置备份的目录<br>6. filename=backup #备份文件的中间名<br>7. cache=/cache #Web服务器用来缓存备份的目录，请确保这个目录没有其他用途，且能被登录 Web 服务器的用户创建<br>8. html=/web-file #本地主机存放网页文件的目录，请确保当前的 Mac 系统用户对他有写和执行权限否则请更改网页文件的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器<br>2. 请保证本机的 MariaDB 并没有设置密码<br>3. 此脚本执行前必须要先保证执行脚本的主机 MAMP 平台已经搭建好了<br>4. 本地 MairaDB 的密码为空<br>5. 此脚本备份的网页文件是 WordPress</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+user=root
+ip=8.8.8.8
+dbadmin=root
+dbpassword="'123456'"
+path=/backup
+filename=backup
+cache=/cache
+html=/web-file
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+
+ping -c3 -i0.8 $ip &gt; /dev/null
+
+if &#91; $? -eq 0 ];then
+
+        ssh $user@$ip "mkdir $cache &amp;&gt; /dev/null"
+        ssh $user@$ip "mysqldump -u$dbadmin -p"$dbpassword" -A &gt; $cache/$filename-$date.sql"
+        ssh $user@$ip "cd /usr/local/nginx/html/
+        tar -cvf $cache/$filename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null"
+
+        mkdir -p $path/$date &amp;&gt; /dev/null
+        scp $user@$ip:$cache/$filename-$date.sql $path/$date
+        scp $user@$ip:$cache/$filename-$date.tar.gz $path/$date
+        ssh $user@$ip "rm -rf $cache\*"
+
+fi
+
+rm -rf $html/*
+tar -xvf $path/$date/$filename-$date.tar.gz -C $html/
+mysql -u$dbadmin &lt; $path/$date/$filename-$date.sql
+rm -rf $html/index.html
+
+sed -i "" s/"'DB_USER', '.*'"/"'DB_USER', 'root'"/ $html/wp-config.php
+sed -i "" s/"'DB_PASSWORD', '.*'"/"'DB_PASSWORD', ''"/ $html/wp-config.php
+sed -i "" s/"'DB_HOST', '.*'"/"'DB_HOST', '127.0.0.1:3306'"/ $html/wp-config.php
+mysqladmin -uroot password ''</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

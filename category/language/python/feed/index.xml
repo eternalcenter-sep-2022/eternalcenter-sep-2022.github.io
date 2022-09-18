@@ -1,0 +1,6219 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/python/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 12:31:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Python splite 字符串切割</title>
+		<link>https://eternalcenter-sep-2022.github.io/splite/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 10 Aug 2021 08:34:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17313</guid>
+
+					<description><![CDATA[内容一：splite 的格式 内容二：splite 的使用案例 2.1 案例一：以一行行的方式进行分割 （补充：这里以给 string 字符串以一行行的方式进行分割为例） 2.2 案例二：制作表格 （补充：这里以给 string 字符串制成表格为例） 2.3 案例三：以空格的方式进行分割 或者： （补充：这里以给 string 字符串以空格的方式进行分割为例） 2.4 案例四：以空格的方式进行分割，并截取第 1 个单词 （补充：这里以给 string 字符串以空格的方式进行分割，并截取第 1 个单词为例） 2.5 案例五：以空格的方式进行分割，并截取最后 1 个单词 （补充：这里以给 string 字符串以空格的方式进行分割，并截取最后 1 个单词为例） 2.6 案例六：以字母进行分割 （补充：这里以给 string 字符串以字母的方式进行分割为例） （注意：要先导入 re 函数） 2.7 案例七：以冒号 “:” 进行分割 （补充：这里以给 string 字符串以冒号 “:” 的方式进行分割为例） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/splite/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Python splite 字符串切割"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：splite 的格式</h3>
+
+
+
+<pre class="wp-block-code"><code>&lt;character string&gt;.splite('&lt;separator&gt;', &lt;split several times&gt;)&#91;&lt;which number of word place&gt;]</code></pre>
+
+
+
+<h3>内容二：splite 的使用案例</h3>
+
+
+
+<h4>2.1 案例一：以一行行的方式进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite('\n')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以一行行的方式进行分割为例）</p>
+
+
+
+<h4>2.2 案例二：制作表格</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite('\t')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串制成表格为例）</p>
+
+
+
+<h4>2.3 案例三：以空格的方式进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite(, -1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割为例）</p>
+
+
+
+<h4>2.4 案例四：以空格的方式进行分割，并截取第 1 个单词</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()&#91;0]</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割，并截取第 1 个单词为例）</p>
+
+
+
+<h4>2.5 案例五：以空格的方式进行分割，并截取最后 1 个单词</h4>
+
+
+
+<pre class="wp-block-code"><code># string = string.splite()&#91;-1]</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以空格的方式进行分割，并截取最后 1 个单词为例）</p>
+
+
+
+<h4>2.6 案例六：以字母进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = re.split(r"&#91;^A-Za-z]", line.strip())</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以字母的方式进行分割为例）</p>
+
+
+
+<p>（注意：要先导入 re 函数）</p>
+
+
+
+<h4>2.7 案例七：以冒号 “:” 进行分割</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.splite(':')</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割为例）</p>
+
+
+
+<h4>2.8 案例八：以冒号 “:” 进行分割，只分割 1 次，并从开头开始计数</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.splite(':', 1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割，只分割 1 次，并从开头开始计数为例）</p>
+
+
+
+<h4>2.9 案例九：以冒号 “:” 进行分割，只分割 1 次，并从末尾开始计数</h4>
+
+
+
+<pre class="wp-block-code"><code># splite = string.rsplite(':', 1)</code></pre>
+
+
+
+<p>（补充：这里以给 string 字符串以冒号 “:” 的方式进行分割，只分割 1 次，并从末尾开始计数为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 截取某一个 Linux 命令所有行的第一列</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-first-column/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 09 Aug 2021 12:27:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17305</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 用 python3 命令执行此脚本 脚本分割线里的变量 command=&#8217;df -h&#8217; #要执行的 Linux 命令 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 用 python3 命令执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>command=&#8217;df -h&#8217; #要执行的 Linux 命令</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+  
+####################### Separator ########################
+
+command='df -h' #Linux command to execute
+
+####################### Separator ########################
+
+info = subprocess.check_output('%s'%command, shell=True)
+info = info.decode().strip()
+
+lines = info.split('\n')
+for line in lines:
+
+    word = line.split()&#91;0]
+    print(word)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 一个脚本调用另一个脚本的函数执行 Linux 命令并返回执行结果</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-function-linux-command-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 28 Jul 2021 08:33:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17162</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个2. 目录下3. 给此脚本添加执行权限4. 用 python3 命令执行第 1 个脚本 注意 执行此脚本之前要先安装 ansible 命令，并可以让 ansible 命令控制名为 test 的服务器 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个2. 目录下<br>3. 给此脚本添加执行权限<br>4. 用 python3 命令执行第 1 个脚本</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行此脚本之前要先安装 ansible 命令，并可以让 ansible 命令控制名为 test 的服务器</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>from cpu_sub import *
+
+sename='test'
+
+out1=cpu(sename)
+out1=out1.decode().strip()
+
+print(out1)
+
+out2=mem(sename)
+out2=out2.decode().strip()
+
+print(out2)
+
+out3=time(sename)
+out3=out3.decode().strip()
+
+print(out3)</code></pre>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+
+def cpu(sname):
+    out = subprocess.check_output('ansible -m shell -a \'cat /proc/cpuinfo | egrep "core id|physical id" | tr -d "\n" | sed s/physical/\\nphysical/g | grep -v ^$ | sort | uniq | wc -l\' %s | tail -1'%sname, shell=True)
+    return(out)
+
+def mem(sname):
+    out = subprocess.check_output('ansible -m shell -a \'free -m\' %s | grep -i mem'%sname, shell=True)
+    return(out)
+
+def time(sname):
+    out = subprocess.check_output('ansible -m shell -a \'uptime\' %s | tail -1'%sname, shell=True)
+    return(out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 一个脚本调用另一个脚本的函数</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-function-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 26 Jul 2021 12:46:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17101</guid>
+
+					<description><![CDATA[介绍 使用方法：1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下2. 给此脚本添加执行权限3. 用 python3 命令执行第一个脚本 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<p>使用方法：<br>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下<br>2. 给此脚本添加执行权限<br>3. 用 python3 命令执行第一个脚本</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>from test_sub import * 
+
+a=2
+b=3
+
+out=nsum(a,b)
+
+print(out)</code></pre>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>def nsum(x,y):
+    out = x + y
+    return(out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python  一个脚本调用另一个脚本</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-script-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 12:19:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16911</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下2. 给 2 个脚本添加执行权限3. 用 python3 命令执行第 1 个脚本 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个目录下<br>2. 给 2 个脚本添加执行权限<br>3. 用 python3 命令执行第 1 个脚本</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+
+test=subprocess.Popen(&#91;'python3', './test_sub.py'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+out=test.decode().strip()
+
+print(out)</code></pre>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>def sum(a,b):
+    return(a + b)
+
+c = 4
+b = 2
+
+print(sum(c,b))</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 实现数据原子性</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-atomic/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 08:49:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16906</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 自定义逻辑添加（通过自定义 save 对象实现）（一次性完成多对多表数据的插入）》而继续的 正文： 将 mysite/user/models.py 中的以下内容： 修改为：]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 自定义逻辑添加（通过自定义 save 对象实现）（一次性完成多对多表数据的插入）》而继续的</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16840">Django<br>自定义逻辑添加<br>（通过自定义 save 对象实现）<br>（一次性完成多对多表数据的插入）</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<p>将 mysite/user/models.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>class Clazz(models.Model):
+    cname = models.CharField(max_length=30)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    score = models.PositiveBigIntegerField()
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'Student:%s,%s'%(self.sname,self.score)
+
+    def  save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        try:
+            self.cls = Clazz.objects.get(cname=self.cls.cname)
+        except Clazz.DoesNotExist:
+            self.cls = Clazz.objects.create(cname=self.cls.cname)
+
+        #Insertion of student table
+        models.Model.save(self, force_insert=False, force_update=False,using=None, update_fields=None)</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>class Clazz(models.Model):
+    cname = models.CharField(max_length=30)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    score = models.PositiveBigIntegerField()
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'Student:%s,%s'%(self.sname,self.score)
+
+    from django.db.transaction import atomic
+    @atomic
+    def  save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        try:
+            self.cls = Clazz.objects.get(cname=self.cls.cname)
+        except Clazz.DoesNotExist:
+            self.cls = Clazz.objects.create(cname=self.cls.cname)
+
+        #Insertion of student table
+        models.Model.save(self, force_insert=False, force_update=False,using=None, update_fields=None)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 数据修改</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-f/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 08:38:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16902</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的 正文： 步骤一：进入相应的 Django 环境 步骤二：导入数据修改 F 模块 （补充：这里同时也倒入了 Q 模块，后面的实验会用到 Q 模块） 步骤三：设置一个显示上一句 SQL 语句的函数 步骤四：进行数据修改 4.1 单独修改某 1 条数据 4.1.1 单独修改某 1 条数据 （补充：1) 这里以给 id 等于 3 的数据的 score 值添加 5 为例2) 这里共修改了 1 条数据） 4.1.2 显示单独修改某 1 条数据 SQL 语句 （补充：这里以给 id 等于 3 的数据的 score 值添加 5 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-f/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 数据修改"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16856">Django<br>最大值、最小值、平均值<br>等特殊数值的数据查询</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：进入相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h3>步骤二：导入数据修改 F 模块</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import Q,F</code></pre>
+
+
+
+<p>（补充：这里同时也倒入了 Q 模块，后面的实验会用到 Q 模块）</p>
+
+
+
+<h3>步骤三：设置一个显示上一句 SQL 语句的函数</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def showsql():
+...     from django.db import connection
+...     print(connection.queries&#91;-1]&#91;'sql'])
+... </code></pre>
+
+
+
+<h3>步骤四：进行数据修改</h3>
+
+
+
+<h4>4.1 单独修改某 1 条数据</h4>
+
+
+
+<h5>4.1.1 单独修改某 1 条数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(id=3).update(score=F('score')+5)
+1</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以给 id 等于 3 的数据的 score 值添加 5 为例<br>2) 这里共修改了 1 条数据<br>）</p>
+
+
+
+<h5>4.1.2 显示单独修改某 1 条数据 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+UPDATE `user_student` SET `score` = (`user_student`.`score` + 5) WHERE `user_student`.`id` = 3</code></pre>
+
+
+
+<p>（补充：这里以给 id 等于 3 的数据的 score 值添加 5 为例）</p>
+
+
+
+<h4>4.2 批量修改数据</h4>
+
+
+
+<h5>4.2.1 批量修改数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(Q(id__gt=3)).update(score=F('score')+5)
+3</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以给 id 大于 3 的数据的 score 值添加 5 为例<br>2) 这里共修改了 3 条数据<br>）</p>
+
+
+
+<h5>4.2.2 显示批量修改数据的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+UPDATE `user_student` SET `score` = (`user_student`.`score` + 5) WHERE `user_student`.`id` &gt; 3</code></pre>
+
+
+
+<p>（补充：这里以给 id 大于 3 的数据的 score 值添加 5 为例）</p>
+
+
+
+<h3>补充：get 无法对获得的结果进行操作</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.get(id=3).update(score=33)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+AttributeError: 'Student' object has no attribute 'update'</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 前面 filter 返回结果是 QuerySet，所以可以被 update 操作<br>2) 现在 get 的返回结果是 1 个对象，所以不能被 update 操作<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 逻辑条件数据查询</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-q/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 06:59:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16888</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的 正文： 步骤一：进入相应的 Django 环境 步骤二：导入逻辑条件查询 Q 模块 步骤三：设置 1 个显示上 1 句 SQL 语句的函数 步骤四：进行逻辑条件查询 4.1 Django 进行与查询 4.1.1 通过 Q 查询进行与查询 4.1.1.1 通过 Q 查询进行与查询 （补充：1) 这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例2) 这里共查询到了 1 条数据） 4.1.1.2 显示通过 Q 查询进行与查询的 SQL 语句 （补充：这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例） 4.1.2 通过 filter 进行与查询 4.1.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-q/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 逻辑条件数据查询"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16856">Django<br>最大值、最小值、平均值<br>等特殊数值的数据查询</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：进入相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h3>步骤二：导入逻辑条件查询 Q 模块</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import Q</code></pre>
+
+
+
+<h3>步骤三：设置 1 个显示上 1 句 SQL 语句的函数</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def showsql():
+...     from django.db import connection
+...     print(connection.queries&#91;-1]&#91;'sql'])
+... </code></pre>
+
+
+
+<h3>步骤四：进行逻辑条件查询</h3>
+
+
+
+<h4>4.1 Django 进行与查询</h4>
+
+
+
+<h5>4.1.1 通过 Q 查询进行与查询</h5>
+
+
+
+<h5>4.1.1.1 通过 Q 查询进行与查询</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(Q(sname='lisi')&amp;Q(score=80))
+&lt;QuerySet &#91;&lt;Student: Student:lisi,80&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例<br>2) 这里共查询到了 1 条数据<br>）</p>
+
+
+
+<h5>4.1.1.2 显示通过 Q 查询进行与查询的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`id`, `user_student`.`sname`, `user_student`.`score`, `user_student`.`cls_id` FROM `user_student` WHERE (`user_student`.`sname` = 'lisi' AND `user_student`.`score` = 80) LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例）</p>
+
+
+
+<h5>4.1.2 通过 filter 进行与查询</h5>
+
+
+
+<h5>4.1.2.1 通过 filter 进行与查询</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(sname='lisi',score=80)
+&lt;QuerySet &#91;&lt;Student: Student:lisi,80&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例<br>2) 这里共查询到了 1 条数据<br>）</p>
+
+
+
+<h5>4.1.2.2 显示通过 filter 进行与查询的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`id`, `user_student`.`sname`, `user_student`.`score`, `user_student`.`cls_id` FROM `user_student` WHERE (`user_student`.`score` = 80 AND `user_student`.`sname` = 'lisi') LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件的数据为例）</p>
+
+
+
+<h4>4.2 Django 进行或查询</h4>
+
+
+
+<h5>4.2.1 通过 Q 查询进行或查询</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(Q(sname='zhangsan')|Q(score=90))
+&lt;QuerySet &#91;&lt;Student: Student:zhangsan,60&gt;, &lt;Student: Student:wangwu,90&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询同时满足 sname=&#8217;lisi&#8217; 条件或 score=90 条件的数据为例<br>2) 这里共查询到了 1 条数据<br>）</p>
+
+
+
+<h5>4.2.2 显示通过 Q 查询进行或查询的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`id`, `user_student`.`sname`, `user_student`.`score`, `user_student`.`cls_id` FROM `user_student` WHERE (`user_student`.`sname` = 'zhangsan' OR `user_student`.`score` = 90) LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里以查询同时满足 sname=&#8217;lisi&#8217; 条件或 score=90 条件的数据为例）</p>
+
+
+
+<h4>4.3 Django 进行非查询</h4>
+
+
+
+<h5>4.3.1 通过 Q 查询进行非查询</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(~Q(sname='zhangsan'))
+&lt;QuerySet &#91;&lt;Student: Student:lisi,80&gt;, &lt;Student: Student:wangwu,90&gt;, &lt;Student: Student:zhaoliu,70&gt;, &lt;Student: Student:xueer,70&gt;, &lt;Student: Student:huangyi,70&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询 sname=&#8217;zhangsan&#8217; 条件不成立的数据为例<br>2) 这里共查询到了 5 条数据<br>）</p>
+
+
+
+<h5>4.3.2 显示通过 Q 查询进行非查询的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`id`, `user_student`.`sname`, `user_student`.`score`, `user_student`.`cls_id` FROM `user_student` WHERE NOT (`user_student`.`sname` = 'zhangsan') LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里以查询 sname=&#8217;zhangsan&#8217; 条件不成立的数据为例）</p>
+
+
+
+<h4>4.4 Django 进行与非组合查询</h4>
+
+
+
+<h5>4.4.1 通过 Q 查询进行与非组合查询</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter(~Q(sname='zhangsan',score=90))
+&lt;QuerySet &#91;&lt;Student: Student:zhangsan,60&gt;, &lt;Student: Student:lisi,80&gt;, &lt;Student: Student:wangwu,90&gt;, &lt;Student: Student:zhaoliu,70&gt;, &lt;Student: Student:xueer,70&gt;, &lt;Student: Student:huangyi,70&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件不成立的数据为例<br>2) 这里共查询到了 1 条数据<br>）</p>
+
+
+
+<h5>4.4.2 显示通过 Q 查询进行与非组合查询的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`id`, `user_student`.`sname`, `user_student`.`score`, `user_student`.`cls_id` FROM `user_student` WHERE NOT (`user_student`.`score` = 90 AND `user_student`.`sname` = 'zhangsan') LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里以查询同时满足 sname=&#8217;lisi&#8217; 条件和 score=80 条件不成立的数据为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 自定义一个数据查询函数</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-customize-select-function/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 06:29:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16885</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的 正文： 步骤一：进入相应的 Django 环境 步骤二：自定义 1 个查询对象 （补充：这里以自定义名为 test 的自定义查询对象为例） 步骤三：使用自定义查询对象查询数据 （补充：这里以1) 使用 test 对象2) 执行 select * from user_clazz SQL 语句3) 查询结果是 1 Class1，2 Class2 两条数据为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16856">Django<br>最大值、最小值、平均值<br>等特殊数值的数据查询</a></div>
+</div>
+
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：进入相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h3>步骤二：自定义 1 个查询对象</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def test(sql):
+...     from django.db import connection
+...     with connection.cursor() as c:
+...         c.execute(sql)
+...         for info in c.fetchall():
+...             print(info)
+...</code></pre>
+
+
+
+<p>（补充：这里以自定义名为 test 的自定义查询对象为例）</p>
+
+
+
+<h3>步骤三：使用自定义查询对象查询数据</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; test('select * from user_clazz')
+(1, 'Class1')
+(2, 'Class2')</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用 test 对象<br>2) 执行 select * from user_clazz SQL 语句<br>3) 查询结果是 1 Class1，2 Class2 两条数据<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 通过 SQL 语句进行数据查询</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-sql-select/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Jul 2021 01:51:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16877</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的 正文： 步骤一：进入相应的 Django 环境 步骤二：Django SQL 语句完全查询 （补充：这里以查看 user_student 表中的所有数据为例） 步骤三：Django SQL 语句部分查询 3.1 导入 Django SQL 语句部分查询的模块 3.2 Django SQL 语句部分查询（含主键查询） 3.2.1 创建游标（含主键查询） （补充：这里以创建名为 cur 的游标为例） 3.2.2 查询数据并导入游标（含主键查询） （补充：1) 这里以查询 user_student 表里到所有数据并导入 cur 游标为例2) 这里查出的数据总共有 6 条） 3.2.3 将游标里的数据导入到变量里（含主键查询） （补充：这里以将数据导入到 cs 变量里为例） 3.2.4 将游标里的数据以对象的形式显示出来（含主键查询） （补充：这里显示出来的是对象） 3.2.5 将游标里的数据以列表的形式显示出来（含主键查询） （补充：这里打出来的是列表） 3.2.6 关闭游标（含主键查询） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-sql-select/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 通过 SQL 语句进行数据查询"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>本实验是接着 《Django 最大值、最小值、平均值等特殊数值的数据查询》而继续的</p>
+
+
+
+<div class="wp-container-5 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16856">Django<br>最大值、最小值、平均值<br>等特殊数值的数据查询</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-进入相应的-django-环境">步骤一：进入相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h3 id="步骤二-django-sql-语句完全查询">步骤二：Django SQL 语句完全查询</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; user = Student.objects.raw('select * from user_student')
+&gt;&gt;&gt; for s in user:
+...     print(s)
+... 
+Student:zhangsan,60
+Student:lisi,80
+Student:wangwu,90
+Student:zhaoliu,70
+Student:xueer,70
+Student:huangyi,70</code></pre>
+
+
+
+<p>（补充：这里以查看 user_student 表中的所有数据为例）</p>
+
+
+
+<h3 id="步骤三-django-sql-语句部分查询-3-1-导入-django-sql-语句部分查询的模块">步骤三：Django SQL 语句部分查询</h3>
+
+
+
+<h4 id="步骤三-django-sql-语句部分查询-3-1-导入-django-sql-语句部分查询的模块">3.1 导入 Django SQL 语句部分查询的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db import connection</code></pre>
+
+
+
+<h4 id="3-2-django-sql-语句部分查询-含主键查询-3-2-1-创建游标-含主键查询">3.2 Django SQL 语句部分查询（含主键查询）</h4>
+
+
+
+<h5 id="3-2-django-sql-语句部分查询-含主键查询-3-2-1-创建游标-含主键查询">3.2.1 创建游标（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur = connection.cursor()</code></pre>
+
+
+
+<p>（补充：这里以创建名为 cur 的游标为例）</p>
+
+
+
+<h5 id="3-2-2-查询数据并导入游标-含主键查询">3.2.2 查询数据并导入游标（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.execute('select * from user_student')
+6</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询 user_student 表里到所有数据并导入 cur 游标为例<br>2) 这里查出的数据总共有 6 条<br>）</p>
+
+
+
+<h5 id="3-2-3-将游标里的数据导入到变量里-含主键查询">3.2.3 将游标里的数据导入到变量里（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cs = cur.fetchall()</code></pre>
+
+
+
+<p>（补充：这里以将数据导入到 cs 变量里为例）</p>
+
+
+
+<h5 id="3-2-4-将游标里的数据以对象的形式显示出来-含主键查询">3.2.4 将游标里的数据以对象的形式显示出来（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; print(cs)
+((1, 'zhangsan', 60, 1), (2, 'lisi', 80, 1), (3, 'wangwu', 90, 1), (4, 'zhaoliu', 70, 1), (5, 'xueer', 70, 2), (6, 'huangyi', 70, 2))</code></pre>
+
+
+
+<p>（补充：这里显示出来的是对象）</p>
+
+
+
+<h5 id="3-2-5-将游标里的数据以列表的形式显示出来-含主键查询">3.2.5 将游标里的数据以列表的形式显示出来（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; for c in cs:
+...     print(c)
+... 
+(1, 'zhangsan', 60, 1)
+(2, 'lisi', 80, 1)
+(3, 'wangwu', 90, 1)
+(4, 'zhaoliu', 70, 1)
+(5, 'xueer', 70, 2)
+(6, 'huangyi', 70, 2)</code></pre>
+
+
+
+<p>（补充：这里打出来的是列表）</p>
+
+
+
+<h5 id="3-2-6-关闭游标-含主键查询">3.2.6 关闭游标（含主键查询）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.close()</code></pre>
+
+
+
+<p>（补充：这里以关闭 cur 游标为例）</p>
+
+
+
+<h5 id="3-3-django-sql-语句部分查询-不包含主键-3-3-1-创建游标-不包含主键">3.3 Django SQL 语句部分查询（不包含主键）</h5>
+
+
+
+<h4 id="3-3-django-sql-语句部分查询-不包含主键-3-3-1-创建游标-不包含主键">3.3.1 创建游标（不包含主键）</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur = connection.cursor()</code></pre>
+
+
+
+<p>（补充：这里以创建名为 cur 的游标为例）</p>
+
+
+
+<h4 id="3-3-2-查询数据并导入游标-不包含主键">3.3.2 查询数据并导入游标（不包含主键）</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.execute('select sname,score from user_student')
+6</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询 user_student 表里 sname 字段和 socre 字段的所有数据并导入 cur 游标为例<br>2) 这里查出的数据总共有 6 条<br>）</p>
+
+
+
+<h5 id="3-3-3-将游标里的数据导入到变量里-不包含主键">3.3.3 将游标里的数据导入到变量里（不包含主键）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cs = cur.fetchall()</code></pre>
+
+
+
+<p>（补充：这里以将数据导入到 cs 变量里为例）</p>
+
+
+
+<h5 id="3-3-4-将游标里的数据以对象的形式显示出来-不包含主键">3.3.4 将游标里的数据以对象的形式显示出来（不包含主键）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; print(cs)
+(('zhangsan', 60), ('lisi', 80), ('wangwu', 90), ('zhaoliu', 70), ('xueer', 70), ('huangyi', 70))</code></pre>
+
+
+
+<p>（补充：这里显示出来的是对象）</p>
+
+
+
+<h5 id="3-2-5-将游标里的数据以列表的形式显示出来-不包含主键">3.2.5 将游标里的数据以列表的形式显示出来（不包含主键）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; for c in cs:
+...     print(c)
+... 
+('zhangsan', 60)
+('lisi', 80)
+('wangwu', 90)
+('zhaoliu', 70)
+('xueer', 70)
+('huangyi', 70)</code></pre>
+
+
+
+<p>（补充：这里显示出来的是列表）</p>
+
+
+
+<h5 id="3-2-5-关闭游标-不包含主键">3.2.5 关闭游标（不包含主键）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.close()</code></pre>
+
+
+
+<p>（补充：这里以关闭 cur 游标为例）</p>
+
+
+
+<h4 id="3-3-django-sql-语句部分查询-只查询一条数据-3-3-1-创建游标-只查询一条数据">3.3 Django SQL 语句部分查询（只查询 1 条数据）</h4>
+
+
+
+<h5 id="3-3-django-sql-语句部分查询-只查询一条数据-3-3-1-创建游标-只查询一条数据">3.3.1 创建游标（只查询 1 条数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur = connection.cursor()</code></pre>
+
+
+
+<p>（补充：这里以创建名为 cur 的游标为例）</p>
+
+
+
+<h5 id="3-3-2-查询数据并导入游标-只查询一条数据">3.3.2 查询数据并导入游标（只查询 1 条数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.execute('select * from user_clazz where id=1')
+1</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询 user_clazz 表里 id 字段的值为 1 为例<br>2) 这里查出的数据总共有 1 条<br>）</p>
+
+
+
+<h5 id="3-3-4-将游标里的数据以对象的形式显示出来-只查询一条数据">3.3.4 将游标里的数据以对象的形式显示出来（只查询 1 条数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.fetchone()
+(1, 'Class1')</code></pre>
+
+
+
+<p>（补充：这里显示出来的是列表）</p>
+
+
+
+<h5 id="3-2-5-关闭游标-只查询一条数据">3.2.5 关闭游标（只查询 1 条数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cur.close()</code></pre>
+
+
+
+<p>（补充：这里以关闭 cur 游标为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 最大值、最小值、平均值等特殊数值的数据查询</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-select-tool/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Jul 2021 06:48:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16856</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 自定义逻辑添加（通过自定义 save 对象实现）（一次性完成多对多表数据的插入）》而继续的 正文： 步骤一：进入相应的 Django 环境 步骤二：插入测试数据 （补充：这里以随机插入 6 条测试数据为例） 步骤三：设置 1 个显示上 1 句 SQL 语句的函数 （补充：这里的 [-1] 是指显示上一条操作的 SQL 语句） 步骤四：通过聚合函数查询所需的数值 4.1 通过聚合函数查询最大值 4.1.1 导入聚合函数最大值模块 4.1.2 通过聚合函数查询最大值（显示默认解释说明） 4.1.2.1 通过聚合函数查询最大值（显示默认解释说明） （补充：1) 这里以查询所有数据 score 字段的最大值为例2) 这里查出的最大值是 90） 4.1.2.2 显示通过聚合函数查询最大值的 SQL 语句（显示默认解释说明） （补充：这里以查询所有数据 score 字段的最大值为例） 4.1.3 通过聚合函数查询最大值（显示自定义解释说明） 4.1.3.1 通过聚合函数查询最大值（显示自定义解释说明） （补充：1) 这里以查询所有数据 score &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-select-tool/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 最大值、最小值、平均值等特殊数值的数据查询"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 自定义逻辑添加（通过自定义 save 对象实现）（一次性完成多对多表数据的插入）》而继续的</p>
+
+
+
+<div class="wp-container-6 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16840">Django<br>自定义逻辑添加<br>（通过自定义 save 对象实现）<br>（一次性完成多对多表数据的插入）</a></div>
+</div>
+
+
+
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：进入相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h3>步骤二：插入测试数据</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; user = Student(sname='zhangsan',score=60,cls=Clazz(cname='Class1'))
+&gt;&gt;&gt; user.save()
+
+&gt;&gt;&gt; user = Student(sname='lisi',score=80,cls=Clazz(cname='Class1'))
+&gt;&gt;&gt; user.save()
+
+&gt;&gt;&gt; user = Student(sname='wangwu',score=90,cls=Clazz(cname='Class1'))
+&gt;&gt;&gt; user.save()
+
+&gt;&gt;&gt; user = Student(sname='zhaoliu',score=70,cls=Clazz(cname='Class1'))
+&gt;&gt;&gt; user.save()
+
+&gt;&gt;&gt; user = Student(sname='xueer',score=70,cls=Clazz(cname='Class2'))
+&gt;&gt;&gt; user.save()
+
+&gt;&gt;&gt; user = Student(sname='huangyi',score=70,cls=Clazz(cname='Class2'))
+&gt;&gt;&gt; user.save()</code></pre>
+
+
+
+<p>（补充：这里以随机插入 6 条测试数据为例）</p>
+
+
+
+<h3>步骤三：设置 1 个显示上 1 句 SQL 语句的函数</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def showsql():
+...     from django.db import connection
+...     print(connection.queries&#91;-1]&#91;'sql'])</code></pre>
+
+
+
+<p>（补充：这里的 [-1] 是指显示上一条操作的 SQL 语句）</p>
+
+
+
+<h3>步骤四：通过聚合函数查询所需的数值</h3>
+
+
+
+<h4>4.1 通过聚合函数查询最大值</h4>
+
+
+
+<h5>4.1.1 导入聚合函数最大值模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import Max</code></pre>
+
+
+
+<h5>4.1.2 通过聚合函数查询最大值（显示默认解释说明）</h5>
+
+
+
+<h5>4.1.2.1 通过聚合函数查询最大值（显示默认解释说明）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(Max('score'))
+{'score__max': 90}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询所有数据 score 字段的最大值为例<br>2) 这里查出的最大值是 90<br>）</p>
+
+
+
+<h5>4.1.2.2 显示通过聚合函数查询最大值的 SQL 语句（显示默认解释说明）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT MAX(`user_student`.`score`) AS `score__max` FROM `user_student`</code></pre>
+
+
+
+<p>（补充：这里以查询所有数据 score 字段的最大值为例）</p>
+
+
+
+<h5>4.1.3 通过聚合函数查询最大值（显示自定义解释说明）</h5>
+
+
+
+<h5>4.1.3.1 通过聚合函数查询最大值（显示自定义解释说明）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(m=Max('score'))
+{'m': 90}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询所有数据 score 字段的最大值为例<br>2) 查出的最大值是 90<br>3) 这里显示的自定义解释说明是 m<br>）</p>
+
+
+
+<h5>4.1.3.2 显示通过聚合函数查询最大值的 SQL 语句（显示自定义解释说明）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT MAX(`user_student`.`score`) AS `m` FROM `user_student`</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询所有数据 score 字段的最大值为例<br>2) 这里显示的自定义解释说明是 m<br>）</p>
+
+
+
+<h4>4.2 通过聚合函数查询最小值</h4>
+
+
+
+<h5>4.2.1 导入聚合函数最小值模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import Min</code></pre>
+
+
+
+<h5>4.2.2 通过聚合函数查询最小值</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(Min('score'))
+{'score__min': 60}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以查询所有数据 score 字段的最小值为例<br>2) 这里查出的最小值是 60<br>）</p>
+
+
+
+<h5>4.2.3 显示通过聚合函数查询最小值的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT MIN(`user_student`.`score`) AS `score__min` FROM `user_student`</code></pre>
+
+
+
+<p>（补充：这里以查询所有数据 score 字段的最小值为例）</p>
+
+
+
+<h4>4.3 通过聚合函数统计数据条数</h4>
+
+
+
+<h5>4.3.1 导入聚合函数统计数据条数的模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h5>4.3.2 通过聚合函数统计数据条数（统计所有数据的条数）</h5>
+
+
+
+<h5>4.3.2.1 通过聚合函数统计数据条数（统计所有数据的条数）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(c=Count('*'))
+{'c': 6}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里统计所有数据的数据总条数为例<br>2) 这里显示的自定义解释说明是 c<br>3) 这里查出的数据条数是 6<br>）</p>
+
+
+
+<h5>4.3.2.2 显示通过聚合函数统计数据条数的 SQL 语句（统计所有数据的条数）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT COUNT(*) AS `c` FROM `user_student`</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里统计所有数据的数据总条数为例<br>2) 这里显示的自定义解释说明是 c<br>）</p>
+
+
+
+<h5>4.3.3 通过聚合函数统计数据条数（统计包含某字段数据的条数）</h5>
+
+
+
+<h5>4.3.3.1 通过聚合函数统计数据条数（统计包含某字段数据的条数）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(c=Count('score'))
+{'c': 6}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以统计包含 score 字段的数据总条数为例<br>2) 这里显示的自定义解释说明是 c<br>3) 这里查出的数据条数是 6<br>）</p>
+
+
+
+<h5>4.3.3.2 显示通过聚合函数统计数据条数的 SQL 语句（统计包含某字段数据的条数）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT COUNT(`user_student`.`score`) AS `c` FROM `user_student`</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以统计包含 score 字段的数据总条数为例<br>2) 这里显示的自定义解释说明是 c<br>）</p>
+
+
+
+<h4>4.4 通过聚合函数求和</h4>
+
+
+
+<h5>4.4.1 导入聚合函数求和的模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h5>4.4.2 通过聚合函数求和</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(Sum('score'))
+{'score__sum': 440}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以求所有数据 score 字段的值的和为例<br>2) 这里求出的和是 440<br>）</p>
+
+
+
+<h5>4.4.3 显示通过聚合函数求和的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT SUM(`user_student`.`score`) AS `score__sum` FROM `user_student`</code></pre>
+
+
+
+<p>（补充：这里以求所有数据 score 字段的值的和为例）</p>
+
+
+
+<h4>4.5 通过聚合函数求平均数</h4>
+
+
+
+<h5>4.5.1 导入聚合函数求平均数的模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h5>4.5.2 通过聚合函数求平均值</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.aggregate(Avg('score'))
+{'score__avg': 73.3333}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以求所有数据 score 字段的平均值为例<br>2) 这里求出的平均值是 73.3333<br>）</p>
+
+
+
+<h5>4.5.3 显示通过聚合函数求平均值的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT AVG(`user_student`.`score`) AS `score__avg` FROM `user_student`</code></pre>
+
+
+
+<p>（补充：这里以求所有数据 score 字段的平均值为例）</p>
+
+
+
+<h3>步骤五：通过分组聚合函数查询所需的数值</h3>
+
+
+
+<h4>5.1 导入分组聚合函数模块</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h4>5.2 通过分组聚合函数统计每组数据的条数</h4>
+
+
+
+<h5>5.2.1 通过分组聚合函数统计每组数据的条数</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.values('cls').annotate(c=Count('score'))
+&lt;QuerySet &#91;{'cls': 1, 'c': 4}, {'cls': 2, 'c': 2}]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，统计每组包含 score 字段数据的条数为例<br>2) 这里显示的自定义解释说明是 c<br>3) 这里求出 cls 字段值为 1 的组包含 score 字段的数据有 4 条，cls 字段的值为 2 的组包含 score 字段的数据有 2 条<br>）</p>
+
+
+
+<h5>5.2.2 显示通过分组聚合函数统计每组数据条数的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`cls_id`, COUNT(`user_student`.`score`) AS `c` FROM `user_student` GROUP BY `user_student`.`cls_id` ORDER BY NULL LIMIT 21</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，统计每组包含 score 字段数据的条数为例<br>2) 这里显示的自定义解释说明是 c<br>）</p>
+
+
+
+<h4>5.3 通过分组聚合函数统计求每组数据的平均值</h4>
+
+
+
+<h5>5.3.1 通过分组聚合函数统计求每组数据的平均值</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.values('cls').annotate(a=Avg('score'))
+&lt;QuerySet &#91;{'cls': 1, 'a': 75.0}, {'cls': 2, 'a': 70.0}]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，求每组数据 score 字段的平均值为例<br>2) 这里显示的自定义解释说明是 a<br>3) 这里求出 cls 字段值为 1 的组 score 字段的平均值为 75.0，cls 字段的值为 2 的组 score 字段的平均值为 70.0<br>）</p>
+
+
+
+<h5>5.3.2 显示通过分组聚合函数统计求每组数据的平均值的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`cls_id`, AVG(`user_student`.`score`) AS `a` FROM `user_student` GROUP BY `user_student`.`cls_id` ORDER BY NULL LIMIT 21</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，求每组数据 score 字段的平均值为例<br>2) 这里显示的自定义解释说明是 a<br>）</p>
+
+
+
+<h3>步骤六：通过子查询查询所需的数值</h3>
+
+
+
+<h4>6.1 导入子查询模块</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h4>6.2 通过子查询查询总值最大的 1 组数据的总值</h4>
+
+
+
+<h5>6.2.1 通过子查询查询总值最大的 1 组数据的总值</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.values('cls').annotate(s=Sum('score')).aggregate(m=Max('s'))
+{'m': 300}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，求每组数据 score 字段的总值，再将其求和为例<br>2) 这里显示的自定义解释说明是 m<br>3) 这里求出 score 字段的总值为 300<br>4) values 和 annotate 一起使用时 values 则发挥的是 group by 的作用<br>5) values 单独使用时 values 发挥的是部分查询的作用<br>）</p>
+
+
+
+<h5>6.2.2 显示通过子查询查询总值最大的 1 组数据总值的 SQL 语句</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT MAX(`s`) FROM (SELECT `user_student`.`cls_id` AS Col1, SUM(`user_student`.`score`) AS `s` FROM `user_student` GROUP BY `user_student`.`cls_id` ORDER BY NULL) subquery</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 cls 字段进行分组，求每组数据 score 字段的总值，再将其求和为例<br>2) 这里显示的自定义解释说明是 m<br>3) values 和 annotate 一起使用时 values 则发挥的是 group by 的作用<br>4) values 单独使用时 values 发挥的是部分查询的作用<br>）</p>
+
+
+
+<h3>步骤七：通过关联查询查询所需的数值</h3>
+
+
+
+<h4>7.1 导入关联查询模块</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from django.db.models import *</code></pre>
+
+
+
+<h4>7.2 通过关联查询查询关联的数据</h4>
+
+
+
+<h5>7.2.1 通过关联查询查询关联的数据（查询数据表中的非外键字段）</h5>
+
+
+
+<h5>7.2.1.1 通过关联查询查询关联的数据（查询数据表中的非外键字段）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.values('cls__cname')
+&lt;QuerySet &#91;{'cls__cname': 'Class1'}, {'cls__cname': 'Class1'}, {'cls__cname': 'Class1'}, {'cls__cname': 'Class1'}, {'cls__cname': 'Class2'}, {'cls__cname': 'Class2'}]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里查出了 4 条 cls__cname 为 Class1 的数据和 2 条 cls__cname 为 Class 2 的数据<br>2) 这里的 cls 是 Django 数据模型类中两张数据表的外键字段，但是 cname 并不是数据库中两张数据表的外键字段<br>）</p>
+
+
+
+<h5>7.2.1.2 通过关联查询查询关联数据的 SQL 语句（查询数据表中的非外键字段）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_clazz`.`cname` FROM `user_student` INNER JOIN `user_clazz` ON (`user_student`.`cls_id` = `user_clazz`.`id`) LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里的 cls_id 是 user_student 表中关联 user_clazz 表中 id 字段的外键字段）</p>
+
+
+
+<h5>7.2.2 通过关联查询查询关联的数据（查询数据表中的外键字段）</h5>
+
+
+
+<h5>7.2.2.1 通过关联查询查询关联的数据（查询数据表中的外键字段）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.values('cls__id')
+&lt;QuerySet &#91;{'cls__id': 1}, {'cls__id': 1}, {'cls__id': 1}, {'cls__id': 1}, {'cls__id': 2}, {'cls__id': 2}]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里查出了 4 条 cls__id 为 1 的数据和 2 条 cls__id 为 2 的数据<br>2) 这里的 cls 是 Django 数据模型类中两张数据表的外键字段，并且 id 也是数据库中两张数据表的外键字段<br>）</p>
+
+
+
+<h5>7.2.2.2 通过关联查询查询关联数据的 SQL 语句（查询数据表中的外键字段）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; showsql()
+SELECT `user_student`.`cls_id` FROM `user_student` LIMIT 21</code></pre>
+
+
+
+<p>（补充：这里的 cls_id 是 user_student 表中关联 user_clazz 表中 id 字段的外键字段）</p>
+
+
+
+<h3>步骤八：退出相应的 Django 环境</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit()</code></pre>
+
+
+
+<h3>步骤九：Django 聚合函数查询、分组聚合函数查询、子查询、关联查询的总结</h3>
+
+
+
+<p>1) 单独用 aggregate 则代表单独使用聚合函数<br>2) 单独用 annotate 则代表单独使用分组聚合函数<br>3) 在 annotate 前面加上 values 则是指定某一个字段进行分组，values.annotate</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 自定义逻辑添加 （通过自定义 save 对象实现） （一次性完成多对多表数据的插入）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-custom-select-save/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 18 Jul 2021 14:09:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16840</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、user 应用 Clazz 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 3.2.1 安装 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-custom-select-save/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 自定义逻辑添加 （通过自定义 save 对象实现） （一次性完成多对多表数据的插入）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、user 应用 Clazz 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django-2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django-2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-user-应用-4-1-创建-user-应用">步骤四：创建 user 应用</h3>
+
+
+
+<h4 id="步骤四-创建-user-应用-4-1-创建-user-应用">4.1 创建 user 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp user</code></pre>
+
+
+
+<h4 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2 user 应用的目录</h4>
+
+
+
+<h5 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2.1 显示 user 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── user
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) user/app.py 此 Django 应用的容器<br>2) user/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) user/admin.py 此 Django 应用自带的后台管理相关的类<br>4) user/app.py 此 Django 应用指定应用名的文件<br>5) user/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) user/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) user/test.py 此 Django 应用的测试文档<br>8) user/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h4 id="4-3-在-mysite-应用中导入-user-应用">4.3 在 mysite 应用中导入 user 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'user',
+]
+......</code></pre>
+
+
+
+<h3 id="步骤五-实现-user-应用的层级多链接">步骤五：实现 user 应用的层级多链接</h3>
+
+
+
+<p>创建 mysite/user/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.conf.urls import url, include
+......
+mysite.mysite.urls.py
+......
+urlpatterns = &#91;
+......
+    url(r'^register/', include('user.urls')),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 /register/ 链接对应 user 应用的链接为例）</p>
+
+
+
+<h3 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">步骤六：实现连接 MariaDB 数据库</h3>
+
+
+
+<h4 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">6.1 安装 MairaDB 数据库和客户端</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# zypper -n install mariadb mariadb-devel mariadb-server mariadb-client</code></pre>
+
+
+
+<h4 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2 创建用于 Django 的 MairaDB 的库和用户</h4>
+
+
+
+<h5 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2.1 进入 MairaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -h 127.0.0.1 -p</code></pre>
+
+
+
+<h5 id="6-2-2-创建用于-django-的库">6.2.2 创建用于 Django 的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; create database user;</code></pre>
+
+
+
+<p>（补充：这里以创建 user 库为例）</p>
+
+
+
+<h5 id="6-2-3-创建用于-django-的用户">6.2.3 创建用于 Django 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</code></pre>
+
+
+
+<p>（补充：这里以创建 root 用户，密码是 password 为例）</p>
+
+
+
+<h5 id="6-2-4-刷新权限">6.2.4 刷新权限</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; flush privileges;</code></pre>
+
+
+
+<h4 id="6-3-退出-mariadb-数据库">6.3 退出 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; exit</code></pre>
+
+
+
+<h4 id="6-4-重启-mariadb">6.4 重启 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# systemctl restart mariadb</code></pre>
+
+
+
+<h3 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">步骤七：搭建用于 Django 的 MariaDB 数据库环境</h3>
+
+
+
+<h4 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">7.1 安装 Django 连接 MariaDB 的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# pip3 install hexdump
+(django_env) &#91;root@python mysite]# pip3 install pymysql</code></pre>
+
+
+
+<h4 id="7-2-在-mysite-应用中添加-django-连接-mariadb-的模块">7.2 在 mysite 应用中添加 Django 连接 MariaDB 的模块</h4>
+
+
+
+<p>在 mysite/mysite/init.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>import pymysql
+pymysql.install_as_MySQLdb()</code></pre>
+
+
+
+<h4 id="7-3-在-user-应用数据库模板中添加-clazz-类-student-类和插入多对多数据的函数">7.3 在 user 应用数据库模板中添加 Clazz 类、Student 类和插入多对多数据的函数</h4>
+
+
+
+<p>在 mysite/user/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Clazz(models.Model):
+    cname = models.CharField(max_length=30)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    score = models.PositiveBigIntegerField()
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'Student:%s,%s'%(self.sname,self.score)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        try:
+            self.cls = Clazz.objects.get(cname=self.cls.cname)
+        except Clazz.DoesNotExist:
+            self.cls = Clazz.objects.create(cname=self.cls.cname)
+
+        #Insertion of student table
+        models.Model.save(self, force_insert=False, force_update=False,using=None, update_fields=None)</code></pre>
+
+
+
+<p>（<br>补充：<br>1) models.ForeignKey(Clazz,on_delete=models.CASCADE) 会生成一个属于 Clazz 表的 id，user_class 表中会生成一个 cls_id 字段，这个字段是 Clazz 表中的 id 字段的外键<br>2) 这里以创建一次性完成多对多表数据的插入的 save 对象为例<br>）</p>
+
+
+
+<h4 id="7-4-在-mysite-应用中设置连接到-mariadb-数据库">7.4 在 mysite 应用中设置连接到 MariaDB 数据库</h4>
+
+
+
+<p>将 mysite/mysite/settings.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'user',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+    }
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用的库是 user<br>2) 使用的服务器是 127.0.0.1<br>3) 使用的端口是 3306<br>4) 使用的用户是 root<br>5) 使用的密码是 password<br>为例<br>）</p>
+
+
+
+<h4 id="7-5-生成牵引文件">7.5 生成牵引文件</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'user':
+  user/migrations/0001_initial.py
+    - Create model Clazz
+    - Create model Student</code></pre>
+
+
+
+<h4 id="7-6-将牵引文件导入-mariadb-数据库">7.6 将牵引文件导入 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user.0001_initial... OK</code></pre>
+
+
+
+<h3 id="步骤八-一次性完成多对多表数据的插入-8-1-进入相应的-django-环境">步骤八：一次性完成多对多表数据的插入</h3>
+
+
+
+<h4 id="步骤八-一次性完成多对多表数据的插入-8-1-进入相应的-django-环境">8.1 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h4 id="8-2-一次性完成多对多表数据的插入">8.2 一次性完成多对多表数据的插入</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; user = Student(sname='zhangsan',score=60,cls=Clazz(cname='Class1'))
+&gt;&gt;&gt; user.save()</code></pre>
+
+
+
+<h4 id="8-3-退出相应的-django-环境">8.3 退出相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit()</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 自定义逻辑添加 （通过自定义 manager 管理器实现） （一次性完成多对多表数据的插入）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-custom-insert-manger/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 16 Jul 2021 08:01:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16749</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 数据展示（多对多版）》而继续的 正文： 步骤一：在没有自定义 manager 管理器的情况下尝试一次性完成多对多表数据的插入 1.1 进入相应的 Django 环境 1.2 在没有自定义 manager 管理器的情况下尝试一次性完成多对多表数据的插入 （补充：（1）这里数据插入失败（2）按正常顺序应该是先插入班级 clazz，之后再插入学生 student，之后再插入课程 course，之后再去插入中间表） 1.3 退出相应的 Django 环境 步骤二：确认要插入的数据和预期的一致（可选） 2.1 创建 1 个自定义 manager 管理器的类 将 mysite/test/models.py 中的以下内容: 修改为： （补充：这里以添加一个显示自己所有键值对的 CustomManager(Manager) 对象并在 Student 类中使用 objects 调用为例） 2.2 进入相应的 Django 环境 2.3 确认要插入的数据和预期的一致 2.4 退出相应的 Django 环境 步骤三：一次性完成多对多表数据的插入 3.1 创建 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-custom-insert-manger/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 自定义逻辑添加 （通过自定义 manager 管理器实现） （一次性完成多对多表数据的插入）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 数据展示（多对多版）》而继续的</p>
+
+
+
+<div class="wp-container-7 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/?p=16659">Django<br>数据展示<br>（多对多版）</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：在没有自定义 manager 管理器的情况下尝试一次性完成多对多表数据的插入</h3>
+
+
+
+<h4>1.1 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h4>1.2 在没有自定义 manager 管理器的情况下尝试一次性完成多对多表数据的插入</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.create(sname='lili',clazz='Class1',course=('Python','Shell'))
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/Users/zhumingyu/Code/Django/mtwo/django_env/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/zhumingyu/Code/Django/mtwo/django_env/lib/python3.8/site-packages/django/db/models/query.py", line 451, in create
+    obj = self.model(**kwargs)
+  File "/Users/zhumingyu/Code/Django/mtwo/django_env/lib/python3.8/site-packages/django/db/models/base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Student() got an unexpected keyword argument 'clazz'</code></pre>
+
+
+
+<p>（<br>补充：<br>（1）这里数据插入失败<br>（2）按正常顺序应该是先插入班级 clazz，之后再插入学生 student，之后再插入课程 course，之后再去插入中间表<br>）</p>
+
+
+
+<h4>1.3 退出相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h3>步骤二：确认要插入的数据和预期的一致（可选）</h3>
+
+
+
+<h4>2.1 创建 1 个自定义 manager 管理器的类</h4>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+    return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db import models
+from django.db.models.manager import Manager
+
+# Create your models here.
+class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class CustomManager(Manager):
+    def create(self, **kwargs):
+        print(kwargs)
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    objects = CustomManager()
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+    return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>（补充：这里以添加一个显示自己所有键值对的 CustomManager(Manager) 对象并在 Student 类中使用 objects 调用为例）</p>
+
+
+
+<h4>2.2 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h4>2.3 确认要插入的数据和预期的一致</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.create(sname='lili',clazz='Class1',course=('Python','Shell'))
+{'sname': 'lili', 'clazz': 'Class1', 'course': ('Python', 'Shell')}</code></pre>
+
+
+
+<h4>2.4 退出相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h3>步骤三：一次性完成多对多表数据的插入</h3>
+
+
+
+<h4>3.1 创建 1 个自定义 manager 管理器的类</h4>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+    return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class CustomManager(Manager):
+    #Returns a class object
+    def getClsObj(self,cname):
+        try:
+            cls = Clazz.objects.get(cname=cname)
+        except Clazz.DoesNotExist:
+            cls = Clazz.objects.create(cname=cname)
+        return cls
+
+    def getCourseList(self,*coursenames):
+        cList = &#91;]
+        for cn in coursenames:
+            try:
+                cour = Course.objects.get(course_name=cn)
+            except Course.DoesNotExist:
+                cour = Course.objects.create(course_name=cn)
+            cList.append(cour)
+        return cList
+
+    def  create(self, **kwargs):
+         clazz = kwargs.get('cls','')
+
+         #Class information multi storage operation
+         clas = self.getClsObj(clazz) 
+
+         #Replace string with object
+         #Student.objects.create(sname='',cls=clas)
+         kwargs&#91;'cls'] = clas
+
+         #Assign a separate value pair of course keys to course
+         course = kwargs.pop('cour')
+
+         #Storage operation of student information
+         stu = Manager.create(self,**kwargs)
+
+         #Total of the course information in storage
+         courseList = self.getCourseList(*course)
+
+         #The middle table of student course is stored in the database. An object or tuple can be unpacked automatically here
+         stu.cour.add(*courseList)
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    objects = CustomManager()
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+    return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>（补充：这里以创建一次性完成多对多表数据的插入的 manage 管理器为例）</p>
+
+
+
+<h4>3.2 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h4>3.3 一次性完成多对多表数据的插入</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.create(sname='lili',cls='Class4',cour=('CSS','JS'))</code></pre>
+
+
+
+<p>（<br>补充：这里<br>1) 第 1 步执行：objects = CustomManager()<br>2) 第 2 步执行：def create(self, **kwargs)<br>3) 第 3 步执行：clazz = kwargs.get(&#8216;cls&#8217;,&#8221;)，这步的结果是 clazz = &#8216;Class4&#8217;<br>4) 第 4 步执行：clas = self.getClsObj(clazz)，这步的结果是如果 Class4 在数据库中不存在则插入此条数据，并让 clas = cls<br>5) 第 5 步执行：cours = kwargs.pop(&#8216;cour&#8217;)，这步的结果是 cours = (&#8216;CSS&#8217;,&#8217;JS&#8217;)<br>6) 第 6 步执行：stu = Manager.create(self, **kwargs)，这步的结果是 stu = Student.objects.create(sname=&#8221;,cls=clas)<br>7) 第 7 步执行：courseList = self.getCourseList(*course)，这步的结果是如果 course 元组里的元素不存在则在数据库里创建，并将所有 course 里的元素放在 courseList 空列表中<br>8) 第 8 步执行：stu.cour.add(*courseList)，这步的结果是将 courseList 里的元素插入 Student 类的 cour 字段对应的中间表里<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python3 模块属性的查询</title>
+		<link>https://eternalcenter-sep-2022.github.io/python3-module-attribute/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 14 Jul 2021 15:35:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16728</guid>
+
+					<description><![CDATA[步骤一：进入 Python3 模式 步骤二：导入要显示所有属性的模块 （补充：这里以导入 types 模块为例） 步骤三：显示模块多所有属性 （补充：这里以显示 types 模块里的属性为例）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-进入-python3-模式">步骤一：进入 Python3 模式</h3>
+
+
+
+<pre class="wp-block-code"><code># python3</code></pre>
+
+
+
+<h3 id="步骤二-导入要显示所有属性的模块">步骤二：导入要显示所有属性的模块</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; import types</code></pre>
+
+
+
+<p>（补充：这里以导入 types 模块为例）</p>
+
+
+
+<h3 id="步骤三-显示模块多所有属性">步骤三：显示模块多所有属性</h3>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; dir(types)
+&#91;'BooleanType',
+ 'BufferType',
+ 'BuiltinFunctionType',
+ 'BuiltinMethodType',
+ 'ClassType',
+ 'CodeType',
+ 'ComplexType',
+ 'DictProxyType',
+ 'DictType',
+ 'DictionaryType',
+ 'EllipsisType',
+ 'FileType',
+ 'FloatType',
+ 'FrameType',
+ 'FunctionType',
+ 'GeneratorType',
+ 'GetSetDescriptorType',
+ 'InstanceType',
+ 'IntType',
+ 'LambdaType',
+ 'ListType',
+ 'LongType',
+ 'MemberDescriptorType',
+ 'MethodType',
+ 'ModuleType',
+ 'NoneType',
+ 'NotImplementedType',
+ 'ObjectType',
+ 'SliceType',
+ 'StringType',
+ 'StringTypes',
+ 'TracebackType',
+ 'TupleType',
+ 'TypeType',
+ 'UnboundMethodType',
+ 'UnicodeType',
+ 'XRangeType',
+ '__all__',
+ '__builtins__',
+ '__doc__',
+ '__file__',
+ '__name__',
+ '__package__']</code></pre>
+
+
+
+<p>（补充：这里以显示 types 模块里的属性为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 自定义逻辑删除 （通过自定义 manager 管理器实现） （并非真的删除数据）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-custom-delete-manger/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 14 Jul 2021 06:55:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16712</guid>
+
+					<description><![CDATA[注意： 本实验是接着 《Django 通过自定义 manger 管理器进行自定义查询》而继续的 正文： 步骤一：准备测试数据 步骤二：通过自定义 manager 管理器对某个数据进行单个的逻辑删除 2.1 创建 1 个自定义 manager 管理器的类 将 mysite/test/models.py 中的以下内容: 修改为： （补充：这里以将 delete 重写成将 isdelete 设置为 True 为例） 2.2 进入相应的 Django 环境 2.3 通过自定义 manager 管理器查询数据 2.4 通过自定义 manager 管理器逻辑删除第 1 条数据（将第 1 条数据的 isdelete=False 修改成 isdelete=True） 2.5 通过自定义 manager 管理器查询删除后的数据 （补充：这里第一条数据 isdelete=True） 步骤三：通过自定义 manager &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-custom-delete-manger/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 自定义逻辑删除 （通过自定义 manager 管理器实现） （并非真的删除数据）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>本实验是接着 《Django 通过自定义 manger 管理器进行自定义查询》而继续的</p>
+
+
+
+<div class="wp-container-8 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/?p=16706" style="border-radius:1px">Django<br>进行自定义查询<br>（通过自定义 manger 管理器实现）</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：准备测试数据</h3>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@mariadb ~]# mysql -uroot -p
+MariaDB &#91;(none)]&gt; use test;
+MariaDB &#91;test]&gt; update test_student SET isdelete=0 WHERE test_student.isdelete=1;
+MariaDB &#91;test]&gt; quit;</code></pre>
+
+
+
+<h3>步骤二：通过自定义 manager 管理器对某个数据进行单个的逻辑删除</h3>
+
+
+
+<h4>2.1 创建 1 个自定义 manager 管理器的类</h4>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    #def all(self):
+    #    return Manager.all(self).filter(isdelete=True)
+
+    def get_queryset(self):
+        return Manager.get_queryset(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    #objects = CustomManager()
+
+    #show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+
+    def delete(self, using=None, keep_parents=False):
+        self.isdelete = True
+        self.save()
+
+......</code></pre>
+
+
+
+<p>（补充：这里以将 delete 重写成将 isdelete 设置为 True 为例）</p>
+
+
+
+<h4>2.2 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h4>2.3 通过自定义 manager 管理器查询数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: student:False&gt;, &lt;Student: student:False&gt;, &lt;Student: student:False&gt;]&gt;</code></pre>
+
+
+
+<h4>2.4 通过自定义 manager 管理器逻辑删除第 1 条数据（将第 1 条数据的 isdelete=False 修改成 isdelete=True）</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.first().delete()</code></pre>
+
+
+
+<h4>2.5 通过自定义 manager 管理器查询删除后的数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: student:True&gt;, &lt;Student: student:False&gt;, &lt;Student: student:False&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：这里第一条数据 isdelete=True）</p>
+
+
+
+<h3>步骤三：通过自定义 manager 管理器对一类数据进行批量的逻辑删除</h3>
+
+
+
+<h4>3.1 创建 1 个自定义 manager 管理器的类</h4>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    #def all(self):
+    #    return Manager.all(self).filter(isdelete=True)
+
+    def get_queryset(self):
+        return Manager.get_queryset(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+   
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    #objects = CustomManager()
+
+    #show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+
+    def delete(self, using=None, keep_parents=False):
+        self.isdelete = True
+        self.save()
+
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    #def all(self):
+    #    return Manager.all(self).filter(isdelete=True)
+
+    def get_queryset(self):
+        return Manager.get_queryset(self).filter(isdelete=True)
+
+class DeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+   
+class BatchDelManager(Manager):
+    def get_queryset(self):
+        return Manager.get_queryset(self).filter(isdelete=False)
+
+    def filter(self, *args, **kwargs):
+        #1. Get the record that needs to be deleted
+        delList = Manager.get_queryset(self)
+
+        #2. Define the closure method to modify isdelete = true
+        def delete1(delqueryset):
+            for dq in delqueryset:
+                dq.isdelete = True
+                dq.save()
+        #3. Create an instance method dynamically, declare that delete has a delete method, call interface is delete (delist), call the delete1 object to execute
+        import types
+        delList.delete = types.MethodType(delete1,delList)
+
+        return delList
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = BatchDelManager()
+
+    show = DeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+
+    def delete(self, using=None, keep_parents=False):
+        self.isdelete = True
+        self.save()
+
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以添加 1 个将父类的 all 重写成将所有 isdelete=True 的数据修改成 isdelete=False 的 BatchDelManager(Manager) 对象并在 Student 类中使用 objects 调用为例<br>2) 这里的实现方法是：动态创建 1 个实例方法，对外声明 delete 有 1 个 delete 方法调用接口是 delete(deList) ，调用 delete1 对象进行执行<br>3) 这里的 DeletedManager(Manager) 会查看所有 isdelete=True 的数据，并通过 Student 类中的 show 调用<br>4) 只要子类重写了父类的方法，就不会掉用父类的方法了，而是调用子类的方法<br>5) 闭包的作用是内部执行 1 个结果，对外还是 1 个外部函数的 1 个调用<br>6) python2 使用是 new 模块的 instancemethod 属性实现此功能，而 python3 使用是 types 模块的 MethodType属性实现此功能<br>）</p>
+
+
+
+<h4>3.2 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h4>3.3 查看所有 isdelete=False 的数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: student:False&gt;, &lt;Student: student:False&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：这里的 objects 已经经过了重写，所以只能显示 isdelete=False 的数据）</p>
+
+
+
+<h4>3.4 通过自定义 manager 管理器对一类数据进行批量的逻辑删除（将所有 isdelete=False 的数据修改成 isdelete=True）</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.filter().delete()</code></pre>
+
+
+
+<h4>3.5 查看所有 isdelete=False 的数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;]&gt;</code></pre>
+
+
+
+<p>（补充：此时已经没有 isdelete=False 的数据）</p>
+
+
+
+<h4>3.6 查看所有 isdelete=True 的数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.show.all()
+&lt;QuerySet &#91;&lt;Student: student:True&gt;, &lt;Student: student:True&gt;, &lt;Student: student:True&gt;]&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 自定义查询 （通过自定义 manager 管理器实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-custom-select-manger/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 13 Jul 2021 13:57:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16706</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、user 应用和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 （1）服务器的系统需要是 openSUSE 15.2 版本（2）服务器要关闭防火墙（3）服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）（4）服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 3.2.1 安装 tree 目录显示软件 3.2.2 显示 mysite 项目的目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-custom-select-manger/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 自定义查询 （通过自定义 manager 管理器实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、user 应用和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>（1）服务器的系统需要是 openSUSE 15.2 版本<br>（2）服务器要关闭防火墙<br>（3）服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>（4）服务器要能够连接外网</p>
+
+
+
+<h3>步骤二：安装 Django</h3>
+
+
+
+<h4>2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<h4>2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4>2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4>2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3>步骤三：创建 mysite 项目</h3>
+
+
+
+<h4>3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4>3.2 mysite 项目的目录</h4>
+
+
+
+<h5>3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5>3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5>3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>（1）mysite 此 Django 项目的容器<br>（2）manage.py 命令行工具，与 Django 项目进行交互<br>（3）mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>（4）mysite/settings.py 此 Django 项目的配置文件<br>（5）mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>（6）mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3>步骤四：创建 test 应用</h3>
+
+
+
+<h4>4.1 创建 test 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp test</code></pre>
+
+
+
+<h4>4.2 test 应用的目录</h4>
+
+
+
+<h5>4.2.1 显示 test 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── test
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5>4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>（1）test/app.py 此 Django 应用的容器<br>（2）test/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>（3）test/admin.py 此 Django 应用自带的后台管理相关的类<br>（4）test/app.py 此 Django 应用指定应用名的文件<br>（5）test/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>（6）test/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>（7）test/test.py 此 Django 应用的测试文档<br>（8）test/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h4>4.3 在 mysite 应用中导入 test 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'test',
+]
+......</code></pre>
+
+
+
+<h3>步骤五：实现连接 MariaDB 数据库</h3>
+
+
+
+<h4>5.1 安装 MairaDB 数据库和客户端</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# zypper -n install mariadb mariadb-devel mariadb-server mariadb-client</code></pre>
+
+
+
+<h4>5.2 创建用于 Django 的 MairaDB 的库和用户</h4>
+
+
+
+<h5>5.2.1 进入 MairaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -h 127.0.0.1 -p</code></pre>
+
+
+
+<h5>5.2.2 创建用于 Django 的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; create database user;</code></pre>
+
+
+
+<p>（补充：这里以创建 user 库为例）</p>
+
+
+
+<h5>5.2.3 创建用于 Django 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</code></pre>
+
+
+
+<p>（补充：这里以创建 root 用户，密码是 password 为例）</p>
+
+
+
+<h5>5.2.4 刷新权限</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; flush privileges;</code></pre>
+
+
+
+<h4>5.3 退出 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; exit</code></pre>
+
+
+
+<h4>5.4 重启 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# systemctl restart mariadb</code></pre>
+
+
+
+<h3>步骤六：搭建用于 Django 的 MariaDB 数据库环境</h3>
+
+
+
+<h4>6.1 安装 Django 连接 MariaDB 的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# pip3 install hexdump
+(django_env) &#91;root@python mysite]# pip3 install pymysql</code></pre>
+
+
+
+<h4>6.2 在 mysite 应用中添加 Django 连接 MariaDB 的模块</h4>
+
+
+
+<p>在 mysite/mysite/__init__.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>import pymysql
+pymysql.install_as_MySQLdb()</code></pre>
+
+
+
+<h4>6.3 在 test 应用数据库模板中添加 Student 类</h4>
+
+
+
+<p>在 mysite/test/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)</code></pre>
+
+
+
+<p>（补充：这里以创建包含 sname 字段和 isdelete 字段的 Student 类为例）</p>
+
+
+
+<h4>6.4 在 mysite 应用中设置连接到 MariaDB 数据库</h4>
+
+
+
+<p>将 mysite/mysite/settings.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+    }
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>（1）使用的库是 test<br>（2）使用的服务器是 127.0.0.1<br>（3）使用的端口是 3306<br>（4）使用的用户是 root<br>（5）使用的密码是 password<br>为例<br>）</p>
+
+
+
+<h4>6.5 生成牵引文件</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'user':
+  user/migrations/0001_initial.py
+    - Create model Student</code></pre>
+
+
+
+<h4>6.6 将牵引文件导入 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user.0001_initial... OK</code></pre>
+
+
+
+<h3>步骤七：插入测试数据</h3>
+
+
+
+<h4>7.1 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h4>7.2 插入测试数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.create(sname='zhangsan')
+&lt;Student: Student object (1)&gt;
+
+&gt;&gt;&gt; Student.objects.create(sname='lisi',isdelete=True)
+&lt;Student: Student object (2)&gt;
+
+&gt;&gt;&gt; Student.objects.create(sname='wangwu',isdelete=True)
+&lt;Student: Student object (3)&gt;</code></pre>
+
+
+
+<p>（补充：这里以往 Student 类任意插入三条测试数据为例）</p>
+
+
+
+<h4>7.3 退出相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h3>步骤八：正常查询数据</h3>
+
+
+
+<h4>8.1 进入相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h4>8.2 正常查询数据</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: Student object (1)&gt;, &lt;Student: Student object (2)&gt;, &lt;Student: Student object (3)&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：此时会一次性查询出 Student 类里所有的数据）</p>
+
+
+
+<h4>8.3 退出相应的 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h3>步骤九：通过自定义 manager 管理器查询数据</h3>
+
+
+
+<h4>9.1 自定义 manager 管理器（通过重写父类的 all 实现）</h4>
+
+
+
+<h5>9.1.1 自定义 1 个查询 isdelete=True 数据的 manager 管理器</h5>
+
+
+
+<h5>9.1.1.1 创建 1 个自定义 manager 管理器的类</h5>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>（1）self 在 python 中代表当前对象，在其他语言中，会用 this 来代表当前对象<br>（2）这里以将父类的 all 重写成只选择 isdelete=True 数据的 CustomManager(Manager) 类并在 Student 类中使用 objects 调用为例<br>）</p>
+
+
+
+<h5>9.1.1.2 进入相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h5>9.1.1.3 通过自定义 manager 管理器查询数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: student:True&gt;, &lt;Student: student:True&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：这里只查出了 isdelete=True 的数据）</p>
+
+
+
+<h5>9.1.1.4 退出相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h5>9.1.2 自定义 1 个查询 isdelete=False 数据的 manager 管理器</h5>
+
+
+
+<h5>9.1.2.1 创建 1 个自定义 manager 管理器的类</h5>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>（补充：这里以添加一个将父类的 all 重写成只选择 isdelete=False 数据的 NotDeletedManager(Manager) 对象并在 Student 类中使用 show 调用为例）</p>
+
+
+
+<h5>9.1.2.2 进入相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h5>9.1.2.3 通过自定义 manager 管理器查询数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.show.all()
+&lt;QuerySet &#91;&lt;Student: student:False&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：这里只查出了 isdelete=False 的数据）</p>
+
+
+
+<h5>9.1.2.4 退出相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+
+
+
+<h4>9.2 自定义 manager 管理器（通过重写继承的子类 get_queryset 实现）</h4>
+
+
+
+<h5>9.2.1 创建 1 个自定义 manager 管理器的类</h5>
+
+
+
+<p>将 mysite/test/models.py 中的以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+   
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.db.models.manager import Manager
+
+class CustomManager(Manager):
+    #def all(self):
+    #    return Manager.all(self).filter(isdelete=True)
+
+    def get_queryset(self):
+        return Manager.get_queryset(self).filter(isdelete=True)
+
+class NotDeletedManager(Manager):
+    def all(self):
+        return Manager.all(self).filter(isdelete=False)
+   
+class Student(models.Model):
+    sname = models.CharField(max_length=30)
+    isdelete = models.BooleanField(default=False)
+
+    objects = CustomManager()
+
+    show = NotDeletedManager()
+
+    def __str__(self):
+        return u'student:%s'%self.isdelete
+......</code></pre>
+
+
+
+<p>（补充：这里以添加一个将子类的 get_queryset 重写成只选择 isdelete=True 数据的 CustomManager(Manager) 对象并在 Student 类中使用 objects 调用为例）</p>
+
+
+
+<h5>9.2.2 进入相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3
+&gt;&gt;&gt; import os,django
+&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'
+&gt;&gt;&gt; django.setup()
+&gt;&gt;&gt; from test.models import *</code></pre>
+
+
+
+<h5>9.2.3 通过自定义 manager 管理器查询数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Student.objects.all()
+&lt;QuerySet &#91;&lt;Student: student:True&gt;, &lt;Student: student:True&gt;]&gt;</code></pre>
+
+
+
+<p>（补充：这里只查出了 isdelete=True 的数据）</p>
+
+
+
+<h5>9.2.4 退出相应的 Django 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; quit();</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 数据展示 （多对多版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-data-display-many-to-many/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 08 Jul 2021 13:03:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16659</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、user 应用 Clazz 类、Course 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 3.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-data-display-many-to-many/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 数据展示 （多对多版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、user 应用 Clazz 类、Course 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django-2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django-2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-user-应用-4-1-创建-user-应用">步骤四：创建 user 应用</h3>
+
+
+
+<h4 id="步骤四-创建-user-应用-4-1-创建-user-应用">4.1 创建 user 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp user</code></pre>
+
+
+
+<h4 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2 user 应用的目录</h4>
+
+
+
+<h5 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2.1 显示 user 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── user
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) user/app.py 此 Django 应用的容器<br>2) user/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) user/admin.py 此 Django 应用自带的后台管理相关的类<br>4) user/app.py 此 Django 应用指定应用名的文件<br>5) user/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) user/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) user/test.py 此 Django 应用的测试文档<br>8) user/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h4 id="4-3-在-mysite-应用中导入-user-应用">4.3 在 mysite 应用中导入 user 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'user',
+]
+......</code></pre>
+
+
+
+<h3 id="步骤五-实现-user-应用的层级多链接">步骤五：实现 user 应用的层级多链接</h3>
+
+
+
+<p>在 mysite/mysite/urls.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.conf.urls import url, include
+......
+urlpatterns = &#91;
+......
+    url(r'^register/', include('user.urls')),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 /register/ 链接对应 user 应用的链接为例）</p>
+
+
+
+<h3 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">步骤六：实现连接 MariaDB 数据库</h3>
+
+
+
+<h4 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">6.1 安装 MairaDB 数据库和客户端</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# zypper -n install mariadb mariadb-devel mariadb-server mariadb-client</code></pre>
+
+
+
+<h4 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2 创建用于 Django 的 MairaDB 的库和用户</h4>
+
+
+
+<h5 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2.1 进入 MairaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -h 127.0.0.1 -p</code></pre>
+
+
+
+<h5 id="6-2-2-创建用于-django-的库">6.2.2 创建用于 Django 的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; create database user;</code></pre>
+
+
+
+<p>（补充：这里以创建 user 库为例）</p>
+
+
+
+<h5 id="6-2-3-创建用于-django-的用户">6.2.3 创建用于 Django 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</code></pre>
+
+
+
+<p>（补充：这里以创建 root 用户，密码是 password 为例）</p>
+
+
+
+<h5 id="6-2-4-刷新权限">6.2.4 刷新权限</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; flush privileges;</code></pre>
+
+
+
+<h4 id="6-3-退出-mariadb-数据库">6.3 退出 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; exit</code></pre>
+
+
+
+<h4 id="6-4-重启-mariadb">6.4 重启 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# systemctl restart mariadb</code></pre>
+
+
+
+<h3 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">步骤七：搭建用于 Django 的 MariaDB 数据库环境</h3>
+
+
+
+<h4 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">7.1 安装 Django 连接 MariaDB 的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# pip3 install hexdump
+(django_env) &#91;root@python mysite]# pip3 install pymysql</code></pre>
+
+
+
+<h4 id="7-2-在-mysite-应用中添加-django-连接-mariadb-的模块">7.2 在 mysite 应用中添加 Django 连接 MariaDB 的模块</h4>
+
+
+
+<p>在 mysite/mysite/__init__.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>import pymysql
+pymysql.install_as_MySQLdb()</code></pre>
+
+
+
+<h4 id="7-3-在-user-应用数据库模板中添加-clazz-类-course-类-student-类和插入多对多数据的对象">7.3 在 user 应用数据库模板中添加 Clazz 类、Course 类、Student 类和插入多对多数据的对象</h4>
+
+
+
+<p>在 mysite/user/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+        return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里 getCls 对象的作用是获取 cname 变量，如果数据库中没有 cname 变量的值则直接插入这个值<br>2) 这里 getCourseList 对象的作用是获取 coursenames 变量，如果数据库中没有 coursenames 变量的值则直接插入这个值<br>3) 这里 registerStu 对象的作用是执行 getCls 对象和 getCourseList 对象，获取 sname 变量，如果数据库中没有 sname 变量的值则直接插入这个值<br>）</p>
+
+
+
+<h4 id="7-4-在-mysite-应用中设置连接到-mariadb-数据库">7.4 在 mysite 应用中设置连接到 MariaDB 数据库</h4>
+
+
+
+<p>将 mysite/mysite/settings.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'user',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+    }
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用的库是 user<br>2) 使用的服务器是 127.0.0.1<br>3) 使用的端口是 3306<br>4) 使用的用户是 root<br>5) 使用的密码是 password<br>为例<br>）</p>
+
+
+
+<h4 id="7-5-生成牵引文件">7.5 生成牵引文件</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'user':
+  user/migrations/0001_initial.py
+    - Create model Clazz
+    - Create model Course
+    - Create model Student</code></pre>
+
+
+
+<h4 id="7-6-将牵引文件导入-mariadb-数据库">7.6 将牵引文件导入 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user.0001_initial... OK</code></pre>
+
+
+
+<p>（补充：此时会在数据库里生成 3 张表 user_clazz 表、user_course 表、user_student 表和 user_student_cour 表，其中 user_student_cour 表是 user_course 表和 user_student 表的中间表）</p>
+
+
+
+<h3 id="步骤八-实现多对多注册功能-8-1-创建所需的-html-模版-8-1-1-在-user-应用中添加一个学生注册功能的-html-模板">步骤八：实现多对多注册功能</h3>
+
+
+
+<h4 id="步骤八-实现多对多注册功能-8-1-创建所需的-html-模版-8-1-1-在-user-应用中添加一个学生注册功能的-html-模板">8.1 创建所需的 HTML 模版</h4>
+
+
+
+<h5 id="步骤八-实现多对多注册功能-8-1-创建所需的-html-模版-8-1-1-在-user-应用中添加一个学生注册功能的-html-模板">8.1.1 在 user 应用中添加 1 个学生注册功能的 HTML 模板</h5>
+
+
+
+<p>创建 mysite/user/templates/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="sn"&gt;Name: &lt;/label&gt;&lt;input name="sname" id="sn"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="sc"&gt;Classroom: &lt;/label&gt;
+            &lt;select name="clsname" id="sc"&gt;
+                &lt;option value="Class 1"&gt;Class 1&lt;/option&gt;
+                &lt;option value="Class 2"&gt;Class 2&lt;/option&gt;
+                &lt;option value="Class 3"&gt;Class 3&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="cour"&gt;Course Selection: &lt;/label&gt;
+            &lt;input type="checkbox" name="coursename" value="Python"/&gt;Python &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="Shell"/&gt;Shell &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="HTML"/&gt;HTML &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="Django"/&gt;Django &amp;emsp;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type="submit" value="Register"/&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成 1 个用户名输入栏，赋值给 sname<br>2) 生成 1 个单选框，赋值给 clsname<br>3) 生成 1 个多选框，赋值给 cour<br>4) 生成 1 个注册按钮<br>为例<br>）</p>
+
+
+
+<h5 id="8-1-2-在-user-应用中添加一个显示所有数据的-html-模板">8.1.2 在 user 应用中添加 1 个显示所有数据的 HTML 模板</h5>
+
+
+
+<p>创建 mysite/user/templates/showall.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;table border="1" cellspacing="0" width="500px"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Code&lt;/th&gt;
+        &lt;th&gt;ClassRoom&lt;/th&gt;
+        &lt;th&gt;Operation&lt;/th&gt;
+    &lt;/tr&gt;
+    {% for c in cls %}
+        &lt;tr&gt;
+            &lt;td&gt;{{ forloop.counter }}&lt;/td&gt;
+            &lt;td&gt;{{ c.cname }}&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href="/register/getstu/?cno={{ c.cno }}"&gt;details&lt;/a&gt;
+            &lt;/td&gt;
+        &lt;tr&gt;
+    {% endfor %}
+
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（补充：这里以生成显示全部数据的列表为例）</p>
+
+
+
+<h5 id="8-1-3-在-user-应用中添加一个显示某一条-course-数据详细内容的-html-模板">8.1.3 在 user 应用中添加 1 个显示某 1 条 course 数据详细内容的 HTML 模板</h5>
+
+
+
+<p>创建 mysite/user/templates/stulist.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;table border="1" cellspacing="0" width="500px"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Code&lt;/th&gt;
+        &lt;th&gt;Student Name&lt;/th&gt;
+        &lt;th&gt;Classroom Name&lt;/th&gt;
+        &lt;th&gt;Course Name&lt;/th&gt;
+    &lt;/tr&gt;
+    {% for stu in stus %}
+        &lt;tr&gt;
+            &lt;td&gt;{{ forloop.counter }}&lt;/td&gt;
+            &lt;td&gt;{{ stu.sname }}&lt;/td&gt;
+            &lt;td&gt;{{ stu.cls.cname }}&lt;/td&gt;
+            &lt;td&gt;
+                {% for st in stu.cour.all %}
+                    {{ st.course_name }}
+                {% endfor %}
+            &lt;/td&gt;
+        &lt;tr&gt;
+    {% endfor %}
+
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以生成显示某 1 条 Classroom Name 为特定值的所有相关数据为例<br>2) 这里模版语法 all 后面不用加小括号“()”：</p>
+
+
+
+<pre class="wp-block-code"><code>{% for st in stu.cour.all %}</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="8-2-在-user-应用中添加一个网页返回值的模块并实现所需功能">8.2 在 user 应用中添加 1 个网页返回值的模块并实现所需功能</h4>
+
+
+
+<p>在 mysite/user/views.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.shortcuts import render
+from .models import *
+from django.http import HttpResponse, request
+......
+
+def index_view(request):
+    if request.method == 'GET':
+        return render(request,'register.html')
+    else:
+        # Receive request parameters
+        sname = request.POST.get('sname','')
+        cname = request.POST.get('clsname','')
+        coursenames = request.POST.getlist('coursename',&#91;])
+
+        # Register data to database
+        flag = registerStu(sname,cname,*coursenames)
+        if flag:
+            return HttpResponse('register success!')
+        return HttpResponse('register fale!')
+
+def showall_view(request):
+    #Display all classroom informations
+    cls = Clazz.objects.all()
+    return render(request,'showall.html',{'cls':cls})
+
+def getstu_view(request):
+    #Get classroom code
+    cno = request.GET.get('cno','')
+    mno = int(cno)
+
+    #Get student information from class code
+    stus = Clazz.objects.get(cno=mno).student_set.all()
+
+    return render(request,'stulist.html',{'stus':stus})</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 获取来自 HTML 的 sanme、clsname 和 coursename 变量<br>2) 使用 registerStu 对象处理所有变量，处理成功则返回 success! 否则返回 fale!<br>3) 使用 showall_view 对象将所有数据传递给 showall.html<br>4) 使用 getstu_view 对象将某 1 条 Classroom Name 为特定值的所有相关数据传递给 stulist.html<br>为例<br>）</p>
+
+
+
+<h4 id="8-3-在-movies-应用中添加一个链接并设置对应的模块">8.3 在 movies 应用中添加 1 个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/user/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>from django.conf.urls import url
+from user.views import *
+
+urlpatterns=&#91;
+    url(r'^$',index_view),
+    url(r'^showall/$',showall_view),
+    url(r'^getstu/$',getstu_view),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置空链接链接对应 index_view 模块为例）</p>
+
+
+
+<h3 id="步骤九-启动-django-服务">步骤九：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3 id="步骤十-测试页码功能">步骤十：测试页码功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/register/</code></pre>
+
+
+
+<p>2) 可以看到 Name 输入栏、Classroom 单选框、Course Selection 多选框和 Register 注册按钮，并可以注册信息</p>
+
+
+
+<p>3) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/showall/</code></pre>
+
+
+
+<p>4) 可以看到刚才注册的信息并且还有链接看到详细内容</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 注册功能的实现 （多对多版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-register-many-to-many/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 07 Jul 2021 08:22:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16622</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、user 应用 Clazz 类、Course 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 3.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-register-many-to-many/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 注册功能的实现 （多对多版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、user 应用 Clazz 类、Course 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django-2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django-2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-user-应用-4-1-创建-user-应用">步骤四：创建 user 应用</h3>
+
+
+
+<h4 id="步骤四-创建-user-应用-4-1-创建-user-应用">4.1 创建 user 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp user</code></pre>
+
+
+
+<h4 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2 user 应用的目录</h4>
+
+
+
+<h5 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2.1 显示 user 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── user
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) user/app.py 此 Django 应用的容器<br>2) user/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) muser/admin.py 此 Django 应用自带的后台管理相关的类<br>4) user/app.py 此 Django 应用指定应用名的文件<br>5) user/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) user/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) user/test.py 此 Django 应用的测试文档<br>8) user/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h4 id="4-3-在-mysite-应用中导入-user-应用">4.3 在 mysite 应用中导入 user 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'user',
+]
+......</code></pre>
+
+
+
+<h3 id="步骤五-实现-user-应用的层级多链接">步骤五：实现 user 应用的层级多链接</h3>
+
+
+
+<p>在 mysite/mysite/urls.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.conf.urls import url, include
+......
+urlpatterns = &#91;
+......
+    url(r'^register/', include('user.urls')),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 /register/ 链接对应 user 应用的链接为例）</p>
+
+
+
+<h3 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">步骤六：实现连接 MariaDB 数据库</h3>
+
+
+
+<h4 id="步骤六-实现连接-mariadb-数据库-6-1-安装-mairadb-数据库和客户端">6.1 安装 MairaDB 数据库和客户端</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# zypper -n install mariadb mariadb-devel mariadb-server mariadb-client</code></pre>
+
+
+
+<h4 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2 创建用于 Django 的 MairaDB 的库和用户</h4>
+
+
+
+<h5 id="6-2-创建用于-django-的-mairadb-的库和用户-6-2-1-进入-mairadb-数据库">6.2.1 进入 MairaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -h 127.0.0.1 -p</code></pre>
+
+
+
+<h5 id="6-2-2-创建用于-django-的库">6.2.2 创建用于 Django 的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; create database user;</code></pre>
+
+
+
+<p>（补充：这里以创建 user 库为例）</p>
+
+
+
+<h5 id="6-2-3-创建用于-django-的用户">6.2.3 创建用于 Django 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</code></pre>
+
+
+
+<p>（补充：这里以创建 root 用户，密码是 password 为例）</p>
+
+
+
+<h5 id="6-2-4-刷新权限">6.2.4 刷新权限</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; flush privileges;</code></pre>
+
+
+
+<h4 id="6-3-退出-mariadb-数据库">6.3 退出 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; exit</code></pre>
+
+
+
+<h4 id="6-4-重启-mariadb">6.4 重启 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# systemctl restart mariadb</code></pre>
+
+
+
+<h3 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">步骤七：搭建用于 Django 的 MariaDB 数据库环境</h3>
+
+
+
+<h4 id="步骤七-搭建用于-django-的-mariadb-数据库环境-7-1-安装-django-连接-mariadb-的模块">7.1 安装 Django 连接 MariaDB 的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# pip3 install hexdump
+(django_env) &#91;root@python mysite]# pip3 install pymysql</code></pre>
+
+
+
+<h4 id="7-2-在-mysite-应用中添加-django-连接-mariadb-的模块">7.2 在 mysite 应用中添加 Django 连接 MariaDB 的模块</h4>
+
+
+
+<p>在 mysite.mysite.__init__.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>import pymysql
+pymysql.install_as_MySQLdb()</code></pre>
+
+
+
+<h4 id="7-3-在-user-应用数据库模板中添加-clazz-类-course-类-student-类和插入多对多数据的对象">7.3 在 user 应用数据库模板中添加 Clazz 类、Course 类、Student 类和插入多对多数据的对象</h4>
+
+
+
+<p>在 mysite/user/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class Clazz(models.Model):
+    cno = models.AutoField(primary_key=True)
+    cname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Clazz:%s'%self.cname
+
+class Course(models.Model):
+    course_no = models.AutoField(primary_key=True)
+    course_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class Student(models.Model):
+    sno = models.AutoField(primary_key=True)
+    sname = models.CharField(max_length=30)
+    cls = models.ForeignKey(Clazz,on_delete=models.CASCADE)
+    cour = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return u'Student:%s'%self.sname
+
+# Get class object according to class name
+def getCls(cname):
+    try:
+        cls = Clazz.objects.get(cname=cname)
+    except Clazz.DoesNotExist:
+        cls = Clazz.objects.create(cname=cname)
+        return cls
+
+def getCourseList(*coursenames):
+    courseList = &#91;]
+
+    for cn in coursenames:
+        try:
+            c = Course.objects.get(course_name=cn)
+        except Course.DoesNotExist:
+            c = Course.objects.create(course_name=cn)
+        courseList.append(c)
+
+    return courseList
+
+def registerStu(sname,cname,*coursenames):
+    #1. Get class objects
+    cls = getCls(cname)
+    #2. Gets the list of course objects
+    courseList = getCourseList(*coursenames)
+    #3. Insert student table data
+    try:
+        stu = Student.objects.get(sname=sname)
+    except Student.DoesNotExist:
+        stu = Student.objects.create(sname=sname,cls=cls)
+    #4. Insert intermediate table data
+    stu.cour.add(*courseList)
+
+    return True</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里 getCls 对象的作用是获取 cname 变量，如果数据库中没有 cname 变量的值则直接插入这个值<br>2) 这里 getCourseList 对象的作用是获取 coursenames 变量，如果数据库中没有 coursenames 变量的值则直接插入这个值<br>3) 这里 registerStu 对象的作用是执行 getCls 对象和 getCourseList 对象，获取 sname 变量，如果数据库中没有 sname 变量的值则直接插入这个值<br>）</p>
+
+
+
+<h4 id="7-4-在-mysite-应用中设置连接到-mariadb-数据库">7.4 在 mysite 应用中设置连接到 MariaDB 数据库</h4>
+
+
+
+<p>将 mysite/mysite/settings.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'user',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+    }
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用的库是 user<br>2) 使用的服务器是 127.0.0.1<br>3) 使用的端口是 3306<br>4) 使用的用户是 root<br>5) 使用的密码是 password<br>为例<br>）</p>
+
+
+
+<h4 id="7-5-生成牵引文件">7.5 生成牵引文件</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'user':
+  user/migrations/0001_initial.py
+    - Create model Clazz
+    - Create model Course
+    - Create model Student</code></pre>
+
+
+
+<h4 id="7-6-将牵引文件导入-mariadb-数据库">7.6 将牵引文件导入 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user.0001_initial... OK</code></pre>
+
+
+
+<p>（补充：此时会在数据库里生成三张表 user_clazz 表、user_course 表、user_student 表和 user_student_cour 表，其中 user_student_cour 表是 user_course 表和 user_student 表的中间表）</p>
+
+
+
+<h3 id="步骤八-实现多对多注册功能-8-1-在-user-应用中添加一个学生注册功能的-html-模板">步骤八：实现多对多注册功能</h3>
+
+
+
+<h4 id="步骤八-实现多对多注册功能-8-1-在-user-应用中添加一个学生注册功能的-html-模板">8.1 在 user 应用中添加 1 个学生注册功能的 HTML 模板</h4>
+
+
+
+<p>创建 mysite/user/templates/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="sn"&gt;Name: &lt;/label&gt;&lt;input name="sname" id="sn"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="sc"&gt;Classroom: &lt;/label&gt;
+            &lt;select name="clsname" id="sc"&gt;
+                &lt;option value="Class 1"&gt;Class 1&lt;/option&gt;
+                &lt;option value="Class 2"&gt;Class 2&lt;/option&gt;
+                &lt;option value="Class 3"&gt;Class 3&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="cour"&gt;Course Selection: &lt;/label&gt;
+            &lt;input type="checkbox" name="coursename" value="Python"/&gt;Python &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="Shell"/&gt;Shell &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="HTML"/&gt;HTML &amp;emsp;
+            &lt;input type="checkbox" name="coursename" value="Django"/&gt;Django &amp;emsp;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;input type="submit" value="Register"/&gt;
+        &lt;/p&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成 1 个用户名输入栏，赋值给 sname<br>2) 生成 1 个单选框，赋值给 clsname<br>3) 生成 1 个多选框，赋值给 cour<br>4) 生成 1 个注册按钮<br>为例<br>）</p>
+
+
+
+<h4 id="8-2-在-user-应用中添加一个网页返回值的模块并实现所需功能">8.2 在 user 应用中添加 1 个网页返回值的模块并实现所需功能</h4>
+
+
+
+<p>在 mysite/user/views.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from django.shortcuts import render
+from .models import *
+from django.http import HttpResponse, request
+......
+
+def index_view(request):
+    if request.method == 'GET':
+        return render(request,'register.html')
+    else:
+        # Receive request parameters
+        sname = request.POST.get('sname','')
+        cname = request.POST.get('clsname','')
+        coursenames = request.POST.getlist('coursename',&#91;])
+
+        # Register data to database
+        flag = registerStu(sname,cname,*coursenames)
+        if flag:
+            return HttpResponse('register success!')
+        return HttpResponse('register fale!')</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 获取来自 HTML 的 sanme、clsname 和 coursename 变量<br>2) 使用 registerStu 对象处理所有变量，处理成功则返回 success! 否则返回 fale!<br>为例<br>）</p>
+
+
+
+<h4 id="8-3-在-user-应用中添加一个链接并设置对应的模块">8.3 在 user 应用中添加 1 个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/user/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>from django.conf.urls import url
+from user.views import *
+
+urlpatterns=&#91;
+    url(r'^$',index_view)
+]</code></pre>
+
+
+
+<p>（补充：这里以设置空链接链接对应 index_view 模块为例）</p>
+
+
+
+<h3 id="步骤九-启动-django-服务">步骤九：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3 id="步骤十-测试页码功能">步骤十：测试页码功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/register/</code></pre>
+
+
+
+<p>2) 可以看到 Name 输入栏、Classroom 单选框、Course Selection 多选框和 Register 注册按钮</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Python 可变参数和参数解包</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-variable-parameters-and-parameter-unpacking/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Jul 2021 06:39:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16575</guid>
+
+					<description><![CDATA[内容一：可变参数和参数解包区别 1) 可变参数是在形参中，通过 ，* 来实现2) 参数解包是在实参中，通过 ，* 来实现 内容二：可变参数的使用案例 2.1 进入 Python3 环境 2.2 创建 1 个输出可变参数内容的对象 （补充：1) 这里以创建 demo 对象为例2) 这里 1 个 * 代表接收的是 1 个元组，2 个 ** 代表接收的是 1 个键值对从而形成 1 个字典） 2.3 测试输出可变参数内容的对象 （补充：这里 2 个小括号 “()” 是指元组，2 个大括号是 “{}” 是指字典） 2.4 让输出可变参数内容的对象处理元组 （补充：这里以处理元组 1，2，3 为例） 2.5 让输出可变参数内容的对象处理元组和字典 （补充：这里以处理元组 1，2，3 和字典 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/python-variable-parameters-and-parameter-unpacking/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Python 可变参数和参数解包"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：可变参数和参数解包区别</h3>
+
+
+
+<p>1) 可变参数是在形参中，通过 <em>，</em>* 来实现<br>2) 参数解包是在实参中，通过 <em>，</em>* 来实现</p>
+
+
+
+<h3>内容二：可变参数的使用案例</h3>
+
+
+
+<h4>2.1 进入 Python3 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># python3
+&gt;&gt;&gt; </code></pre>
+
+
+
+<h4>2.2 创建 1 个输出可变参数内容的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def demo(*args,**kwargs):
+...     print(args)
+...     print(kwargs)
+... </code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 demo 对象为例<br>2) 这里 1 个 * 代表接收的是 1 个元组，2 个 ** 代表接收的是 1 个键值对从而形成 1 个字典<br>）</p>
+
+
+
+<h4>2.3 测试输出可变参数内容的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo()
+()
+{}</code></pre>
+
+
+
+<p>（补充：这里 2 个小括号 “()” 是指元组，2 个大括号是 “{}” 是指字典）</p>
+
+
+
+<h4>2.4 让输出可变参数内容的对象处理元组</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3)
+(1, 2, 3)
+{}</code></pre>
+
+
+
+<p>（补充：这里以处理元组 1，2，3 为例）</p>
+
+
+
+<h4>2.5 让输出可变参数内容的对象处理元组和字典</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3,c='2')
+(1, 2, 3)
+{'c': '2'}</code></pre>
+
+
+
+<p>（补充：这里以处理元组 1，2，3 和字典 c=&#8217;2&#8242; 为例）</p>
+
+
+
+<h3>内容三：参数解包的使用案例</h3>
+
+
+
+<h4>3.1 进入 Python3 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># python3
+&gt;&gt;&gt; </code></pre>
+
+
+
+<h4>3.2 创建 1 个进行参数解包的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def demo(a,b,c):
+...     print(a,b,c)
+...</code></pre>
+
+
+
+<h4>3.3 测试进行参数解包的对象</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; demo(1,2,3)
+1 2 3</code></pre>
+
+
+
+<h4>3.4 让进行参数解包的对象处理元组</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; args = (1,2,3)
+&gt;&gt;&gt; demo(*args)
+1 2 3</code></pre>
+
+
+
+<h4>3.5 让进行参数解包的对象处理字典</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; kwargs1 = { 'a':'a1','b':'b2','c':'c3'}
+&gt;&gt;&gt; demo(**kwargs1)
+a1 b2 c3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 多表的实现 （多对多版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/many-to-many/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Jul 2021 06:27:49 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=16569</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、user 应用 ourCla 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 3.2.1 安装 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/many-to-many/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 多表的实现 （多对多版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、user 应用 ourCla 类和 Student 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django-2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django-2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目-3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录-3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-user-应用-4-1-创建-user-应用">步骤四：创建 user 应用</h3>
+
+
+
+<h4 id="步骤四-创建-user-应用-4-1-创建-user-应用">4.1 创建 user 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp user</code></pre>
+
+
+
+<h4 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2 user 应用的目录</h4>
+
+
+
+<h5 id="4-2-user-应用的目录-4-2-1-显示-user-应用的目录">4.2.1 显示 user 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── user
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) user/app.py 此 Django 应用的容器<br>2) user/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) user/admin.py 此 Django 应用自带的后台管理相关的类<br>4) user/app.py 此 Django 应用指定应用名的文件<br>5) user/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) user/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) user/test.py 此 Django 应用的测试文档<br>8) user/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h4 id="4-3-在-mysite-应用中导入-user-应用">4.3 在 mysite 应用中导入 user 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'user',
+]
+......</code></pre>
+
+
+
+<h3 id="步骤五-实现连接-mariadb-数据库-5-1-安装-mairadb-数据库和客户端">步骤五：实现连接 MariaDB 数据库</h3>
+
+
+
+<h4 id="步骤五-实现连接-mariadb-数据库-5-1-安装-mairadb-数据库和客户端">5.1 安装 MairaDB 数据库和客户端</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# zypper -n install mariadb mariadb-devel mariadb-server mariadb-client</code></pre>
+
+
+
+<h4 id="5-2-创建用于-django-的-mairadb-的库和用户-5-2-1-进入-mairadb-数据库">5.2 创建用于 Django 的 MairaDB 的库和用户</h4>
+
+
+
+<h5 id="5-2-创建用于-django-的-mairadb-的库和用户-5-2-1-进入-mairadb-数据库">5.2.1 进入 MairaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -h 127.0.0.1 -p</code></pre>
+
+
+
+<h5 id="5-2-2-创建用于-django-的库">5.2.2 创建用于 Django 的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; create database user;</code></pre>
+
+
+
+<p>（补充：这里以创建 user 库为例）</p>
+
+
+
+<h5 id="5-2-3-创建用于-django-的用户">5.2.3 创建用于 Django 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;</code></pre>
+
+
+
+<p>（补充：这里以创建 root 用户，密码是 password 为例）</p>
+
+
+
+<h5 id="5-2-4-刷新权限">5.2.4 刷新权限</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; flush privileges;</code></pre>
+
+
+
+<h4 id="5-3-退出-mariadb-数据库">5.3 退出 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; exit</code></pre>
+
+
+
+<h4 id="5-4-重启-mariadb">5.4 重启 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# systemctl restart mariadb</code></pre>
+
+
+
+<h3 id="步骤六-搭建用于-django-的-mariadb-数据库环境-6-1-安装-django-连接-mariadb-的模块">步骤六：搭建用于 Django 的 MariaDB 数据库环境</h3>
+
+
+
+<h4 id="步骤六-搭建用于-django-的-mariadb-数据库环境-6-1-安装-django-连接-mariadb-的模块">6.1 安装 Django 连接 MariaDB 的模块</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# pip3 install hexdump
+(django_env) &#91;root@python mysite]# pip3 install pymysql</code></pre>
+
+
+
+<h4 id="6-2-在-mysite-应用中添加-django-连接-mariadb-的模块">6.2 在 mysite 应用中添加 Django 连接 MariaDB 的模块</h4>
+
+
+
+<p>在 mysite/mysite/__init__.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>import pymysql
+pymysql.install_as_MySQLdb()</code></pre>
+
+
+
+<h4 id="6-3-在-user-应用数据库模板中添加-course-类和-teacher">6.3 在 user 应用数据库模板中添加 Course 类和 Teacher</h4>
+
+
+
+<p>在 mysite/user/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>class Course(models.Model):
+    course_no=models.AutoField(primary_key=True)
+    course_name=models.CharField(max_length=30,)
+
+    def __str__(self):
+        return u'Course:%s'%self.course_name
+
+class Teacher(models.Model):
+    tno = models.AutoField(primary_key=True)
+    tname = models.CharField(max_length=30)
+    cour = models.ManyToManyField(Course)
+
+    def __str__(self):
+        return u'Teacher:%s'%self.tname</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的这条语句会让 Course 类中 course_name 字段以 Course: 的列表形式显示出来：</p>
+
+
+
+<pre class="wp-block-code"><code>    def __str__(self):
+        return u'Course:%s'%self.course_name</code></pre>
+
+
+
+<p>2) 这里的这条语句会让 Teacher 类中 tname 字段以 Teacher: 的列表形式显示出来：</p>
+
+
+
+<pre class="wp-block-code"><code>    def __str__(self):
+        return u'Teacher:%s'%self.tname</code></pre>
+
+
+
+<p>3) 这里的 Course 类和 Teacher 类可以相互多选，是多对多的形式<br>）</p>
+
+
+
+<h4 id="6-4-在-mysite-应用中设置连接到-mariadb-数据库">6.4 在 mysite 应用中设置连接到 MariaDB 数据库</h4>
+
+
+
+<p>将 mysite/mysite/settings.py 中的以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'user',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'password',
+    }
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用的库是 user<br>2) 使用的服务器是 127.0.0.1<br>3) 使用的端口是 3306<br>4) 使用的用户是 root<br>5) 使用的密码是 password<br>为例<br>）</p>
+
+
+
+<h4 id="6-5-生成牵引文件">6.5 生成牵引文件</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'user':
+  user/migrations/0001_initial.py
+    - Create model Course
+    - Create model Teacher</code></pre>
+
+
+
+<h4 id="6-6-将牵引文件导入-mariadb-数据库">6.6 将牵引文件导入 MariaDB 数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, user
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying user.0001_initial... OK</code></pre>
+
+
+
+<p>（补充：此时会在数据库里生成三张表 user_course 表、user_teacher 表和 user_teacher_cour 表，其中 user_teacher_cour 表是 user_course 表和 user_teacher 表的中间表）</p>
+
+
+
+<h4 id="6-7-查看导入到-mariadb-数据库的表-6-7-1-进入-mariadb-数据库">6.7 查看导入到 MariaDB 数据库的表</h4>
+
+
+
+<h5 id="6-7-查看导入到-mariadb-数据库的表-6-7-1-进入-mariadb-数据库">6.7.1 进入 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# mysql -uroot -p</code></pre>
+
+
+
+<h5 id="6-7-2-查看所有的库">6.7.2 查看所有的库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| user               |
++--------------------+
+4 rows in set (0.001 sec)</code></pre>
+
+
+
+<h5 id="6-7-3-进入-user-库">6.7.3 进入 user 库</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;(none)]&gt; use user;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A</code></pre>
+
+
+
+<h5 id="6-7-4-查看-user-库里所有的表">6.7.4 查看 user 库里所有的表</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;user]&gt; show tables;
++----------------------------+
+| Tables_in_user             |
++----------------------------+
+| auth_group                 |
+| auth_group_permissions     |
+| auth_permission            |
+| auth_user                  |
+| auth_user_groups           |
+| auth_user_user_permissions |
+| django_admin_log           |
+| django_content_type        |
+| django_migrations          |
+| django_session             |
+| user_course                |
+| user_teacher               |
+| user_teacher_cour          |
++----------------------------+
+13 rows in set (0.001 sec)</code></pre>
+
+
+
+<p>（补充：这里的 user_teacher_cour 表是自动创建的，user_course 表和 user_teacher 表的中间表）</p>
+
+
+
+<h5 id="6-7-5-查看-user-course-表-user-teacher-表和-user-teacher-cour-表里的数据">6.7.5 查看 user_course 表、user_teacher 表和 user_teacher_cour 表里的数据</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;user]&gt; select * from user_course;
+Empty set (0.001 sec)
+
+MariaDB &#91;user]&gt; select * from user_teacher;
+Empty set (0.001 sec)
+
+MariaDB &#91;user]&gt; select * from user_teacher_cour;
+Empty set (0.001 sec)</code></pre>
+
+
+
+<h5 id="6-7-6-查看-user-course-表-user-teacher-表和-user-teacher-cour-的表结构">6.7.6 查看 user_course 表、user_teacher 表和 user_teacher_cour 的表结构</h5>
+
+
+
+<pre class="wp-block-code"><code>MariaDB &#91;user]&gt; desc user_course;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| course_no   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| course_name | varchar(30) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.004 sec)
+
+MariaDB &#91;user]&gt; desc user_teacher;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| tno   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| tname | varchar(30) | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.002 sec)
+
+MariaDB &#91;user]&gt; desc user_teacher_cour;
++------------+------------+------+-----+---------+----------------+
+| Field      | Type       | Null | Key | Default | Extra          |
++------------+------------+------+-----+---------+----------------+
+| id         | bigint(20) | NO   | PRI | NULL    | auto_increment |
+| teacher_id | int(11)    | NO   | MUL | NULL    |                |
+| course_id  | int(11)    | NO   | MUL | NULL    |                |
++------------+------------+------+-----+---------+----------------+
+3 rows in set (0.002 sec)</code></pre>
+
+
+
+<h3 id="步骤七-测试-django-一对多多表-7-1-配置-django-环境-7-1-1-进入-python-环境">步骤七：测试 Django 一对多多表</h3>
+
+
+
+<h4 id="步骤七-测试-django-一对多多表-7-1-配置-django-环境-7-1-1-进入-python-环境">7.1 配置 Django 环境</h4>
+
+
+
+<h5 id="步骤七-测试-django-一对多多表-7-1-配置-django-环境-7-1-1-进入-python-环境">7.1.1 进入 Python 环境</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3</code></pre>
+
+
+
+<h5 id="7-1-2-引入-os-模块和-django-模块">7.1.2 引入 os 模块和 django 模块</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; import os,django</code></pre>
+
+
+
+<h5 id="7-1-3-调用-mysite-settings-的配置">7.1.3 调用 mysite.settings 的配置</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+'mysite.settings'</code></pre>
+
+
+
+<h5 id="7-1-4-让刚刚的调用生效">7.1.4 让刚刚的调用生效</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; django.setup()</code></pre>
+
+
+
+<h5 id="7-1-5-调用-mysite-项目-user-应用-models-模块里的所有内容">7.1.5 调用 mysite 项目 user 应用 models 模块里的所有内容</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; from user.models import *</code></pre>
+
+
+
+<h4 id="7-2-插入多对多多表数据-7-2-1-往-course-表插入三条数据-插入三条课程数据">7.2 插入多对多多表数据</h4>
+
+
+
+<h5 id="7-2-插入多对多多表数据-7-2-1-往-course-表插入三条数据-插入三条课程数据">7.2.1 往 Course 表插入 3 条数据（插入 3 条课程数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; cour1 = Course.objects.create(course_name='Python')
+&gt;&gt;&gt; cour2 = Course.objects.create(course_name='Shell')
+&gt;&gt;&gt; cour3 = Course.objects.create(course_name='HTML')</code></pre>
+
+
+
+<p>（补充：这里以随意插入三条数据为例）</p>
+
+
+
+<h5 id="7-2-2-往-teacher-表插入两条数据-插入两条老师数据">7.2.2 往 Teacher 表插入 2 条数据（插入 2 条老师数据）</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; t1 = Teacher.objects.create(tname='zhangsan')
+&gt;&gt;&gt; t2 = Teacher.objects.create(tname='lisi')</code></pre>
+
+
+
+<p>（补充：这里以随意插入两条数据为例）</p>
+
+
+
+<h5 id="7-2-3-让-teacher-表里的某一条数据关联-course-表中的三条数据">7.2.3 让 Teacher 表里的某 1 条数据关联 Course 表中的 3 条数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; t1.cour.add(cour1,cour2,cour3)</code></pre>
+
+
+
+<p>（补充：这里以让 t1 数据中的老师选择 cour1、cour2 和 cour3 数据里课程为例）</p>
+
+
+
+<h4 id="7-3-查看多对多多表数据-7-3-1-查看多对多多表数据的性质">7.3 查看多对多多表数据</h4>
+
+
+
+<h5 id="7-3-查看多对多多表数据-7-3-1-查看多对多多表数据的性质">7.3.1 查看多对多多表数据的性质</h5>
+
+
+
+<p>1) 这里从 Course 表到 Teacher 表的查询正向查询<br>2) 这里从 Teacher 表到 Course 表的查询逆向查询</p>
+
+
+
+<h5 id="7-3-2-正向查询数据">7.3.2 正向查询数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Course.objects.first().teacher_set.all()
+&lt;QuerySet &#91;&lt;Teacher: Teacher:zhangsan&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 集合后面需要添加 all()，如果不是集合只是对象则不需要添加 all()<br>2) 这里的 QuerySet 代表多对多<br>3) 这里的 _set 代表一对多，有一对多的就会有 _set<br>）</p>
+
+
+
+<h5 id="7-3-3-逆向查询数据">7.3.3 逆向查询数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; Teacher.objects.first().cour.all()
+&lt;QuerySet &#91;&lt;Course: Course:Python&gt;, &lt;Course: Course:Shell&gt;, &lt;Course: Course:HTML&gt;]&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 集合后面需要添加 all()，如果不是集合只是对象则不需要添加 all()<br>2) 这里的 QuerySet 代表多对多<br>）</p>
+
+
+
+<h4 id="7-4-使用对象插入一对多多表数据-7-4-1-创建一个插入数据的对象">7.4 使用对象插入 1 对多多表数据</h4>
+
+
+
+<h5 id="7-4-使用对象插入一对多多表数据-7-4-1-创建一个插入数据的对象">7.4.1 创建 1 个插入数据的对象</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; def insertData(tname,*coursenames):
+...     try:
+...         t = Teacher.objects.get(tname=tname)
+...     except Teacher.DoesNotExist:
+...         t = Teacher.objects.create(tname=tname)
+...     courseList = &#91;]
+...     for cn in coursenames:
+...         try:
+...             cou = Course.objects.get(course_name=cn)
+...         except Course.DoesNotExist:
+...             cou = Course.objects.create(course_name=cn)
+...         courseList.append(cou)
+...     t.cour.add(*courseList)
+...</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的星号 “*” 代表 1 个可变参数<br>2) 一个星号 “*” 代表是 1 个元组的形势，各个元素单独存在且用逗号隔开<br>3) 两个星号 “**” 代表是 1 个键值对，用 = 的方式存在且用逗号隔开<br>）</p>
+
+
+
+<h5 id="7-4-2-使用对象插入多对多多表数据">7.4.2 使用对象插入多对多多表数据</h5>
+
+
+
+<pre class="wp-block-code"><code>&gt;&gt;&gt; insertData('wangwu','SQLite','MySQL')</code></pre>
+
+
+
+<p>（<br>补充：结合 7.4.1 这里以<br>1) 在 Teacher 表中插入 wangwu 数据<br>2) 在 Course 表中插入 SQLite 数据和 MySQL 数据<br>3) wangwu 对应 SQLite 数据和 MySQL 数据<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

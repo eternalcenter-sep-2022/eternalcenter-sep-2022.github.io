@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>NFS &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/storage-service/nfs/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 07:14:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] NFS 常用参数</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfs-parameter/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 08:11:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23656</guid>
+
+					<description><![CDATA[内容一：NFS 常用参数 1) no_root_squash 当使用 NFS 共享目录的客户端是以客户端的 root 用户的身份使用，那么对于这个共享目录而言，这个客户端具有 root 权限2) root_squash 当使用 NFS 共享目录的客户端是以客户端的 root 用户的身份使用，那么对于这个共享目录而言，这个客户端依旧没有 root 权限3) 此为默认值，anon=0 禁止使用 NFS 共享目录的客户端以随机身份使用4) anon=1 允许使用 NFS 共享目录的客户端以随机身份使用5) soft 使用 NFS 共享目录的客户端以软挂载的方式进行挂载，若客户端的请求得不到回应，则会重新发出请求并传回错误信息6) 此为默认值，hard 使用 NFS 共享目录的客户端以软挂载的方式进行挂载，若客户端的请求得不到回应，则会一直发出请求直到得到 NFS 服务器的回应为止7) timeo=120 使用 NFS 共享目录的客户端在连接不通后，会以 1/7 秒的时间尝试重新连接，默认会尝试重新连接 7 次，timeo=120 表示会重新尝试连接 120 次8) rw 设置使用 NFS 共享目录的客户端拥有读和写的权限9) nolock 取消文件锁 内容二：NFS &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nfs-parameter/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] NFS 常用参数"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：NFS 常用参数</h3>
+
+
+
+<p>1) no_root_squash 当使用 NFS 共享目录的客户端是以客户端的 root 用户的身份使用，那么对于这个共享目录而言，这个客户端具有 root 权限<br>2) root_squash 当使用 NFS 共享目录的客户端是以客户端的 root 用户的身份使用，那么对于这个共享目录而言，这个客户端依旧没有 root 权限<br>3) 此为默认值，anon=0 禁止使用 NFS 共享目录的客户端以随机身份使用<br>4) anon=1 允许使用 NFS 共享目录的客户端以随机身份使用<br>5) soft 使用 NFS 共享目录的客户端以软挂载的方式进行挂载，若客户端的请求得不到回应，则会重新发出请求并传回错误信息<br>6) 此为默认值，hard 使用 NFS 共享目录的客户端以软挂载的方式进行挂载，若客户端的请求得不到回应，则会一直发出请求直到得到 NFS 服务器的回应为止<br>7) timeo=120 使用 NFS 共享目录的客户端在连接不通后，会以 1/7 秒的时间尝试重新连接，默认会尝试重新连接 7 次，timeo=120 表示会重新尝试连接 120 次<br>8) rw 设置使用 NFS 共享目录的客户端拥有读和写的权限<br>9) nolock 取消文件锁</p>
+
+
+
+<h3>内容二：NFS 的挂载案例</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/fstab
+192.168.0.1:/test /test nfs timeo=120,rw,soft,nolock 0 0</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 挂载 192.168.0.1:/test 的目录到本地的 /test 目录<br>2) 以 nfs 格式进行挂载<br>3) 客户端在连接不通后会重新尝试连接 120 次<br>4) 客户端拥有读和写的权限<br>5) 以软挂载的方式进行挂载<br>6) 取消文件锁<br>7) 不进行数据备份<br>8) 不进行数据校验<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] 自动挂载服务的搭建 （通过 Autofs 和 NFS 实现） （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/autofs-linux-centos8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 16:07:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9969</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 6 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.101.10客户端 192.168.101.11 1.2 服务器列表简介 1) 服务器提供 NFS 服务将自己的目录分享2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 8 版本2) 所有服务器都要关闭防火墙3) 所有服务器系统都要配置好可用的软件源4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有服务器安装 NFS 服务 3.1 所有服务器安装 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.2 设置所有服务器开机自启 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.3 所有服务器启动 NFS 服务 （分别在服务端和客户端上执行以下步骤） 步骤四：配置 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/autofs-linux-centos8/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] 自动挂载服务的搭建 （通过 Autofs 和 NFS 实现） （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 6 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.101.10<br>客户端 192.168.101.11</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 NFS 服务将自己的目录分享<br>2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器系统都要配置好可用的软件源<br>4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">步骤三：所有服务器安装 NFS 服务</h3>
+
+
+
+<h4 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">3.1 所有服务器安装 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install rpcbind nfs-utils</code></pre>
+
+
+
+<h4 id="3-2-设置所有服务器开机自启-nfs-服务">3.2 设置所有服务器开机自启 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nfs-server</code></pre>
+
+
+
+<h4 id="3-3-所有服务器启动-nfs-服务">3.3 所有服务器启动 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nfs-server</code></pre>
+
+
+
+<h3 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">步骤四：配置 NFS 服务</h3>
+
+
+
+<h4 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1 创建用于 NFS 服务的目录</h4>
+
+
+
+<h5 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1.1 创建被 NFS 服务共享的目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsshare</code></pre>
+
+
+
+<h5 id="4-1-2-创建用于自动挂载-nfs-服务分享目录的目录">4.1.2 创建用于自动挂载 NFS 服务分享目录的目录</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /autofs</code></pre>
+
+
+
+<h4 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2 配置服务端的 NFS 服务配置文件</h4>
+
+
+
+<h5 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2.1 在服务端上添加可被 NFS 服务挂载的选项</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/exports</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/nfsshare 192.168.101.0/24(rw,sync,no_root_squash,no_subtree_check)</code></pre>
+
+
+
+<p>（补充：这里的 192.168.101.0.24 是客户端的 IP 地址所在的网段）</p>
+
+
+
+<h5 id="4-2-2-让刚刚修改的-nfs-服务配置文件生效">4.2.2 让刚刚修改的 NFS 服务配置文件生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># exportfs -a</code></pre>
+
+
+
+<h4 id="4-3-部署客户端的-autofs-自动挂载服务4-3-1-安装-autofs-服务">4.3 部署客户端的 Autofs 自动挂载服务</h4>
+
+
+
+<h5 id="4-3-部署客户端的-autofs-自动挂载服务4-3-1-安装-autofs-服务">4.3.1 安装 Autofs 服务</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install autofs</code></pre>
+
+
+
+<h5 id="4-3-2-设置客户端开机自启-autofs-服务">4.3.2 设置客户端开机自启 Autofs 服务</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable autofs</code></pre>
+
+
+
+<h4 id="4-3-3-在客户端上设置-autofs-自动挂载服务4-3-3-1-在客户端上设置-autofs-自动挂载的主配置文件">4.3.3 在客户端上设置 Autofs 自动挂载服务</h4>
+
+
+
+<h5 id="4-3-3-在客户端上设置-autofs-自动挂载服务4-3-3-1-在客户端上设置-autofs-自动挂载的主配置文件">4.3.3.1 在客户端上设置 Autofs 自动挂载的主配置文件</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/auto.master</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#
+/misc   /etc/auto.misc
+#
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/misc   /etc/auto.misc
+/autofs /etc/auto.autofs
+......</code></pre>
+
+
+
+<p>（补充：在这里指定了 /etc/auto.autofs 为 Autofs 的从配置文件，并且将 autofs 的主目录设置为 /autofs）</p>
+
+
+
+<h5 id="4-3-3-2-在客户端上设置-autofs-的从配置文件">4.3.3.2 在客户端上设置 Autofs 的从配置文件</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/auto.misc /etc/auto.autofs
+# vim /etc/auto.autofs</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+cd              -fstype=iso9660,ro,nosuid,nodev :/dev/cdrom
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+cd              -fstype=iso9660,ro,nosuid,nodev :/dev/cdrom
+directory01             -fstype=nfs,rw 192.168.101.10:/nfsshare
+......</code></pre>
+
+
+
+<p>（补充：在这里指定了 Autofs 的次级目录为 directory01，即：/autofs/directory01）</p>
+
+
+
+<h5 id="4-3-4-让刚刚修改的-autofs-自动挂载服务配置文件生效">4.3.4 让刚刚修改的 Autofs 自动挂载服务配置文件生效</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart autofs</code></pre>
+
+
+
+<h3 id="步骤五-显示-autofs-自动挂载服务是否设置成功5-1-显示客户端当前的目录挂载情况">步骤五：显示 Autofs 自动挂载服务是否设置成功</h3>
+
+
+
+<h4 id="步骤五-显示-autofs-自动挂载服务是否设置成功5-1-显示客户端当前的目录挂载情况">5.1 显示客户端当前的目录挂载情况</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        957M     0  957M   0% /dev
+tmpfs           971M     0  971M   0% /dev/shm
+tmpfs           971M   17M  954M   2% /run
+tmpfs           971M     0  971M   0% /sys/fs/cgroup
+/dev/vda1        10G  1.6G  8.5G  16% /
+tmpfs           195M     0  195M   0% /run/user/0</code></pre>
+
+
+
+<h4 id="5-2-进入到-autofs-自动挂载的目录">5.2 进入到 Autofs 自动挂载的目录</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd /autofs/directory01</code></pre>
+
+
+
+<h4 id="5-3-再次显示客户端当前的目录挂载情况">5.3 再次显示客户端当前的目录挂载情况</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h
+Filesystem                Size  Used Avail Use% Mounted on
+devtmpfs                  957M     0  957M   0% /dev
+tmpfs                     971M     0  971M   0% /dev/shm
+tmpfs                     971M   17M  955M   2% /run
+tmpfs                     971M     0  971M   0% /sys/fs/cgroup
+/dev/vda1                  10G  1.6G  8.5G  16% /
+tmpfs                     195M     0  195M   0% /run/user/0
+192.168.101.10:/nfsshare   10G  1.6G  8.5G  16% /autofs/directory01</code></pre>
+
+
+
+<p>（补充：在进入到 Autofs 自动挂载的目录后，自动挂载就在系统中自动出现了）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] NFS 远程共享服务的搭建 （RHEL 7 版） （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfs-build-rhel-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 May 2020 05:29:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8917</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>RHEL7-部署NFS文件共享服务
+
+一、NFS概述
+NFS 是Network File System的缩写，即网络文件系统。
+一种使用于分散式文件系统的协定，由Sun公司开发，于1984年向外公布。、
+
+功能是通过网络让不同的机器、不同的操作系统能够彼此分享个别的数据，让应用程序在客户端通过网络访问位于服务器磁盘中的数据，是在类Unix系统间实现磁盘文件共享的一种方法。
+
+NFS 的基本原则是"容许不同的客户端及服务端通过一组RPC分享相同的文件系统"，它是独立于操作系统，容许不同硬件及操作系统的系统共同进行文件的分享。
+
+NFS在文件传送或信息传送过程中依赖于RPC协议。
+RPC，远程过程调用 (Remote Procedure Call) 是能使客户端执行其他系统中程序的一种机制。
+
+NFS本身是没有提供信息传输的协议和功能的，但NFS却能让我们通过网络进行资料的分享，这是因为NFS使用了一些其它的传输协议。而这些传输协议用到这个RPC功能的。可以说NFS本身就是使用RPC的一个程序。或者说NFS也是一个RPC SERVER。所以只要用到NFS的地方都要启动RPC服务，不论是NFS SERVER或者NFS CLIENT。这样SERVER和CLIENT才能通过RPC来实现PROGRAM PORT的对应。可以这么理解RPC和NFS的关系：NFS是一个文件系统，而RPC是负责负责信息的传输。
+
+系统环境
+
+系统平台： CentOS7或RHEL7
+NFS Server IP： 192.168.1.63
+防火墙已: 关闭或着允许NFS
+iptables –F
+iptables –X
+
+SELINUX=disabled ==== setenforce 0
+
+安装NFS服务
+• nfs-utils ：包括基本的NFS命令与监控程序
+• rpcbind ：支持安全NFS RPC服务的连接
+
+&#91;root@server ~]# yum -y install rpcbind nfs-utils
+
+在这里插入图片描述
+NFS系统守护进程
+• nfsd：它是基本的NFS守护进程，主要功能是管理客户端是否能够登录服务器；
+• mountd：它是RPC安装守护进程，主要功能是管理NFS的文件系统。
+当客户端顺利通过nfsd登录NFS服务器后，在使用NFS服务所提供的文件前，还必须通过文件使用权限的验证。它会读取NFS的配置文件/etc/exports来对比客户端权限。
+• rpcbind：主要功能是进行端口映射工作。
+当客户端尝试连接并使用RPC服务器提供的服务（如NFS服务）时，rpcbind会将所管理的与服务对应的端口提供给客户端，从而使客户可以通过该端口向服务器请求服务。
+
+NFS服务器的配置
+
+NFS服务器的配置相对比较简单，只需要在相应的配置文件中进行设置，然后启动NFS服务器即可。
+NFS的常用目录
+
+/etc/exports #NFS服务的主要配置文件
+/usr/sbin/exportfs #NFS服务的管理命令
+/usr/sbin/showmount #客户端的查看命令
+/var/lib/nfs/etab # 记录NFS分享出来的目录的完整权限设定值
+/var/lib/nfs/xtab #记录曾经登录过的客户端信息。
+
+NFS服务的配置文件为 /etc/exports，
+
+这个文件是NFS的主要配置文件，不过系统并没有默认值，所以这个文件不一定会存在，可能要使用vim手动建立，然后在文件里面写入配置内容。
+/etc/exports文件内容格式：
+&lt;输出目录&gt; &#91;客户端1 选项（访问权限,用户映射,其他）] &#91;客户端2 选项（访问权限,用户映射,其他）]
+输出目录：
+输出目录是指NFS系统中需要共享给客户机使用的目录；
+客户端：
+客户端是指网络中可以访问这个NFS输出目录的计算机
+
+客户端常用的指定方式
+• 指定ip地址的主机：192.168.0.200
+• 指定子网中的所有主机：192.168.0.0/24 192.168.0.0/255.255.255.0
+• 指定域名的主机：nfs.cnhzz.com
+• 指定域中的所有主机：.cnhzz.com
+• 所有主机：
+
+选项：
+选项用来设置输出目录的访问权限、用户映射等。
+NFS主要有3类选项：
+访问权限选项
+• 设置输出目录只读：ro ReadOnly
+• 设置输出目录读写：rw Read and Write
+用户映射选项
+• all_squash：将远程访问的所有普通用户及所属组都映射为匿名用户或用户组（nfsnobody）；
+• no_all_squash：与all_squash取反（默认设置）；
+• root_squash：将root用户及所属组都映射为匿名用户或用户组（默认设置）；
+• no_root_squash：与rootsquash取反；
+• anonuid=xxx：将远程访问的所有用户都映射为匿名用户，并指定该用户为本地用户（UID=xxx）；
+• anongid=xxx：将远程访问的所有用户组都映射为匿名用户组账户，并指定该匿名用户组账户为本地用户组账户（GID=xxx）；
+其它选项
+• secure：限制客户端只能从小于1024的tcp/ip端口连接nfs服务器（默认设置）；
+• insecure：允许客户端从大于1024的tcp/ip端口连接服务器；
+• sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性；
+• async：将数据先保存在内存缓冲区中，必要时才写入磁盘；
+• wdelay：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率（默认设置）；
+• no_wdelay：若有写操作则立即执行，应与sync配合使用；
+• subtree：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限(默认设置)；
+• no_subtree：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率；
+
+NFS服务器的启动与停止
+在对exports文件进行了正确的配置后，就可以启动NFS服务器了。
+
+1、启动停止NFS服务器
+为了使NFS服务器能正常工作，需要启动rpcbind和nfs两个服务，并且rpcbind一定要先于nfs启动。
+
+&#91;root@server ~]# systemctl start rpcbind nfs
+
+    1
+
+&#91;root@server ~]# systemctl is-active rpcbind nfs
+在这里插入图片描述
+&#91;root@server ~]# systemctl stop nfs
+&#91;root@停止NFS服务器
+server ~]# systemctl stop rpcbind
+
+实践操作
+将NFS Server 的/home/test / 共享给192.168.1.0/24网段，权限读写
+
+1.准备测试文件
+&#91;root@server ~]# mkdir /home/test
+&#91;root@server ~]# cp /etc/passwd /etc/hosts /home/test/
+&#91;root@server ~]# ls /home/test/
+在这里插入图片描述
+2.编辑nfs主配置文件
+&#91;root@server ~]# vim /etc/exports
+在这里插入图片描述
+/home/test 192.168.1.0/24(rw)
+
+3.重启服务
+&#91;root@server ~]# systemctl restart
+&#91;root@server ~]# systemctl is-active rpcbind nfs
+在这里插入图片描述
+4.服务器端使用showmount命令查询NFS的共享状态
+#查看共享的目录
+&#91;root@server ~]# showmount -e 192.168.1.63
+在这里插入图片描述
+#测试客户端与NFS服务器的共享状态
+&#91;root@server0 student]# showmount -e foundation0.ilt.example.com
+Export list for foundation0.ilt.example.com:
+/content 172.25.0.0/255.255.0.04、
+
+客户端挂载NFS服务器共享的目录
+&#91;root@server2 ~]# mount 192.168.1.63:/home/test /mnt/
+
+在这里插入图片描述
+在这里插入图片描述
+4、NFS的共享权限和访问控制
+ls: 无法创建目录: 权限不够
+&#91;root@server2 ~]# touch /mnt/a.txt
+在这里插入图片描述
+是因为NFS 服务器端共享的目录本身的写权限没有开放给其他用户，在服务器端打开该权限.
+去NFS服务器上面修改文件权限：
+&#91;root@server ~]# chmod 777 -R /home/test
+在这里插入图片描述
+用root去创建文件，文件的权限编程了nfsnobody用户了
+&#91;root@server2 ~]# touch /mnt/nihao.txt
+&#91;root@server2 ~]# mkdir /mnt/san
+&#91;root@server2 ~]# ll /mnt/
+在这里插入图片描述
+使用普通用户挂载、写入文件测试。
+&#91;root@server2 ~]# useradd lisi
+&#91;root@server2 ~]# su - lisi
+&#91;lisi@server2 ~]$ touch /mnt/lisi.txt
+&#91;lisi@server2 ~]$ touch /mnt/lisi01.txt
+&#91;lisi@server2 ~]$ ll /mnt/
+在这里插入图片描述
+卸载已挂载的NFS共享目录
+&#91;root@server2 ~]# umount /mnt/
+
+启动自动挂载 vim /etc/fstab
+&#91;root@server2 ~]# echo “192.168.1.63:/home/test /media nfs4 defaults 0 0” &gt;&gt; /etc/fstab
+在这里插入图片描述
+
+相关命令
+1、exportfs
+如果我们在启动了NFS之后又修改了/etc/exports，是不是还要重新启动nfs呢？这个时候我们就可以用exportfs 命令来使改动立刻生效，该命令格式如下：
+#exportfs &#91;-aruv]
+-a # 全部挂载或卸载 /etc/exports中的内容
+-r #重新读取/etc/exports 中的信息，并同步更新/etc/exports、/var/lib/nfs/xtab
+-u #卸载单一目录（和-a一起使用为卸载所有/etc/exports文件中的目录）
+-v #在export的时候，将详细的信息输出到屏幕上。
+
+具体例子：
+&#91;root@server ~]# exportfs -au #卸载所有共享目录
+在这里插入图片描述
+&#91;root@server ~]# exportfs -rv #重新共享所有目录并输出详细信息
+在这里插入图片描述
+2、nfsstat
+查看NFS的运行状态，对于调整NFS的运行有很大帮助。
+在这里插入图片描述
+3、rpcinfo
+查看rpc执行信息，可以用于检测rpc运行情况的工具，
+在这里插入图片描述
+利用rpcinfo -p 可以查看出RPC开启的端口所提供的程序有哪些。
+在这里插入图片描述
+4、showmount
+-a 显示已经于客户端连接上的目录信息
+-e IP或者hostname 显示此IP地址分享出来的目录
+在这里插入图片描述
+
+最后注意两点，虽然通过权限设置可以让普通用户访问，但是挂载的时候默认情况下只有root可以去挂载，普通用户可以执行sudo。
+NFS server 关机的时候一点要确保NFS服务关闭，没有客户端处于连接状态！通过showmount -a 可以查看，如果有的话用kill killall pkill 来结束，（-9 强制结束）
+————————————————
+版权声明：本文为CSDN博主「Gusixsixsix」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/Gusixsixsix/java/article/details/82801289</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<figure class="wp-block-image size-large"><img width="1014" height="175" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/05/版权声明证明-NFS（RHEL-7-版）.png" alt="" class="wp-image-8918" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/05/版权声明证明-NFS（RHEL-7-版）.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/05/版权声明证明-NFS（RHEL-7-版）-300x52.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/05/版权声明证明-NFS（RHEL-7-版）-768x133.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure>
+
+
+
+<pre class="wp-block-code"><code>站主补充：
+案例一：临时挂载某一个 NFS 目录的方法
+# mount -o nolock,nfsvers=3,vers=3 -t nfs 192.168.100.1:/tmp /tmp
+
+案例二：设置一个目录可以同时被两个 NFS 客户端永久挂载的方法
+# vim /etc/exports
+/tmp 192.168.100.1(rw,no_root_squash,no_subtree_check) 192.168.100.2(rw,no_root_squash,no_subtree_check)</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] NFS 远程共享服务的搭建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfs-build-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 08 Jan 2020 06:55:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8024</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.1.20客户端 192.168.1.21 1.2 服务器列表简介 1) 服务器提供 NFS 服务将自己的目录分享2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 openSUSE 15.1 版本2) 所有服务器都要关闭防火墙3) 所有服务器系统都要配置好可用的软件源（最好是软件数量最多的官方版本）4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有服务器安装 NFS 服务 3.1 所有服务器安装 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.2 设置所有服务器开机自启 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.3 所有服务器启动 NFS 服务 （分别在服务端和客户端上执行以下步骤） 步骤四：配置 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nfs-build-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] NFS 远程共享服务的搭建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h3 id="具体的操作步骤-步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="具体的操作步骤-步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.1.20<br>客户端 192.168.1.21</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 NFS 服务将自己的目录分享<br>2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 openSUSE 15.1 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器系统都要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">步骤三：所有服务器安装 NFS 服务</h3>
+
+
+
+<h4 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">3.1 所有服务器安装 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install nfs-kernel-server
+# zypper install nfs-client</code></pre>
+
+
+
+<h4 id="3-2-设置所有服务器开机自启-nfs-服务">3.2 设置所有服务器开机自启 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable rpcbind
+# systemctl enable nfsserver</code></pre>
+
+
+
+<h4 id="3-3-所有服务器启动-nfs-服务">3.3 所有服务器启动 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start rpcbind
+# systemctl start nfsserver</code></pre>
+
+
+
+<h3 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">步骤四：配置 NFS 服务</h3>
+
+
+
+<h4 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1 创建用于 NFS 服务的目录</h4>
+
+
+
+<h5 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1.1 创建被 NFS 服务共享的目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsserver</code></pre>
+
+
+
+<h5 id="4-1-2-创建用于挂载-nfs-服务分享目录的目录">4.1.2 创建用于挂载 NFS 服务分享目录的目录</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsclient</code></pre>
+
+
+
+<h4 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2 配置服务端的 NFS 服务配置文件</h4>
+
+
+
+<h5 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2.1 在服务端上添加可被 NFS 服务挂载的选项</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/exports</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/nfsserver 192.168.1.21(rw,no_root_squash,no_subtree_check)</code></pre>
+
+
+
+<p>（补充：这里的 192.168.1.21 是客户端的 IP 地址）</p>
+
+
+
+<h5 id="4-2-2-让刚刚修改的-nfs-服务配置文件生效">4.2.2 让刚刚修改的 NFS 服务配置文件生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># exportfs -a</code></pre>
+
+
+
+<h4 id="4-3-配置客户端的-nfs-服务挂载文件4-3-1-在客户端上添加开机挂载-nfs-的选项">4.3 配置客户端的 NFS 服务挂载文件</h4>
+
+
+
+<h5 id="4-3-配置客户端的-nfs-服务挂载文件4-3-1-在客户端上添加开机挂载-nfs-的选项">4.3.1 在客户端上添加开机挂载 NFS 的选项</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+192.168.1.20:/nfsserver /nfsclient nfs  timeo=120,rw,soft,nolock  0 0</code></pre>
+
+
+
+<h5 id="4-3-2-让刚刚修改的-nfs-服务挂载文件生效">4.3.2 让刚刚修改的 NFS 服务挂载文件生效</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mount -a</code></pre>
+
+
+
+<h3 id="步骤五-查看-nfs-服务是否搭建成功">步骤五：确认 NFS 服务是否搭建成功</h3>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h | grep 192.168.1.20</code></pre>
+
+
+
+<p>（补充：如果出现了类似 “192.168.1.20:/nfsserver 38G 5.5G 31G 16% /nfsclient”，则代表 NFS 搭建成功了）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

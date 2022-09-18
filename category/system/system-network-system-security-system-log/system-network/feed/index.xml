@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Network (系统网络) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-network/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 06 Sep 2022 06:53:56 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] /etc/resolv.conf 配置文件的 search 选项</title>
+		<link>https://eternalcenter-sep-2022.github.io/etc-resolv-conf-search/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 10 Aug 2022 15:07:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[DNS]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27527</guid>
+
+					<description><![CDATA[内容一：测试 search 选项的配置 内容二：测试 search 选项 2.1 查询 zhumingyu （补充：当查询 zhumingyu 时，也就是中间没有点 “.”，则默认会被视为查询主机名，会先依次把 eternalcenter.com、local 和 new 作为后缀添加到 zhumingyu 后进行查询，最后才查询 zhumingyu） 2.2 zhumingyu.com （补充：当查询 zhumingyu.com 时，也就是中间有 1 个点 “.”，则默认会被视为查询域名，会先查询 mingyuzhu.com，如果查询失败，则会先依次把 eternalcenter.com、local 和 new 作为后缀添加到 zhumingyu 后进行查询） 2.3 查询 zhumingyu.com. （补充：当查询 zhumingyu.com. 时，也就是末尾有 1 个点 “.”，默认会被视为查询域名，且只会查询这个域名。不会查询 search 里的每 1 项）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：测试 search 选项的配置</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/resolv.conf
+search eternalcenter.com local new
+nameserver 8.8.8.8</code></pre>
+
+
+
+<h3>内容二：测试 search 选项</h3>
+
+
+
+<h4>2.1 查询 zhumingyu</h4>
+
+
+
+<pre class="wp-block-code"><code># host -a zhumingyu
+Trying "zhumingyu.eternalcenter.com"
+Trying "zhumingyu.local"
+Trying "zhumingyu.new"
+Trying "zhumingyu"
+Host zhumingyu not found: 3(NXDOMAIN)
+Received 102 bytes from 8.8.8.8#53 in 62 ms</code></pre>
+
+
+
+<p>（补充：当查询 zhumingyu 时，也就是中间没有点 “.”，则默认会被视为查询主机名，会先依次把 eternalcenter.com、local 和 new 作为后缀添加到 zhumingyu 后进行查询，最后才查询 zhumingyu）</p>
+
+
+
+<h4>2.2 zhumingyu.com</h4>
+
+
+
+<pre class="wp-block-code"><code># host -a zhumingyu.com
+Trying "zhumingyu.com"
+Received 31 bytes from 1.1.1.1#53 in 217 ms
+Trying "zhumingyu.com.eternalcenter.com"
+Trying "zhumingyu.com.local"
+Trying "zhumingyu.com.new"
+Host zhumingyu.com.new not found: 4(NOTIMP)
+Received 35 bytes from 1.1.1.1#53 in 218 ms</code></pre>
+
+
+
+<p>（补充：当查询 zhumingyu.com 时，也就是中间有 1 个点 “.”，则默认会被视为查询域名，会先查询 mingyuzhu.com，如果查询失败，则会先依次把 eternalcenter.com、local 和 new 作为后缀添加到 zhumingyu 后进行查询）</p>
+
+
+
+<h4>2.3 查询 zhumingyu.com.</h4>
+
+
+
+<pre class="wp-block-code"><code># host -a zhumingyu.com.
+Trying "zhumingyu.com"
+Host zhumingyu.com not found: 4(NOTIMP)
+Received 31 bytes from 1.1.1.1#53 in 204 ms
+Received 31 bytes from 1.1.1.1#53 in 204 ms</code></pre>
+
+
+
+<p>（补充：当查询 zhumingyu.com. 时，也就是末尾有 1 个点 “.”，默认会被视为查询域名，且只会查询这个域名。不会查询 search 里的每 1 项）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Wake On Lan （WOL） 功能的开启 （ Rocky Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/wol-rocky-linux-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 31 Jul 2022 15:01:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27458</guid>
+
+					<description><![CDATA[步骤一：在 BIOS 开启 Wake On Lan （WOL） 功能 （步骤略） 步骤二：在系统开启 Wake On Lan （WOL） 功能 2.1 确保 net-tools 已经安装 2.2 查看网卡的 Wake On Lan （WOL） 功能状态 2.2.1 Wake On Lan （WOL） 功能状态列表 1) p, Wake on PHY activity2) u, Wake on unicast messages3) m, Wake on multicast messages4) b, Wake on broadcast messages5) a, Wake &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wol-rocky-linux-rhel/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Wake On Lan （WOL） 功能的开启 （ Rocky Linux &#038; RHEL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：在 BIOS 开启 Wake On Lan （WOL） 功能</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：在系统开启 Wake On Lan （WOL） 功能</h3>
+
+
+
+<h4>2.1 确保 net-tools 已经安装</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install net-tools</code></pre>
+
+
+
+<h4>2.2 查看网卡的 Wake On Lan （WOL） 功能状态</h4>
+
+
+
+<h5>2.2.1 Wake On Lan （WOL） 功能状态列表</h5>
+
+
+
+<p>1) p, Wake on PHY activity<br>2) u, Wake on unicast messages<br>3) m, Wake on multicast messages<br>4) b, Wake on broadcast messages<br>5) a, Wake on ARP<br>6) g, Wake on MagicPacket<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br>7) s, Enable SecureOn<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /> password for MagicPacket<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br>8) d, Disable (wake on nothing). This option clears all previous options</p>
+
+
+
+<h5>2.2.2 查看网卡的 Wake On Lan （WOL） 功能状态</h5>
+
+
+
+<pre class="wp-block-code"><code># ethtool enp16s0
+Settings for enp16s0:
+	Supported ports: &#91; TP ]
+	Supported link modes:   10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	Supported pause frame use: Symmetric
+	Supports auto-negotiation: Yes
+	Supported FEC modes: Not reported
+	Advertised link modes:  10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	Advertised pause frame use: Symmetric
+	Advertised auto-negotiation: Yes
+	Advertised FEC modes: Not reported
+	Speed: 1000Mb/s
+	Duplex: Full
+	Auto-negotiation: on
+	Port: Twisted Pair
+	PHYAD: 1
+	Transceiver: internal
+	MDI-X: off (auto)
+	Supports Wake-on: pumbg
+	Wake-on: g
+        Current message level: 0x00000007 (7)
+                               drv probe link
+	Link detected: yes</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以使用 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例<br>2) 这里的 Wake On Lan （WOL） 功能状态是 g<br>）</p>
+
+
+
+<h4>2.3 临时开启 Wake On Lan （WOL） 功能</h4>
+
+
+
+<pre class="wp-block-code"><code># ethtool -s enp16s0 wol p</code></pre>
+
+
+
+<p>（补充：这里以给 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例）</p>
+
+
+
+<h4>2.4 永久开启 Wake On Lan （WOL） 功能</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network-scripts/ifcfg-enp16s0</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ETHTOOL_OPTS="-s ${DEVICE} wol p"</code></pre>
+
+
+
+<p>（补充：这里以给 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 tracepath （显示达到目的主机的路由信息）</title>
+		<link>https://eternalcenter-sep-2022.github.io/tracepath/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 Jul 2022 14:02:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27456</guid>
+
+					<description><![CDATA[内容一：tracepath 命令的选项 1) -n 只显示 IP 地址2) -b 同时显示 IP 地址和主机名3) -l 设置初始数据包长度，默认值为 655354) -m 设置最大 TTL 值 （允许数据包到达目主机时允许通过的最多网段数），默认值为 305) -p 指定要到达的端口 内容二：tracepath 命令的案例 2.1 显示到达主机的路由信息 （只显示主机名） 2.2 显示到达主机的路由信息 （只显示 IP 地址） 2.3 显示到达主机的路由信息 （同时显示 IP 地址和主机名）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：tracepath 命令的选项</h3>
+
+
+
+<p>1) -n 只显示 IP 地址<br>2) -b 同时显示 IP 地址和主机名<br>3) -l 设置初始数据包长度，默认值为 65535<br>4) -m 设置最大 TTL 值 （允许数据包到达目主机时允许通过的最多网段数），默认值为 30<br>5) -p 指定要到达的端口</p>
+
+
+
+<h3>内容二：tracepath 命令的案例</h3>
+
+
+
+<h4>2.1 显示到达主机的路由信息 （只显示主机名）</h4>
+
+
+
+<pre class="wp-block-code"><code># tracepath eternalcenter.com
+ 1?: &#91;LOCALHOST]                      pmtu 1500
+ 1:  eternalcenter.com                                   190.114ms !H
+ 1:  eternalcenter.com                                   187.738ms !H
+     Resume: pmtu 1500 </code></pre>
+
+
+
+<h4>2.2 显示到达主机的路由信息 （只显示 IP 地址）</h4>
+
+
+
+<pre class="wp-block-code"><code># tracepath -n eternalcenter.com
+ 1?: &#91;LOCALHOST]                      pmtu 1500
+ 1:  143.198.58.97                                       188.327ms !H
+ 1:  143.198.58.97                                       186.518ms !H
+     Resume: pmtu 1500 </code></pre>
+
+
+
+<h4>2.3 显示到达主机的路由信息 （同时显示 IP 地址和主机名）</h4>
+
+
+
+<pre class="wp-block-code"><code># tracepath -b eternalcenter.com
+ 1?: &#91;LOCALHOST]                      pmtu 1500
+ 1:  eternalcenter.com (143.198.58.97)                   194.175ms !H
+ 1:  eternalcenter.com (143.198.58.97)                   188.484ms !H
+     Resume: pmtu 1500 </code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 dig （从 DNS 服务器获取主机信息）</title>
+		<link>https://eternalcenter-sep-2022.github.io/dig/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 08:22:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[DNS]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27453</guid>
+
+					<description><![CDATA[内容一：dig 命令简介 dig 即 domain information groper，主要功能是从 DNS 服务器获取主机信息 内容二：dig 命令的使用案例 2.1 案例一：显示互联网上所有 DNS 根服务器的信息 2.2 案例二：直接通过域名获取主机信息 （补充：这里以通过 eternalcenter.com 域名获取主机信息为例） 2.3 案例三：直接通过域名获取主机信息，但只显示最基础的内容 （补充：这里以通过 eternalcenter.com 域名获取主机信息为例） 2.4 案例四：直接通过域名获取主机信息，并指定显示的内容 （补充：这里以通过 eternalcenter.com 域名获取主机信息，并显示 noall 和 answer 部分的内容为例） 2.5 案例五：从指定的 DNS 服务器和端口号通过域名获取主机信息 （补充：这里以通过 eternalcenter.com 域名从 IP 地址是 8.8.8.8 端口是 53 的 DNS 服务器获取主机信息为例） 2.6 案例六：通过 IP 地址获取主机信息 （补充：这里以通过 IP &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/dig/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 dig （从 DNS 服务器获取主机信息）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：dig 命令简介</h3>
+
+
+
+<p>dig 即 domain information groper，主要功能是从 DNS 服务器获取主机信息</p>
+
+
+
+<h3>内容二：dig 命令的使用案例</h3>
+
+
+
+<h4>2.1 案例一：显示互联网上所有 DNS 根服务器的信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dig</code></pre>
+
+
+
+<h4>2.2 案例二：直接通过域名获取主机信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dig eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com 域名获取主机信息为例）</p>
+
+
+
+<h4>2.3 案例三：直接通过域名获取主机信息，但只显示最基础的内容</h4>
+
+
+
+<pre class="wp-block-code"><code># dig eternalcenter.com +short</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com 域名获取主机信息为例）</p>
+
+
+
+<h4>2.4 案例四：直接通过域名获取主机信息，并指定显示的内容</h4>
+
+
+
+<pre class="wp-block-code"><code># dig eternalcenter.com +noall +answer</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com 域名获取主机信息，并显示 noall 和 answer 部分的内容为例）</p>
+
+
+
+<h4>2.5 案例五：从指定的 DNS 服务器和端口号通过域名获取主机信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dig @8.8.8.8 -p 53 eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com 域名从 IP 地址是 8.8.8.8 端口是 53 的 DNS 服务器获取主机信息为例）</p>
+
+
+
+<h4>2.6 案例六：通过 IP 地址获取主机信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dig -x 8.8.8.8</code></pre>
+
+
+
+<p>（补充：这里以通过 IP 地址 8.8.8.8 获取主机信息为例）</p>
+
+
+
+<h4>2.7 案例七：通过 IP 地址获得主机信息，但只显示最基础的内容</h4>
+
+
+
+<pre class="wp-block-code"><code># dig -x 8.8.8.8  +short</code></pre>
+
+
+
+<p>（补充：这里以通过 IP 地址 8.8.8.8 获取主机信息为例）</p>
+
+
+
+<h4>2.8 案例八：直接通过域名获取主机信息，同时显示获取的过程</h4>
+
+
+
+<pre class="wp-block-code"><code># dig eternalcenter.com +trace</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com 域名获取主机信息为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 普通用户执行 ping 命令时报错 “ping: socket: Address family not supported by protocol” 或者 “Error: ping: socket: Operation not permitted”</title>
+		<link>https://eternalcenter-sep-2022.github.io/ping-socket-address-family-not-supported-by-protocol-or-error-ping-socket-operation-not-permitted/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 15 Jul 2022 07:07:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26796</guid>
+
+					<description><![CDATA[解决方法一：修改 net.ipv4.ping_group_range 参数 1.1 确认文件功能没有参数 （补充：确认没有输出结果） 1.2 修改 net.ipv4.ping_group_range 参数 解决方法二：设置文件功能参数 2.1 设置文件功能参数 2.2 确认文件功能参数已经设置]]></description>
+										<content:encoded><![CDATA[
+<h3>解决方法一：修改 net.ipv4.ping_group_range 参数</h3>
+
+
+
+<h4>1.1 确认文件功能没有参数</h4>
+
+
+
+<pre class="wp-block-code"><code># getcap /usr/bin/ping</code></pre>
+
+
+
+<p>（补充：确认没有输出结果）</p>
+
+
+
+<h4>1.2 修改 net.ipv4.ping_group_range 参数</h4>
+
+
+
+<pre class="wp-block-code"><code># sysctl net.ipv4.ping_group_range="0 2147483647"</code></pre>
+
+
+
+<h3>解决方法二：设置文件功能参数</h3>
+
+
+
+<h4>2.1 设置文件功能参数</h4>
+
+
+
+<pre class="wp-block-code"><code># setcap cap_net_raw+eip /usr/bin/ping</code></pre>
+
+
+
+<h4>2.2 确认文件功能参数已经设置</h4>
+
+
+
+<pre class="wp-block-code"><code># getcap /usr/bin/ping
+/usr/bin/ping = cap_net_raw+eip</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 非 root 用户 ping 命令使用的禁止和允许</title>
+		<link>https://eternalcenter-sep-2022.github.io/non-root-user-ping-diable-enable/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 15 Jul 2022 07:00:36 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26794</guid>
+
+					<description><![CDATA[步骤一：禁止非 root 用户使用 ping 步骤二：允许非 root 用户使用 ping 补充：当禁止禁止非 root 用户使用 ping 时，非 root 用户使用 ping 命令的报错 如果是 Rocky Linux &#38; RHEL： 如果是 openSUSE &#38; SLE：]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：禁止非 root 用户使用 ping</h3>
+
+
+
+<pre class="wp-block-code"><code>#  sysctl net.ipv4.ping_group_range="1 0"</code></pre>
+
+
+
+<h3>步骤二：允许非 root 用户使用 ping</h3>
+
+
+
+<pre class="wp-block-code"><code># sysctl net.ipv4.ping_group_range="0 2147483647"</code></pre>
+
+
+
+<h3>补充：当禁止禁止非 root 用户使用 ping 时，非 root 用户使用 ping 命令的报错</h3>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code>ping: socket: Address family not supported by protocol</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code>Error: ping: socket: Operation not permitted</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 ping 命令检测网络联通性时报错 “connect: Network is unreachable”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-connect-network-is-unreachable/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 15 Jun 2022 15:22:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=24286</guid>
+
+					<description><![CDATA[报错代码 分析 当配置的 IP 地址和子网掩码不包含配置的网关 IP 地址时，检测网络联通性时就会报此类错误 解决方法 配置正确的 IP 地址、子网掩码或网关 IP 地址（步骤略）]]></description>
+										<content:encoded><![CDATA[
+<h2> 报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>connect: Network is unreachable</code></pre>
+
+
+
+<h2>分析</h2>
+
+
+
+<p>当配置的 IP 地址和子网掩码不包含配置的网关 IP 地址时，检测网络联通性时就会报此类错误</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<p>配置正确的 IP 地址、子网掩码或网关 IP 地址<br>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 网卡的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/network-card/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Apr 2022 15:36:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23346</guid>
+
+					<description><![CDATA[方法一：ip 命令 方法二：ifconfig 命令 方法三：iwconfig 命令]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：ip 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># ip a s
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:1c:42:c9:3c:81 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.129/24 brd 10.10.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fdb2:2c26:f4e4:0:55da:1265:541f:8007/64 scope global temporary dynamic 
+       valid_lft 563315sec preferred_lft 44695sec
+    inet6 fdb2:2c26:f4e4:0:21c:42ff:fec9:3c81/64 scope global dynamic mngtmpaddr 
+       valid_lft 2591846sec preferred_lft 604646sec
+    inet6 fe80::21c:42ff:fec9:3c81/64 scope link 
+       valid_lft forever preferred_lft forever</code></pre>
+
+
+
+<h3>方法二：ifconfig 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># ifconfig
+eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.10.10.129  netmask 255.255.255.0  broadcast 10.10.10.255
+        inet6 fdb2:2c26:f4e4:0:21c:42ff:fec9:3c81  prefixlen 64  scopeid 0x0&lt;global&gt;
+        inet6 fe80::21c:42ff:fec9:3c81  prefixlen 64  scopeid 0x20&lt;link&gt;
+        inet6 fdb2:2c26:f4e4:0:55da:1265:541f:8007  prefixlen 64  scopeid 0x0&lt;global&gt;
+        ether 00:1c:42:c9:3c:81  txqueuelen 1000  (Ethernet)
+        RX packets 698666  bytes 485434755 (462.9 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 372557  bytes 699406543 (667.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 73792  bytes 394285172 (376.0 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 73792  bytes 394285172 (376.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code></pre>
+
+
+
+<h3>方法三：iwconfig 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># iwconfig 
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] iptables 防火墙规则持久化 （让防火墙规则开机自启）</title>
+		<link>https://eternalcenter-sep-2022.github.io/iptables-rule-permanent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Apr 2022 07:28:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23270</guid>
+
+					<description><![CDATA[内容一：Rocky Linux &#38; RHEL iptables 防火墙规则持久化 内容二：Rocky Linux &#38; RHEL 和 openSUSE &#38; SUSE iptables 防火墙规则持久化 2.1 导出现在 iptables 防火墙的规则 （补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例） 2.2 创建用于加载 iptables 防火墙规则的 systemctl 管理文件 创建以下内容： （补充：这里以创建 systemctl 管理文件 /etc/systemd/system/iptables_save.service 将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例） 2.3 加载刚刚创建的 systemctl 管理文件 2.4 给刚刚创建的 systemctl 管理文件添加执行权限 （补充：这里以给 systemctl 管理文件 /etc/systemd/system/iptables_save.service 添加执行权限为例） 2.5 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/iptables-rule-permanent/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] iptables 防火墙规则持久化 （让防火墙规则开机自启）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Rocky Linux &amp; RHEL iptables 防火墙规则持久化</h3>
+
+
+
+<pre class="wp-block-code"><code># service iptables save</code></pre>
+
+
+
+<h3>内容二：Rocky Linux &amp; RHEL 和 openSUSE &amp; SUSE iptables 防火墙规则持久化</h3>
+
+
+
+<h4>2.1 导出现在 iptables 防火墙的规则</h4>
+
+
+
+<pre class="wp-block-code"><code># iptables-save &gt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例）</p>
+
+
+
+<h4>2.2 创建用于加载 iptables 防火墙规则的 systemctl 管理文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/iptables_save.service</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+Description=iptables_save
+After=default.target
+
+&#91;Service]
+Type=oneshot
+ExecStart=/usr/sbin/iptables-restore &lt; /root/iptables_save
+
+&#91;Install]
+WantedBy=default.target</code></pre>
+
+
+
+<p>（补充：这里以创建 systemctl 管理文件 /etc/systemd/system/iptables_save.service 将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）</p>
+
+
+
+<h4>2.3 加载刚刚创建的 systemctl 管理文件</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h4>2.4 给刚刚创建的 systemctl 管理文件添加执行权限</h4>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x /etc/systemd/system/iptables_save.service</code></pre>
+
+
+
+<p>（补充：这里以给 systemctl 管理文件 /etc/systemd/system/iptables_save.service 添加执行权限为例）</p>
+
+
+
+<h4>2.5 让防火墙规则开机自启</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable iptables_save.service</code></pre>
+
+
+
+<p>（补充：这里以开机自启 iptables_save.service 服务为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] iptables 防火墙规则的导出和导入</title>
+		<link>https://eternalcenter-sep-2022.github.io/iptables-rule-export-import/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Apr 2022 07:20:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23267</guid>
+
+					<description><![CDATA[内容一：导出 iptables 防火墙规则 （补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例） 内容二：导入 iptables 防火墙规则 （补充：这里以将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：导出 iptables 防火墙规则</h3>
+
+
+
+<pre class="wp-block-code"><code># iptables-save &gt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例）</p>
+
+
+
+<h3>内容二：导入 iptables 防火墙规则</h3>
+
+
+
+<pre class="wp-block-code"><code># iptables-restore &lt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 tcpdump （网络抓包）</title>
+		<link>https://eternalcenter-sep-2022.github.io/tcpdump/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 19 Apr 2022 04:09:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23246</guid>
+
+					<description><![CDATA[将所有抓到的网络数据包 （注意：此时会抓取所有的网络数据包，并保存到文件 /tmp/telnet.cap，想要退出则同时按下 “ctrl” 键和 “c” 键） （补充：这里以将所有抓到的信息导出到 /tmp/telnet.cap 文件为例）]]></description>
+										<content:encoded><![CDATA[
+<p>将所有抓到的网络数据包</p>
+
+
+
+<pre class="wp-block-code"><code># tcpdump -i any -w /tmp/telnet.cap</code></pre>
+
+
+
+<p>（注意：此时会抓取所有的网络数据包，并保存到文件 /tmp/telnet.cap，想要退出则同时按下 “ctrl” 键和 “c” 键）</p>
+
+
+
+<p>（补充：这里以将所有抓到的信息导出到 /tmp/telnet.cap 文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 全球公共免费 DNS</title>
+		<link>https://eternalcenter-sep-2022.github.io/free-dns/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 14 Apr 2022 15:24:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[DNS]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23164</guid>
+
+					<description><![CDATA[AdGuard Cloudflare COMODO DNS Watch Dyn Level 3 Neustar FreeDNS Google OpenDNS SAFEDNS Symantec]]></description>
+										<content:encoded><![CDATA[
+<h3>AdGuard</h3>
+
+
+
+<pre class="wp-block-code"><code>94.140.14.14
+94.140.14.15
+94.140.15.15
+94.140.15.16</code></pre>
+
+
+
+<h3>Cloudflare</h3>
+
+
+
+<pre class="wp-block-code"><code>1.0.0.1
+1.0.0.2
+1.0.0.3
+1.1.1.1
+1.1.1.2
+1.1.1.3</code></pre>
+
+
+
+<h3>COMODO</h3>
+
+
+
+<pre class="wp-block-code"><code>8.20.247.20
+8.26.56.26</code></pre>
+
+
+
+<h3>DNS Watch</h3>
+
+
+
+<pre class="wp-block-code"><code>84.200.69.80
+84.200.70.40</code></pre>
+
+
+
+<h3>Dyn</h3>
+
+
+
+<pre class="wp-block-code"><code>216.146.35.35
+216.146.36.36</code></pre>
+
+
+
+<h3>Level 3</h3>
+
+
+
+<pre class="wp-block-code"><code>209.244.0.3
+209.244.0.4</code></pre>
+
+
+
+<h3>Neustar</h3>
+
+
+
+<pre class="wp-block-code"><code>156.154.70.1
+156.154.71.1</code></pre>
+
+
+
+<h3>FreeDNS</h3>
+
+
+
+<pre class="wp-block-code"><code>37.235.1.174
+37.235.1.177</code></pre>
+
+
+
+<h3>Google</h3>
+
+
+
+<pre class="wp-block-code"><code>8.8.4.4
+8.8.8.8</code></pre>
+
+
+
+<h3>OpenDNS</h3>
+
+
+
+<pre class="wp-block-code"><code>208.67.220.220
+208.67.222.222</code></pre>
+
+
+
+<h3>SAFEDNS</h3>
+
+
+
+<pre class="wp-block-code"><code>195.46.39.39
+195.46.39.40</code></pre>
+
+
+
+<h3>Symantec</h3>
+
+
+
+<pre class="wp-block-code"><code>199.85.126.10
+199.85.137.10</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 SSH 远程登录时很慢但 ping 时延迟很低</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-ssh-slow/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 13 Apr 2022 15:15:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23106</guid>
+
+					<description><![CDATA[分析 ssh 远程某台服务器时很慢，但是 ping 时延迟却很低。这可能是 DNS 解析出现问题造成的，禁用服务器上 sshd 的 GSSAPIAuthentication 参数和 UseDNS 参数可以解决，这两个参数的作用是：1) GSSAPIAuthentication，当服务器的 sshd 服务此参数处于开启状态时，客户端 SSH 登录此服务器时，客户端会对服务器的 IP 地址进行 PTR 反解析，获得服务器的域名，再通过服务器的域名对服务器进行 DNS A 正向 IP 地址解析，通过此方法来防止欺骗。2) UseDNS，当服务器的 sshd 服务此参数处于开启状态时，客户端 SSH 登录此服务器时，服务器会对客户端的 IP 地址进行反解析，获得客户端的域名，再通过客户端的域名对客户端进行 DNS A 正向 IP 地址解析，通过此方法来防止欺骗。 解决方法 方法一：忽略 DNS 1.1 修改 SSH 的配置文件 将以下内容： 修改为： 1.2 让修改的 SSH 配置文件生效 方法二：重启 systemd-logind 2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/debug-ssh-slow/" class="more-link">Continue reading<span class="screen-reader-text"> "[排错] 解决 SSH 远程登录时很慢但 ping 时延迟很低"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>分析</h2>
+
+
+
+<p>ssh 远程某台服务器时很慢，但是 ping 时延迟却很低。这可能是 DNS 解析出现问题造成的，禁用服务器上 sshd 的 GSSAPIAuthentication 参数和 UseDNS 参数可以解决，这两个参数的作用是：<br>1) GSSAPIAuthentication，当服务器的 sshd 服务此参数处于开启状态时，客户端 SSH 登录此服务器时，客户端会对服务器的 IP 地址进行 PTR 反解析，获得服务器的域名，再通过服务器的域名对服务器进行 DNS A 正向 IP 地址解析，通过此方法来防止欺骗。<br>2) UseDNS，当服务器的 sshd 服务此参数处于开启状态时，客户端 SSH 登录此服务器时，服务器会对客户端的 IP 地址进行反解析，获得客户端的域名，再通过客户端的域名对客户端进行 DNS A 正向 IP 地址解析，通过此方法来防止欺骗。</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>方法一：忽略 DNS</h3>
+
+
+
+<h4>1.1 修改 SSH 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_conf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UseDNS yes
+......
+GSSAPIAuthentication yes
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UseDNS no
+......
+GSSAPIAuthentication no
+......</code></pre>
+
+
+
+<h4>1.2 让修改的  SSH 配置文件生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<h3>方法二：重启 systemd-logind</h3>
+
+
+
+<h4>2.1 重启 dbus</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart dbus</code></pre>
+
+
+
+<h4>2.2 重启 systemd-logind</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart systemd-logind</code></pre>
+
+
+
+<p>（注意：如果不重启 dbus 直接重启 systemd-logind 则可能会报错）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 mtr （检测网络联通状态）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mtr/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Apr 2022 08:45:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22681</guid>
+
+					<description><![CDATA[案例一：一直检测某 1 个 IP 地址的联通状态并边检测边显示状况 或者： （补充：1) 这里以检测 8.8.8.8 IP 地址为例2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名） 案例二：检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况 2.1 检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况 （TCP 加 UDP 版） 或者： （补充：1) 这里以检测 8.8.8.8 IP 地址为例2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名3) -c 或者 &#8211;report-cycles 参数代表指定次数） 2.2 检测某 1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mtr/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 mtr （检测网络联通状态）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：一直检测某 1 个 IP 地址的联通状态并边<meta http-equiv="content-type" content="text/html; charset=utf-8">检测边显示状况</h3>
+
+
+
+<pre class="wp-block-code"><code># mtr -n 8.8.8.8</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --no-dns 8.8.8.8</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以检测 8.8.8.8 IP 地址为例<br>2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名<br>）</p>
+
+
+
+<h3>案例二：检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况</h3>
+
+
+
+<h4>2.1 检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况 （TCP 加 UDP 版）</h4>
+
+
+
+<pre class="wp-block-code"><code># mtr -nc 100 8.8.8.8</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --no-dns --report-cycles 100 8.8.8.8</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以<meta http-equiv="content-type" content="text/html; charset=utf-8">检测 8.8.8.8 IP 地址为例<br>2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名<br>3) -c 或者 &#8211;report-cycles 参数代表指定次数<br>）</p>
+
+
+
+<h4>2.2 检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况 （TCP 版）</h4>
+
+
+
+<pre class="wp-block-code"><code># mtr -nTc 100 8.8.8.8</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --no-dns --tcp --report-cycles 100 8.8.8.8</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以<meta http-equiv="content-type" content="text/html; charset=utf-8">检测 8.8.8.8 IP 地址为例<br>2) -n 或者 &#8211;no-dns 不使用 DNS 解析主机名<br>3) -T 或者 &#8211;tcp 指定 TCP 端口<br>4) -c 或者 &#8211;report-cycles 指定次数<br>）</p>
+
+
+
+<h4>2.3 检测某 1 个 IP 地址 100 次的联通状态并边检测边显示状况 （UDP 版）</h4>
+
+
+
+<pre class="wp-block-code"><code># mtr -nuc 100 8.8.8.8</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --no-dns --udp --report-cycles 100 8.8.8.8</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以检测 8.8.8.8 IP 地址为例<br>2) -u 或者 &#8212;udp 指定 UDP 端口<br>3) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名<br>4) -c 或者 &#8211;report-cycles 参数代表指定次数<br>）</p>
+
+
+
+<h3>案例三：检测某 1 个域名 100 次的联通状态并显示最终报告</h3>
+
+
+
+<pre class="wp-block-code"><code># mtr -nrc 100 eternalcenter.com</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --no-dns --report --report-cycles 100 eternalcenter.com</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以检测 eternalcenter.com 域名为例<br>2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名<br>3) -r 或者 &#8211;report 参数代表生成最终报告<br>4) -c 或者 &#8211;report-cycles 参数代表指定次数<br>）</p>
+
+
+
+<h3>案例四：检测某 1 个域名 TCP 443 端口 100 次的联通状态并显示最终报告</h3>
+
+
+
+<pre class="wp-block-code"><code># mtr -TP 443 -nrc 100 eternalcenter.com</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># mtr --tcp --port 443 --no-dns --report --report-cycles 100 eternalcenter.com</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以检测 eternalcenter.com 域名的 443 端口为例<br>2) -n 或者 &#8211;no-dns 参数代表不使用 DNS 解析主机名<br>3) -r 或者 &#8211;report 参数代表生成最终报告<br>4) -c 或者 &#8211;report-cycles 参数代表指定次数<br>5) -T 或者 &#8211;tcp 参数代表指定 TCP<br>6) -P 或者 &#8211;port 参数代表指定端口号<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 nc （检查网络端口的联通性）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nc/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 03 Apr 2022 13:46:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22565</guid>
+
+					<description><![CDATA[正文： 案例一：检查某 1 个域名某 1 个 TCP 端口的联通性 或者： （补充：这里以检测 eternalcenter.com 域名的 TCP 443 端口为例） 案例二：检查某 1 个 IP 地址某 1 个 TCP 端口的联通性 或者： （补充：这里以检测 8.8.8.8 IP 地址的 TCP 443 端口为例） 案例三：检查某 1 个域名某 1 个 UDP 端口的联通性 或者： （补充：这里以检测 eternalcenter.com 域名的 UDP 69 端口为例） 案例四：检查某 1 个 IP 地址某 1 个 UDP 端口的联通性 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nc/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 nc （检查网络端口的联通性）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>正文：</h2>
+
+
+
+<h3>案例一：检查某 1 个域名某 1 个 TCP 端口的联通性</h3>
+
+
+
+<pre class="wp-block-code"><code># nc -v -z eternalcenter.com 443</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nc -vz eternalcenter.com 443</code></pre>
+
+
+
+<p>（补充：这里以检测 eternalcenter.com 域名的 TCP 443 端口为例）</p>
+
+
+
+<h3>案例二：检查某 1 个 IP 地址某 1 个 TCP 端口的联通性</h3>
+
+
+
+<pre class="wp-block-code"><code># nc -v -z 8.8.8.8 443</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nc -vz 8.8.8.8 443</code></pre>
+
+
+
+<p>（补充：这里以检测 8.8.8.8 IP 地址的 TCP 443 端口为例）</p>
+
+
+
+<h3>案例三：检查某 1 个域名某 1 个 UDP 端口的联通性</h3>
+
+
+
+<pre class="wp-block-code"><code># nc -u -v -z eternalcenter.com 69</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nc -uvz eternalcenter.com 69</code></pre>
+
+
+
+<p>（补充：这里以检测 eternalcenter.com 域名的 UDP 69 端口为例）</p>
+
+
+
+<h3>案例四：检查某 1 个 IP 地址某 1 个 UDP 端口的联通性</h3>
+
+
+
+<pre class="wp-block-code"><code># nc -u -v -z 8.8.8.8 69</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nc -uvz 8.8.8.8 69</code></pre>
+
+
+
+<p>（补充：这里以检测 8.8.8.8 IP 地址的 UDP 69 端口为例）</p>
+
+
+
+<h2>参考文献：</h2>
+
+
+
+<p class="has-text-align-center">https://nmap.org/</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Rocky Linux 8 &#038; RHEL 8 命令 update-crypto-policies （设置连接加密方式）</title>
+		<link>https://eternalcenter-sep-2022.github.io/update-crypto-policies/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 09:12:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21893</guid>
+
+					<description><![CDATA[内容一：update-crypto-policies 参数的意义 1) DEFAULT 不严格的安全等级，可以让系统使用 TLSv1.22) FUTURE 严格的安全等级，只能让系统使用 TLSv1.2 不能使用 TLSv1.3 内容二：显示当前的 update-crypto-policies 参数 （补充：从这里可以看出目前的 update-crypto-policies 参数是 DEFAULT） 内容三：设置 update-crypto-policies 参数 （补充：这里以将 update-crypto-policies 参数设置为 FUTURE 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-update-crypto-policies-参数的意义">内容一：update-crypto-policies 参数的意义</h3>
+
+
+
+<p>1) DEFAULT 不严格的安全等级，可以让系统使用 TLSv1.2<br>2) FUTURE 严格的安全等级，只能让系统使用 TLSv1.2 不能使用 TLSv1.3</p>
+
+
+
+<h3 id="内容二-查看当前的-update-crypto-policies-参数">内容二：显示当前的 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --show
+DEFAULT</code></pre>
+
+
+
+<p>（补充：从这里可以看出目前的 update-crypto-policies 参数是 DEFAULT）</p>
+
+
+
+<h3 id="内容三-设置-update-crypto-policies-参数">内容三：设置 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --set=FUTURE</code></pre>
+
+
+
+<p>（补充：这里以将 update-crypto-policies 参数设置为 FUTURE 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 curl 命令时报错 “curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-35-error14094410ssl-routinesssl3_read_bytessslv3-alert-handshake-failure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 09:03:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21890</guid>
+
+					<description><![CDATA[报错代码 分析 Rocky Linux 8 &#38; RHEL 8 已经默认废弃 TLSv1.2可以使用 TLSv1.3 替代 TLSv1.2 或者将 update-crypto-policies 参数设置为 DEFAULT 以解决此报错 解决方法 步骤一：显示当前的 update-crypto-policies 参数 （补充：从这里可以看出目前的 update-crypto-policies 参数是 FUTURE） 步骤二：将 update-crypto-policies 参数设置为 DEFAULT （补充：这里以将 update-crypto-policies 参数设置为 DEFAULT 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2 id="报错代码">报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure</code></pre>
+
+
+
+<h2 id="分析">分析</h2>
+
+
+
+<p>Rocky Linux 8 &amp; RHEL 8 已经默认废弃 TLSv1.2<br>可以使用 TLSv1.3 替代 TLSv1.2 或者将 update-crypto-policies 参数设置为 DEFAULT 以解决此报错</p>
+
+
+
+<h2 id="解决方法">解决方法</h2>
+
+
+
+<h3 id="解决方法">步骤一：显示当前的 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --show
+FUTURE</code></pre>
+
+
+
+<p>（补充：从这里可以看出目前的 update-crypto-policies 参数是 FUTURE）</p>
+
+
+
+<h3 id="步骤二-将-update-crypto-policies-参数设置为-default">步骤二：将 update-crypto-policies 参数设置为 DEFAULT</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --set=DEFAULT</code></pre>
+
+
+
+<p>（补充：这里以将 update-crypto-policies 参数设置为 DEFAULT 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 iftop （显示系统联通状态）</title>
+		<link>https://eternalcenter-sep-2022.github.io/iftop/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 15 Jan 2022 14:06:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21213</guid>
+
+					<description><![CDATA[（补充：此时会不停地显示系统联通状态，按下 “q” 键后退出）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># iftop</code></pre>
+
+
+
+<p>（补充：此时会不停地显示系统联通状态，按下 “q” 键后退出）</p>
+
+
+
+<pre class="wp-block-code"><code># iftop
+interface: eth0
+IP address is: 10.10.10.129
+IPv6 address is: fdb2:2c26:f4e4:0:5940:b748:da58:4f3
+MAC address is: 00:1c:42:c9:3c:81</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 ping （检测网络联通性）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ping/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 11 Nov 2021 11:18:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18283</guid>
+
+					<description><![CDATA[内容一：ping 命令选项 1) -c 设置 ping 的次数 （默认会一直 ping）2) -d 开启 Socket 的 SO_DEBUG 功能3) -f 进行极限测试4) -i 设置间隔时间，建议值为 0.45) -I 指定去 ping 的硬件设备或者 IP 地址6) -m 设置标记7) -l 设置发送不等待回复的数据包8) -n 只显示数值9) -q 只显示结果10) -r 忽略路由表（可以用于检查本地网络接口是否有问题）11) -R 记录路由的过程12) -s 指定包的大小13) -S 指定源 IP 地址14) -t 设置 ping 包的生存时间 （TLL）15) -v 输出详细信息16) -w 设置 deadline，建议值为 0.8 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ping/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 ping （检测网络联通性）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-ping-命令选项">内容一：ping 命令选项</h3>
+
+
+
+<p>1) -c 设置 ping 的次数 （默认会一直 ping）<br>2) -d 开启 Socket 的 SO_DEBUG 功能<br>3) -f 进行极限测试<br>4) -i 设置间隔时间，建议值为 0.4<br>5) -I 指定去 ping 的硬件设备或者 IP 地址<br>6) -m 设置标记<br>7) -l 设置发送不等待回复的数据包<br>8) -n 只显示数值<br>9) -q 只显示结果<br>10) -r 忽略路由表（可以用于检查本地网络接口是否有问题）<br>11) -R 记录路由的过程<br>12) -s 指定包的大小<br>13) -S 指定源 IP 地址<br>14) -t 设置 ping 包的生存时间 （TLL）<br>15) -v 输出详细信息<br>16) -w 设置 deadline，建议值为 0.8</p>
+
+
+
+<h3 id="内容二-ping-命令案例2-1-案例一-让本地的某一个-ip-地址-ping-目标-ip-地址">内容二：ping 命令案例</h3>
+
+
+
+<h4 id="内容二-ping-命令案例2-1-案例一-让本地的某一个-ip-地址-ping-目标-ip-地址">2.1 案例一：让本地的某一个 IP 地址 ping 目标 IP 地址</h4>
+
+
+
+<pre class="wp-block-code"><code># ping -I &lt;IP address of this server&gt; &lt;target IP address&gt;</code></pre>
+
+
+
+<h4 id="2-2-案例二-让本地的某一个网卡-ping-目标-ip-地址">2.2  案例二：让本地的某一个网卡 ping 目标 IP 地址 </h4>
+
+
+
+<pre class="wp-block-code"><code>
+# ping -I &lt;IP address of local server&gt; &lt;target IP address&gt;</code></pre>
+
+
+
+<h4 id="2-3-案例三-快速检测网络联通行">2.3 案例三：快速检测网络联通行</h4>
+
+
+
+<pre class="wp-block-code"><code># ping -c 3 -i 0.4 -w 0.8 &lt;target IP address&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

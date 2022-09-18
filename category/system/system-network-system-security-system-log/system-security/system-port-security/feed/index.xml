@@ -1,0 +1,3069 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Port Security (系统端口安全) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-security/system-port-security/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 29 Aug 2022 07:11:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] Linux SSH 加密算法的设置 (不使用来自 crypto policies 的系统全局 SSH 加密算法) (RHEL 8 版)</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssh-encryption-algorithm-no-crypto-policies-rhel-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 29 Aug 2022 07:06:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27933</guid>
+
+					<description><![CDATA[注意： RHEL 8 的 SSH 加密算法默认会使用来自 crypto policies 系统的全局 SSH 加密算法，而此方法将让 SSH 使用单独设置的 SSH 加密算法。 正文： 步骤一：启用 SSH 加密算法 1.1 备份 /etc/sysconfig/sshd 配置文件 1.2 修改 /etc/sysconfig/sshd 配置文件 将以下内容： 修改为： 步骤二：设置 SSH 的加密算法 2.1 在 /etc/crypto-policies/back-ends/opensshserver.config 配置文件中确认要使用的 SSH 加密算法属性 2.1.1 修改 /etc/crypto-policies/back-ends/opensshserver.config 配置文件 添加需要使用的 SSH 加密算法属性： （内容略） （注意：如果需要使用的 SSH 加密算法已包含在其中了则可以不用添加） 2.1.2 显示目前正在被使用的 SSH 加密算法 （补充：这里以显示 RHEL8 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssh-encryption-algorithm-no-crypto-policies-rhel-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSH 加密算法的设置 (不使用来自 crypto policies 的系统全局 SSH 加密算法) (RHEL 8 版)"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>注意：</h2>
+
+
+
+<p>RHEL 8 的 SSH 加密算法默认会使用来自 crypto policies 系统的全局 SSH 加密算法，而此方法将让 SSH 使用单独设置的 SSH 加密算法。</p>
+
+
+
+<h2>正文：</h2>
+
+
+
+<h3>步骤一：启用 SSH 加密算法</h3>
+
+
+
+<h4>1.1 备份 /etc/sysconfig/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/sysconfig/sshd /etc/sysconfig/sshd_backup</code></pre>
+
+
+
+<h4>1.2 修改 /etc/sysconfig/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysconfig/sshd</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code># CRYPTO_POLICY=</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>CRYPTO_POLICY=</code></pre>
+
+
+
+<h3>步骤二：设置 SSH 的加密算法</h3>
+
+
+
+<h4>2.1 在 /etc/crypto-policies/back-ends/opensshserver.config 配置文件中确认要使用的 SSH 加密算法属性</h4>
+
+
+
+<h5>2.1.1 修改 /etc/crypto-policies/back-ends/opensshserver.config 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/crypto-policies/back-ends/opensshserver.config</code></pre>
+
+
+
+<p>添加需要使用的 SSH 加密算法属性：</p>
+
+
+
+<p>（内容略）</p>
+
+
+
+<p>（注意：如果需要使用的 SSH 加密算法已包含在其中了则可以不用添加）</p>
+
+
+
+<h5>2.1.2 显示目前正在被使用的 SSH 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># printf "%s\n" $(source /etc/crypto-policies/back-ends/opensshserver.config; echo $CRYPTO_POLICY) | cut -c3-
+Ciphers=aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes256-cbc,aes128-gcm@openssh.com,aes128-ctr,aes128-cbc
+MACs=hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
+GSSAPIKexAlgorithms=gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-,gss-gex-sha1-,gss-group14-sha1-
+KexAlgorithms=curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+HostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com,ssh-rsa,ssh-rsa-cert-v01@openssh.com
+PubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com,ssh-rsa,ssh-rsa-cert-v01@openssh.com
+CASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-256,rsa-sha2-512,ssh-rsa</code></pre>
+
+
+
+<p>（补充：这里以显示 RHEL8 默认使用的 SSH 加密算法为例）</p>
+
+
+
+<h4>2.2 在 /etc/ssh/sshd_config 配置文件中设置要使用的 SSH 加密算法</h4>
+
+
+
+<h5>2.2.1 备份 /etc/ssh/sshd_config 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup</code></pre>
+
+
+
+<h5>2.2.2 在 /etc/ssh/sshd_config 配置文件中添加要使用的 SSH 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-512,hmac-sha2-256
+KexAlgorithms ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256</code></pre>
+
+
+
+<p>（<br>补充：这里以使用：<br>1) aes256-ctr、aes192-ctr 和 aes128-ctr SSH Ciphers 加密算法<br>2) hmac-sha2-512 和 hmac-sha2-256 SSH MACs 加密算法<br>3) ecdh-sha2-nistp521、ecdh-sha2-nistp384、ecdh-sha2-nistp256 和 diffie-hellman-group-exchange-sha256 SSH KexAlgorithms 加密算法<br>为例<br>）</p>
+
+
+
+<h5>2.2.3 让在 /etc/ssh/sshd_config 配置文件中添加要使用的 SSH 加密算法生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<h3>步骤三：测试 SSH 加密算法</h3>
+
+
+
+<h4>3.1 测试 SSH Ciphers 加密算法</h4>
+
+
+
+<h5>3.1.1 测试某个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oCiphers=3des-cbc -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 3des-cbc SSH Ciphers 加密算法为例）</p>
+
+
+
+<h5>3.1.2 测试多个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oCiphers=3des-cbc,aes128-cbc,aes192-cbc,aes256-cbc -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 3des-cbc、aes128-cbc、aes192-cbc 和 aes256-cbc SSH Ciphers 加密算法为例）</p>
+
+
+
+<h4>3.2 测试 SSH MACs 加密算法</h4>
+
+
+
+<h5>3.2.1 测试某个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oMACs=hmac-md5 -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 hmac-md5 SSH MACs 加密算法为例）</p>
+
+
+
+<h5>3.2.2 测试多个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oMACs=hmac-md5,hmac-md5-96,hmac-sha1,hmac-sha1-96,hmac-md5-etm@openssh.com,hmac-md5-96-etm@openssh.com -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 hmac-md5、hmac-md5-96、hmac-sha1、hmac-sha1-96、hmac-md5-etm@openssh.com 和 hmac-md5-96-etm@openssh.com SSH MACs 加密算法为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] nftables 防火墙策略文件的常用规则</title>
+		<link>https://eternalcenter-sep-2022.github.io/common-rules-for-nftables-firewall-policy-file/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 15 Aug 2022 03:31:10 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27551</guid>
+
+					<description><![CDATA[注意： 在给 nftables 防火墙的策略文件添加规则前，要先使用 nftables 防火墙的策略文件： 正文： 案例一：允许某个 IP 地址访问某个端口 或者： （补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口为例） 案例二：允许某个 IP 地址访问多个端口 （补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口、80 端口、443 端口和 3066 端口为例） 案例三：允许多个 IP 地址访问多个端口 （补充：这里以允许 IP 地址 192.168.0.1、192.168.0.2 和 192.168.0.3 访问 22 端口、80 端口、443 端口和 3066 端口为例） 案例四：拒绝所有 IP 地址访问多个端口 （补充：这里以拒绝所有 IP 地址的 22 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/common-rules-for-nftables-firewall-policy-file/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] nftables 防火墙策略文件的常用规则"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>注意：</h2>
+
+
+
+<p>在给 nftables 防火墙的策略文件添加规则前，要先使用 nftables 防火墙的策略文件：</p>
+
+
+
+<div class="wp-container-1 is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/nfttables-permanent/" style="border-radius:0px">nftables 防火墙的使用 <br>（永久版）</a></div>
+</div>
+
+
+
+<h2>正文：</h2>
+
+
+
+<h3>案例一：允许某个 IP 地址访问某个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport ssh accept</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport 22 accept</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口为例）</p>
+
+
+
+<h3>案例二：允许某个 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport {22,80,443,3306} accept comment "accept local port"</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口、80 端口、443 端口和 3066 端口为例）</p>
+
+
+
+<h3>案例三：允许多个 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr {192.168.0.1,192.168.0.2,192.168.0.3} tcp dport {22,80,443,3306} accept comment "accept local port"</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1、192.168.0.2 和 192.168.0.3 访问 22 端口、80 端口、443 端口和 3066 端口为例）</p>
+
+
+
+<h3>案例四：拒绝所有 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>tcp dport {22,80,443,3306} drop comment "drop remote port"</code></pre>
+
+
+
+<p>（补充：这里以拒绝所有 IP 地址的 22 端口、80 端口、443 端口和 3306 端口为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SSL 证书 KEY 私钥密码的添加 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-password-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 10:00:50 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26489</guid>
+
+					<description><![CDATA[内容一：给 SSL 证书 KEY 私钥添加密码 交互式给 SSL 证书 KEY 私钥添加密码 （补充：这里以给 eternalcenter.com.key） 内容二：取消 SSL 证书 KEY 私钥添加密码 2.1 交互式取消 SSL 证书 KEY 私钥添加密码 2.2 非交互式取消 SSL 证书 KEY 私钥添加密码]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：给 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<p>交互式给 SSL 证书 KEY 私钥添加密码</p>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -des -in eternalcenter.com.key -out one.eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以给 eternalcenter.com.key）</p>
+
+
+
+<h3>内容二：取消 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<h4>2.1 交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -out two.eternalcenter.com.key</code></pre>
+
+
+
+<h4>2.2 非交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -passin pass:eternalcenter -out two.eternalcenter.com.key</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 crontab -e 命令时报错 “You (&#8230;&#8230;) are not allowed to use this program (crontab)”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-you-are-not-allowed-to-use-this-program-crontab/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Jun 2022 10:07:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23780</guid>
+
+					<description><![CDATA[解决方法 如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户 添加以下内容： （补充：这里以添加用户 zhumingyu 为例） 如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户 删除以下内容： （补充：这里以删除用户 zhumingyu 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>解决方法</h2>
+
+
+
+<p>如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以添加用户 zhumingyu 为例）</p>
+
+
+
+<p>如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>删除以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu
+......</code></pre>
+
+
+
+<p>（补充：这里以删除用户 zhumingyu 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 iptables 命令时报错 “iptables: No chain/target/match by that name.”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-iptables-no-chain-target-match-by-that-name/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 12:24:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23749</guid>
+
+					<description><![CDATA[分析 系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。 解决方法 步骤一：更新 kernel 内核 如果是 Rocky Linux &#38; RHEL： 如果是 openSUSE &#38; SLE： 步骤二：重启系统]]></description>
+										<content:encoded><![CDATA[
+<h2>分析</h2>
+
+
+
+<p>系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：更新 kernel 内核</h3>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update kernel*</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper update kernel*</code></pre>
+
+
+
+<h3>步骤二：重启系统</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SSH 常用安全加强配置项</title>
+		<link>https://eternalcenter-sep-2022.github.io/sshd-security-enhance/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 06 Jun 2022 15:43:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23701</guid>
+
+					<description><![CDATA[内容一：SSH 的配置文件 1.1 SSH 配置文件的位置 1.2 SSH 配置文件的所属主、所属组和权限 1.2.1 确保 SSH 配置文件的所属主和所属组都是 root 1.2.2 确保 SSH 配置文件的权限是 640 内容二：SSH 常用安全加强配置项 2.1 将 SSH 设置为 v2 版本 2.1.1 将 SSH 设置为 v2 版本的配置参数 2.1.2 将 SSH 设置为 v2 版本的参考步骤 2.2 忽略 Rhosts 认证 2.2.1 忽略 Rhosts 认证的配置参数 2.2.2 设置忽略 Rhosts 认证的参考步骤 2.3 禁止受信任的客户端通过 .rhosts 或 /etc/hosts.equiv &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/sshd-security-enhance/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SSH 常用安全加强配置项"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：SSH 的配置文件</h3>
+
+
+
+<h4>1.1 SSH 配置文件的位置</h4>
+
+
+
+<pre class="wp-block-code"><code>/etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>1.2 SSH 配置文件的所属主、所属组和权限</h4>
+
+
+
+<h5>1.2.1 确保 SSH 配置文件的所属主和所属组都是 root</h5>
+
+
+
+<pre class="wp-block-code"><code># chown root:root /etc/ssh/sshd_config</code></pre>
+
+
+
+<h5>1.2.2 确保 SSH 配置文件的权限是 640</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 640 /etc/ssh/sshd_config</code></pre>
+
+
+
+<h3>内容二：SSH 常用安全加强配置项</h3>
+
+
+
+<h4>2.1 将 SSH 设置为 v2 版本</h4>
+
+
+
+<h5>2.1.1 将 SSH 设置为 v2 版本的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>Protocol 2</code></pre>
+
+
+
+<h5>2.1.2 将 SSH 设置为 v2 版本的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*Protocol .*/Protocol 2/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.2 忽略 Rhosts 认证</h4>
+
+
+
+<h5>2.2.1 忽略 Rhosts 认证的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>IgnoreRhosts yes</code></pre>
+
+
+
+<h5>2.2.2 设置忽略 Rhosts 认证的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/^.*IgnoreRhosts .*/IgnoreRhosts yes/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.3 禁止受信任的客户端通过 .rhosts 或 /etc/hosts.equiv 进行认证</h4>
+
+
+
+<h5>2.3.1 设置禁止受信任的客户端通过 .rhosts 或 /etc/hosts.equiv 进行认证的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>HostbasedAuthentication no</code></pre>
+
+
+
+<h5>2.3.2 设置禁止受信任的客户端通过 .rhosts 或 /etc/hosts.equiv 进行认证的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*HostbasedAuthentication .*/HostbasedAuthentication no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.4 禁止使用用户提交的 SSH 环境</h4>
+
+
+
+<h5>2.4.1 设置禁止使用用户提交的 SSH 环境的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>PermitUserEnvironment no</code></pre>
+
+
+
+<h5>2.4.2 设置禁止使用用户提交的 SSH 环境的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*PermitUserEnvironment .*/PermitUserEnvironment no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.5 禁止 root 用户通过 SSH 登录</h4>
+
+
+
+<h5>2.5.1 禁止 root 用户通过 SSH 登录的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>PermitRootLogin no</code></pre>
+
+
+
+<h5>2.5.2 设置禁止 root 用户通过 SSH 登录的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.6 禁止空密码 SSH 登录</h4>
+
+
+
+<h5>2.6.1 禁止空密码 SSH 登录的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>PermitEmptyPasswords no</code></pre>
+
+
+
+<h5>2.6.2 设置禁止空密码 SSH 登录的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*PermitEmptyPasswords .*/PermitEmptyPasswords no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.7 将 SSH 登录信息写入系统日志</h4>
+
+
+
+<h5>2.7.1 将 SSH 登录信息写入系统日志的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>SyslogFacility AUTH</code></pre>
+
+
+
+<h5>2.7.2 设置将 SSH 登录信息写入系统日志的参看步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*SyslogFacility .*/SyslogFacility AUTH/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.8 记录全部 SSH 信息</h4>
+
+
+
+<h5>2.8.1 记录全部 SSH 信息的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>LogLevel INFO</code></pre>
+
+
+
+<h5>2.8.2 设置记录全部 SSH 信息的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*LogLevel .*/LogLevel INFO/' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.9 设置最大尝试登录失败数和触发尝试登录失败日志的登录失败数</h4>
+
+
+
+<h5>2.9.1 设置最大尝试登录失败数和触发尝试登录失败日志的登录失败数的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>MaxAuthTries 5</code></pre>
+
+
+
+<p>（补充：这里以设置最大尝试登录失败数是 5 次为例，如果此时尝试登录次数超过 2，则系统日志中会出现登录失败的记录）</p>
+
+
+
+<h5>2.9.2 设置最大尝试登录失败数和触发尝试登录失败日志的登录失败数的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*MaxAuthTries .*/MaxAuthTries 5/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以设置最大尝试登录失败数是 5 次为例，如果此时尝试登录次数超过 2，则系统日志中会出现登录失败的记录）</p>
+
+
+
+<h4>2.10 设置 SSH 登录时密码输入的时间</h4>
+
+
+
+<h5>2.10.1 设置 SSH 登录时密码输入的时间的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>LoginGraceTime 600</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>LoginGraceTime 10m</code></pre>
+
+
+
+<p>（补充：这里以设置 SSH 登录时密码输入的时间为 600 秒为例）</p>
+
+
+
+<h5>2.10.2 设置 SSH 登录时密码输入的时间都参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*LoginGraceTime .*/LoginGraceTime 600/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*LoginGraceTime .*/LoginGraceTime 10m/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以设置 SSH 登录时密码输入的时间为 600 秒为例）</p>
+
+
+
+<h4>2.11 禁止 SSH 图形界面转发</h4>
+
+
+
+<h5>2.11.1 禁止 SSH 图形界面转发的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>X11Forwarding no</code></pre>
+
+
+
+<h5>2.11.1 设置禁止 SSH 图形界面转发的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*X11Forwarding .*/X11Forwarding no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.12 禁止 SSH TCP 转发</h4>
+
+
+
+<h5>2.12.1 设置禁止 SSH TCP 转发的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>AllowTcpForwarding no</code></pre>
+
+
+
+<h5>2.12.2 设置禁止 SSH TCP 转发的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*AllowTcpForwarding .*/AllowTcpForwarding no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.13 不显示上次 SSH 登录的信息，例如时间和地点等</h4>
+
+
+
+<h5>2.13.1 设置不显示上次 SSH 登录的信息，例如时间和地点等的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>PrintMotd no</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>PrintLastLog no</code></pre>
+
+
+
+<h5>2.13.1 设置不显示上次 SSH 登录的信息，例如时间和地点等的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*PrintMotd .*/PrintMotd no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*PrintLastLog .*/PrintLastLog no/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<h4>2.14 设置同时只能让几个 SSH 用户登录</h4>
+
+
+
+<h5>2.14.1 设置同时只能让几个 SSH 用户登录的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>MaxStartups 10:30:60</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 最多同时只能让 10 个用户发起 SSH 登录请求，超过此数量的登录请求会被拒绝<br>2) 当 SSH 连接数超过上限时 （这里设置的是 10 个），再新发起 SSH 登录请求的用户，会有 30% 的概率被拒绝<br>3) 当 SSH 连接数超过 60 时，再新发起 SSH 登录请求的用户全部会被拒绝，这里的 30 参数将会无效<br>）</p>
+
+
+
+<h5>2.14.2 设置同时只能让几个 SSH 用户登录的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*MaxStartups .*/MaxStartups 10:30:60/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 最多同时只能让 10 个用户发起 SSH 登录请求，超过此数量的登录请求会被拒绝<br>2) 当 SSH 连接数超过上限时 （这里设置的是 10 个），再新发起 SSH 登录请求的用户，会有 30% 的概率被拒绝<br>3) 当 SSH 连接数超过 60 时，再新发起 SSH 登录请求的用户全部会被拒绝，这里的 30 参数将会无效<br>）</p>
+
+
+
+<h4>2.15 设置每个连接可以开启会话的个数</h4>
+
+
+
+<h5>2.15.1 设置每个连接可以开启会话的个数的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>MaxSessions 4</code></pre>
+
+
+
+<p>（补充：这里以设置每个连接可以开启 4 个会话为例，默认值为 10）</p>
+
+
+
+<h5>2.15.2 设置每个连接可以开启会话的个数的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*MaxSessions .*/MaxSessions 4/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以设置每个连接可以开启 4 个会话为例，默认值为 10）</p>
+
+
+
+<h4>2.16 设置客户端 SSH 空闲超时时间</h4>
+
+
+
+<h5>2.16.1 设置客户端 SSH 空闲超时时间的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>ClientAliveInterval 100
+ClientAliveCountMax 3</code></pre>
+
+
+
+<p>（补充：这里以设置客户端 SSH 空闲超时时间为 100 * 3=300 秒为例）</p>
+
+
+
+<h5>2.16.2 设置客户端 SSH 空闲超时时间的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/.*ClientAliveInterval .*/ClientAliveInterval 100/g' /etc/ssh/sshd_config
+# sed -i 's/.*ClientAliveCountMax .*/ClientAliveCountMax 3/g' /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以设置客户端 SSH 空闲超时时间为 100 * 3=300 秒为例）</p>
+
+
+
+<h4>2.17 指定安全的 SSH Ciphers 加密算法</h4>
+
+
+
+<h5>2.17.1 设置 SSH Ciphers 加密算法的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>Ciphers aes256-ctr,aes192-ctr,aes128-ctr</code></pre>
+
+
+
+<p>（补充：这里以使用 aes256-ctr、aes192-ctr 和 aes128-ctr SSH Ciphers 加密算法为例）</p>
+
+
+
+<h5>2.17.2 设置 SSH Ciphers 加密算法的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># echo "Ciphers aes256-ctr,aes192-ctr,aes128-ctr" &gt;&gt; /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以使用 aes256-ctr、aes192-ctr 和 aes128-ctr SSH Ciphers 加密算法为例）</p>
+
+
+
+<h4>2.18 指定安全的 SSH MACs 加密算法</h4>
+
+
+
+<h5>2.18.1 设置 SSH MACs 加密算法的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>MACs hmac-sha2-512,hmac-sha2-256</code></pre>
+
+
+
+<p>（补充：这里以使用 hmac-sha2-512 和 hmac-sha2-256 SSH MACs 加密算法为例）</p>
+
+
+
+<h5>2.18.2 设置 SSH MACs 加密算法的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># echo "MACs hmac-sha2-512,hmac-sha2-256" &gt;&gt; /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以使用 hmac-sha2-512 和 hmac-sha2-256 SSH MACs 加密算法为例）</p>
+
+
+
+<h4>2.19 指定安全的 SSH KexAlgorithms 加密算法</h4>
+
+
+
+<h5>2.19.1 设置 SSH KexAlgorithms 加密算法的配置参数</h5>
+
+
+
+<pre class="wp-block-code"><code>KexAlgorithms ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256</code></pre>
+
+
+
+<p>（补充：这里以使用 ecdh-sha2-nistp521、ecdh-sha2-nistp384、ecdh-sha2-nistp256 和 diffie-hellman-group-exchange-sha256 SSH KexAlgorithms 加密算法为例）</p>
+
+
+
+<h5>2.19.2 设置 SSH KexAlgorithms 加密算法的参考步骤</h5>
+
+
+
+<pre class="wp-block-code"><code># echo "KexAlgorithms ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256" &gt;&gt; /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>（补充：这里以使用 ecdh-sha2-nistp521、ecdh-sha2-nistp384、ecdh-sha2-nistp256 和 diffie-hellman-group-exchange-sha256 SSH KexAlgorithms 加密算法为例）</p>
+
+
+
+<h4>2.20 只允许某 IP 地址可以 SSH 本服务器</h4>
+
+
+
+<h5>2.20.1 启用 UseTCPWrappers 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UseTCPWrappers yes
+......</code></pre>
+
+
+
+<h5>2.20.2 禁止所有 IP 地址可以 SSH 本服务器</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/hosts.deny</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+sshd : ALL </code></pre>
+
+
+
+<h5>2.20.3 只允许某 IP 地址可以 SSH 本服务器</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/hosts.deny</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+sshd : 192.168.0.1/32 : ALLOW
+sshd : ALL</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1 可以 SSH 本服务器为例）</p>
+
+
+
+<p>（注意：这和防火墙的策略一样从上往下匹配及停止，所以允许某 IP 地址可以 SSH 本服务器的策略一定要加在禁止所有 IP 地址可以 SSH 本服务器的策略之前）</p>
+
+
+
+<h4>2.21 只允许从某 IP 地址来的某用户可以 SSH 本服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+AllowUsers zhumingyu mingyuzhu@192.168.1.1
+AllowGroups zhu</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 允许用户 zhumingyu 可以登录<br>2) 允许从 192.168.1.1 来的用户 mingyuzhu 可以登录<br>3) 允许属于组 zhu 的用户可以登录<br>其它用户不能登录<br>为例<br>）</p>
+
+
+
+<h4>2.22 禁止某 IP 地址可以 SSH 本服务器</h4>
+
+
+
+<h5>2.22.1 启用 UseTCPWrappers 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UseTCPWrappers yes
+......</code></pre>
+
+
+
+<h5>2.22.2 禁止某 IP 地址可以 SSH 本服务器</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/hosts.deny</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>sshd : 192.168.0.1/32 : ALLOW</code></pre>
+
+
+
+<p>（补充：这里以禁止 IP 地址 192.168.0.1 可以 SSH 本服务器为例）</p>
+
+
+
+<h4>2.23 禁止从某 IP 地址来的某用户可以 SSH 本服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DenyUsers zhumingyu mingyuzhu@192.168.1.1
+DenyGroups zhu</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 禁止用户 zhumingyu 登录<br>2) 禁止从 192.168.1.1 来的用户 mingyuzhu 登录<br>3) 禁止属于组 zhu 的用户登录<br>其它用户都可以登录<br>为例<br>）</p>
+
+
+
+<h3>内容三：重启 sshd 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<p>（补充：内容二里的参数只有重启了 sshd 服务后才能生效）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSH 密钥的批量更新</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssh-key-batch-renew/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Apr 2022 14:36:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23423</guid>
+
+					<description><![CDATA[步骤一：生成新的 SSH 密钥 1.1 进入 ~/.ssh 目录 1.2 生成新的 SSH 密钥 步骤二：将新的 SSH 公钥拷贝到目标服务器 步骤三：更新 SSH 密钥 3.1 更新 SSH 私钥 3.1.1 备份旧有的 SSH 私钥 3.1.2 更新 SSH 私钥 3.2 更新 SSH 公钥 3.2.1 备份旧有的 SSH 公钥 3.2.2 更新 SSH 公钥 步骤四：删除目标服务器的旧有 SSH 公钥 4.1 删除目标服务器的旧有 SSH 公钥 4.2 确定目标服务器就有的 SSH 已经删除]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：生成新的 SSH 密钥</h3>
+
+
+
+<h4>1.1 进入 ~/.ssh 目录</h4>
+
+
+
+<pre class="wp-block-code"><code># cd ~/.ssh</code></pre>
+
+
+
+<h4>1.2 生成新的 SSH 密钥</h4>
+
+
+
+<pre class="wp-block-code"><code># ssh-keygen -b 4096 -t rsa -C "&lt;content&gt;" -f "&lt;public private key name&gt;"</code></pre>
+
+
+
+<h3>步骤二：将新的 SSH 公钥拷贝到目标服务器</h3>
+
+
+
+<pre class="wp-block-code"><code># for i in `cat &lt;server list&gt;`;do echo $i;ssh-copy-id -i ~/.ssh/&lt;public private key name&gt;.pub $i;echo;done</code></pre>
+
+
+
+<h3>步骤三：更新 SSH 密钥</h3>
+
+
+
+<h4>3.1 更新 SSH 私钥</h4>
+
+
+
+<h5>3.1.1 备份旧有的 SSH 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># mv id_rsa id_rsa.backup</code></pre>
+
+
+
+<h5>3.1.2 更新 SSH 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># cp &lt;public private key name&gt; id_rsa</code></pre>
+
+
+
+<h4>3.2 更新 SSH 公钥</h4>
+
+
+
+<h5>3.2.1 备份旧有的 SSH 公钥</h5>
+
+
+
+<pre class="wp-block-code"><code># mv id_rsa.pub id_rsa.pub.backup</code></pre>
+
+
+
+<h5>3.2.2 更新 SSH 公钥</h5>
+
+
+
+<pre class="wp-block-code"><code># cp &lt;public private key name&gt;.pub id_rsa.pub</code></pre>
+
+
+
+<h3>步骤四：删除目标服务器的旧有 SSH 公钥</h3>
+
+
+
+<h4>4.1 删除目标服务器的旧有 SSH 公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># for i in `cat &lt;server list&gt;`;do echo $i;ssh $i "sed -i /&lt;old SSH key content&gt;/d ~/.ssh/authorized_keys";echo;done</code></pre>
+
+
+
+<h4>4.2 确定目标服务器就有的 SSH 已经删除</h4>
+
+
+
+<pre class="wp-block-code"><code># for i in `cat &lt;server list&gt;`;do echo $i;ssh $i "cat ~/.ssh/authorized_keys | egrep -v '&lt;content&gt;'";echo;done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] iptables 防火墙规则持久化 （让防火墙规则开机自启）</title>
+		<link>https://eternalcenter-sep-2022.github.io/iptables-rule-permanent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Apr 2022 07:28:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23270</guid>
+
+					<description><![CDATA[内容一：Rocky Linux &#38; RHEL iptables 防火墙规则持久化 内容二：Rocky Linux &#38; RHEL 和 openSUSE &#38; SUSE iptables 防火墙规则持久化 2.1 导出现在 iptables 防火墙的规则 （补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例） 2.2 创建用于加载 iptables 防火墙规则的 systemctl 管理文件 创建以下内容： （补充：这里以创建 systemctl 管理文件 /etc/systemd/system/iptables_save.service 将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例） 2.3 加载刚刚创建的 systemctl 管理文件 2.4 给刚刚创建的 systemctl 管理文件添加执行权限 （补充：这里以给 systemctl 管理文件 /etc/systemd/system/iptables_save.service 添加执行权限为例） 2.5 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/iptables-rule-permanent/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] iptables 防火墙规则持久化 （让防火墙规则开机自启）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Rocky Linux &amp; RHEL iptables 防火墙规则持久化</h3>
+
+
+
+<pre class="wp-block-code"><code># service iptables save</code></pre>
+
+
+
+<h3>内容二：Rocky Linux &amp; RHEL 和 openSUSE &amp; SUSE iptables 防火墙规则持久化</h3>
+
+
+
+<h4>2.1 导出现在 iptables 防火墙的规则</h4>
+
+
+
+<pre class="wp-block-code"><code># iptables-save &gt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例）</p>
+
+
+
+<h4>2.2 创建用于加载 iptables 防火墙规则的 systemctl 管理文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/iptables_save.service</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+Description=iptables_save
+After=default.target
+
+&#91;Service]
+Type=oneshot
+ExecStart=/usr/sbin/iptables-restore &lt; /root/iptables_save
+
+&#91;Install]
+WantedBy=default.target</code></pre>
+
+
+
+<p>（补充：这里以创建 systemctl 管理文件 /etc/systemd/system/iptables_save.service 将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）</p>
+
+
+
+<h4>2.3 加载刚刚创建的 systemctl 管理文件</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h4>2.4 给刚刚创建的 systemctl 管理文件添加执行权限</h4>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x /etc/systemd/system/iptables_save.service</code></pre>
+
+
+
+<p>（补充：这里以给 systemctl 管理文件 /etc/systemd/system/iptables_save.service 添加执行权限为例）</p>
+
+
+
+<h4>2.5 让防火墙规则开机自启</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable iptables_save.service</code></pre>
+
+
+
+<p>（补充：这里以开机自启 iptables_save.service 服务为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] iptables 防火墙规则的导出和导入</title>
+		<link>https://eternalcenter-sep-2022.github.io/iptables-rule-export-import/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Apr 2022 07:20:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23267</guid>
+
+					<description><![CDATA[内容一：导出 iptables 防火墙规则 （补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例） 内容二：导入 iptables 防火墙规则 （补充：这里以将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：导出 iptables 防火墙规则</h3>
+
+
+
+<pre class="wp-block-code"><code># iptables-save &gt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 iptables 防火墙规则导出到 /root/iptables_save 文件为例）</p>
+
+
+
+<h3>内容二：导入 iptables 防火墙规则</h3>
+
+
+
+<pre class="wp-block-code"><code># iptables-restore &lt; /root/iptables_save</code></pre>
+
+
+
+<p>（补充：这里以将 /root/iptables_save 文件里的内容导入到 iptables 防火墙为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 目标网站 SSL 证书的显示 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-display-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:39:10 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21971</guid>
+
+					<description><![CDATA[内容一：查看完整信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例） 内容二：查看主要信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：查看完整信息</h3>
+
+
+
+<pre class="wp-block-code"><code># openssl s_client -connect eternalcenter.com:443
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFKjCCBBKgAwIBAgISAxDxly99eBiarmHggFEmDJoMMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMTEyMTkxMzA4MzJaFw0yMjAzMTkxMzA4MzFaMBwxGjAYBgNVBAMT
+EWV0ZXJuYWxjZW50ZXIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAtCcCuOqBrWP4eo//VBEXh668EjwrE1eXz2CS4GIN4ddn0rS8LHGFOrB92R8E
+OnaYeTKpZjzNM3NA/AG/Gq5mTRZGTpyTasHEb/phwXdhrtJWdbMtQjGFSg8rXSB8
+cap5NGP/NxAy8FV0MbXftg5t9VgBoCMGUzioSHZTEjefq+/OZwlP7RzxZN3bwj1D
+61gWSw6q1X3bsi8ttwbkkiJfvjXo2KIeGOAnY10X+FPJmVa7jonhOuljrX4CYgnd
+SCxmsfgwGMUzRu27VB1rEbKqvSr6tb9KfwFiqsZd5tTi7RW6WMqA0VbDV7BbDqLP
+OzcturwRtXfzHjJxssy9zhnrQQIDAQABo4ICTjCCAkowDgYDVR0PAQH/BAQDAgWg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G
+A1UdDgQWBBQMGBCfBuZxTAS8VcBI/13ugqc2RDAfBgNVHSMEGDAWgBQULrMXt1hW
+y65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6
+Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iu
+b3JnLzAcBgNVHREEFTATghFldGVybmFsY2VudGVyLmNvbTBMBgNVHSAERTBDMAgG
+BmeBDAECATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3Bz
+LmxldHNlbmNyeXB0Lm9yZzCCAQYGCisGAQQB1nkCBAIEgfcEgfQA8gB3AN+lXqto
+gk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpzAAABfdMFzUsAAAQDAEgwRgIhAMFF
+1orPZPnpCyhzwX2xZAZjJnOmDGmBjAl0tHnX4nEWAiEAqZTUwjrdwZAL+kDAgpzG
+Me2RnGMseDBY8Oy2sefUgsAAdwBGpVXrdfqRIDC1oolp9PN9ESxBdL79SbiFq/L8
+cP5tRwAAAX3TBc1zAAAEAwBIMEYCIQDLhR0nbVHEIL1uw9hRuv/ZbFjf91W/M4Jp
+od7NTMQZbAIhAKEAAfmdu0nVHklyS2At1VValwQ6vNbqd0NQ85giG606MA0GCSqG
+SIb3DQEBCwUAA4IBAQB/s+rZEaNrlUyBVnbxv5X9NTBd8buBOkR1qVswlS1R2i8B
+pRjeJmgbiMzM2z5Mvx0yTIiCyXXUc3YaqoyxvddaQam9nlLGr0nKX9T5DkE7y0Fh
+Qg0/ievRQF86XnDqQBxDR32jj5A1nKEiJrNCqugCWTAABndW3tvzK5DOsF2BfjJC
+mcjwiKaSCjFVpf+KzLWS3UEW+DRTKOLBucXpenS7QEcQu4K6ShNSL7+K6UOZEbFu
+uCRjOawCJFF7EH5vzRBy696Fu4EmzCV+c4rV8K8EcuCCQQeOTWJ/93Jv6U6kGrmE
+P6wlcHFy1tZhTAmXf/qcpE3sGeH58OlNNiVmNJdH
+-----END CERTIFICATE-----
+subject=CN = eternalcenter.com
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4695 bytes and written 412 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: D63BC88824810A4D43ACE901AD4FF2D82073BC6F0D8B2DE71F6310CA1C87707F
+    Session-ID-ctx: 
+    Master-Key: A6836430C394B96DDD5552867D49802F94AAC8BF5E882100F0D27185CF5CFD6A946B94D87652E44A6684FC9781D16D90
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - bb be 55 e0 4b 6d c3 08-cd bc 45 6e 79 67 fc eb   ..U.Km....Enyg..
+    0010 - 30 d5 4c 8a 5a c8 f7 13-42 4b 1d 02 ce 94 c0 b8   0.L.Z...BK......
+    0020 - d7 cf f6 f0 ee 9d 49 5b-0a c8 a4 1a 8b dd 8a e0   ......I&#91;........
+    0030 - 66 83 52 9b 31 4d da 9e-d5 05 1a 70 ca e9 86 5e   f.R.1M.....p...^
+    0040 - f5 09 a1 1c 92 6b 64 90-b7 e1 0e ec 30 e2 26 68   .....kd.....0.&amp;h
+    0050 - 49 13 10 9e 3e a5 e0 13-a2 f1 7a 7c c5 ad 99 6c   I...&gt;.....z|...l
+    0060 - e9 f6 1d 46 5f cc f6 f9-c5 f6 05 49 53 78 7e ea   ...F_......ISx~.
+    0070 - 8c 17 eb 8d 96 c3 3f 92-fe e0 f0 f6 86 59 05 c8   ......?......Y..
+    0080 - d2 8c 27 6b 9d 65 38 20-84 d4 23 54 35 70 19 4d   ..'k.e8 ..#T5p.M
+    0090 - db 35 6d f4 44 50 d7 6e-a5 87 2b 32 e5 f8 42 88   .5m.DP.n..+2..B.
+    00a0 - 28 e2 ab 35 e1 2c 06 71-e5 b2 82 cb 3a 75 cc 72   (..5.,.q....:u.r
+    00b0 - ed ae e1 12 ff 82 6c 3a-3a 38 7a 8c 3c 9c f1 10   ......l::8z.&lt;...
+    00c0 - 78 b8 37 87 c3 a2 00 76-01 72 8c ef 3b 20 48 28   x.7....v.r..; H(
+
+    Start Time: 1644931899
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+closed</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+
+
+
+<h3>内容二：查看主要信息</h3>
+
+
+
+<pre class="wp-block-code"><code># echo | openssl s_client -connect scc.suse.com:443 | head -n 16
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Rocky Linux 8 &#038; RHEL 8 命令 update-crypto-policies （设置连接加密方式）</title>
+		<link>https://eternalcenter-sep-2022.github.io/update-crypto-policies/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 09:12:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21893</guid>
+
+					<description><![CDATA[内容一：update-crypto-policies 参数的意义 1) DEFAULT 不严格的安全等级，可以让系统使用 TLSv1.22) FUTURE 严格的安全等级，只能让系统使用 TLSv1.2 不能使用 TLSv1.3 内容二：显示当前的 update-crypto-policies 参数 （补充：从这里可以看出目前的 update-crypto-policies 参数是 DEFAULT） 内容三：设置 update-crypto-policies 参数 （补充：这里以将 update-crypto-policies 参数设置为 FUTURE 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-update-crypto-policies-参数的意义">内容一：update-crypto-policies 参数的意义</h3>
+
+
+
+<p>1) DEFAULT 不严格的安全等级，可以让系统使用 TLSv1.2<br>2) FUTURE 严格的安全等级，只能让系统使用 TLSv1.2 不能使用 TLSv1.3</p>
+
+
+
+<h3 id="内容二-查看当前的-update-crypto-policies-参数">内容二：显示当前的 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --show
+DEFAULT</code></pre>
+
+
+
+<p>（补充：从这里可以看出目前的 update-crypto-policies 参数是 DEFAULT）</p>
+
+
+
+<h3 id="内容三-设置-update-crypto-policies-参数">内容三：设置 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --set=FUTURE</code></pre>
+
+
+
+<p>（补充：这里以将 update-crypto-policies 参数设置为 FUTURE 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 curl 命令时报错 “curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-35-error14094410ssl-routinesssl3_read_bytessslv3-alert-handshake-failure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 09:03:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21890</guid>
+
+					<description><![CDATA[报错代码 分析 Rocky Linux 8 &#38; RHEL 8 已经默认废弃 TLSv1.2可以使用 TLSv1.3 替代 TLSv1.2 或者将 update-crypto-policies 参数设置为 DEFAULT 以解决此报错 解决方法 步骤一：显示当前的 update-crypto-policies 参数 （补充：从这里可以看出目前的 update-crypto-policies 参数是 FUTURE） 步骤二：将 update-crypto-policies 参数设置为 DEFAULT （补充：这里以将 update-crypto-policies 参数设置为 DEFAULT 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2 id="报错代码">报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>curl: (35) error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure</code></pre>
+
+
+
+<h2 id="分析">分析</h2>
+
+
+
+<p>Rocky Linux 8 &amp; RHEL 8 已经默认废弃 TLSv1.2<br>可以使用 TLSv1.3 替代 TLSv1.2 或者将 update-crypto-policies 参数设置为 DEFAULT 以解决此报错</p>
+
+
+
+<h2 id="解决方法">解决方法</h2>
+
+
+
+<h3 id="解决方法">步骤一：显示当前的 update-crypto-policies 参数</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --show
+FUTURE</code></pre>
+
+
+
+<p>（补充：从这里可以看出目前的 update-crypto-policies 参数是 FUTURE）</p>
+
+
+
+<h3 id="步骤二-将-update-crypto-policies-参数设置为-default">步骤二：将 update-crypto-policies 参数设置为 DEFAULT</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --set=DEFAULT</code></pre>
+
+
+
+<p>（补充：这里以将 update-crypto-policies 参数设置为 DEFAULT 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 19 Dec 2021 15:12:46 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19886</guid>
+
+					<description><![CDATA[步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上 （步骤略） 步骤二：安装 certbot （补充：这里以在 Fedora 35 上安装 certbot 为例） 步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书 （补充：这里以1) 使用 mingyu.zhu@eternalcenter.com 邮箱2) 以非交互式的方式3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证4) 给 eternalcenter.com 域名申请 Let&#8217;s Encrypt SSL 证书为例） 步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书 （补充：1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥） 步骤五：延期 Let&#8217;s Encrypt SSL 证书 5.1 显示 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-将要申请-let-s-encrypt-ssl-的域名解析到要进行操作的服务器-ip-地址上">步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤二-安装-certbot">步骤二：安装 certbot</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install certbot</code></pre>
+
+
+
+<p>（补充：这里以在 Fedora 35 上安装 certbot 为例）</p>
+
+
+
+<h3 id="步骤三-使用-certbot-生成-let-s-encrypt-ssl-证书">步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certonly --email mingyu.zhu@eternalcenter.com -n --agree-tos --webroot -w /usr/share/nginx/html/ -d eternalcenter.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator webroot, Installer None
+Requesting a certificate for eternalcenter.com
+Performing the following challenges:
+http-01 challenge for eternalcenter.com
+Using the webroot path /usr/share/nginx/html for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+   Your certificate will expire on 2022-03-20. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用 mingyu.zhu@eternalcenter.com 邮箱<br>2) 以非交互式的方式<br>3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证<br>4) 给 eternalcenter.com 域名<br>申请 Let&#8217;s Encrypt SSL 证书为例<br>）</p>
+
+
+
+<h3 id="步骤四-查看已经生成的-let-s-encrypt-ssl-证书">步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certificates
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Found the following certs:
+  Certificate Name: eternalcenter.com
+    Serial Number: 3e8cdb74a1abfbf3d535ec1c3f8cb3e4e4c
+    Key Type: RSA
+    Domains: eternalcenter.com
+    Expiry Date: 2022-03-20 13:48:48+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</code></pre>
+
+
+
+<p>（<br>补充：<br>1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥<br>2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥<br>）</p>
+
+
+
+<h3 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">步骤五：延期 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<h4 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">5.1 显示 Let&#8217;s Encrypt SSL 证书的延期策略</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/letsencrypt/renewal/eternalcenter.com.conf 
+# renew_before_expiry = 30 days
+version = 1.20.0
+archive_dir = /etc/letsencrypt/archive/eternalcenter.com
+cert = /etc/letsencrypt/live/eternalcenter.com/cert.pem
+privkey = /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+chain = /etc/letsencrypt/live/eternalcenter.com/chain.pem
+fullchain = /etc/letsencrypt/live/eternalcenter.com/fullchain.pem</code></pre>
+
+
+
+<p>（补充：可以看出 Let&#8217;s Encrypt SSL 证书是在过期前 30 天才能更新）</p>
+
+
+
+<h4 id="5-2-手动延期-let-s-encrypt-ssl-证书">5.2 手动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h4 id="5-3-自动延期-let-s-encrypt-ssl-证书">5.3 自动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 0 */30 * * /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以每过 30 天的 0 时 0 分延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h3 id="步骤六-let-s-encrypt-ssl-证书的生成限制">步骤六：Let’s Encrypt SSL 证书的生成限制</h3>
+
+
+
+<p>1) 一个域名申请次数不能超过 5 次/周<br>2) 允许申请失败次数不能超过 5 次/时<br>3) 属于同一个顶级域名的二级域名申请次数不能超过 20 次/周<br>4) 申请请求频率不能超过 20 次/秒<br>5) 一个 IP 地址创建用户个数不能超过 10 个/3 小时<br>6) 一个用户最多 pending 审核的数不能超过 300 个</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] nftables 防火墙的使用 （永久版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfttables-permanent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Aug 2021 06:28:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17232</guid>
+
+					<description><![CDATA[注意： 只有 CentOS 8 &#38; RHEL 8 才可以使用 nftables 防火墙 正文： 步骤一：从 firewalld 防火墙切换至 nftables 防火墙 1.1 安装 nftables 防火墙 1.2 清空 iptables 防火墙的策略表 1.2.1 清空 ipv4 iptables 防火墙的策略表 1.2.2 清空 IPv6 iptables 防火墙的策略表 1.3 停止使用 firewalld 防火墙 1.3.1 取消 firewalld 防火墙开机自启 1.3.2 停止 firewalld 防火墙 1.4 启用 nftables 防火墙 1.4.1 开机自启 nftables 防火墙 1.4.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nfttables-permanent/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] nftables 防火墙的使用 （永久版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>只有 CentOS 8 &amp; RHEL 8 才可以使用 nftables 防火墙</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：从 firewalld 防火墙切换至 nftables 防火墙</h3>
+
+
+
+<h4>1.1 安装 nftables 防火墙</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install nftables</code></pre>
+
+
+
+<h4>1.2 清空 iptables 防火墙的策略表</h4>
+
+
+
+<h5>1.2.1 清空 ipv4 iptables 防火墙的策略表</h5>
+
+
+
+<pre class="wp-block-code"><code># iptables -F</code></pre>
+
+
+
+<h5>1.2.2 清空 IPv6 iptables 防火墙的策略表</h5>
+
+
+
+<pre class="wp-block-code"><code># ip6tables -F</code></pre>
+
+
+
+<h4>1.3 停止使用 firewalld 防火墙</h4>
+
+
+
+<h5>1.3.1 取消 firewalld 防火墙开机自启</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl disable firewalld.service</code></pre>
+
+
+
+<h5>1.3.2 停止 firewalld 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop firewalld.service</code></pre>
+
+
+
+<h4>1.4 启用 nftables 防火墙</h4>
+
+
+
+<h5>1.4.1 开机自启 nftables 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nftables</code></pre>
+
+
+
+<h5>1.4.2 启动 nftables 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nftables</code></pre>
+
+
+
+<h3>步骤二：创建永久的 nftales 防火墙的策略表并条件永久的 nftables 防火墙策略</h3>
+
+
+
+<h4>2.1 在 nftables 防火墙的配置文件中添加 nftables 防火墙策略文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/nftables.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+include "/etc/nftables/nftables.rules"</code></pre>
+
+
+
+<h4>2.2 在 nftables 防火墙策略文件中添加 nftables 防火墙策略</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nftables/nftables.rules
+flush ruleset
+table inet siemens_FW {
+    chain siemens_FW_input {
+      type filter hook input priority 0; policy accept;
+      iif "lo" accept
+      ip saddr 127.0.0.0/8 counter packets 0 bytes 0 drop
+      ip6 saddr ::1 counter packets 0 bytes 0 drop
+      ip saddr 192.168.1.1 tcp dport ssh accept                  
+      tcp dport ssh drop
+    }
+    chain siemens_FW_forward {
+      type filter hook forward priority 0; policy accept;
+    } 
+    chain siemens_FW_output {
+      type filter hook output priority 0; policy accept;
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>（1）这里以基本的本地巡回路由策略并禁止除 192.168.1.1 的 IP 地址访问本地的 22 端口为例<br>（2）这里的 /etc/nftables/nftables.rules 是在 2.1 中添加的<br>）</p>
+
+
+
+<h4>2.3 让添加的 nftables 防火墙策略生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nftables</code></pre>
+
+
+
+<h2>补充：</h2>
+
+
+
+<div class="wp-container-2 is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/common-rules-for-nftables-firewall-policy-file/" style="border-radius:0px">nftables 防火墙策略文件的常用规则</a></div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] nftables 防火墙的使用 （临时版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfttables-temporary/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Aug 2021 06:19:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17229</guid>
+
+					<description><![CDATA[注意： 只有 CentOS 8 &#38; RHEL 8 才可以使用 nftables 防火墙 正文： 步骤一：从 firewalld 防火墙切换至 nftables 防火墙 1.1 安装 nftables 防火墙 1.2 清空 iptables 防火墙的策略表 1.2.1 清空 ipv4 iptables 防火墙的策略表 1.2.2 清空 IPv6 iptables 防火墙的策略表 1.3 停止使用 firewalld 防火墙 1.3.1 取消 firewalld 防火墙开机自启 1.3.2 停止 firewalld 防火墙 1.4 启用 nftables 防火墙 1.4.1 开机自启 nftables 防火墙 1.4.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nfttables-temporary/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] nftables 防火墙的使用 （临时版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>只有 CentOS 8 &amp; RHEL 8 才可以使用 nftables 防火墙</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：从 firewalld 防火墙切换至 nftables 防火墙</h3>
+
+
+
+<h4>1.1 安装 nftables 防火墙</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install nftables</code></pre>
+
+
+
+<h4>1.2 清空 iptables 防火墙的策略表</h4>
+
+
+
+<h5>1.2.1 清空 ipv4 iptables 防火墙的策略表</h5>
+
+
+
+<pre class="wp-block-code"><code># iptables -F</code></pre>
+
+
+
+<h5>1.2.2 清空 IPv6 iptables 防火墙的策略表</h5>
+
+
+
+<pre class="wp-block-code"><code># ip6tables -F</code></pre>
+
+
+
+<h4>1.3 停止使用 firewalld 防火墙</h4>
+
+
+
+<h5>1.3.1 取消 firewalld 防火墙开机自启</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl disable firewalld.service</code></pre>
+
+
+
+<h5>1.3.2 停止 firewalld 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop firewalld.service</code></pre>
+
+
+
+<h4>1.4 启用 nftables 防火墙</h4>
+
+
+
+<h5>1.4.1 开机自启 nftables 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nftables</code></pre>
+
+
+
+<h5>1.4.2 启动 nftables 防火墙</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nftables</code></pre>
+
+
+
+<h3>步骤二：创建 nftables 防火墙的策略表</h3>
+
+
+
+<h4>2.1 创建 nftables 防火墙的策略表</h4>
+
+
+
+<pre class="wp-block-code"><code># nft create table inet &lt;table&gt;</code></pre>
+
+
+
+<h4>2.2 创建 nftables 防火墙的策略表的 input 链</h4>
+
+
+
+<pre class="wp-block-code"><code># nft create chain inet &lt;table&gt; input { type filter hook input priority 0 \; }</code></pre>
+
+
+
+<h4>2.3 创建 nftables 防火墙的策略表的 forward 链</h4>
+
+
+
+<pre class="wp-block-code"><code># nft create chain inet &lt;table&gt; forward { type filter hook forward priority 0 \; }</code></pre>
+
+
+
+<h4>2.4 创建 nftables 防火墙的策略表的 output 链</h4>
+
+
+
+<pre class="wp-block-code"><code># nft create chain inet &lt;table&gt; output { type filter hook output priority 0 \; }</code></pre>
+
+
+
+<h3>步骤三：添加临时基本的本地巡回路由策略</h3>
+
+
+
+<pre class="wp-block-code"><code># nft add rule inet filter input iif lo accept
+# nft add rule inet filter input ip saddr 127.0.0.0/8 counter drop
+# nft add rule inet filter input ip6 saddr ::1 counter drop</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] SELinux  的启用 （openSUSE &#038; SLE  版） （不建议）</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 01 Jun 2021 08:50:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14516</guid>
+
+					<description><![CDATA[软件准备： 在 SELinuxProject 的官网上下载 SELinux 策略 UseRefpolicy： https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy 注意： 1) 如果使用此文的方法将 openSUSE &#38; SLE 的 SELinux 设置为 Enforcing 则系统将无法设置 IP 地址2) 如果使用此文的方法开启了 SELinux 并且将所有的布尔（boolean）值开启，则系统将无法关机，开启所有布尔值的方法：# for i in semanage boolean -l &#124; awk '{print $1}'; do echo $i;setsebool -P $i 1; done 正文： 步骤一：安装 SELinux 组件 步骤二：安装 SELinux 策略 2.1 解压包含 SELinux 策略的压缩包 （补充：这里以解压 refpolicy-2.20210203.tar.bz2 压缩包为例） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-opensuse-sle/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] SELinux  的启用 （openSUSE &#038; SLE  版） （不建议）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 SELinuxProject 的官网上下载 SELinux 策略 UseRefpolicy：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy" target="_blank" rel="noreferrer noopener">https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy</a></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>1) 如果使用此文的方法将 openSUSE &amp; SLE 的 SELinux 设置为 Enforcing 则系统将无法设置 IP 地址<br>2) 如果使用此文的方法开启了 SELinux 并且将所有的布尔（boolean）值开启，则系统将无法关机，开启所有布尔值的方法：# for i in <code>semanage boolean -l | awk '{print $1}'</code>; do echo $i;setsebool -P $i 1; done</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-安装-selinux-组件">步骤一：安装 SELinux 组件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper in libselinux1 libsemanage1 libsepol-devel libsepol1 libselinux-devel mcstrans libselinux1-32bit policycoreutils checkpolicy libsemanage-devel setools-tcl setools-libs setools-java setools-devel setools-console selinux-tools python3-policycoreutils python3-selinux python3-semanage python3-setools restorecond</code></pre>
+
+
+
+<h3 id="步骤二-安装-selinux-策略-2-1-解压包含-selinux-策略的压缩包">步骤二：安装 SELinux 策略</h3>
+
+
+
+<h4 id="步骤二-安装-selinux-策略-2-1-解压包含-selinux-策略的压缩包">2.1 解压包含 SELinux 策略的压缩包</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf refpolicy-2.20210203.tar.bz2</code></pre>
+
+
+
+<p>（补充：这里以解压 refpolicy-2.20210203.tar.bz2 压缩包为例）</p>
+
+
+
+<h4 id="2-2-将-selinux-策略移动到-selinux-配置文件的位置">2.2 将 SELinux 策略移动到 SELinux 配置文件的位置</h4>
+
+
+
+<pre class="wp-block-code"><code># mv refpolicy /etc/selinux/</code></pre>
+
+
+
+<h4 id="2-3-进入到和-selinux-策略相同目录下">2.3 进入到和 SELinux 策略相同目录下</h4>
+
+
+
+<pre class="wp-block-code"><code># cd /etc/selinux/refpolicy/</code></pre>
+
+
+
+<h4 id="2-4-显示-selinux-策略的安装手册">2.4 显示 SELinux 策略的安装手册</h4>
+
+
+
+<pre class="wp-block-code"><code># cat INSTALL</code></pre>
+
+
+
+<h4 id="2-5-创建-selinux-策略的配置文件">2.5 创建 SELinux 策略的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># make conf</code></pre>
+
+
+
+<h4 id="2-6-创建-selinux-策略">2.6 创建 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make policy</code></pre>
+
+
+
+<h4 id="2-7-编译-selinux-策略">2.7 编译 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h4 id="2-8-安装-selinux-策略">2.8 安装 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make load</code></pre>
+
+
+
+<h3 id="步骤三-配置-selinux-配置文件-3-1-在-selinux-配置文件中将-selinux-设置为-permissive-状态">步骤三：配置 SELinux 配置文件</h3>
+
+
+
+<h4 id="步骤三-配置-selinux-配置文件-3-1-在-selinux-配置文件中将-selinux-设置为-permissive-状态">3.1 在 SELinux 配置文件中将 SELinux 设置为 Permissive 状态</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=permissive
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=refpolicy</code></pre>
+
+
+
+<h4 id="3-2-在系统内核中禁止使用-apparmor-使用-selinux-并且将-selinux-状态设置为-permissive-3-2-1-设置-grub-文件">3.2 在系统内核中禁止使用 AppArmor 使用 SELinux 并且将 SELinux 状态设置为 Permissive</h4>
+
+
+
+<h5 id="3-2-在系统内核中禁止使用-apparmor-使用-selinux-并且将-selinux-状态设置为-permissive-3-2-1-设置-grub-文件">3.2.1 设置 /etc/default/grub 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/default/grub</code></pre>
+
+
+
+<p>在这一行里：</p>
+
+
+
+<pre class="wp-block-code"><code>GRUB_CMDLINE_LINUX_DEFAULT="......"</code></pre>
+
+
+
+<pre class="wp-block-code"><code>添加以下内容：</code></pre>
+
+
+
+<pre class="wp-block-code"><code>GRUB_CMDLINE_LINUX_DEFAULT="...... security=selinux selinux=1 enforcing=0"</code></pre>
+
+
+
+<h5 id="3-2-2-让刚刚设置的-grub-文件生效">3.2.2 让刚刚设置的 /etc/default/grub 配置文件生效</h5>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o /boot/grub2/grub.cfg</code></pre>
+
+
+
+<h4 id="3-3-刷新系统内所有文件的标签">3.3 刷新系统内所有文件的标签</h4>
+
+
+
+<pre class="wp-block-code"><code># restorecon -Rp /</code></pre>
+
+
+
+<h3 id="步骤四-重启系统让-selinux-生效">步骤四：重启系统让 SELinux 生效</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h1 id="参考文献">参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-selinux.html</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SELinux 状态的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-state/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 31 May 2021 13:37:41 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14456</guid>
+
+					<description><![CDATA[内容一：SELinux 的状态 1) Disabled：完全关闭 SELinux2) Permissive：即使违反了策略也依旧可以执行，但是违反策略的记录会被记录在日志中3) Enforcing：如果违反了策略就不能之行 内容二：永久切换 SELinux 状态 2.1 将 SELinux 永久切换至 Disabled 状态 2.1.1 修改 SELinux 配置文件 将以下内容： 修改为： 2.1.2 重启系统 2.1.3 显示 SELinux 状态 2.2 将 SELinux 永久切换至 Permissive 状态 2.2.1 修改 SELinux 配置文件 将以下内容： 修改为： 2.2.2 重启系统 2.2.3 显示 SELinux 状态 2.3 将 SELinux 永久切换至 Enforcing 状态 2.3.1 修改 SELinux &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-state/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SELinux 状态的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-selinux-的状态">内容一：SELinux 的状态</h3>
+
+
+
+<p>1) Disabled：完全关闭 SELinux<br>2) Permissive：即使违反了策略也依旧可以执行，但是违反策略的记录会被记录在日志中<br>3) Enforcing：如果违反了策略就不能之行</p>
+
+
+
+<h3 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">内容二：永久切换 SELinux 状态</h3>
+
+
+
+<h4 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">2.1 将 SELinux 永久切换至 Disabled 状态</h4>
+
+
+
+<h5 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">2.1.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=disabled
+......</code></pre>
+
+
+
+<h5 id="2-1-2-重启系统">2.1.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-1-3-显示-selinux-状态">2.1.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Disabled</code></pre>
+
+
+
+<h4 id="2-2-将-selinux-永久切换至-permissive-状态-2-2-1-修改-selinux-配置文件">2.2 将 SELinux 永久切换至 Permissive 状态</h4>
+
+
+
+<h5 id="2-2-将-selinux-永久切换至-permissive-状态-2-2-1-修改-selinux-配置文件">2.2.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=permissive
+......</code></pre>
+
+
+
+<h5 id="2-2-2-重启系统">2.2.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-2-3-显示-selinux-状态">2.2.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Permissive</code></pre>
+
+
+
+<h4 id="2-3-将-selinux-永久切换至-enforcing-状态-2-3-1-修改-selinux-配置文件">2.3 将 SELinux 永久切换至 Enforcing 状态</h4>
+
+
+
+<h5 id="2-3-将-selinux-永久切换至-enforcing-状态-2-3-1-修改-selinux-配置文件">2.3.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=enforcing
+......</code></pre>
+
+
+
+<h5 id="2-3-2-重启系统">2.3.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-3-3-显示-selinux-状态">2.3.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Enforcing</code></pre>
+
+
+
+<h3 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">内容三：临时切换 SELinux 状态</h3>
+
+
+
+<h4 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">3.1 临时切换到 Permissive 状态</h4>
+
+
+
+<h5 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">3.1.1 临时切换到 Permissive 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># setenfoce 0</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 系统重启后失效<br>2) 只能从 Enforcing 状态切换到 Permissive 状态<br>）</p>
+
+
+
+<h5 id="3-1-2-显示-selinux-状态">3.1.2 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Permissive</code></pre>
+
+
+
+<h4 id="3-2-临时切换到-enforcing-状态-3-2-1-临时切换到-enforcing-状态">3.2 临时切换到 Enforcing 状态</h4>
+
+
+
+<h5 id="3-2-临时切换到-enforcing-状态-3-2-1-临时切换到-enforcing-状态">3.2.1 临时切换到 Enforcing 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># setenfoce 1</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 系统重启后失效<br>2) 只能从 Permissive 状态切换到 Enforcing 状态<br>）</p>
+
+
+
+<h5 id="3-2-2-显示-selinux-状态">3.2.2 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Enforcing</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 检测服务器某个端口有没有启动</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-port-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 06:23:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14314</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：检测服务器某个端口有没有启动作用：检测服务器某个端口有没有启动 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 如果被检测的端口被启动则会被记录在指定文件里 脚本分割线里的变量 1. checkport=&#8217;7111&#8242; #被检测的端口2. logfile=&#8217;checkportlog.txt&#8217; #记录文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：检测服务器某个端口有没有启动<br>作用：检测服务器某个端口有没有启动</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 如果被检测的端口被启动则会被记录在指定文件里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. checkport=&#8217;7111&#8242; #被检测的端口<br>2. logfile=&#8217;checkportlog.txt&#8217; #记录文件</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+checkport='7111'
+logfile='checkportlog.txt'
+####################### Separator ########################
+
+a=`/sbin/ss -ntulap | grep udp | grep $checkport | awk '{print $7}' | awk -F'"' '{print $2}'`
+
+if &#91; -n "$a" ];then
+       echo `date` &gt;&gt; $logfile
+       echo $checkport &gt;&gt; $logfile
+       echo `/sbin/ss -ntulap | grep udp | grep $checkport | awk '{print $7}' | awk -F'"' '{print $2}'` &gt;&gt; $logfile
+       echo &gt;&gt; $logfile
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

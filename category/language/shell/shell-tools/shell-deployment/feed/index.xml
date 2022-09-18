@@ -1,0 +1,2759 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Deployment (部署) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-deployment/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 13 Sep 2022 12:49:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行命令 （多条命令版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-command-multiple-commands/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 06 Jul 2022 08:52:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26271</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行命令 （多条命令版）作用：批量实现多个远程服务器执行命令 （多条命令版） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=&#8221;zhumingyu&#8221; #用户名2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no 注意 执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行命令 （多条命令版）<br>作用：批量实现多个远程服务器执行命令 （多条命令版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=&#8221;zhumingyu&#8221; #用户名<br>2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔<br>3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔<br>4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="zhumingyu"
+myserver="eternalcenter.com eternalcentre.com" #each server is separated by a space
+mycommand="ls ip a s" #each command is separated by a space
+mysudo="yes" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+
+if &#91; $mysudo == 'yes' ];then
+        executecommand(){
+                ssh -t $1@$2 "sudo -u root su - root -c \"$command\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        executecommand(){
+                ssh -t $1@$2 "$command"
+        }
+        echo "don't use sudo"
+fi
+
+for commands in `echo $mycommand`
+do
+
+        for servers in `echo $myserver`
+        do
+                echo $servers
+                echo $commands
+        executecommand $myuser $servers $commands
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （Fedora 35 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-fedora-35/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:29:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19844</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=”eternalcenter.com” #网站的域名，注意不要在前面加任何前缀2. webtar=”eternalcenter-backup-*.tar.gz”网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=”eternalcenter.com.crt” #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=”eternalcenter.com.key” #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=”eternalcenter-backup-*.sql” #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=”ec” #网站在数据库中库7. dbuser=”ec” &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-fedora-35/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （Fedora 35 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=”eternalcenter.com” #网站的域名，注意不要在前面加任何前缀<br>2. webtar=”eternalcenter-backup-*.tar.gz”网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=”eternalcenter.com.crt” #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=”eternalcenter.com.key” #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=”eternalcenter-backup-*.sql” #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=”ec” #网站在数据库中库<br>7. dbuser=”ec” #网站在数据库中的用户<br>8. dbuserpw=”eternalcenter” #网站在数据库中的用户密码<br>9. dbrootpw=”eternalcenter” #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 Fedora 35 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip php-pecl-imagick php-intl php-bcmath
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --reload
+
+#Limit log space
+yum -y install rsyslog
+systemctl enable --now rsyslog
+
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/rsyslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程服务器的 LNMP 备份在本地复原</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 15:05:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19609</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程服务器的 LNMP 备份还原到本地作用：将远程服务器的 LNMP 备份还原到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. tmppath=/cache #本地用于备份数据的目录2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录3. key=”~/.ssh/eternalcenter” #本地私钥4. tmpfile=tmpfile.txt #用于存储记录的文件5. dbuser=ec #网站在数据库中的用户6. ruser=eternalcenter #用于远程服务器的用户7. rhost=eternalcenter.com #远程服务器8. rcache=”/cache” #远程服务器用于备份数据的目录 注意 1. 本地需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限3. 执行此脚本的用户需要有 sudo systemctl 权限4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &#60; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程服务器的 LNMP 备份在本地复原"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程服务器的 LNMP 备份还原到本地<br>作用：将远程服务器的 LNMP 备份还原到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. tmppath=/cache #本地用于备份数据的目录<br>2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录<br>3. key=”~/.ssh/eternalcenter” #本地私钥<br>4. tmpfile=tmpfile.txt #用于存储记录的文件<br>5. dbuser=ec #网站在数据库中的用户<br>6. ruser=eternalcenter #用于远程服务器的用户<br>7. rhost=eternalcenter.com #远程服务器<br>8. rcache=”/cache” #远程服务器用于备份数据的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有 sudo systemctl 权限<br>4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &lt; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root 用户的密码，需要修改成本地 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+tmppath=/cache
+webpath=/usr/share/nginx/html
+key="~/.ssh/eternalcenter"
+tmpfile=tmpfile.txt
+dbuser=ec
+
+ruser=eternalcenter
+rhost=eternalcenter.com
+rcache="/cache"
+
+####################### Separator ########################
+
+nowdirectory=`pwd`
+
+a=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+sleep 10
+b=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+
+if &#91; $a -eq 0 ];then
+	echo "no file"
+fi
+
+if &#91; $a -ne $b ];then
+        echo "backup is running now"
+        exit
+fi
+
+c=0
+
+if &#91; -f $tmpfile ];then
+        c=`cat $tmpfile`
+fi
+
+if &#91; $a -eq $c ];then
+        echo "no new file"
+        exit
+fi
+
+echo $a &gt; $tmpfile
+
+sqlfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep sql | tail -1" | awk '{print $NF}'`
+if &#91; $? -eq 0 ]; then
+
+        tarfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep tar | tail -1" | awk '{print $NF}'`
+        if &#91; $? -eq 0 ]; then
+
+                rm -rf $tmppath/*
+                mkdir $tmppatch &amp;&gt; /dev/null
+
+                echo $sqlfile
+                echo $tarfile
+
+                scp -i $key $ruser@$rhost:$rcache/$sqlfile $tmppath
+                scp -i $key $ruser@$rhost:$rcache/$tarfile $tmppath
+
+#                sudo systemctl stop nginx
+#                sudo systemctl stop php-fpm
+
+                cd $tmppath
+
+                mysql -uroot -p'eternalcenter' -e "drop database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "create database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "grant all privileges on $dbuser.* to \"$dbuser\"@\"localhost\";"
+                mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+
+                sudo rm -rf $webpath/*
+                sudo tar -zxvf $tarfile -C $webpath/ &amp;&gt; /dev/null
+
+#                sudo systemctl start nginx
+#                sudo systemctl start php-fpm
+
+                cd $nowdirectory
+
+        fi
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的密码 （精致版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-password-change-refined-version/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 10 Oct 2021 13:08:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18100</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的密码作用：批量修改多个远程服务器某个用户的密码 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每服务器名占用 1 行3. 给脚本分割线里的变量赋值4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. list=”list.txt” #指定清单的目录和名称2. user=eternalcenter #指定要修改密码的用户3. password=eternalcenter #指定要修改的密码 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的密码<br>作用：批量修改多个远程服务器某个用户的密码</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每服务器名占用 1 行<br>3. 给脚本分割线里的变量赋值<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. list=”list.txt” #指定清单的目录和名称<br>2. user=eternalcenter #指定要修改密码的用户<br>3. password=eternalcenter #指定要修改的密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+list="list.txt"
+user=eternalcenter
+password=eternalcenter
+
+####################### Separator ########################
+
+num=1
+
+cat $list
+for i in `cat $list`
+do
+        echo $num
+        echo $i
+
+	ssh -t $i "type lsb_release" &amp;&gt; /dev/null
+        if &#91; $? -ne 0 ]; then
+              distribution=`ssh -t $i "cat /etc/*release | grep '^NAME'"`
+	      if &#91; $? -ne 0 ];then
+		      distribution=`ssh -t $i "cat /etc/*release"`
+	      fi
+        else
+              distribution=`ssh -t $i "lsb_release -i | grep 'ID' | grep -v 'n/a'"`
+        fi;
+
+        echo $distribution
+
+	case $distribution in
+		*"RedHat"* | *"Red Hat"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*"CentOS"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*"SUSE"* | *"SLES"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+               
+		*"openSUSE"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*)
+                echo -e "\033&#91;31m$i is fail \033&#91;0m" 
+		;;
+        esac
+
+        let num++
+
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量重启多个远程服务器的服务</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-batch-restart/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Aug 2021 07:48:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17263</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量重启多个远程服务器的服务作用：批量重启多个远程服务器的服务 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=”eternalcenter” #登录远程服务器的用户2. myserver=”192.168.1.1 192.168.1.2″ #要登录的远程服务器，以空格隔开3. myservice=&#8221;nginx&#8221; #需要重启的服务，以空格隔开4. mysudo=”no” #是否使用 sudo 提权，请选择 yes 或者 no 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 必须以 root 用户执行本脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量重启多个远程服务器的服务<br>作用：批量重启多个远程服务器的服务</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=”eternalcenter” #登录远程服务器的用户<br>2. myserver=”192.168.1.1 192.168.1.2″ #要登录的远程服务器，以空格隔开<br>3. myservice=&#8221;nginx&#8221; #需要重启的服务，以空格隔开<br>4. mysudo=”no” #是否使用 sudo 提权，请选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 必须以 root 用户执行本脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="eternalcenter.com"
+myserver="192.168.1.1 192.168.1.2 192.168.1.3" #each server is separated by a space
+myservice="nginx" #each myservice is separated by a space
+mysudo="yes" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+
+if &#91; $mysudo == 'yes' ];then
+        myrestart(){
+                ssh -t $1@$2 "sudo -u root su - root -c \"systemctl restart $3\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        myrestart(){
+                ssh -t $1@$2 "systemctl restart $3"
+        }
+        echo "don't use sudo"
+fi
+
+for services in $myservice
+do
+
+        for servers in `echo $myserver`
+        do
+                myrestart $myuser $servers $services
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量将本地文件拷贝到多个远程服务器</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-batch-copy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Aug 2021 07:37:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17261</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量将本地文件拷贝到多个远程服务器作用：批量将本地文件拷贝到多个远程服务器 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=&#8221;eternalcenter&#8221; #登录远程服务器的用户2. myserver=&#8221;192.168.1.1 192.168.1.2&#8243; #要登录的远程服务器，以空格隔开3. myfile=&#8221;/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt&#8221; #要拷贝的文件，以空格隔开，必须是绝对路劲4. mysudo=&#8221;no&#8221; #是否使用 sudo 提权，请选择 yes 或者 no 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 必须以 root 用户执行本脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量将本地文件拷贝到多个远程服务器<br>作用：批量将本地文件拷贝到多个远程服务器</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=&#8221;eternalcenter&#8221; #登录远程服务器的用户<br>2. myserver=&#8221;192.168.1.1 192.168.1.2&#8243; #要登录的远程服务器，以空格隔开<br>3. myfile=&#8221;/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt&#8221; #要拷贝的文件，以空格隔开，必须是绝对路劲<br>4. mysudo=&#8221;no&#8221; #是否使用 sudo 提权，请选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 必须以 root 用户执行本脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="eternalcenter"
+myserver="192.168.1.1 192.168.1.2" #each server is separated by a space
+myfile="/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt" #each file is separated by a space, absolute road force must be used
+mysudo="no" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+mycontext=${myfile##*\/}
+
+if &#91; $mysudo == 'yes' ];then
+        myreplace(){
+                scp $3 $1@$2:/tmp/$5
+                ssh -t $1@$2 "sudo -u root su - root -c \"mv $3 $3-$4;mv /tmp/$5 $3\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        myreplace(){
+                scp $3 $1@$2:/tmp/$5
+                ssh -t $1@$2 "mv $3 $3-$4;mv /tmp/$5 $3"
+        }
+        echo "don't use sudo"
+fi
+
+for files in $myfile
+do
+
+        if &#91; -f $files ];then
+
+                for servers in `echo $myserver`
+                do
+                                myreplace $myuser $servers $files $mynow $mycontext
+                done
+        else
+                echo "$files does not exist"
+        fi
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的密码 （简单版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-password-change-simple-version/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 09 Jun 2021 10:37:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14638</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的密码作用：批量修改多个远程服务器某个用户的密码，并显示密码更新时间 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每个服务器名占用 1 行3. 给脚本分割线里的变量赋值4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. list=&#8221;list.txt&#8221; #指定清单的目录和名称2. user=eternalcenter #指定要修改密码的用户3. password=eternalcenter #指定要修改的密码 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的密码<br>作用：批量修改多个远程服务器某个用户的密码，并显示密码更新时间</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每个服务器名占用 1 行<br>3. 给脚本分割线里的变量赋值<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. list=&#8221;list.txt&#8221; #指定清单的目录和名称<br>2. user=eternalcenter #指定要修改密码的用户<br>3. password=eternalcenter #指定要修改的密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+list="list.txt"
+user=eternalcenter
+password=eternalcenter
+
+####################### Separator ########################
+
+num=1
+
+cat $list
+for i in `cat $list`
+do
+        echo $num
+        echo $i
+        ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+        ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+        ssh -t $i sudo -u root su - root -c \"chage -l $user\"
+        let num++
+
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 05:53:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14333</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 开启系统的 selinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;执行本脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 开启系统的 selinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;执行本脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 openSUSE 15 版本<br>2. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#判断所需文件是否存在
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "没有网页数据备份，无法继续"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "没有网站公钥，无法继续"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "没有网站私钥，无法继续"
+	exit 2
+fi
+
+#更新系统
+zypper ref
+zypper -n update
+
+#确保必需软件已经安装
+zypper -n in tar
+zypper -n in firewalld
+
+
+#部署 Nginx
+zypper -n in nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen 443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        root /srv/www/htdocs;
+
+        location / {
+            index index.php;
+            try_files $uri $uri/ /index.php$is_args$args;
+            if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+            if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+            if (!-f $request_filename){rewrite (.) /index.php;}
+        }
+
+        location ~ \.php$ {
+            include fastcgi_params;
+	    include fastcgi.conf;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME /srv/www/htdocs/$fastcgi_script_name;
+
+        }
+	
+	location ~ ^/\.user\.ini {
+            deny all;
+        }
+
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+            expires 30d;
+        }
+
+        error_page  404              /404.html;
+    }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+
+rm -rf /srv/www/htdocs/*
+tar -xvf $webtar -C /srv/www/htdocs/ &amp;&amp; rm -rf $webtar
+
+zypper -n in policycoreutils
+
+systemctl start nginx
+systemctl enable nginx
+
+#部署 MariaDB
+zypper -n in mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf
+
+systemctl start mariadb
+systemctl enable mariadb
+
+chown -R mysql:mysql /var/lib/mysql
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+        rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#部署 PHP
+zypper -n in php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib
+useradd php-fpm -s /sbin/nologin
+groupadd php-fpm
+chown -R php-fpm:php-fpm /srv/www/htdocs
+cp /etc/php7/fpm/php-fpm.conf.default /etc/php7/fpm/php-fpm.conf
+
+sed -i /"^user =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php7/fpm/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php7/fpm/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php7/fpm/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php7/fpm/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#提高系统性能
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#打开防火墙
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#限制日志占用空间
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#删除此脚本
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#重启系统
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 GRUB2 Bootloader 密码 （CentOS Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-grub2-bootloader-centos-linux-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Mar 2021 08:53:25 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13593</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 GRUB2 Bootloader 密码（CentOS &#38; RHEL 版）作用：自动化部署 GRUB2 Bootloader 密码（CentOS &#38; RHEL 版） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本3. 当启动系统时，左下角出现以下内容时按下 “E”： 注意 1. 登录的账号是 root2. 登录的密码是 eternalcenter 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 GRUB2 Bootloader 密码（CentOS &amp; RHEL 版）<br>作用：自动化部署 GRUB2 Bootloader 密码（CentOS &amp; RHEL 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本<br>3. 当启动系统时，左下角出现以下内容时按下 “E”：</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 登录的账号是 root<br>2. 登录的密码是 eternalcenter</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; -d /sys/firmware/efi ]; then
+        echo "GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F" &gt; /boot/efi/EFI/redhat/user.cfg
+else
+        echo "GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F" &gt; /boot/grub2/user.cfg
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 GRUB2 Bootloader 密码 （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-grub2-bootloader-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 22 Feb 2021 09:31:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13578</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 GRUB2 Bootloader 密码（openSUSE &#38; SLE 版）作用：自动化部署 GRUB2 Bootloader 密码（openSUSE &#38; SLE 版） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本3. 当启动系统时，左下角出现以下内容时按下 “E”：C: Command Line E: Edit Entry 注意 1. 登录的账号是 root2. 登录的密码是 eternalcenter 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 GRUB2 Bootloader 密码（openSUSE &amp; SLE 版）<br>作用：自动化部署 GRUB2 Bootloader 密码（openSUSE &amp; SLE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本<br>3. 当启动系统时，左下角出现以下内容时按下 “E”：<br>C: Command Line    E: Edit Entry</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 登录的账号是 root<br>2. 登录的密码是 eternalcenter</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo "#!/bin/sh
+exec tail -n +3 \$0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+set superusers=\"root\"
+password_pbkdf2 root grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F
+export superusers
+set unrestricted_menu=\"y\"
+export unrestricted_menu" &gt; /etc/grub.d/40_custom
+
+grep "rd.shell=0" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ rd.shell=0"/' /etc/default/grub
+fi
+
+grep "showopts" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ showopts"/' /etc/default/grub
+fi
+
+grep "LANG=C" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ LANG=C"/' /etc/default/grub
+fi
+
+grub2-mkconfig -o /boot/grub2/grub.cfg</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量设置官方软件源 （openSUSE  Leap 15.2 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-official-repo-opensuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 06:21:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13277</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量设置官方软件源（openSUSE 版）作用：批量设置官方软件源（openSUSE 版） 使用方法 1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下2. 在此脚本的分割线内写入相应的内容3. 给此脚本添加执行权限4. 执行此脚本 脚本分割线里的变量 add_repo_servers_list.txt #指定存放要设置官方软件源的文件 注意 1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器2. 服务器的系统需要是 openSUSE 15.2 版本3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4. 这些远程服务器要能够连接外网 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量设置官方软件源（openSUSE 版）<br>作用：批量设置官方软件源（openSUSE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>add_repo_servers_list.txt #指定存放要设置官方软件源的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 服务器的系统需要是 openSUSE 15.2 版本<br>3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4. 这些远程服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+add_repo_servers_list.txt
+
+####################### Separator ########################
+
+cat add_repo_servers_list.txt
+read -p "will add opensuse_leap_15.2 repo please input y " a
+echo $a
+
+if &#91; "$a" != "y" ];then
+        echo "you don't agree so exit now"
+        exit
+fi
+
+for i in `awk '{print $1}' add_repo_servers_list.txt`
+do
+        ssh $i '
+        sudo -u root su - root -c "zypper mr -da"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/oss/ OpenSUSE_Leap_152_x64_update-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/non-oss/ OpenSUSE_Leap_152_x64_update-non-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/oss/ OpenSUSE_Leap_152_x64_oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/non-oss/ OpenSUSE_Leap_152_x64_non-oss"
+        sudo -u root su - root -c "zypper ref"
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的过期密码</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-expired-password-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 06 Aug 2020 08:42:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10423</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的过期密码作用：批量修改多个远程服务器某个用户的过期密码 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行3. 在此脚本的分割线内写入相应的内容4. 在执行此脚本的系统上安装 expect5. 给此脚本添加执行权限6. 执行此脚本 脚本分割线里的变量 1. oldpassword=123 #原密码2. newpassword=abc #新密码3. user=root #要修改密码的用户4. list=servers.txt #指定服务器清单 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的过期密码<br>作用：批量修改多个远程服务器某个用户的过期密码</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行<br>3. 在此脚本的分割线内写入相应的内容<br>4. 在执行此脚本的系统上安装 expect<br>5. 给此脚本添加执行权限<br>6. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. oldpassword=123 #原密码<br>2. newpassword=abc #新密码<br>3. user=root #要修改密码的用户<br>4. list=servers.txt #指定服务器清单</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+oldpassword=123
+newpassword=abc
+user=root
+list=servers.txt
+
+####################### Separator ########################
+
+set timeout 5
+
+for i in `cat $list`
+do
+        echo $i
+        ssh $i "whoami"
+
+        if &#91; $? -eq 0 ];then
+                continue
+        fi
+
+        expect &lt;&lt; EOF
+        spawn ssh $user@$i
+        expect "Current password:"    {send "$oldpassword\r"}
+        expect "New password:"        {send "$newpassword\r"}
+        expect "Retype new password:" {send "$newpassword\r"}
+        expect "&gt;"                    {send "\r"}
+        EOF
+
+       echo
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 只对某个 IP 地址开放 TCP 22 端口 （iptables 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-iptables-22-port-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 15 Jul 2020 02:29:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9996</guid>
+
+					<description><![CDATA[介绍 基本信息 名称：只对某个 IP 地址开放 TCP 22 端口作用：只对某个 IP 地址开放 TCP 22 端口 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本分割线里的变量 ipaddress=192.168.1.1 #要开放 TCP 22 端口的 IP 地址 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>名称：只对某个 IP 地址开放 TCP 22 端口<br>作用：只对某个 IP 地址开放 TCP 22 端口</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>ipaddress=192.168.1.1 #要开放 TCP 22 端口的 IP 地址</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+ipaddress=192.168.1.1
+####################### Separator ########################
+
+systemctl stop firewalld
+systemctl disable firewalld
+
+yum -y install iptables-services
+zypper -n install iptables
+
+systemctl enable iptables
+systemctl start iptables
+
+sysctl -w net.ipv4.ip_forward=1
+iptables -t filter -F
+iptables -t nat -F
+
+iptables -P OUTPUT ACCEPT
+#iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT
+
+iptables -t filter -A INPUT -j ACCEPT -s $ipaddress -p tcp --destination-port 22
+iptables -t filter -A INPUT -j DROP -p tcp --destination-port 22
+
+service iptables save
+systemctl restart iptables</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 取消所有已开放的端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-all-number-ports-remove/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:49:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9954</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：取消所有已开放的端口策略作用：取消所有已开放的端口策略 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：取消所有已开放的端口策略<br>作用：取消所有已开放的端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for i in `firewall-cmd --list-all | grep ports | egrep &#91;0-9] | awk -F':' '{print $2}'`
+do
+        pports=`echo $i | awk -F'/' '{print $1}'`
+        ptus=`echo $i | awk -F'/' '{print $2}'`
+
+        firewall-cmd --remove-port=$pports/$ptus --permanent
+
+done
+
+firewall-cmd --add-service=ssh --permanent
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 取消所有已设置的复杂端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-all-number-ports-rich-rules-remove/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:30:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9941</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：取消所有已设置的复杂端口策略作用：取消所有已设置的复杂端口策略 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：取消所有已设置的复杂端口策略<br>作用：取消所有已设置的复杂端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+systemctl start firewalld
+systemctl enable firewalld
+
+max=`firewall-cmd --list-all | grep "rule family" | wc -l`
+
+for i in `seq 1 $max`
+do
+        echo $i
+        lines=`firewall-cmd --list-all | grep "rule family" | sed -n $&#91;i]p`
+        ipvs=`echo $lines | awk -F'"' '{print $2}'`
+        ips=`echo $lines | awk -F'"' '{print $4}'`
+        ports=`echo $lines | awk -F'"' '{print $6}'`
+        tus=`echo $lines | awk -F'"' '{print $8}'`
+        acts=`echo $lines | awk -F'"' '{print $9}'`
+
+        echo $ipvs $ips $ports $tus $acts
+        firewall-cmd --remove-rich-rule="rule family="$ipvs" source address="$ips" port protocol="$tus" port="$ports" $acts" --permanent
+done
+
+firewall-cmd --add-service=ssh --permanent
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 开放所有正处于监听状态的端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-listening-number-ports-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:24:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9939</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：开放所有正处于监听状态的端口策略作用：开放所有正处于监听状态的端口策略 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：开放所有正处于监听状态的端口策略<br>作用：开放所有正处于监听状态的端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for k in `ss -ntulap |grep 0.0.0.0 | grep LISTEN | awk '{print $5}' | awk -F':' '{print $2}'`
+do 
+        firewall-cmd --add-port=$k/tcp --permanent
+done
+
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量对多个 IP 地址开发多个端口策略 （firewalld 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-firewalld-number-ports-rich-rules-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 08:20:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Network (网络)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9937</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量对多个 IP 地址开发多个端口策略作用：批量对多个 IP 地址开发多个端口策略 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1.ips=&#8221;192.168.2.1 192.168.1.0/24&#8243; #要开放端口的 IP 地址2.ports&#8221;22 3306 8080-8090&#8243; #要开放的端口 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量对多个 IP 地址开发多个端口策略<br>作用：批量对多个 IP 地址开发多个端口策略</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1.ips=&#8221;192.168.2.1 192.168.1.0/24&#8243; #要开放端口的 IP 地址<br>2.ports&#8221;22 3306 8080-8090&#8243; #要开放的端口</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+ips="192.168.2.1 192.168.1.0/24"
+ports"22 3306 8080-8090"
+
+####################### Separator ########################
+
+systemctl start firewalld
+systemctl enable firewalld
+
+for i in $ips
+do
+        for j in $ports
+        do
+                firewall-cmd --add-rich-rule="rule family="ipv4" source address="$i" port protocol="tcp" port="$j" accept" --permanent
+        done
+        echo $i done
+        echo
+done
+
+firewall-cmd --reload</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 在 MariaDB &#038; MySQL 的配置文件里设置部分安全策略</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-mariadb-mysql-securtiy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 12 Apr 2020 08:22:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Database (数据库)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8736</guid>
+
+					<description><![CDATA[介绍： 作者:朱明宇名称:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略作用:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略 使用方法:1. 确认 MariaDB &#38; MySQL 已提前装好2. 在此脚本的分割线内写入相应的内容3. 给此脚本增加执行权限4. 执行此脚本 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<p>作者:朱明宇<br>名称:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略<br>作用:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略</p>
+
+
+
+<p>使用方法:<br>1. 确认 MariaDB &amp; MySQL 已提前装好<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本增加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+#At the system level, start the database as a MySQL user
+chown -R mysql /var/lib/mysql
+sed -i '/^user=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a user=mysql' /etc/my.cnf.d/mariadb-server.cnf
+
+#Disable client local data reading at the system level
+sed -i '/^local-infile=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a local-infile=0' /etc/my.cnf.d/mariadb-server.cnf
+
+#At the system level, remote login of database is prohibited
+sed -i '/^bind-address=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a bind-address=127.0.0.1' /etc/my.cnf.d/mariadb-server.cnf
+
+#Restart database
+systemctl restart mariadb ; systemctl restart mysql</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Apr 2020 15:29:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8720</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. dbuser=&#8221;ec&#8221; &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 CentOS 8 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#Limit log space
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行命令 （单条命令版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-command-single-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Apr 2020 08:28:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8704</guid>
+
+					<description><![CDATA[介绍： 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行命令 （单条命令版）作用：批量实现多个远程服务器执行命令 （单条命令版） 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每一个远程服务器名或 IP 地址占用 1 行3. 在此脚本的分割线内写入相应的内容4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. execute=&#8221;top -bn 1 &#124; head -1&#8243; #指定要执行的命令2. list=servers.txt #指定服务器清单 注意 执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行命令 （单条命令版）<br>作用：批量实现多个远程服务器执行命令 （单条命令版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每一个远程服务器名或 IP 地址占用 1 行<br>3. 在此脚本的分割线内写入相应的内容<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. execute=&#8221;top -bn 1 | head -1&#8243; #指定要执行的命令<br>2. list=servers.txt #指定服务器清单</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+execute="top -bn 1 | head -1"
+list=servers.txt
+
+####################### Separator ########################
+
+echo "WARNING: before execute this, please execute \"screen -S update\" command first"
+
+read -p "will execute $execute on servers in $list, if you agree please input y : " b
+echo "you input $b"
+
+if &#91; "$b" != "y" ];then
+        echo "you don't agree so exit now"
+        exit 0
+fi
+
+num=0
+
+for i in `awk '{print $1}' $list`
+do
+        let num++
+        echo "$num $i"
+        ssh -t $i "sudo -u root su - root -c \"$execute\""
+        echo "$i has been done"
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

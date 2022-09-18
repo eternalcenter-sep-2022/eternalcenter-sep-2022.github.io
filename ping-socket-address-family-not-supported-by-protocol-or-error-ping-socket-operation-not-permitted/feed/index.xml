@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: [排错] 解决 Linux 普通用户执行 ping 命令时报错 “ping: socket: Address family not supported by protocol” 或者 “Error: ping: socket: Operation not permitted”	</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/ping-socket-address-family-not-supported-by-protocol-or-error-ping-socket-operation-not-permitted/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/ping-socket-address-family-not-supported-by-protocol-or-error-ping-socket-operation-not-permitted/</link>
+	<description></description>
+	<lastBuildDate>Mon, 15 Aug 2022 03:05:01 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+</channel>
+</rss>

@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>HTML &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/html/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 12:04:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[功能] HTML 下载链接</title>
+		<link>https://eternalcenter-sep-2022.github.io/%e5%8a%9f%e8%83%bd-html-%e4%b8%8b%e8%bd%bd%e9%93%be%e6%8e%a5/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 12 Dec 2021 14:05:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19784</guid>
+
+					<description><![CDATA[（补充：这里以下载和此 html 文件在同目录下的 eternalcenter-2021.txt 文件，且下载命名为 eternalcenter.txt 为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;html&gt;
+&lt;body&gt;
+&lt;a href="eternalcenter-2021.txt" download="eternalcenter.txt"&gt;Download test.txt&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（补充：这里以下载和此 html 文件在同目录下的 eternalcenter-2021.txt 文件，且下载命名为 eternalcenter.txt 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[FUN] HTML Mingyu Zhu&#8217;s Personal Web Page</title>
+		<link>https://eternalcenter-sep-2022.github.io/html-mingyuzhu-en_us/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 14 Nov 2021 11:03:28 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18354</guid>
+
+					<description><![CDATA[中文 Code Background Picture]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/html-zhumingyu-zh_cn/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/html-zhumingyu-zh_cn/"><strong>中文</strong></a></p>
+
+
+
+<h2>Code</h2>
+
+
+
+<pre class="wp-block-code"><code>&lt;html&gt;
+
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+
+&lt;head&gt;
+
+&lt;title&gt;Mingyu Zhu&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div style="position:absolute; width:100%; height:100%; z-index:-1; left:0; top:0;"&gt; 
+&lt;img src="https://filedn.eu/ltLpz9YGUS2hi1pJmklNfDb/en_us/dimfigure.JPG" height="100%" width="100%" style="position:absolute;left:0; top:0;"&gt; 
+&lt;/div&gt;
+
+&lt;div style="width:300px;height:50px;float:left"&gt; 
+&lt;form action="http://www.google.com/search" method="get"&gt; 
+&lt;input type="text" name="q" size="20" maxlength="255" value="" /&gt; 
+&lt;input type="submit" name="btnG" value="Google" /&gt; 
+&lt;/form&gt;
+&lt;a href="https://zhu-mingyu.github.io/" style="right: 15px; position: absolute; font-size:25px;color:red"&gt;中文 （GitHub）&lt;/a&gt;
+&lt;a href="https://zhumingyu.com/" style="right: 215px; position: absolute; font-size:25px;color:red"&gt;中文&lt;/a&gt;
+&lt;/div&gt; 
+
+&lt;div style="left: 8px; position: absolute; top: 75px;font-size:45px;"&gt;Mingyu Zhu's Personal Web Page&lt;/div&gt;
+
+&lt;div style="left: 800px; position: absolute; top: 300px;font-size:15px;"&gt;"Hope everyone can achieve self achievement and self happiness fairly."&lt;/div&gt;
+
+&lt;a href="https://eternalcenter-sep-2022.github.io/" target="_blank" style="left: 8px; position: absolute; top: 185px;font-size:20px;color:black"&gt;Eternal Center (eternalcenter.com), Mingyu Zhu's personal website&lt;/a&gt;
+&lt;a href="https://e.pcloud.link/publink/show?code=kZukhJZUhQq66Fxs0yg5rL1LsAgrSD3ytMk" target="_blank" style="left: 8px; position: absolute; top: 215px;font-size:20px;color:black"&gt;Mingyu Zhu's personal website data for cloning&lt;/a&gt;
+&lt;a href="https://github.com/eternalcenter-now/eternalcenter-now" target="_blank" style="left: 8px; position: absolute; top: 245px;font-size:20px;color:black"&gt;Mingyu Zhu's personal website code for cloning&lt;/a&gt;
+&lt;a href="http://static.eternalcenter.com/" target="_blank" style="left: 8px; position: absolute; top: 275px;font-size:20px;color:black"&gt;Effect display page of Mingyu Zhu's personal website&lt;/a&gt;
+&lt;a href="https://eternalcenter-now.github.io/" target="_blank" style="left: 8px; position: absolute; top: 305px;font-size:20px;color:black"&gt;Effect display page of Mingyu Zhu's personal website (GitHub)&lt;/a&gt;
+&lt;a href="https://e.pcloud.link/publink/show?code=kZrJhJZbVIBf8jmVFzumvaYnEwPlLLc34DX" target="_blank" style="left: 8px; position: absolute; top: 335px;font-size:20px;color:black"&gt;Public personal data of Mingyu Zhu&lt;/a&gt;
+
+&lt;/body&gt;
+
+&lt;html/&gt;</code></pre>
+
+
+
+<h2>Background Picture</h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img width="1024" height="678" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1024x678.jpg" alt="" class="wp-image-18360" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1024x678.jpg 1024w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-300x199.jpg 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-768x509.jpg 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1536x1018.jpg 1536w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure.jpg 2000w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></figure></div>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[娱乐] HTML 朱明宇的个人网页</title>
+		<link>https://eternalcenter-sep-2022.github.io/html-zhumingyu-zh_cn/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 10 Feb 2020 03:29:04 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8259</guid>
+
+					<description><![CDATA[English 代码 背景图片]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/html-mingyuzhu-en_us/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/html-mingyuzhu-en_us/"><strong>English</strong></a></p>
+
+
+
+<h2>代码</h2>
+
+
+
+<pre class="wp-block-code"><code>&lt;html&gt;
+
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+
+&lt;head&gt;
+
+&lt;title&gt;朱明宇&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;div style="position:absolute; width:100%; height:100%; z-index:-1; left:0; top:0;"&gt; 
+&lt;img src="https://filedn.eu/ltLpz9YGUS2hi1pJmklNfDb/zh_cn/dimfigure.JPG" height="100%" width="100%" style="position:absolute;left:0; top:0;"&gt; 
+&lt;/div&gt;
+
+&lt;div style="width:300px;height:50px;float:left"&gt; 
+&lt;form action="http://www.google.com/search" method="get"&gt; 
+&lt;input type="text" name="q" size="20" maxlength="255" value="" /&gt; 
+&lt;input type="submit" name="btnG" value="Google" /&gt; 
+&lt;/form&gt;
+&lt;a href="https://mingyu-zhu.github.io/" style="right: 15px; position: absolute; font-size:25px;color:red"&gt;English (GitHub)&lt;/a&gt;
+&lt;a href="https://mingyuzhu.com/" style="right: 205px; position: absolute; font-size:25px;color:red"&gt;English&lt;/a&gt;
+&lt;/div&gt; 
+
+&lt;div style="left: 8px; position: absolute; top: 75px;font-size:45px;"&gt;朱明宇的个人网页&lt;/div&gt;
+
+&lt;div style="left: 800px; position: absolute; top: 300px;font-size:15px;"&gt;“愿每个人都能公平地实现自我成就和自我幸福。”&lt;/div&gt;
+
+&lt;a href="https://eternalcenter-sep-2022.github.io/" target="_blank" style="left: 8px; position: absolute; top: 185px;font-size:20px;color:black"&gt;永恒中心（eternalcenter.com），朱明宇的个人网站&lt;/a&gt;
+&lt;a href="https://e.pcloud.link/publink/show?code=kZukhJZUhQq66Fxs0yg5rL1LsAgrSD3ytMk" target="_blank" style="left: 8px; position: absolute; top: 215px;font-size:20px;color:black"&gt;用于克隆朱明宇个人网站的数据&lt;/a&gt;
+&lt;a href="https://github.com/eternalcenter-now/eternalcenter-now" target="_blank" style="left: 8px; position: absolute; top: 245px;font-size:20px;color:black"&gt;用于克隆朱明宇个人网站的代码&lt;/a&gt;
+&lt;a href="http://static.eternalcenter.com/" target="_blank" style="left: 8px; position: absolute; top: 275px;font-size:20px;color:black"&gt;朱明宇个人网站的效果展示网页&lt;/a&gt;
+&lt;a href="https://eternalcenter-now.github.io/" target="_blank" style="left: 8px; position: absolute; top: 305px;font-size:20px;color:black"&gt;朱明宇个人网站的效果展示网页 （GitHub）&lt;/a&gt;
+&lt;a href="https://e.pcloud.link/publink/show?code=kZoJhJZDx6DEf6sXYJUK7YxLjWhFRPr3i70" target="_blank" style="left: 8px; position: absolute; top: 335px;font-size:20px;color:black"&gt;朱明宇的个人公开资料&lt;/a&gt;
+
+&lt;/body&gt;
+
+&lt;html/&gt;</code></pre>
+
+
+
+<h2>背景图片</h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" width="1024" height="678" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1024x678.jpg" alt="" class="wp-image-18360" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1024x678.jpg 1024w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-300x199.jpg 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-768x509.jpg 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure-1536x1018.jpg 1536w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/11/dimfigure.jpg 2000w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></figure></div>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] HTML 的常用结构和常用元素</title>
+		<link>https://eternalcenter-sep-2022.github.io/html-structure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 10 Feb 2020 03:21:04 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8256</guid>
+
+					<description><![CDATA[内容一：HTML 常用结构元素 1.1 HTML 常用结构要素 文档是 HTML5 的声明 HTML 的根 包含 meta 和 title 声明文档的标题 声明文档的可见内容 声明换行 声明一个空间 声明第一种标题 声明第二种标题 声明第三种标题 1.2 HTML 常用结构案例 内容二：HTML 常用内容元素 2.1 HTML 文本元素 2.1.1 HTML 文本元素的格式 声明一个段落 2.1.2 HTML 文本元素的替换格式 声明文字加粗 声明文字倾斜 声明文字有下划线 声明文字有删除线 声明文字有上标 声明文字有下标 声明文字放大 声明文字缩小 2.2 HTML 链接元素 2.2.1 HTML 链接元素的格式 2.2.2 HTML 链接元素的案例 （补充：这里以网址是 eternalcenter.com，介绍是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/html-structure/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] HTML 的常用结构和常用元素"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：HTML 常用结构元素</h3>
+
+
+
+<h4>1.1 HTML 常用结构要素</h4>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;!DOCTYPE html&gt;</code></pre>
+
+
+
+<p>文档是 HTML5 的声明</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) &lt;html&gt;......&lt;/html&gt;</code></pre>
+
+
+
+<p>HTML 的根</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) &lt;head&gt;......&lt;/head&gt;</code></pre>
+
+
+
+<p>包含 meta 和 title</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) &lt;title&gt;......&lt;/title&gt;</code></pre>
+
+
+
+<p>声明文档的标题</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) &lt;body&gt;......&lt;/body&gt;</code></pre>
+
+
+
+<p>声明文档的可见内容</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>6) &lt;br/&gt;</code></pre>
+
+
+
+<p>声明换行</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>7) &lt;div&gt;......&lt;/div&gt;</code></pre>
+
+
+
+<p>声明一个空间</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>8) &lt;h1&gt;......&lt;/h1&gt;</code></pre>
+
+
+
+<p>声明第一种标题</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>9) &lt;h2&gt;......&lt;/h2&gt;</code></pre>
+
+
+
+<p>声明第二种标题</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>10) &lt;h3&gt;......&lt;/h3&gt;</code></pre>
+
+
+
+<p>声明第三种标题</p>
+
+
+
+<h4>1.2 HTML 常用结构案例</h4>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;!- 作者:Mingyu Zhu -&gt; 
+&lt;!- 名称:Mingyu Zhu website -&gt;
+
+&lt;html&gt;
+
+ &lt;head&gt;
+  &lt;meta charste="utf-8"&gt;
+  &lt;title&gt;朱明宇 - Zhu Mingyu&lt;/title&gt;
+ &lt;/head&gt;
+
+ &lt;body&gt;
+  &lt;div style="position:absolute; width:100%; height:100%; z-index:-1; left:0; top:0;"&gt; 
+   &lt;img src="dimfigure.JPG" height="100%" width="100%" style="position:absolute;left:0; top:0;"&gt; 
+  &lt;/div&gt;
+
+  &lt;div style="width:300px;height:50px;float:left"&gt; 
+   &lt;form action="http://www.google.com/search" method="get"&gt; 
+    &lt;input type="text" name="q" size="20" maxlength="255" value="" /&gt; 
+    &lt;input type="submit" name="btnG" value="Google" /&gt; 
+   &lt;/form&gt; 
+  &lt;/div&gt; 
+
+  &lt;div style="width:300px;height:50px;float:left"&gt; 
+   &lt;form action="http://www.baidu.com/s"&gt; 
+    &lt;input type="text" name="wd" id="kw"/&gt; 
+    &lt;input type="submit" value="Baidu" /&gt; 
+   &lt;/form&gt; 
+  &lt;/div&gt; 
+
+  &lt;div style="left: 600px; position: absolute; top: 300px;font-size:15px;"&gt;“When I don't need to do anything, please don't let me do anything. Let me immerse myself in my own thoughts. It's like merging with the profound peace in the vast mountains.”&lt;/div&gt;
+
+  &lt;a href="https://eternalcenter-sep-2022.github.io/" style="left: 8px; position: absolute; top: 185px;font-size:20px;color:black"&gt;Eternal Center（eternalcenter.com）&lt;/a&gt;
+ &lt;/body&gt;
+
+&lt;html/&gt; </code></pre>
+
+
+
+<h3>内容二：HTML 常用内容元素</h3>
+
+
+
+<h4>2.1 HTML 文本元素</h4>
+
+
+
+<h5>2.1.1 HTML 文本元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;p&gt;......&lt;/p&gt;</code></pre>
+
+
+
+<p>声明一个段落</p>
+
+
+
+<h5>2.1.2 HTML 文本元素的替换格式</h5>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;b&gt;......&lt;/b&gt;</code></pre>
+
+
+
+<p>声明文字加粗</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) &lt;i&gt;......&lt;/i&gt;</code></pre>
+
+
+
+<p>声明文字倾斜</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) &lt;u&gt;......&lt;/u&gt;</code></pre>
+
+
+
+<p>声明文字有下划线</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) &lt;s&gt;......&lt;/s&gt;</code></pre>
+
+
+
+<p>声明文字有删除线</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) &lt;sup&gt;......&lt;/sup&gt;</code></pre>
+
+
+
+<p>声明文字有上标</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>6) &lt;sub&gt;......&lt;/sub&gt;</code></pre>
+
+
+
+<p>声明文字有下标</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>7) &lt;big&gt;......&lt;/big&gt;</code></pre>
+
+
+
+<p>声明文字放大</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>8) &lt;small&gt;......&lt;/small&gt;</code></pre>
+
+
+
+<p>声明文字缩小</p>
+
+
+
+<h4>2.2 HTML 链接元素</h4>
+
+
+
+<h5>2.2.1 HTML 链接元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;a href="&lt;website&gt;"&gt;&lt;link description&gt;&lt;/a&gt;</code></pre>
+
+
+
+<h5>2.2.2 HTML 链接元素的案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;a href="eternalcenter.com"&gt;Eternal Center&lt;/a，target="_blank"&gt;</code></pre>
+
+
+
+<p>（补充：这里以网址是 eternalcenter.com，介绍是 Eternal Center，新打开一个页面为例）</p>
+
+
+
+<h4>2.3 HTML 列表元素</h4>
+
+
+
+<h5>2.3.1 HTML 有序列表元素</h5>
+
+
+
+<h5>2.3.1.1 HTML 有序列表元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;ol&gt;......&lt;/ol&gt;</code></pre>
+
+
+
+<p>声明有序列表</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) &lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<p>声明有序列表里的行</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) &lt;ol&gt;......&lt;/ol&gt;</code></pre>
+
+
+
+<p>里只能有</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<h5>2.3.1.2 有序列表排列方式的属性声明</h5>
+
+
+
+<h5>2.3.1.2.1 有序列表排列方式的属性值名</h5>
+
+
+
+<pre class="wp-block-code"><code>type</code></pre>
+
+
+
+<h5>2.3.1.2.2 有序列表排列方式的可选属性值</h5>
+
+
+
+<p>1) 1 声明按数字排序 （1 也是有序列表的默认值）<br>2) A 声明按大写英文字母排序<br>3) a 声明按小谢英文字母排序<br>4) I 声明按大写罗马字母排序<br>5) i 声明按小写罗马字母排序</p>
+
+
+
+<h5>2.3.1.3 有序列表排列方式的使用案例</h5>
+
+
+
+<h5>2.3.1.3.1 数字有序列表排列方式的使用案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;h4&gt;number list case&lt;/h4&gt;
+&lt;ol&gt;
+ &lt;li&gt;eternalcenter.com&lt;/li&gt;
+ &lt;li&gt;eternalcentre.com&lt;/li&gt;
+ &lt;li&gt;ec-x.com&lt;/li&gt;
+ &lt;li&gt;yhzx-x.com&lt;/li&gt;
+&lt;/ol&gt;   </code></pre>
+
+
+
+<h5>2.3.1.3.2 字母有序列表排列方式的使用案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;h4&gt;alphabet case&lt;/h4&gt;
+&lt;ol type="A"&gt;
+ &lt;li&gt;eternalcenter.com&lt;/li&gt;
+ &lt;li&gt;eternalcentre.com&lt;/li&gt;
+ &lt;li&gt;ec-x.com&lt;/li&gt;
+ &lt;li&gt;yhzx-x.com&lt;/li&gt;
+&lt;/ol&gt;  </code></pre>
+
+
+
+<h5>2.3.2 HTML 无序列表元素</h5>
+
+
+
+<h5>2.3.2.1 HTML 无序列表元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;ol&gt;......&lt;/ol&gt;</code></pre>
+
+
+
+<p>声明无序列表</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) &lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<p>声明无序列表里的行</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) &lt;ol&gt;......&lt;/ol&gt;</code></pre>
+
+
+
+<p>里只能有</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<h5>2.3.2.2 无序列表排列方式的属性声明</h5>
+
+
+
+<h5>2.3.2.2.1 无序列表排列方式的属性值名</h5>
+
+
+
+<pre class="wp-block-code"><code>type</code></pre>
+
+
+
+<h5>2.3.2.2.2 无序列表排列方式的可选属性值</h5>
+
+
+
+<pre class="wp-block-code"><code>1) disc</code></pre>
+
+
+
+<p>声明实心原点（disc 也是无序列表的默认值）</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) circle</code></pre>
+
+
+
+<p>声明空心原点</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) square</code></pre>
+
+
+
+<p>声明实心方块</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) none</code></pre>
+
+
+
+<p>声明无标识</p>
+
+
+
+<h5>2.3.2.3 有序列表排列方式的使用案例</h5>
+
+
+
+<h5>2.3.2.3.1 有序空心原点列表排列方式的使用案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;h4&gt;circle list case&lt;/h4&gt;
+&lt;ul style="list-style-type:circle"&gt;
+ &lt;li&gt;eternalcenter.com&lt;/li&gt;
+ &lt;li&gt;eternalcentre.com&lt;/li&gt;
+ &lt;li&gt;ec-x.com&lt;/li&gt;
+ &lt;li&gt;yhzx-x.com&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+
+<h5>2.3.2.3.2 有序实心方块列表排列方式的使用案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;h4&gt;square list case&lt;/h4&gt;
+&lt;ul style="list-style-type:square"&gt;
+ &lt;li&gt;eternalcenter.com&lt;/li&gt;
+ &lt;li&gt;eternalcentre.com&lt;/li&gt;
+ &lt;li&gt;ec-x.com&lt;/li&gt;
+ &lt;li&gt;yhzx-x.com&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+
+<h4>2.4 HTML 在列表中再添加列表</h4>
+
+
+
+<h5>2.4.1 HTML 在列表中再添加列表的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<p>元素里再添加</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;li&gt;......&lt;/li&gt;</code></pre>
+
+
+
+<h5>2.4.2 HTML 在列表中再添加列表的案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;ul&gt;
+ &lt;li&gt;eternalcenter.com&lt;/li&gt;
+  &lt;li&gt;abbreviation
+    &lt;ul&gt;
+     &lt;li&gt;ec-x.com&lt;/li&gt;
+     &lt;li&gt;yhzx-x.com&lt;/li&gt;
+    &lt;/ul&gt;
+   &lt;/li&gt;
+  &lt;li&gt;eternalcentre.com&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+
+<h4>2.5 HTML 表格元素</h4>
+
+
+
+<h5>2.5.1 HTML 表格常用元素列表</h5>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;table&gt;......&lt;/table&gt;
+2) &lt;tr&gt;......&lt;/tr&gt;
+3) &lt;td&gt;......&lt;/td&gt;</code></pre>
+
+
+
+<h5>2.5.2 HTML 表格常用元素</h5>
+
+
+
+<h5>2.5.2.1 &lt;table>……&lt;table> 元素</h5>
+
+
+
+<h5>2.5.2.1.1 &lt;table>……&lt;table> 元素的作用</h5>
+
+
+
+<p>用于声明表格</p>
+
+
+
+<h5>2.5.2.1.2 &lt;table&gt;&#8230;&#8230;&lt;table&gt; 元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;table&gt;......&lt;/table&gt;</code></pre>
+
+
+
+<h5>2.5.2.1.3 &lt;table&gt;&#8230;&#8230;&lt;table&gt; 元素的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) width</code></pre>
+
+
+
+<p>声明表格的宽度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) height</code></pre>
+
+
+
+<p>声明表格的高度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) align</code></pre>
+
+
+
+<p>声明表格的对齐方式，有三个参数：</p>
+
+
+
+<pre class="wp-block-code"><code>left center right</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) border</code></pre>
+
+
+
+<p>声明表格边框的宽度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) cellpadding</code></pre>
+
+
+
+<p>声明表格内容和边框之间的距离</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>6) bgcolor</code></pre>
+
+
+
+<p>声明表格的背景颜色</p>
+
+
+
+<h5>2.5.2.2 &lt;tr>&#8230;&#8230;&lt;tr> 元素</h5>
+
+
+
+<h5>2.5.2.2.1 &lt;tr>&#8230;&#8230;&lt;tr> 元素的作用</h5>
+
+
+
+<p>用于声明行，每有一行就有一组</p>
+
+
+
+<h5>2.5.2.2.2 &lt;tr&gt;&#8230;&#8230;&lt;tr&gt; 元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;tr&gt;......&lt;/tr&gt;</code></pre>
+
+
+
+<h5>2.5.2.2.3 &lt;tr&gt;&#8230;&#8230;&lt;tr&gt; 元素的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) align</code></pre>
+
+
+
+<p>声明表格水平向的对齐方式，有三个参数</p>
+
+
+
+<pre class="wp-block-code"><code>left center right</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>2) valign</p>
+
+
+
+<p>声明垂直向的对其方式，有三个参数</p>
+
+
+
+<pre class="wp-block-code"><code>top middle bottom</code></pre>
+
+
+
+<h5>2.5.2.3 &lt;td>&#8230;&#8230;&lt;td> 元素</h5>
+
+
+
+<h5>2.5.2.3.1 &lt;td>&#8230;&#8230;&lt;td> 元素的作用</h5>
+
+
+
+<p>用于声明列，每有一列就有一组</p>
+
+
+
+<h5>2.5.2.3.2 &lt;td&gt;&#8230;&#8230;&lt;td&gt; 元素的格式</h5>
+
+
+
+<pre class="wp-block-code"><code> &lt;td&gt;......&lt;/td&gt;</code></pre>
+
+
+
+<h5>2.5.2.3.3 &lt;td&gt;&#8230;&#8230;&lt;td&gt; 元素的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) align</code></pre>
+
+
+
+<p>声明表格水平向的对齐方式，有三个参数：</p>
+
+
+
+<pre class="wp-block-code"><code>left center right</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) valign</code></pre>
+
+
+
+<p>声明垂直向的对齐方式，有三个参数：</p>
+
+
+
+<pre class="wp-block-code"><code>top middle bottom</code></pre>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) width</code></pre>
+
+
+
+<p>声明表格的宽度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) height</code></pre>
+
+
+
+<p>声明表格的高度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) colspan</code></pre>
+
+
+
+<p>声明单元格的横向快列</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>6) rowspan</code></pre>
+
+
+
+<p>声明单元格的众向跨行</p>
+
+
+
+<h5>2.5.3 HTML 表格元素的案例</h5>
+
+
+
+<h5>2.5.3.1 HTML 表格元素案例一：标准表格</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;table border="1"&gt;
+ &lt;tr&gt;
+  &lt;td&gt;first row, first column&lt;/td&gt;
+  &lt;td&gt;first row, second column&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;second row, first column&lt;/td&gt;
+  &lt;td&gt;second row, second column&lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+
+
+<h5>2.5.3.2 HTML 表格元素案例二：横向合并的表格</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;body&gt;
+ &lt;h4&gt;cell spanning two columns case&lt;/h4&gt;
+ &lt;table border="1"&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Website&lt;/td&gt;
+   &lt;td colspan="2"&gt;url&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Eternal Center&lt;/td&gt;
+   &lt;td&gt;eternalcenter.com&lt;/td&gt;
+   &lt;td&gt;eternalcentre.com&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;</code></pre>
+
+
+
+<h5>2.5.3.3 HTML 表格元素案例三：纵向合并的表格</h5>
+
+
+
+<pre class="wp-block-code"><code> &lt;h4&gt;cell crowding across two lines case&lt;/h4&gt;
+ &lt;table border="1"&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Website&lt;/td&gt;
+   &lt;td&gt;Eternal Center&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td rowspan="2"&gt;url&lt;/td&gt;
+   &lt;td&gt;eternalcenter.com&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;eternalcentre.com&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;
+&lt;/body&gt;</code></pre>
+
+
+
+<h4>2.6 HTML 图片元素</h4>
+
+
+
+<h5>2.6.1 HTML 有边框图片的链接案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;a href="http://www.eternalcenter.com/"&gt;
+&lt;img  border="10" src="eternalcenter.gif" alt="HTML Eternal Center" width="32" height="32"&gt;
+&lt;/a&gt;</code></pre>
+
+
+
+<p>（补充：这里以网址是 www.eternalcenter.com，介绍是 HTML Eternal Center，图片是 eternalcenter.gif，宽度是 32，高度是 32 的链接为例）</p>
+
+
+
+<h5>2.6.2 HTML 无边框图片链接的案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;a href="http://www.baidu.com/"&gt;
+&lt;img border="0" src="eternalcenter.gif" alt="HTML Eternal Center" width="32" height="32"&gt;
+&lt;/a&gt;</code></pre>
+
+
+
+<p>（补充：这里以网址是 www.eternalcenter.com，介绍是 HTML Eternal Center，图片是 eternalcenter.gif，宽度是 32，高度是 32 的链接为例）</p>
+
+
+
+<h5>2.6.3 HTML 背景图片的案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;img src="space.JPG" height="100%" width="100%" style="position:absolute;left:0; top:0;"&gt; </code></pre>
+
+
+
+<p>（补充：这里以设置 space.JPG 作为背景图片）</p>
+
+
+
+<h4>2.7 HTML 表单元素</h4>
+
+
+
+<h5>2.7.1 HTML 表单元素的作用</h5>
+
+
+
+<p>1) 接收用户的数据<br>2) 提交给服务器</p>
+
+
+
+<h5>2.7.2 HTML 表单元素的结构</h5>
+
+
+
+<h5>2.7.2.1 HTML 表单元素结构的分类</h5>
+
+
+
+<pre class="wp-block-code"><code>1) &lt;form&gt;......&lt;form&gt;</code></pre>
+
+
+
+<p>2) 表单控件</p>
+
+
+
+<h5>2.7.2.2 HTML 表单元素结构的分类说明</h5>
+
+
+
+<h5>2.7.2.2.1 &lt;form>&#8230;&#8230;&lt;form> 元素的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) action</code></pre>
+
+
+
+<p>提交给服务器的处理程序的地址</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) method</code></pre>
+
+
+
+<p>数据的提交方式，有 get 和 post 两个参数</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) enctype</code></pre>
+
+
+
+<p>指定加密方式</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) name</code></pre>
+
+
+
+<p>表单的名称</p>
+
+
+
+<h5>2.7.2.2.2 表单控件的种类</h5>
+
+
+
+<p>1) 文本域<br>2) 密码域<br>3) 选择框（分为单选框和复选框）<br>4) 按钮<br>5) 隐藏域和文件选择框</p>
+
+
+
+<h5>2.7.3 HTML 表单元素的表单控件</h5>
+
+
+
+<h5>2.7.3.1 HTML 表单元素的文本域</h5>
+
+
+
+<h5>2.7.3.1.1 HTML 表单元素的文本域的作用</h5>
+
+
+
+<p>用于键入字母和数字</p>
+
+
+
+<h5>2.7.3.1.2 HTML 表单元素的文本域的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;input type="text"&gt;</code></pre>
+
+
+
+<h5>2.7.3.1.3 HTML 表单元素的文本域的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) name</code></pre>
+
+
+
+<p>名称</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) value</code></pre>
+
+
+
+<p>值</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) maxlength</code></pre>
+
+
+
+<p>最大输入长度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) readonly</code></pre>
+
+
+
+<p>只读</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) placeholder</code></pre>
+
+
+
+<p>提示占位符</p>
+
+
+
+<h5>2.7.3.1.4 HTML 表单元素的文本域的案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form&gt;
+ First name: &lt;input type="text" name="firstname"&gt;&lt;br&gt;
+ Last name: &lt;input type="text" name="lastname"&gt;
+&lt;/form&gt;</code></pre>
+
+
+
+<h5>2.7.3.2 HTML 表单元素的密码域</h5>
+
+
+
+<h5>2.7.3.2.1 HTML 表单元素的密码域的作用</h5>
+
+
+
+<p>用于输入密码</p>
+
+
+
+<h5>2.7.3.2.2 HTML 表单元素的密码域的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;input type="password"&gt;</code></pre>
+
+
+
+<h5>2.7.3.2.3 HTML 表单元素的密码域的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) name</code></pre>
+
+
+
+<p>名称</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) value</code></pre>
+
+
+
+<p>值</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) maxlength</code></pre>
+
+
+
+<p>最大输入长度</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) readonly</code></pre>
+
+
+
+<p>只读</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>5) placeholder</code></pre>
+
+
+
+<p>提示占位符</p>
+
+
+
+<h5>2.7.3.3 HTML 表单元素的选择框</h5>
+
+
+
+<h5>2.7.3.3.1 HTML 表单元素的选择框的作用</h5>
+
+
+
+<p>用于选择</p>
+
+
+
+<h5>2.7.3.3.2 HTML 表单元素的选择框的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>1) name</code></pre>
+
+
+
+<p>名称</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) value</code></pre>
+
+
+
+<p>值</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>3) checked</code></pre>
+
+
+
+<p>预选中的选项，无值</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>4) type</code></pre>
+
+
+
+<p>选择框的模式，有两个参数单选框和多选框两个参数：</p>
+
+
+
+<pre class="wp-block-code"><code>radio checkbox</code></pre>
+
+
+
+<h5>2.7.3.4 HTML 表单元素的选择框的案例</h5>
+
+
+
+<h5>2.7.3.4.1 HTML 表单元素的选择框的案例一：单选框案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form&gt;
+ &lt;input type="radio" name="vehicle" value="eternalcenter"&gt;I click eternalcenter&lt;br&gt;
+ &lt;input type="radio" name="vehicle" value="eternalcentre"&gt;I click eternalcentre
+&lt;/form&gt;</code></pre>
+
+
+
+<h5>2.7.3.4.2 HTML 表单元素的选择框的案例二：多选框案例</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form&gt;
+ &lt;input type="checkbox" name="vehicle" value="eternalcenter"&gt;I click eternalcenter&lt;br&gt;
+ &lt;input type="checkbox" name="vehicle" value="eternalcentre"&gt;I click eternalcentre
+&lt;/form&gt;</code></pre>
+
+
+
+<h5>2.7.3.5 HTML 表单元素的按钮</h5>
+
+
+
+<h5>2.7.3.5.1 HTML 表单元素的按钮的案例一：普通的按钮</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form action=""&gt;
+ &lt;input type="button" value="Hello World!"&gt;
+&lt;/form&gt;</code></pre>
+
+
+
+<p>（补充：这里以设置一个值为 Hello World 的按钮为例）</p>
+
+
+
+<h5>2.7.3.5.2 HTML 表单元素的按钮的案例二：提交的按钮</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form name="input" action="html_form_action.php" method="get"&gt;
+ Username: &lt;input type="text" name="user"&gt;
+ &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+
+
+
+<p>（补充：这里以设置一个输入用户名的框和提交按钮的页面为例）</p>
+
+
+
+<h5>2.7.3.5.3 HTML 表单元素的按钮的案例三：重置的按钮</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;form name="input" action="html_form_action.php" method="get"&gt;
+ Username: &lt;input type="text" name="user"&gt;
+ &lt;input type="submit" value="Submit"&gt;
+ &lt;input type="reset" value="reset"&gt;
+&lt;/form&gt;</code></pre>
+
+
+
+<p>（补充：这里以设置一个输入用户名的框、提交按钮、重置按钮页面为例）</p>
+
+
+
+<h5>2.7.3.6 HTML 表单元素的隐藏域和文件选择框</h5>
+
+
+
+<h5>2.7.3.6.1 HTML 表单元素的隐藏域</h5>
+
+
+
+<h5>2.7.3.6.1.1 HTML 表单元素的隐藏域的作用</h5>
+
+
+
+<p>提交给服务器的数据无法被用户看到</p>
+
+
+
+<h5>2.7.3.6.1.2 HTML 表单元素的隐藏域的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;input type=”hidden”&gt;</code></pre>
+
+
+
+<h5>2.7.3.6.1.3 HTML 表单元素的隐藏域的常用属性</h5>
+
+
+
+<p>1) name</p>
+
+
+
+<p>名称</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<pre class="wp-block-code"><code>2) value</code></pre>
+
+
+
+<p>值</p>
+
+
+
+<h5>2.7.3.6.2 HTML 表单元素的文件选择框</h5>
+
+
+
+<h5>2.7.3.6.2.1 HTML 表单元素的文件选择框的作用</h5>
+
+
+
+<p>点击的同时提交文件</p>
+
+
+
+<h5>2.7.3.6.2.2 HTML 表单元素的文件选择框的格式</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;input type=”file”&gt;</code></pre>
+
+
+
+<h5>2.7.3.6.2.3 HTML 表单元素的文件选择框的常用属性</h5>
+
+
+
+<pre class="wp-block-code"><code>name</code></pre>
+
+
+
+<p>名称</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[功能] HTML 链接 （以新开窗口的方式打开链接）</title>
+		<link>https://eternalcenter-sep-2022.github.io/html-new-window/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 15 Jul 2019 14:37:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[HTML]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4836</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;html&gt;
+&lt;body&gt;
+&lt;a href="eternalcenter.com" target="_blank"&gt;eternalcenter.com&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<pre id="block-dc48d1e1-4c9d-4299-9dc6-09387d1973ce" class="wp-block-code"><code>（补充：这里以在新的窗口打开页面 eternalcenter.com 为例）</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

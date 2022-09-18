@@ -1,0 +1,2395 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Process Security (系统进程安全) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-security/system-process-security/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 04 Aug 2022 06:44:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] Linux 文件系统的安全 （通过禁止执行共享内存里的程序或文件来防止恶意软件）</title>
+		<link>https://eternalcenter-sep-2022.github.io/file-system-security-dev-shm-noexec/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 02 Aug 2022 06:58:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27466</guid>
+
+					<description><![CDATA[步骤一：临时禁止 /dev/shm 目录的执行权限 步骤二：永久禁止 /dev/shm 目录的执行权限 2.1 修改 /etc/fstab 配置文件 添加以下内容： 2.2 让修改的配置生效 步骤三：确认 /dev/shm 目录的执行权限已被禁止 （补充：当没有任何输出结果时，则代表 /dev/shm 目录的执行权限已被禁止）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：临时禁止 /dev/shm 目录的执行权限</h3>
+
+
+
+<pre class="wp-block-code"><code># mount -o remount,noexec,nodev /dev/shm</code></pre>
+
+
+
+<h3>步骤二：永久禁止 /dev/shm 目录的执行权限</h3>
+
+
+
+<h4>2.1 修改 /etc/fstab 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/dev/shm             /dev/shm   tmpfs  defaults,rw,remount,noexec,nodev  0  0</code></pre>
+
+
+
+<h4>2.2 让修改的配置生效</h4>
+
+
+
+<pre class="wp-block-code"><code># mount -a</code></pre>
+
+
+
+<h3>步骤三：确认 /dev/shm 目录的执行权限已被禁止</h3>
+
+
+
+<pre class="wp-block-code"><code># mount | grep -E '\s/dev/shm\s' | grep -v noexec ; mount | grep -E '\s/dev/shm\s' | grep -v nodev</code></pre>
+
+
+
+<p>（补充：当没有任何输出结果时，则代表 /dev/shm 目录的执行权限已被禁止）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] AppArmor 的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/apparmor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 07:12:28 +0000</pubDate>
+				<category><![CDATA[AppArmor]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27354</guid>
+
+					<description><![CDATA[内容一：显示 AppArmor 保护进程的情况 1.1 显示所有 AppArmor 保护进程的情况 1.2 显示所有正在运行并监听网络但是没有被 AppArmor 保护的进程 内容二：设置 AppArmor 保护进程的策略 2.1 将所有 AppArmor 进程规则设置为 enforce 模式 2.2 将所有 AppArmor 进程规则设置为 complain 模式 2.3 将所有 AppArmor 进程规则设置为 disable 模式]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示 AppArmor 保护进程的情况</h3>
+
+
+
+<h4>1.1 显示所有 AppArmor 保护进程的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-status</code></pre>
+
+
+
+<h4>1.2 显示所有正在运行并监听网络但是没有被 AppArmor 保护的进程</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-unconfined</code></pre>
+
+
+
+<h3>内容二：设置 AppArmor 保护进程的策略</h3>
+
+
+
+<h4>2.1 将所有 AppArmor 进程规则设置为 enforce 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-enforce /etc/apparmor.d/*</code></pre>
+
+
+
+<h4>2.2 将所有 AppArmor 进程规则设置为 complain 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-complain /etc/apparmor.d/*</code></pre>
+
+
+
+<h4>2.3 将所有 AppArmor 进程规则设置为 disable 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-disable /etc/apparmor.d/*</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 命令安全的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/command-secure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 25 Jun 2022 13:37:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26174</guid>
+
+					<description><![CDATA[确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：]]></description>
+										<content:encoded><![CDATA[
+<p>确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：</p>
+
+
+
+<pre class="wp-block-code"><code># ls -ld /usr/local/bin /usr/local/sbin /usr/bin/ /usr/sbin
+dr-xr-xr-x. 2 root root 53248 Jun 24 15:09 /usr/bin/
+drwxr-xr-x. 3 root root  4096 Jun 21  2021 /usr/local/bin
+drwxr-xr-x. 2 root root     6 Jun 21  2021 /usr/local/sbin
+dr-xr-xr-x. 2 root root 20480 Jun 24 15:09 /usr/sbin</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 lsof （显示进程）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lsof/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 23 Jun 2022 10:06:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26135</guid>
+
+					<description><![CDATA[内容一：lsof 命令输出结果 内容二：lsof 命令输出结果简介 1) COMMAND 进程名2) PID （Process Id） PID 号3) USER 用户4) FD 文件描述信息（补充：cwd 代表当前目录，txt 代表 txt 文件，rtd 代表 root 目录，mem 代表内存映射文件）5) TYPE 文件类型（补充：DIR 代表当前目录，REG 代表普通文件，CHR 代表字符，a_inode 代表 Inode 文件，FIFO 代表管道或者 socket文件，netlink 代表网络，unkonwn 代表未知）6) DEVICE 设备 ID7) SIZE/OFF 进程大小8) NODE 文件的 Inode 号9) NAME 路径或链接 内容三：lsof 使用案例 3.1 案例一：显示已经被删除的文件 3.2 案例二：显示用户已打开的案例 3.2.1 显示某用户已打开的文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lsof/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 lsof （显示进程）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：lsof 命令输出结果</h3>
+
+
+
+<pre class="wp-block-code"><code># lsof | more
+COMMAND     PID   TID    USER   FD      TYPE             DEVICE  SIZE/OFF       NODE NAME
+systemd       1          root  cwd       DIR              251,1      4096          1 /
+......</code></pre>
+
+
+
+<h3>内容二：lsof 命令输出结果简介</h3>
+
+
+
+<p>1) COMMAND 进程名<br>2) PID （Process Id） PID 号<br>3) USER 用户<br>4) FD 文件描述信息<br>（补充：cwd 代表当前目录，txt 代表 txt 文件，rtd 代表 root 目录，mem 代表内存映射文件）<br>5) TYPE 文件类型<br>（补充：DIR 代表当前目录，REG 代表普通文件，CHR 代表字符，a_inode 代表 Inode 文件，FIFO 代表管道或者 socket文件，netlink 代表网络，unkonwn 代表未知）<br>6) DEVICE 设备 ID<br>7) SIZE/OFF 进程大小<br>8) NODE 文件的 Inode 号<br>9) NAME 路径或链接</p>
+
+
+
+<h3>内容三：lsof 使用案例</h3>
+
+
+
+<h4>3.1 案例一：显示已经被删除的文件</h4>
+
+
+
+<pre class="wp-block-code"><code># lsof | grep deleted</code></pre>
+
+
+
+<h4>3.2 案例二：显示用户已打开的案例</h4>
+
+
+
+<h5>3.2.1 显示某用户已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -u zhumingyu mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以显示用户 zhumingyu 和 mingyuzhu 已打开的文件为例）</p>
+
+
+
+<h5>3.2.2 不显示某用户已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -u mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以不显示用户 mingyuzhu 已打开的文件为例）</p>
+
+
+
+<h4>3.3 案例三：显示进程已打开的文件</h4>
+
+
+
+<h5>3.3.1 显示某进程已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p 1024</code></pre>
+
+
+
+<p>（补充：这里以显示 PID 号是 1024 已打开的文件为例）</p>
+
+
+
+<h5>3.3.2 不显示某进程已打开的所有文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p ^1024</code></pre>
+
+
+
+<p>（补充：这里以不显示 PID 号是 1024 已打开的文件为例）</p>
+
+
+
+<h5>3.3.3 显示某几个进程已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p 1,2,3</code></pre>
+
+
+
+<p>（补充：这里以显示 PID 号是 1、2 和 3 已打开的文件为例）</p>
+
+
+
+<h4>3.4 案例四：显示已打开的网络文件</h4>
+
+
+
+<h5>3.4.1 显示所有已打开的网络文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i</code></pre>
+
+
+
+<h5>3.4.2 显示所有 IPv4 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i 4</code></pre>
+
+
+
+<h5>3.4.3 显示所有 IPv6 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i 6</code></pre>
+
+
+
+<h5>3.4.4 显示所有 TCP 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP</code></pre>
+
+
+
+<h5>3.4.5 显示所有 TCP 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i UDP</code></pre>
+
+
+
+<h5>3.4.6 显示某个 TCP 端口或者 UDP 端口已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i:22</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 或者 UPD 的 22 端口已打开的文件为例）</p>
+
+
+
+<h5>3.4.7 显示某个 TCP 端口已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP:22</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 的 22 端口已打开的文件为例）</p>
+
+
+
+<h5>3.4.8 显示某几个 TCP 端口打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP:1-1024</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 的 1 端口到 1024 端口打开的文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 crontab -e 命令时报错 “You (&#8230;&#8230;) are not allowed to use this program (crontab)”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-you-are-not-allowed-to-use-this-program-crontab/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Jun 2022 10:07:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23780</guid>
+
+					<description><![CDATA[解决方法 如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户 添加以下内容： （补充：这里以添加用户 zhumingyu 为例） 如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户 删除以下内容： （补充：这里以删除用户 zhumingyu 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>解决方法</h2>
+
+
+
+<p>如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以添加用户 zhumingyu 为例）</p>
+
+
+
+<p>如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>删除以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu
+......</code></pre>
+
+
+
+<p>（补充：这里以删除用户 zhumingyu 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 目录的重新挂载</title>
+		<link>https://eternalcenter-sep-2022.github.io/remount/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:16:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23734</guid>
+
+					<description><![CDATA[内容一：手动重新挂载目录 （补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例） 内容二：开机自动重新挂载目录 添加以下内容： （补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：手动重新挂载目录</h3>
+
+
+
+<pre class="wp-block-code"><code># mount -o remount,nosuid,nodev,noexec /dev/shm</code></pre>
+
+
+
+<p>（补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）</p>
+
+
+
+<h3>内容二：开机自动重新挂载目录</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+tmpfs /dev/shm tmpfs defaults,nosuid,nodev,noexec 0 0</code></pre>
+
+
+
+<p>（补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 某个所属组里有哪些用户的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/group-display/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 08 Jun 2022 02:50:05 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23715</guid>
+
+					<description><![CDATA[方法一：通过 /etc/group 配置文件显示某个附属所属组里有哪些用户 （注意：此方法并不能显示出把这些所属组当作主要所属组的用户） 方法二：通过 /etc/passwd 配置文件和 id 命令等显示主要所属组和附属所属组 （补充：可以通过肉眼比对此命令的输出结果来判断其主要所属组和附属所属组）]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：通过 /etc/group 配置文件显示某个附属所属组里有哪些用户</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/group</code></pre>
+
+
+
+<p>（注意：此方法并不能显示出把这些所属组当作主要所属组的用户）</p>
+
+
+
+<h3>方法二：通过 /etc/passwd 配置文件和 id 命令等显示主要所属组和附属所属组</h3>
+
+
+
+<pre class="wp-block-code"><code># for i in `cat /etc/passwd | egrep -v "nologin$|false$|half|sync|shutdown|halt" | awk -F: '{print $1}'`; do id $i; done | sort -k2</code></pre>
+
+
+
+<p>（补充：可以通过肉眼比对此命令的输出结果来判断其主要所属组和附属所属组）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] SELinux  的启用 （openSUSE &#038; SLE  版） （不建议）</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 01 Jun 2021 08:50:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14516</guid>
+
+					<description><![CDATA[软件准备： 在 SELinuxProject 的官网上下载 SELinux 策略 UseRefpolicy： https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy 注意： 1) 如果使用此文的方法将 openSUSE &#38; SLE 的 SELinux 设置为 Enforcing 则系统将无法设置 IP 地址2) 如果使用此文的方法开启了 SELinux 并且将所有的布尔（boolean）值开启，则系统将无法关机，开启所有布尔值的方法：# for i in semanage boolean -l &#124; awk '{print $1}'; do echo $i;setsebool -P $i 1; done 正文： 步骤一：安装 SELinux 组件 步骤二：安装 SELinux 策略 2.1 解压包含 SELinux 策略的压缩包 （补充：这里以解压 refpolicy-2.20210203.tar.bz2 压缩包为例） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-opensuse-sle/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] SELinux  的启用 （openSUSE &#038; SLE  版） （不建议）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 SELinuxProject 的官网上下载 SELinux 策略 UseRefpolicy：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy" target="_blank" rel="noreferrer noopener">https://github.com/SELinuxProject/refpolicy/wiki/UseRefpolicy</a></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>1) 如果使用此文的方法将 openSUSE &amp; SLE 的 SELinux 设置为 Enforcing 则系统将无法设置 IP 地址<br>2) 如果使用此文的方法开启了 SELinux 并且将所有的布尔（boolean）值开启，则系统将无法关机，开启所有布尔值的方法：# for i in <code>semanage boolean -l | awk '{print $1}'</code>; do echo $i;setsebool -P $i 1; done</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-安装-selinux-组件">步骤一：安装 SELinux 组件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper in libselinux1 libsemanage1 libsepol-devel libsepol1 libselinux-devel mcstrans libselinux1-32bit policycoreutils checkpolicy libsemanage-devel setools-tcl setools-libs setools-java setools-devel setools-console selinux-tools python3-policycoreutils python3-selinux python3-semanage python3-setools restorecond</code></pre>
+
+
+
+<h3 id="步骤二-安装-selinux-策略-2-1-解压包含-selinux-策略的压缩包">步骤二：安装 SELinux 策略</h3>
+
+
+
+<h4 id="步骤二-安装-selinux-策略-2-1-解压包含-selinux-策略的压缩包">2.1 解压包含 SELinux 策略的压缩包</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf refpolicy-2.20210203.tar.bz2</code></pre>
+
+
+
+<p>（补充：这里以解压 refpolicy-2.20210203.tar.bz2 压缩包为例）</p>
+
+
+
+<h4 id="2-2-将-selinux-策略移动到-selinux-配置文件的位置">2.2 将 SELinux 策略移动到 SELinux 配置文件的位置</h4>
+
+
+
+<pre class="wp-block-code"><code># mv refpolicy /etc/selinux/</code></pre>
+
+
+
+<h4 id="2-3-进入到和-selinux-策略相同目录下">2.3 进入到和 SELinux 策略相同目录下</h4>
+
+
+
+<pre class="wp-block-code"><code># cd /etc/selinux/refpolicy/</code></pre>
+
+
+
+<h4 id="2-4-显示-selinux-策略的安装手册">2.4 显示 SELinux 策略的安装手册</h4>
+
+
+
+<pre class="wp-block-code"><code># cat INSTALL</code></pre>
+
+
+
+<h4 id="2-5-创建-selinux-策略的配置文件">2.5 创建 SELinux 策略的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># make conf</code></pre>
+
+
+
+<h4 id="2-6-创建-selinux-策略">2.6 创建 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make policy</code></pre>
+
+
+
+<h4 id="2-7-编译-selinux-策略">2.7 编译 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h4 id="2-8-安装-selinux-策略">2.8 安装 SELinux 策略</h4>
+
+
+
+<pre class="wp-block-code"><code># make load</code></pre>
+
+
+
+<h3 id="步骤三-配置-selinux-配置文件-3-1-在-selinux-配置文件中将-selinux-设置为-permissive-状态">步骤三：配置 SELinux 配置文件</h3>
+
+
+
+<h4 id="步骤三-配置-selinux-配置文件-3-1-在-selinux-配置文件中将-selinux-设置为-permissive-状态">3.1 在 SELinux 配置文件中将 SELinux 设置为 Permissive 状态</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=permissive
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=refpolicy</code></pre>
+
+
+
+<h4 id="3-2-在系统内核中禁止使用-apparmor-使用-selinux-并且将-selinux-状态设置为-permissive-3-2-1-设置-grub-文件">3.2 在系统内核中禁止使用 AppArmor 使用 SELinux 并且将 SELinux 状态设置为 Permissive</h4>
+
+
+
+<h5 id="3-2-在系统内核中禁止使用-apparmor-使用-selinux-并且将-selinux-状态设置为-permissive-3-2-1-设置-grub-文件">3.2.1 设置 /etc/default/grub 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/default/grub</code></pre>
+
+
+
+<p>在这一行里：</p>
+
+
+
+<pre class="wp-block-code"><code>GRUB_CMDLINE_LINUX_DEFAULT="......"</code></pre>
+
+
+
+<pre class="wp-block-code"><code>添加以下内容：</code></pre>
+
+
+
+<pre class="wp-block-code"><code>GRUB_CMDLINE_LINUX_DEFAULT="...... security=selinux selinux=1 enforcing=0"</code></pre>
+
+
+
+<h5 id="3-2-2-让刚刚设置的-grub-文件生效">3.2.2 让刚刚设置的 /etc/default/grub 配置文件生效</h5>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o /boot/grub2/grub.cfg</code></pre>
+
+
+
+<h4 id="3-3-刷新系统内所有文件的标签">3.3 刷新系统内所有文件的标签</h4>
+
+
+
+<pre class="wp-block-code"><code># restorecon -Rp /</code></pre>
+
+
+
+<h3 id="步骤四-重启系统让-selinux-生效">步骤四：重启系统让 SELinux 生效</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h1 id="参考文献">参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-selinux.html</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SELinux 状态的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-state/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 31 May 2021 13:37:41 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14456</guid>
+
+					<description><![CDATA[内容一：SELinux 的状态 1) Disabled：完全关闭 SELinux2) Permissive：即使违反了策略也依旧可以执行，但是违反策略的记录会被记录在日志中3) Enforcing：如果违反了策略就不能之行 内容二：永久切换 SELinux 状态 2.1 将 SELinux 永久切换至 Disabled 状态 2.1.1 修改 SELinux 配置文件 将以下内容： 修改为： 2.1.2 重启系统 2.1.3 显示 SELinux 状态 2.2 将 SELinux 永久切换至 Permissive 状态 2.2.1 修改 SELinux 配置文件 将以下内容： 修改为： 2.2.2 重启系统 2.2.3 显示 SELinux 状态 2.3 将 SELinux 永久切换至 Enforcing 状态 2.3.1 修改 SELinux &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-state/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SELinux 状态的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-selinux-的状态">内容一：SELinux 的状态</h3>
+
+
+
+<p>1) Disabled：完全关闭 SELinux<br>2) Permissive：即使违反了策略也依旧可以执行，但是违反策略的记录会被记录在日志中<br>3) Enforcing：如果违反了策略就不能之行</p>
+
+
+
+<h3 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">内容二：永久切换 SELinux 状态</h3>
+
+
+
+<h4 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">2.1 将 SELinux 永久切换至 Disabled 状态</h4>
+
+
+
+<h5 id="内容二-永久切换-selinux-状态-2-1-将-selinux-永久切换至-disabled-状态-2-1-1-修改-selinux-配置文件">2.1.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=disabled
+......</code></pre>
+
+
+
+<h5 id="2-1-2-重启系统">2.1.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-1-3-显示-selinux-状态">2.1.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Disabled</code></pre>
+
+
+
+<h4 id="2-2-将-selinux-永久切换至-permissive-状态-2-2-1-修改-selinux-配置文件">2.2 将 SELinux 永久切换至 Permissive 状态</h4>
+
+
+
+<h5 id="2-2-将-selinux-永久切换至-permissive-状态-2-2-1-修改-selinux-配置文件">2.2.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=permissive
+......</code></pre>
+
+
+
+<h5 id="2-2-2-重启系统">2.2.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-2-3-显示-selinux-状态">2.2.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Permissive</code></pre>
+
+
+
+<h4 id="2-3-将-selinux-永久切换至-enforcing-状态-2-3-1-修改-selinux-配置文件">2.3 将 SELinux 永久切换至 Enforcing 状态</h4>
+
+
+
+<h5 id="2-3-将-selinux-永久切换至-enforcing-状态-2-3-1-修改-selinux-配置文件">2.3.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=......
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=enforcing
+......</code></pre>
+
+
+
+<h5 id="2-3-2-重启系统">2.3.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="2-3-3-显示-selinux-状态">2.3.3 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Enforcing</code></pre>
+
+
+
+<h3 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">内容三：临时切换 SELinux 状态</h3>
+
+
+
+<h4 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">3.1 临时切换到 Permissive 状态</h4>
+
+
+
+<h5 id="内容三-临时切换-selinux-状态-3-1-临时切换到-permissive-状态-3-1-1-临时切换到-permissive-状态">3.1.1 临时切换到 Permissive 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># setenfoce 0</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 系统重启后失效<br>2) 只能从 Enforcing 状态切换到 Permissive 状态<br>）</p>
+
+
+
+<h5 id="3-1-2-显示-selinux-状态">3.1.2 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Permissive</code></pre>
+
+
+
+<h4 id="3-2-临时切换到-enforcing-状态-3-2-1-临时切换到-enforcing-状态">3.2 临时切换到 Enforcing 状态</h4>
+
+
+
+<h5 id="3-2-临时切换到-enforcing-状态-3-2-1-临时切换到-enforcing-状态">3.2.1 临时切换到 Enforcing 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># setenfoce 1</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 系统重启后失效<br>2) 只能从 Permissive 状态切换到 Enforcing 状态<br>）</p>
+
+
+
+<h5 id="3-2-2-显示-selinux-状态">3.2.2 显示 SELinux 状态</h5>
+
+
+
+<pre class="wp-block-code"><code># getenforce 
+Enforcing</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SELinux 标签的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-label/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 25 Jul 2020 07:11:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10257</guid>
+
+					<description><![CDATA[内容一：开启 SELinux 标签 1.1 修改 SELinux 配置文件 将以下内容： 修改为： 或者： 1.2 重启系统 内容二：SELinux 的常见特性 2.1 SELinux 特性一：创建的文件或目录会自动继承其父目录的 SELinux 标签 2.1.1 在 /var/www/html/ 目录下新创建 index.html 文件 （补充：这里以在 /var/www/html/ 目录下生成 index.html 文件为例） 2.1.2 显示 /var/www/html/ 目录的 SELinux 标签 2.1.3 显示新生成的 /var/www/html/index.html 标签 （补充：从内容 1.1.2 和内容 1.1.3 命令的结果可以看出新生成的文件或其父目录的 SELinux 标签一致） 2.2 SELinux 特性二：移动文件或目录和保留属性复制文件或目录不会改变其 SELinux 标签，普通复制会改变 SELinux 标签 2.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-label/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SELinux 标签的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-开启-selinux-标签1-1-修改-selinux-配置文件">内容一：开启 SELinux 标签</h3>
+
+
+
+<h4 id="内容一-开启-selinux-标签1-1-修改-selinux-配置文件">1.1 修改 SELinux 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=disabled
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=enforcing
+......</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=perssive
+......</code></pre>
+
+
+
+<h4 id="1-2-重启系统">1.2 重启系统</h4>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h3 id="内容二-selinux-的常见特性2-1-selinux-特性一-创建的文件或目录会自动继承其父目录的-selinux-标签2-1-1-在-var-www-html-目录下新创建-index-html-文件">内容二：SELinux 的常见特性</h3>
+
+
+
+<h4 id="内容二-selinux-的常见特性2-1-selinux-特性一-创建的文件或目录会自动继承其父目录的-selinux-标签2-1-1-在-var-www-html-目录下新创建-index-html-文件">2.1 SELinux 特性一：创建的文件或目录会自动继承其父目录的 SELinux 标签</h4>
+
+
+
+<h5 id="内容二-selinux-的常见特性2-1-selinux-特性一-创建的文件或目录会自动继承其父目录的-selinux-标签2-1-1-在-var-www-html-目录下新创建-index-html-文件">2.1.1 在 /var/www/html/ 目录下新创建 index.html 文件</h5>
+
+
+
+<pre class="wp-block-code"><code># echo website &gt; /var/www/html/index.html</code></pre>
+
+
+
+<p>（补充：这里以在 /var/www/html/ 目录下生成 index.html 文件为例）</p>
+
+
+
+<h5 id="2-1-2-显示-var-www-html-目录的-selinux-标签">2.1.2 显示 /var/www/html/ 目录的 SELinux 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -dZ /var/www/html/
+unconfined_u:object_r:httpd_sys_content_t:s0 index.html</code></pre>
+
+
+
+<h5 id="2-1-3-显示新生成的-var-www-html-index-html-标签">2.1.3 显示新生成的 /var/www/html/index.html 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -Z /var/www/html/index.html/index.html 
+unconfined_u:object_r:httpd_sys_content_t:s0 index.html</code></pre>
+
+
+
+<p>（补充：从内容 1.1.2 和内容 1.1.3 命令的结果可以看出新生成的文件或其父目录的 SELinux 标签一致）</p>
+
+
+
+<h4 id="2-2-selinux-特性二-移动文件或目录和保留属性复制文件或目录不会改变其-selinux-标签-普通复制会改变-selinux-标签2-2-1-在-tmp-目录下新创建-file1-file2-file3-文件">2.2 SELinux 特性二：移动文件或目录和保留属性复制文件或目录不会改变其 SELinux 标签，普通复制会改变 SELinux 标签</h4>
+
+
+
+<h5 id="2-2-selinux-特性二-移动文件或目录和保留属性复制文件或目录不会改变其-selinux-标签-普通复制会改变-selinux-标签2-2-1-在-tmp-目录下新创建-file1-file2-file3-文件">2.2.1 在 /tmp/ 目录下新创建 file1，file2，file3 文件</h5>
+
+
+
+<pre class="wp-block-code"><code># touch /tmp/file{1,2,3}</code></pre>
+
+
+
+<h5 id="2-2-2-显示-ls-zd-tmp-目录的-selinux-标签">2.2.2 显示 /tmp 目录的 selinux 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -Zd /tmp
+unconfined_u:object_r:user_tmp_t:s0 /tmp/</code></pre>
+
+
+
+<h5 id="2-2-3-显示新创建文件的标签">2.2.3 显示新创建文件的标签</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -Z /tmp/file*
+unconfined_u:object_r:user_tmp_t:s0 /tmp/file1  unconfined_u:object_r:user_tmp_t:s0 /tmp/file2
+unconfined_u:object_r:user_tmp_t:s0 /tmp/file3</code></pre>
+
+
+
+<h5 id="2-2-4-将-tmp-file1-复制到-var-www-html">2.2.4 将 /tmp/file1 复制到 /var/www/html/</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /tmp/file1 /var/www/html/</code></pre>
+
+
+
+<h5 id="2-2-5-将-tmp-file2-移动到-var-www-html">2.2.5 将 /tmp/file2 移动到 /var/www/html/</h5>
+
+
+
+<pre class="wp-block-code"><code># mv /tmp/file2 /var/www/html/</code></pre>
+
+
+
+<h5 id="2-2-6-将-tmp-file2-复制到-var-www-html-并使用-a-选项保留文件属性">2.2.6 将 /tmp/file2 复制到 /var/www/html/，并使用 -a 选项保留文件属性</h5>
+
+
+
+<pre class="wp-block-code"><code># cp -a /tmp/file3 /var/www/html/</code></pre>
+
+
+
+<h5 id="2-2-7-显示这些文件的-selinux-标签">2.2.7 显示这些文件的 SELinux 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -Z /var/www/html/file*
+unconfined_u:object_r:httpd_sys_content_t:s0 file1           unconfined_u:object_r:user_tmp_t:s0 file3
+unconfined_u:object_r:user_tmp_t:s0 file2</code></pre>
+
+
+
+<p>（补充：从内容 2.2.3 和内容 2.2.7 命令的结果可以看出只有普通复制会改变 SELinux 标签 ）</p>
+
+
+
+<h3 id="内容三-显示某个文件-目录或进程-selinux-标签3-1-显示某个文件-selinux-标签">内容三：显示某个文件、目录或进程 SELinux 标签</h3>
+
+
+
+<h4 id="内容三-显示某个文件-目录或进程-selinux-标签3-1-显示某个文件-selinux-标签">3.1 显示某个文件 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># ls -Z &lt;file&gt;</code></pre>
+
+
+
+<h4 id="3-2-显示某个目录-selinux-标签">3.2 显示某个目录 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># ls -Zd &lt;directory&gt;</code></pre>
+
+
+
+<h4 id="3-3-显示某个进程-selinux-标签">3.3 显示某个进程 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># ps -auxZ | grep &lt;process&gt;</code></pre>
+
+
+
+<h3 id="内容四-显示所有-selinux-标签4-1-显示所有文件和目录的-selinux-标签">内容四：显示所有 SELinux 标签</h3>
+
+
+
+<h4 id="内容四-显示所有-selinux-标签4-1-显示所有文件和目录的-selinux-标签">4.1 显示所有文件和目录的 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># semanage fcontext -l</code></pre>
+
+
+
+<p>（注意：需要单独安装 policycoreutils-python-utils 后才能使用 semanage 命令）</p>
+
+
+
+<h4 id="4-2-显示所有端口的-selinux-标签">4.2 显示所有端口的 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># semanage port -l</code></pre>
+
+
+
+<p>（注意：需要单独安装 policycoreutils-python-utils 后才能使用 semanage 命令）</p>
+
+
+
+<h4 id="4-3-显示所有进程的-selinux-标签">4.3 显示所有进程的 SELinux 标签</h4>
+
+
+
+<pre class="wp-block-code"><code># ps -auxZ</code></pre>
+
+
+
+<h3 id="内容五-设置-selinux-标签5-1-设置文件和目录-selinux-标签5-1-1-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-1-semanage-fcontext-命令的常用选项">内容五：设置 SELinux 标签</h3>
+
+
+
+<h4 id="内容五-设置-selinux-标签5-1-设置文件和目录-selinux-标签5-1-1-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-1-semanage-fcontext-命令的常用选项">5.1 设置文件和目录 SELinux 标签</h4>
+
+
+
+<h5 id="内容五-设置-selinux-标签5-1-设置文件和目录-selinux-标签5-1-1-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-1-semanage-fcontext-命令的常用选项">5.1.1 使用 semanage fcontext 命令和 restorecon 命令设置文件和目录的 SELinux 标签</h5>
+
+
+
+<h5 id="内容五-设置-selinux-标签5-1-设置文件和目录-selinux-标签5-1-1-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-1-semanage-fcontext-命令的常用选项">5.1.1.1 semanage fcontext 命令的常用选项</h5>
+
+
+
+<p>1) -a 添加或变更 SELinux 标签<br>2) -d 删除 SELinux 标签<br>3) -l 显示所有的 SELinux 标签<br>4) -t 指定上下文 SELinux 标签<br>5) -v 显示修改 SELinux 标签的内容<br>6) -R 递归设置 SELinux 标签<br>7) -m 变更 SELinux 标签</p>
+
+
+
+<h5 id="5-1-1-2-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-2-1-使用-smanage-fcontext-命令设置-selinux-标签">5.1.1.2 使用 semanage fcontext 命令和 restorecon 命令设置文件和目录的 SELinux 标签</h5>
+
+
+
+<h5 id="5-1-1-2-使用-semanage-fcontext-命令和-restorecon-命令设置文件和目录的-selinux-标签5-1-1-2-1-使用-smanage-fcontext-命令设置-selinux-标签">5.1.1.2.1 使用 smanage fcontext 命令设置 SELinux 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># semanage fcontext -a -t httpd_sys_content_t "/tmp(/.*)?"</code></pre>
+
+
+
+<p>（补充：这里以将 /tmp(/.*) 的 SELinux 标签设置为 httpd_sys_content_t 为例）</p>
+
+
+
+<p>（注意：需要单独安装 policycoreutils-python-utils 后才能使用 semanage 命令）</p>
+
+
+
+<h5 id="5-1-1-2-2-使用-restorecon-命令修改默认上下文">5.1.1.2.2 使用 restorecon 命令修改默认上下文</h5>
+
+
+
+<pre class="wp-block-code"><code># restorecon -Rv /tmp
+Relabeled /tmp from unconfined_u:object_r:default_t:s0 to unconfined_u:object_r:httpd_sys_content_t:s0</code></pre>
+
+
+
+<h5 id="5-1-2-使用-chcon-命令设置-selinux-标签">5.1.2 使用 chcon 命令设置 SELinux 标签</h5>
+
+
+
+<pre class="wp-block-code"><code># chcon -t httpd_sys_content_t /tmp/*</code></pre>
+
+
+
+<p>（补充：这里以将 /tmp/* 的 SELinux 标签设置为 httpd_sys_content_t 为例）</p>
+
+
+
+<h4 id="5-2-设置端口-selinux">5.2 设置端口 SELinux</h4>
+
+
+
+<pre class="wp-block-code"><code># semanage port -a -t http_port_t -p tcp 82</code></pre>
+
+
+
+<p>（补充：这里以将 TCP 82 端口的 SELinux 标签设置为 http_port_t 为例）</p>
+
+
+
+<p>（注意：需要单独安装 policycoreutils-python-utils 后才能使用 semanage 命令）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SELinux 布尔 （boolean） 值的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/selinux-boolean/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 16 Jul 2020 11:56:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10063</guid>
+
+					<description><![CDATA[内容一：开启 SELinux 布尔（boolean）值 1.1 显示当前 SELinux 状态 1.2 将 SELinux 的状态设置为 Enforcing 以开启布尔（boolean）值 1.2.1 当当前 SELinux 的状态为 Disabled 时开启布尔（boolean）值的方法 1.2.1.1 修改 SELinux 配置文件 将以下内容： 修改为： 1.2.1.2 重启系统 1.2.2 当当前 SELinux 的状态为 Perssive 时开启布尔（boolean）值的方法 （补充：系统重启后失效） 内容二：显示所有 SELinux 布尔（boolean）值 内容三：布尔（boolean）值的管理 3.1 允许某一个 SELinux 布尔（boolean）值开启 3.1.1 临时允许某一个 SELinux 布尔（boolean）值开启 3.1.1.1 临时允许某一个 SELinux 布尔（boolean）值开启的格式 或者： 3.1.1.2 临时允许某一个 SELinux 布尔（boolean）值开启的案例 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/selinux-boolean/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SELinux 布尔 （boolean） 值的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-开启-selinux-布尔-boolean-值1-1-显示当前-selinux-状态">内容一：开启 SELinux 布尔（boolean）值</h3>
+
+
+
+<h4 id="内容一-开启-selinux-布尔-boolean-值1-1-显示当前-selinux-状态">1.1 显示当前 SELinux 状态</h4>
+
+
+
+<pre class="wp-block-code"><code># getenforce</code></pre>
+
+
+
+<h4 id="1-2-将-selinux-的状态设置为-enforcing-以开启布尔-boolean-值1-2-1-当当前-selinux-的状态为-disabled-时开启布尔-boolean-值的方法1-2-1-1-修改-selinux-配置文件">1.2 将 SELinux 的状态设置为 Enforcing 以开启布尔（boolean）值</h4>
+
+
+
+<h5 id="1-2-将-selinux-的状态设置为-enforcing-以开启布尔-boolean-值1-2-1-当当前-selinux-的状态为-disabled-时开启布尔-boolean-值的方法1-2-1-1-修改-selinux-配置文件">1.2.1 当当前 SELinux 的状态为 Disabled 时开启布尔（boolean）值的方法</h5>
+
+
+
+<h5 id="1-2-将-selinux-的状态设置为-enforcing-以开启布尔-boolean-值1-2-1-当当前-selinux-的状态为-disabled-时开启布尔-boolean-值的方法1-2-1-1-修改-selinux-配置文件">1.2.1.1 修改 SELinux 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/selinux/config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=disabled
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+SELINUX=enforcing
+......</code></pre>
+
+
+
+<h5 id="1-2-1-2-重启系统">1.2.1.2 重启系统</h5>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h5 id="1-2-2-当当前-selinux-的状态为-perssive-时开启布尔-boolean-值的方法">1.2.2 当当前 SELinux 的状态为 Perssive 时开启布尔（boolean）值的方法</h5>
+
+
+
+<pre class="wp-block-code"><code># setenfoce 1</code></pre>
+
+
+
+<p>（补充：系统重启后失效）</p>
+
+
+
+<h3 id="内容二-查看所有-selinux-布尔-boolean-值">内容二：显示所有 SELinux 布尔（boolean）值</h3>
+
+
+
+<pre class="wp-block-code"><code># semanage boolean -l</code></pre>
+
+
+
+<h3 id="内容三-布尔-boolean-值的管理3-1-允许某一个-selinux-布尔-boolean-值开启3-1-1-临时允许某一个-selinux-布尔-boolean-值开启3-1-1-1-临时允许某一个-selinux-布尔-boolean-值开启的格式">内容三：布尔（boolean）值的管理</h3>
+
+
+
+<h4 id="内容三-布尔-boolean-值的管理3-1-允许某一个-selinux-布尔-boolean-值开启3-1-1-临时允许某一个-selinux-布尔-boolean-值开启3-1-1-1-临时允许某一个-selinux-布尔-boolean-值开启的格式">3.1 允许某一个 SELinux 布尔（boolean）值开启</h4>
+
+
+
+<h5 id="内容三-布尔-boolean-值的管理3-1-允许某一个-selinux-布尔-boolean-值开启3-1-1-临时允许某一个-selinux-布尔-boolean-值开启3-1-1-1-临时允许某一个-selinux-布尔-boolean-值开启的格式">3.1.1 临时允许某一个 SELinux 布尔（boolean）值开启</h5>
+
+
+
+<h5 id="内容三-布尔-boolean-值的管理3-1-允许某一个-selinux-布尔-boolean-值开启3-1-1-临时允许某一个-selinux-布尔-boolean-值开启3-1-1-1-临时允许某一个-selinux-布尔-boolean-值开启的格式">3.1.1.1 临时允许某一个 SELinux 布尔（boolean）值开启的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool &lt;boolean value&gt; 1</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool &lt;boolean value&gt; on</code></pre>
+
+
+
+<h5 id="3-1-1-2-临时允许某一个-selinux-布尔-boolean-值开启的案例">3.1.1.2 临时允许某一个 SELinux 布尔（boolean）值开启的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool httpd_can_network_connect 1</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool httpd_can_network_connect on</code></pre>
+
+
+
+<h5 id="3-1-2-永久允许某一个-selinux-布尔-boolean-值开启3-1-2-1-永久允许某一个-selinux-布尔-boolean-值开启的格式">3.1.2 永久允许某一个 SELinux 布尔（boolean）值开启</h5>
+
+
+
+<h5 id="3-1-2-永久允许某一个-selinux-布尔-boolean-值开启3-1-2-1-永久允许某一个-selinux-布尔-boolean-值开启的格式">3.1.2.1 永久允许某一个 SELinux 布尔（boolean）值开启的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P &lt;boolean value&gt; 1</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P &lt;boolean value&gt; on</code></pre>
+
+
+
+<h5 id="3-1-2-2-永久允许某一个-selinux-布尔-boolean-值开启的案例">3.1.2.2 永久允许某一个 SELinux 布尔（boolean）值开启的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_can_network_connect 1</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_can_network_connect on</code></pre>
+
+
+
+<h4 id="3-2-取消某一个-selinux-布尔-boolean-值开启3-2-1-临时取消某一个-selinux-布尔-boolean-值开启3-2-1-1-临时取消某一个-selinux-布尔-boolean-值开启的格式">3.2 取消某一个 SELinux 布尔（boolean）值开启</h4>
+
+
+
+<h5 id="3-2-取消某一个-selinux-布尔-boolean-值开启3-2-1-临时取消某一个-selinux-布尔-boolean-值开启3-2-1-1-临时取消某一个-selinux-布尔-boolean-值开启的格式">3.2.1 临时取消某一个 SELinux 布尔（boolean）值开启</h5>
+
+
+
+<h5 id="3-2-取消某一个-selinux-布尔-boolean-值开启3-2-1-临时取消某一个-selinux-布尔-boolean-值开启3-2-1-1-临时取消某一个-selinux-布尔-boolean-值开启的格式">3.2.1.1 临时取消某一个 SELinux 布尔（boolean）值开启的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool &lt;boolean value&gt; 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool &lt;boolean value&gt; off</code></pre>
+
+
+
+<h5 id="3-2-1-2-临时取消某一个-selinux-布尔-boolean-值开启的案例">3.2.1.2 临时取消某一个 SELinux 布尔（boolean）值开启的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool httpd_can_network_connect 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool httpd_can_network_connect off</code></pre>
+
+
+
+<h5 id="3-2-2-永久取消某一个-selinux-布尔-boolean-值关闭3-2-2-1-永久取消某一个-selinux-布尔-boolean-值开启的格式">3.2.2 永久取消某一个 SELinux 布尔（boolean）值关闭</h5>
+
+
+
+<h5 id="3-2-2-永久取消某一个-selinux-布尔-boolean-值关闭3-2-2-1-永久取消某一个-selinux-布尔-boolean-值开启的格式">3.2.2.1 永久取消某一个 SELinux 布尔（boolean）值开启的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P &lt;boolean value&gt; 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P &lt;boolean value&gt; off</code></pre>
+
+
+
+<h5 id="3-2-2-2-永久取消某一个-selinux-布尔-boolean-值开启的案例">3.2.2.2 永久取消某一个 SELinux 布尔（boolean）值开启的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_can_network_connect 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_can_network_connect off</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux &#038; RHEL 网页图形化管理工具 cockpit</title>
+		<link>https://eternalcenter-sep-2022.github.io/cockpit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Jun 2020 09:07:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Statistic Log (系统统计日志)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9718</guid>
+
+					<description><![CDATA[步骤一：系统环境要求 服务器系统配置好可用的软件源 步骤二：安装 cockpit （补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序） 步骤三：启动 cockpit 步骤四：登录 cockpit 使用浏览器登录：https://&/#60;server IP address&#62;:9090]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统配置好可用的软件源</p>
+
+
+
+<h3>步骤二：安装 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install cockpit cockpit-dashaboard</code></pre>
+
+
+
+<p>（补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序）</p>
+
+
+
+<h3>步骤三：启动 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now cockpit.socket</code></pre>
+
+
+
+<h3>步骤四：登录 cockpit</h3>
+
+
+
+<p>使用浏览器登录：https://&lt;server/ IP address&gt;:9090</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 ps （显示进程） （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ps/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Jun 2020 07:46:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9679</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>ps 命令的使用
+
+Ps命令是Linux中最常使用的进程查看工具，主要用于显示包含当前运行的各进程完整信息的静态快照（查看静态的进程统计信息）。通过不同的命令选项可以有选择性的查看进程信息。
+
+a：显示当前终端下的所有进行信息，包括其他用户的进程。与x选项结合时将显示系统中所有的进程信息。
+
+u：使用以用户为主的格式输出进程信息。
+
+x：显示当前用户在所有终端下的进程信息。
+
+-e：显示系统内的所有进程信息。
+
+-l：使用长格式显示进程信息。
+
+-f：使用完整的格式显示进程信息。</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="622" height="170" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1.png" alt="" class="wp-image-19781" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1.png 622w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1-300x82.png 300w" sizes="(max-width: 622px) 100vw, 622px" /></figure></div>
+
+
+<pre class="wp-block-code"><code># ps aux
+
+解释:
+
+USER：启动该进程的用户账号名称
+
+PID：该进程在系统中的数字ID号，在当前系统中是唯一的。
+
+TTY：表明该进程在哪个终端上运行。“？”表示未知或者不需要终端。
+
+STAT：显示了进程当前的状态，如S（休眠）、R（运行）、Z（僵死）、&lt;（高优先级）、N（低优先级）、s（父进程）、+（前台进程）。对于僵死的进程，应该手动处理掉。（问：为什么？）
+
+START：启动该进程的时间
+
+TIME：该进程占用CPU的时间
+
+COMMAND：启用该进程的命令名称
+
+%CPU：CPU占用百分比
+
+%MEM：内存占用百分比
+
+VSZ：占用虚拟内存（swap空间）大小
+
+RSS：占用常驻空间（物理内存）的大小</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="706" height="150" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2.png" alt="" class="wp-image-19782" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2.png 706w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2-300x64.png 300w" sizes="(max-width: 706px) 100vw, 706px" /></figure></div>
+
+
+<pre class="wp-block-code"><code>————————————————
+版权声明：本文为CSDN博主「秃头阿鑫」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_47763101/java/article/details/106391154</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" width="1010" height="161" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps.png" alt="" class="wp-image-9682" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps.png 1010w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps-300x48.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps-768x122.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+<pre class="wp-block-code"><code>站主补充：
+补充一：D 状态的进程
+D 状态的进程代表处于不可以被杀死的休眠状态。D 状态的进程就算是用 kill -9 命令也无法杀死
+
+补充二：将 ps 的输出工整
+# ps -T
+
+补充三：ps 显示 SELinux 标签
+# ps -M
+或者：
+# ps -Z
+</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 kill （进程杀死）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kill/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 May 2020 05:19:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9614</guid>
+
+					<description><![CDATA[内容一：显示 kill 所有可用的选项 内容二：kill 的常用案例 2.1 案例一：强杀某一个 PID 号 或者： 2.2 案例二：正常退出某一个 PID 号 2.3 案例三：杀死某一个进程名称下的所有 PID 号]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-查看-kill-所有可用的选项">内容一：显示 kill 所有可用的选项</h3>
+
+
+
+<pre class="wp-block-code"><code># kill --help</code></pre>
+
+
+
+<h3 id="内容二-kill-的常用案例2-1-案例一-强杀某一个-pid-号">内容二：kill 的常用案例</h3>
+
+
+
+<h4 id="内容二-kill-的常用案例2-1-案例一-强杀某一个-pid-号">2.1 案例一：强杀某一个 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># kill -9 &lt;PID number></code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># kill -&lt;kill option> &lt;PID number></code></pre>
+
+
+
+<h4 id="2-2-案例二-正常退出某一个-pid-号">2.2 案例二：正常退出某一个 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># kill -15 &lt;PID number></code></pre>
+
+
+
+<h4 id="2-3-案例三-杀死某一个进程名称下的所有-pid-号">2.3 案例三：杀死某一个进程名称下的所有 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># killall &lt;process name&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 pstree （显示进程树）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pstreee/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 May 2020 05:13:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9612</guid>
+
+					<description><![CDATA[内容一：系统环境要求 服务器系统配置好可用的软件源 内容二：如果系统中没有此命令，则需要先安装此命令 （补充：这里以 CentOS&#38;RHEL 安装 psmisc 为例） 内容三：使用此命令]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-系统环境要求">内容一：系统环境要求</h3>
+
+
+
+<p>服务器系统配置好可用的软件源</p>
+
+
+
+<h3 id="内容二-如果系统中没有此命令-则需要先安装此命令">内容二：如果系统中没有此命令，则需要先安装此命令</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install psmisc</code></pre>
+
+
+
+<p>（补充：这里以 CentOS&amp;RHEL 安装 psmisc 为例）</p>
+
+
+
+<h3 id="内容三-使用此命令">内容三：使用此命令</h3>
+
+
+
+<pre class="wp-block-code"><code># pstree</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 后台进程的管理</title>
+		<link>https://eternalcenter-sep-2022.github.io/background-process/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 May 2020 04:01:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9608</guid>
+
+					<description><![CDATA[内容一：将进程放入后台 1.1 直接将一个进程放到后台 1.2 将一个目前正在前台运行的进程放到后台 按下 “ctrl” 键和 “z” 键 内容二：显示放入后台的进程 2.1 显示所有放入后台的进程 2.2 显示某一个放入后台的进程 2.2.1 显示某一个放入后台进程（通过后台进程号） 2.2.2 显示某一个放入后台进程（通过后台进程名） （注意：只有后台进程名唯一时此操作才有效） 内容三：管理放入后台的进程 3.1 在后台启动放入后台的进程 3.1.1 在后台启动放入后台的进程（通过后台进程号） （注意：只有可以在后台启动的进程才能在后台启动） 3.1.2 在后台启动放入后台的进程（通过后台进程名） （注意：只有可以在后台启动的进程才能在后台启动，且只有后台进程名唯一时此操作才有效） 3.2 在前台启动放入后台的进程 3.2.1 在前台启动放入后台的进程（通过后台进程号） 3.2.2 在前台启动放入后台的进程（通过后台进程名） （注意：只有后台进程名唯一时此操作才有效） 3.3 杀死放入后台的进程 3.3.1 杀死放入后台的进程（通过后台进程号） （补充：这里可以配合各种 kill 选项进行操作，例如 kill -9） 3.3.2 杀死放入后台的进程（通过后台进程名） （注意：只有后台进程名唯一时此操作才有效） （补充：这里可以配合各种 kill 选项进行操作，例如 kill -9）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-将进程放入后台1-1-直接将一个进程放到后台">内容一：将进程放入后台</h3>
+
+
+
+<h4 id="内容一-将进程放入后台1-1-直接将一个进程放到后台">1.1 直接将一个进程放到后台</h4>
+
+
+
+<pre class="wp-block-code"><code># firefox&amp;</code></pre>
+
+
+
+<h4 id="1-2-将一个目前正在前台运行的进程放到后台">1.2 将一个目前正在前台运行的进程放到后台</h4>
+
+
+
+<p>按下 “ctrl” 键和 “z” 键</p>
+
+
+
+<h3 id="内容二-显示放入后台的进程2-1-显示所有放入后台的进程">内容二：显示放入后台的进程</h3>
+
+
+
+<h4 id="内容二-显示放入后台的进程2-1-显示所有放入后台的进程">2.1 显示所有放入后台的进程</h4>
+
+
+
+<pre class="wp-block-code"><code># jobs</code></pre>
+
+
+
+<h4 id="2-2-显示某一个放入后台的进程2-2-1-显示某一个放入后台进程-通过后台进程号">2.2 显示某一个放入后台的进程</h4>
+
+
+
+<h5 id="2-2-显示某一个放入后台的进程2-2-1-显示某一个放入后台进程-通过后台进程号">2.2.1 显示某一个放入后台进程（通过后台进程号）</h5>
+
+
+
+<pre class="wp-block-code"><code># jobs %&lt;background process number&gt;</code></pre>
+
+
+
+<h5 id="2-2-2-显示某一个放入后台进程-通过后台进程名">2.2.2 显示某一个放入后台进程（通过后台进程名）</h5>
+
+
+
+<pre class="wp-block-code"><code># jobs %&lt;background process name&gt;</code></pre>
+
+
+
+<p>（注意：只有后台进程名唯一时此操作才有效）</p>
+
+
+
+<h3 id="内容三-管理放入后台的进程3-1-在后台启动放入后台的进程3-1-1-在后台启动放入后台的进程-通过后台进程号">内容三：管理放入后台的进程</h3>
+
+
+
+<h4 id="内容三-管理放入后台的进程3-1-在后台启动放入后台的进程3-1-1-在后台启动放入后台的进程-通过后台进程号">3.1 在后台启动放入后台的进程</h4>
+
+
+
+<h5 id="内容三-管理放入后台的进程3-1-在后台启动放入后台的进程3-1-1-在后台启动放入后台的进程-通过后台进程号">3.1.1 在后台启动放入后台的进程（通过后台进程号）</h5>
+
+
+
+<pre class="wp-block-code"><code># bg %&lt;background process number&gt;</code></pre>
+
+
+
+<p>（注意：只有可以在后台启动的进程才能在后台启动）</p>
+
+
+
+<h5 id="3-1-2-在后台启动放入后台的进程-通过后台进程名">3.1.2 在后台启动放入后台的进程（通过后台进程名）</h5>
+
+
+
+<pre class="wp-block-code"><code># bg %&lt;background process name&gt;</code></pre>
+
+
+
+<p>（注意：只有可以在后台启动的进程才能在后台启动，且只有后台进程名唯一时此操作才有效）</p>
+
+
+
+<h4 id="3-2-在前台启动放入后台的进程3-2-1-在前台启动放入后台的进程-通过后台进程号">3.2 在前台启动放入后台的进程</h4>
+
+
+
+<h5 id="3-2-在前台启动放入后台的进程3-2-1-在前台启动放入后台的进程-通过后台进程号">3.2.1 在前台启动放入后台的进程（通过后台进程号）</h5>
+
+
+
+<pre class="wp-block-code"><code># fg %&lt;background process number&gt;</code></pre>
+
+
+
+<h5 id="3-2-2-在前台启动放入后台的进程-通过后台进程名">3.2.2 在前台启动放入后台的进程（通过后台进程名）</h5>
+
+
+
+<pre class="wp-block-code"><code># fg %&lt;background process name&gt;</code></pre>
+
+
+
+<p>（注意：只有后台进程名唯一时此操作才有效）</p>
+
+
+
+<h4 id="3-3-杀死放入后台的进程3-3-1-杀死放入后台的进程-通过后台进程号">3.3 杀死放入后台的进程</h4>
+
+
+
+<h5 id="3-3-杀死放入后台的进程3-3-1-杀死放入后台的进程-通过后台进程号">3.3.1 杀死放入后台的进程（通过后台进程号）</h5>
+
+
+
+<pre class="wp-block-code"><code># kill %&lt;background process number&gt;</code></pre>
+
+
+
+<p>（补充：这里可以配合各种 kill 选项进行操作，例如 kill -9）</p>
+
+
+
+<h5 id="3-3-2-杀死放入后台的进程-通过后台进程名">3.3.2 杀死放入后台的进程（通过后台进程名）</h5>
+
+
+
+<pre class="wp-block-code"><code># kill %&lt;background process name&gt;</code></pre>
+
+
+
+<p>（注意：只有后台进程名唯一时此操作才有效）</p>
+
+
+
+<p>（补充：这里可以配合各种 kill 选项进行操作，例如 kill -9）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 iotop （显示某一个进程占用 IO 的情况） （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/iotop/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 13 Mar 2020 06:52:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8655</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>记一次iotop分析磁盘占用io问题
+
+问题描述    
+
+                 某一台服务器上面 程序在每小时内偶尔丢包 排查服务器所有性能瓶颈之后发现一个奇怪的问题 程序丢包前后 会有IO过高的情况 于是使用iotop命令排查是哪个程序偶尔占用过高的磁盘IO
+
+所用命令  
+
+                 iotop
+
+相关参数 
+
+    -o：只显示有io操作的进程
+
+    -b：批量显示，无交互，主要用作记录到文件
+
+    -n NUM：显示NUM次，主要用于非交互式模式
+
+    -d SEC：间隔SEC秒显示一次
+
+    -p PID：监控的进程pid
+
+    -u USER：监控的进程用户
+
+排查方法
+
+        iostat命令 只能看出每个盘符的IO情况 不能看到是具体哪个进程使用的IO 所以 我们需要使用iotop命令 但是这次的IO情况并不是一直出现 而是偶尔不规律出现 如果用肉眼去一直盯着终端看 显然不可行 于是我们可以用iotop的-b参数 让结果以非交互的方式输出 这样我们便可以用awk去处理 打印出我们需要的IO列以及相应的进程
+
+命令
+
+iotop -b | awk -F'%' '{if($(NF-1) &gt; 0.2 &amp;&amp; $(NF-1) ~ /&#91;0-9]/ &amp;&amp; $0 !~ /DISK/)printf "TIME: %s,IO:%s%,COMMAND:%s\n",strftime("%F %T"),$(NF-1),$NF}'
+
+输出结果
+
+&#91;root@localhost ~]# iotop -b | awk -F'%' '{if($(NF-1) &gt; 0.2 &amp;&amp; $(NF-1) ~ /&#91;0-9]/ &amp;&amp; $0 !~ /DISK/)printf "TIME: %s,IO:%s%,COMMAND:%s\n",strftime("%F %T"),$(NF-1),$NF}'
+TIME: 2018-03-21 18:04:23,IO:  0.23 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:04:35,IO:  0.44 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:04:47,IO:  0.22 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:04:58,IO:  0.39 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:05:08,IO:  0.68 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:05:22,IO:  0.52 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:05:34,IO:  0.24 %,COMMAND: &#91;kworker/0:2]
+TIME: 2018-03-21 18:05:45,IO:  0.26 %,COMMAND: &#91;kworker/0:2]
+
+        输出结果类似上面 这里只是简单举个例子 打印出IO大于0.2%的进程 并根据客户需求打印除相应的时间 这里的时间打印 利用awk自己的函数 strftime()
+————————————————
+版权声明：本文为CSDN博主「why_me310」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/why_me310/article/details/79643352</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1013" height="203" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-iotop.png" alt="" class="wp-image-8656" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-iotop.png 1013w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-iotop-300x60.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-iotop-768x154.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+
+<pre class="wp-block-code"><code>站主补充：
+ iotop 还有以下参数
+-k, --kilobytes 在非交互的模式下，以 kb 为单位显示
+-t, --time 在非交互的模式下，加上时间戳
+-q, --quiet 在交互的模式下，禁止头几行，它有三种指定方式
+    -q 只有在第一次显示时显示列名
+    -qq 永远不显示列名
+    -qqq 永远不显示 I/O 汇总的总量</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 sar （报告系统活动情况） （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/sar/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 13 Mar 2020 06:36:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8644</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>sar
+
+sar（SYstem ActivityReporter系统活动情况报告）是目前Linux上最为全面的系统性能分析工具之一，可以从多方面对系统的活动进行报告，包括：文件的读写情况，系统调用的使用情况，磁盘I/O，CPU效率，内存使用状况，进程活动及IPC有关的活动；
+sar命令有sysstat安装包安装
+1.安装：&#91;root@admin ~]# yum -y install sysstat
+2.参数：
+-u :输出CPU使用情况和统计信息
+-p:报告每个CPU的状态
+-q:查看平均负载
+-r:查看内存使用情况
+-W :查看系统swap分区的统计信息
+-x:显示给定进程的统计信息
+-b:查看I/O和传递速率的统计信息
+ -d:磁盘使用详细统计
+ -v:进程，inode，文件和锁表状态
+ -n:统计网络信息
+-u :输出CPU使用情况和统计信息
+-A：所有报告总和
+-i:设置状态信息刷新的间隔时间
+    &#91;root@admin ~]# sar -u 1 3  （每隔一秒总共统计三次；统计CPU的使用情况）</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="579" height="218" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-1.png" alt="" class="wp-image-19637" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-1.png 579w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-1-300x113.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>在以上的显示中，主要看%iowait和%idle，%iowait过高表示存在I/O瓶颈，即磁盘I/O无法满足业务需求，如果%idle过低表示CPU使用率比较严重，需要结合内存使用等情况半段CPU是否瓶颈。
+2.2 -p:报告每个CPU的状态
+    &#91;root@admin ~]# sar -p 1 3 （报告每个CPU的使用状态）</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="571" height="130" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-2.png" alt="" class="wp-image-19638" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-2.png 571w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-2-300x68.png 300w" sizes="(max-width: 571px) 100vw, 571px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>2.3 将统计结果保存在文件中，并从文件读取内容
+        &#91;root@admin ~]# sar -u -o /servers/script/sar.txt 2 3 （保存之文件，保存后的文件是二进制的，无法使用vim和cat查看）
+        &#91;root@admin ~]# sar -u -f /servers/script/sar.txt （从二进制文件读取）</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="579" height="262" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-3.png" alt="" class="wp-image-19639" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-3.png 579w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-3-300x136.png 300w" sizes="(max-width: 579px) 100vw, 579px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>注：将输出到文件(-o)和读取记录信息(-f)
+2.4 -q:查看平均负载
+        &#91;root@admin ~]# sar -q 1 3</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="566" height="227" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-4.png" alt="" class="wp-image-19640" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-4.png 566w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-4-300x120.png 300w" sizes="(max-width: 566px) 100vw, 566px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>2.5-r:查看内存使用情况
+        &#91;root@admin ~]# sar -r</code></pre>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="612" height="393" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-5.png" alt="" class="wp-image-19642" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-5.png 612w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-5-300x193.png 300w" sizes="(max-width: 612px) 100vw, 612px" /></figure>
+
+
+
+<pre class="wp-block-code"><code>2.6 -W :查看系统swap分区的统计信息</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="369" height="232" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-6.png" alt="" class="wp-image-19643" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-6.png 369w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-6-300x189.png 300w" sizes="(max-width: 369px) 100vw, 369px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>2.7 -b:查看I/O和传递速率的统计信息
+2.8 -d:磁盘使用详细统计
+2.9 -v:进程，inode，文件和锁表状态
+2.10 -n:统计网络信息
+        1） DEV：网络接口统计信息
+        2） EDEV：网络接口错误
+        3）IP：IP数据报统计信息
+        4)：EIP：IP错误统计信息
+         5）TCP：TCP统计信息
+          6）ETCP：TCP错误统计信息
+         7）SOCK：套接字使用</code></pre>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-full"><img loading="lazy" width="556" height="246" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-7.png" alt="" class="wp-image-19644" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-7.png 556w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/sar-7-300x133.png 300w" sizes="(max-width: 556px) 100vw, 556px" /></figure></div>
+
+
+
+<pre class="wp-block-code"><code>————————————————
+版权声明：本文为CSDN博主「喵喵Amy」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/an1415/article/details/80761614</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1014" height="202" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-sar.png" alt="" class="wp-image-8652" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-sar.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-sar-300x60.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/03/版权申明证明-sar-768x153.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 fio （测试硬盘速度）</title>
+		<link>https://eternalcenter-sep-2022.github.io/fio/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 10 Jul 2019 13:47:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4823</guid>
+
+					<description><![CDATA[（注意： fio 命令并非系统自带的命令，需要手动安装）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># fio --name=job1 --rw=read --size=1g  --directory=/var --direct=1</code></pre>
+
+
+
+<p>（注意： fio 命令并非系统自带的命令，需要手动安装）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

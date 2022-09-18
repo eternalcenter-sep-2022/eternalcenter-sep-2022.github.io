@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>VMware &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/virtualization/vmware/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 23 Aug 2022 17:25:35 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] VMware 命令行启动 （Linux 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/vmware-command-start-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 22 Aug 2021 11:34:44 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<category><![CDATA[VMware]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17547</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># /etc/init.d/vmware start
+# vmplayer</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] VMware Workstation Player 的安装 （CentOS Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/vmware-workstation-player-install-centos-linux-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 19 Sep 2020 07:09:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<category><![CDATA[VMware]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10565</guid>
+
+					<description><![CDATA[软件准备： 在 VMware 的官网上下载软件 VMware Workstation Player（本次使用的是 VMware-Player-15.5.6-16341506.x86_64.bundle）： https://my.vmware.com/cn/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/16_0 正文： 步骤一：系统环境要求 服务器系统要配置好可用的软件源 步骤二：安装 VMware 虚拟化平台的依赖软件 步骤三：给 VMware 安装包执行权限 （补充：本次添加权限的是 VMware-Player-15.5.6-16341506.x86_64.bundle） 步骤四：安装 VMware 虚拟化平台 （补充：本次安装的是 VMware-Player-15.5.6-16341506.x86_64.bundle）]]></description>
+										<content:encoded><![CDATA[
+<h1>软件准备：</h1>
+
+
+
+<p>在 VMware 的官网上下载软件 VMware Workstation Player（本次使用的是 VMware-Player-15.5.6-16341506.x86_64.bundle）：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://my.vmware.com/cn/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/16_0" target="_blank" rel="noreferrer noopener">https://my.vmware.com/cn/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_player/16_0</a></p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统要配置好可用的软件源</p>
+
+
+
+<h3>步骤二：安装 VMware 虚拟化平台的依赖软件</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install perl gcc kernel-devel libX11 libXinerama libXcursor libXtst elfutils-libelf-devel</code></pre>
+
+
+
+<h3>步骤三：给 VMware 安装包执行权限</h3>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x VMware-Player-15.5.6-16341506.x86_64.bundle</code></pre>
+
+
+
+<p>（补充：本次添加权限的是 VMware-Player-15.5.6-16341506.x86_64.bundle）</p>
+
+
+
+<h3>步骤四：安装 VMware 虚拟化平台</h3>
+
+
+
+<pre class="wp-block-code"><code># ./VMware-Player-15.5.6-16341506.x86_64.bundle</code></pre>
+
+
+
+<p>（补充：本次安装的是 VMware-Player-15.5.6-16341506.x86_64.bundle）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

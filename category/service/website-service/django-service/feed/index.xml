@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Django Service (服务) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/website-service/django-service/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 29 Aug 2022 08:04:33 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux SSL 证书 KEY 私钥密码的添加 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-password-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 10:00:50 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26489</guid>
+
+					<description><![CDATA[内容一：给 SSL 证书 KEY 私钥添加密码 交互式给 SSL 证书 KEY 私钥添加密码 （补充：这里以给 eternalcenter.com.key） 内容二：取消 SSL 证书 KEY 私钥添加密码 2.1 交互式取消 SSL 证书 KEY 私钥添加密码 2.2 非交互式取消 SSL 证书 KEY 私钥添加密码]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：给 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<p>交互式给 SSL 证书 KEY 私钥添加密码</p>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -des -in eternalcenter.com.key -out one.eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以给 eternalcenter.com.key）</p>
+
+
+
+<h3>内容二：取消 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<h4>2.1 交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -out two.eternalcenter.com.key</code></pre>
+
+
+
+<h4>2.2 非交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -passin pass:eternalcenter -out two.eternalcenter.com.key</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 目标网站 SSL 证书的显示 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-display-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:39:10 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21971</guid>
+
+					<description><![CDATA[内容一：查看完整信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例） 内容二：查看主要信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：查看完整信息</h3>
+
+
+
+<pre class="wp-block-code"><code># openssl s_client -connect eternalcenter.com:443
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFKjCCBBKgAwIBAgISAxDxly99eBiarmHggFEmDJoMMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMTEyMTkxMzA4MzJaFw0yMjAzMTkxMzA4MzFaMBwxGjAYBgNVBAMT
+EWV0ZXJuYWxjZW50ZXIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAtCcCuOqBrWP4eo//VBEXh668EjwrE1eXz2CS4GIN4ddn0rS8LHGFOrB92R8E
+OnaYeTKpZjzNM3NA/AG/Gq5mTRZGTpyTasHEb/phwXdhrtJWdbMtQjGFSg8rXSB8
+cap5NGP/NxAy8FV0MbXftg5t9VgBoCMGUzioSHZTEjefq+/OZwlP7RzxZN3bwj1D
+61gWSw6q1X3bsi8ttwbkkiJfvjXo2KIeGOAnY10X+FPJmVa7jonhOuljrX4CYgnd
+SCxmsfgwGMUzRu27VB1rEbKqvSr6tb9KfwFiqsZd5tTi7RW6WMqA0VbDV7BbDqLP
+OzcturwRtXfzHjJxssy9zhnrQQIDAQABo4ICTjCCAkowDgYDVR0PAQH/BAQDAgWg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G
+A1UdDgQWBBQMGBCfBuZxTAS8VcBI/13ugqc2RDAfBgNVHSMEGDAWgBQULrMXt1hW
+y65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6
+Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iu
+b3JnLzAcBgNVHREEFTATghFldGVybmFsY2VudGVyLmNvbTBMBgNVHSAERTBDMAgG
+BmeBDAECATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3Bz
+LmxldHNlbmNyeXB0Lm9yZzCCAQYGCisGAQQB1nkCBAIEgfcEgfQA8gB3AN+lXqto
+gk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpzAAABfdMFzUsAAAQDAEgwRgIhAMFF
+1orPZPnpCyhzwX2xZAZjJnOmDGmBjAl0tHnX4nEWAiEAqZTUwjrdwZAL+kDAgpzG
+Me2RnGMseDBY8Oy2sefUgsAAdwBGpVXrdfqRIDC1oolp9PN9ESxBdL79SbiFq/L8
+cP5tRwAAAX3TBc1zAAAEAwBIMEYCIQDLhR0nbVHEIL1uw9hRuv/ZbFjf91W/M4Jp
+od7NTMQZbAIhAKEAAfmdu0nVHklyS2At1VValwQ6vNbqd0NQ85giG606MA0GCSqG
+SIb3DQEBCwUAA4IBAQB/s+rZEaNrlUyBVnbxv5X9NTBd8buBOkR1qVswlS1R2i8B
+pRjeJmgbiMzM2z5Mvx0yTIiCyXXUc3YaqoyxvddaQam9nlLGr0nKX9T5DkE7y0Fh
+Qg0/ievRQF86XnDqQBxDR32jj5A1nKEiJrNCqugCWTAABndW3tvzK5DOsF2BfjJC
+mcjwiKaSCjFVpf+KzLWS3UEW+DRTKOLBucXpenS7QEcQu4K6ShNSL7+K6UOZEbFu
+uCRjOawCJFF7EH5vzRBy696Fu4EmzCV+c4rV8K8EcuCCQQeOTWJ/93Jv6U6kGrmE
+P6wlcHFy1tZhTAmXf/qcpE3sGeH58OlNNiVmNJdH
+-----END CERTIFICATE-----
+subject=CN = eternalcenter.com
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4695 bytes and written 412 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: D63BC88824810A4D43ACE901AD4FF2D82073BC6F0D8B2DE71F6310CA1C87707F
+    Session-ID-ctx: 
+    Master-Key: A6836430C394B96DDD5552867D49802F94AAC8BF5E882100F0D27185CF5CFD6A946B94D87652E44A6684FC9781D16D90
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - bb be 55 e0 4b 6d c3 08-cd bc 45 6e 79 67 fc eb   ..U.Km....Enyg..
+    0010 - 30 d5 4c 8a 5a c8 f7 13-42 4b 1d 02 ce 94 c0 b8   0.L.Z...BK......
+    0020 - d7 cf f6 f0 ee 9d 49 5b-0a c8 a4 1a 8b dd 8a e0   ......I&#91;........
+    0030 - 66 83 52 9b 31 4d da 9e-d5 05 1a 70 ca e9 86 5e   f.R.1M.....p...^
+    0040 - f5 09 a1 1c 92 6b 64 90-b7 e1 0e ec 30 e2 26 68   .....kd.....0.&amp;h
+    0050 - 49 13 10 9e 3e a5 e0 13-a2 f1 7a 7c c5 ad 99 6c   I...&gt;.....z|...l
+    0060 - e9 f6 1d 46 5f cc f6 f9-c5 f6 05 49 53 78 7e ea   ...F_......ISx~.
+    0070 - 8c 17 eb 8d 96 c3 3f 92-fe e0 f0 f6 86 59 05 c8   ......?......Y..
+    0080 - d2 8c 27 6b 9d 65 38 20-84 d4 23 54 35 70 19 4d   ..'k.e8 ..#T5p.M
+    0090 - db 35 6d f4 44 50 d7 6e-a5 87 2b 32 e5 f8 42 88   .5m.DP.n..+2..B.
+    00a0 - 28 e2 ab 35 e1 2c 06 71-e5 b2 82 cb 3a 75 cc 72   (..5.,.q....:u.r
+    00b0 - ed ae e1 12 ff 82 6c 3a-3a 38 7a 8c 3c 9c f1 10   ......l::8z.&lt;...
+    00c0 - 78 b8 37 87 c3 a2 00 76-01 72 8c ef 3b 20 48 28   x.7....v.r..; H(
+
+    Start Time: 1644931899
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+closed</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+
+
+
+<h3>内容二：查看主要信息</h3>
+
+
+
+<pre class="wp-block-code"><code># echo | openssl s_client -connect scc.suse.com:443 | head -n 16
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 19 Dec 2021 15:12:46 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19886</guid>
+
+					<description><![CDATA[步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上 （步骤略） 步骤二：安装 certbot （补充：这里以在 Fedora 35 上安装 certbot 为例） 步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书 （补充：这里以1) 使用 mingyu.zhu@eternalcenter.com 邮箱2) 以非交互式的方式3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证4) 给 eternalcenter.com 域名申请 Let&#8217;s Encrypt SSL 证书为例） 步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书 （补充：1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥） 步骤五：延期 Let&#8217;s Encrypt SSL 证书 5.1 显示 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-将要申请-let-s-encrypt-ssl-的域名解析到要进行操作的服务器-ip-地址上">步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤二-安装-certbot">步骤二：安装 certbot</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install certbot</code></pre>
+
+
+
+<p>（补充：这里以在 Fedora 35 上安装 certbot 为例）</p>
+
+
+
+<h3 id="步骤三-使用-certbot-生成-let-s-encrypt-ssl-证书">步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certonly --email mingyu.zhu@eternalcenter.com -n --agree-tos --webroot -w /usr/share/nginx/html/ -d eternalcenter.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator webroot, Installer None
+Requesting a certificate for eternalcenter.com
+Performing the following challenges:
+http-01 challenge for eternalcenter.com
+Using the webroot path /usr/share/nginx/html for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+   Your certificate will expire on 2022-03-20. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用 mingyu.zhu@eternalcenter.com 邮箱<br>2) 以非交互式的方式<br>3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证<br>4) 给 eternalcenter.com 域名<br>申请 Let&#8217;s Encrypt SSL 证书为例<br>）</p>
+
+
+
+<h3 id="步骤四-查看已经生成的-let-s-encrypt-ssl-证书">步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certificates
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Found the following certs:
+  Certificate Name: eternalcenter.com
+    Serial Number: 3e8cdb74a1abfbf3d535ec1c3f8cb3e4e4c
+    Key Type: RSA
+    Domains: eternalcenter.com
+    Expiry Date: 2022-03-20 13:48:48+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</code></pre>
+
+
+
+<p>（<br>补充：<br>1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥<br>2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥<br>）</p>
+
+
+
+<h3 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">步骤五：延期 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<h4 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">5.1 显示 Let&#8217;s Encrypt SSL 证书的延期策略</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/letsencrypt/renewal/eternalcenter.com.conf 
+# renew_before_expiry = 30 days
+version = 1.20.0
+archive_dir = /etc/letsencrypt/archive/eternalcenter.com
+cert = /etc/letsencrypt/live/eternalcenter.com/cert.pem
+privkey = /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+chain = /etc/letsencrypt/live/eternalcenter.com/chain.pem
+fullchain = /etc/letsencrypt/live/eternalcenter.com/fullchain.pem</code></pre>
+
+
+
+<p>（补充：可以看出 Let&#8217;s Encrypt SSL 证书是在过期前 30 天才能更新）</p>
+
+
+
+<h4 id="5-2-手动延期-let-s-encrypt-ssl-证书">5.2 手动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h4 id="5-3-自动延期-let-s-encrypt-ssl-证书">5.3 自动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 0 */30 * * /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以每过 30 天的 0 时 0 分延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h3 id="步骤六-let-s-encrypt-ssl-证书的生成限制">步骤六：Let’s Encrypt SSL 证书的生成限制</h3>
+
+
+
+<p>1) 一个域名申请次数不能超过 5 次/周<br>2) 允许申请失败次数不能超过 5 次/时<br>3) 属于同一个顶级域名的二级域名申请次数不能超过 20 次/周<br>4) 申请请求频率不能超过 20 次/秒<br>5) 一个 IP 地址创建用户个数不能超过 10 个/3 小时<br>6) 一个用户最多 pending 审核的数不能超过 300 个</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 curl （测试网页访问）</title>
+		<link>https://eternalcenter-sep-2022.github.io/curl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 28 Jul 2021 08:00:30 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17159</guid>
+
+					<description><![CDATA[内容一：测试网页可以被访问的案例 （补充：这里以直接访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容二：测试网页访问速度的案例 2.1 案例一：显示测试过程 （补充：这里以访问并测试 https://eternalcenter-sep-2022.github.io，并显示测试过程为例）/ 2.2 案例二：不显示测试过程 （补充：这里以访问并测试 https://eternalcenter-sep-2022.github.io，并不显示测试过程为例）/ 内容三：测试使用代理访问网页的案例 3.1 案例一：使用代理 （补充：这里以通过 proxy.example.com:8080 代理访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 3.2 案例二：使用代理并使用用户进行验证 （补充：这里以通过 proxy.example.com:8080 代理并使用 proxy user 和 password 进行验证访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容四： 测试使用证书访问网页的案例 （补充：这里以通过 eternalcenter.com.pem 证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容五：其他测试访问网页的案例 5.1 案例一：将网页下载后另存为别的文件 （补充：这里以下载 https://eternalcenter-sep-2022.github.io/ 并另存为 eternalcentre.com 为例） 5.2 案例二：静默下载的案例 （补充：这里以静默下载 https://eternalcenter-sep-2022.github.io/ 为例） 5.3 案例三：不使用安全证书访问网页 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/curl/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 curl （测试网页访问）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3> 内容一：测试网页可以被访问的案例 </h3>
+
+
+
+<pre class="wp-block-code"><code># curl -v -k https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p> （补充：这里以直接访问 https://eternalcenter-sep-2022.github.io/ 网页为例） </p>
+
+
+
+<h3>内容二：测试网页访问速度的案例</h3>
+
+
+
+<h4>2.1 案例一：显示测试过程</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -o /dev/null -s -w %{http_code}:%{http_connect}:%{content_type}:%{time_namelookup}:%{time_redirect}:%{time_pretransfer}:%{time_connect}:%{time_starttransfer}:%{time_total}:%{speed_download} https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以访问并测试  https://eternalcenter-sep-2022.github.io，并显示测试过程为例）/</p>
+
+
+
+<h4>2.2 案例二：不显示测试过程</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -o /dev/null -w %{http_code}:%{http_connect}:%{content_type}:%{time_namelookup}:%{time_redirect}:%{time_pretransfer}:%{time_connect}:%{time_starttransfer}:%{time_total}:%{speed_download} https://
+eternalcenter.com</code></pre>
+
+
+
+<p> （补充：这里以访问并测试   https://eternalcenter-sep-2022.github.io，并不显示测试过程为例）/ </p>
+
+
+
+<h3>内容三：测试使用代理访问网页的案例</h3>
+
+
+
+<h4>3.1 案例一：使用代理</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v --proxy proxy.example.com:8080 https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以通过 proxy.example.com:8080 代理访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h4>3.2 案例二：使用代理并使用用户进行验证</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v --&lt;proxy user&gt; user:&lt;password&gt; --proxy proxy.example.com:8080 https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以通过 proxy.example.com:8080 代理并使用 proxy user 和 password 进行验证访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h3>内容四： 测试使用证书访问网页的案例 </h3>
+
+
+
+<pre class="wp-block-code"><code># curl -v -k https://eternalcenter-sep-2022.github.io/ --cacert /eternalcenter.com.pem</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com.pem 证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h3>内容五：其他测试访问网页的案例</h3>
+
+
+
+<h4>5.1 案例一：将网页下载后另存为别的文件</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v https://eternalcenter-sep-2022.github.io/ -o eternalcentre.com</code></pre>
+
+
+
+<p>（补充：这里以下载 https://eternalcenter-sep-2022.github.io/ 并另存为 eternalcentre.com 为例）</p>
+
+
+
+<h4>5.2 案例二：静默下载的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v https://eternalcenter-sep-2022.github.io/ -o eternalcentre.com --silent</code></pre>
+
+
+
+<p>（补充：这里以静默下载 https://eternalcenter-sep-2022.github.io/ 为例）</p>
+
+
+
+<h4>5.3 案例三：不使用安全证书访问网页</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -k https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># curl https://eternalcenter-sep-2022.github.io/ --insecure</code></pre>
+
+
+
+<p>（补充：这里以不使用安全证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Django MVT 模式简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-mvt/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 30 Apr 2021 08:06:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14196</guid>
+
+					<description><![CDATA[内容一：Django MVT 模式的视图 内容二：Django MVT 模式简介 2.1 访问页面 Browser &#8211;&#62; URL Dispatcher &#8211;&#62; Views Models &#8211;&#62; Database 2.2 应答页面 Database &#8211;&#62; Views Models &#8211;&#62; URL Dispatcher &#8211;&#62; Browser]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Django MVT 模式的视图</h3>
+
+
+
+<pre class="wp-block-code"><code>         URL Dispatcher
+
+Browser                  Views Models database
+
+         Cache Templates</code></pre>
+
+
+
+<h3>内容二：Django MVT 模式简介</h3>
+
+
+
+<h4>2.1 访问页面</h4>
+
+
+
+<p>Browser &#8211;&gt; URL Dispatcher &#8211;&gt; Views Models &#8211;&gt; Database</p>
+
+
+
+<h4>2.2 应答页面</h4>
+
+
+
+<p>Database &#8211;&gt; Views Models &#8211;&gt; URL Dispatcher &#8211;&gt; Browser</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SSL 证书的生成 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Apr 2021 07:50:42 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14032</guid>
+
+					<description><![CDATA[内容一：SSL 证书简介 1.1 SSL 证书包含的文件 KEY 私钥、CRT 公钥、PFX 公私钥、CSR 证书签名请求文件 1.2 SSL 证书包含的文件简介 1.2.1 KEY 私钥 KEY 私钥，放置在服务器上，属于机密文件，不能被其他人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER 1.2.2 CRT 公钥 CRT 公钥，放置在服务器上，可以被其它人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER 1.2.3 PFX 公私钥 PFX 同时包含公钥和私钥，放置在服务器上。在 Linux 上通常会分别使用 KEY 和 CRT 两个文件，而 Windows 会使用同时包含公钥和私钥的 PFX &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-openssl/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SSL 证书的生成 （OpenSSL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：SSL 证书简介</h3>
+
+
+
+<h4>1.1 SSL 证书包含的文件</h4>
+
+
+
+<p>KEY 私钥、CRT 公钥、PFX 公私钥、CSR 证书签名请求文件</p>
+
+
+
+<h4>1.2 SSL 证书包含的文件简介</h4>
+
+
+
+<h5>1.2.1 KEY 私钥</h5>
+
+
+
+<p>KEY 私钥，放置在服务器上，属于机密文件，不能被其他人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER</p>
+
+
+
+<h5>1.2.2 CRT 公钥</h5>
+
+
+
+<p>CRT 公钥，放置在服务器上，可以被其它人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER</p>
+
+
+
+<h5>1.2.3 PFX 公私钥</h5>
+
+
+
+<p>PFX 同时包含公钥和私钥，放置在服务器上。在 Linux 上通常会分别使用 KEY 和 CRT 两个文件，而 Windows 会使用同时包含公钥和私钥的 PFX 文件</p>
+
+
+
+<h5>1.2.4 CSR 证书签名请求文件</h5>
+
+
+
+<p>CSR 全名 Certificate Signing Request，即证书签名请求文件。用于提供给证书供应商申请证书</p>
+
+
+
+<h3>内容二：生成 SSL 证书</h3>
+
+
+
+<h4>2.1 生成 KEY 私钥</h4>
+
+
+
+<h5>2.1.1 同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<h5>2.1.1.1 交互式同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key -out eternalcenter.com.csr</code></pre>
+
+
+
+<p>（补充：这里以同时生成长度 4096 位，加密格式为 512 的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+
+
+
+<p>（注意：后面还有国家、州或省、城市、组织、部门、域名和邮箱地址的信息需要输入此命令后手动填写）</p>
+
+
+
+<h5 id="1-2-非交互式生成-ssl-证书">2.1.1.2 非交互式同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -out eternalcenter.com.csr -keyout eternalcenter.com.key -subj "/C=CN/ST=Sichuan/L=Chengdu/O=Eternal Center/OU=Mingyu Zhu/CN=eternalcenter.com/emailAddress=contact@mingyuzhu.com"</code></pre>
+
+
+
+<p>（<br>补充：这里以同时生成<br>1) 长度为 4096 位<br>2) 加密格式为 512<br>3) 国家为 CN<br>4) 州或省为 Sichuan<br>5) 城市为 Chengdu<br>6) 组织为 Eternal Center<br>7) 部门为 Mingyu Zhu<br>8) 域名为 eternalcenter.com<br>9) 邮箱地址为 contact@mingyuzhu.com<br>的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例<br>）</p>
+
+
+
+<h5>2.1.2 只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<h5>2.1.2.1 交互式只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以同时生成长度 4096 位，加密格式为 512 的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+
+
+
+<p>（注意：后面还有国家、州或省、城市、组织、部门、域名和邮箱地址的信息需要输入此命令后手动填写）</p>
+
+
+
+<h5>2.1.2.2 非交互式只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key -subj "/C=CN/ST=Sichuan/L=Chengdu/O=Eternal Center/OU=Mingyu Zhu/CN=eternalcenter.com/emailAddress=contact@mingyuzhu.com"</code></pre>
+
+
+
+<p>（<br>补充：这里以同时生成<br>1) 长度为 4096 位<br>2) 加密格式为 512<br>3) 国家为 CN<br>4) 州或省为 Sichuan<br>5) 城市为 Chengdu<br>6) 组织为 Eternal Center<br>7) 部门为 Mingyu Zhu<br>8) 域名为 eternalcenter.com<br>9) 邮箱地址为 contact@mingyuzhu.com<br>的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例<br>）</p>
+
+
+
+<h4>2.2 生成 CRT 公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in eternalcenter.com.key -out eternalcenter.com.crt -pubout -outform PEM</code></pre>
+
+
+
+<p>（补充：这里以使用 KEY 私钥 eternalcenter.com.key 生成 CRT 公钥 eternalcenter.com.crt 为例）</p>
+
+
+
+<h3 id="内容二-测试-ssl-证书">内容三：查看 SSL 证书</h3>
+
+
+
+<h4>3.1 查看 KEY 私钥</h4>
+
+
+
+<pre class="wp-block-code"><code># cat eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以查看 KEY 私钥 eternalcenter.com.key 为例）</p>
+
+
+
+<h4>3.2 查看 CRT 公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># cat eternalcenter.com.crt</code></pre>
+
+
+
+<p>（补充：这里以查看 CRT 公钥 eternalcenter.com.crt 为例）</p>
+
+
+
+<h4>3.3 查看 CSR 证书签名请求文件</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl req -in eternalcenter.com.csr -noout -text</code></pre>
+
+
+
+<p>（补充：这里以查看 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 12:57:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8676</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 3 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 文中的 python 系统名和 mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器要关闭防火墙3) 服务器要关闭 SELinux4) 服务器系统要配置好可用的软件源5) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：1) 这里以安装 1.11.6 版本的 django 为例2) 如果向直接安装最新版本的 django 可以使用 pip install django &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 3 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名和 mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3 id="具体的操作步骤-步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器要关闭防火墙<br>3) 服务器要关闭 SELinux<br>4) 服务器系统要配置好可用的软件源<br>5) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# yum -y install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django==1.11.6
+Collecting django==1.11.6
+  Downloading https://files.pythonhosted.org/packages/82/33/f9d2871f3aed5062661711bf91b3ebb03daa52cc0e1c37925f3e0c4508c5/Django-1.11.6-py2.py3-none-any.whl (6.9MB)
+    100% |████████████████████████████████| 7.0MB 12kB/s 
+Collecting pytz (from django==1.11.6)
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='pypi.org', port=443): Read timed out. (read timeout=15)",)': /simple/pytz/
+  Downloading https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl (509kB)
+    100% |████████████████████████████████| 512kB 15kB/s 
+Installing collected packages: pytz, django
+Successfully installed django-1.11.6 pytz-2019.3
+You are using pip version 9.0.3, however version 20.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(django_env) &#91;root@python project]# </code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以安装 1.11.6 版本的 django 为例<br>2) 如果向直接安装最新版本的 django 可以使用 pip install django 命令<br>）</p>
+
+
+
+<h4 id="2-5-检验-django-环境是否成功">2.5 检验 Django 环境是否成功</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# python
+Python 3.6.8 (default, Aug  7 2019, 17:28:10) 
+&#91;GCC 4.8.5 20150623 (Red Hat 4.8.5-39)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import django
+&gt;&gt;&gt; django.__version__
+'1.11.6'
+&gt;&gt;&gt; exit()</code></pre>
+
+
+
+<h3 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h4 id="3-3-django-项目目录介绍">3.3 Django 项目目录介绍</h4>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/<strong>init</strong>.py 空文件，通知 Python 此项目是一个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-启动-django-服务4-1-启动-django-服务">步骤四：启动 Django 服务</h3>
+
+
+
+<h4 id="步骤四-启动-django-服务4-1-启动-django-服务">4.1 启动 Django 服务</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python manage.py runserver 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 27, 2020 - 05:35:30
+Django version 1.11.6, using settings 'mysite.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.</code></pre>
+
+
+
+<p>（补充：这里以使用 8000 端口开启网站服务为例）</p>
+
+
+
+<h4 id="4-2-测试-django-服务">4.2 测试 Django 服务</h4>
+
+
+
+<p>通过浏览器访问以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/admin</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

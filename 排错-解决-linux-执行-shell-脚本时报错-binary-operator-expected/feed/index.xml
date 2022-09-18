@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: [排错] 解决 Linux 执行 Shell 脚本时报错 “binary operator expected”	</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/%E6%8E%92%E9%94%99-%E8%A7%A3%E5%86%B3-linux-%E6%89%A7%E8%A1%8C-shell-%E8%84%9A%E6%9C%AC%E6%97%B6%E6%8A%A5%E9%94%99-binary-operator-expected/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/%e6%8e%92%e9%94%99-%e8%a7%a3%e5%86%b3-linux-%e6%89%a7%e8%a1%8c-shell-%e8%84%9a%e6%9c%ac%e6%97%b6%e6%8a%a5%e9%94%99-binary-operator-expected/</link>
+	<description></description>
+	<lastBuildDate>Sat, 18 Jun 2022 09:12:51 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+</channel>
+</rss>

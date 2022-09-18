@@ -1,0 +1,1841 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Project (项目) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/project/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 11 Jul 2022 12:22:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux SSL 证书 KEY 私钥密码的添加 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-password-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 10:00:50 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26489</guid>
+
+					<description><![CDATA[内容一：给 SSL 证书 KEY 私钥添加密码 交互式给 SSL 证书 KEY 私钥添加密码 （补充：这里以给 eternalcenter.com.key） 内容二：取消 SSL 证书 KEY 私钥添加密码 2.1 交互式取消 SSL 证书 KEY 私钥添加密码 2.2 非交互式取消 SSL 证书 KEY 私钥添加密码]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：给 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<p>交互式给 SSL 证书 KEY 私钥添加密码</p>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -des -in eternalcenter.com.key -out one.eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以给 eternalcenter.com.key）</p>
+
+
+
+<h3>内容二：取消 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<h4>2.1 交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -out two.eternalcenter.com.key</code></pre>
+
+
+
+<h4>2.2 非交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -passin pass:eternalcenter -out two.eternalcenter.com.key</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 目标网站 SSL 证书的显示 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-display-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:39:10 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21971</guid>
+
+					<description><![CDATA[内容一：查看完整信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例） 内容二：查看主要信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：查看完整信息</h3>
+
+
+
+<pre class="wp-block-code"><code># openssl s_client -connect eternalcenter.com:443
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFKjCCBBKgAwIBAgISAxDxly99eBiarmHggFEmDJoMMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMTEyMTkxMzA4MzJaFw0yMjAzMTkxMzA4MzFaMBwxGjAYBgNVBAMT
+EWV0ZXJuYWxjZW50ZXIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAtCcCuOqBrWP4eo//VBEXh668EjwrE1eXz2CS4GIN4ddn0rS8LHGFOrB92R8E
+OnaYeTKpZjzNM3NA/AG/Gq5mTRZGTpyTasHEb/phwXdhrtJWdbMtQjGFSg8rXSB8
+cap5NGP/NxAy8FV0MbXftg5t9VgBoCMGUzioSHZTEjefq+/OZwlP7RzxZN3bwj1D
+61gWSw6q1X3bsi8ttwbkkiJfvjXo2KIeGOAnY10X+FPJmVa7jonhOuljrX4CYgnd
+SCxmsfgwGMUzRu27VB1rEbKqvSr6tb9KfwFiqsZd5tTi7RW6WMqA0VbDV7BbDqLP
+OzcturwRtXfzHjJxssy9zhnrQQIDAQABo4ICTjCCAkowDgYDVR0PAQH/BAQDAgWg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G
+A1UdDgQWBBQMGBCfBuZxTAS8VcBI/13ugqc2RDAfBgNVHSMEGDAWgBQULrMXt1hW
+y65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6
+Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iu
+b3JnLzAcBgNVHREEFTATghFldGVybmFsY2VudGVyLmNvbTBMBgNVHSAERTBDMAgG
+BmeBDAECATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3Bz
+LmxldHNlbmNyeXB0Lm9yZzCCAQYGCisGAQQB1nkCBAIEgfcEgfQA8gB3AN+lXqto
+gk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpzAAABfdMFzUsAAAQDAEgwRgIhAMFF
+1orPZPnpCyhzwX2xZAZjJnOmDGmBjAl0tHnX4nEWAiEAqZTUwjrdwZAL+kDAgpzG
+Me2RnGMseDBY8Oy2sefUgsAAdwBGpVXrdfqRIDC1oolp9PN9ESxBdL79SbiFq/L8
+cP5tRwAAAX3TBc1zAAAEAwBIMEYCIQDLhR0nbVHEIL1uw9hRuv/ZbFjf91W/M4Jp
+od7NTMQZbAIhAKEAAfmdu0nVHklyS2At1VValwQ6vNbqd0NQ85giG606MA0GCSqG
+SIb3DQEBCwUAA4IBAQB/s+rZEaNrlUyBVnbxv5X9NTBd8buBOkR1qVswlS1R2i8B
+pRjeJmgbiMzM2z5Mvx0yTIiCyXXUc3YaqoyxvddaQam9nlLGr0nKX9T5DkE7y0Fh
+Qg0/ievRQF86XnDqQBxDR32jj5A1nKEiJrNCqugCWTAABndW3tvzK5DOsF2BfjJC
+mcjwiKaSCjFVpf+KzLWS3UEW+DRTKOLBucXpenS7QEcQu4K6ShNSL7+K6UOZEbFu
+uCRjOawCJFF7EH5vzRBy696Fu4EmzCV+c4rV8K8EcuCCQQeOTWJ/93Jv6U6kGrmE
+P6wlcHFy1tZhTAmXf/qcpE3sGeH58OlNNiVmNJdH
+-----END CERTIFICATE-----
+subject=CN = eternalcenter.com
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4695 bytes and written 412 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: D63BC88824810A4D43ACE901AD4FF2D82073BC6F0D8B2DE71F6310CA1C87707F
+    Session-ID-ctx: 
+    Master-Key: A6836430C394B96DDD5552867D49802F94AAC8BF5E882100F0D27185CF5CFD6A946B94D87652E44A6684FC9781D16D90
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - bb be 55 e0 4b 6d c3 08-cd bc 45 6e 79 67 fc eb   ..U.Km....Enyg..
+    0010 - 30 d5 4c 8a 5a c8 f7 13-42 4b 1d 02 ce 94 c0 b8   0.L.Z...BK......
+    0020 - d7 cf f6 f0 ee 9d 49 5b-0a c8 a4 1a 8b dd 8a e0   ......I&#91;........
+    0030 - 66 83 52 9b 31 4d da 9e-d5 05 1a 70 ca e9 86 5e   f.R.1M.....p...^
+    0040 - f5 09 a1 1c 92 6b 64 90-b7 e1 0e ec 30 e2 26 68   .....kd.....0.&amp;h
+    0050 - 49 13 10 9e 3e a5 e0 13-a2 f1 7a 7c c5 ad 99 6c   I...&gt;.....z|...l
+    0060 - e9 f6 1d 46 5f cc f6 f9-c5 f6 05 49 53 78 7e ea   ...F_......ISx~.
+    0070 - 8c 17 eb 8d 96 c3 3f 92-fe e0 f0 f6 86 59 05 c8   ......?......Y..
+    0080 - d2 8c 27 6b 9d 65 38 20-84 d4 23 54 35 70 19 4d   ..'k.e8 ..#T5p.M
+    0090 - db 35 6d f4 44 50 d7 6e-a5 87 2b 32 e5 f8 42 88   .5m.DP.n..+2..B.
+    00a0 - 28 e2 ab 35 e1 2c 06 71-e5 b2 82 cb 3a 75 cc 72   (..5.,.q....:u.r
+    00b0 - ed ae e1 12 ff 82 6c 3a-3a 38 7a 8c 3c 9c f1 10   ......l::8z.&lt;...
+    00c0 - 78 b8 37 87 c3 a2 00 76-01 72 8c ef 3b 20 48 28   x.7....v.r..; H(
+
+    Start Time: 1644931899
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+closed</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+
+
+
+<h3>内容二：查看主要信息</h3>
+
+
+
+<pre class="wp-block-code"><code># echo | openssl s_client -connect scc.suse.com:443 | head -n 16
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WordPress 值得使用的主题和插件</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2021 14:26:53 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20391</guid>
+
+					<description><![CDATA[主题 Twenty Seventeen Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。 插件 All In One WP Security All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。 Easy WP SMTP Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。 Simply Static Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。 WP-Optimize Cache WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。 Health Check &#38; Troubleshooting &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/" class="more-link">Continue reading<span class="screen-reader-text"> "WordPress 值得使用的主题和插件"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>主题</h2>
+
+
+
+<h3>Twenty Seventeen</h3>
+
+
+
+<p>Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。</p>
+
+
+
+<h2>插件</h2>
+
+
+
+<h3>All In One WP Security</h3>
+
+
+
+<p>All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。</p>
+
+
+
+<h3>Easy WP SMTP</h3>
+
+
+
+<p>Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。</p>
+
+
+
+<h3>Simply Static</h3>
+
+
+
+<p>Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。</p>
+
+
+
+<h3>WP-Optimize Cache</h3>
+
+
+
+<p>WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。</p>
+
+
+
+<h3>Health Check &amp; Troubleshooting</h3>
+
+
+
+<p>Health Check &amp; Troubleshooting 是一个开源的 WordPress 网站健康度检测插件，可以检测网站的各项健康指标。</p>
+
+
+
+<h3>Username Changer</h3>
+
+
+
+<p>Username Changer 是一个开源的修改 WordPress 用户名的插件，可以修改用户名</p>
+
+
+
+<h3>Edit Author Slug</h3>
+
+
+
+<p>Edit Author Slug 是一个开源的修改 WordPress 用户名下文章链接的插件，可以修改用户发布文章的链接，默认情况下用户发布文章的链接是：https://&lt;domain/ name&gt;/author/&lt;username&gt;/ </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 19 Dec 2021 15:12:46 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19886</guid>
+
+					<description><![CDATA[步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上 （步骤略） 步骤二：安装 certbot （补充：这里以在 Fedora 35 上安装 certbot 为例） 步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书 （补充：这里以1) 使用 mingyu.zhu@eternalcenter.com 邮箱2) 以非交互式的方式3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证4) 给 eternalcenter.com 域名申请 Let&#8217;s Encrypt SSL 证书为例） 步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书 （补充：1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥） 步骤五：延期 Let&#8217;s Encrypt SSL 证书 5.1 显示 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-将要申请-let-s-encrypt-ssl-的域名解析到要进行操作的服务器-ip-地址上">步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤二-安装-certbot">步骤二：安装 certbot</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install certbot</code></pre>
+
+
+
+<p>（补充：这里以在 Fedora 35 上安装 certbot 为例）</p>
+
+
+
+<h3 id="步骤三-使用-certbot-生成-let-s-encrypt-ssl-证书">步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certonly --email mingyu.zhu@eternalcenter.com -n --agree-tos --webroot -w /usr/share/nginx/html/ -d eternalcenter.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator webroot, Installer None
+Requesting a certificate for eternalcenter.com
+Performing the following challenges:
+http-01 challenge for eternalcenter.com
+Using the webroot path /usr/share/nginx/html for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+   Your certificate will expire on 2022-03-20. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用 mingyu.zhu@eternalcenter.com 邮箱<br>2) 以非交互式的方式<br>3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证<br>4) 给 eternalcenter.com 域名<br>申请 Let&#8217;s Encrypt SSL 证书为例<br>）</p>
+
+
+
+<h3 id="步骤四-查看已经生成的-let-s-encrypt-ssl-证书">步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certificates
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Found the following certs:
+  Certificate Name: eternalcenter.com
+    Serial Number: 3e8cdb74a1abfbf3d535ec1c3f8cb3e4e4c
+    Key Type: RSA
+    Domains: eternalcenter.com
+    Expiry Date: 2022-03-20 13:48:48+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</code></pre>
+
+
+
+<p>（<br>补充：<br>1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥<br>2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥<br>）</p>
+
+
+
+<h3 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">步骤五：延期 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<h4 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">5.1 显示 Let&#8217;s Encrypt SSL 证书的延期策略</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/letsencrypt/renewal/eternalcenter.com.conf 
+# renew_before_expiry = 30 days
+version = 1.20.0
+archive_dir = /etc/letsencrypt/archive/eternalcenter.com
+cert = /etc/letsencrypt/live/eternalcenter.com/cert.pem
+privkey = /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+chain = /etc/letsencrypt/live/eternalcenter.com/chain.pem
+fullchain = /etc/letsencrypt/live/eternalcenter.com/fullchain.pem</code></pre>
+
+
+
+<p>（补充：可以看出 Let&#8217;s Encrypt SSL 证书是在过期前 30 天才能更新）</p>
+
+
+
+<h4 id="5-2-手动延期-let-s-encrypt-ssl-证书">5.2 手动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h4 id="5-3-自动延期-let-s-encrypt-ssl-证书">5.3 自动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 0 */30 * * /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以每过 30 天的 0 时 0 分延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h3 id="步骤六-let-s-encrypt-ssl-证书的生成限制">步骤六：Let’s Encrypt SSL 证书的生成限制</h3>
+
+
+
+<p>1) 一个域名申请次数不能超过 5 次/周<br>2) 允许申请失败次数不能超过 5 次/时<br>3) 属于同一个顶级域名的二级域名申请次数不能超过 20 次/周<br>4) 申请请求频率不能超过 20 次/秒<br>5) 一个 IP 地址创建用户个数不能超过 10 个/3 小时<br>6) 一个用户最多 pending 审核的数不能超过 300 个</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 博客 WordPress 数据去隐私化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 16:12:50 +0000</pubDate>
+				<category><![CDATA[Automation Maintenance (自动化运维)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19868</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：Shell 博客 WordPress 数据去隐私化作用：修改 WordPress 备份中某个用户的密码并再次进行备份 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份6. newfilename=clone-eternalcenter-backup #新备份的文件名7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户8. newpw=eternalcenter #新的用户密码9. dbuser=ec #用于连接数据库的用户10. dbuserpw=eternalcenter #用于连接数据库的密码11. db=ec #网站数据库数据在数据库中的库 注意 1. 本地需要已经搭建好 LNMP 平台2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 博客 WordPress 数据去隐私化"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：Shell 博客 WordPress 数据去隐私化<br>作用：修改 WordPress 备份中某个用户的密码并再次进行备份</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录<br>4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份<br>5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份<br>6. newfilename=clone-eternalcenter-backup #新备份的文件名<br>7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户<br>8. newpw=eternalcenter #新的用户密码<br>9. dbuser=ec #用于连接数据库的用户<br>10. dbuserpw=eternalcenter #用于连接数据库的密码<br>11. db=ec #网站数据库数据在数据库中的库</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限<br>3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8220;drop database $db;&#8221;“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+cpath="/srv/www/htdocs"
+sqlfile=eternalcenter/eternalcenter.sql
+tarfile=eternalcenter/eternalcenter.tar.gz
+newfilename=clone-eternalcenter-backup
+user='Mingyu Zhu'
+newpw=eternalcenter
+dbuser=ec
+dbuserpw=eternalcenter
+db=ec
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+dir=`pwd`
+
+sudo systemctl stop nginx
+sudo systemctl stop php-fpm
+
+mkdir -p $path/$newfilename-$date &amp;&gt; /dev/null
+
+mysql -uroot -p'eternalcenter' -e "drop database $db;"
+mysql -uroot -p'eternalcenter' -e "create database $db;"
+mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+mysql -uroot -p'eternalcenter' -e "grant all privileges on $db.* to \"$dbuser\"@'localhost';"
+mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+mysql -uroot -p'eternalcenter' -e "update $db.ec_users set user_pass = md5(\'$newpw\') where user_login = \'$user\';"
+sudo rm -rf $cpath/*
+sudo tar -zxvf $tarfile -C $cpath &amp;&gt; /dev/null
+cd $cpath
+sudo sed -i "s/define('DB_PASSWORD', .*);/define('DB_PASSWORD', \'$dbuserpw\');/" wp-config.php
+
+mysqldump -uroot -p'eternalcenter' $db &gt; $path/$newfilename-$date/$newfilename-$date.sql
+sudo tar -zcvf $path/$newfilename-$date/$newfilename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+cd $dir
+
+sudo systemctl start nginx
+sudo systemctl start php-fpm
+
+cd $dir</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.scripts.space_sub.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-scripts-space_sub-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:38:16 +0000</pubDate>
+				<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17412</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>import subprocess
+
+def script_space(space_server_name):
+    space_all_out = subprocess.check_output('ansible -m shell -a \'df\' %s | egrep -v \'Filesystem|tmpfs|CHANGED\' | grep \/ '%space_server_name, shell=True)
+    return space_all_out</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.scripts.os_sub.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-scripts-os_sub-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:37:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17410</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>import subprocess
+
+def script_os_distributor(os_distributor_server):
+    distributor_out = subprocess.check_output('ansible -m shell -a \'lsb_release -a\' %s | grep \'Distributor ID:\' | awk -F\':\' \'{print $2}\''%os_distributor_server, shell=True)
+    return distributor_out
+
+def script_os_release(os_release_server):
+    release_out = subprocess.check_output('ansible -m shell -a \'lsb_release -a\' %s | grep \'Release:\' | awk -F\':\' \'{print $2}\''%os_release_server, shell=True)
+    return release_out
+
+def script_os_kernel(os_kernel_server):
+    kernel_out = subprocess.check_output('ansible -m shell -a \'uname -r\' %s | grep \-'%os_kernel_server, shell=True)
+    return kernel_out
+
+def script_os_uptime(os_uptime_server):
+    uptime_out = subprocess.check_output('ansible -m shell -a \'uptime\' %s | grep \, | awk \'{print $3,$4}\' | awk -F\',\' \'{print $1}\''%os_uptime_server, shell=True)
+    return uptime_out</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.scripts.nc_sub.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-scripts-nc_sub-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:35:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17408</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>import subprocess
+
+def script_nc_name(space_nc_name):
+    nc_name_out = subprocess.check_output('ansible -m shell -a \'ifconfig\' %s | ifconfig | egrep flags= | awk \'{print $1}\' | awk -F\':\' \'{print $1}\''%space_nc_name, shell=True)
+    return nc_name_out
+
+def script_nc_ip(space_nc_name):
+    nc_ip_out = subprocess.check_output('ansible -m shell -a \'ifconfig\' %s | egrep \"&#91;0-9]{1,3}\.&#91;0-9]{1,3}\.&#91;0-9]{1,3}\.&#91;0-9]{1,3}\" | awk \'{print $2}\''%space_nc_name, shell=True)
+    return nc_ip_out</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.scripts.mem_sub.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-scripts-mem_sub-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:34:36 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17406</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>import subprocess
+
+def script_mem_size(sname):
+    mem_size_out = subprocess.check_output('ansible -m shell -a \'free\' %s | grep -i mem | awk \'{print $2}\''%sname, shell=True)
+    return(mem_size_out)
+
+def script_mem_usage(sname):
+    mem_usage_out = subprocess.check_output('ansible -m shell -a \'free\' %s | grep -i mem | awk \'{print $3}\''%sname, shell=True)
+    return(mem_usage_out)
+
+def script_mem_idleness(sname):
+    mem_idleness_out = subprocess.check_output('ansible -m shell -a \'free\' %s | grep -i mem | awk \'{print $4}\''%sname, shell=True)
+    return(mem_idleness_out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.scripts.cpu_sub.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-scripts-cpu_sub-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:32:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17404</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>import subprocess
+
+def script_cpu_core(cpu_server_name):
+    cpu_core_out = subprocess.check_output('ansible -m shell -a \'cat /proc/cpuinfo | egrep "core id|physical id" | tr -d "\n" | sed s/physical/\\nphysical/g | grep -v ^$ | sort | uniq | wc -l\' %s | tail -1'%cpu_server_name, shell=True)
+    return(cpu_core_out)
+
+def script_cpu_qty(qty_server_name):
+    cpu_qty_out = subprocess.check_output('ansible -m shell -a \'cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l\' %s | tail -1'%qty_server_name, shell=True)
+    return(cpu_qty_out)
+
+def script_cpu_usage(cpu_usage_server_name):
+    cpu_usage_out = subprocess.check_output('ansible -m shell -a \'top -bn 1\' %s | grep \'Cpu\' | awk -F\',\' \'{print $1 }\' | awk \'{print $2}\''%cpu_usage_server_name, shell=True)
+    return(cpu_usage_out)
+
+def script_cpu_idleness(cpu_idleness_server_name):
+    cpu_idleness_out = subprocess.check_output('ansible -m shell -a \'top -bn 1\' %s | grep \'Cpu\' | awk -F\',\' \'{print $4 }\' | awk \'{print $1}\''%cpu_idleness_server_name, shell=True)
+    return(cpu_idleness_out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.success.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-success-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:29:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17399</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;success&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;p&gt;success&lt;/p&gt;
+
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;form action="/server/server_list"&gt; 
+                &lt;input type="submit" value="return"/&gt; 
+                &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.server_register.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-server_register-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:28:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17396</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;server_register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;table&gt;
+        &lt;form action="/server/server_register/" method="POST"&gt;
+        {% csrf_token %}
+            &lt;tr&gt;
+                &lt;label&gt;server_name：&lt;/label&gt;&lt;input type="text" name="tserver_name"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;label&gt;server_main_ip：&lt;/label&gt;&lt;input type="text" name="tserver_main_ip"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="submit" value="regsiter"/&gt;
+                &lt;/td&gt;
+        &lt;/form&gt;
+                &lt;td&gt;
+                    &lt;form action="/server/server_list"&gt;
+                    &lt;input type="submit" value="return"/&gt;
+                &lt;/form&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.server_list.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-server_list-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:27:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17393</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;server&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            &lt;form action="/server/server_register"&gt; 
+            &lt;input type="submit" value="server_register"/&gt; 
+            &lt;/form&gt;
+            &lt;/td&gt;
+
+            &lt;td&gt;
+            &lt;form action="/server/admin_register"&gt; 
+            &lt;input type="submit" value="admin_register"/&gt; 
+            &lt;/form&gt;
+            &lt;/td&gt;
+
+            &lt;td&gt;
+            &lt;form action="/server/server_bind_admin"&gt; 
+            &lt;input type="submit" value="server_bind_admin"/&gt; 
+            &lt;/form&gt;
+            &lt;/td&gt;
+
+            &lt;form action="/server/server_list/" method="POST"&gt;
+            {% csrf_token %}
+            &lt;td&gt;
+            &lt;input type="submit" value="refresh"/&gt; 
+            &lt;/td&gt;
+
+        &lt;tr&gt;
+    &lt;table&gt;
+
+&lt;table border="1" cellspacing="0" width="550px"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Choice&lt;/th&gt;
+        &lt;th&gt;Code&lt;/th&gt;
+        &lt;th&gt;Server Name&lt;/th&gt;
+        &lt;th&gt;Server Main_IP&lt;/th&gt;
+        &lt;th&gt;Server Status&lt;/th&gt;
+        &lt;th&gt;Server Detail&lt;/th&gt;
+    &lt;/tr&gt;
+
+    {% for servers in tserver_all %}
+        &lt;tr&gt;
+            &lt;td&gt;&lt;input type="checkbox" name="tserver_name_choice" value="{{ servers.server_name }}"/&gt;&lt;/td&gt;
+            &lt;td&gt;{{ forloop.counter }}&lt;/td&gt;
+            &lt;td&gt;{{ servers.server_name }}&lt;/td&gt;
+            &lt;td&gt;{{ servers.server_main_ip }}&lt;/td&gt;
+            &lt;td&gt;{{ servers.server_status }}&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href="/server/server_detail/?server_name={{ servers.server_name }}"&gt;detail&lt;/a&gt;
+            &lt;/td&gt;
+        &lt;tr&gt;
+    {% endfor %}
+
+            &lt;/form&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.server_detail.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-server_detail-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:25:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17390</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;detail&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+        &lt;table&gt;
+            &lt;tr&gt;
+
+                &lt;td&gt;
+                {% for servers in tserver %}
+                &lt;form action="/server/server_detail/?server_name={{ servers.server_name }}" method="POST"&gt;
+                {% csrf_token %}
+                    &lt;select name="trefresh"&gt;
+                        &lt;option value="single thread"&gt;refresh option: now(single thread)&lt;/option&gt;
+                        &lt;option value="multi thread"&gt;refresh option: delay(multi thread)&lt;/option&gt;
+                        &lt;input type='submit' value="refresh"&gt;
+                    &lt;/select&gt;
+                &lt;/form&gt;
+                {% endfor %}
+
+                &lt;td&gt;
+                &lt;form action="/server/server_list"&gt; 
+                &lt;input type="submit" value="return"/&gt; 
+                &lt;/form&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+
+            &lt;/tr&gt;
+        &lt;/table&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Code&lt;/th&gt;
+            &lt;th&gt;Server Name&lt;/th&gt;
+            &lt;th&gt;Server Main_IP&lt;/th&gt;
+            &lt;th&gt;Server Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for servers in tserver %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ forloop.counter }}&lt;/td&gt;
+                &lt;td&gt;{{ servers.server_name }}&lt;/td&gt;
+                &lt;td&gt;{{ servers.server_main_ip }}&lt;/td&gt;
+                &lt;td&gt;{{ servers.server_status }}&lt;/td&gt;
+            &lt;tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;OS Distributor&lt;/th&gt;
+            &lt;th&gt;OS Release&lt;/th&gt;
+            &lt;th&gt;OS Kernel&lt;/th&gt;
+            &lt;th&gt;OS Uptime&lt;/th&gt;
+            &lt;th&gt;OS Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for oss in tos %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ oss.os_distributor }}&lt;/td&gt;
+                &lt;td&gt;{{ oss.os_release }}&lt;/td&gt;
+                &lt;td&gt;{{ oss.os_kernel }}&lt;/td&gt;
+                &lt;td&gt;{{ oss.os_uptime }}&lt;/td&gt;
+                &lt;td&gt;{{ oss.os_status }}&lt;/td&gt;           
+            &lt;/tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;CPU QTY&lt;/th&gt;
+            &lt;th&gt;CPU Core&lt;/th&gt;
+            &lt;th&gt;CPU Usage&lt;/th&gt;
+            &lt;th&gt;CPU Idleness&lt;/th&gt;
+            &lt;th&gt;CPU Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for cpus in tcpu %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ cpus.cpu_qty }}&lt;/td&gt;
+                &lt;td&gt;{{ cpus.cpu_core }}&lt;/td&gt;
+                &lt;td&gt;{{ cpus.cpu_usage }}%&lt;/td&gt;
+                &lt;td&gt;{{ cpus.cpu_idleness }}%&lt;/td&gt;
+                &lt;td&gt;{{ cpus.cpu_status }}&lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Mem Size&lt;/th&gt;
+            &lt;th&gt;Mem Usage&lt;/th&gt;
+            &lt;th&gt;Mem Idleness&lt;/th&gt;
+            &lt;th&gt;Mem Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for mems in tmem %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ mems.mem_size }}K&lt;/td&gt;
+                &lt;td&gt;{{ mems.mem_usage }}K&lt;/td&gt;
+                &lt;td&gt;{{ mems.mem_idleness }}K&lt;/td&gt;
+                &lt;td&gt;{{ mems.mem_status }}&lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Space Name&lt;/th&gt;
+            &lt;th&gt;Space Size&lt;/th&gt;
+            &lt;th&gt;Space Usage&lt;/th&gt;
+            &lt;th&gt;Space Idleness&lt;/th&gt;
+            &lt;th&gt;Space Mount&lt;/th&gt;
+            &lt;th&gt;Space Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for spaces in tspace %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ spaces.space_name }}&lt;/td&gt;
+                &lt;td&gt;{{ spaces.space_size }}K&lt;/td&gt;
+                &lt;td&gt;{{ spaces.space_usage }}K&lt;/td&gt;
+                &lt;td&gt;{{ spaces.space_idleness }}K&lt;/td&gt;
+                &lt;td&gt;{{ spaces.space_mount }}&lt;/td&gt;
+                &lt;td&gt;{{ spaces.space_status }}&lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;NC Name&lt;/th&gt;
+            &lt;th&gt;NC IP&lt;/th&gt;
+            &lt;th&gt;NC Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for ncs in tnc %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ ncs.nc_name }}&lt;/td&gt;
+                &lt;td&gt;{{ ncs.nc_ip }}&lt;/td&gt;
+                &lt;td&gt;{{ ncs.nc_status }}&lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+    &lt;/table&gt;
+
+&lt;br/&gt;
+
+    &lt;table border="1" cellspacing="0" width="550px"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Admin Name&lt;/th&gt;
+            &lt;th&gt;Admin GID&lt;/th&gt;
+            &lt;th&gt;Admin Email&lt;/th&gt;
+            &lt;th&gt;Admin Phone&lt;/th&gt;
+            &lt;th&gt;Admin Status&lt;/th&gt;
+        &lt;/tr&gt;
+        {% for admins in tsdadmin %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ admins.admin_name }}&lt;/td&gt;
+                &lt;td&gt;{{ admins.admin_gid }}&lt;/td&gt;
+                &lt;td&gt;{{ admins.admin_email }}&lt;/td&gt;
+                &lt;td&gt;{{ admins.admin_phone }}&lt;/td&gt;
+                &lt;td&gt;{{ admins.admin_status }}&lt;/td&gt;
+            &lt;tr&gt;
+        {% endfor %}
+
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.server_bind_admin.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-server_bind_admin-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:23:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17387</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;server_bind_admin&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;table&gt;
+        &lt;form action="/server/server_bind_admin/" method="POST"&gt;
+        {% csrf_token %}
+            &lt;tr&gt;
+                &lt;label&gt;server_name：&lt;/label&gt;&lt;input type="text" name="server_bind_name"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;label&gt;admin_name：&lt;/label&gt;&lt;input type="text" name="admin_bind_name"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="submit" value="bind"/&gt;
+                &lt;/td&gt;
+        &lt;/form&gt;
+                &lt;td&gt;
+                &lt;form action="/server/server_list"&gt; 
+                    &lt;input type="submit" value="return"/&gt; 
+                &lt;/form&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+    &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.fail.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-fail-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:22:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17384</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;fail&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;p&gt;fail&lt;/p&gt;
+
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            &lt;form action="/server/server_list"&gt;
+            &lt;input type="submit" value="return"/&gt; 
+            &lt;/form&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.templates.admin_register.html（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-templates-admin_register-html-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:19:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17381</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;admin_register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+   &lt;table&gt;
+        &lt;form action="/server/admin_register/" method="POST"&gt;
+        {% csrf_token %}
+            &lt;tr&gt;
+                &lt;label&gt;admin_name：&lt;/label&gt;&lt;input type="text" name="tadmin_name"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;label&gt;admin_gid：&lt;/label&gt;&lt;input type="text" name="tadmin_gid"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;label&gt;admin_email：&lt;/label&gt;&lt;input type="text" name="tadmin_email"/&gt;
+            &lt;/tr&gt;
+            &lt;br/&gt;
+            &lt;tr&gt;
+                &lt;label&gt;admin_phone：&lt;/label&gt;&lt;input type="text" name="tadmin_phone"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;label&gt;admin_level：&lt;/label&gt;&lt;input type="text" name="tadmin_level"/&gt;
+            &lt;/tr&gt;
+            &lt;/br&gt;
+            &lt;tr&gt;
+                &lt;td&gt;
+                    &lt;input type="submit" value="regsiter"/&gt;
+                &lt;/td&gt;
+            &lt;/form&gt;
+                &lt;td&gt;
+                    &lt;form action="/server/server_list"&gt;
+                    &lt;input type="submit" value="return"/&gt; 
+                    &lt;/form&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.views.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-views-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:17:22 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17379</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>from time import sleep
+from django.shortcuts import render
+from .models import *
+from django.http import HttpResponse
+
+# Create your views here.
+
+
+def vserver_register(request):
+    if request.method == 'GET':
+        return render(request,'server_register.html')
+    else:
+        vserver_name = request.POST.get('tserver_name','')
+        vserver_main_ip = request.POST.get('tserver_main_ip','')
+
+    vnewserver = server_register(vserver_name,vserver_main_ip)
+    if vnewserver:
+        return render(request,'success.html')
+    return render(request,'fail.html')
+
+
+def vadmin_register(request):
+    if request.method == 'GET':
+        return render(request,'admin_register.html')
+    else:
+        vadmin_name = request.POST.get('tadmin_name','')
+        vadmin_gid = request.POST.get('tadmin_gid','')
+        vadmin_email = request.POST.get('tadmin_email','')
+        vadmin_phone = request.POST.get('tadmin_phone','')
+        vadmin_level = request.POST.get('tadmin_level','')
+
+    vnewadmin = admin_register(vadmin_name,vadmin_gid,vadmin_email,vadmin_phone,vadmin_level)
+    if vnewadmin:
+        return render(request,'success.html')
+    return render(request,'fail.html')
+
+
+def vserver_bind_admin(request):
+    if request.method == 'GET':
+        return render(request,'server_bind_admin.html')
+    else:
+        vserver_bind = request.POST.get('server_bind_name','')
+        vadmin_bind = request.POST.get('admin_bind_name','')
+        dbind(vserver_bind,vadmin_bind)
+        vnewbind = server.objects.filter(server_name = vserver_bind).filter(admin__admin_name = vadmin_bind)
+        if vnewbind:
+            return render(request,'success.html')
+        return render(request,'fail.html')
+
+
+def vserver_list(request):
+
+    vserver_name_choice = request.POST.getlist('tserver_name_choice','')
+
+    if vserver_name_choice != '':
+
+        for vserver_name_choices in vserver_name_choice:
+            os_check_thread = threading.Thread(target=os_check_all, args=&#91;vserver_name_choices])
+            cpu_check_thread = threading.Thread(target=cpu_check_all, args=&#91;vserver_name_choices])
+            mem_check_thread = threading.Thread(target=mem_check_all, args=&#91;vserver_name_choices])
+            space_check_thread = threading.Thread(target=space_check_all, args=&#91;vserver_name_choices])
+            nc_check_thread = threading.Thread(target=nc_check_all, args=&#91;vserver_name_choices])
+
+            os_check_thread.start()
+            cpu_check_thread.start()
+            mem_check_thread.start()
+            space_check_thread.start()
+            nc_check_thread.start()
+
+            os_check_thread.join()
+            cpu_check_thread.join()
+            mem_check_thread.join()
+            space_check_thread.join()
+            nc_check_thread.join()
+
+        for vserver_name_choices in vserver_name_choice:
+            server_change_status(vserver_name_choices)
+
+
+    vserver_all = server.objects.all()
+    return render(request,'server_list.html',{'tserver_all':vserver_all})
+
+
+import threading
+def vserver_detail(request):
+    vsdmserver = request.GET.get('server_name','')
+    vrefresh = request.POST.get('trefresh','')
+
+
+    if vrefresh == 'single thread':
+        os_check_all(vsdmserver)
+        cpu_check_all(vsdmserver)
+        mem_check_all(vsdmserver)
+        space_check_all(vsdmserver)
+        nc_check_all(vsdmserver)
+        server_change_status(vsdmserver)
+
+
+    if vrefresh == 'multi thread':
+        os_check_thread = threading.Thread(target=os_check_all, args=&#91;vsdmserver])
+        cpu_check_thread = threading.Thread(target=cpu_check_all, args=&#91;vsdmserver])
+        mem_check_thread = threading.Thread(target=mem_check_all, args=&#91;vsdmserver])
+        space_check_thread = threading.Thread(target=space_check_all, args=&#91;vsdmserver])
+        nc_check_thread = threading.Thread(target=nc_check_all, args=&#91;vsdmserver])
+
+        os_check_thread.start()
+        cpu_check_thread.start()
+        mem_check_thread.start()
+        space_check_thread.start()
+        nc_check_thread.start()
+
+        os_check_thread.join()
+        cpu_check_thread.join()
+        mem_check_thread.join()
+        space_check_thread.join()
+        nc_check_thread.join()
+
+        server_change_status(vsdmserver)
+
+    vsdserver = server.objects.filter(server_name = vsdmserver)
+    vsdos = server.objects.get(server_name = vsdmserver).os_set.all()
+    vsdcpu = server.objects.get(server_name = vsdmserver).cpu_set.all()
+    vsdmem = server.objects.get(server_name = vsdmserver).mem_set.all()
+    vsdspace = server.objects.get(server_name = vsdmserver).space_set.all()
+    vsdnc = server.objects.get(server_name = vsdmserver).nc_set.all()
+    vsdadmin = server.objects.get(server_name = vsdmserver).admin_set.all()
+
+    return render(request,'server_detail.html',{'tserver':vsdserver,'tos':vsdos,'tcpu':vsdcpu,'tmem':vsdmem,'tspace':vsdspace,'tnc':vsdnc,'tsdadmin':vsdadmin})</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.urls.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-urls-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:15:37 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17377</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>from django.conf.urls import url
+from server.views import vserver_list, vserver_detail, vserver_register, vadmin_register, vserver_bind_admin
+
+urlpatterns = &#91;
+     url(r'^server_register',vserver_register),
+     url(r'^admin_register',vadmin_register),
+     url(r'^server_bind_admin',vserver_bind_admin),
+     url(r'^server_list',vserver_list),
+     url(r'^server_detail',vserver_detail)
+]</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[项目] server.models.py（LOAMAW v1.0）</title>
+		<link>https://eternalcenter-sep-2022.github.io/server-models-py-loamaw-v1-0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 15 Aug 2021 14:13:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) (运维辅助网站)]]></category>
+		<category><![CDATA[Linux Operation and Maintenance Auxiliary Website (LOAMAW) v1.0 (运维辅助网站)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17375</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>from django.db import models
+
+# Create your models here.
+
+class server(models.Model):
+    server_id = models.AutoField(primary_key=True)
+    server_name = models.CharField(max_length=30,unique = True)
+    server_main_ip = models.GenericIPAddressField(unique = True)
+    server_status = models.CharField(max_length=30)
+
+    def __str__(self):
+        return u'server_id:%s,server_name:%s,server_main_ip:%s,server_status:%s'%(self.server_id, self.server_name, self.server_main_ip, self.server_status)
+
+
+class admin(models.Model):
+    admin_id = models.AutoField(primary_key=True)
+    admin_name = models.CharField(max_length=30,unique = True)
+    admin_gid = models.CharField(max_length=30,unique = True)
+    admin_email = models.EmailField(unique = True)
+    admin_phone = models.CharField(max_length=30,unique = True)
+    admin_level = models.IntegerField()
+    admin_status = models.CharField(max_length=30)
+    admin_mid = models.ManyToManyField(server)
+
+    def __str__(self):
+        return u'admin_name:%s,admin_gid:%s,admin_email:%s,admin_phone:%s,admin_level:%s,admin_status:%s'%(self.admin_name, self.admin_gid, self.admin_email, self.admin_phone, self.admin_level, self.admin_status, self.admin_mid)
+
+
+class os(models.Model):
+    os_id = models.AutoField(primary_key=True)
+    os_distributor = models.CharField(max_length=30)
+    os_release = models.CharField(max_length=30)
+    os_kernel = models.CharField(max_length=30)
+    os_uptime = models.CharField(max_length=30)
+    os_status = models.CharField(max_length=30)
+    os_fid = models.ForeignKey(server,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'os_distributor:%s,os_release:%s,os_kernel:%s,os_uptime:%s,os_status:%s'%(self.os_distributor, self.os_release, self.os_kernel, self.os_uptime, self.os_status)
+
+
+class cpu(models.Model):
+    cpu_id = models.AutoField(primary_key=True)
+    cpu_qty = models.IntegerField()
+    cpu_core = models.IntegerField()
+    cpu_usage = models.CharField(max_length=255)
+    cpu_idleness = models.CharField(max_length=255)
+    cpu_status = models.CharField(max_length=30)
+    cpu_fid = models.ForeignKey(server,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'cpu_qty:%s,cpu_core:%s,cpu_usage:%s,cpu_idleness:%s,cpu_status:%s'%(self.cpu_qty, self.cpu_core, self.cpu_usage, self.cpu_idleness, self.cpu_status)
+
+
+class mem(models.Model):
+    mem_id = models.AutoField(primary_key=True)
+    mem_size = models.CharField(max_length=30)
+    mem_usage = models.CharField(max_length=255)
+    mem_idleness = models.CharField(max_length=255)
+    mem_status = models.CharField(max_length=30)
+    mem_fid = models.ForeignKey(server,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'mem_size:%s,mem_usage:%s,mem_idleness:%s,mem_status:%s'%(self.mem_size, self.mem_usage, self.mem_idleness, self.mem_status)
+
+
+class space(models.Model):
+    space_id = models.AutoField(primary_key=True)
+    space_name = models.CharField(max_length=30)
+    space_size = models.CharField(max_length=255)
+    space_usage = models.CharField(max_length=255)
+    space_idleness = models.CharField(max_length=255)
+    space_mount = models.CharField(max_length=255)
+    space_status = models.CharField(max_length=30)     
+    space_fid = models.ForeignKey(server,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'space_name:%s,space_size:%s,space_usage:,%s,space_idleness:%s,space_mount:%s,space_status:%s'%(self.space_name, self.space_size, self.space_usage, self.space_idleness,  self.space_mount, self.space_status)
+
+
+class nc(models.Model):
+    nc_id = models.AutoField(primary_key=True)
+    nc_name = models.CharField(max_length=30)
+    nc_ip = models.GenericIPAddressField()
+    nc_status = models.CharField(max_length=30)
+    nc_fid = models.ForeignKey(server,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return u'nc_name:%s,nc_ip:%s,nc_status:%s'%(self.nc_name, self.nc_ip, self.nc_status)
+
+
+def server_register(server_name,server_main_ip):
+    try:
+        register_server = server.objects.get(server_name = server_name)
+        
+    except server.DoesNotExist:
+        register_server = server.objects.create(server_name = server_name,server_main_ip = server_main_ip,server_status = 'have not checked')
+        return register_server
+
+
+def server_change_status(status_check_server):
+    status_check_server_id = server.objects.get(server_name = status_check_server).server_id
+
+    check_os_status = os.objects.get(os_fid = status_check_server_id).os_status
+    check_cpu_status = cpu.objects.get(cpu_fid = status_check_server_id).cpu_status
+    check_mem_status = mem.objects.get(mem_fid = status_check_server_id).mem_status
+    check_space_status = space.objects.get(space_fid = status_check_server_id).space_status
+
+    check_space_status = 'normal'
+    check_space_status_list = &#91;]
+    check_space_status_list = space.objects.values('space_status').filter(space_fid = status_check_server_id)
+    for check_space_statuss in check_space_status_list:
+        if check_space_statuss == {'space_status': 'normal'}:
+            check_space_status = 'normal'
+        else:
+            check_space_status = 'abnormal'
+
+    check_nc_status = 'normal'
+    check_nc_status_list = &#91;]
+    check_nc_status_list = nc.objects.values('nc_status').filter(nc_fid = status_check_server_id)
+    for check_nc_statuss in check_nc_status_list:
+
+        if check_nc_statuss == {'nc_status': 'normal'}:
+            check_nc_status = 'normal'
+        else:
+            check_nc_status = 'abnormal'
+
+    mserver_status = 'abnormal'
+    if check_os_status == 'normal':
+        if check_cpu_status == 'normal':
+            if check_mem_status == 'normal':
+                if check_space_status == 'normal':
+                    if check_nc_status == 'normal':
+                        mserver_status = 'normal'
+
+    server.objects.filter(server_name = status_check_server).update(server_status = mserver_status)
+
+
+def admin_register(admin_name,admin_gid,admin_email,admin_phone,admin_level):
+    try:
+        register_admin = admin.objects.get(admin_name = admin_name)
+
+    except admin.DoesNotExist:
+        register_admin = admin.objects.create(admin_name = admin_name,admin_gid = admin_gid,admin_email = admin_email,admin_phone = admin_phone,admin_level = admin_level,admin_status = 'normal')
+        return register_admin
+
+
+def dbind(bind_server,bind_admin):
+    bind_server_id = server.objects.get(server_name = bind_server).server_id
+    bind = admin.objects.get(admin_name = bind_admin)
+    bind.admin_mid.add(bind_server_id)
+
+
+from server.scripts.os_sub import *
+def os_check_all(os_check_server):
+    os_distributor_out = script_os_distributor(os_check_server)
+    os_distributor_out = os_distributor_out.decode().strip()
+
+    os_release_out = script_os_release(os_check_server)
+    os_release_out = os_release_out.decode().strip()
+
+    os_kernel_out = script_os_kernel(os_check_server)
+    os_kernel_out = os_kernel_out.decode().strip()
+
+    os_uptime_out = script_os_uptime(os_check_server)
+    os_uptime_out = os_uptime_out.decode().strip()
+
+    os_status_out = 'abnormal'
+    if os_distributor_out:
+        if os_release_out:
+            if os_kernel_out:
+                if os_uptime_out:
+                    os_status_out = 'normal'
+
+
+    os_server = server.objects.get(server_name = os_check_server)
+
+    try:
+        chack_os_data = os.objects.get(os_fid = os_server)
+
+    except os.DoesNotExist:
+        os.objects.create(os_distributor = os_distributor_out,os_release = os_release_out,os_kernel = os_kernel_out,os_uptime = os_uptime_out,os_status = os_status_out,os_fid = os_server)
+
+    os.objects.filter(os_fid = os_server).update(os_distributor = os_distributor_out,os_release = os_release_out,os_kernel = os_kernel_out,os_uptime = os_uptime_out,os_status = os_status_out,os_fid = os_server)
+
+
+from server.scripts.cpu_sub import *
+def cpu_check_all(cpu_check_server):
+    cpu_qty_out = script_cpu_qty(cpu_check_server)
+    cpu_qty_out = cpu_qty_out.decode().strip()
+
+    cpu_core_out = script_cpu_core(cpu_check_server)
+    cpu_core_out = cpu_core_out.decode().strip()
+
+    cpu_usage_out = script_cpu_usage(cpu_check_server)
+    cpu_usage_out = cpu_usage_out.decode().strip()
+
+    cpu_idleness_out = script_cpu_idleness(cpu_check_server)
+    cpu_idleness_out = cpu_idleness_out.decode().strip()
+
+
+    cpu_status_out='abnormal'
+    if cpu_core_out:
+        if cpu_qty_out:
+            if cpu_usage_out:
+                if cpu_idleness_out:
+                    cpu_status_out='normal'            
+
+    cpu_server = server.objects.get(server_name = cpu_check_server)
+
+    try: 
+        check_cpu_data = cpu.objects.get(cpu_fid = cpu_server)
+
+    except cpu.DoesNotExist:
+        cpu.objects.create(cpu_qty = cpu_qty_out,cpu_core = cpu_core_out,cpu_usage = cpu_usage_out,cpu_idleness = cpu_idleness_out,cpu_status = cpu_status_out,cpu_fid = cpu_server)
+    
+    cpu.objects.filter(cpu_fid = cpu_server).update(cpu_qty = cpu_qty_out,cpu_core = cpu_core_out,cpu_usage = cpu_usage_out,cpu_idleness = cpu_idleness_out,cpu_status = cpu_status_out,cpu_fid = cpu_server)
+
+
+from server.scripts.mem_sub import *
+def mem_check_all(mem_check_server):
+    mem_size_out = script_mem_size(mem_check_server)
+    mem_size_out = mem_size_out.decode().strip()
+
+    mem_usage_out = script_mem_usage(mem_check_server)
+    mem_usage_out = mem_usage_out.decode().strip()
+
+    mem_idleness_out = script_mem_idleness(mem_check_server)
+    mem_idleness_out = mem_idleness_out.decode().strip()
+
+    mem_status_out = 'abnormal'
+    if mem_size_out:
+        if mem_usage_out:
+            if mem_idleness_out:
+                    mem_status_out='normal'
+
+    mem_server = server.objects.get(server_name = mem_check_server)
+
+    try:
+        check_mem_data = mem.objects.get(mem_fid = mem_server)
+
+    except mem.DoesNotExist:
+        mem.objects.create(mem_size = mem_size_out,mem_usage = mem_usage_out,mem_idleness = mem_idleness_out,mem_status = mem_status_out,mem_fid = mem_server)
+
+    mem.objects.filter(mem_fid = mem_server).update(mem_size = mem_size_out,mem_usage = mem_usage_out,mem_idleness = mem_idleness_out,mem_status = mem_status_out,mem_fid = mem_server)
+
+
+from server.scripts.space_sub import *
+def space_check_all(space_check_server):
+    space_all_out = script_space(space_check_server)
+    space_all_out = space_all_out.decode().strip()
+    space_all_out = space_all_out.split('\n')
+
+    space_server = server.objects.get(server_name = space_check_server)
+
+    for spaces in space_all_out:
+        space_name_out = spaces.split()&#91;0]
+        space_size_out = spaces.split()&#91;1]
+        space_usage_out = spaces.split()&#91;2]
+        space_idleness_out = spaces.split()&#91;3]
+        space_mount_out = spaces.split()&#91;-1]
+
+        space_status_out='abnormal'
+        if space_name_out:
+            if space_size_out:
+                if space_usage_out:
+                    if space_idleness_out:
+                        space_status_out='normal'
+
+        try:
+            check_space_data = space.objects.get(space_fid = space_server,space_name = space_name_out)
+
+        except space.DoesNotExist:
+            space.objects.create(space_name = space_name_out,space_size = space_size_out,space_usage = space_usage_out,space_idleness = space_idleness_out,space_mount = space_mount_out,space_status = space_status_out,space_fid = space_server)
+
+        space.objects.filter(space_fid = space_server,space_name = space_name_out).update(space_name = space_name_out,space_size = space_size_out,space_usage = space_usage_out,space_idleness = space_idleness_out,space_mount = space_mount_out,space_status = space_status_out,space_fid = space_server)
+
+
+from server.scripts.nc_sub import *
+def nc_check_all(nc_check_server):
+    nc_name_out = script_nc_name(nc_check_server)
+    nc_name_out = nc_name_out.decode().strip()
+    nc_name_out = nc_name_out.split('\n')
+
+    nc_ip_out = script_nc_ip(nc_check_server)
+    nc_ip_out = nc_ip_out.decode().strip()
+    nc_ip_out = nc_ip_out.split('\n')
+
+    nc_server = server.objects.get(server_name = nc_check_server)
+    
+    nc_name_line = 1
+    nc_ip_line = 1
+    for nc_name_outs in nc_name_out:
+        nc_name_out_out = nc_name_outs.split()&#91;0]
+
+        for nc_ip_outs in nc_ip_out:
+            nc_ip_out_out = nc_ip_outs.split()&#91;0]
+
+            nc_status_out = 'abnormal'
+            if nc_name_out_out:
+                if nc_ip_out_out:
+                    nc_status_out = 'normal'
+            
+            if nc_name_line == nc_ip_line:
+                try:
+                    check_nc_data = nc.objects.get(nc_fid = nc_server,nc_name = nc_name_out_out)
+            
+                except nc.DoesNotExist:
+                    nc.objects.create(nc_name = nc_name_out_out,nc_ip = nc_ip_out_out,nc_status = nc_status_out,nc_fid = nc_server)
+
+                nc.objects.filter(nc_fid = nc_server,nc_name = nc_name_out_out).update(nc_name = nc_name_out_out,nc_ip = nc_ip_out_out,nc_status = nc_status_out,nc_fid = nc_server)
+        
+            nc_ip_line = nc_ip_line + 1
+        
+        nc_ip_line = 1
+        nc_name_line = nc_name_line + 1</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

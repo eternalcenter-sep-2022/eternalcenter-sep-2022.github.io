@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>HAProxy &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/cluster-tool/cluster-load-balancing-tool/haproxy/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:02:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] HAproxy 代理的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/haproxy-agent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 21 Jan 2021 14:28:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[HAProxy]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13237</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程 步骤一：拓扑规划 1.1 服务器列表 client eth0:10.0.0.10/24proxy eth0:10.0.0.5/24eth1:10.0.1.5/24web1 eth1:10.0.1.100/24web2 eht1:10.0.1.200/24 1.2 拓扑图 1.3 拓扑图简介 （1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client（4）最终实现单点代理器，双网站热备份 步骤二： 系统环境要求 （1）所有服务器的系统都需要是 CentOS 8 版本（2）所有服务器都要关闭防火墙（3）所有服务器都要关闭 SELinux（4）所有服务器系统都要配置好可用的软件源（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址 步骤三：部署集群环境 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/haproxy-agent/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] HAproxy 代理的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑规划</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client eth0:10.0.0.10/24<br>proxy eth0:10.0.0.5/24<br>eth1:10.0.1.5/24<br>web1 eth1:10.0.1.100/24<br>web2 eht1:10.0.1.200/24</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                                           web1
+                                           eth1:10.0.1.100/24
+     client                proxy     
+eth0:10.0.0.10/24    eth0:10.0.0.5/24  
+                     eth1:10.0.1.5/24
+                                           web2
+                                           eht2:10.0.1.200/24</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>（1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求<br>（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2<br>（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client<br>（4）最终实现单点代理器，双网站热备份</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>（1）所有服务器的系统都需要是 CentOS 8 版本<br>（2）所有服务器都要关闭防火墙<br>（3）所有服务器都要关闭 SELinux<br>（4）所有服务器系统都要配置好可用的软件源<br>（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：部署集群环境</h3>
+
+
+
+<h4>3.1 在 proxy 上安装 HAporxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install haproxy</code></pre>
+
+
+
+<h4>3.2 在 web1 上安装 web 服务</h4>
+
+
+
+<h5>3.2.1 安装 httpd</h5>
+
+
+
+<p>(只在 web1 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 创建网页文件</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.100" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h4>3.3 在 web2 上安装 web 服务</h4>
+
+
+
+<h5>3.3.1 安装 httpd</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.3.2 创建网页文件</h5>
+
+
+
+<p>(只在 web2 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.200" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.3.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h3>步骤四：配置 HAproxy 实现 web 负载均衡代理集群</h3>
+
+
+
+<h4>4.1 开启 proxy 的路由转发</h4>
+
+
+
+<h5>4.1.1 在 sysctl.conf 文件里添加路由转发功能</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysctl.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>net.ipv4.ip_forward = 1</code></pre>
+
+
+
+<h5>4.1.2 使刚刚添加的功能生效</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sysctl -p</code></pre>
+
+
+
+<h4>4.2 修改 proxy 上的 HAproxy 配置文件</h4>
+
+
+
+<p>(只在 proxy 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/haproxy/haproxy.cfg</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>#---------------------------------------------------------------------
+# Example configuration for a possible web application.  See the
+# full configuration options online.
+#
+#   https://www.haproxy.org/download/1.8/doc/configuration.txt
+#
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    # to have these messages end up in /var/log/haproxy.log you will
+    # need to:
+    #
+    # 1) configure syslog to accept network log events.  This is done
+    #    by adding the '-r' option to the SYSLOGD_OPTIONS in
+    #    /etc/sysconfig/syslog
+    #
+    # 2) configure local2 events to go to the /var/log/haproxy.log
+    #   file. A line like the following can be added to
+    #   /etc/sysconfig/syslog
+    #
+    #    local2.*                       /var/log/haproxy.log
+    #
+    log         127.0.0.1 local2
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+
+    # turn on stats unix socket
+    stats socket /var/lib/haproxy/stats
+
+    # utilize system-wide crypto-policies
+    ssl-default-bind-ciphers PROFILE=SYSTEM
+    ssl-default-server-ciphers PROFILE=SYSTEM
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+
+#---------------------------------------------------------------------
+# main frontend which proxys to the backends
+#---------------------------------------------------------------------
+frontend main
+    bind *:80
+    acl url_static       path_beg       -i /static /images /javascript /stylesheets
+    acl url_static       path_end       -i .jpg .gif .png .css .js
+
+    use_backend static          if url_static
+    default_backend             app
+
+#---------------------------------------------------------------------
+# static backend for serving up images, stylesheets and such
+#---------------------------------------------------------------------
+backend static
+    balance     roundrobin
+    server      static 127.0.0.1:80 check
+
+#---------------------------------------------------------------------
+# round robin balancing between the various backends
+#---------------------------------------------------------------------
+backend app
+    balance     roundrobin
+    server  app1 10.0.1.100:80 check
+    server  app2 10.0.1.200:80 check</code></pre>
+
+
+
+<h4>4.3 设置开机自动启动 HAproxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start haproxy ; systemctl enable haproxy</code></pre>
+
+
+
+<h3>步骤五：测试 Haproxy 代理集群</h3>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 10.10.10.5</code></pre>
+
+
+
+<p>（注意：这一步需要多做几次）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

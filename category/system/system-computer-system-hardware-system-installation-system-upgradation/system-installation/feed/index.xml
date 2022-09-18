@@ -1,0 +1,4068 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Installation (系统安装) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-computer-system-hardware-system-installation-system-upgradation/system-installation/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 23 Aug 2022 17:26:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Linux 启动顺序</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-start-sequence/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 05:45:40 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26977</guid>
+
+					<description><![CDATA[第一步启动：BIOS/UEFI BIOS （Basic Input Output System） 即基本输入输出系统。 UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。 它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。 第二步启动：MBR/GPT MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。 GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。 它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。 第三步启动：GRUB2 GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。 第四步启动：initrd/Kernel initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/linux-start-sequence/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 启动顺序"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>第一步启动：BIOS/UEFI</h3>
+
+
+
+<p>BIOS （Basic Input Output System） 即基本输入输出系统。</p>
+
+
+
+<p>UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。</p>
+
+
+
+<p>它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。</p>
+
+
+
+<h3>第二步启动：MBR/GPT</h3>
+
+
+
+<p>MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。</p>
+
+
+
+<p>GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。</p>
+
+
+
+<p>它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。</p>
+
+
+
+<h3>第三步启动：GRUB2</h3>
+
+
+
+<p>GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。</p>
+
+
+
+<h3>第四步启动：initrd/Kernel</h3>
+
+
+
+<p>initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 （vmlinuz） 没有提供的驱动模块。2. 通过引导加载程序加载内存，将内存视为临时根目录，从中运行程序，之后再将根目录转移到硬盘上真正的根目录上。</p>
+
+
+
+<h3>第五步启动：systemdprocess</h3>
+
+
+
+<p>systemdprocess，即启动各类程序和进程。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 uname （显示系统信息）</title>
+		<link>https://eternalcenter-sep-2022.github.io/uname/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 15 Jul 2022 08:13:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26799</guid>
+
+					<description><![CDATA[内容一：uname 命令的格式 内容二：uname 命令的选项 1) -a 或者 &#8211;all，显示所有系统信息 （补充：如果系统处理器类型和系统硬件平台处于未知状态则不显示） 2) -s 或者 &#8211;kernel-name，显示系统内核3) -n 或者 &#8211;nodename，显示系统节点名称4) -r 或者 &#8211;kernel-release，显示系统内核发布版本5) -m 或者 &#8211;machine，显示系统硬件名称6) -p 或者 &#8211;processor，显示系统处理器类型7) -i 或者 &#8211;hardware-platform，显示系统硬件平台8) &#8211;help，显示帮助信息9) &#8211;version，显示 uname 命令版本]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：uname 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># uname &lt;option&gt;</code></pre>
+
+
+
+<h3>内容二：uname 命令的选项</h3>
+
+
+
+<p>1) -a 或者 &#8211;all，显示所有系统信息</p>
+
+
+
+<p>（补充：如果系统处理器类型和系统硬件平台处于未知状态则不显示）</p>
+
+
+
+<p>2) -s 或者 &#8211;kernel-name，显示系统内核<br>3) -n 或者 &#8211;nodename，显示系统节点名称<br>4) -r 或者 &#8211;kernel-release，显示系统内核发布版本<br>5) -m 或者 &#8211;machine，显示系统硬件名称<br>6) -p 或者 &#8211;processor，显示系统处理器类型<br>7) -i 或者 &#8211;hardware-platform，显示系统硬件平台<br>8) &#8211;help，显示帮助信息<br>9) &#8211;version，显示 uname 命令版本</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 生命周期</title>
+		<link>https://eternalcenter-sep-2022.github.io/lifecycle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 07:56:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21946</guid>
+
+					<description><![CDATA[RHEL English: https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase Chinese: https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase openSUSE English: https://en.opensuse.org/Lifetime Chinese: https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90 SLE https://www.suse.com/lifecycle]]></description>
+										<content:encoded><![CDATA[
+<h2 id="rhel">RHEL</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase</p>
+
+
+
+<h2 id="opensuse">openSUSE</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://en.opensuse.org/Lifetime</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90</p>
+
+
+
+<h2 id="sle">SLE</h2>
+
+
+
+<p>https://www.suse.com/lifecycle</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] PXE 新系统模板的添加</title>
+		<link>https://eternalcenter-sep-2022.github.io/pxe-template-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 15:14:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Pre-boot Execution Environment (PXE)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21908</guid>
+
+					<description><![CDATA[步骤一：准备安装镜像 1.1 从官网上下载安装镜像 （步骤略） 1.2 挂载安装镜像 1.2.1 创建用于挂载安装镜像的目录 1.2.2 挂载安装镜像 步骤二：准备用于进行 PXE 安装的数据 2.1 准备系统安装数据 2.1.1 创建用于存放系统安装数据的目录 （注意：用于存放系统安装数据的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享）） 2.1.2 拷贝安装镜像里的数据到用于存放系统安装数据的目录 2.1.2.1 拷贝安装镜像里的普通数据到用于存放系统安装数据的目录 2.1.2.2 拷贝安装镜像里的 .treeinfo 文件到用于存放系统安装数据的目录 2.2 准备安装引导文件 2.2.1 创建用于存放安装引导文件的目录 2.2.1.1 创建用于存放 BIOS 安装引导文件的目录 （注意：用于存放 BIOS 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里） 2.2.1.2 创建用于存放 EFI 安装引导文件的目录 （注意：用于存放 EFI 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里） 2.2.2 拷贝安装镜像里的安装引导文件到存放安装引导文件的目录 2.2.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pxe-template-add/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] PXE 新系统模板的添加"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-准备安装镜像1-1-从官网上下载安装镜像">步骤一：准备安装镜像</h3>
+
+
+
+<h4 id="步骤一-准备安装镜像1-1-从官网上下载安装镜像">1.1 从官网上下载安装镜像</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="1-2-挂载安装镜像1-2-1-创建用于挂载安装镜像的目录">1.2 挂载安装镜像</h4>
+
+
+
+<h5 id="1-2-挂载安装镜像1-2-1-创建用于挂载安装镜像的目录">1.2.1 创建用于挂载安装镜像的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory for mounting the image&gt;</code></pre>
+
+
+
+<h5 id="1-2-2-挂载安装镜像">1.2.2 挂载安装镜像</h5>
+
+
+
+<pre class="wp-block-code"><code># mount -t iso9660 &lt;image&gt; &lt;directory for mounting the image&gt;</code></pre>
+
+
+
+<h3 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">步骤二：准备用于进行 PXE 安装的数据</h3>
+
+
+
+<h4 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">2.1 准备系统安装数据</h4>
+
+
+
+<h5 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">2.1.1 创建用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放系统安装数据的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享））</p>
+
+
+
+<h5 id="2-1-2-拷贝安装镜像里的数据到用于存放系统安装数据的目录2-1-2-1-拷贝安装镜像里的普通数据到用于存放系统安装数据的目录">2.1.2 拷贝安装镜像里的数据到用于存放系统安装数据的目录</h5>
+
+
+
+<h5 id="2-1-2-拷贝安装镜像里的数据到用于存放系统安装数据的目录2-1-2-1-拷贝安装镜像里的普通数据到用于存放系统安装数据的目录">2.1.2.1 拷贝安装镜像里的普通数据到用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cp -rp &lt;directory for mounting the image&gt;/* &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<h5 id="2-1-2-2-拷贝安装镜像里的-treeinfo-文件到用于存放系统安装数据的目录">2.1.2.2 拷贝安装镜像里的 .treeinfo 文件到用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cp -rp &lt;directory for mounting the image&gt;/.treeinfo &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<h4 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2 准备安装引导文件</h4>
+
+
+
+<h5 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2.1 创建用于存放安装引导文件的目录</h5>
+
+
+
+<h5 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2.1.1 创建用于存放 BIOS 安装引导文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of BIOS boot file for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放 BIOS 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-2-1-2-创建用于存放-efi-安装引导文件的目录">2.2.1.2 创建用于存放 EFI 安装引导文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of EFI boot file for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放 EFI 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-2-2-拷贝安装镜像里的安装引导文件到存放安装引导文件的目录2-2-2-1-拷贝安装镜像里的-bios-安装引导文件到存放-bios-安装引导文件的目录">2.2.2 拷贝安装镜像里的安装引导文件到存放安装引导文件的目录</h5>
+
+
+
+<h5 id="2-2-2-拷贝安装镜像里的安装引导文件到存放安装引导文件的目录2-2-2-1-拷贝安装镜像里的-bios-安装引导文件到存放-bios-安装引导文件的目录">2.2.2.1 拷贝安装镜像里的 BIOS 安装引导文件到存放 BIOS 安装引导文件的目录</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 则拷贝 initrd.img 文件、TRANS.TBL 文件和 vmlinuz 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/initrd.img -O &lt;directory of BIOS boot file for installing the system&gt;/initrd.img
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/TRANS.TBL -O &lt;directory of BIOS boot file for installing the system&gt;/TRANS.TBL
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/vmlinuz -O &lt;directory of BIOS boot file for installing the system&gt;/vmlinuz</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE 则拷贝 linux 文件和 initrd 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/linux -O &lt;directory of BIOS boot file for installing the system&gt;/linux
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/initrd -O &lt;directory of BIOS boot file for installing the system&gt;/initrd</code></pre>
+
+
+
+<h5 id="2-2-2-2-拷贝安装镜像里的-efi-安装引导文件到存放-efi-安装引导文件的目录">2.2.2.2 拷贝安装镜像里的 EFI 安装引导文件到存放 EFI 安装引导文件的目录</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 则拷贝 initrd.img 文件、TRANS.TBL 文件和 vmlinuz 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/initrd.img -O &lt;directory of EFI boot file for installing the system&gt;/initrd.img
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/TRANS.TBL -O &lt;directory of EFI boot file for installing the system&gt;/TRANS.TBL
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/vmlinuz -O &lt;directory of EFI boot file for installing the system&gt;/vmlinuz</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE 则拷贝 linux 文件和 initrd 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/linux -O &lt;directory of EFI boot file for installing the system&gt;/linux
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/initrd -O &lt;directory of EFI boot file for installing the system&gt;/initrd</code></pre>
+
+
+
+<h4 id="2-3-准备系统安装配置文件2-3-1-进入到用于存放系统安装配置文件的目录">2.3 准备系统安装配置文件</h4>
+
+
+
+<h5 id="2-3-准备系统安装配置文件2-3-1-进入到用于存放系统安装配置文件的目录">2.3.1 进入到用于存放系统安装配置文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd &lt;directory of profile for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：进入到用于存放系统安装配置文件的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享））</p>
+
+
+
+<h5 id="2-3-2-创建系统安装配置文件2-3-2-1-创建-bios-系统安装配置文件">2.3.2 创建系统安装配置文件</h5>
+
+
+
+<h5 id="2-3-2-创建系统安装配置文件2-3-2-1-创建-bios-系统安装配置文件">2.3.2.1 创建 BIOS 系统安装配置文件</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话</p>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>1) 如果是 Rocky Linux &amp; RHEL 的话系统安装配置文件是 CFG 文件，文件名最好以 .cfg 后缀结尾<br>2) 如果是 openSUSE &amp; SLE 的话系统安装配置文件是 XML 文件，文件名最好以 .xml 后缀结尾<br>）</p>
+
+
+
+<h5 id="2-3-2-2-创建-efi-系统安装配置文件">2.3.2.2 创建 EFI 系统安装配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>1) 如果是 Rocky Linux &amp; RHEL 的话系统安装配置文件是 CFG 文件，文件名最好以 .cfg 后缀结尾<br>2) 如果是 openSUSE &amp; SLE 的话系统安装配置文件是 XML 文件，文件名最好以 .xml 后缀结尾<br>）</p>
+
+
+
+<h5 id="2-3-3-设置系统安装配置文件的权限2-3-3-1-设置-bios-系统安装配置文件的权限">2.3.3 设置系统安装配置文件的权限</h5>
+
+
+
+<h5 id="2-3-3-设置系统安装配置文件的权限2-3-3-1-设置-bios-系统安装配置文件的权限">2.3.3.1 设置 BIOS 系统安装配置文件的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 &lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<h5 id="2-3-3-2-设置-efi-系统安装配置文件的权限">2.3.3.2 设置 EFI 系统安装配置文件的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 &lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<h4 id="2-4-修改系统安装菜单文件-pxelinux-cfg2-4-1-修改-bios-系统安装菜单文件-pxelinux-cfg">2.4 修改系统安装菜单文件 pxelinux.cfg</h4>
+
+
+
+<h5 id="2-4-修改系统安装菜单文件-pxelinux-cfg2-4-1-修改-bios-系统安装菜单文件-pxelinux-cfg">2.4.1 修改 BIOS 系统安装菜单文件 pxelinux.cfg</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;directory of file for BIOS system installation menu&gt;/pxelinux.cfg</code></pre>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label Rocky Linux or RHEL
+  menu label ^Installation Rocky Linux or RHEL
+  kernel &lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/vmlinuz
+  append initrd=/&lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/initrd.img ks=&lt;The URL of the network share when PXE installing&gt;/&lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 vmlinuz 文件和 initrd.im 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>如果是 openSUSE &amp; SLE 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label openSUSE or SLE
+  menu label ^Installation openSUSE or SLE
+  kernel &lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/linux
+  append initrd=&lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/initrd splash=silent showopts install=&lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/ autoyast=&lt;The URL of the network share when PXE installing&gt;/&lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 linux 文件和 initrd 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>（注意：用于存放 BIOS 系统安装菜单文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-4-2-修改-efi-系统安装菜单文件-grub-cfg">2.4.2 修改 EFI 系统安装菜单文件 grub.cfg</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;directory of file for EFI system installation menu&gt;/grub.cfg</code></pre>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label Rocky Linux or RHEL
+  menu label ^Installation Rocky Linux or RHEL
+  kernel &lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/vmlinuz
+  append initrd=/&lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/initrd.img ks=&lt;The URL of the network share when PXE installing&gt;/&lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 vmlinuz 文件和 initrd.im 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>如果是 openSUSE &amp; SLE 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label openSUSE or SLE
+  menu label ^Installation openSUSE or SLE
+  kernel &lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/linux
+  append initrd=&lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/initrd splash=silent showopts install=&lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/ autoyast=&lt;The URL of the network share when PXE installing&gt;/&lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 linux 文件和 initrd 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>（注意：用于存放 EFI 系统安装菜单文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h3 id="步骤三-取消挂载安装镜像-1">步骤三：取消挂载安装镜像</h3>
+
+
+
+<pre class="wp-block-code"><code># umount &lt;directory for mounting the image&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] KVM 虚拟机模板的创建 （Rocky Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kvm-template-install-rocky-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 06 Feb 2022 09:08:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21850</guid>
+
+					<description><![CDATA[注意： 在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络 软件准备： 在 Rocky Linux 官网上下载安装系统所需要的镜像： https://rockylinux.org/download 正文： 步骤一：理解创建 KVM 虚拟机模板的目的 主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间 步骤二：为这个虚拟机创建硬盘文件 2.1 创建硬盘文件 （只在真机上执行以下步骤） （补充：这里以创建 10G 大小的 rockylinux8.qcow2 硬盘文件为例） 2.2 确认硬盘文件已创建 （只在真机上执行以下步骤） （补充：这里以显示 rockylinux8.qcow2 硬盘文件为例） 步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机 3.1 启动 KVM 的 virt-manager （只在真机上执行以下步骤） 3.2 在 virt-manager 上的左上角点击文件之后点击 “新建虚拟机” （只在真机上执行以下步骤） （步骤略） 3.2.1 选择以本地安装介质的方式安装系统 （只在真机上执行以下步骤） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/kvm-template-install-rocky-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] KVM 虚拟机模板的创建 （Rocky Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络</p>
+
+
+
+<div class="wp-container-1 is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-install/">KVM 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-network-install/">KVM 虚拟网络的创建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Rocky Linux 官网上下载安装系统所需要的镜像：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rockylinux.org/download">https://rockylinux.org/download</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-理解创建-kvm-虚拟机模板的目的">步骤一：理解创建 KVM 虚拟机模板的目的</h3>
+
+
+
+<p>主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间</p>
+
+
+
+<h3 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-8-10g-qcow22-1-创建硬盘文件-template-centos-8-10g-qcow2">步骤二：为这个虚拟机创建硬盘文件</h3>
+
+
+
+<h4 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-8-10g-qcow22-1-创建硬盘文件-template-centos-8-10g-qcow2">2.1 创建硬盘文件</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># qemu-img create -f qcow2 /var/lib/libvirt/images/rockylinux8.qcow2 10G</code></pre>
+
+
+
+<p>（补充：这里以创建 10G 大小的 rockylinux8.qcow2 硬盘文件为例）</p>
+
+
+
+<h4 id="2-2-确认硬盘文件已创建">2.2 确认硬盘文件已创建</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ls /var/lib/libvirt/images/ | grep rockylinux8.qcow2</code></pre>
+
+
+
+<p>（补充：这里以显示 rockylinux8.qcow2 硬盘文件为例）</p>
+
+
+
+<h3 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机</h3>
+
+
+
+<h4 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">3.1 启动 KVM 的 virt-manager</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<h4 id="3-2-在-virt-manager-上的左上角点击文件之后点击-新建虚拟机">3.2 在 virt-manager 上的左上角点击文件之后点击 “新建虚拟机”</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="3-2-1-选择以本地安装介质的方式安装系统">3.2.1 选择以本地安装介质的方式安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="494" height="530" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-1.png" alt="" class="wp-image-21851" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-1.png 494w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-1-280x300.png 280w" sizes="(max-width: 494px) 100vw, 494px" /><figcaption><em>（图：1）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-2-选择安装系统的系统镜像">3.2.2 选择安装系统的系统镜像</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="494" height="530" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-2.png" alt="" class="wp-image-21852" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-2.png 494w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-2-280x300.png 280w" sizes="(max-width: 494px) 100vw, 494px" /><figcaption><em>（图：2）</em></figcaption></figure></div>
+
+
+<p>（补充：这里以使用 Rocky-8.5-x86_6-dvd1.iso 系统镜像为例）</p>
+
+
+
+<h5 id="3-2-3-设置内存大小和处理器数量">3.2.3 设置内存大小和 CPU 核心数</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="494" height="530" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-3.png" alt="" class="wp-image-21853" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-3.png 494w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-3-280x300.png 280w" sizes="(max-width: 494px) 100vw, 494px" /><figcaption><em>（图：3）</em></figcaption></figure></div>
+
+
+<p>（补充：这里以设置 2048 MiB 内容和 2 核 CPU 为例）</p>
+
+
+
+<h5 id="3-2-4-选择用刚刚创建的硬盘文件来安装系统">3.2.4 选择用刚刚创建的硬盘文件来安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="494" height="530" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-4.png" alt="" class="wp-image-21854" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-4.png 494w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-4-280x300.png 280w" sizes="(max-width: 494px) 100vw, 494px" /><figcaption><em>（图：4）</em></figcaption></figure></div>
+
+
+<p>（补充：这里以使用 rockylinux8.qcow2 硬盘文件为例）</p>
+
+
+
+<h5 id="3-2-5-给虚拟机命名并选择虚拟网络">3.2.5 给虚拟机命名并选择虚拟网络</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（注意：虚拟网络必须提前创建好）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="494" height="533" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-5.png" alt="" class="wp-image-21855" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-5.png 494w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-5-278x300.png 278w" sizes="(max-width: 494px) 100vw, 494px" /><figcaption><em>（图：5）</em></figcaption></figure></div>
+
+
+<p>（补充：这里以将虚拟机命名为 rockylinux8 并使用 0 网络为例）</p>
+
+
+
+<h5 id="3-2-6-开始安装系统">3.2.6 开始安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="794" height="630" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-6.png" alt="" class="wp-image-21856" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-6.png 794w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-6-300x238.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-6-768x609.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：6）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-7-选择系统语言">3.2.7 选择系统语言</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-7.png" alt="" class="wp-image-21857" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-7.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-7-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-7-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：7）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-8-之后进行系统配置界面">3.2.8 之后进行系统配置界面</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>需要手动配置的地方有四个：<br>1) “INSTALLATION DESTINATION”<br>2) “KDUMP”<br>3) “SOFTWARE SELECTION”<br>4) “Root Password”<br>分别点击以后就可以配置了</p>
+
+
+
+<h5 id="3-2-8-1-通过-installation-destination-对硬盘进行分区">3.2.8.1 通过 “INSTALLATION DESTINATION” 对硬盘进行分区</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+
+<p>（注意：只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘类型，硬盘格式设置为 XFS）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-8.png" alt="" class="wp-image-21858" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-8.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-8-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-8-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：8）</em></figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-9.png" alt="" class="wp-image-21859" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-9.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-9-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-9-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：9）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-8-2-取消-kdump">3.2.8.2 取消 “KDUMP”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-10.png" alt="" class="wp-image-21860" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-10.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-10-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-10-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：10）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-8-3-选择最小化安装系统">3.2.8.3 选择最小化安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-11.png" alt="" class="wp-image-21861" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-11.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-11-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-11-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：11）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-8-4-设置-root-密码">3.2.8.4 设置 root 密码</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-12.png" alt="" class="wp-image-21862" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-12.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-12-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-12-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：12）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-9-之后点击右下角的-begin-installation">3.2.9 之后点击右下角的 “Begin installation”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-13.png" alt="" class="wp-image-21863" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-13.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-13-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-13-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：13）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-10-安装完成后重启">3.2.10 安装完成后重启</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="1016" height="762" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-14.png" alt="" class="wp-image-21864" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-14.png 1016w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-14-300x225.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2022/02/KVM-template-Rocky-Linux-8-14-768x576.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption><em>（图：14）</em></figcaption></figure></div>
+
+
+<h5 id="3-2-11-在安装系统的过程中需要注意的内容总结">3.2.11 在安装系统的过程中需要注意的内容总结</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>1) 一定要使用刚刚创建的 /var/lib/libvirt/images/rockylinux8.qcow2 作为安装虚拟机的硬件文件<br>2) 虚拟机网络 “0” 要提前创建好<br>3) 只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘，硬盘格式是 XFS<br>4) 取消 “KDUMP”<br>5) 选择最小化安装系统<br>6) 设置 root 密码</p>
+
+
+
+<h3 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">步骤四：进入新创建虚拟机修改配置</h3>
+
+
+
+<h4 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1 修改网卡个性化设置</h4>
+
+
+
+<h5 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1.1 修改网卡配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network-scripts/ifcfg-enp1s0</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>TYPE=Ethernet
+BOOTPROTO=dhcp
+NAME=enp1s0
+DEVICE=enp1s0
+ONBOOT=yes</code></pre>
+
+
+
+<h5 id="4-1-2-使修改的网卡配置生效">4.1.2 使修改的网卡配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h4 id="4-2-禁用-selinux">4.2 禁用 SELinux</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/selinux/config</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted</code></pre>
+
+
+
+<h4 id="4-3-禁用空路由">4.3 禁用空路由</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># Created by anaconda
+NOZEROCONF="yes"</code></pre>
+
+
+
+<h4 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4 添加 Console 配置</h4>
+
+
+
+<h5 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4.1 修改 grub 内核配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/default/grub</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL="serial console"
+GRUB_SERIAL_COMMAND="serial --unit=1 --speed=115200"
+GRUB_CMDLINE_LINUX="biosdevname=0 net.ifnames=0 console=tty0 console=ttyS0,115200n8"
+GRUB_DISABLE_LINUX_UUID="true"
+GRUB_ENABLE_LINUX_LABEL="true"
+GRUB_DISABLE_RECOVERY="true"</code></pre>
+
+
+
+<h5 id="4-4-2-使修改的-grub-内核配置生效">4.4.2 使修改的 grub 内核配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o grub</code></pre>
+
+
+
+<h4 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5 将系统自动挂载的硬盘从使用 UUID 换成硬件路径</h4>
+
+
+
+<h5 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5.1 显示根分区的 UUID</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># blkid
+/dev/sda1: UUID="e76ed189-6d0f-49d5-8586-c5aae4bdc9b5" TYPE="xfs" PARTUUID="3d8377ef-01"</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： e76ed189-6d0f-49d5-8586-c5aae4bdc9b5）</p>
+
+
+
+<h5 id="4-5-2-在自动挂载文件里将根分区的-uuid-换成硬件路径">4.5.2 在自动挂载文件里将根分区的 UUID 换成硬件路径</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UUID=e76ed189-6d0f-49d5-8586-c5aae4bdc9b5 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： e76ed189-6d0f-49d5-8586-c5aae4bdc9b5）</p>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>/dev/sda1 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<h4 id="4-6-删除不用的程序">4.6 删除不用的程序</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y remove firewalld-* python-firewall</code></pre>
+
+
+
+<h4 id="4-7-对虚拟系统进行升级">4.7 对虚拟系统进行升级</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y update</code></pre>
+
+
+
+<h4 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.8 进行分区扩展</h4>
+
+
+
+<h5 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.8.1 安装分区扩展软件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install -y cloud-utils-growpart</code></pre>
+
+
+
+<h5 id="4-8-2-给开机自启配置文件相应的权限">4.8.2 给开机自启配置文件相应的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /etc/rc.local</code></pre>
+
+
+
+<h5 id="4-8-3-设置开机自动扩容根目录">4.8.3 设置开机自动扩容根目录</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/usr/bin/growpart /dev/sda1
+/usr/sbin/xfs_growfs /</code></pre>
+
+
+
+<h4 id="4-9-修改虚拟机系统的名称">4.9 修改虚拟机系统的名称</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/hostname</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>rockylinux8</code></pre>
+
+
+
+<h4 id="4-10-启用-serial-服务实现通过-virsh-console-命令控制虚拟机">4.10 启用 serial 服务实现通过 virsh console 命令控制虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start serial-getty@ttyS0
+# systemctl enable serial-getty@ttyS0</code></pre>
+
+
+
+<h4 id="4-11-清除虚拟系统的历史命令">4.11 清除虚拟系统的历史命令</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># history -c</code></pre>
+
+
+
+<h4 id="4-12-关闭虚拟机">4.12 关闭虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h4 id="步骤五-在真机上对虚拟机进行清理优化">步骤五：在真机上对虚拟机进行清理优化</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sudo virt-sysprep -d rockylinux8</code></pre>
+
+
+
+<p>（补充：这里以清理 rockylinux8 虚拟机为例）</p>
+
+
+
+<p>（<br>注意：如果此命令不存在<br>1) Rocky Linux 系统的话需要安装 libguestfs-tools<br>2) openSUSE 系统的话需要安装 guestfs-tools<br>）</p>
+
+
+
+<h4 id="步骤六-此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了">步骤六：此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux BIOS 和 EFI 的区分 （系统安装时启动分区种类的显示）</title>
+		<link>https://eternalcenter-sep-2022.github.io/bios-efi/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Mar 2021 08:46:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13591</guid>
+
+					<description><![CDATA[内容一：判断 Linux 是 BIOS 还是 EFI 的方法 （补充：如果 /sys/firmware/efi 目录存在，则代表系统是 EFI，否则系统是 BIOS） 内容二：判断 Linux 是 BIOS 还是 EFI 的脚本]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-判断-linux-是-bios-还是-efi-的方法">内容一：判断 Linux 是 BIOS 还是 EFI 的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># ls -ld /sys/firmware/efi</code></pre>
+
+
+
+<p>（补充：如果 /sys/firmware/efi 目录存在，则代表系统是 EFI，否则系统是 BIOS）</p>
+
+
+
+<h3 id="内容二-判断-linux-是-bios-还是-efi-的脚本">内容二：判断 Linux 是 BIOS 还是 EFI 的脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># &#91; -d /sys/firmware/efi ] &amp;&amp; echo UEFI || echo BIOS</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] KVM 虚拟机模板的创建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kvm-template-install-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 14:23:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13283</guid>
+
+					<description><![CDATA[注意： 在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络 软件准备： 在 openSUSE 官网上下载安装系统所需要的镜像： https://software.opensuse.org/distributions/leap 正文： 步骤一：理解创建 KVM 虚拟机模板的目的 主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间 步骤二：为这个虚拟机创建硬盘文件 1.1 创建硬盘文件 （只在真机上执行以下步骤） （补充：这里以创建 10G 大小的 template_opensuse_leap_15_10g.qcow2 硬盘文件为例） 1.2 确认硬盘文件已创建 （只在真机上执行以下步骤） （补充：这里以确认 template_opensuse_leap_15_10g.qcow2 硬盘文件为例） 步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机 3.1 启动 KVM 的 virt-manager （只在真机上执行以下步骤） 3.2 在 virt-manager 上的左上角点击文件之后 “点击新建虚拟机” （只在真机上执行以下步骤） （步骤略） 3.2.1 选择以本地安装介质的方式安装系统 （只在真机上执行以下步骤） 3.2.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/kvm-template-install-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] KVM 虚拟机模板的创建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-install/">KVM 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-network-installation/">KVM 虚拟网络的创建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 openSUSE 官网上下载安装系统所需要的镜像：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://software.opensuse.org/distributions/leap" target="_blank" rel="noreferrer noopener">https://software.opensuse.org/distributions/leap</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-理解创建-kvm-虚拟机模板的目的">步骤一：理解创建 KVM 虚拟机模板的目的</h3>
+
+
+
+<p>主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间</p>
+
+
+
+<h3 id="步骤二-为这个虚拟机创建硬盘文件-template-opensuse-leap-15-10g-qcow21-1-创建硬盘文件-template-opensuse-leap-15-10g-qcow2">步骤二：为这个虚拟机创建硬盘文件</h3>
+
+
+
+<h4 id="步骤二-为这个虚拟机创建硬盘文件-template-opensuse-leap-15-10g-qcow21-1-创建硬盘文件-template-opensuse-leap-15-10g-qcow2">1.1 创建硬盘文件</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># qemu-img create -f qcow2 /var/lib/libvirt/images/template_opensuse_leap_15_10g.qcow2 10G</code></pre>
+
+
+
+<p>（补充：这里以创建 10G 大小的 template_opensuse_leap_15_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h4 id="1-2-确认硬盘文件已创建">1.2 确认硬盘文件已创建</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ls /var/lib/libvirt/images/ | grep template_opensuse_leap_15_10g.qcow2</code></pre>
+
+
+
+<p>（补充：这里以确认 template_opensuse_leap_15_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h3 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机</h3>
+
+
+
+<h4 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">3.1 启动 KVM 的 virt-manager</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<h4 id="3-2-在-virt-manager-上的左上角点击文件之后-点击新建虚拟机">3.2 在 virt-manager 上的左上角点击文件之后 “点击新建虚拟机”</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="3-2-1-选择以本地安装介质的方式安装系统">3.2.1 选择以本地安装介质的方式安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="502" height="539" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-1.png" alt="" class="wp-image-19725" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-1.png 502w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-1-279x300.png 279w" sizes="(max-width: 502px) 100vw, 502px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h5 id="3-2-2-选择安装系统的系统镜像">3.2.2 选择安装系统的系统镜像</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="502" height="539" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-2.png" alt="" class="wp-image-19726" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-2.png 502w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-2-279x300.png 279w" sizes="(max-width: 502px) 100vw, 502px" /><figcaption>（图：2）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 openSUSE-Leap-15.2-DVD-x86_64.iso 系统镜像为例）</p>
+
+
+
+<h5 id="3-2-3-设置内存大小和处理器数量">3.2.3 设置内存大小和 CPU 核心数</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="502" height="539" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-3.png" alt="" class="wp-image-19727" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-3.png 502w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-3-279x300.png 279w" sizes="(max-width: 502px) 100vw, 502px" /><figcaption>（图：3）</figcaption></figure></div>
+
+
+<p>（补充：这里以设置 2048 MiB 内容和 2 核 CPU 为例）</p>
+
+
+
+<h5 id="3-2-4-选择用刚刚创建的硬盘文件来安装系统">3.2.4 选择用刚刚创建的硬盘文件来安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="502" height="539" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-4.png" alt="" class="wp-image-19728" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-4.png 502w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-4-279x300.png 279w" sizes="(max-width: 502px) 100vw, 502px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 template_opensuse_leap_15_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h5 id="3-2-5-给虚拟机命名并选择虚拟网络">3.2.5 给虚拟机命名并选择虚拟网络</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（注意：虚拟网络必须提前创建好）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="502" height="539" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-5.png" alt="" class="wp-image-19729" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-5.png 502w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-5-279x300.png 279w" sizes="(max-width: 502px) 100vw, 502px" /><figcaption>（图：5）</figcaption></figure></div>
+
+
+<p>（补充：这里以将虚拟机命名为 template_opensuse_leap_15_10g 并使用 0 网络为例）</p>
+
+
+
+<h5 id="3-2-6-开始安装系统">3.2.6 开始安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="613" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-6.png" alt="" class="wp-image-19730" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-6-300x239.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="3-2-7-进入-language-keyboard-and-license-agreement-后选择系统语言-再点击-next">3.2.7 进入 “Language, Keyboard and License Agreement” 后选择系统语言，再点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-7.png" alt="" class="wp-image-19731" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-当出现-activate-online-repositories-now-时-点击-no">3.2.8 当出现 &#8220;Activate online repositories now?&#8221; 时，点击 “No”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-8.png" alt="" class="wp-image-19733" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>
+
+
+<h5 id="3-2-9-进入-system-role-后选择-server-再点击-next">3.2.9 进入 “System Role” 后选择 “Server”，再点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-9.png" alt="" class="wp-image-19734" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-9.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-9-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：9）</figcaption></figure></div>
+
+
+<h5 id="3-2-10-进入-suggested-partitioning-后点击-guided-setup">3.2.10 进入 “Suggested Partitioning” 后点击 “Guided Setup”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-10.png" alt="" class="wp-image-19735" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-10.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-10-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：10）</figcaption></figure></div>
+
+
+<h5 id="3-2-11-进入-partitioning-scheme-后点击-next">3.2.11 进入 “Partitioning Scheme” 后点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-11.png" alt="" class="wp-image-19736" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-11.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-11-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：11）</figcaption></figure></div>
+
+
+<h5 id="3-2-12-进入-filesystem-options-后-file-system-type-选择-xfs-再点击-next">3.2.12 进入 “Filesystem Options” 后 “File System Type“ 选择 “XFS”，再点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-12.png" alt="" class="wp-image-19737" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-12.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-12-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：12）</figcaption></figure></div>
+
+
+<h5 id="3-2-13-回到-suggested-partitioning-后点击-next">3.2.13 回到 “Suggested Partitioning” 后点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-13.png" alt="" class="wp-image-19738" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-13.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-13-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：13）</figcaption></figure></div>
+
+
+<h5 id="3-2-14-进入-clock-and-time-zone-后选择时区-再点击-next">3.2.14 进入 “Clock and Time Zone” 后选择时区，再点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="266" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-14.png" alt="" class="wp-image-19739" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-14.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-14-300x104.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：14）</figcaption></figure></div>
+
+
+<h5 id="3-2-15-进入-local-user-后选择-skip-user-creation-并点击-next">3.2.15 进入 “Local User” 后选择 “Skip User Creation” 并点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-15.png" alt="" class="wp-image-19740" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-15.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-15-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：15）</figcaption></figure></div>
+
+
+<h5 id="3-2-16-进入-authentication-for-the-system-administrator-root-后给-root-设置密码-再点击-next">3.2.16 进入 “Authentication for the System Administrator &#8220;root&#8221;” 后给 root 设置密码，再点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-16.png" alt="" class="wp-image-19741" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-16.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-16-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：16）</figcaption></figure></div>
+
+
+<h5 id="3-2-17-如果出现-yast2-the-password-is-too-simple-则点击-yes">3.2.17 如果出现 “YaST2 The password is too simple” 则点击 “Yes”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-17.png" alt="" class="wp-image-19742" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-17.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-17-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：17）</figcaption></figure></div>
+
+
+<h5 id="3-2-18-进入-installation-settings-后点击-next">3.2.18 进入 “Installation Settings” 后点击 “Next”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-18.png" alt="" class="wp-image-19743" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-18.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-18-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：18）</figcaption></figure></div>
+
+
+<h5 id="3-2-19-当出现-confirm-installation-时点击-install">3.2.19 当出现 “Confirm Installation” 时点击 “Install”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-19.png" alt="" class="wp-image-19744" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-19.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-19-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：19）</figcaption></figure>
+
+
+
+<h5 id="3-2-20-当出现-the-system-will-reboot-now-时-点击-ok">3.2.20 当出现 “The system will reboot now…” 时，点击 “Ok”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-20.png" alt="" class="wp-image-19745" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-20.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-openSUSE-15-20-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：20）</figcaption></figure></div>
+
+
+<h5 id="3-2-21-在安装系统的过程中需要注意的内容总结">3.2.21 在安装系统的过程中需要注意的内容总结</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>1)  一定要使用刚刚创建的 template_opensuse_leap_15_10g.qcow2 作为安装虚拟机的硬件文件<br>2)  虚拟机网络 “0” 要提前创建好<br>3)  只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘，硬盘格式是 XFS<br>4)  选择最小化安装系统</p>
+
+
+
+<h3 id="步骤四-进入新创建虚拟机修改配置4-1-添加-console-配置4-1-1-修改-grub-内核配置文件">步骤四：进入新创建虚拟机修改配置</h3>
+
+
+
+<h4 id="步骤四-进入新创建虚拟机修改配置4-1-添加-console-配置4-1-1-修改-grub-内核配置文件">4.1 添加 Console 配置</h4>
+
+
+
+<h5 id="步骤四-进入新创建虚拟机修改配置4-1-添加-console-配置4-1-1-修改-grub-内核配置文件">4.1.1 修改 grub 内核配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/default/grub</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># If you change this file, run 'grub2-mkconfig -o /boot/grub2/grub.cfg' afterwards to update
+# /boot/grub2/grub.cfg.
+
+# Uncomment to set your own custom distributor. If you leave it unset or empty, the default
+# policy is to determine the value from /etc/os-release
+GRUB_DISTRIBUTOR=
+GRUB_DEFAULT=saved
+GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=8
+GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet"
+GRUB_SERIAL_COMMAND="serial --unit=1 --speed=115200"
+GRUB_CMDLINE_LINUX="biosdevname=0 net.ifnames=0 console=tty0 console=ttyS0,115200n8"
+GRUB_DISABLE_LINUX_UUID="true"
+GRUB_ENABLE_LINUX_LABEL="true"
+GRUB_DISABLE_RECOVERY="true"
+
+# Uncomment to automatically save last booted menu entry in GRUB2 environment
+
+# variable `saved_entry'
+# GRUB_SAVEDEFAULT="true"
+#Uncomment to enable BadRAM filtering, modify to suit your needs
+
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+# GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+#Uncomment to disable graphical terminal (grub-pc only)
+
+GRUB_TERMINAL="gfxterm"
+# The resolution used on graphical terminal
+#note that you can use only modes which your graphic card supports via VBE
+
+# you can see them in real GRUB with the command `vbeinfo'
+GRUB_GFXMODE="auto"
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+# GRUB_DISABLE_LINUX_UUID=true
+#Uncomment to disable generation of recovery mode menu entries
+
+# GRUB_DISABLE_RECOVERY="true"
+#Uncomment to get a beep at grub start
+
+# GRUB_INIT_TUNE="480 440 1"
+GRUB_BACKGROUND=
+GRUB_THEME=/boot/grub2/themes/openSUSE/theme.txt
+SUSE_BTRFS_SNAPSHOT_BOOTING="true"
+GRUB_DISABLE_OS_PROBER="false"
+GRUB_ENABLE_CRYPTODISK="n"
+GRUB_CMDLINE_XEN_DEFAULT="vga=gfx-1024x768x16"</code></pre>
+
+
+
+<h5 id="4-1-2-使修改的-grub-内核配置生效">4.1.2 使修改的 grub 内核配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o grub</code></pre>
+
+
+
+<h4 id="4-2-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-2-1-显示根分区的-uuid">4.2 将系统自动挂载的硬盘从使用 uuid 换成硬件路径</h4>
+
+
+
+<h5 id="4-2-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-2-1-显示根分区的-uuid">4.2.1 显示根分区的 UUID</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># blkid
+/dev/vda1: UUID="53ee2f87-89b8-4cd7-a4dc-0957d28f4831" TYPE="xfs" PARTUUID="3d8377ef-01"</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： 53ee2f87-89b8-4cd7-a4dc-0957d28f4831）</p>
+
+
+
+<h5 id="4-2-2-在自动挂载文件里将根分区的-uuid-换成硬件路径">4.2.2 在自动挂载文件里将根分区的 UUID 换成硬件路径</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UUID=53ee2f87-89b8-4cd7-a4dc-0957d28f4831 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： 53ee2f87-89b8-4cd7-a4dc-0957d28f4831）</p>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/dev/vda1 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<h4 id="4-3-删除不用的软件">4.3 删除不用的软件</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm firewalld-*</code></pre>
+
+
+
+<h4 id="4-4-进行分区扩展4-4-1-安装分区扩展软件">4.4 进行分区扩展</h4>
+
+
+
+<h5 id="4-4-进行分区扩展4-4-1-安装分区扩展软件">4.4.1 安装分区扩展软件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in growpart</code></pre>
+
+
+
+<h5 id="4-4-2-设置开机自动扩容根目录-4-4-2-1-创建开机自动扩容根目录的配置文件">4.4.2 设置开机自动扩容根目录</h5>
+
+
+
+<h5 id="4-4-2-设置开机自动扩容根目录-4-4-2-1-创建开机自动扩容根目录的配置文件">4.4.2.1 创建开机自动扩容根目录的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/init.d/after.local</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>/usr/bin/growpart /dev/sda1
+/usr/sbin/xfs_growfs /</code></pre>
+
+
+
+<h5 id="4-4-2-2-给开机自启配置文件相应的权限">4.4.2.2 给开机自启配置文件相应的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /etc/init.d/after.local</code></pre>
+
+
+
+<h4 id="4-5-只使用本地软件源-选做-4-5-1-禁用所有软件源-选做">4.5 只使用本地软件源（选做）</h4>
+
+
+
+<h5 id="4-5-只使用本地软件源-选做-4-5-1-禁用所有软件源-选做">4.5.1 禁用所有软件源（选做）</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -da</code></pre>
+
+
+
+<h5 id="4-5-2-添加本地软件源-选做">4.5.2 添加本地软件源（选做）</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -fcg http://10.0.0.254/openSUSE-Leap-15/ lan</code></pre>
+
+
+
+<p>(注意： http://10.0.0.254/openSUSE-Leap-15/ 需要根据真实环境的情况进行更改)</p>
+
+
+
+<h5 id="4-5-3-添加本地软件源-选做">4.5.3 添加本地软件源（选做）</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ref</code></pre>
+
+
+
+<h4 id="4-6-修改虚拟机系统的名称">4.6 修改虚拟机系统的名称</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># hostnamectl set-hostname template_opensuse_leap_15_10g</code></pre>
+
+
+
+<h4 id="4-7-启用-serial-服务实现通过-virsh-console-命令控制虚拟机">4.7 启用 serial 服务实现通过 virsh console 命令控制虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start serial-getty@ttyS0
+# systemctl enable serial-getty@ttyS0</code></pre>
+
+
+
+<h4 id="4-8-清除虚拟系统的历史命令">4.8 清除虚拟系统的历史命令</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># history -c</code></pre>
+
+
+
+<h4 id="4-9-关闭虚拟机">4.9 关闭虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h3 id="步骤五-修改新创建的虚拟机配置文件">步骤五：修改新创建的虚拟机配置文件</h3>
+
+
+
+<p>删除配置文件里 cdrom 相关的部分</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/libvirt/qemu/template_opensuse_leap_15_10g.xml</code></pre>
+
+
+
+<p>删除以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    &lt;disk type='file' device='cdrom'&gt;
+      &lt;driver name='qemu' type='raw'/&gt;
+      &lt;source file='/test/iso/openSUSE-Leap-15.2-DVD-x86_64.iso'/&gt;
+      &lt;target dev='sda' bus='sata'/&gt;
+      &lt;readonly/&gt;
+      &lt;address type='drive' controller='0' bus='0' target='0' unit='0'/&gt;
+    &lt;/disk&gt;
+......</code></pre>
+
+
+
+<h3 id="步骤五-此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了">步骤六：此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了</h3>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 系统的显示 （系统版本和系统位数）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-bits-show/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Mar 2020 06:02:36 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8572</guid>
+
+					<description><![CDATA[内容一：显示系统版本 内容二：显示系统的位数]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-显示系统版本">内容一：显示系统版本</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/*release*</code></pre>
+
+
+
+<h3 id="内容二-显示系统的位数">内容二：显示系统的位数</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/version</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] MacBook Air （2017） openSUSE Leap 15.1 的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/macbook-air-2017-install-opensuse-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 15 Feb 2020 16:31:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer (系统电脑)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8266</guid>
+
+					<description><![CDATA[硬件准备： 制作一个 openSUSE Leap 15.1 安装 U 盘， openSUSE Leap 15.1 系统景象下载地址： https://www.opensuse.org/ 软件准备： 在第三方 openSUSE Leap 15.1 软件源上下载无线网卡驱动 broadcom-wl 和无线网卡驱动的依赖软件 broadcom-wl-kmp： https://mirrors.aliyun.com/packman/openSUSE_Leap_15.1/Essentials/x86_64/ 正文： 步骤一：在 MacBook Air（2017）上安装 openSUSE Leap 15.1 的前期工作 1.1 将 openSUSE 的安装 U 盘插在 MacBook Air（2017）上 （步骤略） （注意：U 盘需要是 ufi 模式） 1.2 在 MacBook Air（2017）上插入一根无驱动版 Linux 可识别的网线转 usb 网卡，并连接互联网 （步骤略） 1.3 按 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/macbook-air-2017-install-opensuse-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] MacBook Air （2017） openSUSE Leap 15.1 的安装"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>硬件准备：</h1>
+
+
+
+<p>制作一个 openSUSE Leap 15.1 安装 U 盘， openSUSE Leap 15.1 系统景象下载地址：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://www.opensuse.org/" target="_blank" rel="noreferrer noopener">https://www.opensuse.org/</a></p>
+
+
+
+<h1>软件准备：</h1>
+
+
+
+<p>在第三方 openSUSE Leap 15.1 软件源上下载无线网卡驱动 broadcom-wl 和无线网卡驱动的依赖软件 broadcom-wl-kmp：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://mirrors.aliyun.com/packman/openSUSE_Leap_15.1/Essentials/x86_64/" target="_blank" rel="noreferrer noopener">https://mirrors.aliyun.com/packman/openSUSE_Leap_15.1/Essentials/x86_64/</a></p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：在 MacBook Air（2017）上安装 openSUSE Leap 15.1 的前期工作</h3>
+
+
+
+<h4>1.1 将 openSUSE 的安装 U 盘插在 MacBook Air（2017）上</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（注意：U 盘需要是 ufi 模式）</p>
+
+
+
+<h4>1.2 在 MacBook Air（2017）上插入一根无驱动版 Linux 可识别的网线转 usb 网卡，并连接互联网</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>1.3 按 MacBook Air（2017）的开机键后立刻按住 option 键</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>1.4 选择从 U 盘进入系统</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：在 MacBook Air（2017）上安装 openSUSE Leap 15.1版本的 Linux 操作系统</h3>
+
+
+
+<h4>2.1 进入 U 盘界面后选择 “Installation” 并回车</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-1.png" alt="" class="wp-image-19660" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-1.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-1-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h4>2.2 直接点击 “Next”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-2.png" alt="" class="wp-image-19661" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-2.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-2-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：2）</figcaption></figure></div>
+
+
+<h4>2.3 当出现 “Activate online repositories now?” 时直接点击 “No”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-3.png" alt="" class="wp-image-19662" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-3.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-3-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：3）</figcaption></figure></div>
+
+
+<h4>2.4 选择 “Server” 并点击 “Next”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-4.png" alt="" class="wp-image-19663" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-4.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-4-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：4）</figcaption></figure>
+
+
+
+<h4>2.5 点击 “Guided Setup”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-5.png" alt="" class="wp-image-19664" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-5.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-5-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：5）</figcaption></figure>
+
+
+
+<h4>2.6 不设置硬盘密码，直接点击 “Next”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-6.png" alt="" class="wp-image-19665" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-6-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h4>2.7 按图：7 对硬盘进行设置</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-7.png" alt="" class="wp-image-19666" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h4>2.8 点击 “Expert Partitioner” 下的 “Start with Current Proposal”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-8.png" alt="" class="wp-image-19668" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>
+
+
+<h4>2.9 按图：9 对硬盘进行分区并点击 “Accept”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-9.png" alt="" class="wp-image-19669" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-9.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-9-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：9）</figcaption></figure>
+
+
+
+<p>（<br>补充：<br>1) 要分出一部分硬盘空间用作系统启动<br>2) 系统分区不设置硬盘加密否则系统开机时会需要输入两次硬盘加密密码<br>3) 数据分区可以设置硬盘加密<br>4) 交换分区和内存设置的大小相同<br>5) 在左侧选择 “Hard Disks”，再在右侧选择对应的分区，再点击 “Delete” 可以将对应的分区删除<br>6) 在左侧选择 “Hard Disks”，再在右侧选择对应的硬盘，再点击 “Partitions” 可以创建、删除和修改分区<br>）</p>
+
+
+
+<h4>2.10 点击 “Next”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-10.png" alt="" class="wp-image-19670" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-10.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-10-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：10）</figcaption></figure></div>
+
+
+<h4>2.11 点击对应的地区选择对应的日期并点击 “Next”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="403" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-11.png" alt="" class="wp-image-19671" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-11.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-11-300x157.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：11）</figcaption></figure>
+
+
+
+<h4>2.12 选择 “Skip User Creation” 并点击 “Next”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-12.png" alt="" class="wp-image-19672" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-12.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-12-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：12）</figcaption></figure>
+
+
+
+<h4>2.13 给 root 用户设置密码并点击 “Next”</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-13.png" alt="" class="wp-image-19673" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-13.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-13-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：13）</figcaption></figure></div>
+
+
+<h4>2.14 按图：14 对即将安装的系统进行设置并点击 “Install”</h4>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-14.png" alt="" class="wp-image-19674" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-14.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-14-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：14）</figcaption></figure>
+
+
+
+<p>（<br>补充：<br>1) 在 “Security” 下开启 “Firewall”<br>2) 在 “Security” 下关闭 “SSH service”<br>3) 在 “Security” 下锁住 “SSH port”<br>4) 在 “Network Configuration” 下使用 “NetworkManager”<br>）</p>
+
+
+
+<h4>2.15 此时系统便开始安装，等待系统安装完成</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤三：对 openSUSE Leap 15.1 操作系统进行配置</h3>
+
+
+
+<h4>3.1 系统安装完成后使用 root 用户登录系统</h4>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-15.png" alt="" class="wp-image-19675" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-15.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-15-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：15）</figcaption></figure></div>
+
+
+<h4>3.2 修改电脑名称</h4>
+
+
+
+<pre class="wp-block-code"><code># hostnamectl set-hostname linux</code></pre>
+
+
+
+<h4>3.3 安装无线网卡驱动</h4>
+
+
+
+<h5>3.3.1 安装无线网卡驱动依赖包</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in broadcom-wl-kmp-default-6.30.223.271_k4.12.14_lp151.28.36-pm151.11.61.x86_64.rpm</code></pre>
+
+
+
+<h5>3.3.2 安装无线网卡驱动</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in broadcom-wl-6.30.223.271-pm151.11.61.x86_64.rpm</code></pre>
+
+
+
+<h4>3.4 使用 openSUSE Leap 15.1 官方的软件源</h4>
+
+
+
+<h5>3.4.1 进入 yast</h5>
+
+
+
+<p># yast</p>
+
+
+
+<h5>3.4.2 选择 “Software” 下的 “Software Repositoies” 并回车</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-16.png" alt="" class="wp-image-19676" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-16.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-16-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：16）</figcaption></figure>
+
+
+
+<h5>3.4.3 按图：17 设置系统软件源，之后选择 OK 并回车</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-17.png" alt="" class="wp-image-19677" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-17.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-17-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：17）</figcaption></figure></div>
+
+
+<p>（<br>补充：<br>1) Enabled “Main Repository”<br>2) Enabled “Main Update Repository”<br>3) Enabled “Non-OSS Repository”<br>4) Enabled “Update Repository（Non-Oss）”<br>5) 确保其他的软件源没有被 Enabled<br>）</p>
+
+
+
+<h5>3.4.4 选择 “Quit” 并回车</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-18.png" alt="" class="wp-image-19678" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-18.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-18-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：18）</figcaption></figure></div>
+
+
+<h4>3.5 给系统安装最新的补丁</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper -n update</code></pre>
+
+
+
+<h4>3.6 安装中文包</h4>
+
+
+
+<h5>3.6.1 进入 yast</h5>
+
+
+
+<pre class="wp-block-code"><code># yast</code></pre>
+
+
+
+<h5>3.6.2 选择 “System” 下的 “Language” 并回车</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-19.png" alt="" class="wp-image-19679" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-19.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-19-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：19）</figcaption></figure></div>
+
+
+<h5>3.6.3 在 “Secondary Languages” 下选择 “Simplified Chinese” ，再选择 “OK” 并回车</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-20.png" alt="" class="wp-image-19680" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-20.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-20-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：20）</figcaption></figure>
+
+
+
+<h5>3.6.4 选择 “Quit” 并回车</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-21.png" alt="" class="wp-image-19681" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-21.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-21-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：21）</figcaption></figure></div>
+
+
+<h4>3.7 让电脑支持 exfat 格式的 U 盘</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install fuse-exfat exfat-utils</code></pre>
+
+
+
+<h4>3.8 安装虚拟机环境和管理软件</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper in -t pattern kvm_server
+# zypper in -t pattern kvm_tools</code></pre>
+
+
+
+<h4>3.9 安装图形化桌面</h4>
+
+
+
+<h5>3.9.1 安装 Gnome 图形桌面</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t pattern gnome</code></pre>
+
+
+
+<h5>3.9.2 将系统默认的图形桌面设置为 Gnome 图形桌面</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t pattern gnome</code></pre>
+
+
+
+<pre class="wp-block-code"><code>......
+DISPLAYMANAGER_XSERVER="Xorg"</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+DISPLAYMANAGER_XSERVER="gdm"</code></pre>
+
+
+
+<h5>3.9.3 设置系统开机进入图形桌面</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl set-default graphical.target</code></pre>
+
+
+
+<h5>3.9.4 立刻进入图形桌面</h5>
+
+
+
+<pre class="wp-block-code"><code># init 5</code></pre>
+
+
+
+<h5>3.9.5 输入 root 用户</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-22.png" alt="" class="wp-image-19682" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-22.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-22-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：22）</figcaption></figure>
+
+
+
+<h5>3.9.6 输入 root 用户的密码</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-23.png" alt="" class="wp-image-19683" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-23.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-23-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：23）</figcaption></figure></div>
+
+
+<h5>3.9.7 此时便进入图形桌面</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-24.png" alt="" class="wp-image-19684" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-24.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-24-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：24）</figcaption></figure>
+
+
+
+<h4>3.10 设置中文输入法</h4>
+
+
+
+<h5>3.10.1 点击左上角的 “Activites” 再点击 “Settings”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-25.png" alt="" class="wp-image-19685" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-25.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-25-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：25）</figcaption></figure></div>
+
+
+<h5>3.10.2 点击 “Region &amp; Language”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-26.png" alt="" class="wp-image-19686" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-26.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-26-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：26）</figcaption></figure></div>
+
+
+<h5>3.10.3 点击 “Input Sources” 下面的 “+” 将 “English（US）” 换成 “Chinese (Intelligent Pinyin)”</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-27.png" alt="" class="wp-image-19687" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-27.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-27-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：27）</figcaption></figure>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-28.png" alt="" class="wp-image-19688" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-28.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-28-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：28）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-29.png" alt="" class="wp-image-19689" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-29.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-29-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：29）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-30.png" alt="" class="wp-image-19690" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-30.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-30-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：30）</figcaption></figure></div>
+
+
+<h5>3.10.4 点击右上角的 “×” 以退出此界面</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>3.11 添加新用户</h4>
+
+
+
+<h5>3.11.1 点击右上角 “root” 下的 “Account Settings”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-31.png" alt="" class="wp-image-19691" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-31.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-31-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：31）</figcaption></figure></div>
+
+
+<h5>3.11.2 点击右上角的 “Add User&#8230;”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-32.png" alt="" class="wp-image-19692" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-32.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-32-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：32）</figcaption></figure></div>
+
+
+<h5>3.11.3 按图：32 设置用户和用户密码并点击 “Add”</h5>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-33.png" alt="" class="wp-image-19693" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-33.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-33-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：33）</figcaption></figure>
+
+
+
+<p>（<br>补充：<br>1) 设置 “Full Name”<br>2) 设置 “Username”<br>3) 选择 “Set a password now”<br>4) 设置 “Password”<br>）</p>
+
+
+
+<h5>3.11.4 关闭此界面</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-34.png" alt="" class="wp-image-19694" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-34.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/MacBook-Air-2017-openSUSE-Leap-15-34-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：34）</figcaption></figure></div>
+
+
+<h4>3.12 此时 openSUSE 操作系统配置完成</h4>
+
+
+
+<h3>补充一：使用 VPN 的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># sslocal -s &lt;server IP address&gt; -p &lt;server port&gt; -l &lt;local port&gt; -k &lt;server VPN password&gt; -t 600 -m &lt;server VPN encryption method&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 服务器的 IP 地址、服务器的端口号、服务器的 VPN 密码和服务器的 VPN 加密方法由服务端设置<br>2) 本地端口号可自行设置<br>）</p>
+
+
+
+<p>（注意：这里的“本地端口号”要与刚刚在 /etc/proxychains.conf 里设置的 “socks5 127.0.0.1 1000” 中的 “1000” 一致）</p>
+
+
+
+<pre class="wp-block-code"><code>
+# proxychains4 &lt;application which need use VPN&gt;</code></pre>
+
+
+
+<h3>补充二：使用虚拟机环境和管理器的方法</h3>
+
+
+
+<h4>2.1 启用虚拟机环境</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start libvirtd</code></pre>
+
+
+
+<h4>2.2 启动虚拟机管理器</h4>
+
+
+
+<pre class="wp-block-code"><code># virt-manager </code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] KVM  虚拟机模板的创建 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 31 Oct 2019 14:21:44 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6392</guid>
+
+					<description><![CDATA[注意： 在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络 软件准备： 在 CentOS 官网上下载安装系统所需要的镜像： https://centos.org/download/ 正文： 步骤一：理解创建 KVM 虚拟机模板的目的 主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间 步骤二：为这个虚拟机创建硬盘文件 2.1 创建硬盘文件 （只在真机上执行以下步骤） （补充：这里以创建 10G 大小的 template_centos_8_10g.qcow2 硬盘文件为例） 2.2 确认硬盘文件已创建 （只在真机上执行以下步骤） （补充：这里以确认 template_centos_8_10g.qcow2 硬盘文件为例） 步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机 3.1 启动 KVM 的 virt-manager （只在真机上执行以下步骤） 3.2 在 virt-manager 上的左上角点击文件之后点击 “新建虚拟机” （只在真机上执行以下步骤） （步骤略） 3.2.1 选择以本地安装介质的方式安装系统 （只在真机上执行以下步骤） 3.2.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] KVM  虚拟机模板的创建 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-install/">KVM 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-network-install/">KVM 虚拟网络的创建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 CentOS 官网上下载安装系统所需要的镜像：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://centos.org/download/" target="_blank" rel="noreferrer noopener">https://centos.org/download/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-理解创建-kvm-虚拟机模板的目的">步骤一：理解创建 KVM 虚拟机模板的目的</h3>
+
+
+
+<p>主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间</p>
+
+
+
+<h3 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-8-10g-qcow22-1-创建硬盘文件-template-centos-8-10g-qcow2">步骤二：为这个虚拟机创建硬盘文件</h3>
+
+
+
+<h4 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-8-10g-qcow22-1-创建硬盘文件-template-centos-8-10g-qcow2">2.1 创建硬盘文件</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># qemu-img create -f qcow2 /var/lib/libvirt/images/template_centos_8_10g.qcow2 10G</code></pre>
+
+
+
+<p>（补充：这里以创建 10G 大小的 template_centos_8_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h4 id="2-2-确认硬盘文件已创建">2.2 确认硬盘文件已创建</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ls /var/lib/libvirt/images/ | grep template_centos_8_10g.qcow2</code></pre>
+
+
+
+<p>（补充：这里以确认 template_centos_8_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h3 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机</h3>
+
+
+
+<h4 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">3.1 启动 KVM 的 virt-manager</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<h4 id="3-2-在-virt-manager-上的左上角点击文件之后点击-新建虚拟机">3.2 在 virt-manager 上的左上角点击文件之后点击 “新建虚拟机”</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="3-2-1-选择以本地安装介质的方式安装系统">3.2.1 选择以本地安装介质的方式安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="482" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-1.png" alt="" class="wp-image-19710" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-1.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-1-279x300.png 279w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h5 id="3-2-2-选择安装系统的系统镜像">3.2.2 选择安装系统的系统镜像</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="458" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-2.png" alt="" class="wp-image-19711" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-2.png 458w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-2-300x293.png 300w" sizes="(max-width: 458px) 100vw, 458px" /><figcaption>（图：2）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 CentOS-8-x86_64-1905-dvd1.iso 系统镜像为例）</p>
+
+
+
+<h5 id="3-2-3-设置内存大小和处理器数量">3.2.3 设置内存大小和 CPU 核心数</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-3.png" alt="" class="wp-image-19712" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-3.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-3-300x300.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-3-150x150.png 150w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-3-100x100.png 100w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：3）</figcaption></figure></div>
+
+
+<p>（补充：这里以设置 2048 MiB 内容和 2 核 CPU 为例）</p>
+
+
+
+<h5 id="3-2-4-选择用刚刚创建的硬盘文件来安装系统">3.2.4 选择用刚刚创建的硬盘文件来安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-4.png" alt="" class="wp-image-19713" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-4.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-4-300x300.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-4-150x150.png 150w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-4-100x100.png 100w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 template_centos_8_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h5 id="3-2-5-给虚拟机命名并选择虚拟网络">3.2.5 给虚拟机命名并选择虚拟网络</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（注意：虚拟网络必须提前创建好）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="499" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-5.png" alt="" class="wp-image-19714" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-5.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-5-269x300.png 269w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：5）</figcaption></figure></div>
+
+
+<p>（补充：这里以将虚拟机命名为 template_centos_8_10g 并使用 vlan001 网络为例）</p>
+
+
+
+<h5 id="3-2-6-开始安装系统">3.2.6 开始安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="612" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-6.png" alt="" class="wp-image-19715" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-6-300x239.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="3-2-7-选择系统语言">3.2.7 选择系统语言</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-7.png" alt="" class="wp-image-19717" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-之后进行系统配置界面">3.2.8 之后进行系统配置界面</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>需要手动配置的地方有三个：<br>1) “INSTALLATION DESTINATION”<br>2) “KDUMP”<br>3) “SOFTWARE SELECTION”<br>分别点击以后就可以配置了</p>
+
+
+
+<h5 id="3-2-8-1-通过-installation-destination-对硬盘进行分区">3.2.8.1 通过 “INSTALLATION DESTINATION” 对硬盘进行分区</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+
+<p>（注意：只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘类型，硬盘格式设置为 XFS）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-8.png" alt="" class="wp-image-19718" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-9.png" alt="" class="wp-image-19719" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-9.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-9-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：9）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-2-取消-kdump">3.2.8.2 取消 “KDUMP”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-10.png" alt="" class="wp-image-19720" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-10.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-10-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：10）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-3-选择最小化安装系统">3.2.8.3 选择最小化安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-11.png" alt="" class="wp-image-19721" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-11.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-11-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：11）</figcaption></figure></div>
+
+
+<h5 id="3-2-9-之后点击右下角的-begin-installation">3.2.9 之后点击右下角的 “Begin installation”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-12.png" alt="" class="wp-image-19722" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-12.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-12-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：12）</figcaption></figure></div>
+
+
+<h5 id="3-2-10-在安装的过程中设置-root-密码-安装完成后重启">3.2.10 在安装的过程中设置 root 密码，安装完成后重启</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-13.png" alt="" class="wp-image-19723" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-13.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-8-13-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：13）</figcaption></figure></div>
+
+
+<h5 id="3-2-11-在安装系统的过程中需要注意的内容总结">3.2.11 在安装系统的过程中需要注意的内容总结</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>1) 一定要使用刚刚创建的 /var/lib/libvirt/images/template_centos_8_10g.qcow2 作为安装虚拟机的硬件文件<br>2) 虚拟机网络 “vlan001” 要提前创建好<br>3) 只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘，硬盘格式是 XFS<br>4) 取消 “KDUMP”<br>5) 选择最小化安装系统</p>
+
+
+
+<h3 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">步骤四：进入新创建虚拟机修改配置</h3>
+
+
+
+<h4 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1 修改网卡个性化设置</h4>
+
+
+
+<h5 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1.1 修改网卡配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network-scripts/ifcfg-ens3</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>TYPE=Ethernet
+BOOTPROTO=dhcp
+NAME=ens3
+DEVICE=ens3
+ONBOOT=yes</code></pre>
+
+
+
+<h5 id="4-1-2-使修改的网卡配置生效">4.1.2 使修改的网卡配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h4 id="4-2-禁用-selinux">4.2 禁用 SELinux</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/selinux/config</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted</code></pre>
+
+
+
+<h4 id="4-3-禁用空路由">4.3 禁用空路由</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># Created by anaconda
+NOZEROCONF="yes"</code></pre>
+
+
+
+<h4 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4 添加 Console 配置</h4>
+
+
+
+<h5 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4.1 修改 grub 内核配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/default/grub</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL="serial console"
+GRUB_SERIAL_COMMAND="serial --unit=1 --speed=115200"
+GRUB_CMDLINE_LINUX="biosdevname=0 net.ifnames=0 console=tty0 console=ttyS0,115200n8"
+GRUB_DISABLE_LINUX_UUID="true"
+GRUB_ENABLE_LINUX_LABEL="true"
+GRUB_DISABLE_RECOVERY="true"</code></pre>
+
+
+
+<h5 id="4-4-2-使修改的-grub-内核配置生效">4.4.2 使修改的 grub 内核配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o grub</code></pre>
+
+
+
+<h4 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5 将系统自动挂载的硬盘从使用 UUID 换成硬件路径</h4>
+
+
+
+<h5 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5.1 显示根分区的 UUID</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># blkid
+/dev/sda1: UUID="e76ed189-6d0f-49d5-8586-c5aae4bdc9b5" TYPE="xfs" PARTUUID="3d8377ef-01"</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： e76ed189-6d0f-49d5-8586-c5aae4bdc9b5）</p>
+
+
+
+<h5 id="4-5-2-在自动挂载文件里将根分区的-uuid-换成硬件路径">4.5.2 在自动挂载文件里将根分区的 UUID 换成硬件路径</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UUID=e76ed189-6d0f-49d5-8586-c5aae4bdc9b5 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： e76ed189-6d0f-49d5-8586-c5aae4bdc9b5）</p>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>/dev/sda1 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<h4 id="4-6-删除不用的程序">4.6 删除不用的程序</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y remove firewalld-* python-firewall</code></pre>
+
+
+
+<h4 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7 配置虚拟系统的 yum 源</h4>
+
+
+
+<h5 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7.1 备份旧 yum 源</h5>
+
+
+
+<h5 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7.1.1 创建备份目录</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /etc/yum.repos.d/backup</code></pre>
+
+
+
+<h5 id="4-7-1-2-备份旧-yum-源">4.7.1.2 备份旧 yum 源</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup</code></pre>
+
+
+
+<h5 id="4-7-2-创建新的-yum-源文件">4.7.2 创建新的 yum 源文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/yum.repos.d/lan.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;CentOS8BaseOS]
+name=CentOS8BaseOS
+baseurl=http://192.168.100.254/CentOS8/BaseOS/
+enabled=1
+gpgcheck=0
+
+&#91;CentOS8AppStream]
+name=CentOS8AppStream
+baseurl=http://192.168.100.254/CentOS8/AppStream/
+enabled=1
+gpgcheck=0</code></pre>
+
+
+
+<p>(注意：http://192.168.1.250/centos8/ 需要根据真实环境的情况进行更改)</p>
+
+
+
+<h5 id="4-7-3-删除旧的-yum-源数据">4.7.3 删除旧的 yum 源数据</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h5 id="4-7-4-刷新新的-yum-源">4.7.4 刷新新的 yum 源</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum repolist</code></pre>
+
+
+
+<h4 id="4-8-对虚拟系统进行升级">4.8 对虚拟系统进行升级</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y update</code></pre>
+
+
+
+<h4 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.9 进行分区扩展</h4>
+
+
+
+<h5 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.9.1 安装分区扩展软件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install -y cloud-utils-growpart</code></pre>
+
+
+
+<h5 id="4-9-2-给开机自启配置文件相应的权限">4.9.2 给开机自启配置文件相应的权限</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /etc/rc.local</code></pre>
+
+
+
+<h5 id="4-9-3-设置开机自动扩容根目录">4.9.3 设置开机自动扩容根目录</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/usr/bin/growpart /dev/sda1
+/usr/sbin/xfs_growfs /</code></pre>
+
+
+
+<h4 id="4-10-修改虚拟机系统的名称">4.10 修改虚拟机系统的名称</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/hostname</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>template_centos_8_10g
+</code></pre>
+
+
+
+<h4 id="4-11-启用-serial-服务实现通过-virsh-console-命令控制虚拟机">4.11 启用 serial 服务实现通过 virsh console 命令控制虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start serial-getty@ttyS0
+# systemctl enable serial-getty@ttyS0</code></pre>
+
+
+
+<h4 id="4-12-清除虚拟系统的历史命令">4.12 清除虚拟系统的历史命令</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># history -c</code></pre>
+
+
+
+<h4 id="4-13-关闭虚拟机">4.13 关闭虚拟机</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h3 id="步骤五-在真机上对虚拟机进行清理优化">步骤五：在真机上对虚拟机进行清理优化</h3>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sudo virt-sysprep -d template_centos_8_10g</code></pre>
+
+
+
+<p>（补充：这里以清理 template_centos_8_10g 虚拟机为例）</p>
+
+
+
+<p>（<br>注意：如果此命令不存在<br>1) CentOS 系统的话需要安装 libguestfs-tools<br>2) openSUSE 系统的话需要安装 guestfs-tools<br>）</p>
+
+
+
+<h3 id="步骤六-此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了">步骤六：此时就可以将此虚拟机的硬件文件作为模板进行批量克隆虚拟机了</h3>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] KVM  虚拟机模板的创建 （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 22 Aug 2019 15:45:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5435</guid>
+
+					<description><![CDATA[注意： 在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络 软件准备： 在 CentOS 官网上下载安装系统所需要的镜像： https://centos.org/download/ 正文： 步骤一：理解创建 KVM 虚拟机模板的目的 主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间 步骤二：为这个虚拟机创建硬盘文件 2.1 创建硬盘文件 （只在真机上执行以下步骤） （补充：这里以创建 10G 大小的 template_centos_7_10g.qcow2 硬盘文件为例） 2.2 确认硬盘文件已创建 （只在真机上执行以下步骤） （补充：这里以确认 template_centos_7_10g.qcow2 硬盘文件为例） 步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机 3.1 启动 KVM 的 virt-manager （只在真机上执行以下步骤） 3.2 在 virt-manager 上的左上角点击文件之后 “点击新建虚拟机” （只在真机上执行以下步骤） （步骤略） 3.2.1 选择以本地安装介质的方式安装系统 （只在真机上执行以下步骤） 3.2.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-linux-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] KVM  虚拟机模板的创建 （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在创建 KVM 虚拟机之前要先安装 KVM 并创建 KVM 虚拟网络</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-install/">KVM 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-network-install/">KVM 虚拟网络的创建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 CentOS 官网上下载安装系统所需要的镜像：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://centos.org/download/" target="_blank" rel="noreferrer noopener">https://centos.org/download/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-理解创建-kvm-虚拟机模板的目的">步骤一：理解创建 KVM 虚拟机模板的目的</h3>
+
+
+
+<p>主要用于批量克隆出新的 KVM 机器，节约创建新虚拟机的时间</p>
+
+
+
+<h3 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-7-10g-qcow22-1-创建硬盘文件-template-centos-7-10g-qcow2">步骤二：为这个虚拟机创建硬盘文件</h3>
+
+
+
+<h4 id="步骤二-为这个虚拟机创建硬盘文件-template-centos-7-10g-qcow22-1-创建硬盘文件-template-centos-7-10g-qcow2">2.1 创建硬盘文件</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># qemu-img create -f qcow2 /var/lib/libvirt/images/template_centos_7_10g.qcow2 10G</code></pre>
+
+
+
+<p>（补充：这里以创建 10G 大小的 template_centos_7_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h4 id="2-2-确认硬盘文件已创建">2.2 确认硬盘文件已创建</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ls /var/lib/libvirt/images/ | grep template_centos_7_10g.qcow2</code></pre>
+
+
+
+<p>（补充：这里以确认 template_centos_7_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h3 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">步骤三：使用 KVM 和刚刚创建的硬盘文件新安装一台虚拟机</h3>
+
+
+
+<h4 id="步骤三-使用-kvm-和刚刚创建的硬盘文件新安装一台虚拟机3-1-启动-kvm-的-virt-manager">3.1 启动 KVM 的 virt-manager</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<h4 id="3-2-在-virt-manager-上的左上角点击文件之后-点击新建虚拟机">3.2 在 virt-manager 上的左上角点击文件之后 “点击新建虚拟机”</h4>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="3-2-1-选择以本地安装介质的方式安装系统">3.2.1 选择以本地安装介质的方式安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="482" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-1.png" alt="" class="wp-image-19696" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-1.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-1-279x300.png 279w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h5 id="3-2-2-选择安装系统的系统镜像">3.2.2 选择安装系统的系统镜像</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="458" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-2.png" alt="" class="wp-image-19697" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-2.png 458w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-2-300x293.png 300w" sizes="(max-width: 458px) 100vw, 458px" /><figcaption>（图：2）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 centos-7.6-x86_64-everythin-1810.iso 系统镜像为例）</p>
+
+
+
+<h5 id="3-2-3-设置内存大小和处理器数量">3.2.3 设置内存大小和 CPU 核心数</h5>
+
+
+
+<pre id="block-2faa27f0-e4ae-4ad6-8dd9-28ff620e19c8" class="wp-block-code"><code>（只在真机上执行以下步骤）</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-3.png" alt="" class="wp-image-19698" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-3.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-3-300x300.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-3-150x150.png 150w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-3-100x100.png 100w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：3）</figcaption></figure></div>
+
+
+<p>（补充：这里以设置 2048 MiB 内容和 2 核 CPU 为例）</p>
+
+
+
+<h5 id="3-2-4-选择用刚刚创建的硬盘文件来安装系统">3.2.4 选择用刚刚创建的硬盘文件来安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="448" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-4.png" alt="" class="wp-image-19699" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-4.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-4-300x300.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-4-150x150.png 150w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-4-100x100.png 100w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<p>（补充：这里以使用 template_centos_7_10g.qcow2 硬盘文件为例）</p>
+
+
+
+<h5 id="3-2-5-给虚拟机命名为并选择虚拟网络">3.2.5 给虚拟机命名为并选择虚拟网络</h5>
+
+
+
+<p>（注意：虚拟网络必须提前创建好）</p>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="448" height="499" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-5.png" alt="" class="wp-image-19700" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-5.png 448w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-5-269x300.png 269w" sizes="(max-width: 448px) 100vw, 448px" /><figcaption>（图：5）</figcaption></figure></div>
+
+
+<p>（补充：这里以将虚拟机命名为 template_centos_7_10g 并使用 vlan001 网络为例）</p>
+
+
+
+<h5 id="3-2-6-开始安装系统">3.2.6 开始安装系统</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="612" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-6.png" alt="" class="wp-image-19702" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-6-300x239.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="3-2-7-选择系统语言">3.2.7 选择系统语言</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-7.png" alt="" class="wp-image-19703" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-之后进行系统配置界面">3.2.8 之后进行系统配置界面</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>需要手动配置的地方有两个：<br>1) “INSTALLATION DESTINATION”<br>2) “KDUMP”<br>分别点击以后就可以配置了</p>
+
+
+
+<h5 id="3-2-8-1-通过-installation-destination-对硬盘进行分区">3.2.8.1 通过 “INSTALLATION DESTINATION” 对硬盘进行分区</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+
+<p>（注意：只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘类型，硬盘格式设置为 XFS）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-8.png" alt="" class="wp-image-19704" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-9.png" alt="" class="wp-image-19705" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-9.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-9-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：9）</figcaption></figure></div>
+
+
+<h5 id="3-2-8-2-取消-kdump">3.2.8.2 取消 “KDUMP”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（补充：完成后点击左上角的 “DONE”）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-10.png" alt="" class="wp-image-19706" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-10.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-10-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：10）</figcaption></figure></div>
+
+
+<h5 id="3-2-9-设置完成之后点击右下角的-begin-installation">3.2.9 设置完成之后点击右下角的 “Begin installation”</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-11.png" alt="" class="wp-image-19707" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-11.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-11-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：11）</figcaption></figure></div>
+
+
+<h5 id="3-2-10-在安装的过程中设置-root-密码-安装完成后重启">3.2.10 在安装的过程中设置 root 密码，安装完成后重启</h5>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-12.png" alt="" class="wp-image-19708" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-12.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/KVM-template-CentOS-7-12-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：12）</figcaption></figure></div>
+
+
+<h5 id="3-2-11-在安装系统的过程中需要注意的内容总结">3.2.11 在安装系统的过程中需要注意的内容总结</h5>
+
+
+
+<p>1)  一定要使用刚刚创建的 /var/lib/libvirt/images/template_centos_7_10g.qcow2 作为安装虚拟机的硬件文件<br>2)  虚拟机网络 “vlan001” 要提前创建好<br>3)  只分一个分区，只设置一个挂载点挂载到根，使用标准硬盘，硬盘格式是 XFS<br>4)  取消 “KDUMP”</p>
+
+
+
+<h3 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">步骤四：进入新创建虚拟机修改配置</h3>
+
+
+
+<h4 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1 修改网卡个性化设置</h4>
+
+
+
+<h5 id="步骤四-进入新创建虚拟机修改配置4-1-修改网卡个性化设置4-1-1-修改网卡配置文件">4.1.1 修改网卡配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network-scripts/ifcfg-eth0</code></pre>
+
+
+
+<p>将全部内容进行如下修改：</p>
+
+
+
+<pre class="wp-block-code"><code>BOOTPROTO=dhcp
+NAME=eth0
+DEVICE=eth0
+ONBOOT=yes
+TYPE=Ethernet</code></pre>
+
+
+
+<h5 id="4-1-2-使修改的网卡配置生效">4.1.2 使修改的网卡配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># service network restart</code></pre>
+
+
+
+<h4 id="4-2-禁用-selinux">4.2 禁用 selinux</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/selinux/config</code></pre>
+
+
+
+<p>将全部内容进行如下修改：</p>
+
+
+
+<pre class="wp-block-code"><code># This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted</code></pre>
+
+
+
+<h4 id="4-3-禁用空路由">4.3 禁用空路由</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># Created by anaconda
+NOZEROCONF="yes"</code></pre>
+
+
+
+<h4 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4 添加 Console 配置</h4>
+
+
+
+<h5 id="4-4-添加-console-配置4-4-1-修改-grub-内核配置文件">4.4.1 修改 grub 内核配置文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/default/grub</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL="serial console"
+GRUB_SERIAL_COMMAND="serial --unit=1 --speed=115200"
+GRUB_CMDLINE_LINUX="biosdevname=0 net.ifnames=0 console=tty0 console=ttyS0,115200n8"
+GRUB_DISABLE_LINUX_UUID="true"
+GRUB_ENABLE_LINUX_LABEL="true"
+GRUB_DISABLE_RECOVERY="true"</code></pre>
+
+
+
+<h5 id="4-4-2-使修改的-grub-内核配置生效">4.4.2 使修改的 grub 内核配置生效</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># grub2-mkconfig -o grub</code></pre>
+
+
+
+<h4 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5 将系统自动挂载的硬盘从使用 UUID 换成硬件路径</h4>
+
+
+
+<h5 id="4-5-将系统自动挂载的硬盘从使用-uuid-换成硬件路径4-5-1-显示根分区的-uuid">4.5.1 显示根分区的 UUID</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># blkid
+/dev/vda1: UUID="84ccf593-a924-4949-b7ef-584be43deef5" TYPE="xfs"</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： 84ccf593-a924-4949-b7ef-584be43deef5）</p>
+
+
+
+<h5 id="4-5-2-在自动挂载文件里将根分区的-uuid-换成硬件路径">4.5.2 在自动挂载文件里将根分区的 UUID 换成硬件路径</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UUID=84ccf593-a924-4949-b7ef-584be43deef5 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<p>（补充：这里的 UUID 是： 84ccf593-a924-4949-b7ef-584be43deef5）</p>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/dev/vda1 /                   xfs     defaults        0 0</code></pre>
+
+
+
+<h4 id="4-6-删除不用的程序">4.6 删除不用的程序</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y remove NetworkManager-* firewalld-* python-firewall</code></pre>
+
+
+
+<h4 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7 配置虚拟系统的 yum 源</h4>
+
+
+
+<h5 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7.1 备份旧 yum 源</h5>
+
+
+
+<h5 id="4-7-配置虚拟系统的-yum-源4-7-1-备份旧-yum-源4-7-1-1-创建备份目录">4.7.1.1 创建备份目录</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /etc/yum.repos.d/backup</code></pre>
+
+
+
+<h5 id="4-7-1-2-备份旧-yum-源">4.7.1.2 备份旧 yum 源</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup</code></pre>
+
+
+
+<h5 id="4-7-2-创建新的-yum-源文件">4.7.2 创建新的 yum 源文件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/yum.repos.d/lan.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;CentOS7]
+name=CentOS7
+baseurl=http://192.168.100.254/CentOS7/
+enabled=1
+gpgcheck=0</code></pre>
+
+
+
+<p>(注意：这里的 http://192.168.1.250/centos7/ 需要根据真实环境的情况进行更改)</p>
+
+
+
+<h5 id="4-7-3-删除旧的-yum-源数据">4.7.3 删除旧的 yum 源数据</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h5 id="4-7-4-刷新新的-yum-源">4.7.4 刷新新的 yum 源</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum repolist</code></pre>
+
+
+
+<h4 id="4-8-对虚拟系统进行升级">4.8 对虚拟系统进行升级</h4>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y update</code></pre>
+
+
+
+<h4 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.9 进行分区扩展</h4>
+
+
+
+<h5 id="4-9-进行分区扩展4-9-1-安装分区扩展软件">4.9.1 安装分区扩展软件</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install -y cloud-utils-growpart</code></pre>
+
+
+
+<h5 id="4-9-2-给开机自启配置文件相应的权限">4.9.2 给开机自启配置文件相应的权限</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /etc/rc.local</code></pre>
+
+
+
+<h5 id="4-9-3-设置开机自动扩容根目录">4.9.3 设置开机自动扩容根目录</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>/usr/bin/growpart /dev/vda1 
+/usr/sbin/xfs_growfs /</code></pre>
+
+
+
+<h5 id="4-10-修改虚拟机系统的名称">4.10 修改虚拟机系统的名称</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/hostname</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>template_centos_7_10g</code></pre>
+
+
+
+<h5 id="4-11-启用-serial-服务实现通过-virsh-console-命令控制虚拟机">4.11 启用 serial 服务实现通过 virsh console 命令控制虚拟机</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start serial-getty@ttyS0
+# systemctl enable serial-getty@ttyS0</code></pre>
+
+
+
+<h5 id="4-12-清除虚拟系统的历史命令">4.12 清除虚拟系统的历史命令</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># history -c</code></pre>
+
+
+
+<h5 id="4-13-关闭虚拟机">4.13 关闭虚拟机</h5>
+
+
+
+<p>（只在虚拟机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h3 id="步骤五-在真机上对虚拟机进行清理优化">步骤五：在真机上对虚拟机进行清理优化</h3>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sudo virt-sysprep -d template_centos_7_10g</code></pre>
+
+
+
+<p>（补充：这里以清理 template_centos_7_10g 虚拟机为例）</p>
+
+
+
+<p>（<br>注意：如果此命令不存在<br>1) CentOS 系统的话需要安装 libguestfs-tools<br>2) openSUSE 系统的话需要安装 guestfs-tools<br>）</p>
+
+
+
+<h3 id="步骤六-此时就可以将此虚拟机的硬件文件作为模块进行批量克隆虚拟机了">步骤六：此时就可以将此虚拟机的硬件文件作为模块进行批量克隆虚拟机了</h3>
+
+
+
+<p>（只在真机上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,2505 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 07 Sep 2022 13:05:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] 解决 Linux 执行 Shell 脚本时报错 “[: &#8230;&#8230;: unary operator expected”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-unary-operator-expected/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 07 Sep 2022 12:58:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=28195</guid>
+
+					<description><![CDATA[报错代码： 解决方法： 将以下内容修改为： 修改为：]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码：</h2>
+
+
+
+<pre class="wp-block-code"><code>&#91;: ......: unary operator expected</code></pre>
+
+
+
+<h2>解决方法：</h2>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;Shell Script&gt;</code></pre>
+
+
+
+<p>将以下内容修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91;&#91; ...... ]]; 
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91;&#91; ...... ]]; 
+......</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 man 7 regex （在 Linux 中查看正则表达的方法）</title>
+		<link>https://eternalcenter-sep-2022.github.io/man-7-regex/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 06:49:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27444</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># man 7 regex</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 运算</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-calculation/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Jul 2022 15:58:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26552</guid>
+
+					<description><![CDATA[方法一：使用 expr 命令 或者： 或者： （补充：这里以 1 加 2 等于 3 为例） 方法二：使用 let 命令 （补充：这里以 2 除以 1 等于 2 为例） 方法三：使用双括号 “(())” （补充：这里以 1 乘以 2 等于 3 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：使用 expr 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=`expr $a + $b`
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(expr $a + $b)
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$&#91;`expr $a + $b`]
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 加 2 等于 3 为例）</p>
+
+
+
+<h3>方法二：使用 let 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# let c=b/c
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 2 除以 1 等于 2 为例）</p>
+
+
+
+<h3>方法三：使用双括号 “(())”</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a * $b))
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 乘以 2 等于 3 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行命令 （多条命令版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-command-multiple-commands/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 06 Jul 2022 08:52:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26271</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行命令 （多条命令版）作用：批量实现多个远程服务器执行命令 （多条命令版） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=&#8221;zhumingyu&#8221; #用户名2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no 注意 执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行命令 （多条命令版）<br>作用：批量实现多个远程服务器执行命令 （多条命令版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=&#8221;zhumingyu&#8221; #用户名<br>2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔<br>3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔<br>4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="zhumingyu"
+myserver="eternalcenter.com eternalcentre.com" #each server is separated by a space
+mycommand="ls ip a s" #each command is separated by a space
+mysudo="yes" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+
+if &#91; $mysudo == 'yes' ];then
+        executecommand(){
+                ssh -t $1@$2 "sudo -u root su - root -c \"$command\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        executecommand(){
+                ssh -t $1@$2 "$command"
+        }
+        echo "don't use sudo"
+fi
+
+for commands in `echo $mycommand`
+do
+
+        for servers in `echo $myserver`
+        do
+                echo $servers
+                echo $commands
+        executecommand $myuser $servers $commands
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 命令 expr （截取字符串、计算字符串长度和数值运算）</title>
+		<link>https://eternalcenter-sep-2022.github.io/expr/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 26 Jun 2022 10:33:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26178</guid>
+
+					<description><![CDATA[案例一：计算字符串长度 （补充：这里以计算字符串 eternalcenter.com 的长度为例） 案例二：截取字符串 （补充：这里以计算字符串 eternalcenter.com 的第 1 个字符到第 13 个字符串为例） 案例三：显示某字符在某字符串中第 1 次出现的位置 （补充：这里以显示 r 字符在字符串 eternalcenter.com 中第 1 次出现的位置为例） 案例四：数值运算 4.1 案例一：加法 （补充：这里以 1 加 1 等于 2 为例） 4.2 案例二：减法 （补充：这里以 2 减 1 等于 1 为例） 4.3 案例三：乘法 （补充：这里以 3 乘以 3 等于 9 为例） （注意：expr 使用乘法时必须要使用反义符号 “\”） 4.4 案例四：除法 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/expr/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 命令 expr （截取字符串、计算字符串长度和数值运算）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：计算字符串长度</h3>
+
+
+
+<pre class="wp-block-code"><code># expr length 'eternalcenter.com'
+17</code></pre>
+
+
+
+<p>（补充：这里以计算字符串 eternalcenter.com 的长度为例）</p>
+
+
+
+<h3>案例二：截取字符串</h3>
+
+
+
+<pre class="wp-block-code"><code># expr substr "eternalcenter.com" 1 13
+expr substr "eternalcenter.com" 1 13</code></pre>
+
+
+
+<p>（补充：这里以计算字符串 eternalcenter.com 的第 1 个字符到第 13 个字符串为例）</p>
+
+
+
+<h3>案例三：显示某字符在某字符串中第 1 次出现的位置</h3>
+
+
+
+<pre class="wp-block-code"><code># expr index eternalcenter.com r
+4</code></pre>
+
+
+
+<p>（补充：这里以显示 r 字符在字符串 eternalcenter.com 中第 1 次出现的位置为例）</p>
+
+
+
+<h3>案例四：数值运算</h3>
+
+
+
+<h4>4.1 案例一：加法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 1 + 1
+2</code></pre>
+
+
+
+<p>（补充：这里以 1 加 1 等于 2 为例）</p>
+
+
+
+<h4>4.2 案例二：减法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 2 - 1
+1</code></pre>
+
+
+
+<p>（补充：这里以 2 减 1 等于 1 为例）</p>
+
+
+
+<h4>4.3 案例三：乘法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 3 \* 3
+9</code></pre>
+
+
+
+<p>（补充：这里以 3 乘以 3 等于 9 为例）</p>
+
+
+
+<p>（注意：expr 使用乘法时必须要使用反义符号 “\”）</p>
+
+
+
+<h4>4.4 案例四：除法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 9 / 3 / 3
+1</code></pre>
+
+
+
+<p>（补充：这里以 9 除以 3 再除以 3 为等于 1 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux tr 命令 （内容替换）</title>
+		<link>https://eternalcenter-sep-2022.github.io/tr/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 24 Jun 2022 13:58:41 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26148</guid>
+
+					<description><![CDATA[内容一：tr 命令的简介 1.1 tr 命令的格式 1.2 tr 命令的原理 将 &#60;section 1&#62; 里的内容替换成 &#60;section 2&#62; 里的内容 内容二：tr 命令的选项 1) -c 或者 &#8211;complement 改变除了某内容外的所有内容2) -d 或者 &#8211;delete 删除某内容3) -s 或者 &#8211;squeeze-repeats 将相临重复的某个字符缩减成 1 个4) -t 或者 &#8211;truncate-set1 将 &#60;section 1&#62; 里的内容缩减成和 &#60;section 2&#62; 里的内容一样长 内容三：tr 命令的参数 1) \ 反斜杠2) \b 退格3) \f 换页4) \n 换行5) \r 回车6) &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/tr/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux tr 命令 （内容替换）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：tr 命令的简介</h3>
+
+
+
+<h4>1.1 tr 命令的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># tr &lt;option&gt; &lt;section 1&gt; &lt;sectiong 2&gt;</code></pre>
+
+
+
+<h4>1.2 tr 命令的原理</h4>
+
+
+
+<p>将 &lt;section 1&gt; 里的内容替换成 &lt;section 2&gt; 里的内容</p>
+
+
+
+<h3>内容二：tr 命令的选项</h3>
+
+
+
+<p>1) -c 或者 &#8211;complement 改变除了某内容外的所有内容<br>2) -d 或者 &#8211;delete 删除某内容<br>3) -s 或者 &#8211;squeeze-repeats 将相临重复的某个字符缩减成 1 个<br>4) -t 或者 &#8211;truncate-set1 将 &lt;section 1&gt; 里的内容缩减成和 &lt;section 2&gt; 里的内容一样长</p>
+
+
+
+<h3>内容三：tr 命令的参数</h3>
+
+
+
+<p>1) \ 反斜杠<br>2) \b 退格<br>3) \f 换页<br>4) \n 换行<br>5) \r 回车<br>6) \t 水平制表符<br>7) \v 垂直制表符<br>8) &lt;character 1&gt;-&lt;character 2&gt; 从某个字符到另 1 个字符，例如：a-z、a-Z、0-9<br>9) [&lt;character&gt;*] 在 &lt;section 2&gt; 中可用，&lt;character&gt; 会复制得和 &lt;section 1&gt; 中一样长<br><em>10) </em>[&lt;character&gt;*&lt;frequency&gt;] 将 &lt;character&gt; 复制 &lt;frequency&gt; 次，若以 0 开头，则视为八进制<br>11 [:alnum:] 所有字母和数字<br>12 [:alpha:] 所有字母<br>13 [:blank:] 所有呈水平排列的空白字符<br>14 [:cntrl:] 所有控制字符<br>15 [:digit:] 所有数字<br>16 [:graph:] 所有可打印字符，但不包括空格<br>17 [:lower:] 所有小写字母<br>18 [:print:] 所有可打印字符，包括空格<br>19 [:punct:] 所有标点字符<br>20 [:space:] 所有呈水平或垂直排列的空白字符<br>21 [:upper:] 所有大写字母<br>22 [:xdigit:] 所有十六进制数<br>23 [=字符=] 所有和指定字符相等的字符</p>
+
+
+
+<h3>内容三：tr 命令的案例</h3>
+
+
+
+<h4>3.1 案例一：替换某内容外的所有内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo 'zmyb' | tr -c zmy a
+zmyaa</code></pre>
+
+
+
+<p>（补充：这里以将内容 zmyb 中 zmy 以外的内容替换成内容 a 为例）</p>
+
+
+
+<p>（注意：zmyb 后面还有一个结尾符号，所以结果会多 1 个内容 a）</p>
+
+
+
+<h4>3.2 案例二：删除某内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo 'zmy' | tr -d m
+zy</code></pre>
+
+
+
+<p>（补充：这里以删除内容 zmy 中的内容 m 为例）</p>
+
+
+
+<h4>3.3 案例三：将相临重复的某个字符缩减成 1 个</h4>
+
+
+
+<pre class="wp-block-code"><code># echo zmmy | tr -s m
+zmy</code></pre>
+
+
+
+<p>（补充：这里以将内容 zmmy 中多个字符 m 压缩成 1 个为例）</p>
+
+
+
+<h4>3.4 案例四：替换字符，并将要匹配的内容缩减成和要替换的内容一样长</h4>
+
+
+
+<p>如果是正常情况：</p>
+
+
+
+<pre class="wp-block-code"><code>zhumingyu@laptop:~/Test&gt; echo abeabe | tr ab c
+ccecce</code></pre>
+
+
+
+<p>（补充：这里以将内容 abeabe 中的内容 ab 替换成内容 c 为例）</p>
+
+
+
+<p>如果是缩减的情况</p>
+
+
+
+<pre class="wp-block-code"><code>zhumingyu@laptop:~/Test&gt; echo abeabe | tr -t ab c
+cbecbe</code></pre>
+
+
+
+<p>（补充：这里以将内容 abeabe 中的内容 a 替换成内容 c 为例）</p>
+
+
+
+<p>（注意：这里 tr -t ab c 中内容 c 是 1 个字符，所以内容 ab 会被压缩成 1 个字符 a）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 数值计算</title>
+		<link>https://eternalcenter-sep-2022.github.io/numerical-calculations/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Jun 2022 14:36:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25907</guid>
+
+					<description><![CDATA[内容一：数值计算符号 1) + ，加法2) – ，减法3) * ，乘法4) / ，除法5) % ，求余 内容二：数值计算的方法 2.1 方法一：使用 expr 命令 或者： 或者： （补充：这里以 1 加 2 等于 3 为例） 2.2 方法二：使用 let 命令 （补充：这里以 2 除以 1 等于 2 为例） 2.3 方法三：使用双括号 (()) （补充：这里以 1 乘以 2 等于 2 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：数值计算符号</h3>
+
+
+
+<p>1) + ，加法<br>2) – ，减法<br>3) * ，乘法<br>4) / ，除法<br>5) % ，求余</p>
+
+
+
+<h3>内容二：数值计算的方法</h3>
+
+
+
+<h4>2.1 方法一：使用 expr 命令</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=`expr $a + $b`
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(expr $a + $b)
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$&#91;`expr $a + $b`]
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 加 2 等于 3 为例）</p>
+
+
+
+<h4>2.2 方法二：使用 let 命令</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# let c=b/c
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 2 除以 1 等于 2 为例）</p>
+
+
+
+<h4>2.3 方法三：使用双括号 (())</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a * $b))
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 1 乘以 2 等于 2 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示可以无密码登录系统的用户 （以 1 行的形式显示）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-login-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Jun 2022 13:33:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23846</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示可以登录系统的用户 （以 1 行到形式显示）作用：显示可以登录系统的用户 （以 1 行到形式显示） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示可以登录系统的用户 （以 1 行到形式显示）<br>作用：显示可以登录系统的用户 （以 1 行到形式显示）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+userlist=
+n=`cat /etc/passwd | wc -l`
+i=1
+
+while &#91; $i -le $n ]
+do
+	line=`sed -n "$&#91;i]p" /etc/passwd`
+	echo $line | egrep "nologin$|false$" &amp;&gt; /dev/null
+	if &#91; $? -ne 0 ];then
+                userlist="$userlist `echo $line | awk -F: '{print $1}'`"
+	fi
+	let i++
+done
+
+echo $userlist</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 Shell 脚本时报错 “binary operator expected”</title>
+		<link>https://eternalcenter-sep-2022.github.io/%e6%8e%92%e9%94%99-%e8%a7%a3%e5%86%b3-linux-%e6%89%a7%e8%a1%8c-shell-%e8%84%9a%e6%9c%ac%e6%97%b6%e6%8a%a5%e9%94%99-binary-operator-expected/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:53:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23744</guid>
+
+					<description><![CDATA[解决方法 将 if 判断中的变量，打上双引号 “&#8221;&#8221;”将以下内容： 修改为： （补充：这里以给 $1 变量打上双引号 “&#8221;&#8221;” 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>解决方法</h2>
+
+
+
+<p>将 if 判断中的变量，打上双引号 “&#8221;&#8221;”<br>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; -z $1 ];then
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; -z "$1" ];then
+......</code></pre>
+
+
+
+<p>（补充：这里以给 $1 变量打上双引号 “&#8221;&#8221;” 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测指定用户是否可以登录本地服务器</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-user-login-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 05 Jun 2022 16:21:49 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23696</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量检测指定用户是否可以登录本地服务器作用：批量检测指定用户是否可以登录本地服务器 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 directorylist=&#8221;daemon bin sys adm uucp guest nobody lpd lp&#8221; #要被检测的用户 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量检测指定用户是否可以登录本地服务器<br>作用：批量检测指定用户是否可以登录本地服务器</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>directorylist=&#8221;daemon bin sys adm uucp guest nobody lpd lp&#8221; #要被检测的用户</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directorylist="daemon bin sys adm uucp guest nobody lpd lp"
+
+####################### Separator ########################
+
+directorycheck=
+
+for i in `echo $directorylist`
+do
+        directorycheck="$directorycheck `cat /etc/passwd | egrep "^$i:" | egrep -v '/sbin/nologin|false|/bin/false' | awk -F: '{print $1}'`"
+done
+
+echo $directorycheck</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux while 循环</title>
+		<link>https://eternalcenter-sep-2022.github.io/while/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 24 May 2022 10:51:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23612</guid>
+
+					<description><![CDATA[案例一：无限循环 或者： 案例二：从 1 计数到 5 或者： 案例三：从 1 加到 5 或者： 案例四：输入多个数字，通过同时按下 “Ctrl” 键和 “D” 键结束输入，并将多个数字相加 案例五：阅读文件 或者： 或者： （补充：这里以阅读 test.txt 文件为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：无限循环</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while ((1));
+do
+        sleep 1
+        echo "infinite loop"
+done</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while :
+do
+        sleep 1
+        echo "infinite loop"
+done</code></pre>
+
+
+
+<h3>案例二：从 1 计数到 5</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1;n=5
+while ((i &lt;= n))
+do
+
+        echo $i
+        let i++
+
+done</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1;n=5
+while &#91;&#91; $i -le $n ]]
+do
+
+        echo $i
+        let i++
+
+done</code></pre>
+
+
+
+<h3>案例三：从 1 加到 5</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+while ((i &lt;= 5));
+do
+
+        let sum=$sum+$i
+        let i++
+
+done
+
+echo $sum</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+while &#91;&#91; $i -le 5 ]];
+do
+
+        let sum=$sum+$i
+        let i++
+
+done
+
+echo $sum</code></pre>
+
+
+
+<h3>案例四：输入多个数字，通过同时按下 “Ctrl” 键和 “D” 键结束输入，并将多个数字相加</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+sum=0
+echo "Please input number, press "ctrl" and "d" at the same time to end the input"
+
+while read num
+do
+        let sum=$sum+$num
+done
+
+echo $sum</code></pre>
+
+
+
+<h3>案例五：阅读文件</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while read line
+do
+        echo $line
+
+done &lt; test.txt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+cat test.txt | {
+while read line
+do
+        echo $line
+
+done }</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+cat test.txt | while read line
+do
+        echo $line
+
+done</code></pre>
+
+
+
+<p>（补充：这里以阅读 test.txt 文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 测试 SFTP 服务</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-sftp-test/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 May 2022 14:11:28 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23553</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：测试 SFTP 服务作用：测试 SFTP 服务 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 IP=10.0.0.8 #要测试 SFTP 的服务器 IP 地址 注意 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程需要测试 SFTP 服务的服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：测试 SFTP 服务<br>作用：测试 SFTP 服务</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>IP=10.0.0.8 #要测试 SFTP 的服务器 IP 地址 </p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行脚本的主机能无秘钥远程需要测试 SFTP 服务的服务器</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+IP=10.0.0.8
+####################### Separator ########################
+
+set timeout 3
+
+rpm -q expect &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+        echo "Expect needs to be installed first"
+fi
+
+expect &lt;&lt; EOF
+spawn sftp $IP
+expect "sftp&gt;"                                   {send "cd /tmp\r" } 
+expect "sftp&gt;"                                   {send "ls -l\r"}
+expect "sftp&gt;"                                   {send "quit\r"}
+expect "&gt;"                                       {send "\r"}
+EOF</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 eval （执行变量里的命令或实现指针）</title>
+		<link>https://eternalcenter-sep-2022.github.io/eval/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 13 Apr 2022 14:19:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23101</guid>
+
+					<description><![CDATA[内容一：eval 命令的作用 对将要执行的命令进行 2 次扫描，第 1 次扫描时把扫描的内容替换成命令，第 2 次扫描时执行扫描到的命令 内容二：eval 直接执行命令的案例 2.1 设置变量 （补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例） 2.2 显示变量里内容 或者： （补充：这里以显示变量 url 里的内容 eternalcenter.com 为例） 内容三：eval 将变量转换成命令后执行的案例 3.1 将命令设置成变量 （补充：这里以将命令 pwd 赋值给变量 command 为例） 3.2 显示变量里的命令 （补充：这里以显示变量 command 里的 pwd 命令为例） 3.3 执行变量里的命令 （补充：这里以执行变量 command 里的 pwd 命令为例） 内容四：eval 显示脚本里最后 1 个位置变量的内容 4.1 创建显示最后 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/eval/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 eval （执行变量里的命令或实现指针）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：eval 命令的作用</h3>
+
+
+
+<p>对将要执行的命令进行 2 次扫描，第 1 次扫描时把扫描的内容替换成命令，第 2 次扫描时执行扫描到的命令</p>
+
+
+
+<h3>内容二：eval 直接执行命令的案例</h3>
+
+
+
+<h4>2.1 设置变量</h4>
+
+
+
+<pre class="wp-block-code"><code># url=eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例）</p>
+
+
+
+<h4>2.2 显示变量里内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $url
+eternalcenter.com</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># eval echo $url
+eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以显示变量 url 里的内容 eternalcenter.com 为例）</p>
+
+
+
+<h3>内容三：eval 将变量转换成命令后执行的案例</h3>
+
+
+
+<h4>3.1 将命令设置成变量</h4>
+
+
+
+<pre class="wp-block-code"><code># command=pwd</code></pre>
+
+
+
+<p>（补充：这里以将命令 pwd 赋值给变量 command 为例）</p>
+
+
+
+<h4>3.2 显示变量里的命令</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $command
+pwd</code></pre>
+
+
+
+<p>（补充：这里以显示变量 command 里的 pwd 命令为例）</p>
+
+
+
+<h4>3.3 执行变量里的命令</h4>
+
+
+
+<pre class="wp-block-code"><code># eval $command
+/root</code></pre>
+
+
+
+<p>（补充：这里以执行变量 command 里的 pwd 命令为例）</p>
+
+
+
+<h3>内容四：eval 显示脚本里最后 1 个位置变量的内容</h3>
+
+
+
+<h4>4.1 创建显示最后 1 个位置变量的脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># vim test.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+eval echo \$$#</code></pre>
+
+
+
+<p>（补充：这里创建名为 test.sh 的脚本为例）</p>
+
+
+
+<h4>4.2 带位置变量执行脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># . test.txt a b c d e
+e</code></pre>
+
+
+
+<p>（补充：这里执行名为 test.sh 的脚本并附带 a b c d e 5 个位置变量为例）</p>
+
+
+
+<h3>内容五：eval 实现指针</h3>
+
+
+
+<h4>5.1 设置变量</h4>
+
+
+
+<pre class="wp-block-code"><code># url=eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例）</p>
+
+
+
+<h4>5.2 设置指针</h4>
+
+
+
+<pre class="wp-block-code"><code># pointer=url</code></pre>
+
+
+
+<p>（补充：这里以让指针 pointer 指向 url 变量为例）</p>
+
+
+
+<h4>5.3 显示指针指向的变量</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $pointer
+url</code></pre>
+
+
+
+<p>（补充：这里以显示指针 pointer 指向的变量 url 为例）</p>
+
+
+
+<h4>5.4 显示指针最终指向的内容</h4>
+
+
+
+<pre class="wp-block-code"><code># eval echo \$$pointer
+eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以显示指针 pointer 指向的最终内容 eternalcenter.com 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-login-log-exclude-sftp/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 14:52:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21977</guid>
+
+					<description><![CDATA[注意： 在排除 SFTP 登录记录只监控普通登录记录前要先开启 SFTP 日志： 正文： 介绍 基本信息 作者：朱明宇名称：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）作用：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 普通登录记录会同时记录在系统日志和 $logfile 里 脚本分割线里的变量 1. logfile=logfile.txt #用户保存记录的文件2. prompt=&#8221;and no sftp info&#8221; #记录里普通登录记录的文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在排除 SFTP 登录记录只监控普通登录记录前要先开启 SFTP 日志：</p>
+
+
+
+<div class="wp-container-1 wp-block-buttons">
+<div class="wp-block-button aligncenter is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/sftp-log/" style="border-radius:0px">SFTP 日志的开启</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）<br>作用：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 普通登录记录会同时记录在系统日志和 $logfile 里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. logfile=logfile.txt #用户保存记录的文件<br>2. prompt=&#8221;and no sftp info&#8221; #记录里普通登录记录的文件</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+logfile=logfile.txt
+prompt="and no sftp info"
+
+####################### Separator ########################
+
+checktime=`date +%Y-%m-%dT%H -d "-1 day"`
+
+for i in `cat -n /var/log/messages | grep $check_time | grep 'Started Session' | grep -v 'root' | awk '{print $1}'`
+
+do
+   line=`sed -n $&#91;i]p /var/log/messages`
+   time=`echo $line | awk '{print $1}'`
+   session=`echo $line | awk '{print $6}'`
+   user=`echo $line | awk '{print $9}'`
+   user=${user%.}
+
+   message="ACCESS CHECK LOG: Time:$time Session:$session $user has accessed `hostname`, $prompt"
+
+   let sftpline=i+3
+
+   sed -n $&#91;sftpline]p /var/log/messages | grep sftp-server &amp;&gt; /dev/null
+   if &#91; $? -ne 0 ];then
+           echo $message
+           echo $message &gt;&gt; $logfile.txt
+           logger $message
+   fi
+   echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量比较服务器所有正在运行进程的变化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-process-compare/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 20 Jan 2022 13:38:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21341</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量比较服务器所有正在运行进程的变化作用：批量比较服务器所有正在运行进程的变化 使用方法 1. 服务器清单 $server_list 每台服务器占用 1 行2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下3. 给此脚本添加执行权限4. 执行此脚本5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里 脚本分割线里的变量 server_list=server_list.txt #服务器清单first_time=first_time #存储第一次检结果的目录second_time=second_time #存储第二次检查结果的目录compare_file=comparison_results.txt #存储比较结果的文件 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量比较服务器所有正在运行进程的变化<br>作用：批量比较服务器所有正在运行进程的变化</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $server_list 每台服务器占用 1 行<br>2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下<br>3. 给此脚本添加执行权限<br>4. 执行此脚本<br>5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>server_list=server_list.txt #服务器清单<br>first_time=first_time #存储第一次检结果的目录<br>second_time=second_time #存储第二次检查结果的目录<br>compare_file=comparison_results.txt #存储比较结果的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+server_list=server_list.txt
+first_time=first_time
+second_time=second_time
+compare_file=comparison_results.txt
+
+####################### Separator ########################
+
+mkdir $first_time &amp;&gt; /dev/null
+mkdir $second_time &amp;&gt; /dev/null
+echo &gt; $compare_file
+
+read -p "Please input first second or compare now: " choice
+
+check(){
+        for server_name in `cat $1`
+        do
+                ssh -t $server_name "ps -A" | awk '{print $4}' &gt; $2/$server_name
+        done
+}
+
+compare(){
+        for server_name in `cat $1`
+        do
+                echo $server_name &gt;&gt; $4
+                for process in `cat $2/$server_name`
+                        do
+                        grep $process $3/$server_name &amp;&gt; /dev/null
+                        if &#91; $? -ne 0 ];then
+                                echo $process &gt;&gt; $4
+                        fi
+                done
+                echo &gt;&gt; $4
+        done
+}
+
+if &#91; $choice == first ];then
+        check $server_list $first_time
+fi
+
+if &#91; $choice == second ];then
+        check $server_list $second_time
+fi
+
+if &#91; $choice == compare ];then
+        compare $server_list $first_time $second_time $compare_file
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 {} （设置字符串默认值、截取字符串、替换字符串里的内容）</title>
+		<link>https://eternalcenter-sep-2022.github.io/bracket-2/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 09 Jan 2022 10:53:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21157</guid>
+
+					<description><![CDATA[内容一：设置字符串默认值 1.1 当要替换的变量未定义或为空时则给予其 1 个默认值 或者： （补充：这里以当变量 value 存在且为空时则变量 newvalue 的值为 eternalcenter 为例） 1.2 当要替换的变量已定义且不为空时则给予其 1 个默认值 （补充：这里以当变量 value 存在且不为空时则变量 newvalue 的值为 eternalcenter 为例） 内容二：截取变量某一部分内容 (以字符在字符串的位置作为参照) 2.1 截取从第某个位置字符开始的所有内容 2.1.1 截取字符串中从左数第某个字符开始到左边的所有内容 （包含此字符本身） 或者： 或者： （补充：这里以截取字符串中从左数第 2 个字符和左边的所有内容为例） 2.1.2 截取字符串中从右数第某个字符开始到左边的所有内容 （不包含此字符本身） （补充：这里以截取字符串中从右数第 2 个字符开始左边的所有内容为例） 2.1.3 截取字符串中从右数第某个字符开始到右边的所有内容 （包含此字符本身） （补充： 截取字符串中从除右数第 2 个字符开始到右边的所有内容） 2.2 截取从第某个位置字符开始几个位置的字符的内容 2.2.1 截取字符串中从左数第某个字符开始几个字符的内容 （不包含此字符本身） （补充：这里以截取字符串中从左数第 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/bracket-2/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 {} （设置字符串默认值、截取字符串、替换字符串里的内容）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：设置字符串默认值</h3>
+
+
+
+<h4>1.1 当要替换的变量未定义或为空时则给予其 1 个默认值</h4>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:-eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:-eternalcenter}
+# echo $newvalue
+mingyuzhu</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:=eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:=eternalcenter}
+# echo $newvalue
+mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以当变量 value 存在且为空时则变量 newvalue 的值为 eternalcenter 为例）</p>
+
+
+
+<h4>1.2 当要替换的变量已定义且不为空时则给予其 1 个默认值</h4>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:+eternalcenter}
+# echo $newvalue
+</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:+eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<p>（补充：这里以当变量 value 存在且不为空时则变量 newvalue 的值为 eternalcenter 为例）</p>
+
+
+
+<h3>内容二：截取变量某一部分内容  (以字符在字符串的位置作为参照)</h3>
+
+
+
+<h4>2.1 截取从第某个位置字符开始的所有内容</h4>
+
+
+
+<h5>2.1.1 截取字符串中从左数第某个字符开始到左边的所有内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str::2}
+et</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0:2}
+et</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:offset:2}
+et</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 2 个字符和左边的所有内容为例）</p>
+
+
+
+<h5>2.1.2 截取字符串中从右数第某个字符开始到左边的所有内容 （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+echo ${str::0-2}
+eternalcenter.c</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 2 个字符开始左边的所有内容为例）</p>
+
+
+
+<h5>2.1.3 截取字符串中从右数第某个字符开始到右边的所有内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-2}
+om</code></pre>
+
+
+
+<p>（补充： 截取字符串中从除右数第 2 个字符开始到右边的所有内容）</p>
+
+
+
+<h4>2.2 截取从第某个位置字符开始几个位置的字符的内容</h4>
+
+
+
+<h5>2.2.1 截取字符串中从左数第某个字符开始几个字符的内容 （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:5:4}
+alce</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 5 个字符开始 4 个字符的内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h5>2.2.2 截取字符串中从右数第某个字符开始几个字符的内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:4}
+r.co</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 5 个字符开始右边 4 个字符的内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h4>2.3 截取从第某个位置字符到第某个位置字符的内容</h4>
+
+
+
+<h5>2.3.1 截取字符串中从左数第某个字符到从右数第某个字符中的所有内容 （不包含这些字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:1:-4}
+ternalcenter</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 1 个字符到右数第 4 个字符中的所有内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h5>2.3.2 截取字符串中从右数第某个字符到从右数第某个字符中的所有内容 （不包含这些字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:0-1}
+r.co</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:-1}
+r.co</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 1 个字符到从右数第 4 个字符中的所有内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h4>2.4 截取字符串中除从左数第某个字符外的所有内容</h4>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:2}
+ernalcenter.com</code></pre>
+
+
+
+<p>（补充：截取字符串中从除左数第 2 个字符开始到右边的所有内容）</p>
+
+
+
+<h3>内容三：截取变量某一部分内容  (以字符作为参照)</h3>
+
+
+
+<h4>3.1 截取变量前一部分内容 （去尾）</h4>
+
+
+
+<h5>3.1.1 截取变量右数第 1 个某个字符到左边的所有内容 （去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value%:*}
+# echo $newvalue
+ming:yu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数第 1 个冒号 “:” 左边的所有值并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.1.2 截取变量右数最后某个字符到左边的所有内容 （最大限度去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value%%:*}
+# echo $newvalue
+ming</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数最后 1 个冒号 “:” 左边的所有并赋予给变量 newvalue 内容为例）</p>
+
+
+
+<h5>3.1.3 截取变量右数最后某几个字符到左边的所有内容 （使用变量） （去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# novalue=zhu
+# newvalue=${value%%$novalue}
+# echo $newvalue
+mingyu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数最后 1 个 zhu 左边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h4>3.2 截取变量后一部分内容 （掐头）</h4>
+
+
+
+<h5>3.1 截取变量左数第 1 个某个字符到右边的所有内容 （掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value#*:}
+# echo $newvalue
+yu:zhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数第 1 个冒号 “:” 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.2 截取变量左数最后某个字符到右边的所有内容 （最大限度掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value##*:}
+# echo $newvalue
+zhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数最后 1 个冒号 “:” 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.3 去除变量左数最后某个字符到右边的所有内容 （使用变量） （掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# novalue=ming
+# newvalue=${value##$novalue}
+# echo $newvalue
+yuzhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数最后 1 个 ming 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h3>内容四：当变量已定义且不为空时则将变量中的某部分替换成另一部分</h3>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# noneedvalue=yu
+# needvalue=zhu
+# newvalue=${value/$noneedvalue/$needvalue}
+# echo $newvalue
+mingzhuzhu</code></pre>
+
+
+
+<p>（补充：这里以将变量 value 中的 yu 替换成 zhu 并赋予给变量 newvalue 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 (()) （比较数值、比较字符串和数值运算）</title>
+		<link>https://eternalcenter-sep-2022.github.io/double-parenthese/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 08 Jan 2022 12:26:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21153</guid>
+
+					<description><![CDATA[内容一：(()) 比较符号 1.1 (()) 数值比较符号和运算符号 1) ==，若两个数值存在且相等，则结果为真2) !=，若两个数值存在且不相等，则结果为真3) &#62;，若两个数值存在且前一个数值大于后一个数值，则结果为真4) &#60;，若两个数值存在且前一个数值小于后一个数值，则结果为真5) &#62;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真6) &#60;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真7) + ，加法8) &#8211; ，减法9) * ，乘法10) / ，除法11) % ，求余 1.2 (()) 字符串比较符号 ==，若两个字符串存在且一样，则结果为真 内容二：(()) 的数值比较案例 2.1 案例一：对整数进行比较 （补充：这里以测试数字 0 是否不等于数字 1 为例） 2.2 案例二：对字符串进行比较 （补充：这里以测试字符串 a 是否等于字符串 a 为例） 2.3 案例三：对整数进行运算]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：(()) 比较符号</h3>
+
+
+
+<h4>1.1 (()) 数值比较符号和运算符号</h4>
+
+
+
+<p>1) ==，若两个数值存在且相等，则结果为真<br>2) !=，若两个数值存在且不相等，则结果为真<br>3) &gt;，若两个数值存在且前一个数值大于后一个数值，则结果为真<br>4) &lt;，若两个数值存在且前一个数值小于后一个数值，则结果为真<br>5) &gt;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真<br>6) &lt;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真<br>7) + ，加法<br>8) &#8211; ，减法<br>9) * ，乘法<br>10) / ，除法<br>11) % ，求余</p>
+
+
+
+<h4>1.2 (()) 字符串比较符号</h4>
+
+
+
+<p>==，若两个字符串存在且一样，则结果为真</p>
+
+
+
+<h3>内容二：(()) 的数值比较案例</h3>
+
+
+
+<h4>2.1 案例一：对整数进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># (( 0 -ne 1 ))
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 0 是否不等于数字 1 为例）</p>
+
+
+
+<h4>2.2 案例二：对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># (( a == a ))
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 a 是否等于字符串 a 为例）</p>
+
+
+
+<h4>2.3 案例三：对整数进行运算</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a + $b))
+# echo $c
+3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 [[]] （比较数值、文件、目录、链接、块、特殊文件、字符串）</title>
+		<link>https://eternalcenter-sep-2022.github.io/double-square-bracket/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 03 Jan 2022 14:42:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21112</guid>
+
+					<description><![CDATA[内容一：[[]] 比较符号 1.1 [[]] 数值比较符号 1) -eq 或者 ==，若两个数值存在且相等，则结果为真2) -ne 或者 !=，若两个数值存在且不相等，则结果为真3) -gt 或者 &#62;，若两个数值存在且前一个数值大于后一个数值，则结果为真4) -lt 或者 &#60;，若两个数值存在且前一个数值小于后一个数值，则结果为真5) -ge 或者 &#62;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真6) -le 或者 &#60;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真 1.2 [[]] 字符串比较符号 1) -z，如果字符串为空值，则结果为真2) -n，如果字符串不为空值，则结果为真3) == 或者 =，若两个字符串存在且一样，则结果为真4) !=，若两个字符串存在且不一样，则结果为真5) &#62;，若两个字符串存在且前一个字符串大于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真6) &#60;，若两个字符串存在且前一个字符串小于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真 1.3 [[]] 文件、目录、链接、块、特殊文件比较符号 1) -e，若文件或目录或链接存在，则结果为真2) -d，若目录存在，则结果为真3) -f，若文件存在，则结果为真4) -L，若链接存在，则结果为真5) -b，若块文件存在，则结果为真6) -c，若字符型特殊文件存在，则结果为真7) -s，若文件存在且里面有内容，则结果为真8) -r，若文件且可读，则结果为真9) -w，若文件且可写，则结果为真10) -x，若文件且可执行，则结果为真11) -nt，若两个文件存在且前一个文件比后一个文件新，则结果为真12) -ot，若两个文件存在且前一个文件比后一个文件新，则结果为真 1.4 [[]] 逻辑符号 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/double-square-bracket/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 [[]] （比较数值、文件、目录、链接、块、特殊文件、字符串）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：[[]] 比较符号</h3>
+
+
+
+<h4>1.1 [[]] 数值比较符号</h4>
+
+
+
+<p>1) -eq 或者 ==，若两个数值存在且相等，则结果为真<br>2) -ne 或者 !=，若两个数值存在且不相等，则结果为真<br>3) -gt 或者 &gt;，若两个数值存在且前一个数值大于后一个数值，则结果为真<br>4) -lt 或者 &lt;，若两个数值存在且前一个数值小于后一个数值，则结果为真<br>5) -ge 或者 &gt;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真<br>6) -le 或者 &lt;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真</p>
+
+
+
+<h4>1.2 [[]] 字符串比较符号</h4>
+
+
+
+<p>1) -z，如果字符串为空值，则结果为真<br>2) -n，如果字符串不为空值，则结果为真<br>3) == 或者 =，若两个字符串存在且一样，则结果为真<br>4) !=，若两个字符串存在且不一样，则结果为真<br>5) &gt;，若两个字符串存在且前一个字符串大于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真<br>6) &lt;，若两个字符串存在且前一个字符串小于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真</p>
+
+
+
+<h4>1.3 [[]] 文件、目录、链接、块、特殊文件比较符号</h4>
+
+
+
+<p>1) -e，若文件或目录或链接存在，则结果为真<br>2) -d，若目录存在，则结果为真<br>3) -f，若文件存在，则结果为真<br>4) -L，若链接存在，则结果为真<br>5) -b，若块文件存在，则结果为真<br>6) -c，若字符型特殊文件存在，则结果为真<br>7) -s，若文件存在且里面有内容，则结果为真<br>8) -r，若文件且可读，则结果为真<br>9) -w，若文件且可写，则结果为真<br>10) -x，若文件且可执行，则结果为真<br>11) -nt，若两个文件存在且前一个文件比后一个文件新，则结果为真<br>12) -ot，若两个文件存在且前一个文件比后一个文件新，则结果为真</p>
+
+
+
+<h4>1.4 [[]] 逻辑符号</h4>
+
+
+
+<p>1) &amp;&amp;，和<br>2) ||，或<br>3) !，非</p>
+
+
+
+<h4>1.5 [[]] 运算符号</h4>
+
+
+
+<p>1) +，若两个数值存在，则相加<br>2) -，若两个数值存在，则相减<br>3) *，若两个数值存在，则相乘<br>4) /，若两个数值存在，则相除<br>5) %，若两个数值存在，则取余</p>
+
+
+
+<h4>1.6 [[]] 其他符号</h4>
+
+
+
+<p>1) =~，两个字符串或数值存在且后一个字符串或数值匹配正则表达式后一样，则结果为真<br>2) [0-9] 等所有 Linux 正则表达式<br>3) * 等所有 Linux 通配符</p>
+
+
+
+<h3>内容二：[[]] 的数值比较案例</h3>
+
+
+
+<h4>2.1 案例一：对整数进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; 0 -ne 1 ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 0 是否不等于数字 1 为例）</p>
+
+
+
+<h4>2.2 案例二：对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; a == a ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 a 是否等于字符串 a 为例）</p>
+
+
+
+<h4>2.3 案例三：对文件进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; -f test.txt ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试文件 test.txt 是否存在为例）</p>
+
+
+
+<h4>2.4 案例四：对变量进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# &#91;&#91; $a == 1 ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 是否等于数字 1 为例）</p>
+
+
+
+<h4>2.5 案例五：对数值运算后进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=2
+# b=3
+# c=5
+# &#91;&#91; $a+$b -eq $c ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 加变量 b 是否等于变量 c 为例）</p>
+
+
+
+<p>（注意： [[]] 数值运算后需要使用 -eq、-ne、-gt、-lt、-ge、-le 进行比较而不是使用 ==、!=、&gt;、&lt;、&gt;=、&lt;=）</p>
+
+
+
+<h4>2.6 案例六：使用逻辑符号对多个变量进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=eternalcenter
+# b=eternalcenter
+# c=eternalcentre
+# &#91;&#91; $a == $b &amp;&amp; $b != $c ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 是否等于变量 b 且变量 b 是否不等于变量 c 为例）</p>
+
+
+
+<h4>2.7 案例七：使用通配符对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; eternalcenter = eternalcen??? ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; eternalcenter = e*r ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 eternalcenter 是否等于字符串加通配符 eternalcen??? 或字符串加通配符 e*r 为例）</p>
+
+
+
+<h4>2.8 案例八：使用正则表达式对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; 10 =~ &#91;0-9]{2} ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 10 是否是每位数是 0 到 9 的两位数为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 博客 WordPress 数据去隐私化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 16:12:50 +0000</pubDate>
+				<category><![CDATA[Automation Maintenance (自动化运维)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19868</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：Shell 博客 WordPress 数据去隐私化作用：修改 WordPress 备份中某个用户的密码并再次进行备份 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份6. newfilename=clone-eternalcenter-backup #新备份的文件名7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户8. newpw=eternalcenter #新的用户密码9. dbuser=ec #用于连接数据库的用户10. dbuserpw=eternalcenter #用于连接数据库的密码11. db=ec #网站数据库数据在数据库中的库 注意 1. 本地需要已经搭建好 LNMP 平台2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 博客 WordPress 数据去隐私化"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：Shell 博客 WordPress 数据去隐私化<br>作用：修改 WordPress 备份中某个用户的密码并再次进行备份</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录<br>4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份<br>5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份<br>6. newfilename=clone-eternalcenter-backup #新备份的文件名<br>7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户<br>8. newpw=eternalcenter #新的用户密码<br>9. dbuser=ec #用于连接数据库的用户<br>10. dbuserpw=eternalcenter #用于连接数据库的密码<br>11. db=ec #网站数据库数据在数据库中的库</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限<br>3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8220;drop database $db;&#8221;“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+cpath="/srv/www/htdocs"
+sqlfile=eternalcenter/eternalcenter.sql
+tarfile=eternalcenter/eternalcenter.tar.gz
+newfilename=clone-eternalcenter-backup
+user='Mingyu Zhu'
+newpw=eternalcenter
+dbuser=ec
+dbuserpw=eternalcenter
+db=ec
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+dir=`pwd`
+
+sudo systemctl stop nginx
+sudo systemctl stop php-fpm
+
+mkdir -p $path/$newfilename-$date &amp;&gt; /dev/null
+
+mysql -uroot -p'eternalcenter' -e "drop database $db;"
+mysql -uroot -p'eternalcenter' -e "create database $db;"
+mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+mysql -uroot -p'eternalcenter' -e "grant all privileges on $db.* to \"$dbuser\"@'localhost';"
+mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+mysql -uroot -p'eternalcenter' -e "update $db.ec_users set user_pass = md5(\'$newpw\') where user_login = \'$user\';"
+sudo rm -rf $cpath/*
+sudo tar -zxvf $tarfile -C $cpath &amp;&gt; /dev/null
+cd $cpath
+sudo sed -i "s/define('DB_PASSWORD', .*);/define('DB_PASSWORD', \'$dbuserpw\');/" wp-config.php
+
+mysqldump -uroot -p'eternalcenter' $db &gt; $path/$newfilename-$date/$newfilename-$date.sql
+sudo tar -zcvf $path/$newfilename-$date/$newfilename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+cd $dir
+
+sudo systemctl start nginx
+sudo systemctl start php-fpm
+
+cd $dir</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

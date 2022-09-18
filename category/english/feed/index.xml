@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>English (英文) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/english/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:15:22 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[CONTENT] The difference between SELinux and AppArmor</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-difference-between-selinux-and-apparmor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Jul 2022 07:57:01 +0000</pubDate>
+				<category><![CDATA[AppArmor]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27188</guid>
+
+					<description><![CDATA[Selinux 1) Default for Rocky Linux, AlmaLinux, CentOS, Red Hat2) Designed to protect the entire operating system AppArmor 1) Default for openSUSE, Debian, Ubuntu, SLE2) Designed to protect specific applications, limit the resources that particular application can use3) Uses path names]]></description>
+										<content:encoded><![CDATA[
+<h3>Selinux</h3>
+
+
+
+<p>1) Default for Rocky Linux, AlmaLinux, CentOS, Red Hat<br>2) Designed to protect the entire operating system</p>
+
+
+
+<h3>AppArmor</h3>
+
+
+
+<p>1) Default for openSUSE, Debian, Ubuntu, SLE<br>2) Designed to protect specific applications, limit the resources that particular application can use<br>3) Uses path names</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[CONTENT] Linux Enterprise Agreements and Product Appendices</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-en_us/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 08:55:59 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23664</guid>
+
+					<description><![CDATA[中文 Red Hat Enterprise Agreements and Product Appendices official website https://www.redhat.com/en/about/agreements]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-zh_cn/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-zh_cn/"><strong>中文</strong></a></p>
+
+
+
+<p>Red Hat Enterprise Agreements and Product Appendices official website</p>
+
+
+
+<p>https://www.redhat.com/en/about/agreements</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[STEP] Red Hat Satellite client register</title>
+		<link>https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-register/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 18 Jan 2022 14:41:36 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21287</guid>
+
+					<description><![CDATA[Step One: Add domain name resolution into /etc/hosts Add the following: Step Two: Install katello-ca-consumer-latest.noarch.rpm 2.1 Download katello-ca-consumer-latest.noarch.rpm 2.2 Install katello-ca-consumer-latest.noarch.rpm Step Three: Register to Red Hat Satellite Server Step Four: Install katello-host-tools, katello-host-tools-tracer and katello-agent 4.1 Enable rhel-*-satellite-tools-*-rpms repo or satellite-tools-*-rhel-*-rpms RHEL 7: RHEL 8: 4.2 Install katello-host-tools, katello-host-tools-tracer and katello-agent Step Five: Check &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/red-hat-satellite-client-register/" class="more-link">Continue reading<span class="screen-reader-text"> "[STEP] Red Hat Satellite client register"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>Step One: Add domain name resolution into /etc/hosts</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/hosts</code></pre>
+
+
+
+<p>Add the following:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&lt;Redhat Satellite IP address&gt; &lt;Redhat Satellite Server FQDN&gt;</code></pre>
+
+
+
+<h3>Step Two: Install katello-ca-consumer-latest.noarch.rpm</h3>
+
+
+
+<h4>2.1 Download katello-ca-consumer-latest.noarch.rpm</h4>
+
+
+
+<pre class="wp-block-code"><code># curl --insecure --output katello-ca-consumer-latest.noarch.rpm https://&lt;Redhat/ Satellite Server FQDN&gt;/pub/katello-ca-consumer-latest.noarch.rpm</code></pre>
+
+
+
+<h4>2.2 Install katello-ca-consumer-latest.noarch.rpm</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall katello-ca-consumer-latest.noarch.rpm</code></pre>
+
+
+
+<h3>Step Three: Register to Red Hat Satellite Server</h3>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager register --org="&lt;organization&gt;" --activationkey="&lt;activation key&gt;"</code></pre>
+
+
+
+<h3>Step Four: Install katello-host-tools, katello-host-tools-tracer and katello-agent</h3>
+
+
+
+<h4>4.1 Enable rhel-*-satellite-tools-*-rpms repo or satellite-tools-*-rhel-*-rpms</h4>
+
+
+
+<p>RHEL 7:</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=rhel-\*-satellite-tools-\*-rpms</code></pre>
+
+
+
+<p>RHEL 8:</p>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager repos --enable=satellite-tools-\*-rhel-\*-rpms
+# subscription-manager repos --disable=satellite-tools-\*-rhel-\*-eus-rpms</code></pre>
+
+
+
+<h4>4.2 Install katello-host-tools, katello-host-tools-tracer and katello-agent</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install katello-host-tools; yum -y install katello-host-tools-tracer; yum -y install katello-agent</code></pre>
+
+
+
+<h3>Step Five: Check</h3>
+
+
+
+<h4>5.1 Check registration information</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager identity</code></pre>
+
+
+
+<h4>5.2 Check license</h4>
+
+
+
+<pre class="wp-block-code"><code># subscription-manager list --consumed</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[CONTENT] Linux Variable Default Value</title>
+		<link>https://eternalcenter-sep-2022.github.io/variable-default-value-en_us/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 21 Dec 2020 09:03:42 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13125</guid>
+
+					<description><![CDATA[中文 Content One: Set Default Values for Variables on Command Line 1.1 Assign Values to Ordinary Variables （Add: let a be 1 and B be null as an example） 1.2 Set Default Values for Variables on Command Line （Add：If a is null, var1 is no, otherwise var1 is equal to aIf B is null, var2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/variable-default-value-en_us/" class="more-link">Continue reading<span class="screen-reader-text"> "[CONTENT] Linux Variable Default Value"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/variable-default-value-zh_cn/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/variable-default-value-zh_cn/"><strong>中文</strong></a></p>
+
+
+
+<h3 id="content-one-set-default-values-for-variables-on-command-line-1-1-assign-values-to-ordinary-variables">Content One: Set Default Values for Variables on Command Line</h3>
+
+
+
+<h4 id="content-one-set-default-values-for-variables-on-command-line-1-1-assign-values-to-ordinary-variables">1.1 Assign Values to Ordinary Variables</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=</code></pre>
+
+
+
+<p>（Add: let a be 1 and B be null as an example）</p>
+
+
+
+<h4 id="1-2-set-default-values-for-variables-on-command-line">1.2 Set Default Values for Variables on Command Line</h4>
+
+
+
+<pre class="wp-block-code"><code># var1=${a:-no}
+# var2=${b:-no}</code></pre>
+
+
+
+<p>（<br>Add：<br>If a is null, var1 is no, otherwise var1 is equal to a<br>If B is null, var2 is no, otherwise var2 is equal to B<br>）</p>
+
+
+
+<h4 id="1-3-view-variable-results">1.3 View Variable Results</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $var1
+1
+# echo $var2
+no</code></pre>
+
+
+
+<p>（<br>Add：<br>The value of a is 1, so var1 is 1<br>The B is null, so var2 is no<br>）</p>
+
+
+
+<h3 id="content-two-set-variable-defaults-in-script-2-1-setting-variable-defaults-in-scripts">Content Two：Set Variable Defaults in Script</h3>
+
+
+
+<h4 id="content-two-set-variable-defaults-in-script-2-1-setting-variable-defaults-in-scripts">2.1 Setting Variable Defaults in Script</h4>
+
+
+
+<pre class="wp-block-code"><code># vim var_default.sh
+Create the following：
+#!/bin/bash
+var_default="${1:-no}"
+echo $var_default</code></pre>
+
+
+
+<p>（Add：If the variable of $1 is null, then var_default is no, otherwise var_default is equal to $1, and print it out as an example）</p>
+
+
+
+<h4 id="2-2-test-variable-defaults-in-scripts">2.2 Test Variable Defaults in Script</h4>
+
+
+
+<pre class="wp-block-code"><code># bash var_default.sh
+no
+# bash var_default.sh 1
+1
+# bash var_default.sh 2
+2
+# bash var_default.sh 3
+3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[CONTENT] Linux Partition Advice</title>
+		<link>https://eternalcenter-sep-2022.github.io/partition-advice-en/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Dec 2020 07:34:14 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13101</guid>
+
+					<description><![CDATA[中文 Content One: BIOS Partition Advice 1.1 Partition Planning 1.2 Standard Partition and Logical Partition 1.3 Format 1.4 Mount Parameter Content Two：EFI Partition Advice 2.1 Partition Planning 2.2 Standard Partition and Logical Partition 2.3 Format 2.4 Mount Parameter]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/?p=13097" data-type="URL"><strong>中文</strong></a></p>
+
+
+
+<h3>Content One: BIOS Partition Advice</h3>
+
+
+
+<h4>1.1 Partition Planning</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot    &gt;= 5G
+/var/tmp &gt;= 10G
+/tmp     &gt;= 10G
+swap     &gt;= 2G
+/        all remaining space</code></pre>
+
+
+
+<h4>1.2 Standard Partition and Logical Partition</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot    Use standard partition
+/var/tmp Use logical partition
+/tmp     Use logical partition
+swap     Use logical partition
+/        Use logical partition</code></pre>
+
+
+
+<h4>1.3 Format</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot    xfs
+/var/tmp xfs
+/tmp     xfs
+swap     swap
+/        xfs</code></pre>
+
+
+
+<h4>1.4 Mount Parameter</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot    defaults
+/var/tmp rw,nosuid,nodev,noexec,relatime,strictatime
+/tmp     rw,nosuid,nodev,noexec,relatime,strictatime
+swap     defaults
+/        defaults</code></pre>
+
+
+
+<h3>Content Two：EFI Partition Advice</h3>
+
+
+
+<h4>2.1 Partition Planning</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot/efi &gt;= 5G
+/var/tmp  &gt;= 10G
+/tmp      &gt;= 10G
+swap      &gt;= 2G
+/         all remaining space</code></pre>
+
+
+
+<h4>2.2 Standard Partition and Logical Partition</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot/efi Use standard partition
+/var/tmp  Use logical partition
+/tmp      Use logical partition
+swap      Use logical partition
+/         Use logical partition</code></pre>
+
+
+
+<h4>2.3 Format</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot/efi vfat
+/var/tmp  xfs
+/tmp      xfs
+swap      swap
+/         xfs</code></pre>
+
+
+
+<h4>2.4 Mount Parameter</h4>
+
+
+
+<pre class="wp-block-code"><code>/boot/efi defaults
+/var/tmp  rw,nosuid,nodev,noexec,relatime,strictatime
+/tmp      rw,nosuid,nodev,noexec,relatime,strictatime
+swap      defaults
+/         defaults</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[TOOL] Shell Check Memory Usage (15 seconds each time, 100 times in total)</title>
+		<link>https://eternalcenter-sep-2022.github.io/tool-shell-check-memory-usage-15-seconds-each-time-100-times-in-total%ef%bc%89/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Dec 2020 07:02:08 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13094</guid>
+
+					<description><![CDATA[Introduce Essential Information Author: Mingyu ZhuName: view the process using swapFunction: view the process using swap Usage 1. Add execution permission to this script2. Execute the script Script]]></description>
+										<content:encoded><![CDATA[
+<h2>Introduce</h2>
+
+
+
+<h3>Essential Information</h3>
+
+
+
+<p>Author: Mingyu Zhu<br>Name: view the process using swap<br>Function: view the process using swap</p>
+
+
+
+<h3>Usage</h3>
+
+
+
+<p>1. Add execution permission to this script<br>2. Execute the script</p>
+
+
+
+<h2>Script</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+
+while &#91; $i -le 100 ]
+do free -m
+        sleep 15
+        let i=i+1
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采):</title>
+		<link>https://eternalcenter-sep-2022.github.io/friedrich-wilhelm-nietzsche-3/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2020 13:13:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11585</guid>
+
+					<description><![CDATA[Reading history makes people wise, poetry witty, mathematics thoughtful, science profound, ethics solemn, logic and rhetoric makes people eloquent. 读史使人明智，读诗使人灵秀，数学使人周密，科学使人深刻，伦理学使人庄重，逻辑修辞之学使人善辩；凡有所学，皆成性格。]]></description>
+										<content:encoded><![CDATA[
+<p>Reading history makes people wise, poetry witty, mathematics thoughtful, science profound, ethics solemn, logic and rhetoric makes people eloquent.</p>
+
+
+
+<p>读史使人明智，读诗使人灵秀，数学使人周密，科学使人深刻，伦理学使人庄重，逻辑修辞之学使人善辩；凡有所学，皆成性格。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采 ):</title>
+		<link>https://eternalcenter-sep-2022.github.io/friedrich-wilhelm-nietzsche-2/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 27 Jan 2019 13:16:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1822</guid>
+
+					<description><![CDATA[Human life can not be measured by the length of time. When the heart is full of love, the moment is eternal! ——It really can&#8217;t be measured by the length of time. 人类的生命，不能以时间长短来衡量，心中充满爱时，刹那即永恒！——真的是不能以时间长短加以衡量。]]></description>
+										<content:encoded><![CDATA[
+<p>Human life can not be measured by the length of time. When the heart is full of love, the moment is eternal! ——It really can&#8217;t be measured by the length of time.</p>
+
+
+
+<p>人类的生命，不能以时间长短来衡量，心中充满爱时，刹那即永恒！——真的是不能以时间长短加以衡量。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Lev Nikolayevich Tolstoy (列夫·尼古拉耶维奇·托尔斯泰):</title>
+		<link>https://eternalcenter-sep-2022.github.io/lev-nikolayevich-tolstoy-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 24 Jan 2019 15:36:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Lev Nikolayevich Tolstoy (列夫·尼古拉耶维奇·托尔斯泰)]]></category>
+		<category><![CDATA[Writers (作家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1638</guid>
+
+					<description><![CDATA[What matters is not the quantity of knowledge, but the quality of knowledge. Some people know a lot, but don&#8217;t know the most useful thing. 重要的不是知识的数量，而是知识的质量，有些人知道很多很多，但却不知道最有用的东西。]]></description>
+										<content:encoded><![CDATA[
+<p>What matters is not the quantity of knowledge, but the quality of knowledge. Some people know a lot, but don&#8217;t know the most useful thing.</p>
+
+
+
+<p>重要的不是知识的数量，而是知识的质量，有些人知道很多很多，但却不知道最有用的东西。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Euripides (欧里庇得斯):</title>
+		<link>https://eternalcenter-sep-2022.github.io/euclid-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Jan 2019 15:24:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Euripides (欧里庇得斯)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Poets (诗人)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1220</guid>
+
+					<description><![CDATA[Wise people choose their own direction. 有智慧的人自己选择方向。]]></description>
+										<content:encoded><![CDATA[
+<p>Wise people choose their own direction.</p>
+
+
+
+<p>有智慧的人自己选择方向。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Aristotle (亚里士多德):</title>
+		<link>https://eternalcenter-sep-2022.github.io/aristotle-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Jan 2019 15:19:20 +0000</pubDate>
+				<category><![CDATA[Aristotle (亚里士多德)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1216</guid>
+
+					<description><![CDATA[I have learned this through philosophy: I act out of self-consciousness, others act only because of fear of the law. 我通过哲学了解了这一点：我行事是出于自觉，他人行事只是因为害怕法律。]]></description>
+										<content:encoded><![CDATA[
+<p>I have learned this through philosophy: I act out of self-consciousness, others act only because of fear of the law.</p>
+
+
+
+<p>我通过哲学了解了这一点：我行事是出于自觉，他人行事只是因为害怕法律。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Laozi (老子)：</title>
+		<link>https://eternalcenter-sep-2022.github.io/laozi-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Jan 2019 15:13:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Laozi (老子)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1212</guid>
+
+					<description><![CDATA[Give a man a fish and you feed him for a day. 授人以鱼，不如授人以渔。]]></description>
+										<content:encoded><![CDATA[
+<p>Give a man a fish and you feed him for a day.</p>
+
+
+
+<p>授人以鱼，不如授人以渔。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采):</title>
+		<link>https://eternalcenter-sep-2022.github.io/friedrich-wilhelm-nietzsche-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 06 Jan 2019 13:20:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Famous Sayings (名言)]]></category>
+		<category><![CDATA[Famous Sayings & Paragraphs (名言 & 段落)]]></category>
+		<category><![CDATA[Friedrich Wilhelm Nietzsche (弗里德里希·威廉·尼采)]]></category>
+		<category><![CDATA[Thinkers (思想家)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=617</guid>
+
+					<description><![CDATA[Most thinkers write poorly because they want to convey not only their own ideas, but also the process of thinking. 大多数思想家写得拙劣，因为他们不仅要传达自己的思想，而且要传达思考的过程。]]></description>
+										<content:encoded><![CDATA[
+<p>Most thinkers write poorly because they want to convey not only their own ideas, but also the process of thinking.                                                                                                               </p>
+
+
+
+<p>大多数思想家写得拙劣，因为他们不仅要传达自己的思想，而且要传达思考的过程。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

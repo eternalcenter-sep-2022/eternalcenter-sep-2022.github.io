@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python Maintenance (运维) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/python/python-maintenance/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 12:37:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Python 截取某一个 Linux 命令所有行的第一列</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-first-column/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 09 Aug 2021 12:27:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17305</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 用 python3 命令执行此脚本 脚本分割线里的变量 command=&#8217;df -h&#8217; #要执行的 Linux 命令 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 用 python3 命令执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>command=&#8217;df -h&#8217; #要执行的 Linux 命令</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+  
+####################### Separator ########################
+
+command='df -h' #Linux command to execute
+
+####################### Separator ########################
+
+info = subprocess.check_output('%s'%command, shell=True)
+info = info.decode().strip()
+
+lines = info.split('\n')
+for line in lines:
+
+    word = line.split()&#91;0]
+    print(word)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 一个脚本调用另一个脚本的函数执行 Linux 命令并返回执行结果</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-function-linux-command-call/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 28 Jul 2021 08:33:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17162</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个2. 目录下3. 给此脚本添加执行权限4. 用 python3 命令执行第 1 个脚本 注意 执行此脚本之前要先安装 ansible 命令，并可以让 ansible 命令控制名为 test 的服务器 第一个脚本 第二个脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将第 1 个脚本命名为 test_main.py，将第 2 个脚本命名为 test_sub.py，并将它们放在同一个2. 目录下<br>3. 给此脚本添加执行权限<br>4. 用 python3 命令执行第 1 个脚本</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行此脚本之前要先安装 ansible 命令，并可以让 ansible 命令控制名为 test 的服务器</p>
+
+
+
+<h2>第一个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>from cpu_sub import *
+
+sename='test'
+
+out1=cpu(sename)
+out1=out1.decode().strip()
+
+print(out1)
+
+out2=mem(sename)
+out2=out2.decode().strip()
+
+print(out2)
+
+out3=time(sename)
+out3=out3.decode().strip()
+
+print(out3)</code></pre>
+
+
+
+<h2>第二个脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>import subprocess
+
+def cpu(sname):
+    out = subprocess.check_output('ansible -m shell -a \'cat /proc/cpuinfo | egrep "core id|physical id" | tr -d "\n" | sed s/physical/\\nphysical/g | grep -v ^$ | sort | uniq | wc -l\' %s | tail -1'%sname, shell=True)
+    return(out)
+
+def mem(sname):
+    out = subprocess.check_output('ansible -m shell -a \'free -m\' %s | grep -i mem'%sname, shell=True)
+    return(out)
+
+def time(sname):
+    out = subprocess.check_output('ansible -m shell -a \'uptime\' %s | tail -1'%sname, shell=True)
+    return(out)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 批量执行多个 Linux 命令</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-commands/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 12 Nov 2020 13:34:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11712</guid>
+
+					<description><![CDATA[介绍 使用方法 1 .将 192.168.0.1、192.168.0.2、192.168.0.3、192.168.0.4、192.168.0.5 的 root 密码设置为 12 .不修改 192.168.0.1、192.168.0.2、192.168.0.3、192.168.0.4、192.168.0.5 的任何 sshd 参数3 .给此脚本添加执行权限4 .执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1 .将 192.168.0.1、192.168.0.2、192.168.0.3、192.168.0.4、192.168.0.5 的 root 密码设置为 1<br>2 .不修改 192.168.0.1、192.168.0.2、192.168.0.3、192.168.0.4、192.168.0.5 的任何 sshd 参数<br>3 .给此脚本添加执行权限<br>4 .执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+from fabric.api import *
+env.hosts = &#91;'192.168.0.1','192.168.0.2','192.168.0.3','192.168.0.4','192.168.0.5']
+env.port = '22'
+env.user = 'root'
+env.password = '1'
+
+def files():
+    with cd('/tmp'):
+        run('touch test{1..10}')
+        run('ls /tmp')
+def command():
+    run('uptime')
+
+@task
+def go():
+    files()
+    command()</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 批量检测某个软件包的安装情况 （通过读取和生成 CSV 文件实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-check-rpm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 03 May 2020 12:12:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8909</guid>
+
+					<description><![CDATA[介绍 （第一个脚本） 使用方法 1. 将此脚本和 hostsrpms.csv 文件放在同一目录下2. hostsrpms.csv 里每 1 个 IP 地址和每 1 个 RPM 包名称占用 1 行，并用逗号 “，” 隔开3. 给此脚本添加执行权限4. 执行此脚本5. 此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 补充 hostsrpms.csv 示例如下： 脚本 （第一个脚本） 介绍 （第二个脚本） 使用方法 1.将此脚本和 hostsrpms.csv 文件放在同一目录下2.hostsrpms.csv 里每 1 个 IP 地址和每 1 个 RPM 包名称占用 1 行3.给此脚本增加执行权限4.执行此脚本5.此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv 脚本 （第二个脚本）]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍 （第一个脚本）</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和 hostsrpms.csv 文件放在同一目录下<br>2. hostsrpms.csv 里每 1 个 IP 地址和每 1 个 RPM 包名称占用 1 行，并用逗号 “，” 隔开<br>3. 给此脚本添加执行权限<br>4. 执行此脚本<br>5. 此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h3>补充</h3>
+
+
+
+<p>hostsrpms.csv 示例如下：</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.100.101,kernel-4.18.0-80.el8.x86_64,other0
+192.168.100.102,kernel-4.18.0-80.el8.x86_64,other1
+192.168.100.103,kernel-4.11.0-80.el8.x86_64,other2
+192.168.100.104,kernel-4.18.0-80.el8.x86_64,other3
+192.168.100.105,kernel-4.18.0-80.el8.x86_64,other4</code></pre>
+
+
+
+<h2>脚本 （第一个脚本）</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+import csv
+import subprocess
+
+checkout=open('checkout.csv','w',encoding='utf-8')
+csvfile=open('hostsrpms.csv','r',encoding='utf-8')
+writer=csv.writer(checkout)
+
+for lines in csvfile:
+    lines=lines.strip('\n')
+    hosts=lines.split(',')&#91;0]
+    rpms=lines.split(',')&#91;1]
+    result=subprocess.call('ssh -t %s "rpm -qa | grep %s" &amp;&gt; /dev/null' %(hosts,rpms) , shell=True)
+    
+    if result==0:
+        writer.writerow((hosts,rpms,'yes'))
+    else:
+        writer.writerow((hosts,rpms,'no'))
+
+csvfile.close()
+checkout.close()</code></pre>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<h2>介绍 （第二个脚本）</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1.将此脚本和 hostsrpms.csv 文件放在同一目录下<br>2.hostsrpms.csv 里每 1 个 IP 地址和每 1 个 RPM 包名称占用 1 行<br>3.给此脚本增加执行权限<br>4.执行此脚本<br>5.此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv</p>
+
+
+
+<h2>脚本 （第二个脚本）</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+import os
+import paramiko
+import re
+import csv
+
+port = 22
+user = 'root'
+password = ""
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+checkout = open('checkout.csv','w',encoding='utf-8')
+
+with open('hostsrpms.csv','r',encoding='utf-8') as csvfile:
+    for lines in csvfile:
+
+        lines=lines.strip('\n')
+        hosts=lines.split(',')&#91;0]
+        rpms=lines.split(',')&#91;1]
+
+        ssh.connect(hosts,port,user,password,timeout = 30)
+        cmd="rpm -qa | grep "
+        excute = cmd+rpms
+        stdin,stdout,stderr = ssh.exec_command(excute)
+        result = stdout.read()
+        
+        match=re.findall(rpms,result.decode('utf-8'))
+        if match !=&#91;]:
+           checkout.write(hosts+','+rpms+',yes'+'\n')
+        else:
+           checkout.write(hosts+','+rpms+',no'+'\n')
+        
+        ssh.close()
+
+checkout.close()</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 批量多线程检测服务器的联通状态</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-ping/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 03 May 2020 08:57:05 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8901</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将此脚本和 ips.txt 文件放在同一目录下2. ips.txt 里每 1 个 IP 地址占用 1 行3. 给此脚本添加执行权限4. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和 ips.txt 文件放在同一目录下<br>2. ips.txt 里每 1 个 IP 地址占用 1 行<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+import subprocess
+import threading
+
+def newping(ip):
+    m=subprocess.call('ping -c3 -i0.4 -w0.8 %s &amp;&gt; /dev/null' %ip , shell=True)
+    if m==0:
+        print("%s is up" %ip)
+    else:
+        print("%s is down" %ip)
+
+ips=open('ips.txt','r')
+
+for lines in ips:
+    lines=lines.strip('\n')
+    newslines = threading.Thread(target=newping,args=&#91;lines])
+    newslines.start()
+
+ips.close</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Python 统计文件中 IP 地址出现的次数</title>
+		<link>https://eternalcenter-sep-2022.github.io/python-count/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 02 May 2020 10:51:37 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Maintenance (运维)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8895</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将此脚本和 access.log 文件放在同 1 目录下2. access.log 里每 1 个 IP 地址占用 1 行3. 给此脚本添加执行权限4. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和 access.log 文件放在同 1 目录下<br>2. access.log 里每 1 个 IP 地址占用 1 行<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/usr/bin/python3
+
+import re
+ips={}
+
+log=open('access.log')
+
+for i in log:
+    ip=re.search('(\d+.){3}\d+',i)
+    if ip:
+        ip=ip.group()
+        ips&#91;ip]=ips.get(ip,0)+1
+
+print(ips)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

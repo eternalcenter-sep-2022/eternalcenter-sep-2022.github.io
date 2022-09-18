@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL SQL &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/database/relational-database-sql/mysql/mysql-sql/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sat, 01 Jan 2022 14:43:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[SQL] MariaDB &#038; MySQL 索引的设置 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-index/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:47:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7956</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>mysql 设置索引
+
+1.添加PRIMARY KEY（主键索引）
+
+ 语法：ALTER TABLE `表名` ADD PRIMARY KEY ( `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD PRIMARY KEY ( `column` )
+
+
+2.添加UNIQUE(唯一索引)
+
+语法：ALTER TABLE `表名` ADD UNIQUE ( `列名称`)
+
+mysql&gt;ALTER TABLE `table_name` ADD UNIQUE ( `column`)
+
+3.添加INDEX(普通索引)
+
+语法：ALTER TABLE `表名` ADD INDEX index_name ( `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column` )
+
+4.添加FULLTEXT(全文索引)
+
+语法：ALTER TABLE `表名` ADD FULLTEXT ( `列名称`)
+
+mysql&gt;ALTER TABLE `table_name` ADD FULLTEXT ( `column`)
+
+5.添加多列索引
+
+语法：ALTER TABLE `表名` ADD INDEX index_name ( `列名称`, `列名称`, `列名称` )
+
+mysql&gt;ALTER TABLE `table_name` ADD INDEX index_name ( `column1`, `column2`, `column3` )
+
+ 
+
+想要查看表有几个字段设置了索引
+
+语法；SHOW INDEX FROM `表名`
+
+mysql&gt;SHOW INDEX FROM `cccinfo`
+————————————————
+版权声明：本文为CSDN博主「z793397795」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/z793397795/article/details/91491546</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img width="1009" height="225" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置.png" alt="" class="wp-image-7957" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置.png 1009w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置-300x67.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-索引设置-768x171.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 用户和权限的管理 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-user/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:41:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7953</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MySQL用户管理和权限管理
+
+在项目中，一个数据库有很多人需要使用，不能所有的人都使用相同的权限，如果人比较多，一人一个用户也很难管理。一般来说，会分超级管理员权限，管理员权限，读写权限，只读权限等，这样方便管理。当然，具体怎么管理权限根据实际情况来确定。
+
+无论如何，都需要创建多个用户来管理权限。
+
+root 是数据库的超级管理员用户，对于普通开发人员来说，权限太大了，如果不小心做了一些不可逆的操作，后果是非常严重的，并且还不容易查出责任人。
+
+所以 root 用户不会让开发人员使用，一般会由 DBA 或运维人员统一管理，如果没有 DBA，统一由超级管理员 root 来分配。
+
+1. 查看所有用户
+
+MySQL 中所有的用户及权限信息都存储在默认数据库 mysql 的 user 表中。
+
+进入 mysql 数据库，通过 desc user; 可以查看 user 表的结构。
+
+    use mysql;
+    desc user;
+
+可以看到 user 中有40多个字段，字段非常多，只要关注主要字段就行了。
+
+其中的主要字段有：
+
+host: 允许访问的主机地址，localhost 为本机，% 为任何主机。
+user: 用户名。
+authentication_string: 加密后的密码值。
+
+使用 select * from user; 查看 user 表中当前有哪些用户。
+
+select host,user,authentication_string from user;
+
+在安装 MySQL 后，有三个默认的用户。
+
+2. 创建用户
+
+使用 create user '用户名'@'访问主机' identified by '密码'; 创建用户。
+
+create user 'admin'@'localhost' identified by 'Mysql!123';
+
+创建用户后，查看用户，多了刚才创建的 admin，创建成功。
+
+3. 查看用户权限
+
+使用 show grants for '用户名'@'访问主机'; 查看用户的权限。
+
+show grants for 'admin'@'localhost';
+
+在创建用户的时候，如果没有指定权限，默认会赋予 USAGE 权限，这个权限很小，几乎为0，只有连接数据库和查询information_schema 数据库的权限。虽然 *.* 表示所有数据库的所有表，但因为 USAGE 的限制，不能操作所有数据库。
+
+退出 root 用户，登录到 admin 用户，只能看到 information_schema 数据库。
+
+4. 给用户授权
+
+创建 admin 用户，目的是创建一个管理员，所以要给 admin 授权。退出 admin ，重新登录 root 。
+
+在授权时，常用的权限有 CREATE、ALTER、DROP、INSERT、UPDATE、DELETE、SELECT，ALL PRIVILEGES 表示所有权限。
+
+通过 数据库.数据表 指定对哪个数据库的哪个表授权，*.* 表示所有数据库中的所有表。
+
+通过 '用户名'@'访问主机' 来表示用户可以从哪些主机登录， ‘%’ 表示可以从任何主机登录。
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 来给数据库用户授权。
+
+grant all privileges on *.* to 'admin'@'localhost' identified by 'Mysql!123';
+
+给 admin 用户授权后，权限从 USAGE 变成了 ALL PRIVILEGES ，表示 admin 拥有了所有权限。
+
+如果授权没有生效，记得刷新一下权限，使权限生效。
+
+flush privileges；
+
+再重新登陆到 admin 用户上，可以操作所有数据库了。
+
+给用户授权的时候，必须要指定 '用户名'@'访问主机' 来指定用户。如果 '访问主机' 不相同，不是给用户授权，而是创建一个同名同密码的用户，这个用户与原用户可以登陆的主机不相同，权限不同。
+
+grant all privileges on *.* to 'admin'@'%' identified by 'Mysql!123';
+
+执行上面的语句后，user 表中有两个 admin 用户，用户名和密码都一样，但可以登陆的主机不一样。第一次创建的 admin 访问主机是 localhost，执行上面的语句时指定的访问主机是 % ，访问主机不一样，MySQL 会创建两个用户。虽然用户名密码相同，但这是两个不同的用户，两个用户的权限不一样。给两个用户指定不同的权限，在两个用户都有权限的主机登录时，局部用户的权限会覆盖全局用户的权限，当在 localhost 登录时，'admin'@'localhost' 的权限会覆盖 'admin'@'%' 的权限。
+
+对于可以从任何主机登录的用户，在查看用户权限时，可以使用 show grants for 用户名; 来查看权限，指定主机的用户在查看权限时，要跟上访问主机才能查看权限。
+
+5. 创建用户并授权
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 来创建一个用户并指定权限，与上面授权使用的语句相同。
+
+grant create,select on *.* to 'creater'@'%' identified by 'Mysql!123';
+
+创建了一个有读写权限的用户 creater，这个用户拥有所有数据库的 SELECT 和 CREATE 权限，可以从任何主机登录数据库。
+
+6. 修改用户的权限
+
+使用 grant 权限 on 数据库.数据表 to '用户名'@'访问主机' identified by '密码'; 修改用户的权限，其实前面的授权就是修改权限。
+
+grant all privileges on *.* to 'creater'@'%' identified by 'Mysql!123';
+
+修改用户的权限后，creater 的权限从 SELECT 和 CREATE 权限变成了 ALL PRIVILEGES。
+
+7. 删除用户
+
+使用 drop user '用户名'@'访问主机'; 来删除用户。
+
+drop user 'admin'@'localhost';
+
+执行删除操作后，user 表中不再有该用户。
+
+8. 修改用户名和访问主机
+
+使用 rename user '用户名'@'访问主机' to '新用户名'@'新访问主机'; 来修改用户名和用户的访问主机。
+
+rename user 'creater'@'%' to 'create'@'localhost';
+
+修改之后，creater 用户改名 create ，访问主机从 % 变成了 localhost 。
+
+9. 修改用户密码　　
+
+使用 set password for '用户名'@'访问主机' = password('新密码'); 修改用户的密码。
+
+set password for 'create'@'localhost'=password('Mysql@123');
+
+上面创建的 admin 用户和 create 用户密码相同，现在给 create 修改密码，使密码不一样。
+
+以上就是对数据库用户和权限管理的基本操作。这些操作都是对 mysql 数据库中的 user 表进行操作，所以上面的大部分操作都还有另外一种方法，就是通过对 mysql.user 表的增删改查语句来实现。
+————————————————
+版权声明：本文为CSDN博主「Python碎片」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_43790276/article/details/102674936</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1011" height="195" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理.png" alt="" class="wp-image-7954" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理.png 1011w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理-300x58.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-用户和权限管理-768x148.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 数据的查询 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-select/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:15:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7950</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MySQL基本查询语句
+
+MySQL基本查询语句是掌握MySQL数据查询的基本操作，处理数据所必要掌握的，提高处理数据的能力，速度要熟练掌握基本的查询语句。
+
+1.limit字句
+
+select * from limit 3；查询前三条数据
+
+select * from limit 5，3；查询从第5+1条开始的后三条数据
+
+2.函数：平均数，总和，最大值，最小值和总信息数
+
+平均数：select AVG(age) as 平均 from info；查询info表的平均年龄
+
+总和：select SUM(age) as 年龄总和 from lx;查询lx表格的年龄的总和
+
+最大值：select MAX(age) as 最大年龄 from lx; 查询lx表格里年龄的最大值
+
+最小值：select MIN(age) as 最小年龄 from lx; 查询lx表格中的年龄的最小值
+
+总信息数：select COUNT(*) as 总人数 from lx; 查询lx中的信息条数
+
+3.where子句中的经常使用的运算符：比较运算符和逻辑运算符
+
+比较运算符：
+大于&gt; 小于&lt; 小于等于&lt;= 大于等于&gt;= 等于 = 不等于&lt;&gt; !=
+
+区间 ：between…and…
+1.select age from student where age&gt;=18 and age&lt;=22;等价于
+2.select age from student where age between 18 and 22;
+
+查想查的信息：in
+select age from student where age in(19,20,50);
+查年龄是19.20.50的人
+
+模糊查询：like
+select age from student where name like ‘王%’; 查询姓王的人 %表示任意长度任意字符
+
+不为空：is null
+
+逻辑运算符：
+同时成立：and。任一成立：or。不成立：not
+
+4.笛卡尔积：
+select 表1.name,表2.score from 表1 s(表1缩写),表2 g(表2缩写) where s.id = g.gradeId；
+
+5.表连接
+内连接：select s.name,g.score from student s inner join grade g on s.id=g.gradeId；
+
+左外连接：select s.name,g.score from student s Left join grade g on s.id=g.gradeId
+
+左外连接：select s.name,g.score from student s right join grade g on s.id=g.gradeId
+————————————————
+版权声明：本文为CSDN博主「我是超级小白」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/lady88888888/article/details/103018101</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1014" height="193" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询.png" alt="" class="wp-image-7951" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询-300x57.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-数据查询-768x146.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[SQL] MariaDB &#038; MySQL 表结构的修改 （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-alter/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 Dec 2019 15:07:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB SQL]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL SQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7947</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>MYSQL的修改表结构SQL语句：
+
+-- 查看创表语句
+SHOW CREATE TABLE t_login;
+
+-- 查看表结构
+desc t_login1;
+
+-- 增加列
+ALTER TABLE t_login1 ADD COLUMN COL_1 VARCHAR(10);
+
+-- 修改列
+ALTER TABLE t_login1 MODIFY COLUMN COL_1 INT(10);
+
+-- 修改列名称
+ALTER TABLE t_login1 CHANGE COL_1 COL_2 VARCHAR(50);
+
+-- 删除列
+ALTER TABLE t_login1 DROP COLUMN COL_2;
+
+-- 修改整个表的字符集
+ALTER TABLE t_login1 DEFAULT CHARACTER SET UTF8;
+
+-- 修改某个字段的字符集
+ALTER TABLE t_login1  CHANGE stu_num stu_num varchar(20) CHARACTER SET utf8;
+————————————————
+版权声明：本文为CSDN博主「h_j_c_123」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/h_j_c_123/article/details/95035434</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本中复制而来</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="1014" height="165" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构.png" alt="" class="wp-image-7948" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构.png 1014w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构-300x49.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/12/版权申明证明-MariaDBMySQL-修改表结构-768x125.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

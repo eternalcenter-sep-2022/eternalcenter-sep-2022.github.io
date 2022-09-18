@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>IT News (IT 消息) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/news/it-news/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 22 Jun 2022 01:56:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[消息] Rocky Linux 和 AlmaLinux 可以用于代替 CentOS Linux</title>
+		<link>https://eternalcenter-sep-2022.github.io/rocky-linux-and-almalinux-os-can-be-used-instead-of-centos-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 01 Jan 2022 15:56:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[IT News (IT 消息)]]></category>
+		<category><![CDATA[News (消息)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20915</guid>
+
+					<description><![CDATA[今天，我们可以用 Rocky Linux 和 AlmaLinux OS 替代 CentOS Linux。 今天 CentOS 团队正式停止了对 CentOS Linux 8 的维护。并将自己的方向放在了 CentOS Stream 上。CentOS Stream 是一个 Red Hat 商业 Linux 系统 RHEL 的前置测试版。这是 Red Hat 正式收购 CentOS 以后第一次对 CentOS 项目作出的重大决策，同时也彻底改变了 CentOS 项目的初衷。未来全世界运行在 CentOS 系统上的众多服务（业务）将面临更多的不确定性。 生命不死，自由不息。在开源的大环境和领域，一个项目最初的美好初衷发生了改变，就会诞生新的项目继承并发扬这些初衷。Rocky Linux 和 AlmaLinux OS 就是 CentOS 最初初衷的继承者。 Rocky Linux 由 CentOS 创始人 Gregory Kurtzer，在发现 CentOS &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/rocky-linux-and-almalinux-os-can-be-used-instead-of-centos-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "[消息] Rocky Linux 和 AlmaLinux 可以用于代替 CentOS Linux"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p>今天，我们可以用 Rocky Linux 和 AlmaLinux OS 替代 CentOS Linux。</p>
+
+
+
+<p>今天 CentOS 团队正式停止了对 CentOS Linux 8 的维护。并将自己的方向放在了 CentOS Stream 上。CentOS Stream 是一个 Red Hat 商业 Linux 系统 RHEL 的前置测试版。这是 Red Hat 正式收购 CentOS 以后第一次对 CentOS 项目作出的重大决策，同时也彻底改变了 CentOS 项目的初衷。未来全世界运行在 CentOS 系统上的众多服务（业务）将面临更多的不确定性。</p>
+
+
+
+<p>生命不死，自由不息。在开源的大环境和领域，一个项目最初的美好初衷发生了改变，就会诞生新的项目继承并发扬这些初衷。Rocky Linux 和 AlmaLinux OS 就是 CentOS 最初初衷的继承者。</p>
+
+
+
+<p>Rocky Linux 由 CentOS 创始人 Gregory Kurtzer，在发现 CentOS 项目的初衷发生变化后创建。</p>
+
+
+
+<p>AlmaLinux OS 诞生的目的，是为了弥补 CentOS Linux 稳定版停产后留下的空白，其是 RHEL 的 1:1 二进制兼容分支。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[消息] Linux 诞生 30 周年</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-30th-anniversary-of-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 05 Oct 2021 09:40:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[IT News (IT 消息)]]></category>
+		<category><![CDATA[News (消息)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18083</guid>
+
+					<description><![CDATA[30 年前的今天，Linux 诞生了。 作为一款可免费使用和自由传播的开源操作系统，自由、平等、博爱、公开、共享、人人皆可参与、属于每一个人的开源精神和理念，让全世界各地的非盈利性机构、爱好者、从业人员、公司和政府部门都能够参与进来，共同促进它的进步。 随着时间的推移，由美国国家航天局 （NASA） 创建的 OpenStack 云计算平台、由 Docker 公司创建的容器技术等，一个个极具革命性的创新基于 Linux 诞生。这些创新空前提高了互联网行业的创新效率和生产效率，并附带提高了其他几乎所有行业的生产力，让地球上所有的人类都离贫困更远，生活也变得更加丰富多彩。 Linux 如今已成为了无国界操作系统的代名词，同时也是当今互联网行业的基础。]]></description>
+										<content:encoded><![CDATA[
+<p>30 年前的今天，Linux 诞生了。</p>
+
+
+
+<p>作为一款可免费使用和自由传播的开源操作系统，自由、平等、博爱、公开、共享、人人皆可参与、属于每一个人的开源精神和理念，让全世界各地的非盈利性机构、爱好者、从业人员、公司和政府部门都能够参与进来，共同促进它的进步。</p>
+
+
+
+<p>随着时间的推移，由美国国家航天局 （NASA） 创建的 OpenStack 云计算平台、由 Docker 公司创建的容器技术等，一个个极具革命性的创新基于 Linux 诞生。这些创新空前提高了互联网行业的创新效率和生产效率，并附带提高了其他几乎所有行业的生产力，让地球上所有的人类都离贫困更远，生活也变得更加丰富多彩。</p>
+
+
+
+<p>Linux 如今已成为了无国界操作系统的代名词，同时也是当今互联网行业的基础。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[消息] 史蒂夫·乔布斯 (Steve Jobs) 逝世 10 周年</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-10th-anniversary-of-steve-jobs-death/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Oct 2021 14:10:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[IT News (IT 消息)]]></category>
+		<category><![CDATA[News (消息)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18072</guid>
+
+					<description><![CDATA[10 年前的今天，史蒂夫·乔布斯 (Steve Jobs) 离开了这个世界。 他拥有天才般的创新 （或者汇聚创新的能力） ，他能独具慧眼地将这些创新实践于人们的生活，他执着地精益求精、追求完美。可以说，现在在人类几乎所有行业中都属于第一生产力的 Windows、Android、iOS 等操作系统都曾借鉴过他的创新或实践。由他首推的各类图形化操作系统，电脑、平板、手机等硬件产品，彻底改变了我们的生活和我们的世界。 他以及他的创新、他的实践、他的精益求精、他的执着、他的追求完美，大大提高了地球上几乎所有行业的生产效率，让地球上所有的人类都离贫困更远，同时也让人们的生活变得更加丰富多彩。 在人类的历史中，能够改变世界的人并不多，能依靠创新和实践把世界往好的方向改变的人，几乎都可以用伟大来形容。]]></description>
+										<content:encoded><![CDATA[
+<p>10 年前的今天，史蒂夫·乔布斯 (Steve Jobs) 离开了这个世界。</p>
+
+
+
+<p>他拥有天才般的创新 （或者汇聚创新的能力） ，他能独具慧眼地将这些创新实践于人们的生活，他执着地精益求精、追求完美。可以说，现在在人类几乎所有行业中都属于第一生产力的 Windows、Android、iOS 等操作系统都曾借鉴过他的创新或实践。由他首推的各类图形化操作系统，电脑、平板、手机等硬件产品，彻底改变了我们的生活和我们的世界。</p>
+
+
+
+<p>他以及他的创新、他的实践、他的精益求精、他的执着、他的追求完美，大大提高了地球上几乎所有行业的生产效率，让地球上所有的人类都离贫困更远，同时也让人们的生活变得更加丰富多彩。</p>
+
+
+
+<p>在人类的历史中，能够改变世界的人并不多，能依靠创新和实践把世界往好的方向改变的人，几乎都可以用伟大来形容。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[消息] 永恒中心 （Eternal Center） 第 500 次 post</title>
+		<link>https://eternalcenter-sep-2022.github.io/eternal-center-post-500/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Sep 2021 02:49:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cultural News (文化消息)]]></category>
+		<category><![CDATA[IT News (IT 消息)]]></category>
+		<category><![CDATA[News (消息)]]></category>
+		<category><![CDATA[Webmaster News (站主消息)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17651</guid>
+
+					<description><![CDATA[永恒中心 （Eternal Center） 第 500 次 post 啦！ 我曾今在洞察历史的过程中，逐步了解到了一场场承前启后的社会思潮，一位位创造奇迹的科学家、发明家、思想家、艺术家，一个个让未来变得无限可能和美好的时代。他们塑造着我们今天的生活方式以及支撑这些生活方式的科学和哲学奇迹。 亚里士多德、达芬奇、特斯拉等这类人物的诞生，内燃机、青霉素、互联网等这类技术的发明，如果要让这些希望的蛛丝马迹出现，唯有一个开放、共享、公平、守信、不分国界和文化的大环境。 理查德、李纳斯和维德纽斯等人所开创和坚持的开源理念，让这一切在互联网技术领域成为了现实。 于是，我创建了分享开源技术和知识的网站 永恒中心 （Eternal Center），并相信我每一次为开源领域添砖加瓦的努力和牺牲，都是在为自己、自己身边的人和我们的星球赢得未来。 开源的知识和技术，其知识产权属于全世界每一个人，不分国籍、信仰、种族，不会被任何性质的个人、团队、公司、政府所垄断，几乎没有不平等的财富或权利的入门成本，只需依靠自身的投入和努力，就能在这个平台里，在不需要看任何其他个人、团队、公司、政府的脸色情况下，成就自我。 祝大家身体健康、生活愉快、能为自己所从事的事情感到骄傲和自豪，我们下一个 500 post 再见！]]></description>
+										<content:encoded><![CDATA[<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="389" height="163" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/09/Eternal-Center-500th-post.png" alt="" class="wp-image-17653" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/09/Eternal-Center-500th-post.png 389w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/09/Eternal-Center-500th-post-300x126.png 300w" sizes="(max-width: 389px) 100vw, 389px" /></figure></div>
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<p>永恒中心 （Eternal Center） 第 500 次 post 啦！</p>
+
+
+
+<p>我曾今在洞察历史的过程中，逐步了解到了一场场承前启后的社会思潮，一位位创造奇迹的科学家、发明家、思想家、艺术家，一个个让未来变得无限可能和美好的时代。他们塑造着我们今天的生活方式以及支撑这些生活方式的科学和哲学奇迹。</p>
+
+
+
+<p>亚里士多德、达芬奇、特斯拉等这类人物的诞生，内燃机、青霉素、互联网等这类技术的发明，如果要让这些希望的蛛丝马迹出现，唯有一个开放、共享、公平、守信、不分国界和文化的大环境。</p>
+
+
+
+<p>理查德、李纳斯和维德纽斯等人所开创和坚持的开源理念，让这一切在互联网技术领域成为了现实。</p>
+
+
+
+<p>于是，我创建了分享开源技术和知识的网站 永恒中心 （Eternal Center），并相信我每一次为开源领域添砖加瓦的努力和牺牲，都是在为自己、自己身边的人和我们的星球赢得未来。</p>
+
+
+
+<p>开源的知识和技术，其知识产权属于全世界每一个人，不分国籍、信仰、种族，不会被任何性质的个人、团队、公司、政府所垄断，几乎没有不平等的财富或权利的入门成本，只需依靠自身的投入和努力，就能在这个平台里，在不需要看任何其他个人、团队、公司、政府的脸色情况下，成就自我。</p>
+
+
+
+<p>祝大家身体健康、生活愉快、能为自己所从事的事情感到骄傲和自豪，我们下一个 500 post 再见！</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

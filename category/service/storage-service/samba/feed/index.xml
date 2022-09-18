@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Samba &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/storage-service/samba/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 02:59:23 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[命令] Linux 命令 pdbedit Samba 用户的管理</title>
+		<link>https://eternalcenter-sep-2022.github.io/pdbedit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 11 Jul 2022 02:59:45 +0000</pubDate>
+				<category><![CDATA[Samba]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26669</guid>
+
+					<description><![CDATA[内容一：pdbedit 命令的格式 内容二：pdbedit 命令的选项 1) -a 或者 &#8211;create，创建 Samba 用户2) -x 或者 &#8211;delete，删除 Samba 用户3) -r 或者 &#8211;modify，修改 Samba 用户4) -L 或者 &#8211;list，显示所有 Samba 用户5) -Lv 或者 &#8211;list &#8211;verbose，显示所有 Samba 用户的详细信息6) -c “[D]” -u，锁定该 Samba 用户7) -c “[]” -u，解锁该 Samba 用户]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：pdbedit 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># pdbedit &lt;option&gt; &lt;user&gt;</code></pre>
+
+
+
+<h3>内容二：pdbedit 命令的选项</h3>
+
+
+
+<p>1) -a 或者 &#8211;create，创建 Samba 用户<br>2) -x 或者 &#8211;delete，删除 Samba 用户<br>3) -r 或者 &#8211;modify，修改 Samba 用户<br>4) -L 或者 &#8211;list，显示所有 Samba 用户<br>5) -Lv 或者 &#8211;list &#8211;verbose，显示所有 Samba 用户的详细信息<br>6) -c “[D]” -u，锁定该 Samba 用户<br>7) -c “[]” -u，解锁该 Samba 用户</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Samba 的登录 （免密）</title>
+		<link>https://eternalcenter-sep-2022.github.io/samba-no-key/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 06 Aug 2020 06:27:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Samba]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10421</guid>
+
+					<description><![CDATA[确保有以下内容：]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># vim /etc/samba/smb</code></pre>
+
+
+
+<p>确保有以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+security = user
+map to guest = bad user
+......
+guest ok = yes
+......</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Samba 远程共享服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/samba-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 24 Jul 2020 07:40:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Samba]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10243</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 7 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.101.41客户端 192.168.101.42 1.2 服务器列表简介 1) 服务器提供 Samba 服务将自己的目录分享2) 客户端挂载和使用 Samba 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 8 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要打开 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：在服务端上安装 Samba 服务 （只在服务端上执行以下步骤） 步骤四：在服务端上配置 Samba 服务 4.1 在服务端上配置 Samba 服务文件 （只在服务端上执行以下步骤） 将全部内容修改如下： （补充：1) 这里的 workgroup = &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/samba-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Samba 远程共享服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2020 年 7 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.101.41<br>客户端 192.168.101.42</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 Samba 服务将自己的目录分享<br>2) 客户端挂载和使用 Samba 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要打开 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-在服务端上安装-samba-服务">步骤三：在服务端上安装 Samba 服务</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install samba</code></pre>
+
+
+
+<h3 id="步骤四-在服务端上配置-samba-服务4-1-在服务端上配置-samba-服务文件">步骤四：在服务端上配置 Samba 服务</h3>
+
+
+
+<h4 id="步骤四-在服务端上配置-samba-服务4-1-在服务端上配置-samba-服务文件">4.1 在服务端上配置 Samba 服务文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/samba/smb.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># See smb.conf.example for a more detailed config file or
+# read the smb.conf manpage.
+# Run 'testparm' to verify the config is correct after
+# you modified it.
+
+&#91;global]
+workgroup = WORKGROUP
+realm = zhumingyu
+netbios name = zhumingyu
+#encrypt passwords = yes
+map to guest = NEVER
+security = user
+password server = *
+name resolve order = bcast host
+restrict anonymous = 2
+#null passwords = no
+#guest account = smb_nobody
+#use spnego = yes
+client use spnego = yes
+server string = ""
+host msdfs = no
+msdfs root = no
+domain master = no
+preferred master = no
+local master = no
+os level = 0
+browse list = no
+browseable = no
+dns proxy = no
+wide links = no
+public= no
+guest ok = no
+hosts deny = ALL EXCEPT 192.168.101.42
+
+&#91;sharetest]
+valid users = zhumingyu
+write list = zhumingyu
+read list = zhumingyu
+path = /share
+guest ok = no
+read only = no
+browseable = no
+writable = yes
+public = no
+create mask = 0755
+directory mask = 0755</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 workgroup = WORKGROUP 是让 Samba 服务属于 WORKGROUP<br>2) 这里的 hosts deny = ALL EXCEPT 192.168.101.42 是只让客户端 192.168.101.42 能够访问服务端的 Samba<br>3) 这里的 sharetest 是这个 Samba 挂载点的名称，挂载这个挂载点的格式就是：//192.168.101.41/sharetest<br>4) 这里的 valid users = zhumingyu 是 Samba 服务共享用户需要手动生成，如果换成让所有的服务共享用户都可以使用则可以写成 valid users = @users<br>5) 这里的 path = /share 是 Samba 服务共享目录需要手动生成<br>）</p>
+
+
+
+<h4 id="4-2-在服务端上生成-samba-服务共享用户4-2-1-在服务端上生成-samba-服务共享用户">4.2 在服务端上生成 Samba 服务共享用户</h4>
+
+
+
+<h5 id="4-2-在服务端上生成-samba-服务共享用户4-2-1-在服务端上生成-samba-服务共享用户">4.2.1 在服务端上生成 Samba 服务共享用户</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># useradd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以创建用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="4-2-2-在服务端上给-samba-服务共享用户设置系统密码">4.2.2 在服务端上给 Samba 服务共享用户设置系统密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># passwd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以给 zhumingyu 设置密码为例）</p>
+
+
+
+<h5 id="4-2-3-在服务端上给-samba-服务共享用户设置-samba-共享密码">4.2.3 在服务端上给 Samba 服务共享用户设置 Samba 共享密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># smbpasswd -a zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以给 zhumingyu 用户设置 Samba 共享密码为例）</p>
+
+
+
+<h5 id="4-2-4-显示samba-服务共享用户是否可用">4.2.4 显示Samba 服务共享用户是否可用</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pdbedit -L</code></pre>
+
+
+
+<h4 id="4-3-在服务端上生成-samba-服务共享目录4-3-1-在服务端上生成-samba-服务共享目录">4.3 在服务端上生成 Samba 服务共享目录</h4>
+
+
+
+<h5 id="4-3-在服务端上生成-samba-服务共享目录4-3-1-在服务端上生成-samba-服务共享目录">4.3.1 在服务端上生成 Samba 服务共享目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /share</code></pre>
+
+
+
+<p>（补充：这里以创建目录 /share 为例）</p>
+
+
+
+<h5 id="4-3-2-在服务端上给-samba-服务共享目录设置权限">4.3.2 在服务端上给 Samba 服务共享目录设置权限</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /share</code></pre>
+
+
+
+<p>（补充：这里以给 /share 目录设置 755 权限为例）</p>
+
+
+
+<h5 id="4-3-3-在服务端上给-samba-服务共享目录设置所属主和所属组">4.3.3 在服务端上给 Samba 服务共享目录设置所属主和所属组</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<p>如果是 CentOS Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code># chown zhumingyu:zhumingyu /share</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code># chown zhumingyu:users /share</code></pre>
+
+
+
+<p>（补充：这里以将 /share 目录的所属主设置成 zhumingyu 为例）</p>
+
+
+
+<h5 id="4-3-4-在服务端上给-samba-服务共享目录设置-selinux-标签">4.3.4 在服务端上给 Samba 服务共享目录设置 SELinux 标签</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># semanage fcontext -a -t samba_share_t '/share(/.*)?'</code></pre>
+
+
+
+<p>（补充：这里以给 /share 目录打上 samba_share_t SELinux 标签为例）</p>
+
+
+
+<h5 id="4-3-5-在服务端上让-samba-服务共享目录上的-selinux-标签立刻生效">4.3.5 在服务端上让 Samba 服务共享目录上的 SELinux 标签立刻生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># restorecon -RFvv /share/</code></pre>
+
+
+
+<h3 id="步骤五-启动-samba-服务并设置为开机自动启动">步骤五：启动 Samba 服务并设置为开机自动启动</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now smb</code></pre>
+
+
+
+<h3 id="步骤六-客户端使用服务端-samba-服务6-1-在客户端上安装-samba-客户端软件">步骤六：客户端使用服务端 Samba 服务</h3>
+
+
+
+<h4 id="步骤六-客户端使用服务端-samba-服务6-1-在客户端上安装-samba-客户端软件">6.1 在客户端上安装 Samba 客户端软件</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install samba-client cifs-utils</code></pre>
+
+
+
+<h4 id="6-2-在客户端上测试服务端的-samba-服务">6.2 在客户端上测试服务端的 Samba 服务</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># smbclient --user=zhumingyu -L //192.168.101.41</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># smbclient //192.168.101.41/sharetest -U zhumingyu
+smb: \&gt; ls
+smb: \&gt; exit</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 测试 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录为例）</p>
+
+
+
+<h4 id="6-3-在客户端上挂载服务端的-samba-目录6-3-1-手动挂载的方法">6.3 在客户端上挂载服务端的 Samba 目录</h4>
+
+
+
+<h5 id="6-3-在客户端上挂载服务端的-samba-目录6-3-1-手动挂载的方法">6.3.1 手动挂载的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mount -t cifs -o dir_mode=0755,file_mode=0755,username=zhumingyu,password=1,sec=ntlmssp //192.168.101.41/sharetest /tmp</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 密码为 1，目录权限为 0755，文件权限为 0755，挂载 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录到本地的 /tmp 目录为例）</p>
+
+
+
+<p>（注意：用户和密码不能一样，否则会报错）</p>
+
+
+
+<h5 id="6-3-2-自动挂载的方法">6.3.2 自动挂载的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstable</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+# //192.168.101.41/sharetest /tmp cifs defaults,rw,dir_mode=0755,file_mode=0755,username=zhumingyu,password=1 0 0</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 密码为 1，目录权限为 0755，文件权限为 0755，挂载 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录到本地的 /tmp 目录为例）</p>
+
+
+
+<p>（注意：用户和密码不能一样，否则会报错）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Samba 用户密码的修改</title>
+		<link>https://eternalcenter-sep-2022.github.io/samba-password/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Apr 2020 12:35:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Samba]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8702</guid>
+
+					<description><![CDATA[（补充：之后输入用户的 Samba 密码）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># smbpasswd -a &lt;user></code></pre>
+
+
+
+<p>（补充：之后输入用户的 Samba 密码）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

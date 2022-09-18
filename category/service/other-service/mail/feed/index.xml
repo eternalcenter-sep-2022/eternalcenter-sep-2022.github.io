@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Mail &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/mail/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 07:28:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] 解决 Linux 日志报错：“hash:/etc/aliases is unavailable.open database /etc/aliases.db” 或者 “error: open database /etc/aliases.db: No such file or directory”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-hash-etc-aliases-is-unavailable-open-database-etc-aliases-db-or-error-open-database-etc-aliases-db-no-such-file-or-directory/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Apr 2022 09:54:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Mail]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22729</guid>
+
+					<description><![CDATA[报错代码 或者： 解决方法]]></description>
+										<content:encoded><![CDATA[
+<h3>报错代码</h3>
+
+
+
+<pre class="wp-block-code"><code>hash:/etc/aliases is unavailable.open database /etc/aliases.db</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>error: open database /etc/aliases.db: No such file or directory</code></pre>
+
+
+
+<h3>解决方法</h3>
+
+
+
+<pre class="wp-block-code"><code># newaliases</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 发送邮件时报错 “send-mail: fatal: parameter inet_interfaces: no local interface found for ::1”</title>
+		<link>https://eternalcenter-sep-2022.github.io/send-mail-fatal-parameter-inet_interfaces-no-local-interface-found-for-1/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 Nov 2020 13:06:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Mail]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11791</guid>
+
+					<description><![CDATA[报错代码 解决方法 步骤一：修改 postfix 的配置文件 将以下内容： 修改为： 步骤二：重启 postfix 服务]]></description>
+										<content:encoded><![CDATA[
+<h3>报错代码</h3>
+
+
+
+<pre class="wp-block-code"><code>send-mail: fatal: parameter inet_interfaces: no local interface found for ::1</code></pre>
+
+
+
+<h3>解决方法</h3>
+
+
+
+<h4>步骤一：修改 postfix 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/postfix/main.cf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+inet_interfaces = localhost
+......
+inet_protocols = all
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+inet_interfaces = all
+......
+inet_protocols = all
+......</code></pre>
+
+
+
+<h4>步骤二：重启 postfix 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart postfix</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 mail （发送邮件）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mail/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 22 Jul 2020 03:02:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Mail]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10220</guid>
+
+					<description><![CDATA[内容一：mail 命令选项 1.1 输入 mail 命令后的选项 1) h 或者 headers 显示处于激活状态的邮件开头2) f 或者 from 显示编号为 的邮件的标题2) t 或者 type 显示编号为 的邮件3) top 显示当前指针所指向的邮件头4) n 或者 next 显示下一条邮件信息5) e 编辑编号为 的邮件6) d 或者 delete 删除编号为 的邮件7) u 或者 undelete 取消删除编号为 的邮件8) s 或者 save 追加信息到编号为 的邮件信息到 目录中并标记和保存9) c 或者 copy 追加信息到编号为 的邮件信息到 目录中但不保存10) w 或者 write &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mail/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 mail （发送邮件）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-mail-命令选项-1-1-输入-mail-命令后的选项">内容一：mail 命令选项</h3>
+
+
+
+<h4 id="内容一-mail-命令选项-1-1-输入-mail-命令后的选项">1.1 输入 mail 命令后的选项</h4>
+
+
+
+<p>1) h 或者 headers 显示处于激活状态的邮件开头<br>2) f 或者 from 显示编号为 的邮件的标题<br>2) t 或者 type 显示编号为 的邮件<br>3) top 显示当前指针所指向的邮件头<br>4) n 或者 next 显示下一条邮件信息<br>5) e 编辑编号为 的邮件<br>6) d 或者 delete 删除编号为 的邮件<br>7) u 或者 undelete 取消删除编号为 的邮件<br>8) s 或者 save 追加信息到编号为 的邮件信息到 目录中并标记和保存<br>9) c 或者 copy 追加信息到编号为 的邮件信息到 目录中但不保存<br>10) w 或者 write 追加信息到编号为 的邮件信息到 文件中并保存附件<br>11) R 或者 Reply 回复编号为 的邮件的发件人<br>12) r 或者 reply 回复编号为 的邮件的发件人和所有收件人<br>13) m 或者 mail 回复编号为 的邮件，并回复多个联系人，多个收件人用空格分开 （需要 sendmail 软件支持此功能）<br>14) q 或者 quit 退出并保存新编辑的内容，q 会把邮件放在 ~/mbox 中，执行 pre 后就不取回<br>15) pre 将编号为 的邮件保留在 /usr/spool/mail，q 会把邮件放在 ~/mbox 中，执行 pre 后就不取回<br>16) x 或者 xit 只退出不保存新编辑的内容<br>17) file 显示邮件总数和在系统中所在的目录等信息<br>18) ! 执行 shell 的命令，例如 !ls<br>19) list 列出所有可用的命令</p>
+
+
+
+<h4 id="1-2-在-mail-命令后添加选项">1.2 在 mail 命令后添加选项</h4>
+
+
+
+<p>1) -s 设置邮件的标题<br>2) -a 添加附件<br>3) -c …… 给多个邮件地址抄送邮件，不同邮件的邮件地址用空格隔开<br>4) -b …… 给多个邮件地址悄悄抄送邮件，不同邮件的邮件地址用空格隔开<br>5) -e 检查系统邮件中是否有邮件<br>6) -f 显示邮箱里的邮件<br>7) -f + 显示 folder 目录邮箱中的邮件<br>8) -i 忽略 tty 信号中断<br>9) -v 显示发送邮件过程的详细信息<br>10) -h 显示帮助信息<br>11) uuencode 发送文件，第一个附件是要发送的附件，第二个是设置的名称 （此选项需要安装 sharutils 软件）</p>
+
+
+
+<h3 id="内容二-mail-命令的使用案例-2-1-交互式发送邮件">内容二：mail 命令的使用案例</h3>
+
+
+
+<h4 id="内容二-mail-命令的使用案例-2-1-交互式发送邮件">2.1 交互式发送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># mail -s test mingyu.zhu@eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以向邮箱 mingyu.zhu@eternalcenter.com 发送标题为 test 的邮件为例）</p>
+
+
+
+<p>（注意：键入此命令后进入交互式编辑内容的模式，内容编辑完了以后可以按下 “ctrl” 键之后再按下 “D” 键退出）</p>
+
+
+
+<h4 id="2-2-非交互式发送邮件">2.2 非交互式发送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># echo 'test content' | mail -s 'test header' mingyu.zhu@eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以向 mingyu.zhu@eternalcenter.com 邮箱发送标题为 test header 内容为 test content 的邮件为例）</p>
+
+
+
+<h4 id="2-3-非交互式将文件里的内容作为内容发送邮件">2.3 非交互式将文件里的内容作为内容发送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># mail -s “test.txt” mingyu.zhu@eternalcenter.com &lt; test.txt</code></pre>
+
+
+
+<p>（补充：这里以向 mingyu.zhu@eternalcenter.com 邮箱发送标题为 test header 将 test.txt 文件里的内容作为邮件内容的邮件为例）</p>
+
+
+
+<h4 id="2-4-非交互式将文件作为附件发送邮件">2.4 非交互式将文件作为附件发送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># uuencode /tmp/test.txt test.txt | mail -s 'test' mingyu.zhu@eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以向 mingyu.zhu@eternalcenter.com 邮箱发送标题为 test 将 test.txt 文件作为名为 test.txt 的附件的邮件为例）</p>
+
+
+
+<h4 id="2-5-非交互式打包将文件作为附件发送邮件">2.5 非交互式打包将文件作为附件发送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -czf test.txt.tar /tmp/test.txt | uuencode test.txt.tar | mail -s 'test' mingyu.zhu@eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以向 mingyu.zhu@eternalcenter.com 邮箱发送标题为 test 将 test.txt.tar 文件作为名为 test.txt.tar 的附件的邮件为例）</p>
+
+
+
+<h4 id="2-6-非交互式将给多个用户抄送邮件">2.6 非交互式将给多个用户抄送邮件</h4>
+
+
+
+<pre class="wp-block-code"><code># mail -s “test.txt” -c "mingyu.zhu2@eternalcenter.com mingyu.zhu1@eternalcenter.com" mingyu.zhu@eternalcenter.com &lt; test.txt</code></pre>
+
+
+
+<p>（补充：这里以向 mingyu.zhu@eternalcenter.com 邮箱发送标题为 test header 将 test.txt 文件里的内容作为邮件内容的邮件，并抄送给 mingyu.zhu2@eternalcenter.com 邮箱和 mingyu.zhu1@eternalcenter.com 邮箱为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Postfix 数据的加密 （通过 TLS 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/postfix-tls/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 22 Jul 2020 02:56:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Mail]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10215</guid>
+
+					<description><![CDATA[内容一：Postfix 不使用 TLS 加密数据传输的后果 1) 收发的邮件数据会被他人截取2) 给 Gmail 等电子邮箱发送邮件时，会提示类似 “ *** 未对此邮件进行加密” 的信息 内容二：给 Postfix 设置 TLS 加密数据传输的方法 2.1 给 Postfix 的配置文件设置 TLS 机密数据传输的参数 添加以下内容： （补充：smtpd_tls_security_level 代表接收邮件的 TLS 安全等级smtp_tls_security_level 代表发送邮件的 TLS 安全等级TLS 的常用安全等级有 none、may 和 encrypt ：1) none 表示禁止使用 TLS 加密2) may 表示可以接收不使用 TLS 加密的邮件，但是会提出支持 TLS 加密的通告。发送邮件时优先发送支持 TLS 加密的邮件3) encrypt 表示强制使用 TLS 加密） 2.2 重启 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/postfix-tls/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Postfix 数据的加密 （通过 TLS 实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Postfix 不使用 TLS 加密数据传输的后果</h3>
+
+
+
+<p>1) 收发的邮件数据会被他人截取<br>2) 给 Gmail 等电子邮箱发送邮件时，会提示类似 “ *** 未对此邮件进行加密” 的信息</p>
+
+
+
+<h3>内容二：给 Postfix 设置 TLS 加密数据传输的方法</h3>
+
+
+
+<h4>2.1 给 Postfix 的配置文件设置 TLS 机密数据传输的参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/postfix/main.cf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+smtpd_tls_security_level = may
+smtp_tls_security_level = may
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>smtpd_tls_security_level 代表接收邮件的 TLS 安全等级<br>smtp_tls_security_level 代表发送邮件的 TLS 安全等级<br>TLS 的常用安全等级有 none、may 和 encrypt ：<br>1) none 表示禁止使用 TLS 加密<br>2) may 表示可以接收不使用 TLS 加密的邮件，但是会提出支持 TLS 加密的通告。发送邮件时优先发送支持 TLS 加密的邮件<br>3) encrypt 表示强制使用 TLS 加密<br>）</p>
+
+
+
+<h4>2.2 重启 Postfix 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart postfix</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,1846 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Others (其它) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-deployment/shell-others/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 23 Aug 2022 17:26:08 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行命令 （多条命令版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-command-multiple-commands/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 06 Jul 2022 08:52:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26271</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行命令 （多条命令版）作用：批量实现多个远程服务器执行命令 （多条命令版） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=&#8221;zhumingyu&#8221; #用户名2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no 注意 执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行命令 （多条命令版）<br>作用：批量实现多个远程服务器执行命令 （多条命令版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=&#8221;zhumingyu&#8221; #用户名<br>2. myserver=&#8221;eternalcenter.com eternalcentre.com&#8221; #服务器名，每个服务器名以空格间隔<br>3. mycommand=&#8221;ls ip a s&#8221; #命令，每个命令以空格间隔<br>4. mysudo=&#8221;yes&#8221; #是否使用 sudo，可以选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="zhumingyu"
+myserver="eternalcenter.com eternalcentre.com" #each server is separated by a space
+mycommand="ls ip a s" #each command is separated by a space
+mysudo="yes" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+
+if &#91; $mysudo == 'yes' ];then
+        executecommand(){
+                ssh -t $1@$2 "sudo -u root su - root -c \"$command\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        executecommand(){
+                ssh -t $1@$2 "$command"
+        }
+        echo "don't use sudo"
+fi
+
+for commands in `echo $mycommand`
+do
+
+        for servers in `echo $myserver`
+        do
+                echo $servers
+                echo $commands
+        executecommand $myuser $servers $commands
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的密码 （精致版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-password-change-refined-version/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 10 Oct 2021 13:08:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18100</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的密码作用：批量修改多个远程服务器某个用户的密码 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每服务器名占用 1 行3. 给脚本分割线里的变量赋值4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. list=”list.txt” #指定清单的目录和名称2. user=eternalcenter #指定要修改密码的用户3. password=eternalcenter #指定要修改的密码 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的密码<br>作用：批量修改多个远程服务器某个用户的密码</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每服务器名占用 1 行<br>3. 给脚本分割线里的变量赋值<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. list=”list.txt” #指定清单的目录和名称<br>2. user=eternalcenter #指定要修改密码的用户<br>3. password=eternalcenter #指定要修改的密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+list="list.txt"
+user=eternalcenter
+password=eternalcenter
+
+####################### Separator ########################
+
+num=1
+
+cat $list
+for i in `cat $list`
+do
+        echo $num
+        echo $i
+
+	ssh -t $i "type lsb_release" &amp;&gt; /dev/null
+        if &#91; $? -ne 0 ]; then
+              distribution=`ssh -t $i "cat /etc/*release | grep '^NAME'"`
+	      if &#91; $? -ne 0 ];then
+		      distribution=`ssh -t $i "cat /etc/*release"`
+	      fi
+        else
+              distribution=`ssh -t $i "lsb_release -i | grep 'ID' | grep -v 'n/a'"`
+        fi;
+
+        echo $distribution
+
+	case $distribution in
+		*"RedHat"* | *"Red Hat"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*"CentOS"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*"SUSE"* | *"SLES"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+               
+		*"openSUSE"*)
+		ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+		if &#91; $? -eq 0 ];then
+			echo -e "\033&#91;32m$i is success\033&#91;0m"
+		else
+			echo -e "\033&#91;31m$i is fail\033&#91;0m"
+		fi
+		;;
+
+		*)
+                echo -e "\033&#91;31m$i is fail \033&#91;0m" 
+		;;
+        esac
+
+        let num++
+
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量重启多个远程服务器的服务</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-batch-restart/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Aug 2021 07:48:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17263</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量重启多个远程服务器的服务作用：批量重启多个远程服务器的服务 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=”eternalcenter” #登录远程服务器的用户2. myserver=”192.168.1.1 192.168.1.2″ #要登录的远程服务器，以空格隔开3. myservice=&#8221;nginx&#8221; #需要重启的服务，以空格隔开4. mysudo=”no” #是否使用 sudo 提权，请选择 yes 或者 no 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 必须以 root 用户执行本脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量重启多个远程服务器的服务<br>作用：批量重启多个远程服务器的服务</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=”eternalcenter” #登录远程服务器的用户<br>2. myserver=”192.168.1.1 192.168.1.2″ #要登录的远程服务器，以空格隔开<br>3. myservice=&#8221;nginx&#8221; #需要重启的服务，以空格隔开<br>4. mysudo=”no” #是否使用 sudo 提权，请选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 必须以 root 用户执行本脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="eternalcenter.com"
+myserver="192.168.1.1 192.168.1.2 192.168.1.3" #each server is separated by a space
+myservice="nginx" #each myservice is separated by a space
+mysudo="yes" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+
+if &#91; $mysudo == 'yes' ];then
+        myrestart(){
+                ssh -t $1@$2 "sudo -u root su - root -c \"systemctl restart $3\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        myrestart(){
+                ssh -t $1@$2 "systemctl restart $3"
+        }
+        echo "don't use sudo"
+fi
+
+for services in $myservice
+do
+
+        for servers in `echo $myserver`
+        do
+                myrestart $myuser $servers $services
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量将本地文件拷贝到多个远程服务器</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-batch-copy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Aug 2021 07:37:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17261</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量将本地文件拷贝到多个远程服务器作用：批量将本地文件拷贝到多个远程服务器 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. myuser=&#8221;eternalcenter&#8221; #登录远程服务器的用户2. myserver=&#8221;192.168.1.1 192.168.1.2&#8243; #要登录的远程服务器，以空格隔开3. myfile=&#8221;/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt&#8221; #要拷贝的文件，以空格隔开，必须是绝对路劲4. mysudo=&#8221;no&#8221; #是否使用 sudo 提权，请选择 yes 或者 no 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 必须以 root 用户执行本脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量将本地文件拷贝到多个远程服务器<br>作用：批量将本地文件拷贝到多个远程服务器</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. myuser=&#8221;eternalcenter&#8221; #登录远程服务器的用户<br>2. myserver=&#8221;192.168.1.1 192.168.1.2&#8243; #要登录的远程服务器，以空格隔开<br>3. myfile=&#8221;/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt&#8221; #要拷贝的文件，以空格隔开，必须是绝对路劲<br>4. mysudo=&#8221;no&#8221; #是否使用 sudo 提权，请选择 yes 或者 no</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 必须以 root 用户执行本脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+myuser="eternalcenter"
+myserver="192.168.1.1 192.168.1.2" #each server is separated by a space
+myfile="/home/zhumingyu/test1.txt /home/zhumingyu/test2.txt" #each file is separated by a space, absolute road force must be used
+mysudo="no" #please choose "yes" or "no"
+
+####################### Separator ########################
+
+mynow=`date +%Y-%m-%d-%H-%s`
+mycontext=${myfile##*\/}
+
+if &#91; $mysudo == 'yes' ];then
+        myreplace(){
+                scp $3 $1@$2:/tmp/$5
+                ssh -t $1@$2 "sudo -u root su - root -c \"mv $3 $3-$4;mv /tmp/$5 $3\""
+        }
+        echo "use sudo"
+fi
+
+if &#91; $mysudo == 'no' ];then
+        myreplace(){
+                scp $3 $1@$2:/tmp/$5
+                ssh -t $1@$2 "mv $3 $3-$4;mv /tmp/$5 $3"
+        }
+        echo "don't use sudo"
+fi
+
+for files in $myfile
+do
+
+        if &#91; -f $files ];then
+
+                for servers in `echo $myserver`
+                do
+                                myreplace $myuser $servers $files $mynow $mycontext
+                done
+        else
+                echo "$files does not exist"
+        fi
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的密码 （简单版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-password-change-simple-version/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 09 Jun 2021 10:37:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14638</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的密码作用：批量修改多个远程服务器某个用户的密码，并显示密码更新时间 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每个服务器名占用 1 行3. 给脚本分割线里的变量赋值4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. list=&#8221;list.txt&#8221; #指定清单的目录和名称2. user=eternalcenter #指定要修改密码的用户3. password=eternalcenter #指定要修改的密码 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的密码<br>作用：批量修改多个远程服务器某个用户的密码，并显示密码更新时间</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每个服务器名占用 1 行<br>3. 给脚本分割线里的变量赋值<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. list=&#8221;list.txt&#8221; #指定清单的目录和名称<br>2. user=eternalcenter #指定要修改密码的用户<br>3. password=eternalcenter #指定要修改的密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器，并且可以通过 sudo 获得 su 的 root 权限</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+list="list.txt"
+user=eternalcenter
+password=eternalcenter
+
+####################### Separator ########################
+
+num=1
+
+cat $list
+for i in `cat $list`
+do
+        echo $num
+        echo $i
+        ssh -t $i "sudo -u root su - root -c \"echo $password | passwd --stdin $user\""
+        ssh -t $i "sudo -u root su - root -c \"echo $user:$password | chpasswd\""
+        ssh -t $i sudo -u root su - root -c \"chage -l $user\"
+        let num++
+
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 GRUB2 Bootloader 密码 （CentOS Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-grub2-bootloader-centos-linux-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Mar 2021 08:53:25 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13593</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 GRUB2 Bootloader 密码（CentOS &#38; RHEL 版）作用：自动化部署 GRUB2 Bootloader 密码（CentOS &#38; RHEL 版） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本3. 当启动系统时，左下角出现以下内容时按下 “E”： 注意 1. 登录的账号是 root2. 登录的密码是 eternalcenter 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 GRUB2 Bootloader 密码（CentOS &amp; RHEL 版）<br>作用：自动化部署 GRUB2 Bootloader 密码（CentOS &amp; RHEL 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本<br>3. 当启动系统时，左下角出现以下内容时按下 “E”：</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 登录的账号是 root<br>2. 登录的密码是 eternalcenter</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; -d /sys/firmware/efi ]; then
+        echo "GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F" &gt; /boot/efi/EFI/redhat/user.cfg
+else
+        echo "GRUB2_PASSWORD=grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F" &gt; /boot/grub2/user.cfg
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 GRUB2 Bootloader 密码 （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-grub2-bootloader-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 22 Feb 2021 09:31:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13578</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 GRUB2 Bootloader 密码（openSUSE &#38; SLE 版）作用：自动化部署 GRUB2 Bootloader 密码（openSUSE &#38; SLE 版） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本3. 当启动系统时，左下角出现以下内容时按下 “E”：C: Command Line E: Edit Entry 注意 1. 登录的账号是 root2. 登录的密码是 eternalcenter 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 GRUB2 Bootloader 密码（openSUSE &amp; SLE 版）<br>作用：自动化部署 GRUB2 Bootloader 密码（openSUSE &amp; SLE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本<br>3. 当启动系统时，左下角出现以下内容时按下 “E”：<br>C: Command Line    E: Edit Entry</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 登录的账号是 root<br>2. 登录的密码是 eternalcenter</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo "#!/bin/sh
+exec tail -n +3 \$0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+set superusers=\"root\"
+password_pbkdf2 root grub.pbkdf2.sha512.10000.B857B79D02FF55CA3A69B8485C1A4A427424630C804CC8A89134520A34E056D7882A778F6BC8AD856CB95DF8B99BE25F9FEAD899D826BB3915FB20BAD682D10A.4A1CF49B7F815A0578031CCA2CE98C66BDFBEAB0AE2721531BB54AFC6CFFA990FBD9062F41C006376C283B717FEC1BD9BB1AFB882AF91B5F4A812459D7974D1F
+export superusers
+set unrestricted_menu=\"y\"
+export unrestricted_menu" &gt; /etc/grub.d/40_custom
+
+grep "rd.shell=0" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ rd.shell=0"/' /etc/default/grub
+fi
+
+grep "showopts" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ showopts"/' /etc/default/grub
+fi
+
+grep "LANG=C" /etc/default/grub
+if &#91; $? -ne 0 ];then
+        sed -i '/GRUB_CMDLINE_LINUX_DEFAULT="/s/"$/ LANG=C"/' /etc/default/grub
+fi
+
+grub2-mkconfig -o /boot/grub2/grub.cfg</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量设置官方软件源 （openSUSE  Leap 15.2 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-official-repo-opensuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 06:21:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13277</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量设置官方软件源（openSUSE 版）作用：批量设置官方软件源（openSUSE 版） 使用方法 1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下2. 在此脚本的分割线内写入相应的内容3. 给此脚本添加执行权限4. 执行此脚本 脚本分割线里的变量 add_repo_servers_list.txt #指定存放要设置官方软件源的文件 注意 1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器2. 服务器的系统需要是 openSUSE 15.2 版本3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4. 这些远程服务器要能够连接外网 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量设置官方软件源（openSUSE 版）<br>作用：批量设置官方软件源（openSUSE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>add_repo_servers_list.txt #指定存放要设置官方软件源的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 服务器的系统需要是 openSUSE 15.2 版本<br>3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4. 这些远程服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+add_repo_servers_list.txt
+
+####################### Separator ########################
+
+cat add_repo_servers_list.txt
+read -p "will add opensuse_leap_15.2 repo please input y " a
+echo $a
+
+if &#91; "$a" != "y" ];then
+        echo "you don't agree so exit now"
+        exit
+fi
+
+for i in `awk '{print $1}' add_repo_servers_list.txt`
+do
+        ssh $i '
+        sudo -u root su - root -c "zypper mr -da"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/oss/ OpenSUSE_Leap_152_x64_update-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/non-oss/ OpenSUSE_Leap_152_x64_update-non-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/oss/ OpenSUSE_Leap_152_x64_oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/non-oss/ OpenSUSE_Leap_152_x64_non-oss"
+        sudo -u root su - root -c "zypper ref"
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个远程服务器某个用户的过期密码</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-expired-password-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 06 Aug 2020 08:42:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10423</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个远程服务器某个用户的过期密码作用：批量修改多个远程服务器某个用户的过期密码 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行3. 在此脚本的分割线内写入相应的内容4. 在执行此脚本的系统上安装 expect5. 给此脚本添加执行权限6. 执行此脚本 脚本分割线里的变量 1. oldpassword=123 #原密码2. newpassword=abc #新密码3. user=root #要修改密码的用户4. list=servers.txt #指定服务器清单 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个远程服务器某个用户的过期密码<br>作用：批量修改多个远程服务器某个用户的过期密码</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行<br>3. 在此脚本的分割线内写入相应的内容<br>4. 在执行此脚本的系统上安装 expect<br>5. 给此脚本添加执行权限<br>6. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. oldpassword=123 #原密码<br>2. newpassword=abc #新密码<br>3. user=root #要修改密码的用户<br>4. list=servers.txt #指定服务器清单</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+oldpassword=123
+newpassword=abc
+user=root
+list=servers.txt
+
+####################### Separator ########################
+
+set timeout 5
+
+for i in `cat $list`
+do
+        echo $i
+        ssh $i "whoami"
+
+        if &#91; $? -eq 0 ];then
+                continue
+        fi
+
+        expect &lt;&lt; EOF
+        spawn ssh $user@$i
+        expect "Current password:"    {send "$oldpassword\r"}
+        expect "New password:"        {send "$newpassword\r"}
+        expect "Retype new password:" {send "$newpassword\r"}
+        expect "&gt;"                    {send "\r"}
+        EOF
+
+       echo
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行命令 （单条命令版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-command-single-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Apr 2020 08:28:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8704</guid>
+
+					<description><![CDATA[介绍： 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行命令 （单条命令版）作用：批量实现多个远程服务器执行命令 （单条命令版） 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每一个远程服务器名或 IP 地址占用 1 行3. 在此脚本的分割线内写入相应的内容4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 1. execute=&#8221;top -bn 1 &#124; head -1&#8243; #指定要执行的命令2. list=servers.txt #指定服务器清单 注意 执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行命令 （单条命令版）<br>作用：批量实现多个远程服务器执行命令 （单条命令版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每一个远程服务器名或 IP 地址占用 1 行<br>3. 在此脚本的分割线内写入相应的内容<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. execute=&#8221;top -bn 1 | head -1&#8243; #指定要执行的命令<br>2. list=servers.txt #指定服务器清单</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>执行脚本的用户要在远程服务器中有同名用户，此用户拥有免密钥 sudo su 权限，且能被本服务器免密钥 ssh</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+execute="top -bn 1 | head -1"
+list=servers.txt
+
+####################### Separator ########################
+
+echo "WARNING: before execute this, please execute \"screen -S update\" command first"
+
+read -p "will execute $execute on servers in $list, if you agree please input y : " b
+echo "you input $b"
+
+if &#91; "$b" != "y" ];then
+        echo "you don't agree so exit now"
+        exit 0
+fi
+
+num=0
+
+for i in `awk '{print $1}' $list`
+do
+        let num++
+        echo "$num $i"
+        ssh -t $i "sudo -u root su - root -c \"$execute\""
+        echo "$i has been done"
+        echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量克隆 KVM 虚拟机 （中文版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-kvm-clone-cn/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 24 Aug 2019 13:31:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5487</guid>
+
+					<description><![CDATA[注意： 在克隆 KVM 虚拟机之前要先安装 KVM 、创建 KVM 虚拟网络和 KVM 模板机 正文： 介绍 基本信息 作者：朱明宇名称：批量克隆 KVM 虚拟机（中文版）作用：批量克隆 KVM 虚拟机（中文版） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. templatedisk=&#8221;/test/kvm/images/rockylinux8.qcow2&#8243; #模板机硬盘文件2. templatexml=&#8221;/test/kvm/qemu/rockylinux8.xml&#8221; #模板机 xml 文件3. templatename=&#8221;rockylinux8&#8243; #模板机在 KVM 域中的名称4. newdiskpath=&#8221;/test/kvm/images/&#8221; #新模版机硬盘文件目录5. newxmlpath=&#8221;/test/kvm/qemu/&#8221; #新模版机硬盘文件目录 注意 1. 在执行此脚本之前要先安装 KVM2. 在执行此脚本之前要先准备好模板机的硬盘文件和 xml 文件3. 请以 root 的权限执行次脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在克隆 KVM 虚拟机之前要先安装 KVM 、创建 KVM 虚拟网络和 KVM 模板机</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-install/">KVM 的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-network-install/">KVM 虚拟网络的创建</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-7/">KVM 虚拟机模板的创建 <br>（CentOS 7 版）</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kvm-template-install-centos-8/">KVM 虚拟机模板的创建 <br>（CentOS 8 版）</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量克隆 KVM 虚拟机（中文版）<br>作用：批量克隆 KVM 虚拟机（中文版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. templatedisk=&#8221;/test/kvm/images/rockylinux8.qcow2&#8243; #模板机硬盘文件<br>2. templatexml=&#8221;/test/kvm/qemu/rockylinux8.xml&#8221; #模板机 xml 文件<br>3. templatename=&#8221;rockylinux8&#8243; #模板机在 KVM 域中的名称<br>4. newdiskpath=&#8221;/test/kvm/images/&#8221; #新模版机硬盘文件目录<br>5. newxmlpath=&#8221;/test/kvm/qemu/&#8221; #新模版机硬盘文件目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 在执行此脚本之前要先安装 KVM<br>2. 在执行此脚本之前要先准备好模板机的硬盘文件和 xml 文件<br>3. 请以 root 的权限执行次脚本</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+#作者:朱明宇
+#名称:批量克隆 KVM 虚拟机
+#作用:批量克隆 KVM 虚拟机
+#使用方法:
+#1.在此脚本的分割线内写入相应的内容
+#2.给此脚本增加执行权限
+#3.执行此脚本
+#注意:
+#1.在执行此脚本之前要先安装 KVM
+#2.在执行此脚本之前要先准备好模板机的硬盘文件和 xml 文件
+#3.请以 root 的权限执行次脚本
+
+###此为分割线，分割线里的内容可让懂 Shell 用户自行修改，如果你不懂 Shell 请勿修改###
+
+templatedisk="/test/kvm/images/rockylinux8.qcow2" #模板机硬盘文件
+templatexml="/test/kvm/qemu/rockylinux8.xml" #模板机 xml 文件
+templatename="rockylinux8" #模板机在 KVM 域中的名称
+newdiskpath="/test/kvm/images/" #新模版机硬盘文件目录
+newxmlpath="/test/kvm/qemu/" #新模版机硬盘文件目录
+
+###此为分割线，分割线里的内容可让懂 Shell 用户自行修改，如果你不懂 Shell 请勿修改###
+
+echo
+
+mkdir $newdiskpath &amp;&gt; /dev/null
+
+sudo systemctl start libvirtd &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+	echo
+	echo -e "\033&#91;31m你没有安装 KVM 或者你没有以 root 权限执行次脚本，脚本无法执行\033&#91;0m"
+	exit
+fi
+
+ls $templatedisk &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+        echo
+        echo -e "\033&#91;31m模版机硬盘文件不存在，脚本无法执行\033&#91;0m"
+        exit
+fi
+
+ls $templatexml &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+        echo
+        echo -e "\033&#91;31m模版机配置文件不存在，脚本无法执行\033&#91;0m"
+        exit
+fi
+
+sudo virsh destroy $templatename &amp;&gt; /dev/null
+sudo virt-sysprep -d $templatename &amp;&gt; /dev/null
+dnet=`sudo virsh net-list | sed -n 3p  | awk '{print $1}'`
+
+read -p "将要克隆虚拟机，单独克隆一台请输入 1，批量克隆请输入任意其他字符 " cloneway
+if &#91; ! $cloneway ];then
+	echo
+	echo -e "\033&#91;31m你没有输入任何值，立刻退出\033&#91;0m"
+	exit
+fi
+
+if &#91; $cloneway == 1 ];then
+	read -p "要克隆产生的主机名称，没有默认值必须输入一个 " onename
+
+	echo $onename | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m要克隆产生的主机名 '$onename' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+        if &#91; ! $onename ];then
+		echo
+                echo -e "\033&#91;31m你没有输入要克隆产生的主机名，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	sudo virsh list --all | egrep -w $onename &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+		echo
+                echo -e "\033&#91;31m要克隆产生的主机名 '$onename' 已经存在了，停止克隆\033&#91;0m"
+                exit
+        fi
+
+        read -p "要克隆的主机所属的虚拟网络，直接回车则是选择已创建的网络中排名最靠前的 $dnet " net
+
+        echo $net | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m网络名 '$net' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要克隆产生的主机 CPU 核心数,请只输入数字，最小为 1，单位个,直接回车则是使用默认值 1 " cpu
+
+	echo $cpu | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m CPU 核心数 '$cpu' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要克隆产生的主机内存大小,请只输入数字，单位 K，直接回车则是使用默认值 1048576 " mem
+
+        echo $mem | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m内存大小 '$mem' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要克隆产生的主机硬盘大小,请只输入数字，单位 G，直接回车则是使用默认值 10 " disk
+
+        echo $disk | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m硬盘大小 '$disk' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	echo
+	echo "名称："
+	echo "使用主机名 '$onename'"
+
+else
+	read -p "要批量克隆产生的主机名称的前缀名称，没有默认值必须输入一个 " name
+
+	echo $name | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m要批量克隆产生的主机名称前缀 '$name' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+
+        if &#91; ! $name ];then
+		echo
+                echo -e "\033&#91;31m你没有输入要批量克隆产生的主机名称前缀，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要批量克隆产生的主机名后缀起始编号，没有默认值必须输入一个，请只输入数字 " snum
+
+        if &#91; ! $snum ];then
+		echo
+                echo -e "\033&#91;31m你没有输入要批量克隆产生的主机名后缀起始编号，停止克隆\033&#91;0m"
+                exit
+        fi
+
+        echo $snum | grep '\-' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+		snum=${snum##*-}
+                echo -e "\033&#91;33m你输入的要批量克隆产生的主机名后缀起始编号可能是一个负数，将只使用整数部分 $snum\033&#91;0m"
+        fi
+
+        echo $snum | grep '\.' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                snum=${snum%%.*}
+                echo -e "\033&#91;33m你输入的要批量克隆产生的主机名后缀起始编号可能是一个小数，将只使用数字部分 $snum\033&#91;0m"
+        fi
+
+        let snum+0 &amp;&gt; /dev/null
+        if &#91; $? -ne 0 ];then
+                echo
+                echo -e "\033&#91;31m你输入的要批量克隆产生的主机名后缀起始编号 $snum 不是数字，无法克隆\033&#91;0m"
+        exit
+        fi
+
+	read -p "要批量克隆产生的主机名后缀结束编号，没有默认值必须输入一个，请只输入数字 " enum
+
+        if &#91; ! $enum ];then
+                echo -e "\033&#91;31m你没有输入要批量克隆产生的主机名后缀结束编号，停止克隆\033&#91;0m"
+        fi
+
+	echo $enum | grep '\-' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                enum=${enum##*-}
+                echo -e "\033&#91;33m你输入的要批量克隆产生的主机名后缀结束编号可能是一个负数，将只使用数字部分 $enum\033&#91;0m"
+        fi
+
+        echo $enum | grep '\.' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                enum=${enum%%.*}
+                echo -e "\033&#91;33m你输入的要批量克隆产生的主机名后缀结束编号可能是一个小数，将只使用整数部分 $enum\033&#91;0m"
+        fi
+
+        let enum+0 &amp;&gt; /dev/null
+        if &#91; $? -ne 0 ];then
+                echo -e "\033&#91;31m你输入的要批量克隆产生的主机名后缀结束编号 $enum 不是数字，无法克隆\033&#91;0m"
+                exit
+        fi
+
+        read -p "要批量克隆的主机所属的虚拟网络，直接回车则是选择已创建的网络中排名最靠前的 $dnet " net
+
+        echo $net | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m网络名 '$net' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要批量克隆产生的主机 CPU 核心数，请只输入数字，最小为 1，单位个，直接回车则是使用默认值 1 " cpu
+
+        echo $cpu | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m CPU 核心数 '$cpu' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要批量克隆产生的主机内存大小，请只输入数字，单位 K，直接回车则是使用默认值 1048576 " mem
+
+        echo $mem | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m内存大小 '$mem' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	read -p "要批量克隆产生的主机硬盘大小，请只输入数字，单位 G，直接回车则是使用默认值 10 " disk
+
+        echo $disk | grep '\ ' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                echo
+                echo -e "\033&#91;31m硬盘大小 '$disk' 不能有空格，停止克隆\033&#91;0m"
+                exit
+        fi
+
+	echo
+	echo "名称："
+	for i in `seq $snum $enum`
+	do
+	sudo virsh list --all | egrep -w $name$i &amp;&gt; /dev/null
+	if &#91; $? -eq 0 ];then
+		echo -e "\033&#91;33m使用主机名 '$name$i' ，已经存在了，将跳过不克隆它\033&#91;0m"
+	else
+		echo "使用主机名 '$name$i' "
+	fi
+        done
+fi
+
+echo
+
+echo "网络："
+
+sudo virsh net-list | grep $net &amp;&gt; /dev/null
+if &#91; $? -eq 0 ];then
+        echo "使用网络 $net"
+fi
+
+if &#91; ! $net ];then
+        net=`sudo virsh net-list | sed -n 3p  | awk '{print $1}'`
+	echo -e "\033&#91;33m你没有输入网络，将使用默认网络 $net\033&#91;0m"
+	echo "使用网络 $net"
+fi
+
+sudo virsh net-list | grep $net &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+        net=`sudo virsh net-list | sed -n 3p  | awk '{print $1}'`
+        echo -e "\033&#91;33m你输入的要克隆主机的所属的网络不存在，将使用默认网络 $net\033&#91;0m"
+	echo "使用网络 $net"
+fi
+
+echo
+
+echo "CPU："
+
+if &#91; ! $cpu ];then
+	cpu=1
+	echo -e "\033&#91;33m你没有输入 CPU 核心数，将使用默认 CPU 核心数 1\033&#91;0m"
+else
+
+        echo $cpu | grep '\-' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                cpu=${cpu##*-}
+                echo -e "\033&#91;33m你输入的 CPU 核心数可能是一个负数，将只使用数字部分 $cpu\033&#91;0m"
+        fi
+
+        echo $cpu | grep '\.' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                cpu=${cpu%%.*}
+                echo -e "\033&#91;33m你输入的 CPU 核心数可能是一个小数，将只使用整数部分 $cpu\033&#91;0m"
+        fi
+
+	let cpu=cpu+0 &amp;&gt; /dev/null
+	if &#91; $? -ne 0 ];then
+		echo -e "\033&#91;33m你输入的 CPU 核心数不是数字，将使用默认值 1\033&#91;0m"
+                cpu=1
+	fi
+
+	if &#91; $cpu -lt 1 ];then
+                echo -e "\033&#91;33m你输入的 CPU 核心数小于 1，将使用默认值 1\033&#91;0m"
+		cpu=1
+	fi
+fi
+
+echo "CPU 核心数 $cpu"
+
+echo
+
+echo "内存："
+
+if &#91; ! $mem ];then
+	mem=1048576
+        echo -e "\033&#91;33m你没有输入内存大小，将使用默认内存大小 1048576 K\033&#91;0m"
+
+else
+
+        echo $mem | grep '\-' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                mem=${mem##*-}
+                echo -e "\033&#91;33m你输入的内存大小可能是一个负数，将只使用数字部分 $mem\033&#91;0m"
+        fi
+
+        echo $mem | grep '\.' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                mem=${mem%%.*}
+                echo -e "\033&#91;33m你输入的内存大小可能是一个小数，将只使用整数部分 $mem\033&#91;0m"
+        fi
+
+	let mem=mem+0 &amp;&gt; /dev/null
+	if &#91; $? -ne 0 ];then
+		echo -e "\033&#91;33m你输入的内存大小不是数字，将使用默认值 1048576\033&#91;0m"
+                mem=1048576
+	fi
+
+	if &#91; $mem -lt 1048576 ];then
+                echo -e "\033&#91;33m你输入的内存大小小于 1048576，将使用默认值 1048576\033&#91;0m"
+		mem=1048576
+	fi
+fi
+
+echo "内存大小 $mem K"
+
+echo
+
+echo "硬盘："
+
+if &#91; ! $disk ];then
+	disk=10
+        echo -e "\033&#91;33m你没有输入硬盘大小，将使用默认硬盘大小 10 G\033&#91;0m"
+
+else
+
+        echo $disk | grep '\-' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                disk=${disk##*-}
+                echo -e "\033&#91;33m你输入的硬盘大小可能是一个负数，将只使用数字部分 $disk\033&#91;0m"
+        fi
+
+        echo $disk | grep '\.' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                disk=${disk%%.*}
+                echo -e "\033&#91;33m你输入的硬盘大小可能是一个小数，将只使用整数部分 $disk\033&#91;0m"
+        fi
+
+	let disk=disk+0 &amp;&gt; /dev/null
+	if &#91; $? -ne 0 ];then
+		echo -e "\033&#91;33m你输入的硬盘大小不是数字，将使用默认值 10\033&#91;0m"
+	fi
+
+	if &#91; $disk -lt 10 ];then
+		echo -e "\033&#91;33m你输入的硬盘大小小于 10，将使用默认值 10\033&#91;0m"
+		disk=10
+	fi
+fi
+
+echo "硬盘大小 $disk G"
+
+echo
+
+echo "备注（可能没有任何信息）："
+
+if &#91; $cloneway -eq 1 ];then
+	sudo qemu-img create -f qcow2 -F qcow2 -b $templatedisk $newdiskpath$onename.qcow2 ${disk}G &amp;&gt; /dev/null
+	sudo cp $templatexml $newxmlpath$onename.xml
+	sudo sed -i "/uuid/d" $newxmlpath$onename.xml
+	sudo sed -i "/mac address/d" $newxmlpath$onename.xml
+	sudo sed -i "s:&lt;name&gt;.*&lt;/name&gt;:&lt;name&gt;$onename&lt;/name&gt;:" $newxmlpath$onename.xml
+	sudo sed -i "s:&lt;source file=.*/&gt;:&lt;source file=\'$newdiskpath$onename.qcow2\'/&gt;:" $newxmlpath$onename.xml
+	sudo sed -i "s:&lt;vcpu placement='static'&gt;.*&lt;/vcpu&gt;:&lt;vcpu placement='static'&gt;$cpu&lt;/vcpu&gt;:" $newxmlpath$onename.xml
+	sudo sed -i "s:.*&lt;/memory&gt;:&lt;memory unit='KB'&gt;$mem&lt;/memory&gt;:" $newxmlpath$onename.xml
+	sudo sed -i "s:.*&lt;/currentMemory&gt;:&lt;currentMemory unit='KB'&gt;$mem&lt;/currentMemory&gt;:" $newxmlpath$onename.xml
+        sudo sed -i "s:&lt;source network=.*:&lt;source network=\'$net\'/&gt;:" $newxmlpath$onename.xml
+	sudo virsh define $newxmlpath$onename.xml &amp;&gt; /dev/null
+        sudo virsh start $onename &amp;&gt; /dev/null
+	echo
+	sudo virsh list --all
+else
+	for i in `seq $snum $enum`
+	do
+                sudo virsh list --all | egrep -w $name$i &amp;&gt; /dev/null
+                if &#91; $? -eq 0 ];then
+		      echo -e "\033&#91;33m$name$i 没有被克隆\033&#91;0m"
+	       	      continue
+                fi
+		sudo qemu-img create -f qcow2 -F qcow2 -b $templatedisk $newdiskpath$name$i.qcow2 $&#91;disk]G &amp;&gt; /dev/null
+		sudo cp $templatexml $newxmlpath$name$i.xml
+		sudo sed -i "/uuid/d" $newxmlpath$name$i.xml
+		sudo sed -i "/mac address/d" $newxmlpath$name$i.xml
+		sudo sed -i "s:&lt;name&gt;.*&lt;/name&gt;:&lt;name&gt;$name$i&lt;/name&gt;:" $newxmlpath$name$i.xml
+		sudo sed -i "s:&lt;source file=.*/&gt;:&lt;source file=\'$newdiskpath$name$i.qcow2\'/&gt;:" $newxmlpath$name$i.xml
+		sudo sed -i "s:&lt;vcpu placement='static'&gt;.*&lt;/vcpu&gt;:&lt;vcpu placement='static'&gt;$cpu&lt;/vcpu&gt;:" $newxmlpath$name$i.xml
+		sudo sed -i "s:.*&lt;/memory&gt;:&lt;memory unit='KB'&gt;$mem&lt;/memory&gt;:" $newxmlpath$name$i.xml
+		sudo sed -i "s:.*&lt;/currentMemory&gt;:&lt;currentMemory unit='KB'&gt;$mem&lt;/currentMemory&gt;:" $newxmlpath$name$i.xml
+                sudo sed -i "s:&lt;source network=.*:&lt;source network=\'$net\'/&gt;:" $newxmlpath$name$i.xml
+	        sudo virsh define $newxmlpath$name$i.xml &amp;&gt; /dev/null
+                sudo virsh start $name$i &amp;&gt; /dev/null
+      done
+      echo
+      sudo virsh list --all
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现其他多台电脑可以免密码 SSH 本电脑</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-localhost-ssh/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 24 Jan 2019 13:05:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1621</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量实现其他多台电脑可以免密码 SSH 本电脑作用：批量将其他多台电脑的公钥拷贝给本电脑 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确2. sip=51 #起始 ip，起始 IP 地址，IP 地址 的范围是 0-2553. lip=51 #结束 ip ，结束 IP 地址，IP 地址 的范围是 0-2554. pd=123456 #其他服务器的 root 远程登录密码5. lpd=Taren1 #本机的 root 远程登录密码6. lh=192.168.4.254 #本机 IP 地址 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 必须以 root 用户执行本脚本 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-localhost-ssh/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 批量实现其他多台电脑可以免密码 SSH 本电脑"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现其他多台电脑可以免密码 SSH 本电脑<br>作用：批量将其他多台电脑的公钥拷贝给本电脑</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确<br>2. sip=51 #起始 ip，起始 IP 地址，IP 地址 的范围是 0-255<br>3. lip=51 #结束 ip ，结束 IP 地址，IP 地址 的范围是 0-255<br>4. pd=123456 #其他服务器的 root 远程登录密码<br>5. lpd=Taren1 #本机的 root 远程登录密码<br>6. lh=192.168.4.254 #本机 IP 地址</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 必须以 root 用户执行本脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+nm=192.168.4.0 #Network segment. The network segment must be a class C network segment. Please ensure that the format and the first three network bits are correct
+sip=51 #Starting IP, starting IP address. The range of IP address is 0-255
+lip=51 #End IP, end IP address. The range of IP address is 0-255
+pd=123456 #Root remote login password of other servers
+lpd=Taren1 #Root remote login password of this machine
+lh=192.168.4.254 #Native IP address
+
+####################### Separator ########################
+
+fnm=${nm%.*}
+
+set timeout 3
+rpm -q expect
+
+if &#91; $? -ne 0 ];then
+        yum -y install expect &amp;&gt; /dev/null
+fi
+
+for i in `seq $sip $lip`
+do
+        expect &lt;&lt; EOF
+        spawn ssh root@$fnm.$i
+        expect "(yes/no)?"                               {send "yes\r" } 
+        expect "password:"                               {send "$pd\r" } 
+        expect "#"                                       {send "ssh-keygen\r"}
+        expect "(/root/.ssh/id_rsa):"                    {send "\r"}
+        expect "(empty for no passphrase):"              {send "\r"}
+        expect "passphrase again:"                       {send "\r"}
+        expect "#"                                       {send "\r"}
+        EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "password:"                               {send "$pd\r" } 
+expect "#"                                       {send "ssh-keygen\r"}
+expect "(/root/.ssh/id_rsa):"                    {send "\r"}
+expect "(empty for no passphrase):"              {send "\r"}
+expect "passphrase again:"                       {send "\r"}
+expect "#"                                       {send "\r"}
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "(yes/no)?"                               {send "yes\r" } 
+expect "#"                                       {send "ssh-keygen\r"}
+expect "(/root/.ssh/id_rsa):"                    {send "\r"}
+expect "(empty for no passphrase):"              {send "\r"}
+expect "passphrase again:"                       {send "\r"}
+expect "#"                                       {send "\r"}
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "#"                                       {send "ssh-keygen\r"}
+expect "(/root/.ssh/id_rsa):"                    {send "\r"}
+expect "(empty for no passphrase):"              {send "\r"}
+expect "passphrase again:"                       {send "\r"}
+expect "#"                                       {send "\r"}
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "password:"                      { send "$pd\r" } 
+expect "#"                              { send "ssh-copy-id -i ~/.ssh/id_rsa.pub root@$lh\r" }
+expect "(yes/no)?"                      { send "yes\r" } 
+expect "root@$lh's password:"           { send "$lpd\r" }
+expect "#"                              { send "exit\r" }
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "password:"                      { send "$pd\r" } 
+expect "#"                              { send "ssh-copy-id -i ~/.ssh/id_rsa.pub root@$lh\r" }
+expect "root@$lh's password:"           { send "$lpd\r" }
+expect "#"                              { send "exit\r" }
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "#"                              { send "ssh-copy-id -i ~/.ssh/id_rsa.pub root@$lh\r" }
+expect "(yes/no)?"                      { send "yes\r" } 
+expect "root@$lh's password:"           { send "$lpd\r" }
+expect "#"                              { send "exit\r" }
+EOF
+
+expect &lt;&lt; EOF
+spawn ssh root@$fnm.$i
+expect "#"                              { send "ssh-copy-id -i ~/.ssh/id_rsa.pub root@$lh\r" }
+expect "root@$lh's password:"           { send "$lpd\r" }
+expect "#"                              { send "exit\r" }
+EOF
+
+echo "$fnm.$i has been finished"
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现本电脑免密码 SSH 多个服务器</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-ssh-copy-id/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 16 Jan 2019 11:14:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1261</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量实现本电脑免密码 SSH 多个服务器作用：将主本机的 SSH 公钥批量拷贝给其他多个远程服务器 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确2. sip=50 #起始 IP 地址，IP 地址 的范围是 0-2553. lip=57 #结束 IP 地址，IP 地址 的范围是 0-2554. pd=123456 #其他服务器的 root 远程登录密码 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现本电脑免密码 SSH 多个服务器<br>作用：将主本机的 SSH 公钥批量拷贝给其他多个远程服务器</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确<br>2. sip=50 #起始 IP 地址，IP 地址 的范围是 0-255<br>3. lip=57 #结束 IP 地址，IP 地址 的范围是 0-255<br>4. pd=123456 #其他服务器的 root 远程登录密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+nm=192.168.4.0
+sip=50
+lip=57
+pd=123456
+
+####################### Separator ########################
+
+fnm=${nm%.*}
+
+set timeout 3
+rpm -q expect
+
+if &#91; $? -ne 0 ];then
+        yum -y install expect &amp;&gt; /dev/null
+fi
+
+cat /root/.ssh/id_rsa &amp;&gt; /dev/null
+
+if &#91; $? -ne 0 ];then
+
+        expect &lt;&lt; EOF
+        spawn ssh-keygen
+        expect "(/root/.ssh/id_rsa):"                    {send "\r"}
+        expect "(empty for no passphrase):"              {send "\r"}
+        expect "passphrase again:"                       {send "\r"}
+        expect "#"                                       {send "\r"}
+        EOF
+
+fi
+
+for i in `seq $sip $lip`
+do
+        echo $fnm.$i
+        ping -c3 -i0.3 -w1 $fnm.$i &amp;&gt; /dev/null
+        if &#91; $? -ne 0 ];then
+                echo "$fnm.$i can't be connected"
+                continue
+        fi
+
+        expect &lt;&lt; EOF
+        spawn ssh-copy-id $fnm.$i
+        expect "? "                                      {send "yes\r"}
+        expect "password:"                               {send "$pd\r"}
+        expect "#"                                       {send "\r"}
+        EOF
+
+        expect &lt;&lt; EOF
+        spawn ssh-copy-id $fnm.$i
+        expect "password:"                               {send "$pd\r"}
+        expect "#"                                       {send "\r"}
+        EOF
+
+        echo "$fnm.$i has been finished"
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量实现多个远程服务器执行本电脑上的一个脚本</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-script/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 16 Jan 2019 11:11:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1257</guid>
+
+					<description><![CDATA[介绍： 基本信息 作者：朱明宇名称：批量实现多个远程服务器执行本主机的一个脚本作用：将本主机的某个脚本批量拷贝到多个远程服务器并执行 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确2. sip=50 #起始 IP 地址，IP 地址的范围是 0-2553. lip=57 #结束 IP 地址，IP 地址的范围是 0-2554. pd=123456 #其他服务器的 root 远程登录密码5. fn=&#8217;ssh-copy-id.sh&#8217; #要远程执行的脚本的名称 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量实现多个远程服务器执行本主机的一个脚本<br>作用：将本主机的某个脚本批量拷贝到多个远程服务器并执行</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前 3 个网络位一定正确<br>2. sip=50 #起始 IP 地址，IP 地址的范围是 0-255<br>3. lip=57 #结束 IP 地址，IP 地址的范围是 0-255<br>4. pd=123456 #其他服务器的 root 远程登录密码<br>5. fn=&#8217;ssh-copy-id.sh&#8217; #要远程执行的脚本的名称</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+nm=192.168.4.0
+sip=50
+lip=57
+pd=123456
+fn='ssh-copy-id.sh'
+
+####################### Separator ########################
+
+fnm=${nm%.*}
+
+for i in `seq $sip $lip`
+do
+        ping -c3 -i0.3 -w1 $fnm.$i &amp;&gt; /dev/null
+
+        if &#91; $? -ne 0 ];then 
+                echo "$fnm.$i can't be connected"
+        else
+                scp $fn $fnm.$i:/root/
+                ssh $fnm.$i "chmod +x /root/$fn"
+                ssh $fnm.$i "bash /root/$fn"
+                ssh $fnm.$i "rm -rf /root/$fn"
+                echo "$fn has been executed on $fnm.$i"
+        fi
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

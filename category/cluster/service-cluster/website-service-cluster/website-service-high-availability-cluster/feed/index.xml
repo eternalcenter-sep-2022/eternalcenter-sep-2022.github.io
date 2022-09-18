@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Website Service High Availability Cluster (网站服务高可用集群) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/service-cluster/website-service-cluster/website-service-high-availability-cluster/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 14:29:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Apache + Pacemaker 网站服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:21:31 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Apache + Pacemaker]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service High Availability Cluster (网站服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5046</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群 正文： 步骤一：Pacemaker 高可用网站服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 NFS 远程目录服务 1.2 本 Pacemaker 高可用网站服务的特点 1) 使用其他服务器提供的 NFS 服务器作为网站的网页目录2) 提供网站 服务3) 提供虚拟 IP 地址服务4) 以上三项服务器都实现高可用5) 唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器 步骤二：前期准备 2.1 在所有集群服务器上安装 httpd （在所有集群服务器上执行以下步骤） 2.2 确保 httpd 不会被 SELinux 限制 （在所有集群服务器上执行以下步骤） （补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Apache + Pacemaker 网站服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的搭建</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用网站服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 NFS 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用网站服务的特点</h4>
+
+
+
+<p>1)  使用其他服务器提供的 NFS 服务器作为网站的网页目录<br>2)  提供网站 服务<br>3)  提供虚拟 IP 地址服务<br>4)  以上三项服务器都实现高可用<br>5)  唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备</h3>
+
+
+
+<h4>2.1 在所有集群服务器上安装 httpd</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h4>2.2 确保 httpd 不会被 SELinux 限制</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_use_nfs 1</code></pre>
+
+
+
+<p>（补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 NFS 服务）</p>
+
+
+
+<h4>2.3 确保 httpd 没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop httpd
+# systemctl disable httpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的网站高可用服务</h3>
+
+
+
+<h4>3.1 在 网站资源组中创建名为 webip 的虚拟 IP 地址资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webip IPaddr2 ip=192.168.0.20 cidr_netmask=24 --group=web</code></pre>
+
+
+
+<h4>3.2 在 网站资源组中创建名为 webnfs 挂载其他服务器的 NFS 服务的资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webnfs Filesystem device=192.168.8.21:/content directory=/var/www/html fstype=nfs options=ro --group web</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 NFS 服务，这个服务需要提前搭建好，可以参考 https://eternalcenter-sep-2022.github.io/nfs/ 里的内容）</p>
+
+
+
+<h4>3.3 在网站资源组中创建名为 webserver 的网站资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webserver apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status" --group web</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Chrony &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/chrony/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 07:26:02 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Chrony 客户端的设置 （时间同步）</title>
+		<link>https://eternalcenter-sep-2022.github.io/chrony-client/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 12 Jun 2020 14:07:06 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Chrony]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9756</guid>
+
+					<description><![CDATA[注意： 从 CentOS 7.2&#38;RHEL 7.0 开始实现时间同步的程序默认从 NTP 换成了 Chrony 。 NTP 也可以继续使用，但是需要单独安装 NTP 的安装包 正文： 步骤一：系统环境要求 1) 服务器的系统是 CentOS 8 版本2) 服务器系统配置好可用的软件源 步骤二：确保 Chrony 已经安装 步骤三：确保系统会使用 Chrony 或 NTP 的时间同步 （补充：此时 NTP service 的状态可能还不是 active 状态） 步骤四：修改配置文件 将部分内容修改如下： （说明：在配置文件的开头添加要进行时间同步的服务器） 步骤五：重启客户端的 Chrony 服务 步骤六：显示客户端时间同步的状态 6.1 通过 Chrony 命令显示 （补充：当出现 ^* 时则代表时间同步成功） 或者： 6.2 通过 timedatectl 命令显示 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/chrony-client/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Chrony 客户端的设置 （时间同步）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>从 CentOS 7.2&amp;RHEL 7.0 开始实现时间同步的程序默认从 NTP 换成了 Chrony 。 NTP 也可以继续使用，但是需要单独安装 NTP 的安装包</p>
+
+
+
+<h2>正文：</h2>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统是 CentOS 8 版本<br>2) 服务器系统配置好可用的软件源</p>
+
+
+
+<h3 id="步骤二-确保-chrony-已经安装">步骤二：确保 Chrony 已经安装</h3>
+
+
+
+<pre class="wp-block-code"><code>
+# yum -y install chrony</code></pre>
+
+
+
+<h3 id="步骤三-确保系统会使用-chrony-或-ntp-的时间同步">步骤三：确保系统会使用 Chrony 或 NTP 的时间同步</h3>
+
+
+
+<pre class="wp-block-code"><code># timedatectl set-ntp true
+# timedatectl
+               Local time: Fri 2020-06-12 09:52:30 EDT
+           Universal time: Fri 2020-06-12 13:52:30 UTC
+                 RTC time: Fri 2020-06-12 13:51:52
+                Time zone: America/New_York (EDT, -0400)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no</code></pre>
+
+
+
+<p>（补充：此时 NTP service 的状态可能还不是 active 状态）</p>
+
+
+
+<h3 id="步骤四-修改配置文件">步骤四：修改配置文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/chrony.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+pool 2.centos.pool.ntp.org iburst</code></pre>
+
+
+
+<p>（说明：在配置文件的开头添加要进行时间同步的服务器）</p>
+
+
+
+<h3 id="步骤五-重启客户端的-chrony-服务">步骤五：重启客户端的 Chrony 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart chronyd
+# systemctl status chronyd</code></pre>
+
+
+
+<h3>步骤六：显示客户端时间同步的状态</h3>
+
+
+
+<h4>6.1 通过 Chrony 命令显示</h4>
+
+
+
+<pre class="wp-block-code"><code># chronyc sources -v
+210 Number of sources = 4
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current synced, '+' = combined , '-' = not combined,
+| /   '?' = unreachable, 'x' = time may be in error, '~' = time too variable.
+||                                                 .- xxxx &#91; yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+^* time.rdg.uk.as44574.net       3   8   373   153    +73ms&#91;  +68ms] +/-  233ms</code></pre>
+
+
+
+<p>（补充：当出现 ^* 时则代表时间同步成功）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chronyc tracking</code></pre>
+
+
+
+<h4>6.2 通过 timedatectl 命令显示</h4>
+
+
+
+<pre class="wp-block-code"><code># timedatectl
+               Local time: Fri 2020-06-12 09:52:30 EDT
+           Universal time: Fri 2020-06-12 13:52:30 UTC
+                 RTC time: Fri 2020-06-12 13:51:52
+                Time zone: America/New_York (EDT, -0400)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no</code></pre>
+
+
+
+<p>（补充：如果 Chrony 时间同步正常，则此时 Chrony service 的状态肯定是 active 状态）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

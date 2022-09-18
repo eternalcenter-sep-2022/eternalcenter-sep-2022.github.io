@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ideas (思路) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/ideas/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:17:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[CONTENT] Linux Enterprise Agreements and Product Appendices</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-en_us/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 08:55:59 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23664</guid>
+
+					<description><![CDATA[中文 Red Hat Enterprise Agreements and Product Appendices official website https://www.redhat.com/en/about/agreements]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-zh_cn/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-zh_cn/"><strong>中文</strong></a></p>
+
+
+
+<p>Red Hat Enterprise Agreements and Product Appendices official website</p>
+
+
+
+<p>https://www.redhat.com/en/about/agreements</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 企业协议和产品附录</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-zh_cn/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 08:54:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23662</guid>
+
+					<description><![CDATA[English 红帽企业协议和产品附录官方网站 https://www.redhat.com/zh/about/agreements]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-en_us/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/linux-enterprise-agreements-and-product-appendices-en_us/"><strong>English</strong></a></p>
+
+
+
+<p>红帽企业协议和产品附录官方网站</p>
+
+
+
+<p>https://www.redhat.com/zh/about/agreements</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>问题排查的方法</title>
+		<link>https://eternalcenter-sep-2022.github.io/troubleshooting-methods/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 23 May 2022 15:30:26 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Management Articles (管理类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23610</guid>
+
+					<description><![CDATA[方法一：按时间顺序分析 （Chronological Analysis） 根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因 方法二：深度价值分析 （Pain Value Analysis） 根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心 方法三：KTKT 分析 （Kepner and Tregoe） 对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因 方法四：头脑风暴 （Brainstorming） 大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观 方法五：鱼骨图 （Ishikawa Diagrams） 将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上 方法六：帕累托分析 （Pareto Analysis） 分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果 方法七：5 个为什么 （5 Why） 5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：1) 避免使用借口回答问题2) 避免在追问的过程中牵扯到人的心理3) 避免回答问题时推卸责任4) 避免各个问题之间没有层级关系]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：按时间顺序分析 （Chronological Analysis）</h3>
+
+
+
+<p>根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因</p>
+
+
+
+<h3>方法二：深度价值分析 （Pain Value Analysis）</h3>
+
+
+
+<p>根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心</p>
+
+
+
+<h3>方法三：KTKT 分析 （Kepner and Tregoe）</h3>
+
+
+
+<p>对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因</p>
+
+
+
+<h3>方法四：头脑风暴 （Brainstorming）</h3>
+
+
+
+<p>大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观</p>
+
+
+
+<h3>方法五：鱼骨图 （Ishikawa Diagrams）</h3>
+
+
+
+<p>将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上</p>
+
+
+
+<h3>方法六：帕累托分析 （Pareto Analysis）</h3>
+
+
+
+<p>分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果</p>
+
+
+
+<h3>方法七：5 个为什么 （5 Why）</h3>
+
+
+
+<p>5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：<br>1) 避免使用借口回答问题<br>2) 避免在追问的过程中牵扯到人的心理<br>3) 避免回答问题时推卸责任<br>4) 避免各个问题之间没有层级关系</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 常见存储和存储类型介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-to-linux-common-storage-and-storage-types/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 19 Aug 2021 12:31:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17522</guid>
+
+					<description><![CDATA[内容一：常见的存储 1) DAS（直连存储），就是接在主板上的硬盘2) NAS（网络附加存储），例如：NFS、Samba、FTP、HTTP，优点是管理简单，缺点是单点故障3) SAN（网络块存储），例如：Iscsi4) 分布时云存储，例如：Ceph、Swift 内容二：常见的存储类型 1) Block-based access（基于块存储的访问），对应的是块存储（block），例如：直接接在主板上的硬盘、Iscsi、Ceph2) File-based access（基于文件系统的访问），对应的是文件系统存储（filesystem），例如：NFS、Samba、FTP、HTTP、Ceph3) Object-based access（基于对象的访问），对应的是对象存储（object），例如：Ceph]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：常见的存储</h3>
+
+
+
+<p>1) DAS（直连存储），就是接在主板上的硬盘<br>2) NAS（网络附加存储），例如：NFS、Samba、FTP、HTTP，优点是管理简单，缺点是单点故障<br>3) SAN（网络块存储），例如：Iscsi<br>4) 分布时云存储，例如：Ceph、Swift</p>
+
+
+
+<h3>内容二：常见的存储类型</h3>
+
+
+
+<p>1) Block-based access（基于块存储的访问），对应的是块存储（block），例如：直接接在主板上的硬盘、Iscsi、Ceph<br>2) File-based access（基于文件系统的访问），对应的是文件系统存储（filesystem），例如：NFS、Samba、FTP、HTTP、Ceph<br>3) Object-based access（基于对象的访问），对应的是对象存储（object），例如：Ceph</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 实现数据存储高可用的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/data-ha/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 08:32:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5832</guid>
+
+					<description><![CDATA[方法一：以目录级数据同步工具 Rsync 为核心的同步方法 通过 Inotifywait + Rsync 实现两个目录的数据实时同步特点：如果数据量太大就不合适了，数据量最好小于 10G，如果文件多最好要小于 5G 甚至小于 3G 方法二：以硬盘级数据同步工具 DRDB 为核心的同步方法 DRDB + heartbeat 或者 DRDB + Keepalive + Shell 实现两个数据存储节点的主从同步、主从切换特点：最好用于小于 300G 的数据同步 方法三：分布式云存储 通过 HDFS 或者 Ceph 实现分布式云存储特点：可以用于大于 300G 的数据同步]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：以目录级数据同步工具 Rsync 为核心的同步方法</h3>
+
+
+
+<p>通过 Inotifywait + Rsync 实现两个目录的数据实时同步<br>特点：如果数据量太大就不合适了，数据量最好小于 10G，如果文件多最好要小于 5G 甚至小于 3G</p>
+
+
+
+<h3>方法二：以硬盘级数据同步工具 DRDB 为核心的同步方法</h3>
+
+
+
+<p>DRDB + heartbeat 或者 DRDB + Keepalive + Shell 实现两个数据存储节点的主从同步、主从切换<br>特点：最好用于小于 300G 的数据同步</p>
+
+
+
+<h3>方法三：分布式云存储</h3>
+
+
+
+<p>通过 HDFS 或者 Ceph 实现分布式云存储<br>特点：可以用于大于 300G 的数据同步</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

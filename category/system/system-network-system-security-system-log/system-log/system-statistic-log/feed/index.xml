@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Statistic Log (系统统计日志) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-log/system-statistic-log/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 06:22:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux 常用日志 （openSUSE &#038; SUSE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/log-opensusesuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 Apr 2022 09:24:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Statistic Log (系统统计日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22930</guid>
+
+					<description><![CDATA[1) /var/log/boot.msg，包含系统启动时显示在屏幕上的信息（补充：当进入系统时，可以同时按下 “ctrl” 键和 “alt” 键和 “f10” 键切换到显示日志的界面，之后可以再通过 KVM 显示系统启动时显示在屏幕上的信息。）2) /var/log/boot.omsg，包含上一次系统启动时显示在屏幕上的信息3) /var/log/messages，包含几乎所有日志4) /var/log/warn，包含 WARNING 也就是级别 4 以上的所有日志5) /var/log/wtmp，包含和系统登录和重启的所有日志（补充：可以通过 last 命令读取）6) /var/log/YaST2/y2log，包含 YaST 的所有日志7) /var/log/xinetd.log，包含 xinetd 服务的所有日志8) /var/log/dump/，包含 Kdump 工具在系统宕机时收集的所有故障信息9) /var/log/atop，包含 Atop 工具收集的系统资源 （CPU、内存、系统进程、IO） 的所有使用信息]]></description>
+										<content:encoded><![CDATA[
+<p>1) /var/log/boot.msg，包含系统启动时显示在屏幕上的信息<br>（补充：当进入系统时，可以同时按下 “ctrl” 键和 “alt” 键和 “f10” 键切换到显示日志的界面，之后可以再通过 KVM 显示系统启动时显示在屏幕上的信息。）<br>2) /var/log/boot.omsg，包含上一次系统启动时显示在屏幕上的信息<br>3) /var/log/messages，包含几乎所有日志<br>4) /var/log/warn，包含 WARNING 也就是级别 4 以上的所有日志<br>5) /var/log/wtmp，包含和系统登录和重启的所有日志<br>（补充：可以通过 last 命令读取）<br>6) /var/log/YaST2/y2log，包含 YaST 的所有日志<br>7) /var/log/xinetd.log，包含 xinetd 服务的所有日志<br>8) /var/log/dump/，包含 Kdump 工具在系统宕机时收集的所有故障信息<br>9) /var/log/atop，包含 Atop 工具收集的系统资源 （CPU、内存、系统进程、IO） 的所有使用信息</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux &#038; RHEL 网页图形化管理工具 cockpit</title>
+		<link>https://eternalcenter-sep-2022.github.io/cockpit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Jun 2020 09:07:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Statistic Log (系统统计日志)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9718</guid>
+
+					<description><![CDATA[步骤一：系统环境要求 服务器系统配置好可用的软件源 步骤二：安装 cockpit （补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序） 步骤三：启动 cockpit 步骤四：登录 cockpit 使用浏览器登录：https://&/#60;server IP address&#62;:9090]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统配置好可用的软件源</p>
+
+
+
+<h3>步骤二：安装 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install cockpit cockpit-dashaboard</code></pre>
+
+
+
+<p>（补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序）</p>
+
+
+
+<h3>步骤三：启动 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now cockpit.socket</code></pre>
+
+
+
+<h3>步骤四：登录 cockpit</h3>
+
+
+
+<p>使用浏览器登录：https://&lt;server/ IP address&gt;:9090</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

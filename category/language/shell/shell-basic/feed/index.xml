@@ -1,0 +1,2556 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Basic (基础) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-basic/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 07 Sep 2022 13:05:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] 解决 Linux 执行 Shell 脚本时报错 “[: &#8230;&#8230;: unary operator expected”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-unary-operator-expected/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 07 Sep 2022 12:58:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=28195</guid>
+
+					<description><![CDATA[报错代码： 解决方法： 将以下内容修改为： 修改为：]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码：</h2>
+
+
+
+<pre class="wp-block-code"><code>&#91;: ......: unary operator expected</code></pre>
+
+
+
+<h2>解决方法：</h2>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;Shell Script&gt;</code></pre>
+
+
+
+<p>将以下内容修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91;&#91; ...... ]]; 
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91;&#91; ...... ]]; 
+......</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 man 7 regex （在 Linux 中查看正则表达的方法）</title>
+		<link>https://eternalcenter-sep-2022.github.io/man-7-regex/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 06:49:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27444</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># man 7 regex</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 运算</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-calculation/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Jul 2022 15:58:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26552</guid>
+
+					<description><![CDATA[方法一：使用 expr 命令 或者： 或者： （补充：这里以 1 加 2 等于 3 为例） 方法二：使用 let 命令 （补充：这里以 2 除以 1 等于 2 为例） 方法三：使用双括号 “(())” （补充：这里以 1 乘以 2 等于 3 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：使用 expr 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=`expr $a + $b`
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(expr $a + $b)
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$&#91;`expr $a + $b`]
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 加 2 等于 3 为例）</p>
+
+
+
+<h3>方法二：使用 let 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# let c=b/c
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 2 除以 1 等于 2 为例）</p>
+
+
+
+<h3>方法三：使用双括号 “(())”</h3>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a * $b))
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 乘以 2 等于 3 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 命令 expr （截取字符串、计算字符串长度和数值运算）</title>
+		<link>https://eternalcenter-sep-2022.github.io/expr/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 26 Jun 2022 10:33:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26178</guid>
+
+					<description><![CDATA[案例一：计算字符串长度 （补充：这里以计算字符串 eternalcenter.com 的长度为例） 案例二：截取字符串 （补充：这里以计算字符串 eternalcenter.com 的第 1 个字符到第 13 个字符串为例） 案例三：显示某字符在某字符串中第 1 次出现的位置 （补充：这里以显示 r 字符在字符串 eternalcenter.com 中第 1 次出现的位置为例） 案例四：数值运算 4.1 案例一：加法 （补充：这里以 1 加 1 等于 2 为例） 4.2 案例二：减法 （补充：这里以 2 减 1 等于 1 为例） 4.3 案例三：乘法 （补充：这里以 3 乘以 3 等于 9 为例） （注意：expr 使用乘法时必须要使用反义符号 “\”） 4.4 案例四：除法 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/expr/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 命令 expr （截取字符串、计算字符串长度和数值运算）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：计算字符串长度</h3>
+
+
+
+<pre class="wp-block-code"><code># expr length 'eternalcenter.com'
+17</code></pre>
+
+
+
+<p>（补充：这里以计算字符串 eternalcenter.com 的长度为例）</p>
+
+
+
+<h3>案例二：截取字符串</h3>
+
+
+
+<pre class="wp-block-code"><code># expr substr "eternalcenter.com" 1 13
+expr substr "eternalcenter.com" 1 13</code></pre>
+
+
+
+<p>（补充：这里以计算字符串 eternalcenter.com 的第 1 个字符到第 13 个字符串为例）</p>
+
+
+
+<h3>案例三：显示某字符在某字符串中第 1 次出现的位置</h3>
+
+
+
+<pre class="wp-block-code"><code># expr index eternalcenter.com r
+4</code></pre>
+
+
+
+<p>（补充：这里以显示 r 字符在字符串 eternalcenter.com 中第 1 次出现的位置为例）</p>
+
+
+
+<h3>案例四：数值运算</h3>
+
+
+
+<h4>4.1 案例一：加法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 1 + 1
+2</code></pre>
+
+
+
+<p>（补充：这里以 1 加 1 等于 2 为例）</p>
+
+
+
+<h4>4.2 案例二：减法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 2 - 1
+1</code></pre>
+
+
+
+<p>（补充：这里以 2 减 1 等于 1 为例）</p>
+
+
+
+<h4>4.3 案例三：乘法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 3 \* 3
+9</code></pre>
+
+
+
+<p>（补充：这里以 3 乘以 3 等于 9 为例）</p>
+
+
+
+<p>（注意：expr 使用乘法时必须要使用反义符号 “\”）</p>
+
+
+
+<h4>4.4 案例四：除法</h4>
+
+
+
+<pre class="wp-block-code"><code># expr 9 / 3 / 3
+1</code></pre>
+
+
+
+<p>（补充：这里以 9 除以 3 再除以 3 为等于 1 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux tr 命令 （内容替换）</title>
+		<link>https://eternalcenter-sep-2022.github.io/tr/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 24 Jun 2022 13:58:41 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26148</guid>
+
+					<description><![CDATA[内容一：tr 命令的简介 1.1 tr 命令的格式 1.2 tr 命令的原理 将 &#60;section 1&#62; 里的内容替换成 &#60;section 2&#62; 里的内容 内容二：tr 命令的选项 1) -c 或者 &#8211;complement 改变除了某内容外的所有内容2) -d 或者 &#8211;delete 删除某内容3) -s 或者 &#8211;squeeze-repeats 将相临重复的某个字符缩减成 1 个4) -t 或者 &#8211;truncate-set1 将 &#60;section 1&#62; 里的内容缩减成和 &#60;section 2&#62; 里的内容一样长 内容三：tr 命令的参数 1) \ 反斜杠2) \b 退格3) \f 换页4) \n 换行5) \r 回车6) &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/tr/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux tr 命令 （内容替换）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：tr 命令的简介</h3>
+
+
+
+<h4>1.1 tr 命令的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># tr &lt;option&gt; &lt;section 1&gt; &lt;sectiong 2&gt;</code></pre>
+
+
+
+<h4>1.2 tr 命令的原理</h4>
+
+
+
+<p>将 &lt;section 1&gt; 里的内容替换成 &lt;section 2&gt; 里的内容</p>
+
+
+
+<h3>内容二：tr 命令的选项</h3>
+
+
+
+<p>1) -c 或者 &#8211;complement 改变除了某内容外的所有内容<br>2) -d 或者 &#8211;delete 删除某内容<br>3) -s 或者 &#8211;squeeze-repeats 将相临重复的某个字符缩减成 1 个<br>4) -t 或者 &#8211;truncate-set1 将 &lt;section 1&gt; 里的内容缩减成和 &lt;section 2&gt; 里的内容一样长</p>
+
+
+
+<h3>内容三：tr 命令的参数</h3>
+
+
+
+<p>1) \ 反斜杠<br>2) \b 退格<br>3) \f 换页<br>4) \n 换行<br>5) \r 回车<br>6) \t 水平制表符<br>7) \v 垂直制表符<br>8) &lt;character 1&gt;-&lt;character 2&gt; 从某个字符到另 1 个字符，例如：a-z、a-Z、0-9<br>9) [&lt;character&gt;*] 在 &lt;section 2&gt; 中可用，&lt;character&gt; 会复制得和 &lt;section 1&gt; 中一样长<br><em>10) </em>[&lt;character&gt;*&lt;frequency&gt;] 将 &lt;character&gt; 复制 &lt;frequency&gt; 次，若以 0 开头，则视为八进制<br>11 [:alnum:] 所有字母和数字<br>12 [:alpha:] 所有字母<br>13 [:blank:] 所有呈水平排列的空白字符<br>14 [:cntrl:] 所有控制字符<br>15 [:digit:] 所有数字<br>16 [:graph:] 所有可打印字符，但不包括空格<br>17 [:lower:] 所有小写字母<br>18 [:print:] 所有可打印字符，包括空格<br>19 [:punct:] 所有标点字符<br>20 [:space:] 所有呈水平或垂直排列的空白字符<br>21 [:upper:] 所有大写字母<br>22 [:xdigit:] 所有十六进制数<br>23 [=字符=] 所有和指定字符相等的字符</p>
+
+
+
+<h3>内容三：tr 命令的案例</h3>
+
+
+
+<h4>3.1 案例一：替换某内容外的所有内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo 'zmyb' | tr -c zmy a
+zmyaa</code></pre>
+
+
+
+<p>（补充：这里以将内容 zmyb 中 zmy 以外的内容替换成内容 a 为例）</p>
+
+
+
+<p>（注意：zmyb 后面还有一个结尾符号，所以结果会多 1 个内容 a）</p>
+
+
+
+<h4>3.2 案例二：删除某内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo 'zmy' | tr -d m
+zy</code></pre>
+
+
+
+<p>（补充：这里以删除内容 zmy 中的内容 m 为例）</p>
+
+
+
+<h4>3.3 案例三：将相临重复的某个字符缩减成 1 个</h4>
+
+
+
+<pre class="wp-block-code"><code># echo zmmy | tr -s m
+zmy</code></pre>
+
+
+
+<p>（补充：这里以将内容 zmmy 中多个字符 m 压缩成 1 个为例）</p>
+
+
+
+<h4>3.4 案例四：替换字符，并将要匹配的内容缩减成和要替换的内容一样长</h4>
+
+
+
+<p>如果是正常情况：</p>
+
+
+
+<pre class="wp-block-code"><code>zhumingyu@laptop:~/Test&gt; echo abeabe | tr ab c
+ccecce</code></pre>
+
+
+
+<p>（补充：这里以将内容 abeabe 中的内容 ab 替换成内容 c 为例）</p>
+
+
+
+<p>如果是缩减的情况</p>
+
+
+
+<pre class="wp-block-code"><code>zhumingyu@laptop:~/Test&gt; echo abeabe | tr -t ab c
+cbecbe</code></pre>
+
+
+
+<p>（补充：这里以将内容 abeabe 中的内容 a 替换成内容 c 为例）</p>
+
+
+
+<p>（注意：这里 tr -t ab c 中内容 c 是 1 个字符，所以内容 ab 会被压缩成 1 个字符 a）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 数值计算</title>
+		<link>https://eternalcenter-sep-2022.github.io/numerical-calculations/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Jun 2022 14:36:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25907</guid>
+
+					<description><![CDATA[内容一：数值计算符号 1) + ，加法2) – ，减法3) * ，乘法4) / ，除法5) % ，求余 内容二：数值计算的方法 2.1 方法一：使用 expr 命令 或者： 或者： （补充：这里以 1 加 2 等于 3 为例） 2.2 方法二：使用 let 命令 （补充：这里以 2 除以 1 等于 2 为例） 2.3 方法三：使用双括号 (()) （补充：这里以 1 乘以 2 等于 2 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：数值计算符号</h3>
+
+
+
+<p>1) + ，加法<br>2) – ，减法<br>3) * ，乘法<br>4) / ，除法<br>5) % ，求余</p>
+
+
+
+<h3>内容二：数值计算的方法</h3>
+
+
+
+<h4>2.1 方法一：使用 expr 命令</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=`expr $a + $b`
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(expr $a + $b)
+# echo $c
+3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$&#91;`expr $a + $b`]
+# echo $c
+3</code></pre>
+
+
+
+<p>（补充：这里以 1 加 2 等于 3 为例）</p>
+
+
+
+<h4>2.2 方法二：使用 let 命令</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# let c=b/c
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 2 除以 1 等于 2 为例）</p>
+
+
+
+<h4>2.3 方法三：使用双括号 (())</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a * $b))
+# echo $c
+2</code></pre>
+
+
+
+<p>（补充：这里以 1 乘以 2 等于 2 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 Shell 脚本时报错 “binary operator expected”</title>
+		<link>https://eternalcenter-sep-2022.github.io/%e6%8e%92%e9%94%99-%e8%a7%a3%e5%86%b3-linux-%e6%89%a7%e8%a1%8c-shell-%e8%84%9a%e6%9c%ac%e6%97%b6%e6%8a%a5%e9%94%99-binary-operator-expected/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:53:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23744</guid>
+
+					<description><![CDATA[解决方法 将 if 判断中的变量，打上双引号 “&#8221;&#8221;”将以下内容： 修改为： （补充：这里以给 $1 变量打上双引号 “&#8221;&#8221;” 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>解决方法</h2>
+
+
+
+<p>将 if 判断中的变量，打上双引号 “&#8221;&#8221;”<br>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; -z $1 ];then
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; -z "$1" ];then
+......</code></pre>
+
+
+
+<p>（补充：这里以给 $1 变量打上双引号 “&#8221;&#8221;” 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux while 循环</title>
+		<link>https://eternalcenter-sep-2022.github.io/while/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 24 May 2022 10:51:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23612</guid>
+
+					<description><![CDATA[案例一：无限循环 或者： 案例二：从 1 计数到 5 或者： 案例三：从 1 加到 5 或者： 案例四：输入多个数字，通过同时按下 “Ctrl” 键和 “D” 键结束输入，并将多个数字相加 案例五：阅读文件 或者： 或者： （补充：这里以阅读 test.txt 文件为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：无限循环</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while ((1));
+do
+        sleep 1
+        echo "infinite loop"
+done</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while :
+do
+        sleep 1
+        echo "infinite loop"
+done</code></pre>
+
+
+
+<h3>案例二：从 1 计数到 5</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1;n=5
+while ((i &lt;= n))
+do
+
+        echo $i
+        let i++
+
+done</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1;n=5
+while &#91;&#91; $i -le $n ]]
+do
+
+        echo $i
+        let i++
+
+done</code></pre>
+
+
+
+<h3>案例三：从 1 加到 5</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+while ((i &lt;= 5));
+do
+
+        let sum=$sum+$i
+        let i++
+
+done
+
+echo $sum</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+while &#91;&#91; $i -le 5 ]];
+do
+
+        let sum=$sum+$i
+        let i++
+
+done
+
+echo $sum</code></pre>
+
+
+
+<h3>案例四：输入多个数字，通过同时按下 “Ctrl” 键和 “D” 键结束输入，并将多个数字相加</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+sum=0
+echo "Please input number, press "ctrl" and "d" at the same time to end the input"
+
+while read num
+do
+        let sum=$sum+$num
+done
+
+echo $sum</code></pre>
+
+
+
+<h3>案例五：阅读文件</h3>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while read line
+do
+        echo $line
+
+done &lt; test.txt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+cat test.txt | {
+while read line
+do
+        echo $line
+
+done }</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+cat test.txt | while read line
+do
+        echo $line
+
+done</code></pre>
+
+
+
+<p>（补充：这里以阅读 test.txt 文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 eval （执行变量里的命令或实现指针）</title>
+		<link>https://eternalcenter-sep-2022.github.io/eval/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 13 Apr 2022 14:19:09 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23101</guid>
+
+					<description><![CDATA[内容一：eval 命令的作用 对将要执行的命令进行 2 次扫描，第 1 次扫描时把扫描的内容替换成命令，第 2 次扫描时执行扫描到的命令 内容二：eval 直接执行命令的案例 2.1 设置变量 （补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例） 2.2 显示变量里内容 或者： （补充：这里以显示变量 url 里的内容 eternalcenter.com 为例） 内容三：eval 将变量转换成命令后执行的案例 3.1 将命令设置成变量 （补充：这里以将命令 pwd 赋值给变量 command 为例） 3.2 显示变量里的命令 （补充：这里以显示变量 command 里的 pwd 命令为例） 3.3 执行变量里的命令 （补充：这里以执行变量 command 里的 pwd 命令为例） 内容四：eval 显示脚本里最后 1 个位置变量的内容 4.1 创建显示最后 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/eval/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 eval （执行变量里的命令或实现指针）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：eval 命令的作用</h3>
+
+
+
+<p>对将要执行的命令进行 2 次扫描，第 1 次扫描时把扫描的内容替换成命令，第 2 次扫描时执行扫描到的命令</p>
+
+
+
+<h3>内容二：eval 直接执行命令的案例</h3>
+
+
+
+<h4>2.1 设置变量</h4>
+
+
+
+<pre class="wp-block-code"><code># url=eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例）</p>
+
+
+
+<h4>2.2 显示变量里内容</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $url
+eternalcenter.com</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># eval echo $url
+eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以显示变量 url 里的内容 eternalcenter.com 为例）</p>
+
+
+
+<h3>内容三：eval 将变量转换成命令后执行的案例</h3>
+
+
+
+<h4>3.1 将命令设置成变量</h4>
+
+
+
+<pre class="wp-block-code"><code># command=pwd</code></pre>
+
+
+
+<p>（补充：这里以将命令 pwd 赋值给变量 command 为例）</p>
+
+
+
+<h4>3.2 显示变量里的命令</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $command
+pwd</code></pre>
+
+
+
+<p>（补充：这里以显示变量 command 里的 pwd 命令为例）</p>
+
+
+
+<h4>3.3 执行变量里的命令</h4>
+
+
+
+<pre class="wp-block-code"><code># eval $command
+/root</code></pre>
+
+
+
+<p>（补充：这里以执行变量 command 里的 pwd 命令为例）</p>
+
+
+
+<h3>内容四：eval 显示脚本里最后 1 个位置变量的内容</h3>
+
+
+
+<h4>4.1 创建显示最后 1 个位置变量的脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># vim test.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+eval echo \$$#</code></pre>
+
+
+
+<p>（补充：这里创建名为 test.sh 的脚本为例）</p>
+
+
+
+<h4>4.2 带位置变量执行脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># . test.txt a b c d e
+e</code></pre>
+
+
+
+<p>（补充：这里执行名为 test.sh 的脚本并附带 a b c d e 5 个位置变量为例）</p>
+
+
+
+<h3>内容五：eval 实现指针</h3>
+
+
+
+<h4>5.1 设置变量</h4>
+
+
+
+<pre class="wp-block-code"><code># url=eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以将内容 eternalcenter.com 赋值给变量 url 为例）</p>
+
+
+
+<h4>5.2 设置指针</h4>
+
+
+
+<pre class="wp-block-code"><code># pointer=url</code></pre>
+
+
+
+<p>（补充：这里以让指针 pointer 指向 url 变量为例）</p>
+
+
+
+<h4>5.3 显示指针指向的变量</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $pointer
+url</code></pre>
+
+
+
+<p>（补充：这里以显示指针 pointer 指向的变量 url 为例）</p>
+
+
+
+<h4>5.4 显示指针最终指向的内容</h4>
+
+
+
+<pre class="wp-block-code"><code># eval echo \$$pointer
+eternalcenter.com</code></pre>
+
+
+
+<p>（补充：这里以显示指针 pointer 指向的最终内容 eternalcenter.com 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 {} （设置字符串默认值、截取字符串、替换字符串里的内容）</title>
+		<link>https://eternalcenter-sep-2022.github.io/bracket-2/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 09 Jan 2022 10:53:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21157</guid>
+
+					<description><![CDATA[内容一：设置字符串默认值 1.1 当要替换的变量未定义或为空时则给予其 1 个默认值 或者： （补充：这里以当变量 value 存在且为空时则变量 newvalue 的值为 eternalcenter 为例） 1.2 当要替换的变量已定义且不为空时则给予其 1 个默认值 （补充：这里以当变量 value 存在且不为空时则变量 newvalue 的值为 eternalcenter 为例） 内容二：截取变量某一部分内容 (以字符在字符串的位置作为参照) 2.1 截取从第某个位置字符开始的所有内容 2.1.1 截取字符串中从左数第某个字符开始到左边的所有内容 （包含此字符本身） 或者： 或者： （补充：这里以截取字符串中从左数第 2 个字符和左边的所有内容为例） 2.1.2 截取字符串中从右数第某个字符开始到左边的所有内容 （不包含此字符本身） （补充：这里以截取字符串中从右数第 2 个字符开始左边的所有内容为例） 2.1.3 截取字符串中从右数第某个字符开始到右边的所有内容 （包含此字符本身） （补充： 截取字符串中从除右数第 2 个字符开始到右边的所有内容） 2.2 截取从第某个位置字符开始几个位置的字符的内容 2.2.1 截取字符串中从左数第某个字符开始几个字符的内容 （不包含此字符本身） （补充：这里以截取字符串中从左数第 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/bracket-2/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 {} （设置字符串默认值、截取字符串、替换字符串里的内容）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：设置字符串默认值</h3>
+
+
+
+<h4>1.1 当要替换的变量未定义或为空时则给予其 1 个默认值</h4>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:-eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:-eternalcenter}
+# echo $newvalue
+mingyuzhu</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:=eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:=eternalcenter}
+# echo $newvalue
+mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以当变量 value 存在且为空时则变量 newvalue 的值为 eternalcenter 为例）</p>
+
+
+
+<h4>1.2 当要替换的变量已定义且不为空时则给予其 1 个默认值</h4>
+
+
+
+<pre class="wp-block-code"><code># value=
+# newvalue=${value:+eternalcenter}
+# echo $newvalue
+</code></pre>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# newvalue=${value:+eternalcenter}
+# echo $newvalue
+eternalcenter</code></pre>
+
+
+
+<p>（补充：这里以当变量 value 存在且不为空时则变量 newvalue 的值为 eternalcenter 为例）</p>
+
+
+
+<h3>内容二：截取变量某一部分内容  (以字符在字符串的位置作为参照)</h3>
+
+
+
+<h4>2.1 截取从第某个位置字符开始的所有内容</h4>
+
+
+
+<h5>2.1.1 截取字符串中从左数第某个字符开始到左边的所有内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str::2}
+et</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0:2}
+et</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:offset:2}
+et</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 2 个字符和左边的所有内容为例）</p>
+
+
+
+<h5>2.1.2 截取字符串中从右数第某个字符开始到左边的所有内容 （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+echo ${str::0-2}
+eternalcenter.c</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 2 个字符开始左边的所有内容为例）</p>
+
+
+
+<h5>2.1.3 截取字符串中从右数第某个字符开始到右边的所有内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-2}
+om</code></pre>
+
+
+
+<p>（补充： 截取字符串中从除右数第 2 个字符开始到右边的所有内容）</p>
+
+
+
+<h4>2.2 截取从第某个位置字符开始几个位置的字符的内容</h4>
+
+
+
+<h5>2.2.1 截取字符串中从左数第某个字符开始几个字符的内容 （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:5:4}
+alce</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 5 个字符开始 4 个字符的内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h5>2.2.2 截取字符串中从右数第某个字符开始几个字符的内容 （包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:4}
+r.co</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 5 个字符开始右边 4 个字符的内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h4>2.3 截取从第某个位置字符到第某个位置字符的内容</h4>
+
+
+
+<h5>2.3.1 截取字符串中从左数第某个字符到从右数第某个字符中的所有内容 （不包含这些字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:1:-4}
+ternalcenter</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从左数第 1 个字符到右数第 4 个字符中的所有内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h5>2.3.2 截取字符串中从右数第某个字符到从右数第某个字符中的所有内容 （不包含这些字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:0-1}
+r.co</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:0-5:-1}
+r.co</code></pre>
+
+
+
+<p>（补充：这里以截取字符串中从右数第 1 个字符到从右数第 4 个字符中的所有内容为例）</p>
+
+
+
+<p>（注意：在此情况下是从第 0 字符开始数第 1 个字符的，而不是从第 1 个字符开始数第 1 个字符）</p>
+
+
+
+<h4>2.4 截取字符串中除从左数第某个字符外的所有内容</h4>
+
+
+
+<pre class="wp-block-code"><code># str=eternalcenter.com
+# echo ${str:2}
+ernalcenter.com</code></pre>
+
+
+
+<p>（补充：截取字符串中从除左数第 2 个字符开始到右边的所有内容）</p>
+
+
+
+<h3>内容三：截取变量某一部分内容  (以字符作为参照)</h3>
+
+
+
+<h4>3.1 截取变量前一部分内容 （去尾）</h4>
+
+
+
+<h5>3.1.1 截取变量右数第 1 个某个字符到左边的所有内容 （去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value%:*}
+# echo $newvalue
+ming:yu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数第 1 个冒号 “:” 左边的所有值并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.1.2 截取变量右数最后某个字符到左边的所有内容 （最大限度去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value%%:*}
+# echo $newvalue
+ming</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数最后 1 个冒号 “:” 左边的所有并赋予给变量 newvalue 内容为例）</p>
+
+
+
+<h5>3.1.3 截取变量右数最后某几个字符到左边的所有内容 （使用变量） （去尾） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# novalue=zhu
+# newvalue=${value%%$novalue}
+# echo $newvalue
+mingyu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 右数最后 1 个 zhu 左边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h4>3.2 截取变量后一部分内容 （掐头）</h4>
+
+
+
+<h5>3.1 截取变量左数第 1 个某个字符到右边的所有内容 （掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value#*:}
+# echo $newvalue
+yu:zhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数第 1 个冒号 “:” 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.2 截取变量左数最后某个字符到右边的所有内容 （最大限度掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=ming:yu:zhu
+# newvalue=${value##*:}
+# echo $newvalue
+zhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数最后 1 个冒号 “:” 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h5>3.3 去除变量左数最后某个字符到右边的所有内容 （使用变量） （掐头） （不包含此字符本身）</h5>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# novalue=ming
+# newvalue=${value##$novalue}
+# echo $newvalue
+yuzhu</code></pre>
+
+
+
+<p>（补充：这里以截取变量 value 左数最后 1 个 ming 右边的所有内容并赋予给变量 newvalue 为例）</p>
+
+
+
+<h3>内容四：当变量已定义且不为空时则将变量中的某部分替换成另一部分</h3>
+
+
+
+<pre class="wp-block-code"><code># value=mingyuzhu
+# noneedvalue=yu
+# needvalue=zhu
+# newvalue=${value/$noneedvalue/$needvalue}
+# echo $newvalue
+mingzhuzhu</code></pre>
+
+
+
+<p>（补充：这里以将变量 value 中的 yu 替换成 zhu 并赋予给变量 newvalue 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 (()) （比较数值、比较字符串和数值运算）</title>
+		<link>https://eternalcenter-sep-2022.github.io/double-parenthese/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 08 Jan 2022 12:26:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21153</guid>
+
+					<description><![CDATA[内容一：(()) 比较符号 1.1 (()) 数值比较符号和运算符号 1) ==，若两个数值存在且相等，则结果为真2) !=，若两个数值存在且不相等，则结果为真3) &#62;，若两个数值存在且前一个数值大于后一个数值，则结果为真4) &#60;，若两个数值存在且前一个数值小于后一个数值，则结果为真5) &#62;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真6) &#60;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真7) + ，加法8) &#8211; ，减法9) * ，乘法10) / ，除法11) % ，求余 1.2 (()) 字符串比较符号 ==，若两个字符串存在且一样，则结果为真 内容二：(()) 的数值比较案例 2.1 案例一：对整数进行比较 （补充：这里以测试数字 0 是否不等于数字 1 为例） 2.2 案例二：对字符串进行比较 （补充：这里以测试字符串 a 是否等于字符串 a 为例） 2.3 案例三：对整数进行运算]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：(()) 比较符号</h3>
+
+
+
+<h4>1.1 (()) 数值比较符号和运算符号</h4>
+
+
+
+<p>1) ==，若两个数值存在且相等，则结果为真<br>2) !=，若两个数值存在且不相等，则结果为真<br>3) &gt;，若两个数值存在且前一个数值大于后一个数值，则结果为真<br>4) &lt;，若两个数值存在且前一个数值小于后一个数值，则结果为真<br>5) &gt;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真<br>6) &lt;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真<br>7) + ，加法<br>8) &#8211; ，减法<br>9) * ，乘法<br>10) / ，除法<br>11) % ，求余</p>
+
+
+
+<h4>1.2 (()) 字符串比较符号</h4>
+
+
+
+<p>==，若两个字符串存在且一样，则结果为真</p>
+
+
+
+<h3>内容二：(()) 的数值比较案例</h3>
+
+
+
+<h4>2.1 案例一：对整数进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># (( 0 -ne 1 ))
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 0 是否不等于数字 1 为例）</p>
+
+
+
+<h4>2.2 案例二：对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># (( a == a ))
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 a 是否等于字符串 a 为例）</p>
+
+
+
+<h4>2.3 案例三：对整数进行运算</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=2
+# c=$(($a + $b))
+# echo $c
+3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 [[]] （比较数值、文件、目录、链接、块、特殊文件、字符串）</title>
+		<link>https://eternalcenter-sep-2022.github.io/double-square-bracket/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 03 Jan 2022 14:42:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21112</guid>
+
+					<description><![CDATA[内容一：[[]] 比较符号 1.1 [[]] 数值比较符号 1) -eq 或者 ==，若两个数值存在且相等，则结果为真2) -ne 或者 !=，若两个数值存在且不相等，则结果为真3) -gt 或者 &#62;，若两个数值存在且前一个数值大于后一个数值，则结果为真4) -lt 或者 &#60;，若两个数值存在且前一个数值小于后一个数值，则结果为真5) -ge 或者 &#62;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真6) -le 或者 &#60;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真 1.2 [[]] 字符串比较符号 1) -z，如果字符串为空值，则结果为真2) -n，如果字符串不为空值，则结果为真3) == 或者 =，若两个字符串存在且一样，则结果为真4) !=，若两个字符串存在且不一样，则结果为真5) &#62;，若两个字符串存在且前一个字符串大于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真6) &#60;，若两个字符串存在且前一个字符串小于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真 1.3 [[]] 文件、目录、链接、块、特殊文件比较符号 1) -e，若文件或目录或链接存在，则结果为真2) -d，若目录存在，则结果为真3) -f，若文件存在，则结果为真4) -L，若链接存在，则结果为真5) -b，若块文件存在，则结果为真6) -c，若字符型特殊文件存在，则结果为真7) -s，若文件存在且里面有内容，则结果为真8) -r，若文件且可读，则结果为真9) -w，若文件且可写，则结果为真10) -x，若文件且可执行，则结果为真11) -nt，若两个文件存在且前一个文件比后一个文件新，则结果为真12) -ot，若两个文件存在且前一个文件比后一个文件新，则结果为真 1.4 [[]] 逻辑符号 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/double-square-bracket/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 [[]] （比较数值、文件、目录、链接、块、特殊文件、字符串）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：[[]] 比较符号</h3>
+
+
+
+<h4>1.1 [[]] 数值比较符号</h4>
+
+
+
+<p>1) -eq 或者 ==，若两个数值存在且相等，则结果为真<br>2) -ne 或者 !=，若两个数值存在且不相等，则结果为真<br>3) -gt 或者 &gt;，若两个数值存在且前一个数值大于后一个数值，则结果为真<br>4) -lt 或者 &lt;，若两个数值存在且前一个数值小于后一个数值，则结果为真<br>5) -ge 或者 &gt;=，若两个数值存在且前一个数值大于或等于后一个数值，则结果为真<br>6) -le 或者 &lt;=，若两个数值存在且前一个数值小于或等于后一个数值，则结果为真</p>
+
+
+
+<h4>1.2 [[]] 字符串比较符号</h4>
+
+
+
+<p>1) -z，如果字符串为空值，则结果为真<br>2) -n，如果字符串不为空值，则结果为真<br>3) == 或者 =，若两个字符串存在且一样，则结果为真<br>4) !=，若两个字符串存在且不一样，则结果为真<br>5) &gt;，若两个字符串存在且前一个字符串大于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真<br>6) &lt;，若两个字符串存在且前一个字符串小于后一个字符串（按数字顺序或字母数顺序进行比较，越靠后的值越大），则结果为真</p>
+
+
+
+<h4>1.3 [[]] 文件、目录、链接、块、特殊文件比较符号</h4>
+
+
+
+<p>1) -e，若文件或目录或链接存在，则结果为真<br>2) -d，若目录存在，则结果为真<br>3) -f，若文件存在，则结果为真<br>4) -L，若链接存在，则结果为真<br>5) -b，若块文件存在，则结果为真<br>6) -c，若字符型特殊文件存在，则结果为真<br>7) -s，若文件存在且里面有内容，则结果为真<br>8) -r，若文件且可读，则结果为真<br>9) -w，若文件且可写，则结果为真<br>10) -x，若文件且可执行，则结果为真<br>11) -nt，若两个文件存在且前一个文件比后一个文件新，则结果为真<br>12) -ot，若两个文件存在且前一个文件比后一个文件新，则结果为真</p>
+
+
+
+<h4>1.4 [[]] 逻辑符号</h4>
+
+
+
+<p>1) &amp;&amp;，和<br>2) ||，或<br>3) !，非</p>
+
+
+
+<h4>1.5 [[]] 运算符号</h4>
+
+
+
+<p>1) +，若两个数值存在，则相加<br>2) -，若两个数值存在，则相减<br>3) *，若两个数值存在，则相乘<br>4) /，若两个数值存在，则相除<br>5) %，若两个数值存在，则取余</p>
+
+
+
+<h4>1.6 [[]] 其他符号</h4>
+
+
+
+<p>1) =~，两个字符串或数值存在且后一个字符串或数值匹配正则表达式后一样，则结果为真<br>2) [0-9] 等所有 Linux 正则表达式<br>3) * 等所有 Linux 通配符</p>
+
+
+
+<h3>内容二：[[]] 的数值比较案例</h3>
+
+
+
+<h4>2.1 案例一：对整数进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; 0 -ne 1 ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 0 是否不等于数字 1 为例）</p>
+
+
+
+<h4>2.2 案例二：对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; a == a ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 a 是否等于字符串 a 为例）</p>
+
+
+
+<h4>2.3 案例三：对文件进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; -f test.txt ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试文件 test.txt 是否存在为例）</p>
+
+
+
+<h4>2.4 案例四：对变量进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# &#91;&#91; $a == 1 ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 是否等于数字 1 为例）</p>
+
+
+
+<h4>2.5 案例五：对数值运算后进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=2
+# b=3
+# c=5
+# &#91;&#91; $a+$b -eq $c ]]
+# echo $?
+0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 加变量 b 是否等于变量 c 为例）</p>
+
+
+
+<p>（注意： [[]] 数值运算后需要使用 -eq、-ne、-gt、-lt、-ge、-le 进行比较而不是使用 ==、!=、&gt;、&lt;、&gt;=、&lt;=）</p>
+
+
+
+<h4>2.6 案例六：使用逻辑符号对多个变量进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># a=eternalcenter
+# b=eternalcenter
+# c=eternalcentre
+# &#91;&#91; $a == $b &amp;&amp; $b != $c ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试变量 a 是否等于变量 b 且变量 b 是否不等于变量 c 为例）</p>
+
+
+
+<h4>2.7 案例七：使用通配符对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; eternalcenter = eternalcen??? ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; eternalcenter = e*r ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试字符串 eternalcenter 是否等于字符串加通配符 eternalcen??? 或字符串加通配符 e*r 为例）</p>
+
+
+
+<h4>2.8 案例八：使用正则表达式对字符串进行比较</h4>
+
+
+
+<pre class="wp-block-code"><code># &#91;&#91; 10 =~ &#91;0-9]{2} ]]
+# echo $?
+# 0</code></pre>
+
+
+
+<p>（补充：这里以测试数字 10 是否是每位数是 0 到 9 的两位数为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令  set （设置 Shell 里的位置变量或者 Shell 的执行方式）</title>
+		<link>https://eternalcenter-sep-2022.github.io/set/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 10 Nov 2021 13:05:41 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18278</guid>
+
+					<description><![CDATA[内容一：set 命令的格式 1.1 设置 Shell 的位置变量的格式 1.2 设置 Shell 的执行方式 或者： 或者： （补充：+o 代表打开特殊属性，-o 代表结束特殊属性） 内容二： set 的常用参数 1) -a 将已修改的变量进行标记，为将其输出至环境变量做准备2) -b 让被中止的后台进程立刻显示退出状态代码3) -d 取消使用杂凑表记忆中使用过的指令4) -e 若退出状态代码不为 0 （正常退出）则立即退出，并显示错误原因5) -f 取消通配符6) -h 默认自动记录函数位置7) -k 让命令的参数为此命令的环境变量8) -l 默认自动记录 for 循环变量名9) -m 监视模式10) -n 测试模式（只读取不执行）11) -p 优先顺序模式12) -P 让文件或目录代替符号链接13) -t 让随后的命令执行后立即退出14) -u 使用未定义的变量时显示错误信息15) -v 显示输入值16) -H shell &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/set/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令  set （设置 Shell 里的位置变量或者 Shell 的执行方式）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：set 命令的格式</h3>
+
+
+
+<h4>1.1 设置 Shell 的位置变量的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># set &lt;Value of the first position variable&gt; &lt;Value of the second location variable&gt; ......</code></pre>
+
+
+
+<h4>1.2 设置 Shell 的执行方式</h4>
+
+
+
+<pre class="wp-block-code"><code># set &lt;parameter&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># set &lt;parameter&gt; +o</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># set &lt;parameter&gt; -o</code></pre>
+
+
+
+<p>（补充：+o 代表打开特殊属性，-o 代表结束特殊属性）</p>
+
+
+
+<h3>内容二： set 的常用参数</h3>
+
+
+
+<p>1) -a 将已修改的变量进行标记，为将其输出至环境变量做准备<br>2) -b 让被中止的后台进程立刻显示退出状态代码<br>3) -d 取消使用杂凑表记忆中使用过的指令<br>4) -e 若退出状态代码不为 0 （正常退出）则立即退出，并显示错误原因<br>5) -f 取消通配符<br>6) -h 默认自动记录函数位置<br>7) -k 让命令的参数为此命令的环境变量<br>8) -l 默认自动记录 for 循环变量名<br>9) -m 监视模式<br>10) -n 测试模式（只读取不执行）<br>11) -p 优先顺序模式<br>12) -P 让文件或目录代替符号链接<br>13) -t 让随后的命令执行后立即退出<br>14) -u 使用未定义的变量时显示错误信息<br>15) -v 显示输入值<br>16) -H shell 使用感叹号 “!” + 号码的方式调用 history 命令中的历史命令<br>17) -x 命令指向前先显示此命令的参数或变量</p>
+
+
+
+<p>（补充：将以上参数前面的 &#8211; 换成 + 则会变成相反的效果）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 数组</title>
+		<link>https://eternalcenter-sep-2022.github.io/array/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 Oct 2021 14:20:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18121</guid>
+
+					<description><![CDATA[内容一：定义数组 1.1 定义数组全部的值 1.1.1 在命令行中定义数组的值 或者： 1.1.2 在脚本中定义数组的值 或者： 1.2 定义数组某个指定位置元素的值 1.2.1 在命令行定义数组某个指定位置元素的值 （补充：这里以定义数组第 1 个元素位置的值为例） 1.2.2 在脚本定义数组某个指定位置元素的值 （补充：这里以定义数组第 1 个元素位置的值为例） 1.3 给数组追加新的元素 或者： （补充：这里每个空格间隔 1 个新的元素，元素的位置依次递增） 内容二：显示数组 2.1 显示数组全部的值 或者： 2.2 显示数组元素的个数 或者： 2.3 显示数组最长单个元素的长度 2.4 显示数组单个元素的值 （补充：这里以显示数组第 2 个元素的值为例） 2.5 显示数组位置经过计算得出的元素的值 （补充：这里以显示数组第 2 + 1 = 3 个，也就是第 3 个元素的值为例） 2.6 显示数组位置经过计算得出的元素的值，并在计算过程中使用变量 （补充：这里以显示数组第 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/array/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 数组"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-定义数组1-1-定义数组全部的值1-1-1-在命令行中定义数组的值">内容一：定义数组</h3>
+
+
+
+<h4 id="内容一-定义数组1-1-定义数组全部的值1-1-1-在命令行中定义数组的值">1.1 定义数组全部的值</h4>
+
+
+
+<h5 id="内容一-定义数组1-1-定义数组全部的值1-1-1-在命令行中定义数组的值">1.1.1 在命令行中定义数组的值</h5>
+
+
+
+<pre class="wp-block-code"><code># &lt;array_name&gt;=(&lt;value0&gt; &lt;value1&gt; &lt;value2&gt; &lt;value3&gt; &lt;value4&gt;)</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># &lt;array_name&gt;=(\
+&lt;value0&gt;\
+&lt;value1&gt;\
+&lt;value2&gt;\
+&lt;value3&gt;\
+&lt;value4&gt;\
+)</code></pre>
+
+
+
+<h5 id="1-1-2-在脚本中定义数组的值">1.1.2 在脚本中定义数组的值</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;array_name&gt;=(
+&lt;value0&gt;
+&lt;value1&gt;
+&lt;value2&gt;
+&lt;value3&gt;
+&lt;value4&gt;
+)</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;array_name&gt;&#91;0]=&lt;value0&gt;
+&lt;array_name&gt;&#91;1]=&lt;value1&gt;
+&lt;array_name&gt;&#91;2]=&lt;value2&gt;
+&lt;array_name&gt;&#91;3]=&lt;value3&gt;
+&lt;array_name&gt;&#91;4]=&lt;value4&gt;</code></pre>
+
+
+
+<h4 id="1-2-定义数组某个指定位置元素的值1-2-1-在命令行定义数组某个指定位置元素的值">1.2 定义数组某个指定位置元素的值</h4>
+
+
+
+<h5 id="1-2-定义数组某个指定位置元素的值1-2-1-在命令行定义数组某个指定位置元素的值">1.2.1 在命令行定义数组某个指定位置元素的值</h5>
+
+
+
+<pre class="wp-block-code"><code># &lt;array_name&gt;&#91;0]=&lt;value0&gt;</code></pre>
+
+
+
+<p>（补充：这里以定义数组第 1 个元素位置的值为例）</p>
+
+
+
+<h5 id="1-2-2-在脚本定义数组某个指定位置元素的值">1.2.2 在脚本定义数组某个指定位置元素的值</h5>
+
+
+
+<pre class="wp-block-code"><code>&lt;array_name&gt;&#91;0]=&lt;value0&gt;</code></pre>
+
+
+
+<p>（补充：这里以定义数组第 1 个元素位置的值为例）</p>
+
+
+
+<h4>1.3 给数组追加新的元素</h4>
+
+
+
+<pre class="wp-block-code"><code># &lt;array_name&gt;+=(&lt;the value of the new element&gt; &lt;the value of the new element&gt; &lt;the value of the new element&gt; ......)</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># &lt;array_name&gt;+=('&lt;the value of the new element&gt;' '&lt;the value of the new element&gt;' '&lt;the value of the new element&gt;' ......)</code></pre>
+
+
+
+<p>（补充：这里每个空格间隔 1 个新的元素，元素的位置依次递增）</p>
+
+
+
+<h3 id="内容二-读取数组2-1-读取数组全部的值">内容二：显示数组</h3>
+
+
+
+<h4 id="内容二-读取数组2-1-读取数组全部的值">2.1 显示数组全部的值</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${&lt;array_name&gt;&#91;*]}</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># echo ${&lt;array_name&gt;&#91;@]}</code></pre>
+
+
+
+<h4 id="2-2-读取数组元素的个数">2.2 显示数组元素的个数</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${#&lt;array_name&gt;&#91;*]}</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># echo ${#&lt;array_name&gt;&#91;@]}</code></pre>
+
+
+
+<h4 id="2-3-读取数组最长单个元素的长度">2.3 显示数组最长单个元素的长度</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${#&lt;array_name&gt;&#91;n]}</code></pre>
+
+
+
+<h4 id="2-4-读取数组单个元素的值">2.4 显示数组单个元素的值</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${&lt;array_name&gt;&#91;1]}</code></pre>
+
+
+
+<p>（补充：这里以显示数组第 2 个元素的值为例）</p>
+
+
+
+<h4>2.5 显示数组位置经过计算得出的元素的值</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${command_array&#91;2 + 1]} </code></pre>
+
+
+
+<p>（补充：这里以显示数组第 2 + 1 = 3 个，也就是第 3 个元素的值为例）</p>
+
+
+
+<h4>2.6 显示数组位置经过计算得出的元素的值，并在计算过程中使用变量</h4>
+
+
+
+<pre class="wp-block-code"><code># echo ${command_array&#91;(2 * $i) + 1]}</code></pre>
+
+
+
+<p>（补充：这里以显示数组第 2 乘以变量 i 的值再加上 1 的位置的元素的值为例）</p>
+
+
+
+<h4 id="2-5-读取数组单个元素的值-并在前面加前缀">2.7 显示数组单个元素的值，并在前面加前缀</h4>
+
+
+
+<pre class="wp-block-code"><code># echo "First Index: ${&lt;array_name&gt;&#91;0]}"</code></pre>
+
+
+
+<p>（补充：这里以显示数组第 1 个元素的值，并在前面加上 First Index: 前缀为例）</p>
+
+
+
+<h3 id="内容三-数组的使用案例3-1-创建使用数组的脚本">内容三：数组的使用案例</h3>
+
+
+
+<h4 id="内容三-数组的使用案例3-1-创建使用数组的脚本">3.1 创建使用数组的脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># vim test.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+  
+NAME&#91;0]='a1'
+NAME&#91;1]='b2'
+NAME&#91;2]='c3'
+NAME&#91;3]='d4'
+NAME&#91;4]='e5'
+
+echo "first one: ${NAME&#91;0]}"
+echo "${NAME&#91;*]}"</code></pre>
+
+
+
+<p>（补充：这里以创建名为 test.sh 显示数组的第 1 个值和所有值，并在第 1 个值前面添加 first one 前缀的脚本为例）</p>
+
+
+
+<h4 id="3-2-执行使用数组的脚本">3.2 执行使用数组的脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># . test.sh 
+first one: a1
+all: a1 b2 c3 d4 e5</code></pre>
+
+
+
+<p>（补充：这里以执行名为 test.sh 的脚本，显示第 1 行是 first one: a1 第 2 行是 all: a1 b2 c3 d4 e5 的结果为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 echo （显示内容）</title>
+		<link>https://eternalcenter-sep-2022.github.io/echo/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Sep 2021 02:26:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17649</guid>
+
+					<description><![CDATA[内容一：echo 的命令选项 1) -n 输出不换行2) -e 处理某些特殊字符\a 蜂鸣声报警\b 删除前面一个字符\c 在末尾不换行\e 输出 esc\f 换行，同时光标停在原处\n 换行\r 不换行，同时光标停在原处\t tab，水平方向\v tab，垂直方向\ 输出 \\Onnn 输出八进制 ASCII 字符\xHH 输出十六进制 ASCII 字符3) -E 不再转义 内容二：echo 的其他显示选项 1) \033[0m 将所有显示属性关闭2) \033[1m 高亮3) \033[4m 下划线4) \033[5m 闪烁5) \033[7m 反显6) \033[8m 消隐7) \033[37m — \33[0m 设置字体颜色，这里以将字体颜色设置为白色为例8) \033[40m — \33[0m 设置背景颜色，这里以将背景颜色设置为白色为例9) \033[A 将光标向上移 n 行10) \033[B &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/echo/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 echo （显示内容）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：echo 的命令选项</h3>
+
+
+
+<p>1) -n 输出不换行<br>2) -e 处理某些特殊字符<br>\a 蜂鸣声报警<br>\b 删除前面一个字符<br>\c 在末尾不换行<br>\e 输出 esc<br>\f 换行，同时光标停在原处<br>\n 换行<br>\r 不换行，同时光标停在原处<br>\t tab，水平方向<br>\v tab，垂直方向<br>\ 输出 \<br>\Onnn 输出八进制 ASCII 字符<br>\xHH 输出十六进制 ASCII 字符<br>3) -E 不再转义</p>
+
+
+
+<h3>内容二：echo 的其他显示选项</h3>
+
+
+
+<p>1) \033[0m 将所有显示属性关闭<br>2) \033[1m 高亮<br>3) \033[4m 下划线<br>4) \033[5m 闪烁<br>5) \033[7m 反显<br>6) \033[8m 消隐<br>7) \033[37m — \33[0m 设置字体颜色，这里以将字体颜色设置为白色为例<br>8) \033[40m — \33[0m 设置背景颜色，这里以将背景颜色设置为白色为例<br>9) \033[A 将光标向上移 n 行<br>10) \033[B 将光标向下移 n 行<br>11) \033[C 将光标向右移 n 行<br>12) \033[D 将光标向左移 n 行<br>13) \033[;H 将光标跳转到 x 和 y 位置<br>14) \033[2J 清屏<br>15) \033[K 将光标所在位置到行尾的所有位置全部清除<br>16) \033[s 将光标位置保存<br>17) \033[u 将光标位置恢复<br>18) \033[?25l 将光标隐藏<br>19) \033[?25h 将光标显示</p>
+
+
+
+<h3>内容三：echo 显示不同颜色字体的案例</h3>
+
+
+
+<pre class="wp-block-code"><code># echo -e "\033&#91;30m black characters \033&#91;0m" 
+# echo -e "\033&#91;31m red characters \033&#91;0m"
+# echo -e "\033&#91;32m green characters \033&#91;0m" 
+# echo -e "\033&#91;33m yellow characters \033&#91;0m"
+# echo -e "\033&#91;34m blue characters \033&#91;0m"
+# echo -e "\033&#91;35m purple character \033&#91;0m"
+# echo -e "\033&#91;36m sky blue character \033&#91;0m"
+# echo -e "\033&#91;37m white character \033&#91;0m"</code></pre>
+
+
+
+<h3>内容四：echo 显示不同颜色背景的案例</h3>
+
+
+
+<pre class="wp-block-code"><code># echo -e "\033&#91;40;37m white characters on black background \033&#91;0m"
+# echo -e "\033&#91;41;37m white characters on red background \033&#91;0m"
+# echo -e "\033&#91;42;37m white characters on green background \033&#91;0m"
+# echo -e "\033&#91;43;37m white characters on yellow background \033&#91;0m"
+# echo -e "\033&#91;44;37m white characters on blue background \033&#91;0m"
+# echo -e "\033&#91;45;37m white characters on purple background \033&#91;0m"
+# echo -e "\033&#91;46;37m white characters on sky blue background \033&#91;0m"
+# echo -e "\033&#91;47;30m black characters on white background \033&#91;0m"</code></pre>
+
+
+
+<h3>内容五：echo 的其他案例</h3>
+
+
+
+<h4>5.1 案例一：不换行带 tab 输出</h4>
+
+
+
+<pre class="wp-block-code"><code># for month in Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec;do echo -e "$month\t\c";done
+Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
+
+
+
+<p>(补充：这里以不换行带 tab 输出 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 为例)</p>
+
+
+
+<h4>5.2 案例二：先清屏再不换行输出</h4>
+
+
+
+<pre class="wp-block-code"><code># echo -e "\033&#91;2J\033&#91;10A\Eternal Center\c"</code></pre>
+
+
+
+<p>（补充：这里以先清屏再不换行输出 Eternal Center 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 读取一个文件 （以列的方式）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-read-a-file-in-columns/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 01 Sep 2021 06:52:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17610</guid>
+
+					<description><![CDATA[介绍 作者：朱明宇名称：读取 1 个文件（以列的方式）作用：读取 1 个文件，并把里面的内容以空格作为分割符，分成 3 列显示出来 使用方法：1. 给此脚本添加执行权限2. 执行此脚本，并在输入此命令时，在后面添加要被读取文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<p>作者：朱明宇<br>名称：读取 1 个文件（以列的方式）<br>作用：读取 1 个文件，并把里面的内容以空格作为分割符，分成 3 列显示出来</p>
+
+
+
+<p>使用方法：<br>1. 给此脚本添加执行权限<br>2. 执行此脚本，并在输入此命令时，在后面添加要被读取文件</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+file=$1
+
+if &#91;&#91; $# -lt 1 ]];then
+        echo "This file does not exist"
+        exit
+fi
+
+while read -r f1 f2 f3
+do
+        echo "file 1:$f1 ==&gt; file 2:$f2 ==&gt; file 3:$f3"
+
+done &lt; "$file"</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 读取一个文件 （以行的方式）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-read-a-file-in-rows/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 01 Sep 2021 06:46:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17607</guid>
+
+					<description><![CDATA[介绍 作者：朱明宇名称：读取 1 个文件（以行的方式）作用：读取 1 个文件（以行的方式），并把里面的内容显示出来 使用方法：1. 给此脚本添加执行权限2. 执行此脚本，并在输入此命令时，在后面添加要被读取文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<p>作者：朱明宇<br>名称：读取 1 个文件（以行的方式）<br>作用：读取 1 个文件（以行的方式），并把里面的内容显示出来</p>
+
+
+
+<p>使用方法：<br>1. 给此脚本添加执行权限<br>2. 执行此脚本，并在输入此命令时，在后面添加要被读取文件</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+file=$1
+
+if &#91;&#91; $# -lt 1 ]];then
+        echo "This file does not exist"
+        exit
+fi
+
+while read line
+do
+        echo "$line"
+
+done &lt; "$file"</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 变量组合</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-variable-combination/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 02 Jan 2021 11:31:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13153</guid>
+
+					<description><![CDATA[案例一：直接组合变量 （补充：这里以将 a 和 1 组合成 a1 为例） 案例二：带空格组合变量 （补充：这里以将 a 和 1 组合成 a1 为例） 案例三：带空格和特殊符号组合变量 或者： （补充：这里以将 a 和 1 组合成 a: 1 为例） 案例四：带空格和特殊符号组合变量 （补充：这里以将 a 和 1 组合成 afile: 1.txt 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="案例一-直接组合变量">案例一：直接组合变量</h3>
+
+
+
+<pre class="wp-block-code"><code># part1=a
+# part2=1
+# result=$part1$part2
+# echo result
+a1</code></pre>
+
+
+
+<p>（补充：这里以将 a 和 1 组合成 a1 为例）</p>
+
+
+
+<h3 id="案例二-带空格组合变量">案例二：带空格组合变量</h3>
+
+
+
+<pre class="wp-block-code"><code># part1=a
+# part2=1
+# result="$part1 $part2"
+# echo result
+a1</code></pre>
+
+
+
+<p>（补充：这里以将 a 和 1 组合成 a1 为例）</p>
+
+
+
+<h3 id="案例三-带空格和特殊符号组合变量">案例三：带空格和特殊符号组合变量</h3>
+
+
+
+<pre class="wp-block-code"><code># part1=a
+# part2=1
+# result="$part1: $part2"
+# echo result
+a: 1</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># part1=a
+# part2=1
+# result="$part1": "$part2"
+# echo result
+a: 1</code></pre>
+
+
+
+<p>（补充：这里以将 a 和 1 组合成 a: 1 为例）</p>
+
+
+
+<h3 id="案例四-带空格和特殊符号组合变量">案例四：带空格和特殊符号组合变量</h3>
+
+
+
+<pre class="wp-block-code"><code># part1=a
+# part2=1
+# result="${part1}file: ${part2}.txt"
+# echo result
+afile: 1.txt</code></pre>
+
+
+
+<p>（补充：这里以将 a 和 1 组合成 afile: 1.txt 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 位置变量</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-position-variable/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 02 Jan 2021 09:49:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13151</guid>
+
+					<description><![CDATA[案例一：脚本本身 1.1 脚本本身的名称 1.2 显示脚本本身的名称 案例二：脚本某 1 个参数 2.1 脚本某 1 个参数 （补充：当 为 1 时代表第 1 个位置参数、当 为 2 时代表第 2 个位置参数以此类推） 2.2 显示脚本某 1 个参数的值 案例三：脚本最后 1 个参数 3.1 脚本最后 1 个参数 3.2 显示脚本最后 1 个参数的值 案例四：脚本参数的个数 4.1 脚本参数的个数 4.2 显示脚本参数的个数 案例五：脚本所有参数的值 5.1 脚本所有参数的值 或者： （补充：1) 当所有参数不被双引号 “&#8221;&#8221;” 包括时，$* 和 $@ 会让每个参数都被一个双引号 “&#8221;&#8221;” &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/linux-position-variable/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 位置变量"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="案例一-脚本本身-1-1-脚本本身的名称">案例一：脚本本身</h3>
+
+
+
+<h4 id="案例一-脚本本身-1-1-脚本本身的名称">1.1 脚本本身的名称</h4>
+
+
+
+<pre class="wp-block-code"><code>$0</code></pre>
+
+
+
+<h4 id="1-2-显示脚本本身的名称">1.2 显示脚本本身的名称</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $0 </code></pre>
+
+
+
+<h3 id="案例二-脚本某一个参数-2-1-脚本某一个参数">案例二：脚本某 1 个参数</h3>
+
+
+
+<h4 id="案例二-脚本某一个参数-2-1-脚本某一个参数">2.1 脚本某 1 个参数</h4>
+
+
+
+<pre class="wp-block-code"><code>$&lt;number&gt;</code></pre>
+
+
+
+<p>（补充：当 为 1 时代表第 1 个位置参数、当 为 2 时代表第 2 个位置参数以此类推）</p>
+
+
+
+<h4 id="2-2-显示脚本某一个参数的值">2.2 显示脚本某 1 个参数的值</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $&lt;number&gt;</code></pre>
+
+
+
+<h3 id="案例三-脚本最后一个参数-3-1-脚本最后一个参数">案例三：脚本最后 1 个参数</h3>
+
+
+
+<h4 id="案例三-脚本最后一个参数-3-1-脚本最后一个参数">3.1 脚本最后 1 个参数</h4>
+
+
+
+<pre class="wp-block-code"><code>\$$#</code></pre>
+
+
+
+<h4 id="3-2-显示脚本最后一个参数的值">3.2 显示脚本最后 1 个参数的值</h4>
+
+
+
+<pre class="wp-block-code"><code># eval echo \$$#</code></pre>
+
+
+
+<h3 id="案例四-脚本参数的个数-4-1-脚本参数的个数">案例四：脚本参数的个数</h3>
+
+
+
+<h4 id="案例四-脚本参数的个数-4-1-脚本参数的个数">4.1 脚本参数的个数</h4>
+
+
+
+<pre class="wp-block-code"><code>$#</code></pre>
+
+
+
+<h4 id="4-2-显示脚本参数的个数">4.2 显示脚本参数的个数</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $#</code></pre>
+
+
+
+<h3 id="案例五-脚本所有参数的值-5-1-脚本所有参数的值">案例五：脚本所有参数的值</h3>
+
+
+
+<h4 id="案例五-脚本所有参数的值-5-1-脚本所有参数的值">5.1 脚本所有参数的值</h4>
+
+
+
+<pre class="wp-block-code"><code>$*</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>$@</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 当所有参数不被双引号 “&#8221;&#8221;” 包括时，$* 和 $@ 会让每个参数都被一个双引号 “&#8221;&#8221;” 包括，例如：&#8221;1&#8243; &#8220;2&#8221; &#8220;3&#8221; &#8220;4&#8221; &#8220;5&#8221; ……<br>2) 当参数被双引号 “&#8221;&#8221;” 包括时，$* 会将所有参数视为一个整体并用双引号 “&#8221;&#8221;” 包括，例如：&#8221;1 2 3 4 5 ……&#8221;<br>3) 当参数被双引号 “&#8221;&#8221;” 包括时，$@ 会让每个参数都被一个双引号 “&#8221;&#8221;” 包括，例如：&#8221;1&#8243; &#8220;2&#8221; &#8220;3&#8221; &#8220;4&#8221; &#8220;5&#8221; ……<br>）</p>
+
+
+
+<h4 id="5-2-显示脚本所有参数的值">5.2 显示脚本所有参数的值</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $*</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># echo $@</code></pre>
+
+
+
+<h3 id="案例六-上一个命令的退出状态代码-6-1-上一个命令的退出状态代码">案例六：上 1 个命令的退出状态代码</h3>
+
+
+
+<h4 id="案例六-上一个命令的退出状态代码-6-1-上一个命令的退出状态代码">6.1 上 1 个命令的退出状态代码</h4>
+
+
+
+<pre class="wp-block-code"><code>$?</code></pre>
+
+
+
+<p>（<br>补充：常用退出状态代码如下：<br>1) 0 成功<br>2) 1 未知错误<br>3) 2 Shell 命令被误用<br>4) 126 无法执行<br>5) 127 命令没有找到<br>6) 128 退出参数无效<br>7) 128+x 来自 Linux 信号 x 的致命错误<br>8) 130 按键 “Crtl” + “C” 的终止命令<br>9) 255 不属于规范内的退出状态<br>）</p>
+
+
+
+<h4 id="6-2-显示上一个命令的退出状态代码">6.2 显示上 1 个命令的退出状态代码</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $?</code></pre>
+
+
+
+<h3 id="案例七-上一个进程的-pid-7-1-上一个进程的-pid">案例七：上 1 个进程的 PID</h3>
+
+
+
+<h4 id="案例七-上一个进程的-pid-7-1-上一个进程的-pid">7.1 上 1 个进程的 PID</h4>
+
+
+
+<pre class="wp-block-code"><code>$$</code></pre>
+
+
+
+<h4 id="7-2-显示上一个进程的-pid">7.2 显示上 1 个进程的 PID</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $$</code></pre>
+
+
+
+<h3 id="案例八-设置位置变量">案例八：设置位置变量</h3>
+
+
+
+<pre class="wp-block-code"><code># set a b c d e</code></pre>
+
+
+
+<p>（补充：这里以设置 $1 为 a、$2 为 b、$3 为 c、$4 为 d、$5 为 e）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[CONTENT] Linux Variable Default Value</title>
+		<link>https://eternalcenter-sep-2022.github.io/variable-default-value-en_us/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 21 Dec 2020 09:03:42 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Basic (基础)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13125</guid>
+
+					<description><![CDATA[中文 Content One: Set Default Values for Variables on Command Line 1.1 Assign Values to Ordinary Variables （Add: let a be 1 and B be null as an example） 1.2 Set Default Values for Variables on Command Line （Add：If a is null, var1 is no, otherwise var1 is equal to aIf B is null, var2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/variable-default-value-en_us/" class="more-link">Continue reading<span class="screen-reader-text"> "[CONTENT] Linux Variable Default Value"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-right"><a href="https://eternalcenter-sep-2022.github.io/variable-default-value-zh_cn/" data-type="URL" data-id="https://eternalcenter-sep-2022.github.io/variable-default-value-zh_cn/"><strong>中文</strong></a></p>
+
+
+
+<h3 id="content-one-set-default-values-for-variables-on-command-line-1-1-assign-values-to-ordinary-variables">Content One: Set Default Values for Variables on Command Line</h3>
+
+
+
+<h4 id="content-one-set-default-values-for-variables-on-command-line-1-1-assign-values-to-ordinary-variables">1.1 Assign Values to Ordinary Variables</h4>
+
+
+
+<pre class="wp-block-code"><code># a=1
+# b=</code></pre>
+
+
+
+<p>（Add: let a be 1 and B be null as an example）</p>
+
+
+
+<h4 id="1-2-set-default-values-for-variables-on-command-line">1.2 Set Default Values for Variables on Command Line</h4>
+
+
+
+<pre class="wp-block-code"><code># var1=${a:-no}
+# var2=${b:-no}</code></pre>
+
+
+
+<p>（<br>Add：<br>If a is null, var1 is no, otherwise var1 is equal to a<br>If B is null, var2 is no, otherwise var2 is equal to B<br>）</p>
+
+
+
+<h4 id="1-3-view-variable-results">1.3 View Variable Results</h4>
+
+
+
+<pre class="wp-block-code"><code># echo $var1
+1
+# echo $var2
+no</code></pre>
+
+
+
+<p>（<br>Add：<br>The value of a is 1, so var1 is 1<br>The B is null, so var2 is no<br>）</p>
+
+
+
+<h3 id="content-two-set-variable-defaults-in-script-2-1-setting-variable-defaults-in-scripts">Content Two：Set Variable Defaults in Script</h3>
+
+
+
+<h4 id="content-two-set-variable-defaults-in-script-2-1-setting-variable-defaults-in-scripts">2.1 Setting Variable Defaults in Script</h4>
+
+
+
+<pre class="wp-block-code"><code># vim var_default.sh
+Create the following：
+#!/bin/bash
+var_default="${1:-no}"
+echo $var_default</code></pre>
+
+
+
+<p>（Add：If the variable of $1 is null, then var_default is no, otherwise var_default is equal to $1, and print it out as an example）</p>
+
+
+
+<h4 id="2-2-test-variable-defaults-in-scripts">2.2 Test Variable Defaults in Script</h4>
+
+
+
+<pre class="wp-block-code"><code># bash var_default.sh
+no
+# bash var_default.sh 1
+1
+# bash var_default.sh 2
+2
+# bash var_default.sh 3
+3</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

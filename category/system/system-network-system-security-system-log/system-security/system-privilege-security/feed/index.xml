@@ -1,0 +1,2022 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Privilege Security (系统权限安全) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-security/system-privilege-security/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 07 Sep 2022 07:38:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[命令] Linux 命令 gpasswd （管理组）</title>
+		<link>https://eternalcenter-sep-2022.github.io/gpasswd/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 07:38:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27450</guid>
+
+					<description><![CDATA[内容一：组的成员管理 1.1 把用户添加到组里 1.1.1 把某个用户添加到某个组 或者： 或者： 或者： 1.1.2 把多个用户添加到某个组 或者： 或者： 或者： 2.2 把用户从组里删除 2.2.1 把某个用户从某个组里删除 或者： 2.2.2 把多个用户添加到某个组 或者： 2.3 将某个用户设置为组的管理员 或者： 内容三：组的密码管理 3.1 给某个组设置密码 3.2 删除某个组的密码 或者： 内容四：组的登录管理 限制某个组登录 或者： 内容五：显示帮助信息 或者：]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：组的成员管理</h3>
+
+
+
+<h4>1.1 把用户添加到组里</h4>
+
+
+
+<h5>1.1.1 把某个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -a &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –add &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -M &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –members &lt;group&gt;</code></pre>
+
+
+
+<h5>1.1.2 把多个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -a &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –add &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -M &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –members &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<h4>2.2 把用户从组里删除</h4>
+
+
+
+<h5>2.2.1 把某个用户从某个组里删除</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -d &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –delete &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<h5>2.2.2 把多个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -d &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –delete &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<h4>2.3 将某个用户设置为组的管理员</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -A &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –administrators &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<h3>内容三：组的密码管理</h3>
+
+
+
+<h4>3.1 给某个组设置密码</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd &lt;group&gt;</code></pre>
+
+
+
+<h4>3.2 删除某个组的密码</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –r &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –remove-password &lt;group&gt;</code></pre>
+
+
+
+<h3>内容四：组的登录管理</h3>
+
+
+
+<p>限制某个组登录</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -R &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –restrict &lt;group&gt;</code></pre>
+
+
+
+<h3>内容五：显示帮助信息</h3>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -h</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -help</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] audit 的设置 （日志保存时间）</title>
+		<link>https://eternalcenter-sep-2022.github.io/audit-log-save-time/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 01:45:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26972</guid>
+
+					<description><![CDATA[方法一：通过 audit 配置文件设置 1.1 设置 audit 日志的保存时间 确保部分内容如下： （补充：这里以1) 开启 audit 日志 （local_events = yes） （write_logs = yes）2) 将 audit 日志写入 /var/log/audit/audit.log 文件 （log_file = /var/log/audit/audit.log）3) audit 日志每达到 8M 大小就将旧的 audit 日志进行备份并创建新的 audit 日志 （max_log_file = 8） （max_log_file_action = ROTATE），也可以修改成： max_log_file_action = keep_logs4) 旧的 audit 日志保存 5 份 （num_logs =5）为例） 1.2 让设置的 audit 时间生效 方法二：通过 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/audit-log-save-time/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] audit 的设置 （日志保存时间）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：通过 audit 配置文件设置</h3>
+
+
+
+<h4>1.1 设置 audit 日志的保存时间</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/auditd.conf</code></pre>
+
+
+
+<p>确保部分内容如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+local_events = yes
+......
+write_logs = yes
+......
+log_file = /var/log/audit/audit.log
+......
+max_log_file = 8
+......
+num_logs =5
+......
+max_log_file_action = ROTATE
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 开启 audit 日志 （local_events = yes） （write_logs = yes）<br>2) 将 audit 日志写入 /var/log/audit/audit.log 文件 （log_file = /var/log/audit/audit.log）<br>3) audit 日志每达到 8M 大小就将旧的 audit 日志进行备份并创建新的 audit 日志 （max_log_file = 8） （max_log_file_action = ROTATE），也可以修改成： max_log_file_action = keep_logs<br>4) 旧的 audit 日志保存 5 份 （num_logs =5）<br>为例<br>）</p>
+
+
+
+<h4>1.2 让设置的 audit 时间生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h3>方法二：通过 logrotate 配置文件设置</h3>
+
+
+
+<h4>2.1 设置 audit 日志的保存时间</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/logrotate.d/auditd</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>/var/log/audit/*
+{
+rotate 30
+daily
+missingok
+compress
+delaycompress
+postrotate
+touch /var/log/audit/audit.log ||:
+chmod 0600 /var/log/audit/audit.log ||:
+service auditd restart
+endscript
+}</code></pre>
+
+
+
+<p>（<br>补充：这里以：<br>1) 备份的日志文件保留 30 份 （rotate 30）<br>2) 每天将现在的日志文件进行备份并生成新的日志文件 （dayly）<br>）</p>
+
+
+
+<h4>2.2 让设置的 audit 时间生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart logrotate.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] audit 日志时间格式的转换</title>
+		<link>https://eternalcenter-sep-2022.github.io/time-format-conversion/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 Jul 2022 08:00:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26438</guid>
+
+					<description><![CDATA[步骤一：创建用于 audit 转换日志时间格式的脚本 创建以下内容： （补充：这里以创建名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例） 步骤二：转换 audit 日志时间格式 或者： 或者： 或者： 或者： 或者： （补充：这里以使用名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：创建用于 audit 转换日志时间格式的脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># vim time_format_conversion.pl</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>s/(1\d{9})/localtime($1)/e</code></pre>
+
+
+
+<p>（补充：这里以创建名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）</p>
+
+
+
+<h3>步骤二：转换 audit 日志时间格式</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># less /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># more /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># head /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># tail /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># tail -f /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>（补充：这里以使用名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 文件或目录的监控 （audit 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/monitor-directory-file-audit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 05 Jul 2022 10:18:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26264</guid>
+
+					<description><![CDATA[步骤一：使用 audit 监控文件或目录 1.1 在 audit 的策略里添加要监控的目录或文件 1.1.1 案例一：监控某个目录以及目录下的目录和文件 添加以下内容： （补充：这里以监控目录 /tmp 里的目录和文件为例） 1.1.2 案例二：监控某个文件 添加以下内容： （补充：这里以监控目录 /dev/null 文件为例） 1.2 让监控目录或文件的配置生效 步骤二：显示 audit 监控记录 （补充：记录里的1) nametype=CREATE 字段代表创建2) nametype=NORMAL 字段代表普通3) nametype=DELETE 字段代表删除） 或者： （补充：这里以显示文件被修改的记录为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：使用 audit 监控文件或目录</h3>
+
+
+
+<h4>1.1 在 audit 的策略里添加要监控的目录或文件</h4>
+
+
+
+<h5>1.1.1 案例一：监控某个目录以及目录下的目录和文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-a exit,always -F dir=/tmp -F perm=rwxa</code></pre>
+
+
+
+<p>（补充：这里以监控目录 /tmp 里的目录和文件为例）</p>
+
+
+
+<h5>1.1.2 案例二：监控某个文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-a exit,always -S unlink -S unlinkat -S rmdir -S rename -S renameat -F path=/dev/null</code></pre>
+
+
+
+<p>（补充：这里以监控目录 /dev/null 文件为例）</p>
+
+
+
+<h4>1.2 让监控目录或文件的配置生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h3>步骤二：显示 audit 监控记录</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/audit</code></pre>
+
+
+
+<p>（<br>补充：记录里的<br>1) nametype=CREATE 字段代表创建<br>2) nametype=NORMAL 字段代表普通<br>3) nametype=DELETE 字段代表删除<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># sudo ausearch -i -k user-modify</code></pre>
+
+
+
+<p>（补充：这里以显示文件被修改的记录为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 命令安全的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/command-secure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 25 Jun 2022 13:37:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26174</guid>
+
+					<description><![CDATA[确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：]]></description>
+										<content:encoded><![CDATA[
+<p>确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：</p>
+
+
+
+<pre class="wp-block-code"><code># ls -ld /usr/local/bin /usr/local/sbin /usr/bin/ /usr/sbin
+dr-xr-xr-x. 2 root root 53248 Jun 24 15:09 /usr/bin/
+drwxr-xr-x. 3 root root  4096 Jun 21  2021 /usr/local/bin
+drwxr-xr-x. 2 root root     6 Jun 21  2021 /usr/local/sbin
+dr-xr-xr-x. 2 root root 20480 Jun 24 15:09 /usr/sbin</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 目录的重新挂载</title>
+		<link>https://eternalcenter-sep-2022.github.io/remount/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:16:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23734</guid>
+
+					<description><![CDATA[内容一：手动重新挂载目录 （补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例） 内容二：开机自动重新挂载目录 添加以下内容： （补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：手动重新挂载目录</h3>
+
+
+
+<pre class="wp-block-code"><code># mount -o remount,nosuid,nodev,noexec /dev/shm</code></pre>
+
+
+
+<p>（补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）</p>
+
+
+
+<h3>内容二：开机自动重新挂载目录</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+tmpfs /dev/shm tmpfs defaults,nosuid,nodev,noexec 0 0</code></pre>
+
+
+
+<p>（补充：这里以带 nosuid、nodev 和 noexec 参数重新挂载 /dev/shm 目录为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 某个所属组里有哪些用户的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/group-display/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 08 Jun 2022 02:50:05 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23715</guid>
+
+					<description><![CDATA[方法一：通过 /etc/group 配置文件显示某个附属所属组里有哪些用户 （注意：此方法并不能显示出把这些所属组当作主要所属组的用户） 方法二：通过 /etc/passwd 配置文件和 id 命令等显示主要所属组和附属所属组 （补充：可以通过肉眼比对此命令的输出结果来判断其主要所属组和附属所属组）]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：通过 /etc/group 配置文件显示某个附属所属组里有哪些用户</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/group</code></pre>
+
+
+
+<p>（注意：此方法并不能显示出把这些所属组当作主要所属组的用户）</p>
+
+
+
+<h3>方法二：通过 /etc/passwd 配置文件和 id 命令等显示主要所属组和附属所属组</h3>
+
+
+
+<pre class="wp-block-code"><code># for i in `cat /etc/passwd | egrep -v "nologin$|false$|half|sync|shutdown|halt" | awk -F: '{print $1}'`; do id $i; done | sort -k2</code></pre>
+
+
+
+<p>（补充：可以通过肉眼比对此命令的输出结果来判断其主要所属组和附属所属组）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 文件或目录的查找 （特殊权限）</title>
+		<link>https://eternalcenter-sep-2022.github.io/special-privilege-find/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 07 Aug 2020 03:02:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10429</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># find / -type f \( -perm -1000 -o -perm -2000 -o -perm -4000 \) -print</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux Umask 的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/umask/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 01 Aug 2020 08:54:22 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10411</guid>
+
+					<description><![CDATA[内容一：Umask 值的含义 如果 Umask 的值是 0022：创建的新目录的默认权限是：777 &#8211; 022 = 755创建的新文件的默认权限是：666 &#8211; 022 = 644 内容二：临时设置 Umask 2.1 查看当前 Umask 值 2.2 临时设置 Umask 值 2.2.1 方法一：使用权限数字设置默认权限值 2.2.2 方法二：使用权限标志设置默认权限值 内容三：永久设置 umask 3.1 给某个用户单独永久设置 Umask 3.1.1 切换到要永久设置 Umask 的用户 （补充：这里以切换到 root 用户为例） 3.1.2 给某个用户单独添加 Umask 参数 添加以下内容： （补充：这里以将 Umask 设置为 022 为例） 3.1.3 让 Umask 设置生效 3.2 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/umask/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux Umask 的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Umask 值的含义</h3>
+
+
+
+<p>如果 Umask 的值是 0022：<br>创建的新目录的默认权限是：777 &#8211; 022 = 755<br>创建的新文件的默认权限是：666 &#8211; 022 = 644</p>
+
+
+
+<h3>内容二：临时设置 Umask</h3>
+
+
+
+<h4>2.1 查看当前 Umask 值</h4>
+
+
+
+<pre class="wp-block-code"><code># umask
+0022</code></pre>
+
+
+
+<h4>2.2 临时设置 Umask 值</h4>
+
+
+
+<h5>2.2.1 方法一：使用权限数字设置默认权限值</h5>
+
+
+
+<pre class="wp-block-code"><code># umask 0002</code></pre>
+
+
+
+<h5>2.2.2 方法二：使用权限标志设置默认权限值</h5>
+
+
+
+<pre class="wp-block-code"><code># umask -S u=rwx,g=rwx,o=rw</code></pre>
+
+
+
+<h3>内容三：永久设置 umask</h3>
+
+
+
+<h4>3.1 给某个用户单独永久设置 Umask</h4>
+
+
+
+<h5>3.1.1 切换到要永久设置 Umask 的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># su - root</code></pre>
+
+
+
+<p>（补充：这里以切换到 root 用户为例）</p>
+
+
+
+<h5>3.1.2 给某个用户单独添加 Umask 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim ~/.bashrc </code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+umask 022</code></pre>
+
+
+
+<p>（补充：这里以将 Umask 设置为 022 为例）</p>
+
+
+
+<h5>3.1.3 让 Umask 设置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># source ~/.bashrc</code></pre>
+
+
+
+<h4>3.2 全局永久设置 Umask 的方法</h4>
+
+
+
+<h5>3.2.1 在 /etc/login.defs 配置文件里设置默认 Umask 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/login.defs</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>UMASK ......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>UMASK           022</code></pre>
+
+
+
+<p>（补充：这里以将 Umask 的默认值设置为 022 为例）</p>
+
+
+
+<h5>3.2.2 在 /etc/profile 配置文件里设置全局 Umask 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/profile</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; $UID -gt 199 ] &amp;&amp; &#91; "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask ......
+else
+    umask ......
+fi
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; $UID -gt 199 ] &amp;&amp; &#91; "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask 002
+else
+    umask 022
+fi
+......</code></pre>
+
+
+
+<p>（补充：这里以将 UID 小于 199 的用户 Umask 设置为 002，UID 大于等于 199 的用户 Umask 设置为 022 为例）</p>
+
+
+
+<p>（注意：openSUSE &amp; SLE 的 /etc/profile 配置文件里没有这些内容，所以如果是对 openSUSE &amp; SLE 进行操作时则需要手动创建这些内容）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/profile</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+umask 022</code></pre>
+
+
+
+<p>（补充：这里以将所有用户的全局 Umask 设置为 022 为例）</p>
+
+
+
+<h5>3.2.3 在 /etc/bashrc 配置文件里设置全局 Umask 参数</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/bashrc</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; $UID -gt 199 ] &amp;&amp; &#91; "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask ......
+else
+    umask ......
+fi
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+if &#91; $UID -gt 199 ] &amp;&amp; &#91; "`/usr/bin/id -gn`" = "`/usr/bin/id -un`" ]; then
+    umask 002
+else
+    umask 022
+fi
+......</code></pre>
+
+
+
+<p>（补充：这里以将 UID 小于 199 的用户 Umask 设置为 002，UID 大于等于 199 的用户 Umask 设置为 022 为例）</p>
+
+
+
+<p>（注意： openSUSE &amp; SLE 没有 /etc/bashrc 配置文件，所以如果是对 openSUSE &amp; SLE 进行操作时则需要手动创建此文件和这些内容）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/bashrc</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+umask 022</code></pre>
+
+
+
+<p>（补充：这里以将所有用户的全局 Umask 设置为 022 为例）</p>
+
+
+
+<p>（注意： openSUSE &amp; SLE 没有 /etc/bashrc 配置文件，所以如果是对 openSUSE &amp; SLE 进行操作时则需要手动创建此文件）</p>
+
+
+
+<h5>3.2.4 让永久设置的 Umask 设置生效</h5>
+
+
+
+<pre class="wp-block-code"><code># source /etc/bashrc ; source /etc/profile</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 当永久设置的 Umask 生效后，用户必须要重新登录后才会刷新 Umask<br>2) 当 /etc/login.defs 配置文件、/etc/bashrc 配置文件和 /etc/profile 配置文件里设置的 Umask 值不一致时，会以 /etc/profile 文件里设置的为准<br>3) 当同一个文件里设置了多个 Umask 个值时，会以最后一个值为准<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux acl 权限</title>
+		<link>https://eternalcenter-sep-2022.github.io/acl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Jul 2020 14:13:44 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10342</guid>
+
+					<description><![CDATA[案例一：给某一个文件或目录添加 acl 1.1 给某一个文件或目录添加一个用户的 acl （补充：这里以在 /var 目录上给 zhumingyu 用户设置读和执行的 acl 权限为例） 1.2 给某一个文件或目录添加一个组的 acl （补充：这里以在 /var 目录上给 zhumingyu 组设置读和执行的 acl 权限为例） 1.3 递归给某一个目录和目录里的所有内容添加一个 acl （补充：这里以在 /var 目录上递归给 zhumingyu 组设置读和执行的 acl 权限为例） 案例二：删除某一个文件或目录的 acl 2.1 删除某一个文件或目录一个用户的 acl （补充：这里以在 /var 目录上删除 zhumingyu 用户的 acl 权限为例） 2.2 删除某一个文件或目录一个组的 acl （补充：这里以在 /var 目录上删除 zhumingyu 组的 acl 权限为例） 2.3 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/acl/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux acl 权限"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="案例一-给某一个文件或目录添加-acl1-1-给某一个文件或目录添加一个用户的-acl">案例一：给某一个文件或目录添加 acl</h3>
+
+
+
+<h4 id="案例一-给某一个文件或目录添加-acl1-1-给某一个文件或目录添加一个用户的-acl">1.1 给某一个文件或目录添加一个用户的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -m u:zhumingyu:r-x /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上给 zhumingyu 用户设置读和执行的 acl 权限为例）</p>
+
+
+
+<h4 id="1-2-给某一个文件或目录添加一个组的-acl">1.2 给某一个文件或目录添加一个组的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -m g:zhumingyu:r-x /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上给 zhumingyu 组设置读和执行的 acl 权限为例）</p>
+
+
+
+<h4 id="1-3-递归给某一个目录和目录里的所有内容添加一个-acl">1.3 递归给某一个目录和目录里的所有内容添加一个 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -Rm u:zhumingyu:r-x /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上递归给 zhumingyu 组设置读和执行的 acl 权限为例）</p>
+
+
+
+<h3 id="案例二-删除某一个文件或目录的-acl2-1-删除某一个文件或目录一个用户的-acl">案例二：删除某一个文件或目录的 acl</h3>
+
+
+
+<h4 id="案例二-删除某一个文件或目录的-acl2-1-删除某一个文件或目录一个用户的-acl">2.1 删除某一个文件或目录一个用户的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -x u:zhumingyu /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上删除 zhumingyu 用户的 acl 权限为例）</p>
+
+
+
+<h4 id="2-2-删除某一个文件或目录一个组的-acl">2.2 删除某一个文件或目录一个组的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -x g:zhumingyu /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上删除 zhumingyu 组的 acl 权限为例）</p>
+
+
+
+<h4 id="2-3-删除某一个文件或目录的所有-acl">2.3 删除某一个文件或目录的所有 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -b /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上删除所有 acl 权限为例）</p>
+
+
+
+<h4 id="2-4-递归删除某一个文件或目录的-acl">2.4 递归删除某一个文件或目录的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -Rx u:zhumingyu:r-x /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上递归删除 zhumingyu 用户的 acl 权限为例）</p>
+
+
+
+<h4 id="2-5-递归删除某一个文件或目录的所有-acl">2.5 递归删除某一个文件或目录的所有 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl -Rb /var</code></pre>
+
+
+
+<p>（补充：这里以在 /var 目录上递归删除所有 acl 权限为例）</p>
+
+
+
+<h3 id="案例三-查看某一个文件或目录的-acl">案例三：显示某一个文件或目录的 acl</h3>
+
+
+
+<pre class="wp-block-code"><code># getfacl /var</code></pre>
+
+
+
+<p>（补充：这里以显示 /var 目录的 acl 权限为例）</p>
+
+
+
+<h3 id="案例四-备份和还原某一个文件或目录的-acl4-1-备份某一个文件或目录的-acl">案例四：备份和还原某一个文件或目录的 acl</h3>
+
+
+
+<h4 id="案例四-备份和还原某一个文件或目录的-acl4-1-备份某一个文件或目录的-acl">4.1 备份某一个文件或目录的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># getfacl -R /var &gt; /acl.backup</code></pre>
+
+
+
+<p>（补充：这里以备份 /var 目录的 acl 权限为例）</p>
+
+
+
+<h4 id="4-2-还原某一给文件或目录的-acl">4.2 还原某一给文件或目录的 acl</h4>
+
+
+
+<pre class="wp-block-code"><code># setfacl --restore /acl.backup</code></pre>
+
+
+
+<p>（补充：这里以还原 /var 目录的 acl 权限为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 chown （归属文件或目录）</title>
+		<link>https://eternalcenter-sep-2022.github.io/chown/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Jun 2020 02:53:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9657</guid>
+
+					<description><![CDATA[案例一：将 test.txt 的所属主设置为 root 或者： 案例二：将 test.txt 的所属组设置为 root 案例三：将 test.txt 的所数主设置为 root，所属组设置为 root]]></description>
+										<content:encoded><![CDATA[
+<h3>案例一：将 test.txt 的所属主设置为 root</h3>
+
+
+
+<pre class="wp-block-code"><code># chown root test.txt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chown root: test.txt</code></pre>
+
+
+
+<h3>案例二：将 test.txt 的所属组设置为 root</h3>
+
+
+
+<pre class="wp-block-code"><code># chown :root test.txt</code></pre>
+
+
+
+<h3>案例三：将 test.txt 的所数主设置为 root，所属组设置为 root</h3>
+
+
+
+<pre class="wp-block-code"><code># chown root:root test.txt</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 chmod （管理权限）</title>
+		<link>https://eternalcenter-sep-2022.github.io/chmod/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 08 Dec 2019 10:52:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7445</guid>
+
+					<description><![CDATA[内容一：普通权限的管理 1.1 普通权限的介绍 1.1.1 对于文件而言 1) r 代表读权限2) w 代表写权限3) x 代表执行权限 1.1.2 对于目录而言 1) r 代表可以看到目录的权限2) w 代表可以对目录进行增、删、改、查和在里面创建文件和目录的权限3) x 代表可以进入目录的权限 （注意：对于目录而言，x 权限必须要和 r 权限配合使用，如果只有 x 权限没有 r 权限，则依旧不能进入目录） 1.1.3 用数字代替权限的方法 1) 0 代表 &#8212;2) 1 代表 &#8211;x3) 2 代表 -w-4) 3 代表 -wx5) 4 代表 r&#8211;6) 5 代表 r-x7) 6 代表 rw-8) 7 代表 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/chmod/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 chmod （管理权限）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-普通权限的管理1-1-普通权限的介绍1-1-1-对于文件而言">内容一：普通权限的管理</h3>
+
+
+
+<h4 id="内容一-普通权限的管理1-1-普通权限的介绍1-1-1-对于文件而言">1.1 普通权限的介绍</h4>
+
+
+
+<h5 id="内容一-普通权限的管理1-1-普通权限的介绍1-1-1-对于文件而言">1.1.1 对于文件而言</h5>
+
+
+
+<p>1) r 代表读权限<br>2) w 代表写权限<br>3) x 代表执行权限</p>
+
+
+
+<h5 id="1-1-2-对于目录而言">1.1.2 对于目录而言</h5>
+
+
+
+<p>1) r 代表可以看到目录的权限<br>2) w 代表可以对目录进行增、删、改、查和在里面创建文件和目录的权限<br>3) x 代表可以进入目录的权限</p>
+
+
+
+<p>（注意：对于目录而言，x 权限必须要和 r 权限配合使用，如果只有 x 权限没有 r 权限，则依旧不能进入目录）</p>
+
+
+
+<h5 id="1-1-3-用数字代替权限的方法">1.1.3 用数字代替权限的方法</h5>
+
+
+
+<p>1) 0 代表 &#8212;<br>2) 1 代表 &#8211;x<br>3) 2 代表 -w-<br>4) 3 代表 -wx<br>5) 4 代表 r&#8211;<br>6) 5 代表 r-x<br>7) 6 代表 rw-<br>8) 7 代表 rwx</p>
+
+
+
+<h4 id="1-2-管理权限案例1-2-1-给一个文件或目录添加权限的案例1-2-1-1-案例一">1.2 管理权限案例</h4>
+
+
+
+<h5 id="1-2-管理权限案例1-2-1-给一个文件或目录添加权限的案例1-2-1-1-案例一">1.2.1 给一个文件或目录添加权限的案例</h5>
+
+
+
+<h5 id="1-2-管理权限案例1-2-1-给一个文件或目录添加权限的案例1-2-1-1-案例一">1.2.1.1 案例一</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主添加执行权限为例）</p>
+
+
+
+<h5 id="1-2-1-2-案例二">1.2.1.2 案例二</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u+r,g+w test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主添加执行权限，给文件的所属组添加写权限为例）</p>
+
+
+
+<h5 id="1-2-1-3-案例三">1.2.1.3 案例三</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod +x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主、所属组和其他用户添加执行权限为例）</p>
+
+
+
+<h5 id="1-2-1-4-案例四">1.2.1.4 案例四</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod a+x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主、所属组和其他用户添加执行权限为例）</p>
+
+
+
+<h5 id="1-2-2-给一个文件或目录撤销权限的案例1-2-2-1-案例一">1.2.2 给一个文件或目录撤销权限的案例</h5>
+
+
+
+<h5 id="1-2-2-给一个文件或目录撤销权限的案例1-2-2-1-案例一">1.2.2.1 案例一</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u-x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主撤销执行权限为例）</p>
+
+
+
+<h5 id="1-2-2-2-案例二">1.2.2.2 案例二</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u-r,g-w test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主撤销执行权限，给文件的所属组撤销写权限为例）</p>
+
+
+
+<h5 id="1-2-2-3-案例三">1.2.2.3 案例三</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod -x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主、所属组和其他用户撤销执行权限为例）</p>
+
+
+
+<h5 id="1-2-2-4-案例四">1.2.2.4 案例四</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod a-x test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件的所属主、所属组和其他用户撤销执行权限为例）</p>
+
+
+
+<h5 id="1-2-3-设定某一个文件或目录的权限的案例1-2-3-1-案例一">1.2.3 设定某一个文件或目录的权限的案例</h5>
+
+
+
+<h5 id="1-2-3-设定某一个文件或目录的权限的案例1-2-3-1-案例一">1.2.3.1 案例一</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u=rwx test.txt </code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读、写和执行的权限为例）</p>
+
+
+
+<h5 id="1-2-3-2-案例二">1.2.3.2 案例二</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u=rw- test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限，但是没有执行的权限为例）</p>
+
+
+
+<h5 id="1-2-3-3-案例三">1.2.3.3 案例三</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u=--- test.txt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chmod u= test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主没有任何权限为例）</p>
+
+
+
+<h5 id="1-2-3-5-案例五">1.2.3.4 案例四</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u=rw,g=, test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限，但是没有执行的权限。设置文件的所属组没有任何权限为例）</p>
+
+
+
+<h5 id="1-2-3-6-案例六">1.2.3.5 案例五</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u=rw,g=---,0= test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限，但是没有执行的权限。设置文件的所属组没有任何权限。设置文件的其他用户没有任何权限为例）</p>
+
+
+
+<h5 id="1-2-3-7-案例七">1.2.3.6 案例六</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读、写和执行的权限。设置文件的所属组有读和执行的权限。设置文件的其他用户有读和执行的权限为例）</p>
+
+
+
+<h3 id="内容二-特殊权限的管理2-1-特殊权限-suid2-1-1-suid-介绍">内容二：特殊权限的管理</h3>
+
+
+
+<h4 id="内容二-特殊权限的管理2-1-特殊权限-suid2-1-1-suid-介绍">2.1 特殊权限 SUID</h4>
+
+
+
+<h5 id="内容二-特殊权限的管理2-1-特殊权限-suid2-1-1-suid-介绍">2.1.1 SUID 介绍</h5>
+
+
+
+<p>1) SUID：全名 Set UID<br>2) SUID 的作用：让没有此文件执行权限的用户，可以执行这个文件<br>3) SUID 的权限数字 4000</p>
+
+
+
+<h5 id="2-1-2-suid-权限的添加的案例2-1-2-1-添加-suid-权限的案例">2.1.2 SUID 权限的添加的案例</h5>
+
+
+
+<h5 id="2-1-2-suid-权限的添加的案例2-1-2-1-添加-suid-权限的案例">2.1.2.1 添加 SUID 权限的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod u+s test.txt</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件添加 SUID 权限为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 4644 test.txt</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限。设置文件的所属组有读的权限。设置文件的其他用户有读的权限。并添加 SUID 权限为例）</p>
+
+
+
+<h5 id="2-1-2-2-显示-suid-权限的添加情况的案例2-1-2-2-1-显示有-suid-权限-但是所属主没有执行权限的文件的案例">2.1.2.2 显示 SUID 权限的添加情况的案例</h5>
+
+
+
+<h5 id="2-1-2-2-显示-suid-权限的添加情况的案例2-1-2-2-1-显示有-suid-权限-但是所属主没有执行权限的文件的案例">2.1.2.2.1 显示有 SUID 权限，但是所属主没有执行权限的文件的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test.txt 
+-rwSr--r-- 1 root root 0 12月  8 05:27 test.txt</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+
+
+
+<h5 id="2-1-2-2-2-显示有-suid-权限-并且所属主有执行权限的文件的案例">2.1.2.2.2 显示有 SUID 权限，并且所属主有执行权限的文件的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test.txt 
+-rwsr--r-- 1 root root 0 12月  8 05:27 test.txt</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+
+
+
+<h4 id="2-2-特殊权限-sgid2-2-1-sgid-介绍">2.2 特殊权限 SGID</h4>
+
+
+
+<h5 id="2-2-特殊权限-sgid2-2-1-sgid-介绍">2.2.1 SGID 介绍</h5>
+
+
+
+<p>1) SGID：全名 Set GID<br>2) SGID 的作用：在此目录下创建的文件，将都和此目录的所属组一样<br>3) SGID 的权限数字 2000</p>
+
+
+
+<h5 id="2-2-2-sgid-权限的添加的案例2-2-2-1-添加-sgid-权限的案例">2.2.2 SGID 权限的添加的案例</h5>
+
+
+
+<h5 id="2-2-2-sgid-权限的添加的案例2-2-2-1-添加-sgid-权限的案例">2.2.2.1 添加 SGID 权限的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod g+s test</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件添加 SGID 权限为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 2644 test</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限。设置文件的所属组有读的权限。设置文件的其他用户有读的权限。并添加 SGID 权限为例）</p>
+
+
+
+<h5 id="2-2-2-2-显示-sgid-权限的添加情况的案例2-2-2-2-1-显示有-sgid-权限-但是所属组没有执行权限的目录的案例">2.2.2.2 显示 SGID 权限的添加情况的案例</h5>
+
+
+
+<h5 id="2-2-2-2-显示-sgid-权限的添加情况的案例2-2-2-2-1-显示有-sgid-权限-但是所属组没有执行权限的目录的案例">2.2.2.2.1 显示有 SGID 权限，但是所属组没有执行权限的目录的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test
+-rw-r-Sr-- 1 root root 0 12月  8 05:27 test</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+
+
+
+<h5 id="2-2-2-2-2-显示有-sgid-权限-并且所属组有执行权限的目录的案例">2.2.2.2.2 显示有 SGID 权限，并且所属组有执行权限的目录的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test
+-rw-r-sr-- 1 root root 0 12月  8 05:27 test</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+
+
+
+<h4 id="2-3-特殊权限-sbit2-3-1-sbit-介绍">2.3 特殊权限 SBIT</h4>
+
+
+
+<h5 id="2-3-特殊权限-sbit2-3-1-sbit-介绍">2.3.1 SBIT 介绍</h5>
+
+
+
+<p>1) SBIT：全名 Sticky Bit<br>2) SBIT 的作用：在此目录下创建的文件，只有创建此文件的用户和 root 用户可以删除<br>3) SBIT 的权限数字 1000</p>
+
+
+
+<h5 id="2-3-2-sbit-权限的添加的案例2-3-2-1-添加-sbit-权限的案例">2.3.2 SBIT 权限的添加的案例</h5>
+
+
+
+<h5 id="2-3-2-sbit-权限的添加的案例2-3-2-1-添加-sbit-权限的案例">2.3.2.1 添加 SBIT 权限的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod o+t test</code></pre>
+
+
+
+<p>（补充：这里以给 test.txt 文件添加 SBID 权限为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 1644 test</code></pre>
+
+
+
+<p>（补充：这里以设置 test.txt 文件的所属主拥有读和写的权限。设置文件的所属组有读的权限。设置文件的其他用户有读的权限。并添加 SBID 权限为例）</p>
+
+
+
+<h5 id="2-3-2-2-显示-sbit-权限的添加情况的案例2-3-2-2-1-显示有-sbit-权限-但是所属主没有执行权限的目录的案例">2.3.2.2 显示 SBIT 权限的添加情况的案例</h5>
+
+
+
+<h5 id="2-3-2-2-显示-sbit-权限的添加情况的案例2-3-2-2-1-显示有-sbit-权限-但是所属主没有执行权限的目录的案例">2.3.2.2.1 显示有 SBIT 权限，但是所属主没有执行权限的目录的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test
+-rw-r--r-T 1 root root 0 12月  8 05:27 test</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+
+
+
+<h5 id="2-3-2-2-2-显示有-sbit-权限-并且所属主有执行权限的目录的案例">2.3.2.2.2 显示有 SBIT 权限，并且所属主有执行权限的目录的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># ls -l test
+-rw-r--r-t 1 root root 0 12月  8 05:27 test</code></pre>
+
+
+
+<p>（补充：这里以对 test.txt 文件进行操作为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 sudo （用户提权）</title>
+		<link>https://eternalcenter-sep-2022.github.io/sudo/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 25 Aug 2019 16:17:40 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5575</guid>
+
+					<description><![CDATA[内容一：sudo 简介 sudo 命令可以让非 root 用户，在不知道 root 的密码的情况之下以 root 的身份执行某一些命令但是要实现这一目标需要提前修改 sodu 的配置文件 内容二：修改 sudo 配置文件的方法 （注意：此方法可以在保存退出时检查 sudo 文件有没有语法错误） 或者： （注意：此方法可以在保存退出时检查 sudo 文件有没有语法错误） 或者： （注意：此方法不能在保存退出时检查 sudo 文件有没有语法错误） 或者： （注意：此方法不能在保存退出时检查 sudo 文件有没有语法错误） 内容三：修改 sudo 配置文件的案例 3.1 案例一：让 zhumingyu 用户可以通过 sudo 获取所有 root 权限 添加以下内容： （说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了） 3.2 案例二：让 zhumingyu 用户可以通过 sudo 获取所有 root 权限，并且免密码 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/sudo/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 sudo （用户提权）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：sudo 简介</h3>
+
+
+
+<p>sudo 命令可以让非 root 用户，在不知道 root 的密码的情况之下以 root 的身份执行某一些命令<br>但是要实现这一目标需要提前修改 sodu 的配置文件</p>
+
+
+
+<h3>内容二：修改 sudo 配置文件的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># visudo</code></pre>
+
+
+
+<p>（注意：此方法可以在保存退出时检查 sudo 文件有没有语法错误）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># sudoedit /etc/sudoers</code></pre>
+
+
+
+<p>（注意：此方法可以在保存退出时检查 sudo 文件有没有语法错误）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>（注意：此方法不能在保存退出时检查 sudo 文件有没有语法错误）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>（注意：此方法不能在保存退出时检查 sudo 文件有没有语法错误）</p>
+
+
+
+<h3>内容三：修改 sudo 配置文件的案例</h3>
+
+
+
+<h4>3.1 案例一：让 zhumingyu 用户可以通过 sudo 获取所有 root 权限</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　ALL  
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.2 案例二：让 zhumingyu 用户可以通过 sudo 获取所有 root 权限，并且免密码</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　NOPASSWD: ALL  
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.3 案例三：让 zhumingyu 用户可以通过 sudo 获取 firewalld 命令的 root 权限，并且免密码</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　NOPASSWD: firewalld
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.4 案例四：让 zhumingyu 用户可以通过 sudo 获取 firewalld 和 chmod 命令的 root 权限，并且免密码</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　NOPASSWD: firewalld,chmod
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.5 案例五：让 zhumingyu 用户可以通过 sudo 获取 passwd 命令的 root 权限，并且免密码，但是不能修改 root 的密码</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　NOPASSWD: !/usr/bin/passwd root
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.6 案例六：让 zhumingyu 用户可以通过 sudo 获取 passwd 命令的 root 权限，并且免密码，但是不能修改以 a 开头命名用户的密码</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu ALL=(ALL) 　　NOPASSWD: !/usr/bin/passwd a.*
+......</code></pre>
+
+
+
+<p>（说明：在 “root ALL=(ALL) 　　ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h4>3.7 案例七：让 zhumingyu 组里的所有用户通过 sudo 获取 passwd 命令的 root 权限，并且免密码</h4>
+
+
+
+<h5>3.7.1 让 zhumingyu 组里的所有用户通过 sudo 获取 passwd 命令的 root 权限，并且免密码</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sudoers</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+%zhumingyu ALL=(ALL) 　　 NOPASSWD: /usr/bin/passwd 
+......</code></pre>
+
+
+
+<p>（补充：% 代表这是一个组而不是一个用户）</p>
+
+
+
+<p>（说明：在 “%wheel 　　 ALL=(ALL) 　　 NOPASSWD: ALL” 这一行后面仿照着加入一行就行了）</p>
+
+
+
+<h5>3.7.2 将相关用户添加到 zhumingyu 组里</h5>
+
+
+
+<pre class="wp-block-code"><code># usermod -a -G zhumingyu &lt;user&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

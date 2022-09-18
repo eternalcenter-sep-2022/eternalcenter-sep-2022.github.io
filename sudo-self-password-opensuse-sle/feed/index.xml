@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: [步骤] sudo 提权的实现 （通过用户自己的密码实现 sudo 提权） （openSUSE &#038; SLE）	</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/sudo-self-password-opensuse-sle/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/sudo-self-password-opensuse-sle/</link>
+	<description></description>
+	<lastBuildDate>Sat, 18 Jun 2022 14:48:06 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+</channel>
+</rss>

@@ -1,0 +1,6511 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>纪念 Anniversary &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/tag/anniversary/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:06:14 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2021 09:24:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing and High Availability Tool (集群负载均衡加高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Keepalived]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx + Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Website Service Redundant Agent Cluster (网站服务冗余代理集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13543</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：拓扑图 1.1 服务器列表 client enp1s0: 172.16.1.99 proxy1 enp1s0: 172.16.0.101enp7s0: 172.16.1.101virtual IP: 172.16.1.100 proxy2 enp1s0: 172.16.0.102enp7s0: 172.16.1.102 web1 enp1s0: 172.16.0.11 web2 enp1s0: 172.16.0.12 1.2 拓扑图 1.3 拓扑图简介 1) web1 安装 Nginx，web2 安装 Apache 实现网站服务2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑图</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client enp1s0: 172.16.1.99</p>
+
+
+
+<p>proxy1 enp1s0: 172.16.0.101<br>enp7s0: 172.16.1.101<br>virtual IP: 172.16.1.100</p>
+
+
+
+<p>proxy2 enp1s0: 172.16.0.102<br>enp7s0: 172.16.1.102</p>
+
+
+
+<p>web1 enp1s0: 172.16.0.11</p>
+
+
+
+<p>web2 enp1s0: 172.16.0.12</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                      proxy1                                       web1
+                      enp7s0:172.16.1.101 enp1s0:172.16.0.101      enp1s0:172.16.0.11
+                      virtual IP:172.16.1.100
+client
+enp1s0:172.16.1.99
+                      proxy2                                       web2
+                      enp7s0:172.16.1.102 enp1s0:172.16.0.102      enp1s0:172.16.0.12</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>1) web1 安装 Nginx，web2 安装 Apache 实现网站服务<br>2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡<br>3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 网卡上，如果 proxy1 宕机或者检测到自己 Nginx 代理进程死掉，则虚拟 IP 172.16.1.90 则挂在 proxy2 的 enp7s0 网卡上实现高可用<br>4) 如果 web1 和 web2 中有一台服务器宕机，则 proxy1 和 proxy2 会自动不再向这台服务器请求网站服务，直到它恢复正常<br>5) 最终达到的效果是 client 向虚拟 IP 请求网站服务，此时如果 proxy1 正常就代表虚拟 IP 轮询调度 web1 和 web2 上的网站服务，再返回给 client。如果 proxy1 宕机则由 proxy2 代表虚拟 IP 完成次操作</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) client 的 enp1s0 网卡、proxy1 的 enp7s0 网卡和 proxy2 的 enp7s0 网卡要可以相互 ping 通自己和对方的 IP<br>7) proxy1 的 enp1s0 网卡、proxy2 的 enp1s0 网卡、web1 的 enp1s0 网卡和 web2 的 enp1s0 网卡要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：搭建网站服务</h3>
+
+
+
+<h4>3.1 在 web1 上搭建网站服务</h4>
+
+
+
+<h5>3.1.1 在 web1 上安装 Nginx</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 给 web1 制定网页</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web1 &gt; /usr/share/nginx/html/index.html</code></pre>
+
+
+
+<h5>3.1.3 启动 Nginx 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h4>3.2 在 web2 上搭建网站服务</h4>
+
+
+
+<h5>3.2.1 在 web2 上安装 Apache</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 给 web2 制定网页</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web2 &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 Apache 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now httpd</code></pre>
+
+
+
+<h3>步骤四：搭建代理服务</h3>
+
+
+
+<h4>4.1 安装 Nginx</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h4>4.2 修改 Nginx 配置文件</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+    upstream webserver {
+        server 172.16.0.11:80;
+        server 172.16.0.12:80;
+    }
+......
+    server {
+        listen       80;
+
+        location / {
+        proxy_pass http://webserver;/
+        }
+    }
+......
+}</code></pre>
+
+
+
+<h4>4.3 启动 Nginx 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h3>步骤五：搭建高可用服务</h3>
+
+
+
+<h4>5.1 安装 Keepalived</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install keepalived</code></pre>
+
+
+
+<h4>5.2 创建 Keepalived 检查脚本</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/keepalived/nginx_check.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+    systemctl stop nginx
+    sleep 5
+    if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+        systemctl stop keepalived
+    fi
+fi</code></pre>
+
+
+
+<p>（补充：这里以检测 Nginx 没启动就启动 Nginx，5 秒后 Nginx 要是还没有启动就关闭 keepalived 为例）</p>
+
+
+
+<h4>5.3 修改 proxy1 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 101
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 101，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.4 修改 proxy2 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 99
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 99，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.5 启动 Keepalived 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now keepalived.service</code></pre>
+
+
+
+<h3>步骤六：测试网站负载均衡加高可用</h3>
+
+
+
+<h4>6.1 正常情况下测试网站服务</h4>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+
+
+
+<h4>6.2 在单节点故障的情况下测试网站服务</h4>
+
+
+
+<h5>6.2.1 关闭 proxy1、proxy2、web1、web2 中的任意一台服务器</h5>
+
+
+
+<p>（只在 proxy1、proxy2、web1、web2 中的任意一台服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>6.2.2 测试网站服务</h5>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] HAproxy 代理的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/haproxy-agent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 21 Jan 2021 14:28:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[HAProxy]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13237</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程 步骤一：拓扑规划 1.1 服务器列表 client eth0:10.0.0.10/24proxy eth0:10.0.0.5/24eth1:10.0.1.5/24web1 eth1:10.0.1.100/24web2 eht1:10.0.1.200/24 1.2 拓扑图 1.3 拓扑图简介 （1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client（4）最终实现单点代理器，双网站热备份 步骤二： 系统环境要求 （1）所有服务器的系统都需要是 CentOS 8 版本（2）所有服务器都要关闭防火墙（3）所有服务器都要关闭 SELinux（4）所有服务器系统都要配置好可用的软件源（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址 步骤三：部署集群环境 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/haproxy-agent/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] HAproxy 代理的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑规划</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client eth0:10.0.0.10/24<br>proxy eth0:10.0.0.5/24<br>eth1:10.0.1.5/24<br>web1 eth1:10.0.1.100/24<br>web2 eht1:10.0.1.200/24</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                                           web1
+                                           eth1:10.0.1.100/24
+     client                proxy     
+eth0:10.0.0.10/24    eth0:10.0.0.5/24  
+                     eth1:10.0.1.5/24
+                                           web2
+                                           eht2:10.0.1.200/24</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>（1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求<br>（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2<br>（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client<br>（4）最终实现单点代理器，双网站热备份</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>（1）所有服务器的系统都需要是 CentOS 8 版本<br>（2）所有服务器都要关闭防火墙<br>（3）所有服务器都要关闭 SELinux<br>（4）所有服务器系统都要配置好可用的软件源<br>（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：部署集群环境</h3>
+
+
+
+<h4>3.1 在 proxy 上安装 HAporxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install haproxy</code></pre>
+
+
+
+<h4>3.2 在 web1 上安装 web 服务</h4>
+
+
+
+<h5>3.2.1 安装 httpd</h5>
+
+
+
+<p>(只在 web1 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 创建网页文件</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.100" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h4>3.3 在 web2 上安装 web 服务</h4>
+
+
+
+<h5>3.3.1 安装 httpd</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.3.2 创建网页文件</h5>
+
+
+
+<p>(只在 web2 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.200" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.3.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h3>步骤四：配置 HAproxy 实现 web 负载均衡代理集群</h3>
+
+
+
+<h4>4.1 开启 proxy 的路由转发</h4>
+
+
+
+<h5>4.1.1 在 sysctl.conf 文件里添加路由转发功能</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysctl.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>net.ipv4.ip_forward = 1</code></pre>
+
+
+
+<h5>4.1.2 使刚刚添加的功能生效</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sysctl -p</code></pre>
+
+
+
+<h4>4.2 修改 proxy 上的 HAproxy 配置文件</h4>
+
+
+
+<p>(只在 proxy 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/haproxy/haproxy.cfg</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>#---------------------------------------------------------------------
+# Example configuration for a possible web application.  See the
+# full configuration options online.
+#
+#   https://www.haproxy.org/download/1.8/doc/configuration.txt
+#
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    # to have these messages end up in /var/log/haproxy.log you will
+    # need to:
+    #
+    # 1) configure syslog to accept network log events.  This is done
+    #    by adding the '-r' option to the SYSLOGD_OPTIONS in
+    #    /etc/sysconfig/syslog
+    #
+    # 2) configure local2 events to go to the /var/log/haproxy.log
+    #   file. A line like the following can be added to
+    #   /etc/sysconfig/syslog
+    #
+    #    local2.*                       /var/log/haproxy.log
+    #
+    log         127.0.0.1 local2
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+
+    # turn on stats unix socket
+    stats socket /var/lib/haproxy/stats
+
+    # utilize system-wide crypto-policies
+    ssl-default-bind-ciphers PROFILE=SYSTEM
+    ssl-default-server-ciphers PROFILE=SYSTEM
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+
+#---------------------------------------------------------------------
+# main frontend which proxys to the backends
+#---------------------------------------------------------------------
+frontend main
+    bind *:80
+    acl url_static       path_beg       -i /static /images /javascript /stylesheets
+    acl url_static       path_end       -i .jpg .gif .png .css .js
+
+    use_backend static          if url_static
+    default_backend             app
+
+#---------------------------------------------------------------------
+# static backend for serving up images, stylesheets and such
+#---------------------------------------------------------------------
+backend static
+    balance     roundrobin
+    server      static 127.0.0.1:80 check
+
+#---------------------------------------------------------------------
+# round robin balancing between the various backends
+#---------------------------------------------------------------------
+backend app
+    balance     roundrobin
+    server  app1 10.0.1.100:80 check
+    server  app2 10.0.1.200:80 check</code></pre>
+
+
+
+<h4>4.3 设置开机自动启动 HAproxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start haproxy ; systemctl enable haproxy</code></pre>
+
+
+
+<h3>步骤五：测试 Haproxy 代理集群</h3>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 10.10.10.5</code></pre>
+
+
+
+<p>（注意：这一步需要多做几次）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Samba 远程共享服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/samba-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 24 Jul 2020 07:40:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Samba]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10243</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 7 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.101.41客户端 192.168.101.42 1.2 服务器列表简介 1) 服务器提供 Samba 服务将自己的目录分享2) 客户端挂载和使用 Samba 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 8 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要打开 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：在服务端上安装 Samba 服务 （只在服务端上执行以下步骤） 步骤四：在服务端上配置 Samba 服务 4.1 在服务端上配置 Samba 服务文件 （只在服务端上执行以下步骤） 将全部内容修改如下： （补充：1) 这里的 workgroup = &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/samba-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Samba 远程共享服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2020 年 7 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.101.41<br>客户端 192.168.101.42</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 Samba 服务将自己的目录分享<br>2) 客户端挂载和使用 Samba 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要打开 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-在服务端上安装-samba-服务">步骤三：在服务端上安装 Samba 服务</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install samba</code></pre>
+
+
+
+<h3 id="步骤四-在服务端上配置-samba-服务4-1-在服务端上配置-samba-服务文件">步骤四：在服务端上配置 Samba 服务</h3>
+
+
+
+<h4 id="步骤四-在服务端上配置-samba-服务4-1-在服务端上配置-samba-服务文件">4.1 在服务端上配置 Samba 服务文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/samba/smb.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># See smb.conf.example for a more detailed config file or
+# read the smb.conf manpage.
+# Run 'testparm' to verify the config is correct after
+# you modified it.
+
+&#91;global]
+workgroup = WORKGROUP
+realm = zhumingyu
+netbios name = zhumingyu
+#encrypt passwords = yes
+map to guest = NEVER
+security = user
+password server = *
+name resolve order = bcast host
+restrict anonymous = 2
+#null passwords = no
+#guest account = smb_nobody
+#use spnego = yes
+client use spnego = yes
+server string = ""
+host msdfs = no
+msdfs root = no
+domain master = no
+preferred master = no
+local master = no
+os level = 0
+browse list = no
+browseable = no
+dns proxy = no
+wide links = no
+public= no
+guest ok = no
+hosts deny = ALL EXCEPT 192.168.101.42
+
+&#91;sharetest]
+valid users = zhumingyu
+write list = zhumingyu
+read list = zhumingyu
+path = /share
+guest ok = no
+read only = no
+browseable = no
+writable = yes
+public = no
+create mask = 0755
+directory mask = 0755</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 workgroup = WORKGROUP 是让 Samba 服务属于 WORKGROUP<br>2) 这里的 hosts deny = ALL EXCEPT 192.168.101.42 是只让客户端 192.168.101.42 能够访问服务端的 Samba<br>3) 这里的 sharetest 是这个 Samba 挂载点的名称，挂载这个挂载点的格式就是：//192.168.101.41/sharetest<br>4) 这里的 valid users = zhumingyu 是 Samba 服务共享用户需要手动生成，如果换成让所有的服务共享用户都可以使用则可以写成 valid users = @users<br>5) 这里的 path = /share 是 Samba 服务共享目录需要手动生成<br>）</p>
+
+
+
+<h4 id="4-2-在服务端上生成-samba-服务共享用户4-2-1-在服务端上生成-samba-服务共享用户">4.2 在服务端上生成 Samba 服务共享用户</h4>
+
+
+
+<h5 id="4-2-在服务端上生成-samba-服务共享用户4-2-1-在服务端上生成-samba-服务共享用户">4.2.1 在服务端上生成 Samba 服务共享用户</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># useradd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以创建用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="4-2-2-在服务端上给-samba-服务共享用户设置系统密码">4.2.2 在服务端上给 Samba 服务共享用户设置系统密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># passwd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以给 zhumingyu 设置密码为例）</p>
+
+
+
+<h5 id="4-2-3-在服务端上给-samba-服务共享用户设置-samba-共享密码">4.2.3 在服务端上给 Samba 服务共享用户设置 Samba 共享密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># smbpasswd -a zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以给 zhumingyu 用户设置 Samba 共享密码为例）</p>
+
+
+
+<h5 id="4-2-4-显示samba-服务共享用户是否可用">4.2.4 显示Samba 服务共享用户是否可用</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pdbedit -L</code></pre>
+
+
+
+<h4 id="4-3-在服务端上生成-samba-服务共享目录4-3-1-在服务端上生成-samba-服务共享目录">4.3 在服务端上生成 Samba 服务共享目录</h4>
+
+
+
+<h5 id="4-3-在服务端上生成-samba-服务共享目录4-3-1-在服务端上生成-samba-服务共享目录">4.3.1 在服务端上生成 Samba 服务共享目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /share</code></pre>
+
+
+
+<p>（补充：这里以创建目录 /share 为例）</p>
+
+
+
+<h5 id="4-3-2-在服务端上给-samba-服务共享目录设置权限">4.3.2 在服务端上给 Samba 服务共享目录设置权限</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /share</code></pre>
+
+
+
+<p>（补充：这里以给 /share 目录设置 755 权限为例）</p>
+
+
+
+<h5 id="4-3-3-在服务端上给-samba-服务共享目录设置所属主和所属组">4.3.3 在服务端上给 Samba 服务共享目录设置所属主和所属组</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<p>如果是 CentOS Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code># chown zhumingyu:zhumingyu /share</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code># chown zhumingyu:users /share</code></pre>
+
+
+
+<p>（补充：这里以将 /share 目录的所属主设置成 zhumingyu 为例）</p>
+
+
+
+<h5 id="4-3-4-在服务端上给-samba-服务共享目录设置-selinux-标签">4.3.4 在服务端上给 Samba 服务共享目录设置 SELinux 标签</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># semanage fcontext -a -t samba_share_t '/share(/.*)?'</code></pre>
+
+
+
+<p>（补充：这里以给 /share 目录打上 samba_share_t SELinux 标签为例）</p>
+
+
+
+<h5 id="4-3-5-在服务端上让-samba-服务共享目录上的-selinux-标签立刻生效">4.3.5 在服务端上让 Samba 服务共享目录上的 SELinux 标签立刻生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># restorecon -RFvv /share/</code></pre>
+
+
+
+<h3 id="步骤五-启动-samba-服务并设置为开机自动启动">步骤五：启动 Samba 服务并设置为开机自动启动</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now smb</code></pre>
+
+
+
+<h3 id="步骤六-客户端使用服务端-samba-服务6-1-在客户端上安装-samba-客户端软件">步骤六：客户端使用服务端 Samba 服务</h3>
+
+
+
+<h4 id="步骤六-客户端使用服务端-samba-服务6-1-在客户端上安装-samba-客户端软件">6.1 在客户端上安装 Samba 客户端软件</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install samba-client cifs-utils</code></pre>
+
+
+
+<h4 id="6-2-在客户端上测试服务端的-samba-服务">6.2 在客户端上测试服务端的 Samba 服务</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># smbclient --user=zhumingyu -L //192.168.101.41</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># smbclient //192.168.101.41/sharetest -U zhumingyu
+smb: \&gt; ls
+smb: \&gt; exit</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 测试 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录为例）</p>
+
+
+
+<h4 id="6-3-在客户端上挂载服务端的-samba-目录6-3-1-手动挂载的方法">6.3 在客户端上挂载服务端的 Samba 目录</h4>
+
+
+
+<h5 id="6-3-在客户端上挂载服务端的-samba-目录6-3-1-手动挂载的方法">6.3.1 手动挂载的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mount -t cifs -o dir_mode=0755,file_mode=0755,username=zhumingyu,password=1,sec=ntlmssp //192.168.101.41/sharetest /tmp</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 密码为 1，目录权限为 0755，文件权限为 0755，挂载 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录到本地的 /tmp 目录为例）</p>
+
+
+
+<p>（注意：用户和密码不能一样，否则会报错）</p>
+
+
+
+<h5 id="6-3-2-自动挂载的方法">6.3.2 自动挂载的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstable</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+# //192.168.101.41/sharetest /tmp cifs defaults,rw,dir_mode=0755,file_mode=0755,username=zhumingyu,password=1 0 0</code></pre>
+
+
+
+<p>（补充：这里以通过用户 zhumingyu 密码为 1，目录权限为 0755，文件权限为 0755，挂载 IP 地址 192.168.101.41 的 /sharetest Samba 共享目录到本地的 /tmp 目录为例）</p>
+
+
+
+<p>（注意：用户和密码不能一样，否则会报错）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] 自动挂载服务的搭建 （通过 Autofs 和 NFS 实现） （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/autofs-linux-centos8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 26 Jun 2020 16:07:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9969</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 6 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.101.10客户端 192.168.101.11 1.2 服务器列表简介 1) 服务器提供 NFS 服务将自己的目录分享2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 8 版本2) 所有服务器都要关闭防火墙3) 所有服务器系统都要配置好可用的软件源4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有服务器安装 NFS 服务 3.1 所有服务器安装 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.2 设置所有服务器开机自启 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.3 所有服务器启动 NFS 服务 （分别在服务端和客户端上执行以下步骤） 步骤四：配置 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/autofs-linux-centos8/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] 自动挂载服务的搭建 （通过 Autofs 和 NFS 实现） （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 6 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.101.10<br>客户端 192.168.101.11</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 NFS 服务将自己的目录分享<br>2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器系统都要配置好可用的软件源<br>4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">步骤三：所有服务器安装 NFS 服务</h3>
+
+
+
+<h4 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">3.1 所有服务器安装 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install rpcbind nfs-utils</code></pre>
+
+
+
+<h4 id="3-2-设置所有服务器开机自启-nfs-服务">3.2 设置所有服务器开机自启 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nfs-server</code></pre>
+
+
+
+<h4 id="3-3-所有服务器启动-nfs-服务">3.3 所有服务器启动 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nfs-server</code></pre>
+
+
+
+<h3 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">步骤四：配置 NFS 服务</h3>
+
+
+
+<h4 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1 创建用于 NFS 服务的目录</h4>
+
+
+
+<h5 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1.1 创建被 NFS 服务共享的目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsshare</code></pre>
+
+
+
+<h5 id="4-1-2-创建用于自动挂载-nfs-服务分享目录的目录">4.1.2 创建用于自动挂载 NFS 服务分享目录的目录</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /autofs</code></pre>
+
+
+
+<h4 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2 配置服务端的 NFS 服务配置文件</h4>
+
+
+
+<h5 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2.1 在服务端上添加可被 NFS 服务挂载的选项</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/exports</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/nfsshare 192.168.101.0/24(rw,sync,no_root_squash,no_subtree_check)</code></pre>
+
+
+
+<p>（补充：这里的 192.168.101.0.24 是客户端的 IP 地址所在的网段）</p>
+
+
+
+<h5 id="4-2-2-让刚刚修改的-nfs-服务配置文件生效">4.2.2 让刚刚修改的 NFS 服务配置文件生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># exportfs -a</code></pre>
+
+
+
+<h4 id="4-3-部署客户端的-autofs-自动挂载服务4-3-1-安装-autofs-服务">4.3 部署客户端的 Autofs 自动挂载服务</h4>
+
+
+
+<h5 id="4-3-部署客户端的-autofs-自动挂载服务4-3-1-安装-autofs-服务">4.3.1 安装 Autofs 服务</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install autofs</code></pre>
+
+
+
+<h5 id="4-3-2-设置客户端开机自启-autofs-服务">4.3.2 设置客户端开机自启 Autofs 服务</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable autofs</code></pre>
+
+
+
+<h4 id="4-3-3-在客户端上设置-autofs-自动挂载服务4-3-3-1-在客户端上设置-autofs-自动挂载的主配置文件">4.3.3 在客户端上设置 Autofs 自动挂载服务</h4>
+
+
+
+<h5 id="4-3-3-在客户端上设置-autofs-自动挂载服务4-3-3-1-在客户端上设置-autofs-自动挂载的主配置文件">4.3.3.1 在客户端上设置 Autofs 自动挂载的主配置文件</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/auto.master</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#
+/misc   /etc/auto.misc
+#
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/misc   /etc/auto.misc
+/autofs /etc/auto.autofs
+......</code></pre>
+
+
+
+<p>（补充：在这里指定了 /etc/auto.autofs 为 Autofs 的从配置文件，并且将 autofs 的主目录设置为 /autofs）</p>
+
+
+
+<h5 id="4-3-3-2-在客户端上设置-autofs-的从配置文件">4.3.3.2 在客户端上设置 Autofs 的从配置文件</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/auto.misc /etc/auto.autofs
+# vim /etc/auto.autofs</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+cd              -fstype=iso9660,ro,nosuid,nodev :/dev/cdrom
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+cd              -fstype=iso9660,ro,nosuid,nodev :/dev/cdrom
+directory01             -fstype=nfs,rw 192.168.101.10:/nfsshare
+......</code></pre>
+
+
+
+<p>（补充：在这里指定了 Autofs 的次级目录为 directory01，即：/autofs/directory01）</p>
+
+
+
+<h5 id="4-3-4-让刚刚修改的-autofs-自动挂载服务配置文件生效">4.3.4 让刚刚修改的 Autofs 自动挂载服务配置文件生效</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart autofs</code></pre>
+
+
+
+<h3 id="步骤五-显示-autofs-自动挂载服务是否设置成功5-1-显示客户端当前的目录挂载情况">步骤五：显示 Autofs 自动挂载服务是否设置成功</h3>
+
+
+
+<h4 id="步骤五-显示-autofs-自动挂载服务是否设置成功5-1-显示客户端当前的目录挂载情况">5.1 显示客户端当前的目录挂载情况</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        957M     0  957M   0% /dev
+tmpfs           971M     0  971M   0% /dev/shm
+tmpfs           971M   17M  954M   2% /run
+tmpfs           971M     0  971M   0% /sys/fs/cgroup
+/dev/vda1        10G  1.6G  8.5G  16% /
+tmpfs           195M     0  195M   0% /run/user/0</code></pre>
+
+
+
+<h4 id="5-2-进入到-autofs-自动挂载的目录">5.2 进入到 Autofs 自动挂载的目录</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd /autofs/directory01</code></pre>
+
+
+
+<h4 id="5-3-再次显示客户端当前的目录挂载情况">5.3 再次显示客户端当前的目录挂载情况</h4>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h
+Filesystem                Size  Used Avail Use% Mounted on
+devtmpfs                  957M     0  957M   0% /dev
+tmpfs                     971M     0  971M   0% /dev/shm
+tmpfs                     971M   17M  955M   2% /run
+tmpfs                     971M     0  971M   0% /sys/fs/cgroup
+/dev/vda1                  10G  1.6G  8.5G  16% /
+tmpfs                     195M     0  195M   0% /run/user/0
+192.168.101.10:/nfsshare   10G  1.6G  8.5G  16% /autofs/directory01</code></pre>
+
+
+
+<p>（补充：在进入到 Autofs 自动挂载的目录后，自动挂载就在系统中自动出现了）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 26 Mar 2020 12:57:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8676</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 3 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 文中的 python 系统名和 mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器要关闭防火墙3) 服务器要关闭 SELinux4) 服务器系统要配置好可用的软件源5) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：1) 这里以安装 1.11.6 版本的 django 为例2) 如果向直接安装最新版本的 django 可以使用 pip install django &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 3 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名和 mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3 id="具体的操作步骤-步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器要关闭防火墙<br>3) 服务器要关闭 SELinux<br>4) 服务器系统要配置好可用的软件源<br>5) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# yum -y install python3</code></pre>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django==1.11.6
+Collecting django==1.11.6
+  Downloading https://files.pythonhosted.org/packages/82/33/f9d2871f3aed5062661711bf91b3ebb03daa52cc0e1c37925f3e0c4508c5/Django-1.11.6-py2.py3-none-any.whl (6.9MB)
+    100% |████████████████████████████████| 7.0MB 12kB/s 
+Collecting pytz (from django==1.11.6)
+  Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='pypi.org', port=443): Read timed out. (read timeout=15)",)': /simple/pytz/
+  Downloading https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl (509kB)
+    100% |████████████████████████████████| 512kB 15kB/s 
+Installing collected packages: pytz, django
+Successfully installed django-1.11.6 pytz-2019.3
+You are using pip version 9.0.3, however version 20.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(django_env) &#91;root@python project]# </code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以安装 1.11.6 版本的 django 为例<br>2) 如果向直接安装最新版本的 django 可以使用 pip install django 命令<br>）</p>
+
+
+
+<h4 id="2-5-检验-django-环境是否成功">2.5 检验 Django 环境是否成功</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# python
+Python 3.6.8 (default, Aug  7 2019, 17:28:10) 
+&#91;GCC 4.8.5 20150623 (Red Hat 4.8.5-39)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import django
+&gt;&gt;&gt; django.__version__
+'1.11.6'
+&gt;&gt;&gt; exit()</code></pre>
+
+
+
+<h3 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h4 id="3-3-django-项目目录介绍">3.3 Django 项目目录介绍</h4>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/<strong>init</strong>.py 空文件，通知 Python 此项目是一个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-启动-django-服务4-1-启动-django-服务">步骤四：启动 Django 服务</h3>
+
+
+
+<h4 id="步骤四-启动-django-服务4-1-启动-django-服务">4.1 启动 Django 服务</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python manage.py runserver 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 27, 2020 - 05:35:30
+Django version 1.11.6, using settings 'mysite.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.</code></pre>
+
+
+
+<p>（补充：这里以使用 8000 端口开启网站服务为例）</p>
+
+
+
+<h4 id="4-2-测试-django-服务">4.2 测试 Django 服务</h4>
+
+
+
+<p>通过浏览器访问以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/admin</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] VNC 远程桌面服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/vnc-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jan 2020 11:35:17 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[VNC]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8052</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 RealVNC 官网上下载使用 VNC 服务所需软件 VNC View： https://www.realvnc.com/en/ 正文： 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.100.10客户端 192.168.100.11 1.2 服务器列表简介 1) 服务器提供 VNC 服务让其他设备可以远程自己的桌面2) 客户端通过 VNC 服务远程服务器的桌面 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：服务端安装 VNC 服务 3.1 服务端 VNC 环境准备 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/vnc-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] VNC 远程桌面服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong><strong>纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 RealVNC 官网上下载使用 VNC 服务所需软件 VNC View：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://www.realvnc.com/en/" target="_blank" rel="noreferrer noopener">https://www.realvnc.com/en/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.100.10<br>客户端 192.168.100.11</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 VNC 服务让其他设备可以远程自己的桌面<br>2) 客户端通过 VNC 服务远程服务器的桌面</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">步骤三：服务端安装 VNC 服务</h3>
+
+
+
+<h4 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">3.1 服务端 VNC 环境准备</h4>
+
+
+
+<h5 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">3.1.1 在服务端上安装桌面</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupinstall "Server with GUI"
+# yum -y groupinstall "GNOME Desktop"</code></pre>
+
+
+
+<h5 id="3-1-2-在服务端上创建用于使用-vnc-的用户3-1-2-1-创建用户">3.1.2 在服务端上创建用于使用 VNC 的用户</h5>
+
+
+
+<h5 id="3-1-2-在服务端上创建用于使用-vnc-的用户3-1-2-1-创建用户">3.1.2.1 创建用户</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># useradd zhumingyu</code></pre>
+
+
+
+<h5 id="3-1-2-2-修改用户密码">3.1.2.2 修改用户密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># passwd zhumingyu</code></pre>
+
+
+
+<h4 id="3-2-服务端安装-vnc-服务">3.2 服务端安装 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tigervnc tigervnc-server</code></pre>
+
+
+
+<h3 id="步骤四-配置-vnc-服务4-1-创建-vnc-服务进程文件">步骤四：配置 VNC 服务</h3>
+
+
+
+<h4 id="步骤四-配置-vnc-服务4-1-创建-vnc-服务进程文件">4.1 创建 VNC 服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp /lib/systemd/system/vncserver\@.service /lib/systemd/system/vncserver\@:1.service</code></pre>
+
+
+
+<h4 id="4-2-编辑-vnc-服务进程文件">4.2 编辑 VNC 服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /lib/systemd/system/vncserver\@:1.service</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+&#91;Service]
+Type=forking
+
+# Clean any existing files in /tmp/.X11-unix environment
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+ExecStart=/usr/sbin/runuser -l &lt;USER&gt; -c "/usr/bin/vncserver %i"
+PIDFile=/home/&lt;USER&gt;/.vnc/%H%i.pid
+ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+
+&#91;Install]
+WantedBy=multi-user.target</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+&#91;Service]
+Type=forking
+
+# Clean any existing files in /tmp/.X11-unix environment
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+ExecStart=/usr/sbin/runuser -l zhumingyu -c "/usr/bin/vncserver %i"
+PIDFile=/home/zhumingyu/.vnc/%H%i.pid
+ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+
+&#91;Install]
+WantedBy=multi-user.target</code></pre>
+
+
+
+<h3 id="步骤五-开机自启-vnc-服务5-1-刷新所有服务进程文件">步骤五：开机自启 VNC 服务</h3>
+
+
+
+<h4 id="步骤五-开机自启-vnc-服务5-1-刷新所有服务进程文件">5.1 刷新所有服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h4 id="5-2-开机自启-vnc-服务">5.2 开机自启 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable vncserver@:1.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/vncserver@:1.service to /usr/lib/systemd/system/vncserver@:1.service.</code></pre>
+
+
+
+<h3 id="步骤六-启动-vnc-服务6-1-切换到使用-vnc-的用户">步骤六：启动 VNC 服务</h3>
+
+
+
+<h4 id="步骤六-启动-vnc-服务6-1-切换到使用-vnc-的用户">6.1 切换到使用 VNC 的用户</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<h4 id="6-2-开启-vnc-服务">6.2 开启 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vncserver :1
+
+You will require a password to access your desktops.
+
+Password:
+Verify:
+Would you like to enter a view-only password (y/n)? y
+Password:
+Verify:
+
+New 'vnc:1 (zhumingyu)' desktop is vnc:1
+
+Creating default startup script /home/zhumingyu/.vnc/xstartup
+Creating default config /home/zhumingyu/.vnc/config
+Starting applications specified in /home/zhumingyu/.vnc/xstartup
+Log file is /home/zhumingyu/.vnc/vnc:1.log</code></pre>
+
+
+
+<h4 id="6-3-补充-修改-vnc-登陆密码的方法">6.3 补充：修改 VNC 登录密码的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu
+$ vncpasswd</code></pre>
+
+
+
+<h3 id="步骤七-查看-vnc-服务是否启动成功">步骤七：确认 VNC 服务是否启动成功</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ ss -ntulap | grep 5901
+tcp    LISTEN     0      5         *:5901                  *:*                   users:(("Xvnc",pid=1152,fd=9))
+tcp    LISTEN     0      5      &#91;::]:5901               &#91;::]:*                   users:(("Xvnc",pid=1152,fd=10))</code></pre>
+
+
+
+<h3 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">步骤八：客户端使用 VNC 服务</h3>
+
+
+
+<h4 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">8.1 客户端使用 VNC 服务的前期工作</h4>
+
+
+
+<h5 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">8.1.1 在客户端上安装桌面</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupinstall "Server with GUI"
+# yum -y groupinstall "GNOME Desktop"</code></pre>
+
+
+
+<h5 id="8-1-2-客户端安装-vnc-服务的客户端">8.1.2 客户端安装 VNC 服务的客户端</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall VNC-Viewer-6.19.1115-Linux-x64.rpm</code></pre>
+
+
+
+<p>（补充：这里以安装 VNC-Viewer-6.19.1115-Linux-x64.rpm 为例）</p>
+
+
+
+<h5 id="8-1-3-客户端启动桌面">8.1.3 客户端启动桌面</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># startx</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1.png" alt="" class="wp-image-19755" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h4 id="8-2-客户端使用-vnc-服务8-2-1-客户端启动-vnc-服务的客户端">8.2 客户端使用 VNC 服务</h4>
+
+
+
+<h5 id="8-2-客户端使用-vnc-服务8-2-1-客户端启动-vnc-服务的客户端">8.2.1 客户端启动 VNC 服务的客户端</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2.png" alt="" class="wp-image-19756" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：2）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3.png" alt="" class="wp-image-19757" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：3）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4.png" alt="" class="wp-image-19758" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<h5 id="8-2-2-连接服务端的-vnc-ip-地址和端口号">8.2.2 连接服务端的 VNC IP 地址和端口号</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5.png" alt="" class="wp-image-19759" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：5）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6.png" alt="" class="wp-image-19760" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="8-2-3-输入服务端-vnc-用户的-vnc-密码">8.2.3 输入服务端 VNC 用户的 VNC 密码</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7.png" alt="" class="wp-image-19761" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h5 id="8-2-4-vnc-服务成功">8.2.4 VNC 服务成功</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8.png" alt="" class="wp-image-19762" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] NFS 远程共享服务的搭建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nfs-build-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 08 Jan 2020 06:55:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[NFS]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8024</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.1.20客户端 192.168.1.21 1.2 服务器列表简介 1) 服务器提供 NFS 服务将自己的目录分享2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上 步骤二：系统环境要求 1) 所有服务器的系统都需要是 openSUSE 15.1 版本2) 所有服务器都要关闭防火墙3) 所有服务器系统都要配置好可用的软件源（最好是软件数量最多的官方版本）4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有服务器安装 NFS 服务 3.1 所有服务器安装 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.2 设置所有服务器开机自启 NFS 服务 （分别在服务端和客户端上执行以下步骤） 3.3 所有服务器启动 NFS 服务 （分别在服务端和客户端上执行以下步骤） 步骤四：配置 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nfs-build-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] NFS 远程共享服务的搭建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h3 id="具体的操作步骤-步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="具体的操作步骤-步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.1.20<br>客户端 192.168.1.21</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 NFS 服务将自己的目录分享<br>2) 客户端挂载和使用 NFS 服务将服务端分享的目录挂载在自己的目录上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 openSUSE 15.1 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器系统都要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">步骤三：所有服务器安装 NFS 服务</h3>
+
+
+
+<h4 id="步骤三-所有服务器安装-nfs-服务3-1-所有服务器安装-nfs-服务">3.1 所有服务器安装 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install nfs-kernel-server
+# zypper install nfs-client</code></pre>
+
+
+
+<h4 id="3-2-设置所有服务器开机自启-nfs-服务">3.2 设置所有服务器开机自启 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable rpcbind
+# systemctl enable nfsserver</code></pre>
+
+
+
+<h4 id="3-3-所有服务器启动-nfs-服务">3.3 所有服务器启动 NFS 服务</h4>
+
+
+
+<p>（分别在服务端和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start rpcbind
+# systemctl start nfsserver</code></pre>
+
+
+
+<h3 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">步骤四：配置 NFS 服务</h3>
+
+
+
+<h4 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1 创建用于 NFS 服务的目录</h4>
+
+
+
+<h5 id="步骤四-配置-nfs-服务4-1-创建用于-nfs-服务的目录4-1-1-创建被-nfs-服务共享的目录">4.1.1 创建被 NFS 服务共享的目录</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsserver</code></pre>
+
+
+
+<h5 id="4-1-2-创建用于挂载-nfs-服务分享目录的目录">4.1.2 创建用于挂载 NFS 服务分享目录的目录</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /nfsclient</code></pre>
+
+
+
+<h4 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2 配置服务端的 NFS 服务配置文件</h4>
+
+
+
+<h5 id="4-2-配置服务端的-nfs-服务配置文件4-2-1-在服务端上添加可被-nfs-服务挂载的选项">4.2.1 在服务端上添加可被 NFS 服务挂载的选项</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/exports</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/nfsserver 192.168.1.21(rw,no_root_squash,no_subtree_check)</code></pre>
+
+
+
+<p>（补充：这里的 192.168.1.21 是客户端的 IP 地址）</p>
+
+
+
+<h5 id="4-2-2-让刚刚修改的-nfs-服务配置文件生效">4.2.2 让刚刚修改的 NFS 服务配置文件生效</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># exportfs -a</code></pre>
+
+
+
+<h4 id="4-3-配置客户端的-nfs-服务挂载文件4-3-1-在客户端上添加开机挂载-nfs-的选项">4.3 配置客户端的 NFS 服务挂载文件</h4>
+
+
+
+<h5 id="4-3-配置客户端的-nfs-服务挂载文件4-3-1-在客户端上添加开机挂载-nfs-的选项">4.3.1 在客户端上添加开机挂载 NFS 的选项</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+192.168.1.20:/nfsserver /nfsclient nfs  timeo=120,rw,soft,nolock  0 0</code></pre>
+
+
+
+<h5 id="4-3-2-让刚刚修改的-nfs-服务挂载文件生效">4.3.2 让刚刚修改的 NFS 服务挂载文件生效</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mount -a</code></pre>
+
+
+
+<h3 id="步骤五-查看-nfs-服务是否搭建成功">步骤五：确认 NFS 服务是否搭建成功</h3>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># df -h | grep 192.168.1.20</code></pre>
+
+
+
+<p>（补充：如果出现了类似 “192.168.1.20:/nfsserver 38G 5.5G 31G 16% /nfsclient”，则代表 NFS 搭建成功了）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群 Redis 数据库的添加和删除</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster-node/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 13:37:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7234</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 现有的 Redis 集群redis7 IP 地址:192.168.1.57 端口号：1057redis8 IP 地址:192.168.1.58 端口号：1058 （补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057） 1.2 服务器列表简介 redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中 步骤二：系统环境要求 1) 所有服务器的系统都需要是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster-node/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群 Redis 数据库的添加和删除"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-left has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-cluster/">Redis 数据库集群的搭建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>现有的 Redis 集群<br>redis7 IP 地址:192.168.1.57 端口号：1057<br>redis8 IP 地址:192.168.1.58 端口号：1058</p>
+
+
+
+<p>（补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057）</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<p>（注意：现有的 Redis 集群因为已经是创建好了的，所以不用执行以上操作）</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-安装软件包">3.2.6 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：将 Redis 数据库添加到别的集群</h3>
+
+
+
+<h4 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis7 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.57
+......
+port 1057
+......
+daemonize yes
+......
+pidfile /var/run/redis_1057.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1057.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.57 是本机的 IP 地址<br>3) 这里的 port 1057 代表数据库使用到的端口是 1057，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1057.pid 代表使用的 PID 文件是 /var/run/redis_1057.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1057.conf 代表使用的数据库配置文件是 nodes-1057.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.58
+......
+port 1058
+......
+daemonize yes
+......
+pidfile /var/run/redis_1058.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1058.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.58 是本机的 IP 地址<br>3) 这里的 port 1058 代表数据库使用到的端口是 1058，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1058.pid 代表使用的 PID 文件是 /var/run/redis_1058.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1058.conf 代表使用的数据库配置文件是 nodes-1058.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3 将 redis7 和 redis8 添加到现有的 Redis 集群中</h4>
+
+
+
+<h5 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3.1 显示现有集群的状况</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-2-添加-redis7-并将其视为主数据库">4.3.2 添加 redis7 并将其视为主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.57:1057 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-3-添加-redis8-并将其视为从数据库">4.3.3 添加 redis8 并将其视为从数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.58:1058 192.168.1.51:1051 --cluster-slave</code></pre>
+
+
+
+<h5 id="4-3-4-确认-redis7-和-redis8-已经加入到了集群中">4.3.4 确认 redis7 和 redis8 已经加入到了集群中</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 2 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 0 keys | 0 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots: (0 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4 让新加入的 redis 数据库也能存储数据</h4>
+
+
+
+<h5 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4.1 重新分配集群的存储块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 10bb6a5732f629ee62801417cb44ddb670e99e86
+......
+Source node #1: all
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h5 id="4-4-2-确认集群的存储块已经覆盖所有主数据库">4.4.2 确认集群的存储块已经覆盖所有主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 2 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;1365-5460] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots:&#91;0-1364],&#91;5461-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-将部分-redis-数据库从集群中删除">步骤五：将部分 Redis 数据库从集群中删除</h3>
+
+
+
+<p>（这里以删除 redis7 和 redis8 为例）</p>
+
+
+
+<h4 id="5-1-将存储块从要被删除的-redis-主数据库里拿走">5.1 将存储块从要被删除的 redis 主数据库里拿走</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+......
+Source node #1: 10bb6a5732f629ee62801417cb44ddb670e99e86
+Source node #2: done
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h4 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2 将部分 Redis 数据库从集群中删除</h4>
+
+
+
+<h5 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2.1 将作为主库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.57:1057 10bb6a5732f629ee62801417cb44ddb670e99e86
+&gt;&gt;&gt; Removing node 10bb6a5732f629ee62801417cb44ddb670e99e86 from cluster 192.168.1.57:1057
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</code></pre>
+
+
+
+<h5 id="5-2-2-将作为从库的-redis-数据库从集群中删除">5.2.2 将作为从库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.58:1058 023abbc600cd4fb1ca8bb7ce8c45099e186041f8
+&gt;&gt;&gt; Removing node 023abbc600cd4fb1ca8bb7ce8c45099e186041f8 from cluster 192.168.1.58:1058
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...
+&gt;&gt;&gt; SHUTDOWN the node.</code></pre>
+
+
+
+<h4 id="5-3-确认部分-redis-数据库已经从集群中删除">5.3 确认部分 Redis 数据库已经从集群中删除</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Nov 2019 14:55:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6867</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 redis1 IP 地址:192.168.1.51 端口号：1051redis2 IP 地址:192.168.1.52 端口号：1052redis3 IP 地址:192.168.1.53 端口号：1053redis4 IP 地址:192.168.1.54 端口号：1054redis5 IP 地址:192.168.1.55 端口号：1055redis6 IP 地址:192.168.1.56 端口号：1056 1.2 服务器列表简介 1) 总共 6 个数据库，3 个为主库，3 个为从库2) 如果 1 个主库宕掉则它的从库自动成为主库3) 宕掉的主库修复好后会成为新主库的从库4) 如果半数或者半数以上的主库宕掉，集群则无法使用 （注意： Redis 集群最少要有 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a rel="noreferrer noopener" href="https://redis.io/" target="_blank">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>redis1 IP 地址:192.168.1.51 端口号：1051<br>redis2 IP 地址:192.168.1.52 端口号：1052<br>redis3 IP 地址:192.168.1.53 端口号：1053<br>redis4 IP 地址:192.168.1.54 端口号：1054<br>redis5 IP 地址:192.168.1.55 端口号：1055<br>redis6 IP 地址:192.168.1.56 端口号：1056</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 总共 6 个数据库，3 个为主库，3 个为从库<br>2) 如果 1 个主库宕掉则它的从库自动成为主库<br>3) 宕掉的主库修复好后会成为新主库的从库<br>4) 如果半数或者半数以上的主库宕掉，集群则无法使用</p>
+
+
+
+<p>（注意： Redis 集群最少要有 3 个主库）</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名<br>7) 至少要有一台服务器可以访问外网</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-配置软件包">3.2.6 配置软件包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：搭建 Redis 数据库集群</h3>
+
+
+
+<h4 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 1051
+......
+daemonize yes
+......
+pidfile /var/run/redis_1051.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1051.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.51 是本机的 IP 地址<br>3) 这里的 port 1051 代表数据库使用到的端口是 1051，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1051.pid 代表使用的 PID 文件是 /var/run/redis_1051.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1051.conf 代表使用的数据库配置文件是 nodes-1051.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.52
+......
+port 1052
+......
+daemonize yes
+......
+pidfile /var/run/redis_1052.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1052.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.52 是本机的 IP 地址<br>3) 这里的 port 1052 代表数据库使用到的端口是 1052，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1052.pid 代表使用的 PID 文件是 /var/run/redis_1052.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1052.conf 代表使用的数据库配置文件是 nodes-1052.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.53
+......
+port 1053
+......
+daemonize yes
+......
+pidfile /var/run/redis_1053.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1053.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.53 是本机的 IP 地址<br>3) 这里的 port 1053 代表数据库使用到的端口是 1053，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1053.pid 代表使用的 PID 文件是 /var/run/redis_1053.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1053.conf 代表使用的数据库配置文件是 nodes-1053.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.54
+......
+port 1054
+......
+daemonize yes
+......
+pidfile /var/run/redis_1054.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1054.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.54 是本机的 IP 地址<br>3) 这里的 port 1054 代表数据库使用到的端口是 1054，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1054.pid 代表使用的 PID 文件是 /var/run/redis_1054.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1054.conf 代表使用的数据库配置文件是 nodes-1054.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.55
+......
+port 1055
+......
+daemonize yes
+......
+pidfile /var/run/redis_1055.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1055.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.55 是本机的 IP 地址<br>3) 这里的 port 1055 代表数据库使用到的端口是 1055，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1055.pid 代表使用的 PID 文件是 /var/run/redis_1055.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1055.conf 代表使用的数据库配置文件是 nodes-1055.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.56
+......
+port 1056
+......
+daemonize yes
+......
+pidfile /var/run/redis_1056.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1056.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.56 是本机的 IP 地址<br>3) 这里的 port 1056 代表数据库使用到的端口是 1056，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1056.pid 代表使用的 PID 文件是 /var/run/redis_1056.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1056.conf 代表使用的数据库配置文件是 nodes-1056.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-显示目前的集群信息">4.3 显示目前的集群信息</h4>
+
+
+
+<p>（此步骤可以在任意服务器上操作，这里以在 redis1 上操作为例）</p>
+
+
+
+<h5 id="4-3-1-进入数据库">4.3.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-3-2-显示数据库是否可用">4.3.2 显示数据库是否可用</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; ping
+PONG</code></pre>
+
+
+
+<h5 id="4-3-3-显示集群信息">4.3.3 显示集群信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:fail
+cluster_slots_assigned:0
+cluster_slots_ok:0
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:1
+cluster_size:0
+cluster_current_epoch:0
+cluster_my_epoch:0
+cluster_stats_messages_sent:0
+cluster_stats_messages_received:0</code></pre>
+
+
+
+<h4 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4 部署 Redis 集群环境</h4>
+
+
+
+<h5 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4.1 部署 Ruby 脚本运行环境</h5>
+
+
+
+<p>（此步骤可以在任意服务器上操作，但是这台服务器必须要可以访问外网，这里以在 redisA 上操作为例）</p>
+
+
+
+<h5 id="4-4-1-1-安装-ruby">4.4.1.1 安装 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install ruby rubygems ruby-devel</code></pre>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2 升级 Ruby</h5>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2.1 解压 Ruby 安装包</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf rubygems-3.0.6.tgz </code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-2-进入-ruby-安装包目录">4.4.1.2.2 进入 Ruby 安装包目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd rubygems-3.0.6</code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-3-升级-ruby">4.4.1.2.3 升级 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ruby setup.rb</code></pre>
+
+
+
+<h5 id="4-4-1-3-安装-redis-模块">4.4.1.3 安装 Redis 模块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># gem install redis -v 3.3.5
+Fetching: redis-3.3.5.gem (100%)
+Successfully installed redis-3.3.5
+Parsing documentation for redis-3.3.5
+Installing ri documentation for redis-3.3.5
+1 gem installed</code></pre>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2 部署 Redis 集群文件</h5>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2.1 创建 Redis 集群文件的目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-2-复制-redis-集群文件">4.4.2.2 复制 Redis 集群文件</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp redis-5.0.5/src/redis-trib.rb /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-3-给-redis-集群文件添加执行权限">4.4.2.3 给 Redis 集群文件添加执行权限</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /root/bin/redis-trib.rb</code></pre>
+
+
+
+<h4 id="4-5-创建-redis-集群">4.5 创建 Redis 集群</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster create 192.168.1.51:1051 192.168.1.52:1052 192.168.1.53:1053 192.168.1.54:1054 192.168.1.55:1055 192.168.1.56:1056 --cluster-replicas 1
+&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...
+Master&#91;0] -&gt; Slots 0 - 5460
+Master&#91;1] -&gt; Slots 5461 - 10922
+Master&#91;2] -&gt; Slots 10923 - 16383
+Adding replica 192.168.1.55:1055 to 192.168.1.51:1051
+Adding replica 192.168.1.56:1056 to 192.168.1.52:1052
+Adding replica 192.168.1.54:1054 to 192.168.1.53:1053
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+...
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6 显示集群中主机状态信息的方法</h4>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1 方法一</h5>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-6-1-2-显示集群整体信息">4.6.1.2 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:1
+cluster_stats_messages_ping_sent:30858
+cluster_stats_messages_pong_sent:29942
+cluster_stats_messages_sent:60800
+cluster_stats_messages_ping_received:29937
+cluster_stats_messages_pong_received:30858
+cluster_stats_messages_meet_received:5
+cluster_stats_messages_received:60800</code></pre>
+
+
+
+<h5 id="4-6-1-3-显示集群主从关系">4.6.1.3 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; cluster nodes
+eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055@11055 slave 5d030ec05f9de86ebeedc1b035b2122addaa61d8 0 1574754846521 5 connected
+a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054@11054 slave c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 0 1574754846000 4 connected
+fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056@11056 slave 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 0 1574754845819 6 connected
+5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051@11051 master - 0 1574754846822 1 connected 0-5460
+7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052@11052 master - 0 1574754846000 2 connected 5461-10922
+c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053@11053 myself,master - 0 1574754844000 3 connected 10923-16383</code></pre>
+
+
+
+<h5 id="4-6-1-4-退出数据库">4.6.1.4 退出数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; quit</code></pre>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2 方法二</h5>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2.1 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster info 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.</code></pre>
+
+
+
+<h5 id="4-6-2-2-显示集群主从关系">4.6.2.2 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">步骤五：Redis 集群创建失败的解决办法</h3>
+
+
+
+<h4 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">5.1 关闭所有 Redis服务器的 Redis 服务</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdowm</code></pre>
+
+
+
+<h4 id="5-2-删除所有原来的-redis-数据">5.2 删除所有原来的 Redis 数据</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/lib/redis/6379/*</code></pre>
+
+
+
+<h4 id="5-3-重启-redis-数据库">5.3 重启 Redis 数据库</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="5-4-按照前面的步骤重新执行创建集群">5.4 按照前面的步骤重新执行创建集群</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">步骤六：测试 Redis 集群</h3>
+
+
+
+<h4 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1 数据同步测试</h4>
+
+
+
+<h5 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.52 -p 1052</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.53 -p 1053</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.54 -p 1054</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.55 -p 1055</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.56 -p 1056</code></pre>
+
+
+
+<h5 id="6-1-2-确认现在的-redis-数据库都是空的">6.1.2 确认现在的 Redis 数据库都是空的</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *</code></pre>
+
+
+
+<h5 id="6-1-3-在主-redis-数据库上插入数据">6.1.3 在主 Redis 数据库上插入数据</h5>
+
+
+
+<p>（补充：本次的主数据库是 redis1、redis2、redis3）</p>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; set aa 101
+-&gt; Redirected to slot &#91;15495] located at 192.168.1.53:1053
+OK</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.52:1052&gt; set bb 102
+-&gt; Redirected to slot &#91;3300] located at 192.168.1.51:1051
+OK</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; set ff 103
+-&gt; Redirected to slot &#91;7365] located at 192.168.1.52:1052
+OK</code></pre>
+
+
+
+<h5 id="6-1-4-查看刚插入的数据">6.1.4 查看刚插入的数据</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 对应的从库会自动同步主库的数据<br>2) 本次的主数据库是 redis1（从库是 redis5）、redis2（从库是 redis6）、redis3（从库是 redis4)<br>)</p>
+
+
+
+<h4 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2 高可用测试</h4>
+
+
+
+<h5 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2.1 模拟此时主库宕机后，对应的从库会自动升级为主库但需要 5 分钟的时间</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdown</code></pre>
+
+
+
+<h5 id="6-2-2-等待-5-分钟后显示集群主从关系">6.2.2 等待 5 分钟后显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+
+
+
+<h5 id="6-2-3-主库恢复后会成为新主库的从库">6.2.3 主库恢复后会成为新主库的从库</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h5 id="6-2-4-再次显示集群主从关系">6.2.4 再次显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Linux 硬盘的加密 （通过 crypt 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/crypt/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 22 Nov 2019 09:01:28 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6692</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：硬盘加密后的注意事项 1) 加密后不能直接挂载2) 加密后硬盘丢失也不用担心数据被盗3) 加密后必须做映射才能挂载 步骤二：生成一个新的分区 2.1 显示现有的分区 （补充：在这里是加了一个 vdb 硬盘用来进行分区并加密） 2.2 创建一个新的分区 2.2 显示新的分区 步骤三：创建逻辑卷 3.1 创建卷组 3.2 创建逻辑卷 步骤四：给逻辑卷加密 4.1 给逻辑卷加密 4.2 解锁逻辑卷 （补充：这里的 mysqldata 是解锁后的硬件名称） 4.3 格式化逻辑卷 （注意：要先解锁了逻辑卷以后才能格式化逻辑卷） 4.4 锁住逻辑卷 内容五：自动挂载加密逻辑卷 5.1 修改系统自动挂载文件 添加以下内容： 5.2 创建一个映射器 添加以下内容： （补充：这里的三个参数分别代表：虚拟设备名、真实设备、密码的存储文件） 5.3 创建随机密钥文件 5.4 将密钥文件设为只读 5.5 将密码添到 luks 中，让密码立刻生效 5.6 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/crypt/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Linux 硬盘的加密 （通过 crypt 实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-硬盘加密后的注意事项">步骤一：硬盘加密后的注意事项</h3>
+
+
+
+<p>1) 加密后不能直接挂载<br>2) 加密后硬盘丢失也不用担心数据被盗<br>3) 加密后必须做映射才能挂载</p>
+
+
+
+<h3 id="步骤二-生成一个新的分区2-1-显示现有的分区">步骤二：生成一个新的分区</h3>
+
+
+
+<h4 id="步骤二-生成一个新的分区2-1-显示现有的分区">2.1 显示现有的分区</h4>
+
+
+
+<pre class="wp-block-code"><code># lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0   10G  0 disk 
+└─vda1 253:1    0   10G  0 part /
+vdb    253:16   0   10G  0 disk </code></pre>
+
+
+
+<p>（补充：在这里是加了一个 vdb 硬盘用来进行分区并加密）</p>
+
+
+
+<h4 id="2-2-创建一个新的分区">2.2 创建一个新的分区</h4>
+
+
+
+<pre class="wp-block-code"><code># fdisk /dev/vdb
+命令(输入 m 获取帮助)：n
+分区号 (1-8，默认 1)：
+起始 扇区 (0-20971440，默认 0)：
+Last 扇区 or +扇区 or +size{K,M,G,T,P} (0-20971440，默认 20971440)：+5G
+分区 1 已设置为 Linux native 类型，大小设为 5 GiB
+
+命令(输入 m 获取帮助)：w
+The partition table has been altered!</code></pre>
+
+
+
+<h4 id="2-2-显示新的分区">2.2 显示新的分区</h4>
+
+
+
+<pre class="wp-block-code"><code># lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sr0     11:0    1 1024M  0 rom  
+vda    253:0    0   10G  0 disk 
+└─vda1 253:1    0   10G  0 part /
+vdb    253:16   0   10G  0 disk 
+└─vdb1 253:17   0    5G  0 part </code></pre>
+
+
+
+<h3 id="步骤三-创建逻辑卷3-1-创建卷组">步骤三：创建逻辑卷</h3>
+
+
+
+<h4 id="步骤三-创建逻辑卷3-1-创建卷组">3.1 创建卷组</h4>
+
+
+
+<pre class="wp-block-code"><code># vgcreate mysqldatavg /dev/vdb1
+WARNING: sun signature detected on /dev/vdb1 at offset 508. Wipe it? &#91;y/n]: y
+  Wiping sun signature on /dev/vdb1.
+  Physical volume "/dev/vdb1" successfully created.
+  Volume group "mysqldatavg" successfully created</code></pre>
+
+
+
+<h4 id="3-2-创建逻辑卷">3.2 创建逻辑卷</h4>
+
+
+
+<pre class="wp-block-code"><code># lvcreate -n mysqldatalv -L 1G mysqldatavg
+  Logical volume "mysqldatalv" created.</code></pre>
+
+
+
+<h3>步骤四：给逻辑卷加密</h3>
+
+
+
+<h4>4.1 给逻辑卷加密</h4>
+
+
+
+<pre class="wp-block-code"><code># cryptsetup luksFormat /dev/mapper/mysqldatavg-mysqldatalv
+
+WARNING!
+========
+这将覆盖 /dev/mapper/mysqldatavg-mysqldatalv 上的数据，该动作不可取消。
+
+Are you sure? (Type uppercase yes): YES
+输入 /dev/mapper/mysqldatavg-mysqldatalv 的口令：
+确认密码：</code></pre>
+
+
+
+<h4 id="4-2-解锁逻辑卷">4.2 解锁逻辑卷</h4>
+
+
+
+<pre class="wp-block-code"><code># cryptsetup luksOpen /dev/mapper/mysqldatavg-mysqldatalv mysqldata
+输入 /dev/mapper/mysqldatavg-mysqldatalv 的口令：</code></pre>
+
+
+
+<p>（补充：这里的 mysqldata 是解锁后的硬件名称）</p>
+
+
+
+<h4 id="4-3-格式化逻辑卷">4.3 格式化逻辑卷</h4>
+
+
+
+<pre class="wp-block-code"><code># mkfs.ext4 /dev/mapper/mysqldata</code></pre>
+
+
+
+<p>（注意：要先解锁了逻辑卷以后才能格式化逻辑卷）</p>
+
+
+
+<h4 id="4-4-锁住逻辑卷">4.4 锁住逻辑卷</h4>
+
+
+
+<pre class="wp-block-code"><code># cryptsetup luksClose mysqldata</code></pre>
+
+
+
+<h3 id="内容五-自动挂载加密逻辑卷5-1-修改系统自动挂载文件">内容五：自动挂载加密逻辑卷</h3>
+
+
+
+<h4 id="内容五-自动挂载加密逻辑卷5-1-修改系统自动挂载文件">5.1 修改系统自动挂载文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/dev/mapper/mysqldata /var/lib/mysql ext4 defaults 0 0</code></pre>
+
+
+
+<h4 id="5-2-创建一个映射器">5.2 创建一个映射器</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cypttab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+mysqldata /dev/mapper/mysqldatavg-mysqldatalv /root/keyfile luks</code></pre>
+
+
+
+<p>（补充：这里的三个参数分别代表：虚拟设备名、真实设备、密码的存储文件）</p>
+
+
+
+<h4 id="5-3-创建随机密钥文件">5.3 创建随机密钥文件</h4>
+
+
+
+<pre class="wp-block-code"><code># dd if=/dev/urandom of=/root/keyfile bs=1024 count=4</code></pre>
+
+
+
+<h4 id="5-4-将密钥文件设为只读">5.4 将密钥文件设为只读</h4>
+
+
+
+<pre class="wp-block-code"><code># chmod 0400 /root/keyfile</code></pre>
+
+
+
+<h4 id="5-5-将密码添到-luks-中-让密码立刻生效">5.5 将密码添到 luks 中，让密码立刻生效</h4>
+
+
+
+<pre class="wp-block-code"><code># cryptsetup luksAddKey /dev/mysqldatavg/mysqldatalv /root/keyfile
+输入任意已存在的口令:</code></pre>
+
+
+
+<h4 id="5-6-测试挂载效果5-6-1-挂载加密逻辑卷">5.6 测试挂载效果</h4>
+
+
+
+<h5 id="5-6-测试挂载效果5-6-1-挂载加密逻辑卷">5.6.1 挂载加密逻辑卷</h5>
+
+
+
+<pre class="wp-block-code"><code># mount -a</code></pre>
+
+
+
+<h5 id="5-6-2-测试加密效果">5.6.2 测试加密效果</h5>
+
+
+
+<pre class="wp-block-code"><code># df -h</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] MySQL 的安装 （通过 RPM 软件包实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mysql-install-rpm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Nov 2019 10:38:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6586</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL： https://dev.mysql.com/downloads/mysql/ 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统需要有软件源 步骤二：部署安装 MySQL 的环境 2.1 删除系统上的 MariaDB 2.2 确保当前目录下拥有如下安装包 （补充：这里要安装的是 MySQL 是 8.0.18 社区版） 步骤三：安装 MySQL 数据库 步骤四：启动 MySQL 数据库 步骤五：修改 MySQL 数据库的 root 密码 5.1 显示初始的 root 密码 （补充：这里查出来的密码是 wAA!w,?e#M2J） 5.2 进入数据库 （补充：这里使用的密码是 wAA!w,?e#M2J） 5.3 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mysql-install-rpm/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] MySQL 的安装 （通过 RPM 软件包实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noreferrer noopener">https://dev.mysql.com/downloads/mysql/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统需要有软件源</p>
+
+
+
+<h3 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">步骤二：部署安装 MySQL 的环境</h3>
+
+
+
+<h4 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">2.1 删除系统上的 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb
+# rm -rf /var/lib/mysql/*
+# rpm -e --nodeps mariadb-server mariadb </code></pre>
+
+
+
+<h4 id="2-2-确保当前目录下拥有如下安装包">2.2 确保当前目录下拥有如下安装包</h4>
+
+
+
+<pre class="wp-block-code"><code># ls
+mysql-community-client-8.0.18-1.el7.x86_64.rpm
+mysql-community-common-8.0.18-1.el7.x86_64.rpm
+mysql-community-devel-8.0.18-1.el7.x86_64.rpm
+mysql-community-libs-8.0.18-1.el7.x86_64.rpm
+mysql-community-server-8.0.18-1.el7.x86_64.rpm</code></pre>
+
+
+
+<p>（补充：这里要安装的是 MySQL 是 8.0.18 社区版）</p>
+
+
+
+<h3 id="步骤三-安装-mysql-数据库">步骤三：安装 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall mysql-community-*</code></pre>
+
+
+
+<h3 id="步骤四-启动-mysql-数据库">步骤四：启动 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mysqld</code></pre>
+
+
+
+<h3 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">步骤五：修改 MySQL 数据库的 root 密码</h3>
+
+
+
+<h4 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">5.1 显示初始的 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code># grep 'temporary password' /var/log/mysqld.log 
+2019-11-09T09:37:31.347523Z 5 &#91;Note] &#91;MY-010454] &#91;Server] A temporary password is generated for root@localhost: wAA!w,?e#M2J</code></pre>
+
+
+
+<p>（补充：这里查出来的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-2-进入数据库">5.2 进入数据库</h4>
+
+
+
+<pre class="wp-block-code"><code># mysql -u root -p'wAA!w,?e#M2J'</code></pre>
+
+
+
+<p>（补充：这里使用的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-3-修改-root-密码">5.3 修改 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; alter user user() identified by '&lt;password&gt;';</code></pre>
+
+
+
+<h4 id="5-4-退出数据库">5.4 退出数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; quit;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] MySQL 的安装 （通过 YUM 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mysql-install-yum/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Nov 2019 10:33:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6584</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL 的 yum 源安装包： https://dev.mysql.com/downloads/repo/yum/ 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统配置好可用的软件源 步骤二：部署安装 MySQL 的环境 2.1 删除系统上的 MariaDB 2.2 安装 MySQL 的官方软件源 （补充：这里安装的是 MySQL 是 8.0.18 社区版） 步骤三：安装 MySQL 数据库 步骤四：启动 MySQL 数据库 步骤五：修改 MySQL 数据库的 root 密码 5.1 显示初始的 root 密码 （补充：这里查出来的密码是 wAA!w,?e#M2J） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mysql-install-yum/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] MySQL 的安装 （通过 YUM 实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 MySQL 的官网上下载安装数据库所需要的软件包 MySQL 的 yum 源安装包：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noreferrer noopener">https://dev.mysql.com/downloads/repo/yum/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统配置好可用的软件源</p>
+
+
+
+<h3 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">步骤二：部署安装 MySQL 的环境</h3>
+
+
+
+<h4 id="步骤二-部署安装-mysql-的环境2-1-删除系统上的-mariadb">2.1 删除系统上的 MariaDB</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb
+# rm -rf /var/lib/mysql/*
+# rpm -e --nodeps mariadb-server mariadb</code></pre>
+
+
+
+<h4 id="2-2-安装-mysql-的官方软件源">2.2 安装 MySQL 的官方软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall mysql80-community-release-el7-3.noarch.rpm</code></pre>
+
+
+
+<p>（补充：这里安装的是 MySQL 是 8.0.18 社区版）</p>
+
+
+
+<h3 id="步骤三-安装-mysql-数据库">步骤三：安装 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mysql-community-server</code></pre>
+
+
+
+<h3 id="步骤四-启动-mysql-数据库">步骤四：启动 MySQL 数据库</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mysqld</code></pre>
+
+
+
+<h3 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">步骤五：修改 MySQL 数据库的 root 密码</h3>
+
+
+
+<h4 id="步骤五-修改-mysql-数据库的-root-密码5-1-显示初始的-root-密码">5.1 显示初始的 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code># grep 'temporary password' /var/log/mysqld.log
+2019-11-09T10:04:20.237976Z 5 &#91;Note] &#91;MY-010454] &#91;Server] A temporary password is generated for root@localhost: 2gSiAAV!+c-1</code></pre>
+
+
+
+<p>（补充：这里查出来的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-2-进入数据库">5.2 进入数据库</h4>
+
+
+
+<pre class="wp-block-code"><code># mysql -u root -p'2gSiAAV!+c-1'</code></pre>
+
+
+
+<p>（补充：这里使用的密码是 wAA!w,?e#M2J）</p>
+
+
+
+<h4 id="5-3-修改-root-密码">5.3 修改 root 密码</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; alter user user() identified by '&lt;password&gt;';</code></pre>
+
+
+
+<h4 id="5-4-退出数据库">5.4 退出数据库</h4>
+
+
+
+<pre class="wp-block-code"><code>&gt; quit;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] MariaDB &#038; MySQL 主从同步的搭建 （互为主从）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-master-master/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 15:48:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB & MySQL Database Cluster (MariaDB & MySQL 数据库集群)]]></category>
+		<category><![CDATA[MariaDB & MySQL Database High Availability Cluster (MariaDB & MySQL 数据库高可用集群)]]></category>
+		<category><![CDATA[MariaDB & MySQL High Availability (高可用)]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6576</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 数据库服务器 21 IP 地址:192.168.1.21数据库服务器 22 IP 地址:192.168.1.22 1.2 服务器列表简介 数据库服务器 21 和 数据库服务器 22 相互同步对方的数据 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有数据库服务器安装 MariaDB 或 MySQL 数据库 3.1 所有数据库服务器安装 MariaDB 或 MySQL （分别在数据库服务器 21 和数据库服务器 22 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mariadb-mysql-master-master/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] MariaDB &#038; MySQL 主从同步的搭建 （互为主从）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>数据库服务器 21 IP 地址:192.168.1.21<br>数据库服务器 22 IP 地址:192.168.1.22</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>数据库服务器 21 和 数据库服务器 22 相互同步对方的数据</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-mariadb-或-mysql-数据库3-1-所有数据库服务器安装-mariadb-或-mysql">步骤三：所有数据库服务器安装 MariaDB 或 MySQL 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-mariadb-或-mysql-数据库3-1-所有数据库服务器安装-mariadb-或-mysql">3.1 所有数据库服务器安装 MariaDB 或 MySQL</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb-server</code></pre>
+
+
+
+<p>（补充：这里以安装 MariaDB 数据库为例）</p>
+
+
+
+<h4 id="3-2-设置所有数据库服务器开机自启-mariadb-或-mysql">3.2 设置所有数据库服务器开机自启 MariaDB 或 MySQL</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable mariadb</code></pre>
+
+
+
+<p>（补充：这里以开机自启 MariaDB 数据库为例）</p>
+
+
+
+<h3 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">步骤四：配置 MairaDB &amp; MySQL 互为主从结构</h3>
+
+
+
+<h4 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">4.1 将数据库服务器 22 设置为数据库服务器 21 的从库</h4>
+
+
+
+<h5 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">4.1.1 开启数据库服务器 21 的 server-id 和 binlog 日志</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/my.cnf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;mysqld]
+server-id=1
+log-bin=mariadb-bin
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server-id 设置为 1<br>2) 启动 binlog 日志，并将 binlog 日志的前缀设置为 mariadb-bin<br>为例<br>）</p>
+
+
+
+<p>（注意： 集群里的各个数据库的 server id 不能一样）</p>
+
+
+
+<h5 id="4-1-2-重启数据库服务器-21-的数据库">4.1.2 重启数据库服务器 21 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-1-3-在数据库服务器-21-的数据库中创建用于同步的用户4-1-3-1-进入数据库">4.1.3 在数据库服务器 21 的数据库中创建用于同步的用户</h5>
+
+
+
+<h5 id="4-1-3-在数据库服务器-21-的数据库中创建用于同步的用户4-1-3-1-进入数据库">4.1.3.1 进入数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-1-3-2-创建数据库服务器-21-用于被数据库服务器-22-同步的-mariadb-用户">4.1.3.2 创建数据库服务器 21 用于被数据库服务器 22 同步的 MariaDB 用户</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant replication slave on *.* to 'backup'@'192.168.1.22' identified by 'backup';</code></pre>
+
+
+
+<h5 id="4-1-3-3-刷新数据库服务器-21-里所有用户的权限">4.1.3.3 刷新数据库服务器 21 里所有用户的权限</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; flush privileges;</code></pre>
+
+
+
+<h5 id="4-1-3-4-显示数据库服务器-21-的-mariadb-的主库参数">4.1.3.4 显示数据库服务器 21 的 MariaDB 的主库参数</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show master status;
++--------------------+----------+--------------+------------------+
+| File               | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++--------------------+----------+--------------+------------------+
+| mariadb-bin.000003 |      475 |              |                  |
++--------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)</code></pre>
+
+
+
+<p>（补充：这里显示的 master_log_file 和 master_log_pos 的参数会在后面配置从库中使用）</p>
+
+
+
+<h5 id="4-1-4-让数据库服务器-22-同步数据库服务器-214-1-4-1-启动数据库服务器-22">4.1.4 让数据库服务器 22 同步数据库服务器 21</h5>
+
+
+
+<h5 id="4-1-4-让数据库服务器-22-同步数据库服务器-214-1-4-1-启动数据库服务器-22">4.1.4.1 启动数据库服务器 22</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<p>（补充：这里以启动 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-1-4-2-进入数据库服务器-22-的数据库">4.1.4.2 进入数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-1-4-3-同步主库">4.1.4.3 同步主库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; change master to master_host="192.168.1.21",master_user='backup',master_password='backup',master_log_file='mariadb-bin.000003',master_log_pos=475;</code></pre>
+
+
+
+<h5 id="4-1-4-4-启动从库状态">4.1.4.4 启动从库状态</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; start slave;</code></pre>
+
+
+
+<h5 id="4-1-4-5-显示从库状态">4.1.4.5 显示从库状态</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show slave status\G;
+          Master_Host: 192.168.1.21
+              ......
+          Slave_IO_Running: Yes  
+          Last_IO_Error: ......
+              ......
+          Slave_SQL_Running: Yes
+          Last_SQL_Error: ......
+              ......</code></pre>
+
+
+
+<p>（补充：这里显示它的主服务器是 192.168.1.21）</p>
+
+
+
+<p>（注意：这里要确保 Slave_IO_Running: 和 Slave_SQL_Running: 后面没有报错信息）</p>
+
+
+
+<h4 id="4-2-将数据库服务器-21-设置为数据库服务器-22-的从库4-2-1-关闭数据库服务器-22-的数据库">4.2 将数据库服务器 21 设置为数据库服务器 22 的从库</h4>
+
+
+
+<h5 id="4-2-将数据库服务器-21-设置为数据库服务器-22-的从库4-2-1-关闭数据库服务器-22-的数据库">4.2.1 关闭数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb</code></pre>
+
+
+
+<p>（补充：这里以停止 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-2-2-开启数据库服务器-21-的-server-id-和-binlog-日志">4.2.2 开启数据库服务器 21 的 server-id 和 binlog 日志</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/my.cnf</code></pre>
+
+
+
+<p>（将部分内容修改如下）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;mysqld]
+server-id=2
+log-bin=mariadb-bin
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server-id 设置为 2<br>2) 启动 binlog 日志，并将 binlog 日志的前缀设置为 mariadb-bin<br>为例<br>）</p>
+
+
+
+<p>（注意： 集群里的各个数据库的 server id 不能一样）</p>
+
+
+
+<h5 id="4-2-3-启动数据库服务器-22-的数据库">4.2.3 启动数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-2-4-在数据库服务器-22-的数据库中创建用于同步的用户4-2-4-1-进入数据库">4.2.4 在数据库服务器 22 的数据库中创建用于同步的用户</h5>
+
+
+
+<h5 id="4-2-4-在数据库服务器-22-的数据库中创建用于同步的用户4-2-4-1-进入数据库">4.2.4.1 进入数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-2-4-2-创建数据库服务器-21-用于被数据库服务器-22-同步的-mariadb-用户">4.2.4.2 创建数据库服务器 21 用于被数据库服务器 22 同步的 MariaDB 用户</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant replication slave on *.* to 'backup'@'192.168.1.21' identified by 'backup';</code></pre>
+
+
+
+<h5 id="4-2-4-3-刷新数据库服务器-22-数据库里所有用户的权限">4.2.4.3 刷新数据库服务器 22 数据库里所有用户的权限</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; flush privileges;</code></pre>
+
+
+
+<h5 id="4-2-4-4-显示数据库服务器-22-的-mariadb-的主库参数">4.2.4.4 显示数据库服务器 22 的 MariaDB 的主库参数</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show master status;
++--------------------+----------+--------------+------------------+
+| File               | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++--------------------+----------+--------------+------------------+
+| mariadb-bin.000003 |      475 |              |                  |
++--------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)</code></pre>
+
+
+
+<p>（补充：这里显示的 master_log_file 和 master_log_pos 的参数会在后面配置从库中使用）</p>
+
+
+
+<h5 id="4-2-5-让数据库服务器-21-同步数据库服务器-224-2-5-1-进入数据库服务器-21-的数据库">4.2.5 让数据库服务器 21 同步数据库服务器 22</h5>
+
+
+
+<h5 id="4-2-5-让数据库服务器-21-同步数据库服务器-224-2-5-1-进入数据库服务器-21-的数据库">4.2.5.1 进入数据库服务器 21 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-2-5-2-同步主库">4.2.5.2 同步主库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; change master to master_host="192.168.1.22",master_user='backup',master_password='backup',master_log_file='mariadb-bin.000003',master_log_pos=475;</code></pre>
+
+
+
+<h5 id="4-2-5-3-启动从库状态">4.2.5.3 启动从库状态</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; start slave;</code></pre>
+
+
+
+<h5 id="4-2-5-4-显示从库状态">4.2.5.4 显示从库状态</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show slave status\G;
+          Master_Host: 192.168.1.22
+              ......
+          Slave_IO_Running: Yes  
+          Last_IO_Error: ......
+              ......
+          Slave_SQL_Running: Yes
+          Last_SQL_Error: ......
+              ......</code></pre>
+
+
+
+<p>（补充：这里显示它的主服务器是 192.168.1.21）</p>
+
+
+
+<p>（注意：这里要确保 Slave_IO_Running: 和 Slave_SQL_Running: 后面没有报错信息）</p>
+
+
+
+<h3 id="步骤五-测试-mariadb-mysql-互为主从集群5-1-进入数据库">步骤五：测试 MariaDB &amp; MySQL 互为主从集群</h3>
+
+
+
+<h4 id="步骤五-测试-mariadb-mysql-互为主从集群5-1-进入数据库">5.1 进入数据库</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -uroot -p</code></pre>
+
+
+
+<h4 id="5-2-创建测试库">5.2 创建测试库</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; create database test1;</code></pre>
+
+
+
+<h4 id="5-3-进入测试库">5.3 进入测试库</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; use test1;</code></pre>
+
+
+
+<h4 id="5-4-创建测试表">5.4 创建测试表</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; create table test1a(id int(10),name char(100),age int(10));</code></pre>
+
+
+
+<p>（补充：这里随意创建了一张表格）</p>
+
+
+
+<h4 id="5-5-在数据库服务器-21-上插入测试数据">5.5 在数据库服务器 21 上插入测试数据</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; insert into test1a(id,name,age) values('1','zmy','10');</code></pre>
+
+
+
+<p>（补充：这里随意插入了一条数据）</p>
+
+
+
+<h4 id="5-6-在数据库服务器-22-上插入测试数据">5.6 在数据库服务器 22 上插入测试数据</h4>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; insert into test1a(id,name,age) values('2','ming','20');</code></pre>
+
+
+
+<p>（补充：这里随意插入了一条数据）</p>
+
+
+
+<h4 id="5-7-在两个数据库里都可以看到对方插入的测试数据">5.7 在两个数据库里都可以看到对方插入的测试数据</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; select * from test1a;
++------+------+------+
+| id   | name | age  |
++------+------+------+
+|    1 | zmy  |   10 |
+|    2 | ming |   20 |
++------+------+------+
+2 rows in set (0.00 sec)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Hadoop 大数据平台的搭建 （单机版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/hadoop-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Oct 2019 12:51:44 +0000</pubDate>
+				<category><![CDATA[Big Data (大数据)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Hadoop]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5903</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 10 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Hadoop 官网上下载搭建平台所需软件 Hadoop（本次实验使用的是 hadoop-3.2.1.tar.gz）： http://hadoop.apache.org/ 正文： 步骤一：硬件环境要求 1) CPU：双核2) 内存：2G 以上3) 硬盘：10G 以上 步骤二：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统要配置好可用的软件源3) 服务器要能 ping 通自己的主机名 步骤三：软件环境要求 3.1 安装 Hadoop 所需的 Java 环境 （补充：这里安装 java-openjdk-devel 的版本是 1.8.0） 3.2 显示本机在 Java 环境下所处的角色 步骤四：安装 Hadoop 4.1 解压 Hadoop 安装包 （补充：这里要安装的 hadoop 版本是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/hadoop-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Hadoop 大数据平台的搭建 （单机版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 10 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Hadoop 官网上下载搭建平台所需软件 Hadoop（本次实验使用的是 hadoop-3.2.1.tar.gz）：</p>
+
+
+
+<p class="has-text-align-center"><a href="http://hadoop.apache.org/" target="_blank" rel="noreferrer noopener">http://hadoop.apache.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-硬件环境要求">步骤一：硬件环境要求</h3>
+
+
+
+<p>1) CPU：双核<br>2) 内存：2G 以上<br>3) 硬盘：10G 以上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统要配置好可用的软件源<br>3) 服务器要能 ping 通自己的主机名</p>
+
+
+
+<h3 id="步骤三-软件环境要求3-1-安装-hadoop-所需的-java-环境">步骤三：软件环境要求</h3>
+
+
+
+<h4 id="步骤三-软件环境要求3-1-安装-hadoop-所需的-java-环境">3.1 安装 Hadoop 所需的 Java 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install java-1.8.0-openjdk-devel</code></pre>
+
+
+
+<p>（补充：这里安装 java-openjdk-devel 的版本是 1.8.0）</p>
+
+
+
+<h4 id="3-2-显示本机在-java-环境下所处的角色">3.2 显示本机在 Java 环境下所处的角色</h4>
+
+
+
+<pre class="wp-block-code"><code># jps</code></pre>
+
+
+
+<h3 id="步骤四-安装-hadoop4-1-解压-hadoop-安装包">步骤四：安装 Hadoop</h3>
+
+
+
+<h4 id="步骤四-安装-hadoop4-1-解压-hadoop-安装包">4.1 解压 Hadoop 安装包</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf hadoop-3.2.1.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 hadoop 版本是 3.2.1）</p>
+
+
+
+<h4 id="4-2-创建-hadoop-的安装目录">4.2 创建 Hadoop 的安装目录</h4>
+
+
+
+<pre class="wp-block-code"><code># mkdir /usr/local/hadoop</code></pre>
+
+
+
+<h4 id="4-3-安装-hadoop">4.3 安装 Hadoop</h4>
+
+
+
+<pre class="wp-block-code"><code># mv hadoop-3.2.1/* /usr/local/hadoop</code></pre>
+
+
+
+<p>（补充：这里安装的是 hadoop-3.2.1.tar.gz）</p>
+
+
+
+<h4 id="4-4-第一次启动-hadoop-会提示报错">4.4 第 1 次启动 Hadoop 会提示报错</h4>
+
+
+
+<pre class="wp-block-code"><code>/usr/local/hadoop/bin/hadoop
+Error: JAVA_HOME is not set and could not be found.</code></pre>
+
+
+
+<p>（补充：造成这种原因，主要是他找不到自己的配置文件和自己所需要的配置文件）</p>
+
+
+
+<h4 id="4-5-解决第一次启动-hadoop-报错的问题4-5-1-解决第一次启动-hadoop-报错问题的思路">4.5 解决第 1 次启动 Hadoop 报错的问题</h4>
+
+
+
+<h5 id="4-5-解决第一次启动-hadoop-报错的问题4-5-1-解决第一次启动-hadoop-报错问题的思路">4.5.1 解决第 1 次启动 Hadoop 报错问题的思路</h5>
+
+
+
+<p>先确认刚刚安装的 java-1.8.0-openjdk-devel 软件的安装位置，然后再将这个位置写到 Hadoop 的配置文件里</p>
+
+
+
+<h5 id="4-5-2-显示-java-1-8-0-openjdk-devel-软件的安装位置">4.5.2 显示 java-1.8.0-openjdk-devel 软件的安装位置</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -ql java-1.8.0-openjdk
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/bin/policytool
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libawt_xawt.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libjawt.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libjsoundalsa.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libsplashscreen.so
+/usr/share/applications/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64-policytool.desktop
+/usr/share/icons/hicolor/16x16/apps/java-1.8.0.png
+/usr/share/icons/hicolor/24x24/apps/java-1.8.0.png
+/usr/share/icons/hicolor/32x32/apps/java-1.8.0.png
+/usr/share/icons/hicolor/48x48/apps/java-1.8.0.png</code></pre>
+
+
+
+<p>（补充：可以看出这里是安装目录：/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre）</p>
+
+
+
+<h5 id="4-5-3-在-hadoop-的配置文件里指定-java-openjdk-devel-和-hadoop-配置文件的安装位置">4.5.3 在 Hadoop 的配置文件里指定 java-openjdk-devel 和 Hadoop 配置文件的安装位置</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/hadoop/etc/hadoop/hadoop-env.sh</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+54 # export JAVA_HOME=
+......
+68 # export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+54 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre"
+......
+68 export HADOOP_CONF_DIR="/usr/local/hadoop/etc/hadoop"
+......</code></pre>
+
+
+
+<h3 id="步骤五-启动-hadoop">步骤五：启动 Hadoop</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/hadoop/bin/hadoop
+Usage: hadoop &#91;OPTIONS] SUBCOMMAND &#91;SUBCOMMAND OPTIONS]
+ or    hadoop &#91;OPTIONS] CLASSNAME &#91;CLASSNAME OPTIONS]
+  where CLASSNAME is a user-provided Java class
+
+  OPTIONS is none or any of:
+
+buildpaths                       attempt to add class files from build tree
+--config dir                     Hadoop config directory
+--debug                          turn on shell script debug mode
+--help                           usage information
+hostnames list&#91;,of,host,names]   hosts to use in slave mode
+hosts filename                   list of hosts to use in slave mode
+loglevel level                   set the log4j level for this command
+workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+daemonlog     get/set the log level for each daemon
+
+    Client Commands:
+
+archive       create a Hadoop archive
+checknative   check native Hadoop and compression libraries availability
+classpath     prints the class path needed to get the Hadoop jar and the required libraries
+conftest      validate configuration XML files
+credential    interact with credential providers
+distch        distributed metadata changer
+distcp        copy file or directories recursively
+dtutil        operations related to delegation tokens
+envvars       display computed Hadoop environment variables
+fs            run a generic filesystem user client
+gridmix       submit a mix of synthetic job, modeling a profiled from production load
+jar &lt;jar&gt;     run a jar file. NOTE: please use "yarn jar" to launch YARN applications, not this
+              command.
+jnipath       prints the java.library.path
+kdiag         Diagnose Kerberos Problems
+kerbname      show auth_to_local principal conversion
+key           manage keys via the KeyProvider
+rumenfolder   scale a rumen input trace
+rumentrace    convert logs into a rumen trace
+s3guard       manage metadata on S3
+trace         view and modify Hadoop tracing settings
+version       print the version
+
+    Daemon Commands:
+
+kms           run KMS, the Key Management Server
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 的设置 （端口号、IP 地址、登录密码）</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 06:20:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5817</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在设置 Redis 端口号、IP 地址、登录密码之前需要先安装 Redis 正文： 步骤一：在设置 Redis 端口号、IP 地址和登录密码之前的准备工作 1.1 备份 Redis的 原配置文件 1.2 停止正在运行的 Redis 配置服务 步骤二：设置 Redis 端口号、 IP 地址和登录密码 2.1 修改 Redis 的配置文件 将部分内容修改如下： (补充：1) 这里的本地的 IP 地址是 192.168.1.512) 这里自定义的端口号是 63703) 这里设置的密码是 123456) 2.2 启动修改配置文件之后的 Redis 服务 2.3 显示新启动的 Redis 所使用的端口号 （补充：这里显示到的端口号是 6370） 步骤三：登录自定义了端口号、IP 地址和密码的 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-change/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 的设置 （端口号、IP 地址、登录密码）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在设置 Redis 端口号、IP 地址、登录密码之前需要先安装 Redis</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-install/">Redis 的安装方法</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="具体的操作步骤-步骤一-在设置-redis-端口号-ip-地址和登陆密码之前的准备工作1-1-备份-redis的-原配置文件">步骤一：在设置 Redis 端口号、IP 地址和登录密码之前的准备工作</h3>
+
+
+
+<h4 id="具体的操作步骤-步骤一-在设置-redis-端口号-ip-地址和登陆密码之前的准备工作1-1-备份-redis的-原配置文件">1.1 备份 Redis的 原配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/redis/6379.conf /root/6379.conf.bak</code></pre>
+
+
+
+<h4 id="1-2-停止正在运行的-redis-配置服务">1.2 停止正在运行的 Redis 配置服务</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 stop</code></pre>
+
+
+
+<h3 id="步骤二-设置-redis-端口号-ip-地址和登陆密码2-1-修改-redis-的配置文件">步骤二：设置 Redis 端口号、 IP 地址和登录密码</h3>
+
+
+
+<h4 id="步骤二-设置-redis-端口号-ip-地址和登陆密码2-1-修改-redis-的配置文件">2.1 修改 Redis 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 6370
+......
+requirepass 123456
+......</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里自定义的端口号是 6370<br>3) 这里设置的密码是 123456<br>)</p>
+
+
+
+<h4 id="2-2-启动修改配置文件之后的-redis-服务">2.2 启动修改配置文件之后的 Redis 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start
+Starting Redis server...</code></pre>
+
+
+
+<h4 id="2-3-显示新启动的-redis-所使用的端口号">2.3 显示新启动的 Redis 所使用的端口号</h4>
+
+
+
+<pre class="wp-block-code"><code># ss -antul | grep 6370
+tcp    LISTEN     0      128    192.168.4.51:6370       *:*</code></pre>
+
+
+
+<p>（补充：这里显示到的端口号是 6370）</p>
+
+
+
+<h3 id="步骤三-登陆自定义了端口号-ip-地址和密码的-redis-数据库的方法3-1-登陆方法一-在连接-redis-数据库时加上端口号-ip-地址之后再输入密码">步骤三：登录自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h3>
+
+
+
+<h4 id="步骤三-登陆自定义了端口号-ip-地址和密码的-redis-数据库的方法3-1-登陆方法一-在连接-redis-数据库时加上端口号-ip-地址之后再输入密码">3.1 登录方法一：在连接 Redis 数据库时加上端口号、IP 地址之后再输入密码</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370
+192.168.1.51:6370&gt; ping
+(error) NOAUTH Authentication required.
+192.168.1.51:6370&gt; auth 123456
+OK
+192.168.1.51:6370&gt; ping
+PONG</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+
+
+
+<h4 id="3-2-登陆方法二-在连接-redis-数据库时同时加上端口号-ip-地址和密码">3.2 登录方法二：在连接 Redis 数据库时同时加上端口号、IP 地址和密码</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370 -a 123456
+192.168.4.51:6370&gt; ping
+PONG</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+
+
+
+<h3 id="步骤四-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法4-1-使用默认的方法停止自定义了端口号-ip-地址和密码的-redis-数据库会报错">步骤四：停止自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h3>
+
+
+
+<h4 id="步骤四-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法4-1-使用默认的方法停止自定义了端口号-ip-地址和密码的-redis-数据库会报错">4.1 使用默认的方法停止自定义了端口号、IP 地址和密码的 Redis 数据库会报错</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 stop
+Stopping ...
+Could not connect to Redis at 127.0.0.1:6370: Connection refused
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+...</code></pre>
+
+
+
+<h4 id="4-2-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法">4.2 停止自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370 -a 123456 shutdown
+# ss -antul | grep 6370</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-install/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 06:04:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5808</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统需要有软件源 步骤二：安装 Redis 数据库 2.1 安装 Redis 数据库的相关依赖包 2.2 安装 Redis 数据库 2.2.1 解压安装包 （补充：这里要安装的 Redis 版本是 5.0.5） 2.2.2 进入安装包目录 （补充：这里要安装的 Redis 版本是 5.0.5） 2.2.3 编译安装包 2.2.4 安装软件包 2.2.5 进入配置目录 2.2.6 配置软件包]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统需要有软件源</p>
+
+
+
+<h3>步骤二：安装 Redis 数据库</h3>
+
+
+
+<h4>2.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4>2.2 安装 Redis 数据库</h4>
+
+
+
+<h5>2.2.1 解压安装包</h5>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5>2.2.2 进入安装包目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5>2.2.3 编译安装包</h5>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5>2.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5>2.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5>2.2.6 配置软件包</h5>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Nginx 源码软件包的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-install-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2019 09:23:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5676</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Nginx 官网上下载搭建集群所需软件 Nginx： http://nginx.org/en/download.html 正文： 步骤一：系统环境要求 （1）服务器的系统需要是 CentOS Linux 7 版本（2）服务器系统需要有 yum 源 步骤二：安装 Nginx 的依赖软件 步骤三：安装 Nginx 3.1 添加一个用于启动 Nginx 的用户身份 3.2 解压 Nginx 安装包 （补充：这里要安装的 Nginx 版本是 1.16.1） 3.3 进入 Nginx 安装包目录 （补充：这里要安装的 Nginx 版本是 1.16.1） 3.4 配置 Nginx 3.5 编译并安装 Nginx 步骤四：测试 Nginx 4.1 启动 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-install-source/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx 源码软件包的安装"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Nginx 官网上下载搭建集群所需软件 Nginx：</p>
+
+
+
+<p class="has-text-align-center"><a href="http://nginx.org/en/download.html" target="_blank" rel="noreferrer noopener">http://nginx.org/en/download.html</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>（1）服务器的系统需要是 CentOS Linux 7 版本<br>（2）服务器系统需要有 yum 源</p>
+
+
+
+<h3 id="步骤二-安装-nginx-的依赖软件">步骤二：安装 Nginx 的依赖软件</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc pcre-devel openssl-devel</code></pre>
+
+
+
+<h3 id="步骤三-安装-nginx3-1-添加一个用于启动-nginx-的用户身份">步骤三：安装 Nginx</h3>
+
+
+
+<h4 id="步骤三-安装-nginx3-1-添加一个用于启动-nginx-的用户身份">3.1 添加一个用于启动 Nginx 的用户身份</h4>
+
+
+
+<pre class="wp-block-code"><code># useradd -s /sbin/nologin nginx</code></pre>
+
+
+
+<h4 id="3-2-解压-nginx-安装包">3.2 解压 Nginx 安装包</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf nginx-1.16.1.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Nginx 版本是 1.16.1）</p>
+
+
+
+<h4 id="3-3-进入-nginx-安装包目录">3.3 进入 Nginx 安装包目录</h4>
+
+
+
+<pre class="wp-block-code"><code># cd nginx-1.16.1</code></pre>
+
+
+
+<p>（补充：这里要安装的 Nginx 版本是 1.16.1）</p>
+
+
+
+<h4 id="3-4-配置-nginx">3.4 配置 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx --with-http_ssl_module</code></pre>
+
+
+
+<h4 id="3-5-编译并安装-nginx">3.5 编译并安装 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># make &amp;&amp; make install</code></pre>
+
+
+
+<h3 id="步骤四-测试-nginx4-1-启动-nginx">步骤四：测试 Nginx</h3>
+
+
+
+<h4 id="步骤四-测试-nginx4-1-启动-nginx">4.1 启动 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx</code></pre>
+
+
+
+<h4 id="4-2-访问-nginx-实现的网页服务">4.2 访问 Nginx 实现的网页服务</h4>
+
+
+
+<pre class="wp-block-code"><code># curl 127.0.0.1</code></pre>
+
+
+
+<h4 id="4-3-显示已安装-nginx-的版本">4.3 显示已安装 Nginx 的版本</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -V</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] FTP + Pacemaker 存储服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:26:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[FTP]]></category>
+		<category><![CDATA[FTP + Pacemaker]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service High Availability Cluster (存储服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5049</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 步骤一：Pacemaker 高可用 FTP 服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 Iscasi 远程目录服务 1.2 本 Pacemaker 高可用 FTP 服务的特点 1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录2) 提供 FTP 服务4) 提供虚拟 IP 服务5) 以上三项服务器都实现高可用6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器 步骤二：前期准备所有集群主机上都安装 FTP 服务 2.1 在所有集群主机上安装 FTP （在所有集群服务器上执行以下步骤） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] FTP + Pacemaker 存储服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用 FTP 服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 Iscasi 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用 FTP 服务的特点</h4>
+
+
+
+<p>1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录<br>2) 提供 FTP 服务<br>4) 提供虚拟 IP 服务<br>5) 以上三项服务器都实现高可用<br>6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备所有集群主机上都安装 FTP 服务</h3>
+
+
+
+<h4>2.1 在所有集群主机上安装 FTP</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install vsftpd</code></pre>
+
+
+
+<h4>2.2 确保 vsftpd 服务没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop vsftpd
+# systemctl disable vsftpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的 FTP 高可用服务</h3>
+
+
+
+<h4>3.1 在 ftp 资源组中创建名为 ftpip 的虚拟 ip 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpip IPaddr2 ip=192.168.0.21 cidr_netmask=24 --group ftp</code></pre>
+
+
+
+<h4>3.2 在 ftp 资源组中创建名为 ftpfiles 挂载其他服务器的 Iscasi 服务的资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpfiles Filesystem device=192.168.8.21:/content/ftp directory=/var/ftp fstype=nfs options=ro --group ftp</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 Iscasi 服务，这个服务需要提前搭建好）</p>
+
+
+
+<h4>3.3 在 ftp 资源组中创建名为 vsftpd 的 ftp 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create vsftpd systemd:vsftpd --group ftp</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Apache + Pacemaker 网站服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:21:31 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Apache + Pacemaker]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service High Availability Cluster (网站服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5046</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群 正文： 步骤一：Pacemaker 高可用网站服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 NFS 远程目录服务 1.2 本 Pacemaker 高可用网站服务的特点 1) 使用其他服务器提供的 NFS 服务器作为网站的网页目录2) 提供网站 服务3) 提供虚拟 IP 地址服务4) 以上三项服务器都实现高可用5) 唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器 步骤二：前期准备 2.1 在所有集群服务器上安装 httpd （在所有集群服务器上执行以下步骤） 2.2 确保 httpd 不会被 SELinux 限制 （在所有集群服务器上执行以下步骤） （补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Apache + Pacemaker 网站服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的搭建</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用网站服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 NFS 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用网站服务的特点</h4>
+
+
+
+<p>1)  使用其他服务器提供的 NFS 服务器作为网站的网页目录<br>2)  提供网站 服务<br>3)  提供虚拟 IP 地址服务<br>4)  以上三项服务器都实现高可用<br>5)  唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备</h3>
+
+
+
+<h4>2.1 在所有集群服务器上安装 httpd</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h4>2.2 确保 httpd 不会被 SELinux 限制</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_use_nfs 1</code></pre>
+
+
+
+<p>（补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 NFS 服务）</p>
+
+
+
+<h4>2.3 确保 httpd 没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop httpd
+# systemctl disable httpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的网站高可用服务</h3>
+
+
+
+<h4>3.1 在 网站资源组中创建名为 webip 的虚拟 IP 地址资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webip IPaddr2 ip=192.168.0.20 cidr_netmask=24 --group=web</code></pre>
+
+
+
+<h4>3.2 在 网站资源组中创建名为 webnfs 挂载其他服务器的 NFS 服务的资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webnfs Filesystem device=192.168.8.21:/content directory=/var/www/html fstype=nfs options=ro --group web</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 NFS 服务，这个服务需要提前搭建好，可以参考 https://eternalcenter-sep-2022.github.io/nfs/ 里的内容）</p>
+
+
+
+<h4>3.3 在网站资源组中创建名为 webserver 的网站资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webserver apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status" --group web</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Pacemaker 集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/pacemaker-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 04 Aug 2019 14:26:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4964</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 pacemaker0 192.168.11.30pacemaker1 192.168.11.31pacemaker2 192.168.11.32 1.2 服务器列表简介 1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器 步骤二：服务器系统要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机 步骤三：安装并启用 pcs 3.1 在所有服务器上安装 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pacemaker-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Pacemaker 集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>pacemaker0 192.168.11.30<br>pacemaker1 192.168.11.31<br>pacemaker2 192.168.11.32</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker<br>2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效<br>3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器</p>
+
+
+
+<h3 id="步骤二-服务器系统要求">步骤二：服务器系统要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机</p>
+
+
+
+<h3 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">步骤三：安装并启用 pcs</h3>
+
+
+
+<h4 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">3.1 在所有服务器上安装 pcs 和 fence-agents-all 服务</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install pcs fence-agents-all</code></pre>
+
+
+
+<h4 id="3-2-在所有服务器防火墙上开放-pcs">3.2 在所有服务器防火墙上开放 pcs</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --permanent --add-service=high-availability
+# firewall-cmd --reload</code></pre>
+
+
+
+<h4 id="3-3-在所有服务器上启动-pcs-并设置开机自起">3.3 在所有服务器上启动 pcs ，并设置开机自起</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable pcsd
+# systemctl start pcsd</code></pre>
+
+
+
+<h3 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">步骤四：让服务器中的各主机通过 pcs 验证</h3>
+
+
+
+<h4 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">4.1 在所有服务器将 hacluster 用户的密码修改为 redhat</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo redhat | passwd --stdin hacluster</code></pre>
+
+
+
+<h4 id="4-2-在所有服务器上添加主机到-ip-地址的解析">4.2 在所有服务器上添加主机名到 IP 地址的解析</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "192.168.11.30 pacemaker0" &gt;&gt; /etc/hosts
+# echo "192.168.11.31 pacemaker1" &gt;&gt; /etc/hosts
+# echo "192.168.11.32 pacemaker2" &gt;&gt; /etc/hosts</code></pre>
+
+
+
+<h4 id="4-3-让集群里的所有服务器通过-pcs-验证">4.3 让集群里的所有服务器通过 pcs 验证</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster auth pacemaker0 pacemaker1 pacemaker2
+Username: hacluster
+Password: 
+pacemaker2: Authorized
+pacemaker1: Authorized
+pacemaker0: Authorized</code></pre>
+
+
+
+<p>（补充：这一步也可以使用 -u 和 -p 参数实现非交互式配置）</p>
+
+
+
+<h3 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">步骤五：通过 pcs 服务生成 1 个名为 mycluster 的 pcs 集群</h3>
+
+
+
+<h4 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">5.1 生成一个名为 mycluster 包含 pacemaker0 pacemaker1 pacemaker2 的集群组</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster pacemaker0 pacemaker1 pacemaker2
+Destroying cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Stopping Cluster (pacemaker)...
+pacemaker0: Stopping Cluster (pacemaker)...
+pacemaker1: Stopping Cluster (pacemaker)...
+pacemaker0: Successfully destroyed cluster
+pacemaker1: Successfully destroyed cluster
+pacemaker2: Successfully destroyed cluster
+
+Sending 'pacemaker_remote authkey' to 'pacemaker0', 'pacemaker1', 'pacemaker2'
+pacemaker1: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker0: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker2: successful distribution of the file 'pacemaker_remote authkey'
+Sending cluster config files to the nodes...
+pacemaker0: Succeeded
+pacemaker1: Succeeded
+pacemaker2: Succeeded
+
+Starting cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker0: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (pacemaker)...
+pacemaker0: Starting Cluster (pacemaker)...
+pacemaker2: Starting Cluster (pacemaker)...
+
+Synchronizing pcsd certificates on nodes pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success
+Restarting pcsd on the nodes in order to reload the certificates...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success</code></pre>
+
+
+
+<p>（<br>补充：这里可以通过以下方式强制重新生成集群</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster --force pacemaker0 pacemaker1 pacemaker2</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="5-2-让所有-pcs-集群都随-pcs-服务自动启动">5.2 让所有 pcs 集群都随 pcs 服务自动启动</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster enable --all</code></pre>
+
+
+
+<h4 id="5-3-显示-pcs-集群状态">5.3 显示 pcs 集群状态</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster status
+Cluster Status:
+ Stack: corosync
+ Current DC: pacemaker0 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
+ Last updated: Sun Aug  4 09:21:55 2019
+ Last change: Sun Aug  4 09:20:38 2019 by hacluster via crmd on pacemaker0
+ 3 nodes configured
+ 0 resources configured
+
+PCSD Status:
+  pacemaker1: Online
+  pacemaker2: Online
+  pacemaker0: Online</code></pre>
+
+
+
+<p>（注意：如果在 PCSD Status 中出现了 down ，则要确保他们的主机没有在 /etc/hosts 中 127.0.0.1 那一行中出现）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

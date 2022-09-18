@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>SUSE Repository Mirroring Tool (RMT) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/rmt/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 11 Jul 2022 08:19:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] SUSE Repository Mirroring Tool (RMT) 服务端的设置 （软件源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/suse-repository-mirroring-tool-rmt-server-repository-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Jun 2022 07:28:40 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26221</guid>
+
+					<description><![CDATA[内容一：显示软件源 1.1 显示所有的 SUSE 软件源产品 1.2 显示所有已经启用的 SUSE 软件源产品 1.3 显示所有指定版本且指定架构的 SUSE 软件源产品 （补充：这里以显示所有 15.4 版本且 x86_64 架构的 SUSE 软件源产品为例） 1.4 显示所有已启用指定版本且指定架构的 SUSE 软件源产品 （补充：这里以显示所有已其应用 15.4 版本且 x86_64 架构的 SUSE 软件源产品为例） 内容二：启用软件源 2.1 启用某个软件源 或者： 2.2 开启所有指定版本且指定架构的 SUSE 软件源产品 （补充：这里以开启所有 15.4 版本且 x86_64 架构的 SUSE 软件源产品） 内容三：取消启用软件源 3.1 取消启用某个软件源 或者： 3.2 取消所有指定版本且指定架构的 SUSE 软件源产品 （补充：这里以取消开启所有 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/suse-repository-mirroring-tool-rmt-server-repository-source/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] SUSE Repository Mirroring Tool (RMT) 服务端的设置 （软件源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示软件源</h3>
+
+
+
+<h4>1.1 显示所有的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products list --all</code></pre>
+
+
+
+<h4>1.2 显示所有已经启用的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products list</code></pre>
+
+
+
+<h4>1.3 显示所有指定版本且指定架构的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products list --all --version=15.4 --arch=x86_64</code></pre>
+
+
+
+<p>（补充：这里以显示所有 15.4 版本且 x86_64 架构的 SUSE 软件源产品为例）</p>
+
+
+
+<h4>1.4 显示所有已启用指定版本且指定架构的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products list --version=15.4 --arch=x86_64</code></pre>
+
+
+
+<p>（补充：这里以显示所有已其应用 15.4 版本且 x86_64 架构的 SUSE 软件源产品为例）</p>
+
+
+
+<h3>内容二：启用软件源</h3>
+
+
+
+<h4>2.1 启用某个软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products enable &lt;id&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products enable &lt;string&gt;</code></pre>
+
+
+
+<h4>2.2 开启所有指定版本且指定架构的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># for i in `rmt-cli products list --all --version=15.4 --arch=x86_64 | awk '{print $2}' | egrep -v '\||ID|^$'`;do rmt-cli products enable $i;done</code></pre>
+
+
+
+<p>（补充：这里以开启所有 15.4 版本且 x86_64 架构的 SUSE 软件源产品）</p>
+
+
+
+<h3>内容三：取消启用软件源</h3>
+
+
+
+<h4>3.1 取消启用某个软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products disable &lt;id&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># rmt-cli products disable &lt;string&gt;</code></pre>
+
+
+
+<h4>3.2 取消所有指定版本且指定架构的 SUSE 软件源产品</h4>
+
+
+
+<pre class="wp-block-code"><code># for i in `rmt-cli products list --all --version=15.4 --arch=x86_64 | awk '{print $2}' | egrep -v '\||ID|^$'`;do rmt-cli products disable $i;done</code></pre>
+
+
+
+<p>（补充：这里以取消开启所有 15.4 版本且 x86_64 架构的 SUSE 软件源产品）</p>
+
+
+
+<h1>参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-tools-rmt-cli</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] SUSE Repository Mirroring Tool (RMT) 服务端的设置 （网络代理）</title>
+		<link>https://eternalcenter-sep-2022.github.io/rmt-proxy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Apr 2022 11:26:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23351</guid>
+
+					<description><![CDATA[将部分内容修改如下： （补充：这里以将网络代理网址设置为 https://eternalcenter-sep-2022.github.io，网络代理端口设置为/ 8000，不使用密码为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># vim /etc/rmt.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http_client:
+  verbose: false
+  proxy: https://eternalcenter-sep-2022.github.io:8000/
+  proxy_auth: 
+  proxy_user: 
+  proxy_password: </code></pre>
+
+
+
+<p>（补充：这里以将网络代理网址设置为 https://eternalcenter-sep-2022.github.io，网络代理端口设置为/ 8000，不使用密码为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 openSUSE &#038; SLE 升级系统时报错 “Can&#8217;t get available migrations from server: SUSE::Connect::ApiError: Multiple base products found:&#8230;&#8230;”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-cant-get-available-migrations-from-server-suseconnectapierror-multiple-base-products-found/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 03 Mar 2022 08:00:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22328</guid>
+
+					<description><![CDATA[报错代码 分析 当上一次升级失败或者升级回滚了以后可能会报此类错误 解决方法 方法一：通过 SUSEConnect 命令回滚 1.1 通过 SUSEConnect 命令回滚 # SUSEConnect &#8211;rollback 1.2 重新升级 （步骤略） 步骤二：取消注册再重新注册 2.1 取消注册再重新注册 （步骤略） 2.2 重新升级 （步骤略） 参考文献： https://www.suse.com/support/kb/doc/?id=000019523]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>Can't get available migrations from server: SUSE::Connect::ApiError: Multiple base products found: ......</code></pre>
+
+
+
+<h2>分析</h2>
+
+
+
+<p>当上一次升级失败或者升级回滚了以后可能会报此类错误</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>方法一：通过 SUSEConnect 命令回滚</h3>
+
+
+
+<h4>1.1 通过 SUSEConnect 命令回滚</h4>
+
+
+
+<p># SUSEConnect &#8211;rollback</p>
+
+
+
+<h4>1.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：取消注册再重新注册</h3>
+
+
+
+<h4>2.1 取消注册再重新注册</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>2.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h1>参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://www.suse.com/support/kb/doc/?id=000019523</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] SLE 命令 SUSEConnect （注册客户端到 SUSE Repository Mirroring Tool (RMT)）</title>
+		<link>https://eternalcenter-sep-2022.github.io/suseconnect/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:27:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21968</guid>
+
+					<description><![CDATA[如果是 HTTP 协议： 或者： 如果是 HTTPS 协议： 或者：]]></description>
+										<content:encoded><![CDATA[
+<p>如果是 HTTP 协议：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect -u http://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect --url http://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>如果是 HTTPS 协议：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect -u https://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect --url https://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

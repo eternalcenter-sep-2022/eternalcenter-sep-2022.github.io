@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>SQLite &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/database/relational-database-sql/sqlite/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 10:08:57 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Django 数据的显示 （通过自带应用 admin 实现） （SQLite 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-admin-data-view/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 30 Apr 2021 07:49:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[SQLite]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14191</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 （补充：在此次操作发生时，最新的 python 版本是 3.6.12） 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-admin-data-view/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 数据的显示 （通过自带应用 admin 实现） （SQLite 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3>步骤二：安装 Django</h3>
+
+
+
+<h4>2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 python 版本是 3.6.12）</p>
+
+
+
+<h4>2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4>2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4>2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3>步骤三：创建 mysite 项目</h3>
+
+
+
+<h4>3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4>3.2 mysite 项目的目录</h4>
+
+
+
+<h5>3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5>3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5>3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3>步骤四：创建 users 应用</h3>
+
+
+
+<h4>4.1 创建 users 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp users</code></pre>
+
+
+
+<h4>4.2 users 应用的目录</h4>
+
+
+
+<h5>4.2.1 显示 users 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5>4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) users/app.py 此 Django 应用的容器<br>2) users/__init__.py 空文件，通知 python 此项目是 1 个 python 包<br>3) users/admin.py 此 Django 应用自带的后台管理相关的类<br>4) users/app.py 此 Django 应用指定应用名的文件<br>5) users/migrations.py 此 Django 应用通过 python 代码生成数据库表时里面会产生一些迁移文件<br>6) users/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) users/test.py 此 Django 应用的测试文档<br>8) users/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h3>步骤五：实现注册功能</h3>
+
+
+
+<h4>5.1 在 users 应用数据库模板中添加 users 类</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class user(models.Model):
+    tname = models.CharField(max_length=30,unique=True)
+    tpassword = models.CharField(max_length=30)</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 tname 和 tpassword 两个字符，长度为 30 个字节，其中一个为唯一为例<br>2) 主键可以不用设置，默认会自动生成一个 ID 主键<br>3) 默认表名会生成 &lt;应用名&gt;_&lt;模型类名&gt;，在这里就是 users_user<br>4) 指定要生成的表名的设置方法是：</p>
+
+
+
+<pre class="wp-block-code"><code>    class Meta:
+        db_table = '&lt;table name&gt;'</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>5.2 在 users 应用中添加一个 html 模板</h4>
+
+
+
+<p>创建 mysite/users/templates/users/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/users/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="un"&gt;User: &lt;/label&gt;&lt;input type="text" name="uname" id="un"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="up"&gt;Password: &lt;/label&gt;&lt;input type="password" name="upassword" id="up"/&gt;
+        &lt;/p&gt;
+        &lt;input type="submit" value="register"/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成一个用户名输入栏，赋值给 uname<br>2) 生成一个密码输入栏，赋值给 upassword<br>3) 生成一个 register 提交按钮<br>为例<br>）</p>
+
+
+
+<h4>5.3 在 users 应用中添加一个网页返回值的模块并将符合的数值插入数据库</h4>
+
+
+
+<p>将 mysite/users/views.py 里的内容全部修改如下:</p>
+
+
+
+<pre class="wp-block-code"><code>from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from .models import user
+
+# Create your views here.
+
+def register(request):
+    if request.method=="GET":
+        return render(request,'users/register.html')
+    else:
+        uname = request.POST.get('uname','')
+        upassword = request.POST.get('upassword','')
+
+        if uname.strip()!='' and upassword.strip()!='':
+        # confirm whether uname and upassword are null
+            nuser = user(tname=uname,tpassword=upassword)
+
+            nuser.save()
+            return HttpResponse('success!')
+        else:
+            return HttpResponse('fail')
+
+    return HttpResponse('fail')
+</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 设置 register 模块并返回 users/register.html<br>2) 设置 register 模块当网页返回模式是 POST 且 uname 和 upassword 都为非空时将数据存入数据库<br>为例<br>）</p>
+
+
+
+<h4>5.4 在 users 应用中添加一个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^register', register),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 register 链接对应 register 模块为例）</p>
+
+
+
+<h4>5.5 在 mysite 应用中添加一个链接并链接 users 的链接</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#coding=utf-8
+from django.conf.urls import url, include
+from users.views import register
+
+urlpatterns = &#91;
+......
+    url(r'^users/', include('users.urls')),
+]</code></pre>
+
+
+
+<h4>5.6 在 mysite 应用中导入 users 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>INSTALLED_APPS = &#91;
+......
+    'users',
+]</code></pre>
+
+
+
+<h4>5.7 将 Django 的模板导入 SQLite 数据库</h4>
+
+
+
+<h5>5.7.1 生成牵引文件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'users':
+  users/migrations/0001_initial.py
+    - Create model user</code></pre>
+
+
+
+<p>（补充：这里以将 users 应用的 model 模块转换成牵引文件为例）</p>
+
+
+
+<h5>5.7.2 将牵引文件导入 SQLite 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying users.0001_initial... OK</code></pre>
+
+
+
+<h3>步骤六：在 admin 应用中添加数据展示</h3>
+
+
+
+<h4>6.1 在 users 应用数据库模板中添加显示数据的配置</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+    def __str__(self):
+        return u'users:%s'%self.tname</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以将 user 类里的 tname 字段以 users:&lt;tname value&gt; 的列表形式显示为例<br>2) u 在 return u&#8217;users:%s&#8217;%self.tname 里代表正则的意思<br>）</p>
+
+
+
+<h4>6.2 在 Django 应用的 admin 应用中导入数据库模版中的 user 类</h4>
+
+
+
+<p>在 mysite/users/admin.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+from .models import user
+
+admin.site.register(user)</code></pre>
+
+
+
+<p>（补充：这里以导入 models 的 user 类为例）</p>
+
+
+
+<h4>6.3 设置 admin 应用的语言和时区</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+LANGUAGE_CODE = 'zh-Hans'
+
+TIME_ZONE = 'Asia/Shanghai'
+......</code></pre>
+
+
+
+<p>（补充：这里设置语言为汉语，时区为上海为例）</p>
+
+
+
+<h4>6.4 创建 admin 应用的用户</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py createsuperuser
+Username (leave blank to use 'root'): eternalcenter
+Email address: eternalcenter@eternalcenter.com
+Password: 
+Password (again): 
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+This password is entirely numeric.
+Bypass password validation and create user anyway? &#91;y/N]: y
+Superuser created successfully.</code></pre>
+
+
+
+<h3>步骤七：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3>步骤八：测试注册功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/users/register/</code></pre>
+
+
+
+<p>2) 当用户名输入 eternalcenter，密码输入密码 1 点击 “register” 时，返回 successful</p>
+
+
+
+<h3>步骤九：使用 admin 模块显示 SQLite 数据库里的数据</h3>
+
+
+
+<p>1) 打开网页：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/admin/</code></pre>
+
+
+
+<p>2) 使用创建的 admin 模块的用户登录<br>3) 点击 “Users”<br>4) 可以看到一条 users:eternalcenter 的数据</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Django 注册功能的实现 （SQLite 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-register-sqlite/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 29 Apr 2021 08:34:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[SQLite]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14163</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 openSUSE 15.2 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4) 服务器要能够连接外网 步骤二：安装 Django 2.1 安装 Python3 （补充：在此次操作发生时，最新的 python 版本是 3.6.12） 2.2 创建并进入 Django 项目的目录 2.3 将 Django 项目的目录指定为 Django 环境 2.4 进入 Django 环境 （补充：在此次操作发生时，最新的 Django 版本是 3.2） 步骤三：创建 mysite 项目 3.1 创建 mysite 项目 3.2 mysite 项目的目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-register-sqlite/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Django 注册功能的实现 （SQLite 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目、users 应用和 user 类只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15.2 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4) 服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装-django2-1-安装-python3">步骤二：安装 Django</h3>
+
+
+
+<h4 id="步骤二-安装-django2-1-安装-python3">2.1 安装 Python3</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# zypper -n install python3</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 python 版本是 3.6.12）</p>
+
+
+
+<h4 id="2-2-创建并进入-django-项目的目录">2.2 创建并进入 Django 项目的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python ~]# mkdir project
+&#91;root@python ~]# cd project</code></pre>
+
+
+
+<h4 id="2-3-将-django-项目的目录指定为-django-环境">2.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# python3 -m venv django_env</code></pre>
+
+
+
+<h4 id="2-4-进入-django-环境">2.4 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@python project]# source django_env/bin/activate
+(django_env) &#91;root@python project]# pip install django</code></pre>
+
+
+
+<p>（补充：在此次操作发生时，最新的 Django 版本是 3.2）</p>
+
+
+
+<h3 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">步骤三：创建 mysite 项目</h3>
+
+
+
+<h4 id="步骤三-创建-mysite-项目3-1-创建-mysite-项目">3.1 创建 mysite 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2 mysite 项目的目录</h4>
+
+
+
+<h5 id="3-2-mysite-项目的目录3-2-1-安装-tree-目录显示软件">3.2.1 安装 tree 目录显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# zypper -n install tree</code></pre>
+
+
+
+<h5 id="3-2-2-显示-mysite-项目的目录">3.2.2 显示 mysite 项目的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python project]# cd mysite
+(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+└── mysite
+    ├── __init__.py
+    ├── asgi.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+1 directory, 5 files</code></pre>
+
+
+
+<h5 id="3-2-3-django-项目目录介绍">3.2.3 Django 项目目录介绍</h5>
+
+
+
+<p>1) mysite 此 Django 项目的容器<br>2) manage.py 命令行工具，与 Django 项目进行交互<br>3) mysite/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>4) mysite/settings.py 此 Django 项目的配置文件<br>5) mysite/urls.py 此 Django 项目的 URL 声明和 Django 的网站“目录”<br>6) mysite/wsgi.py WSGI 兼容 Web 服务器的入口</p>
+
+
+
+<h3 id="步骤四-创建-users-应用4-1-创建-users-应用">步骤四：创建 users 应用</h3>
+
+
+
+<h4 id="步骤四-创建-users-应用4-1-创建-users-应用">4.1 创建 users 应用</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# django-admin startapp users
+</code></pre>
+
+
+
+<h4 id="4-2-users-应用的目录4-2-1-显示-users-应用的目录">4.2 users 应用的目录</h4>
+
+
+
+<h5 id="4-2-users-应用的目录4-2-1-显示-users-应用的目录">4.2.1 显示 users 应用的目录</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# tree
+.
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+3 directories, 13 files</code></pre>
+
+
+
+<h5 id="4-2-2-django-应用目录介绍">4.2.2 Django 应用目录介绍</h5>
+
+
+
+<p>1) users/app.py 此 Django 应用的容器<br>2) users/__init__.py 空文件，通知 Python 此项目是 1 个 Python 包<br>3) users/admin.py 此 Django 应用自带的后台管理相关的类<br>4) users/app.py 此 Django 应用指定应用名的文件<br>5) users/migrations.py 此 Django 应用通过 Python 代码生成数据库表时里面会产生一些迁移文件<br>6) users/models.py 可以在里面创建一些 Python 对象并通过这些对象在数据库里创建对应的表<br>7) users/test.py 此 Django 应用的测试文档<br>8) users/views.py 此 Django 应用的视图，接收前端数据，把数据传递给后端，响应相关页面</p>
+
+
+
+<h3 id="步骤五-实现-user-应用的层级多链接5-1-在-mysite-应用中添加一个链接并链接-users-的链接">步骤五：实现 user 应用的层级多链接</h3>
+
+
+
+<h4 id="步骤五-实现-user-应用的层级多链接5-1-在-mysite-应用中添加一个链接并链接-users-的链接">5.1 在 mysite 应用中添加 1 个链接并链接 users 的链接</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url, include
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^users/', include('users.urls')),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 page 链接对应 users 应用的链接为例）</p>
+
+
+
+<h4 id="5-2-在-mysite-应用中导入-users-应用">5.2 在 mysite 应用中导入 users 应用</h4>
+
+
+
+<p>在 mysite/mysite/settings.py 中添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+INSTALLED_APPS = &#91;
+......
+    'users',
+]
+......</code></pre>
+
+
+
+<p>（补充：这里以导入 users 应用为例）</p>
+
+
+
+<h3 id="步骤六-实现连接-sqlite-数据库6-1-在-users-应用数据库模板中添加-user-类">步骤六：实现连接 SQLite 数据库</h3>
+
+
+
+<h4 id="步骤六-实现连接-sqlite-数据库6-1-在-users-应用数据库模板中添加-user-类">6.1 在 users 应用数据库模板中添加 user 类</h4>
+
+
+
+<p>在 mysite/users/models.py 中添加以下内容:</p>
+
+
+
+<pre class="wp-block-code"><code>......
+class user(models.Model):
+    tname = models.CharField(max_length=30,unique=True)
+    tpassword = models.CharField(max_length=30)</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以创建 tname 和 tpassword 两个字符，长度为 30 个字节，其中一个为唯一为例<br>2) 主键可以不用设置，默认会自动生成一个 ID 主键<br>3) 默认表名会生成 &lt;应用名&gt;_&lt;模型类名&gt;，在这里就是 users_user<br>4) 指定要生成的表明的设置方法是：</p>
+
+
+
+<pre class="wp-block-code"><code>    class Meta:
+        db_table = '&lt;table name&gt;'</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="6-2-将-django-的模板导入-sqlite-数据库6-2-1-生成牵引文件">6.2 将 Django 的模板导入 SQLite 数据库</h4>
+
+
+
+<h5 id="6-2-将-django-的模板导入-sqlite-数据库6-2-1-生成牵引文件">6.2.1 生成牵引文件</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py makemigrations
+Migrations for 'users':
+  users/migrations/0001_initial.py
+    - Create model user</code></pre>
+
+
+
+<p>（补充：这里以将 users 应用的 model 模块转换成牵引文件为例）</p>
+
+
+
+<h5 id="6-2-2-将牵引文件导入-sqlite-数据库">6.2.2 将牵引文件导入 SQLite 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying users.0001_initial... OK</code></pre>
+
+
+
+<h3 id="步骤七-实现注册功能7-1-在-users-应用中添加一个注册功能的-html-模板">步骤七：实现注册功能</h3>
+
+
+
+<h4 id="步骤七-实现注册功能7-1-在-users-应用中添加一个注册功能的-html-模板">7.1 在 users 应用中添加 1 个注册功能的 HTML 模板</h4>
+
+
+
+<p>创建 mysite/users/templates/users/register.html 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;register&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="/users/register/" method="post"&gt;
+        {% csrf_token %}
+        &lt;p&gt;
+            &lt;label for="un"&gt;User: &lt;/label&gt;&lt;input type="text" name="uname" id="un"/&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label for="up"&gt;Password: &lt;/label&gt;&lt;input type="password" name="upassword" id="up"/&gt;
+        &lt;/p&gt;
+        &lt;input type="submit" value="register"/&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 生成 1 个用户名输入栏，赋值给 uname<br>2) 生成 1 个密码输入栏，赋值给 upassword<br>3) 生成 1 个 register 提交按钮<br>为例<br>）</p>
+
+
+
+<h4 id="7-2-在-users-应用中添加一个网页返回值的模块并将符合的数值插入数据库">7.2 在 users 应用中添加 1 个网页返回值的模块并将符合的数值插入数据库</h4>
+
+
+
+<p>将 mysite/users/views.py 里的内容全部修改如下:</p>
+
+
+
+<pre class="wp-block-code"><code>from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from .models import user
+
+# Create your views here.
+
+def register(request):
+    if request.method=="GET":
+        return render(request,'users/register.html')
+    else:
+        uname = request.POST.get('uname','')
+        upassword = request.POST.get('upassword','')
+
+        if uname.strip()!='' and upassword.strip()!='':
+        # confirm whether uname and upassword are null
+            nuser = user(tname=uname,tpassword=upassword)
+
+            nuser.save()
+            return HttpResponse('success!')
+        else:
+            return HttpResponse('fail')
+
+    return HttpResponse('fail')</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 设置 register 模块并返回 users/register.html<br>2) 从 users/register.html 中获取 uname 和 upassword 值<br>3) 设置 register 模块当网页返回模式是 POST 且 uname 和 upassword 都为非空时将数据存入数据库<br>为例<br>）</p>
+
+
+
+<h4 id="7-3-在-users-应用中添加一个链接并设置对应的模块">7.3 在 users 应用中添加 1 个链接并设置对应的模块</h4>
+
+
+
+<p>创建 mysite/users/urls.py 并添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#coding=utf-8
+from django.conf.urls import url
+from users.views import register
+
+urlpatterns = &#91;
+    url(r'^register', register),
+]</code></pre>
+
+
+
+<p>（补充：这里以设置 register 链接对应 register 模块为例）</p>
+
+
+
+<h3 id="步骤八-启动-django-服务">步骤八：启动 Django 服务</h3>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# python3 manage.py runserver</code></pre>
+
+
+
+<h3 id="步骤九-测试注册功能">步骤九：测试注册功能</h3>
+
+
+
+<p>1) 打开浏览器输入以下网址：</p>
+
+
+
+<pre class="wp-block-code"><code>http:&#47;&#47;127.0.0.1:8000/users/register/</code></pre>
+
+
+
+<p>2) 当用户名输入 eternalcenter，密码输入密码 1 点击 “register” 时，返回 successful</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

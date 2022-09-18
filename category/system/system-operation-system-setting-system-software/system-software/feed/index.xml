@@ -1,0 +1,3464 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Software (系统软件) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-operation-system-setting-system-software/system-software/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 15 Aug 2022 03:21:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] openSUSE &#038; SUSE 解决执行 systemctl enable 命令或者 systemd-sysv-install enable 命令时报错 “&#8230;..: No such file or directory”</title>
+		<link>https://eternalcenter-sep-2022.github.io/no-such-file-or-directory/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 15 Aug 2022 03:08:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27547</guid>
+
+					<description><![CDATA[报错代码 解决方法]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>......: No such file or directory</code></pre>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<pre class="wp-block-code"><code># zypper in insserv-compat</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 modprobe、rmmod、insmod、lsmod、modinfo 的使用 （管理模块）</title>
+		<link>https://eternalcenter-sep-2022.github.io/modprobe-rmmod-insmod-lsmod-modinfo/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 01 Aug 2022 06:10:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27461</guid>
+
+					<description><![CDATA[内容一：modprobe 命令的选项 1) -a 或者 &#8211;all，载入所有模块2) -c 或者 &#8211;show-conf 显示所有模块的配置信息3) -r 或者 &#8211;remove 卸载模块，必须在模块闲置不用时操作。4) -v 或者 &#8211;verbose 显示执行时的详细信息5) -V 或者 &#8211;version 显示命令的版本信息6) -h 或者 &#8211;help 显示命令的帮助信息 内容二：modprobe、insmod、rmmod、lsmod、modinfo 命令的案例 2.1 案例一：安装模块 或者： 2.2 案例二：删除模块 或者： 2.3 案例三：显示所有模块 2.4 案例四：显示某 1 个模块的详细信息]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：modprobe 命令的选项</h3>
+
+
+
+<p>1) -a 或者 &#8211;all，载入所有模块<br>2) -c 或者 &#8211;show-conf 显示所有模块的配置信息<br>3) -r 或者 &#8211;remove 卸载模块，必须在模块闲置不用时操作。<br>4) -v 或者 &#8211;verbose 显示执行时的详细信息<br>5) -V 或者 &#8211;version 显示命令的版本信息<br>6) -h 或者 &#8211;help 显示命令的帮助信息</p>
+
+
+
+<h3>内容二：modprobe、insmod、rmmod、lsmod、modinfo 命令的案例</h3>
+
+
+
+<h4>2.1 案例一：安装模块</h4>
+
+
+
+<pre class="wp-block-code"><code># modprobe floppy</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># insmod floppy</code></pre>
+
+
+
+<h4>2.2 案例二：删除模块</h4>
+
+
+
+<pre class="wp-block-code"><code># modprobe -r floppy</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># rmmod floppy</code></pre>
+
+
+
+<h4>2.3 案例三：显示所有模块</h4>
+
+
+
+<pre class="wp-block-code"><code># lsmod</code></pre>
+
+
+
+<h4>2.4 案例四：显示某 1 个模块的详细信息</h4>
+
+
+
+<pre class="wp-block-code"><code># modinfo floppy</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 常用软件</title>
+		<link>https://eternalcenter-sep-2022.github.io/common-software/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 14:01:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27074</guid>
+
+					<description><![CDATA[bash-completion 作用：用于使用 tab 键补全命令 安装方法： 或者： redhat-lsb-core 作用：可以在 CentOS Linux &#38; RHEL 上显示系统版本信息 安装方法： 或者： lsb-release 作用：可以在 openSUSE &#38; SLE 上显示系统版本信息 安装方法： vim-enhanced 作用：可以使用 vim 命令编辑文档 安装方法： 或者： xorg-x11-xauth.x86_64 和 xorg-x11-fonts-* 作用：让需要图形化环境的软件可以启动 安装方法： 或者：]]></description>
+										<content:encoded><![CDATA[
+<h3>bash-completion</h3>
+
+
+
+<p>作用：用于使用 tab 键补全命令</p>
+
+
+
+<p>安装方法：</p>
+
+
+
+<pre class="wp-block-code"><code># yum install bash-completion</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install bash-completion</code></pre>
+
+
+
+<h3>redhat-lsb-core</h3>
+
+
+
+<p>作用：可以在 CentOS Linux &amp; RHEL 上显示系统版本信息</p>
+
+
+
+<p>安装方法：</p>
+
+
+
+<pre class="wp-block-code"><code># yum install redhat-lsb-core</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install redhat-lsb-core</code></pre>
+
+
+
+<h3>lsb-release</h3>
+
+
+
+<p>作用：可以在 openSUSE &amp; SLE 上显示系统版本信息</p>
+
+
+
+<p>安装方法：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install lsb-release</code></pre>
+
+
+
+<h3>vim-enhanced</h3>
+
+
+
+<p>作用：可以使用 vim 命令编辑文档</p>
+
+
+
+<p>安装方法：</p>
+
+
+
+<pre class="wp-block-code"><code># yum install vim-enhanced</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install vim-enhanced</code></pre>
+
+
+
+<h3>xorg-x11-xauth.x86_64 和 xorg-x11-fonts-*</h3>
+
+
+
+<p>作用：让需要图形化环境的软件可以启动</p>
+
+
+
+<p>安装方法：</p>
+
+
+
+<pre class="wp-block-code"><code># yum install xorg-x11-xauth.x86_64; yum install xorg-x11-fonts-*</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install xorg-x11-xauth.x86_64; dnf install xorg-x11-fonts-*</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 软件指定版本的升级或降级 （CentOS Linux 7 版） （以系统版本作为指定维度）</title>
+		<link>https://eternalcenter-sep-2022.github.io/software-specified-version-upgarde-downgrade-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 16:00:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26495</guid>
+
+					<description><![CDATA[内容一：将软件降级到某个版本 （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 或者： （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 内容二：将软件降级到某个版本 （补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<h3>内容二：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' downgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 15:50:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26491</guid>
+
+					<description><![CDATA[步骤一：安装其他版本软件源 1.1 安装 centos-release 1.2 查看当前所有软件源 或者： 步骤二：清除 yum 缓存 2.1 除 yum 缓存 2.2 删除 yum 缓存目录 步骤三：将系统或软件升级到指定版本 3.1 方案一：将整个系统升级到指定版本 （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 或者： （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 3.2 方案二：只将系统内核或某个软件升级到指定版本 （补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例） 或者： （补充：这里以只将系统内核 kernel 升级到 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：安装其他版本软件源</h3>
+
+
+
+<h4>1.1 安装 centos-release</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install centos-release</code></pre>
+
+
+
+<h4>1.2 查看当前所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist all</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/yum.repos.d/CentOS-Vault.repo</code></pre>
+
+
+
+<h3>步骤二：清除 yum 缓存</h3>
+
+
+
+<h4>2.1 除 yum 缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h4>2.2 删除 yum 缓存目录</h4>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/cache/yum</code></pre>
+
+
+
+<h3>步骤三：将系统或软件升级到指定版本</h3>
+
+
+
+<h4>3.1 方案一：将整个系统升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<h4>3.2 方案二：只将系统内核或某个软件升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 rpm2cpio 和 cpio （提取 RPM 文件 （安装包） 里的子文件）</title>
+		<link>https://eternalcenter-sep-2022.github.io/rpm2cpio-cpio/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 Jul 2022 10:40:04 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26464</guid>
+
+					<description><![CDATA[内容一：rpm2cpio 命令和 cpio 命令的减价 1.1 rpm2cpio 命令 将 RPM 文件 （安装包） 转换为 cpio 格式 1.2 cpio 命令 从 cpio 格式中的 RPM 文件 （安装包） 中提取子文件 内容二：rpm2cpio 命令和 cpio 命令的格式 内容三：cpio 命令的选项 1) -i 即 copy-in 模式，还原 RPM 文件 （安装包） 里的子文件2) -d 在还原的过程中创建对应的目录3) -v 显示还原的过程 内容四：rpm2cpio 命令的案例 （安装 RPM 文件 （安装包）） 4.1 拷贝要安装的 RPM 文件 （安装包） 到当前目录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/rpm2cpio-cpio/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 rpm2cpio 和 cpio （提取 RPM 文件 （安装包） 里的子文件）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：rpm2cpio 命令和 cpio 命令的减价</h3>
+
+
+
+<h4>1.1 rpm2cpio 命令</h4>
+
+
+
+<p>将 RPM 文件 （安装包） 转换为 cpio 格式</p>
+
+
+
+<h4>1.2 cpio 命令</h4>
+
+
+
+<p>从 cpio 格式中的 RPM 文件 （安装包） 中提取子文件</p>
+
+
+
+<h3>内容二：rpm2cpio 命令和 cpio 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># rpm2cpio &lt;RPM file (installation package)&gt; | cpio -idv &lt;absolute path of the file&gt;</code></pre>
+
+
+
+<h3>内容三：cpio 命令的选项</h3>
+
+
+
+<p>1) -i 即 copy-in 模式，还原 RPM 文件 （安装包） 里的子文件<br>2) -d 在还原的过程中创建对应的目录<br>3) -v 显示还原的过程</p>
+
+
+
+<h3>内容四：rpm2cpio 命令的案例 （安装 RPM 文件 （安装包））</h3>
+
+
+
+<h4>4.1 拷贝要安装的 RPM 文件 （安装包） 到当前目录</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>4.2 创建用于提取 RPM 文件 （软件包） 的目录</h4>
+
+
+
+<pre class="wp-block-code"><code># mkdir bash</code></pre>
+
+
+
+<p>（补充：这里以创建 bash 目录为例）</p>
+
+
+
+<h4>4.3 进入用于提取 RPM 文件 （软件包） 的目录</h4>
+
+
+
+<pre class="wp-block-code"><code># cd bash</code></pre>
+
+
+
+<p>（补充：这里以进入 bash 目录为例）</p>
+
+
+
+<h4>4.4 提取 RPM 文件 （安装包） 里的子文件</h4>
+
+
+
+<pre class="wp-block-code"><code># rpm2cpio ../bash-4.3-83.23.1.x86_64.rpm | cpio -ivd</code></pre>
+
+
+
+<p>（补充：这里以提取 bash-4.3-83.23.1.x86_64.rpm RPM 文件 （安装包） 为例）</p>
+
+
+
+<h4>4.5 显示提取 RPM 文件 （安装包） 子文件后的目录</h4>
+
+
+
+<pre class="wp-block-code"><code># ls
+bin etc usr</code></pre>
+
+
+
+<h4>4.6 在当前目录将提取的子文件拷贝到 /bin 目录</h4>
+
+
+
+<pre class="wp-block-code"><code># cp -rpv bin/* /bin
+'bin/bash' -&gt; '/bin/bash'
+'bin/sh' -&gt; '/bin/sh'</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 软件源的设置 （SLE 版） （通过本地镜像版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-sle-local/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Jun 2022 08:10:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25888</guid>
+
+					<description><![CDATA[步骤一：加载本地镜像到系统光驱 （步骤略） 步骤二：挂载本地镜像 （补充：这里以挂载 /dev/sr1 到 /mnt 目录为例） 步骤三：添加本地镜里的软件源 3.1 添加本地镜里的软件源 （通过 zypper 命令） 或者： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例） 3.1 添加本地镜里的软件源 （通过创建配置文件） 创建以下内容： 创建以下内容： 创建以下内容： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>步骤一：加载本地镜像到系统光驱</h2>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h2>步骤二：挂载本地镜像</h2>
+
+
+
+<pre class="wp-block-code"><code># mount /dev/cdrom /mnt</code></pre>
+
+
+
+<p>（补充：这里以挂载 /dev/sr1 到 /mnt 目录为例）</p>
+
+
+
+<h2>步骤三：添加本地镜里的软件源</h2>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过 zypper 命令）</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ar file:/mnt/Module-Basesystem SLE15-Base
+# zypper ar file:/mnt/Module-Legacy SLE15-Legacy
+# zypper ar file:/mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -f /mnt/Module-Basesystem SLE15-Base
+# zypper ar -f /mnt/Module-Legacy SLE15-Legacy
+# zypper ar -f /mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过创建配置文件）</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Base.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Base]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Development-Tools</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Legacy.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Legacy]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Legacy</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Tools.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Tools]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Basesystem/</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 救援模式软件的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/resuce-rpm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Apr 2022 12:29:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23378</guid>
+
+					<description><![CDATA[步骤一：挂载官方镜像 （步骤略） 步骤二：登录拯救模式 2.1 进入拯救模式 （步骤略） 2.2 登录拯救模式 步骤三：在救援模式确定系统的根目录分区 （步骤略） （补充：1) 物理分区可以使用 lsblk 命令、fdisk -l 或 cat /proc/partitions 命令辅助确定2) 逻辑分区还可以可以使用 pvs 命令、lvs 命令或 lvdisplay 命令辅助确定） 步骤四：在救援模式将系统的分区挂载到救援模式的 /mnt 目录 4.1 在救援模式将系统的根分区挂载到救援模式的 /mnt 目录 （补充：1) 如果是物理分区，系统的根分区就在救援模式的 /dev/ 目录里，例如救援模式的 /dev/sda12) 如果是逻辑分区，Rocky Linux &#38; RHEL 的系统根分区就是救援模式里的 /dev/&#60;volume group&#62;/&#60;logical volume&#62; 例如救援模式里的 /dev/vg/lv，openSUSE &#38; SUSE 的系统根分区就是救援模式里的 /dev/mapper/&#60;volume group&#62;-&#60;logical volume&#62; 例如救援模式里的 /dev/mapper/vg-lv） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/resuce-rpm/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 救援模式软件的安装"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：挂载官方镜像</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：登录拯救模式</h3>
+
+
+
+<h4>2.1 进入拯救模式</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>2.2 登录拯救模式</h4>
+
+
+
+<pre class="wp-block-code"><code>rescue login:root</code></pre>
+
+
+
+<h3>步骤三：在救援模式确定系统的根目录分区</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>1) 物理分区可以使用 lsblk 命令、fdisk -l 或 cat /proc/partitions 命令辅助确定<br>2) 逻辑分区还可以可以使用 pvs 命令、lvs 命令或 lvdisplay 命令辅助确定<br>）</p>
+
+
+
+<h3>步骤四：在救援模式将系统的分区挂载到救援模式的 /mnt 目录</h3>
+
+
+
+<h4>4.1 在救援模式将系统的根分区挂载到救援模式的 /mnt 目录</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # mount &lt;root spartition&gt; /mnt</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果是物理分区，系统的根分区就在救援模式的 /dev/ 目录里，例如救援模式的 /dev/sda1<br>2) 如果是逻辑分区，Rocky Linux &amp; RHEL 的系统根分区就是救援模式里的 /dev/&lt;volume group&gt;/&lt;logical volume&gt; 例如救援模式里的 /dev/vg/lv，openSUSE &amp; SUSE 的系统根分区就是救援模式里的 /dev/mapper/&lt;volume group&gt;-&lt;logical volume&gt; 例如救援模式里的 /dev/mapper/vg-lv<br>）</p>
+
+
+
+<h4>4.2 在救援模式将救援模式的 /dev 目录关联到救援模式的 /mnt/dev 目录</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # mount --bind /dev /mnt/dev</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 此时所有对救援模式的 /mnt/dev 目录的访问都会变成对救援模式的 /dev 目录的访问<br>2) 步骤 4.2、步骤 4.3 和步骤 4.4 也可以用以下命令代替：</p>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # for i in proc sys dev; do mount --rbind /$i /mnt/$i ; done</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>4.3 在救援模式将救援模式的 /proc 目录关联到救援模式的 /mnt/proc 目录</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # mount --bind /proc /mnt/proc</code></pre>
+
+
+
+<p>（<br>1) 补充：此时所有对救援模式的 /mnt/proc 目录的访问都会变成对救援模式的 /proc 目录的访问<br>2) 步骤 4.2、步骤 4.3 和步骤 4.4 也可以用以下命令代替：</p>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # for i in proc sys dev; do mount --rbind /$i /mnt/$i ; done</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>4.4 在救援模式将救援模式的 /sys 目录关联到救援模式的 /mnt/sys 目录</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # mount --bind /sys /mnt/sys</code></pre>
+
+
+
+<p>（<br>1) 补充：此时所有对救援模式的 /mnt/sys 目录的访问都会变成对救援模式的 /sys 目录的访问<br>2) 步骤 4.2、步骤 4.3 和步骤 4.4 也可以用以下命令代替：</p>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # for i in proc sys dev; do mount --rbind /$i /mnt/$i ; done</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4>4.5 在救援模式将救援模式的 /run 目录关联到救援模式的 /mnt/run 目录 （选做）</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ # mount --bind /run /mnt/run</code></pre>
+
+
+
+<p>（补充：此时所有对救援模式的 /mnt/run 目录的访问都会变成对救援模式的 /run 目录的访问）</p>
+
+
+
+<h3>步骤五：将当前的根目录从救援模式的根目录切换到系统的根目录</h3>
+
+
+
+<h4>5.1 将当前的根目录从救援模式的根目录切换到系统的根目录</h4>
+
+
+
+<pre class="wp-block-code"><code>tty1:rescue:~ /bash # chroot /mnt</code></pre>
+
+
+
+<p>（补充：这里以 /mnt 作为系统根目录为例）</p>
+
+
+
+<h4>5.2 在系统模式挂载所有需要开机自动挂载的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# mount -a</code></pre>
+
+
+
+<h4>5.3 在系统模式确认当前根目录下的目录</h4>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# ls
+bin boot dev home lib lib64 mnt opt proc root run sbin selinux srv sys tmp usr var</code></pre>
+
+
+
+<h3>步骤六：在系统模式安装软件</h3>
+
+
+
+<h4>6.1 在系统模式挂载官方镜像</h4>
+
+
+
+<h5>6.1.1 在系统模式创建用于挂载镜像的 /media 目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# mkdir /media</code></pre>
+
+
+
+<h5>6.1.2 在系统模式挂将官方镜像挂载到 /media 目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# mount /dev/dvd /media</code></pre>
+
+
+
+<h4>6.2 在系统模式安装 RPM 文件 （软件包）</h4>
+
+
+
+<h5>6.2.1 在系统模式拷贝 RPM 文件 （软件包） 到当前目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# cp /media/suse/x86_64/rpm-4.11.2-16.21.1.x86_64.rpm .</code></pre>
+
+
+
+<p>（补充：这里以拷贝 rpm-4.11.2-16.21.1.x86_64.rpm RPM 文件 （软件包） 为例）</p>
+
+
+
+<h5>6.2.2 在系统模式创建用于提取 rpm 文件 （软件包） 的 pkg 目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# mkdir pkg</code></pre>
+
+
+
+<h5>6.2.3 在系统模式进入 pkg 目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# cd pkg</code></pre>
+
+
+
+<h5>6.2.4 在系统模式提取 rpm 文件 （软件包） 里的子文件</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# rpm2cpio ../rpm-4.11.2-16.21.1.x86_64.rpm | cpio -ivd</code></pre>
+
+
+
+<p>（补充：这里以提取 rpm-4.11.2-16.21.1.x86_64.rpm RPM 文件 （软件包） 为例）</p>
+
+
+
+<h5>6.2.5 在系统模式将提取的 RPM 文件 （软件包） 里的子文件拷贝到 /bin 目录</h5>
+
+
+
+<pre class="wp-block-code"><code>bash-4.3# cp bin/rpm /bin/</code></pre>
+
+
+
+<h1>参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://www.suse.com/support/kb/doc/?id=000018770</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[[内容] Linux 官方软件库列表 （RHEL 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/official-software-repository-list-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 23 Apr 2022 15:24:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Red Hat Satellite]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23248</guid>
+
+					<description><![CDATA[内容一：基础软件源 内容二：Red Hat Satellite Tool 软件源 （补充：这里以 Red Hat Satellite Tool 6.10 软件源为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：基础软件源</h3>
+
+
+
+<pre class="wp-block-code"><code>rhel-8-for-x86_64-baseos-rpms</code></pre>
+
+
+
+<pre class="wp-block-code"><code>rhel-8-for-x86_64-appstream-rpms</code></pre>
+
+
+
+<h3>内容二：Red Hat Satellite Tool 软件源</h3>
+
+
+
+<pre class="wp-block-code"><code>satellite-tools-6.10-for-rhel-8-x86_64-rpms</code></pre>
+
+
+
+<p>（补充：这里以 Red Hat Satellite Tool 6.10 软件源为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 图形桌面 （Fedora 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/graphic-desktop-fedora/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 17 Apr 2022 10:01:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23200</guid>
+
+					<description><![CDATA[内容一：Xfce 图形桌面 1.1 Xfce 的安装方法 或者： 或者： 1.2 Xfce 的简介 Fedora Xfce 定制版展示了 Xfce 桌面，Xfce 桌面追求快速和轻巧，同时用户界面友好并有精彩的视觉盛宴。 1.3 Xfce 的展示和介绍网站 https://spins.fedoraproject.org/xfce/ 内容二：LXDE 图形桌面 2.1 LXDE 的安装方法 或者： 或者： 2.2 LXDE 的简介 LXDE，全名为“轻量级 X11 桌面环境”，是一款极速轻快、实用而且低功耗的桌面环境。 2.3 LXDE 的展示和介绍网站 https://spins.fedoraproject.org/lxde/ 内容三：LXQt 图形桌面 3.1 LXQt 的安装方法 或者： 或者： 3.2 LXQt 的简介 Fedora LXQt 提供了一个轻量、完整的 LXQt 桌面环境。 3.3 LXQt 的展示和介绍网站 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/graphic-desktop-fedora/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 图形桌面 （Fedora 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Xfce 图形桌面</h3>
+
+
+
+<h4>1.1 Xfce 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install @xfce-desktop-enviroment</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Xfce Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Xfce Desktop"</code></pre>
+
+
+
+<h4>1.2 Xfce 的简介</h4>
+
+
+
+<p>Fedora Xfce 定制版展示了 Xfce 桌面，Xfce 桌面追求快速和轻巧，同时用户界面友好并有精彩的视觉盛宴。</p>
+
+
+
+<h4>1.3 Xfce 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/xfce/</p>
+
+
+
+<h3>内容二：LXDE 图形桌面</h3>
+
+
+
+<h4>2.1 LXDE 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install @lxde-desktop</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "LXDE Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "LXDE Desktop"</code></pre>
+
+
+
+<h4>2.2 LXDE 的简介</h4>
+
+
+
+<p>LXDE，全名为“轻量级 X11 桌面环境”，是一款极速轻快、实用而且低功耗的桌面环境。</p>
+
+
+
+<h4>2.3 LXDE 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/lxde/</p>
+
+
+
+<h3>内容三：LXQt 图形桌面</h3>
+
+
+
+<h4>3.1 LXQt 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install @lxqt-desktop</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "LXQt Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "LXQt Desktop"</code></pre>
+
+
+
+<h4>3.2 LXQt 的简介</h4>
+
+
+
+<p>Fedora LXQt 提供了一个轻量、完整的 LXQt 桌面环境。</p>
+
+
+
+<h4>3.3 LXQt 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/zh_Hans_CN/lxqt/</p>
+
+
+
+<h3>内容四：Cinnamon 图形桌面</h3>
+
+
+
+<h4>4.1 Cinnamon 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install @cinnamon-desktop</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Cinnamon Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Cinnamon Desktop"</code></pre>
+
+
+
+<h4>4.2 Cinnamon 的简介</h4>
+
+
+
+<p>Cinnamon 是一种提供高级创新功能并且尊重传统的用户习惯的Linux桌面环境。</p>
+
+
+
+<h4>4.3 Cinnamon 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/cinnamon/</p>
+
+
+
+<h3>内容五：MATE 图形桌面</h3>
+
+
+
+<h4>5.1 MATE 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf install @mate-desktop</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "MATE Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "MATE Desktop"</code></pre>
+
+
+
+<h4>5.2 MATE 的简介</h4>
+
+
+
+<p>MATE Compiz 是一款轻量、强大，专为高效率和高性能打造的桌面环境。</p>
+
+
+
+<h4>5.3 MATE 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/mate-compiz/</p>
+
+
+
+<h3>内容六：Sugar 图形桌面</h3>
+
+
+
+<p>Sugar 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Sugar Desktop Environment"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Sugar Desktop Environment"</code></pre>
+
+
+
+<h3>内容七：Deepin 图形桌面</h3>
+
+
+
+<p>Deepin 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Deepin Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Deepin Desktop"</code></pre>
+
+
+
+<h3>内容八：i3 图形桌面</h3>
+
+
+
+<h4>8.1 i3 的安装方法</h4>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "i3 desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "i3 desktop"</code></pre>
+
+
+
+<h4>8.2 i3 的简介</h4>
+
+
+
+<p>Fedora i3 定制版提供了流行的 i3 平铺窗口管理器。其使得 i3 对于那些不想用鼠标、触摸板，或是其他指点设备的无论是新手还是高级用户都易于访问且更具吸引力。</p>
+
+
+
+<h4>8.3 i3 的展示和介绍网站</h4>
+
+
+
+<p>https://spins.fedoraproject.org/i3/</p>
+
+
+
+<h3>内容九：Basic 图形桌面</h3>
+
+
+
+<p>Basic 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Basic Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Basic Desktop"</code></pre>
+
+
+
+<h3>内容十：Pantheon 图形桌面</h3>
+
+
+
+<p>Pantheon 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "Pantheon Desktop"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "Pantheon Desktop"</code></pre>
+
+
+
+<h3>内容十一：KDE 图形桌面</h3>
+
+
+
+<p>KDE 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install @KDE-desktop</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "KDE Plasma Workspaces"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "KDE Plasma Workspaces"</code></pre>
+
+
+
+<h3>内容十二：GNOME 图形桌面</h3>
+
+
+
+<p>GNOME 的安装方法</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install @gnome</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall "GNOME"</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf group install -y "GNOME"</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] SLE 命令 SUSEConnect （注册客户端到 SUSE Repository Mirroring Tool (RMT)）</title>
+		<link>https://eternalcenter-sep-2022.github.io/suseconnect/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:27:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21968</guid>
+
+					<description><![CDATA[如果是 HTTP 协议： 或者： 如果是 HTTPS 协议： 或者：]]></description>
+										<content:encoded><![CDATA[
+<p>如果是 HTTP 协议：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect -u http://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect --url http://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>如果是 HTTPS 协议：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect -u https://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># SUSEConnect --url https://&lt;/<span style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: -webkit-standard; font-size: medium; white-space: normal;">SUSE Repository Mirroring Tool (RMT</span>) Server's IP address or FQDN&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 官方软件包单独下载</title>
+		<link>https://eternalcenter-sep-2022.github.io/separate-software-package/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 28 Jan 2022 13:08:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21419</guid>
+
+					<description><![CDATA[openSUSE 官方软件包单独下载网址 https://software.opensuse.org]]>/</description>
+										<content:encoded><![CDATA[
+<p>openSUSE 官方软件包单独下载网址</p>
+
+
+
+<p>https://software.opensuse.org/</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] CentOS Linux &#038; RHEL 命令 YUM （管理软件和软件源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/yum/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 26 Jan 2022 15:03:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21413</guid>
+
+					<description><![CDATA[内容一： 帮助文档相关 1.1 显示 YUM 帮助信息 1.2 显示 YUM 子选项的帮助信息 或者： 内容二：软件相关 2.1 安装软件 2.1.1 交互式 2.1.2 非交互式 或者： 2.2 删除软件 2.2.1 交互式 2.2.2 非交互式 或者： 2.3 升级软件 2.3.1 升级软件 2.3.1.1 交互式 2.3.1.2 非交互式 或者： 2.3.2 升级所有软件 2.3.2.1 升级所有软件 2.3.2.1.1 交互式 2.3.2.1.2 非交互式 或者： 2.3.2.2 升级除某软件外的所有软件 2.3.2.2.1 交互式 2.3.2.2.2 非交互式 或者： 2.3.2.3 显示所有可以升级的软件 2.4 显示软件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/yum/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] CentOS Linux &#038; RHEL 命令 YUM （管理软件和软件源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一： 帮助文档相关</h3>
+
+
+
+<h4>1.1 显示 YUM 帮助信息</h4>
+
+
+
+<pre class="wp-block-code"><code># yum help</code></pre>
+
+
+
+<h4>1.2 显示 YUM 子选项的帮助信息</h4>
+
+
+
+<pre class="wp-block-code"><code># yum help &lt;option&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum &lt;option&gt; help</code></pre>
+
+
+
+<h3>内容二：软件相关</h3>
+
+
+
+<h4>2.1 安装软件</h4>
+
+
+
+<h5>2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum install &lt;software&gt;</code></pre>
+
+
+
+<h5>2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum install &lt;software&gt; -y</code></pre>
+
+
+
+<h4>2.2 删除软件</h4>
+
+
+
+<h5>2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum remove &lt;software&gt;</code></pre>
+
+
+
+<h5>2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y remove &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum remove &lt;software&gt; -y</code></pre>
+
+
+
+<h4>2.3 升级软件</h4>
+
+
+
+<h5>2.3.1 升级软件</h5>
+
+
+
+<h5>2.3.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update &lt;software&gt;</code></pre>
+
+
+
+<h5>2.3.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update &lt;software&gt; -y</code></pre>
+
+
+
+<h5>2.3.2 升级所有软件</h5>
+
+
+
+<h5>2.3.2.1 升级所有软件</h5>
+
+
+
+<h5>2.3.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update</code></pre>
+
+
+
+<h5>2.3.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update -y</code></pre>
+
+
+
+<h5>2.3.2.2 升级除某软件外的所有软件</h5>
+
+
+
+<h5>2.3.2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update --exclude=&lt;software&gt;</code></pre>
+
+
+
+<h5>2.3.2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update --exclude=&lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update --exclude=&lt;software&gt; -y</code></pre>
+
+
+
+<h5>2.3.2.3 显示所有可以升级的软件</h5>
+
+
+
+<pre class="wp-block-code"><code># yum check-update</code></pre>
+
+
+
+<h4>2.4 显示软件</h4>
+
+
+
+<h5>2.4.1 显示软件</h5>
+
+
+
+<h5>2.4.1.1 显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all | grep &lt;software&gt;</code></pre>
+
+
+
+<h5>2.4.1.2 显示软件详细信息</h5>
+
+
+
+<pre class="wp-block-code"><code># yum info | grep &lt;software&gt;</code></pre>
+
+
+
+<h5>2.4.2 显示所有软件</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all</code></pre>
+
+
+
+<h3>内容三：软件组相关</h3>
+
+
+
+<h4>3.1 安装软件组</h4>
+
+
+
+<h5>3.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall &lt;group&gt;</code></pre>
+
+
+
+<h5>3.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupinstall &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall &lt;group&gt; -y</code></pre>
+
+
+
+<h4>3.2 删除软件组</h4>
+
+
+
+<h5>3.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum groupremove &lt;group&gt;</code></pre>
+
+
+
+<h5>3.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupremove &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupremove &lt;group&gt; -y</code></pre>
+
+
+
+<h4>3.3 显示所有可用软件组</h4>
+
+
+
+<pre class="wp-block-code"><code># yum group list</code></pre>
+
+
+
+<h3>内容四：安全相关</h3>
+
+
+
+<h4>4.1 Errata</h4>
+
+
+
+<h5>4.1.1 Errata</h5>
+
+
+
+<h5>4.1.1.1 安装 Errata</h5>
+
+
+
+<h5>4.1.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update --advisory=&lt;errata&gt;</code></pre>
+
+
+
+<h5>4.1.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update --advisory=&lt;errata&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update --advisory=&lt;errata&gt; -y</code></pre>
+
+
+
+<h5>4.1.1.2 显示 Errata 的详细信息</h5>
+
+
+
+<pre class="wp-block-code"><code># yum updateinfo &lt;errata&gt;</code></pre>
+
+
+
+<h5>4.1.2 所有 Errata</h5>
+
+
+
+<h5>4.1.2.1 安装所有 Errata</h5>
+
+
+
+<h5>4.1.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update-minimal --security</code></pre>
+
+
+
+<h5>4.1.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update-minimal --security</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update-minimal --security -y</code></pre>
+
+
+
+<h5>4.1.2.2 显示所有 Errata 和相关软件版本</h5>
+
+
+
+<pre class="wp-block-code"><code># yum updateinfo list</code></pre>
+
+
+
+<h5>4.1.2.3 显示所有 Errata 和相关的 CVE</h5>
+
+
+
+<pre class="wp-block-code"><code># yum updateinfo info security</code></pre>
+
+
+
+<h4>4.2 CVE</h4>
+
+
+
+<h5>4.2.1 CVE</h5>
+
+
+
+<h5>4.2.1.1 安装 CVE</h5>
+
+
+
+<h5>4.2.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update --cve &lt;CVE&gt;</code></pre>
+
+
+
+<h5>4.2.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update --cve &lt;CVE&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update --cve &lt;CVE&gt; -y</code></pre>
+
+
+
+<h5>4.2.2 所有 CVE</h5>
+
+
+
+<h5>4.2.2.1 显示所有 CVE 和相关软件版本</h5>
+
+
+
+<pre class="wp-block-code"><code># yum updateinfo list cves</code></pre>
+
+
+
+<h5>4.2.2.2 显示所有 CVE 和相关的 Errata</h5>
+
+
+
+<pre class="wp-block-code"><code># yum updateinfo info security</code></pre>
+
+
+
+<h4>4.2 安全补丁</h4>
+
+
+
+<h5>4.2.1 安全补丁</h5>
+
+
+
+<h5>4.2.1.1 安装安全补丁</h5>
+
+
+
+<h5>4.2.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update &lt;security patch&gt;</code></pre>
+
+
+
+<h5>4.2.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update &lt;security patch&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update &lt;security patch&gt; -y</code></pre>
+
+
+
+<h5>4.2.2 所有安全补丁</h5>
+
+
+
+<h5>4.2.2.1 安装所有安全补丁</h5>
+
+
+
+<h5>4.2.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum update --security</code></pre>
+
+
+
+<h5>4.2.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y update --security</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update --security -y</code></pre>
+
+
+
+<h5>4.2.2.2 显示所有安全补丁</h5>
+
+
+
+<pre class="wp-block-code"><code># yum check-update --security</code></pre>
+
+
+
+<h3>内容五：软件源相关</h3>
+
+
+
+<h4>5.1 显示所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist </code></pre>
+
+
+
+<h4>5.2 缓存软件源列表</h4>
+
+
+
+<h5>5.2.1 缓存所有已启用软件源列表</h5>
+
+
+
+<pre class="wp-block-code"><code># yum repolist </code></pre>
+
+
+
+<h5>5.2.2 清除所有软件源列表缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h5>5.2.3 保存所有软件源列表缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># yum makecache</code></pre>
+
+
+
+<h3>内容六：软件模块相关 （切换软件可用的版本）</h3>
+
+
+
+<h4>6.1 软件模块相关的格式</h4>
+
+
+
+<h5>6.1.1 显示所有软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module list</code></pre>
+
+
+
+<h5>6.1.2 重置软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module reset &lt;module&gt;</code></pre>
+
+
+
+<h5>6.1.3 设置软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module enable &lt;module&gt;:&lt;versione&gt;</code></pre>
+
+
+
+<h4>6.2 切换软件模块的案例</h4>
+
+
+
+<h5>6.2.1 检测当前软件兼容情况</h5>
+
+
+
+<pre class="wp-block-code"><code># yum distro-sync</code></pre>
+
+
+
+<p>（注意：需要确保这条命令执行有以后没有报错）</p>
+
+
+
+<h5>6.2.2 显示所有软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module list | grep podman
+container-tools      rhel8 &#91;d]       common &#91;d]                               Most recent (rolling) versions of podman, buildah, skopeo, runc, conmon, runc, conmon, CRIU, Udica, etc as well as dependencies such as container-selinux built and tested together, and updated as frequently as every 12 weeks.
+container-tools      1.0             common &#91;d]                               Stable versions of podman 1.0, buildah 1.5, skopeo 0.1, runc, conmon, CRIU, Udica, etc as well as dependencies such as container-selinux built and tested together, and supported for 24 months.                                 
+container-tools      2.0             common &#91;d]                               Stable versions of podman 1.6, buildah 1.11, skopeo 0.1, runc, conmon, etc as well as dependencies such as container-selinux built and tested together, and supported as documented on the Application Stream lifecycle page.    
+container-tools      3.0             common &#91;d]                               Stable versions of podman 3.0, buildah 1.19, skopeo 1.2, runc, conmon, etc as well as dependencies such as container-selinux built and tested together, and supported as documented on the Application Stream lifecycle page.    
+container-tools      4.0             common &#91;d]                               Stable versions of podman 4.0, buildah 1.24, skopeo 1.6, runc, conmon, etc as well as dependencies such as container-selinux built and tested together, and supported as documented on the Application Stream lifecycle page.  </code></pre>
+
+
+
+<p>（补充：这里以显示所有和 podman 软件相关的软件模块为例）</p>
+
+
+
+<h5>6.2.3 设置软件模块</h5>
+
+
+
+<h5>6.2.3.1 重置软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module reset container-tools</code></pre>
+
+
+
+<p>（补充：这里以重置 container-tools 软件模块为例）</p>
+
+
+
+<h5>6.2.3.2 设置软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module enable container-tools:3.0</code></pre>
+
+
+
+<p>（补充：这里以设置 container-tools 软件模块版本号为 3.0 为例）</p>
+
+
+
+<h5>6.2.3.3 显示设置 container-tools 软件模块版本号为 3.0 时 podman 软件的可用版本</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all | egrep ^podman\.x         
+podman.x86_64                                           3.0.1-9.module+el8.6.0+14874+64436299                       rhel-8-for-x86_64-appstream-rpms    </code></pre>
+
+
+
+<p>（补充：可以看到此时 podman 软件的可用版本是 3.0.1-9）</p>
+
+
+
+<h5>6.2.4 重置软件模块</h5>
+
+
+
+<h5>6.2.4.1 重置软件模块</h5>
+
+
+
+<pre class="wp-block-code"><code># yum module reset container-tools</code></pre>
+
+
+
+<p>（补充：这里以重置 container-tools 软件模块为例）</p>
+
+
+
+<h5>6.2.4.2 显示 container-tools 软件模块没有设置时 podman 软件的可用版本</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all | egrep ^podman\.x
+podman.x86_64                                           2:4.0.2-6.module+el8.6.0+14877+f643d2d6                     rhel-8-for-x86_64-appstream-rpms</code></pre>
+
+
+
+<p>（补充：可以看到此时 podman 软件的可用版本是 2:4.0.2-6）</p>
+
+
+
+<h3>内容七：管理相关</h3>
+
+
+
+<h4>7.1 显示 YUM 历史命令</h4>
+
+
+
+<pre class="wp-block-code"><code># yum history</code></pre>
+
+
+
+<h4>7.2 显示 YUM 安装记录</h4>
+
+
+
+<pre class="wp-block-code"><code># yum history info</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 全局加密 SSL 的设置 （CentOS Linux 8 &#038; RHEL 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/global-ssl-centos-linux-8-rhel-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 31 Jul 2021 10:11:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17184</guid>
+
+					<description><![CDATA[步骤一：显示当前 SSL 全局加密 SSL 的状况 （补充：这里的 DEFAULT 表示可以使用 2048 位及以上位数的 SSL） 步骤二：切换当前 SSL 全局加密 SSL （补充：1) 这里以将全局加密 SSL 切换到 FUTURE 状态为例2) 此时只能使用 4096 位及以上位数的 SSL）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-显示当前-ssl-全局加密-ssl-的状况">步骤一：显示当前 SSL 全局加密 SSL 的状况</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --show
+DEFAULT</code></pre>
+
+
+
+<p>（补充：这里的 DEFAULT 表示可以使用 2048 位及以上位数的 SSL）</p>
+
+
+
+<h3 id="步骤二-切换当前-ssl-全局加密-ssl">步骤二：切换当前 SSL 全局加密 SSL</h3>
+
+
+
+<pre class="wp-block-code"><code># update-crypto-policies --set FUTURE</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以将全局加密 SSL 切换到 FUTURE 状态为例<br>2) 此时只能使用 4096 位及以上位数的 SSL<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 官方软件源链接列表 （CentOS Linux 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/official-software-source-list-centos-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 27 Apr 2021 08:03:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14151</guid>
+
+					<description><![CDATA[内容一：CentOS 7 基础软件源列表 1.1 CentOS 7 基础软件源官方推荐链接列表 1.1.1 CentOS-7 &#8211; Base http://mirror.centos.org/centos/7/os/x86_64/ 1.1.2 CentOS-7 &#8211; Updates http://mirror.centos.org/centos/7/updates/x86_64/ 1.1.3 CentOS-7 &#8211; Extras http://mirror.centos.org/centos/7/extras/x86_64/ 1.1.4 CentOS-7 &#8211; Plus http://mirror.centos.org/centos/7/centosplus/x86_64/ 1.2 CentOS 7 基础软件源官方推荐链接列表 1.2.1 CentOS-7 &#8211; Base http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=os&#038;infra=$infra 1.2.2 CentOS-7 &#8211; Updates http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=updates&#038;infra=$infra 1.2.3 CentOS-7 &#8211; Extras http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=extras&#038;infra=$infra 1.2.4 CentOS-7 &#8211; Plus http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=centosplus&#038;infra=$infra 内容二：CentOS 8 基础软件源列表 2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/official-software-source-list-centos-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 官方软件源链接列表 （CentOS Linux 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：CentOS 7 基础软件源列表</h3>
+
+
+
+<h4>1.1 CentOS 7 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>1.1.1 CentOS-7 &#8211; Base</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/os/x86_64/</p>
+
+
+
+<h5>1.1.2 CentOS-7 &#8211; Updates</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/updates/x86_64/</p>
+
+
+
+<h5>1.1.3 CentOS-7 &#8211; Extras</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/extras/x86_64/</p>
+
+
+
+<h5>1.1.4 CentOS-7 &#8211; Plus</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/centosplus/x86_64/</p>
+
+
+
+<h4>1.2 CentOS 7 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>1.2.1 CentOS-7 &#8211; Base</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=os&#038;infra=$infra</p>
+
+
+
+<h5>1.2.2 CentOS-7 &#8211; Updates</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=updates&#038;infra=$infra</p>
+
+
+
+<h5>1.2.3 CentOS-7 &#8211; Extras</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=extras&#038;infra=$infra</p>
+
+
+
+<h5>1.2.4 CentOS-7 &#8211; Plus</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=centosplus&#038;infra=$infra</p>
+
+
+
+<h3>内容二：CentOS 8 基础软件源列表</h3>
+
+
+
+<h4>2.1 CentOS 8 基础软件源官方链接列表</h4>
+
+
+
+<h5>2.1.1 CentOS Linux 8 &#8211; BaseOS</h5>
+
+
+
+<p>http://mirror.centos.org/centos/8/BaseOS/x86_64/os/</p>
+
+
+
+<h5>2.1.2 CentOS-8 &#8211; Updates</h5>
+
+
+
+<p>http://mirror.centos.org/centos/8/AppStream/x86_64/os/</p>
+
+
+
+<h4>2.2 CentOS 8 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>2.2.1 CentOS Linux 8 &#8211; BaseOS</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=8&#038;arch=x86_64&#038;repo=BaseOS&#038;infra=$infra</p>
+
+
+
+<h5>2.2.2 CentOS Linux 8 &#8211; AppStream</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=8&#038;arch=x86_64&#038;repo=AppStream&#038;infra=$infra</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量设置官方软件源 （openSUSE  Leap 15.2 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-official-repo-opensuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 06:21:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13277</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量设置官方软件源（openSUSE 版）作用：批量设置官方软件源（openSUSE 版） 使用方法 1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下2. 在此脚本的分割线内写入相应的内容3. 给此脚本添加执行权限4. 执行此脚本 脚本分割线里的变量 add_repo_servers_list.txt #指定存放要设置官方软件源的文件 注意 1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器2. 服务器的系统需要是 openSUSE 15.2 版本3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4. 这些远程服务器要能够连接外网 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量设置官方软件源（openSUSE 版）<br>作用：批量设置官方软件源（openSUSE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>add_repo_servers_list.txt #指定存放要设置官方软件源的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 服务器的系统需要是 openSUSE 15.2 版本<br>3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4. 这些远程服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+add_repo_servers_list.txt
+
+####################### Separator ########################
+
+cat add_repo_servers_list.txt
+read -p "will add opensuse_leap_15.2 repo please input y " a
+echo $a
+
+if &#91; "$a" != "y" ];then
+        echo "you don't agree so exit now"
+        exit
+fi
+
+for i in `awk '{print $1}' add_repo_servers_list.txt`
+do
+        ssh $i '
+        sudo -u root su - root -c "zypper mr -da"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/oss/ OpenSUSE_Leap_152_x64_update-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/non-oss/ OpenSUSE_Leap_152_x64_update-non-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/oss/ OpenSUSE_Leap_152_x64_oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/non-oss/ OpenSUSE_Leap_152_x64_non-oss"
+        sudo -u root su - root -c "zypper ref"
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 软件源的设置 （openSUSE 版） （本地镜像版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-opensuse-local/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Feb 2021 06:08:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13269</guid>
+
+					<description><![CDATA[步骤一：加载本地镜像到系统光驱 （步骤略） 步骤二：挂载本地镜像 （补充：这里以挂载 /dev/sr1 到 /mnt 目录为例） 步骤三：添加本地镜像里的软件源 或者： （补充：这里以将 /mnt/Module-Basesystem 添加到软件源并命名为 openSUSE15-Base 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：加载本地镜像到系统光驱</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：挂载本地镜像</h3>
+
+
+
+<pre class="wp-block-code"><code># mount /dev/cdrom /mnt</code></pre>
+
+
+
+<p>（补充：这里以挂载 /dev/sr1 到 /mnt 目录为例）</p>
+
+
+
+<h3>步骤三：添加本地镜像里的软件源</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper ar file:///mnt/Module-Basesystem openSUSE15-Base</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -f /mnt/Module-Basesystem openSUSE15-Base</code></pre>
+
+
+
+<p>（补充：这里以将 /mnt/Module-Basesystem 添加到软件源并命名为 openSUSE15-Base 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 dnf （管理软件）</title>
+		<link>https://eternalcenter-sep-2022.github.io/dnf/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Dec 2020 06:09:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13089</guid>
+
+					<description><![CDATA[内容一： 帮助文档相关 1.1 显示 dnf 帮助信息 1.2 显示 dnf 子选项的帮助信息 或者： 内容二：软件相关 2.1 安装软件 2.1.1 交互式 2.1.2 非交互式 或者： 2.2 删除软件 2.2.1 交互式 2.2.2 非交互式 或者： 2.3 升级软件 2.3.1 升级软件 2.3.1.1 交互式 2.3.1.2 非交互式 或者： 2.3.2 升级所有软件 2.3.2.1 升级所有软件 2.3.2.1.1 交互式 2.3.2.1.2 非交互式 或者： 2.3.2.2 升级除某软件外的所有软件 2.3.2.2.1 交互式 2.3.2.2.2 非交互式 或者： 2.3.2.3 显示所有可以升级的软件 2.4 显示软件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/dnf/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 dnf （管理软件）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一： 帮助文档相关</h3>
+
+
+
+<h4>1.1 显示 dnf 帮助信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf help</code></pre>
+
+
+
+<h4>1.2 显示 dnf 子选项的帮助信息</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf help &lt;option&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf &lt;option&gt; help</code></pre>
+
+
+
+<h3>内容二：软件相关</h3>
+
+
+
+<h4>2.1 安装软件</h4>
+
+
+
+<h5>2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf install &lt;software&gt;</code></pre>
+
+
+
+<h5>2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y install &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf install &lt;software&gt; -y</code></pre>
+
+
+
+<h4>2.2 删除软件</h4>
+
+
+
+<h5>2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf remove &lt;software&gt;</code></pre>
+
+
+
+<h5>2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y remove &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf remove &lt;software&gt; -y</code></pre>
+
+
+
+<h4>2.3 升级软件</h4>
+
+
+
+<h5>2.3.1 升级软件</h5>
+
+
+
+<h5>2.3.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update &lt;software&gt;</code></pre>
+
+
+
+<h5>2.3.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update &lt;software&gt; -y</code></pre>
+
+
+
+<h5>2.3.2 升级所有软件</h5>
+
+
+
+<h5>2.3.2.1 升级所有软件</h5>
+
+
+
+<h5>2.3.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update</code></pre>
+
+
+
+<h5>2.3.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update -y</code></pre>
+
+
+
+<h5>2.3.2.2 升级除某软件外的所有软件</h5>
+
+
+
+<h5>2.3.2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update --exclude=&lt;software&gt;</code></pre>
+
+
+
+<h5>2.3.2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update --exclude=&lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update --exclude=&lt;software&gt; -y</code></pre>
+
+
+
+<h5>2.3.2.3 显示所有可以升级的软件</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf check-update</code></pre>
+
+
+
+<h4>2.4 显示软件</h4>
+
+
+
+<h5>2.4.1 显示软件</h5>
+
+
+
+<h5>2.4.1.1 显示软件</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf list all | grep &lt;software&gt;</code></pre>
+
+
+
+<h5>2.4.1.2 显示软件详细信息</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf info | grep &lt;software&gt;</code></pre>
+
+
+
+<h5>2.4.2 显示所有软件</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf list all</code></pre>
+
+
+
+<h3>内容三：软件组相关</h3>
+
+
+
+<h4>3.1 安装软件组</h4>
+
+
+
+<h5>3.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf groupinstall &lt;group&gt;</code></pre>
+
+
+
+<h5>3.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y groupinstall &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf groupinstall &lt;group&gt; -y</code></pre>
+
+
+
+<h4>3.2 删除软件组</h4>
+
+
+
+<h5>3.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf groupremove &lt;group&gt;</code></pre>
+
+
+
+<h5>3.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y groupremove &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf groupremove &lt;group&gt; -y</code></pre>
+
+
+
+<h4>3.3 显示所有可用软件组</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf group list</code></pre>
+
+
+
+<h3>内容四：安全相关</h3>
+
+
+
+<h4>4.1 Errata</h4>
+
+
+
+<h5>4.1.1 Errata</h5>
+
+
+
+<h5>4.1.1.1 安装 Errata</h5>
+
+
+
+<h5>4.1.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update --advisory=&lt;errata&gt;</code></pre>
+
+
+
+<h5>4.1.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update --advisory=&lt;errata&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update --advisory=&lt;errata&gt; -y</code></pre>
+
+
+
+<h5>4.1.1.2 显示 Errata 的详细信息</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf updateinfo &lt;errata&gt;</code></pre>
+
+
+
+<h5>4.1.2 所有 Errata</h5>
+
+
+
+<h5>4.1.2.1 安装所有 Errata</h5>
+
+
+
+<h5>4.1.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update-minimal --security</code></pre>
+
+
+
+<h5>4.1.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update-minimal --security</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update-minimal --security -y</code></pre>
+
+
+
+<h5>4.1.2.2 显示所有 Errata 和相关软件版本</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf updateinfo list</code></pre>
+
+
+
+<h5>4.1.2.3 显示所有 Errata 和相关的 CVE</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf updateinfo info security</code></pre>
+
+
+
+<h4>4.2 CVE</h4>
+
+
+
+<h5>4.2.1 CVE</h5>
+
+
+
+<h5>4.2.1.1 安装 CVE</h5>
+
+
+
+<h5>4.2.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update --cve &lt;CVE&gt;</code></pre>
+
+
+
+<h5>4.2.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update --cve &lt;CVE&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update --cve &lt;CVE&gt; -y</code></pre>
+
+
+
+<h5>4.2.2 所有 CVE</h5>
+
+
+
+<h5>4.2.2.1 显示所有 CVE 和相关软件版本</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf updateinfo list cves</code></pre>
+
+
+
+<h5>4.2.2.2 显示所有 CVE 和相关的 Errata</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf updateinfo info security</code></pre>
+
+
+
+<h4>4.2 安全补丁</h4>
+
+
+
+<h5>4.2.1 安全补丁</h5>
+
+
+
+<h5>4.2.1.1 安装安全补丁</h5>
+
+
+
+<h5>4.2.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update &lt;security patch&gt;</code></pre>
+
+
+
+<h5>4.2.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update &lt;security patch&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update &lt;security patch&gt; -y</code></pre>
+
+
+
+<h5>4.2.2 所有安全补丁</h5>
+
+
+
+<h5>4.2.2.1 安装所有安全补丁</h5>
+
+
+
+<h5>4.2.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf update --security</code></pre>
+
+
+
+<h5>4.2.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf -y update --security</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># dnf update --security -y</code></pre>
+
+
+
+<h5>4.2.2.2 显示所有安全补丁</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf check-update --security</code></pre>
+
+
+
+<h3>内容五：软件源相关</h3>
+
+
+
+<h4>5.1 显示所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf repolist</code></pre>
+
+
+
+<h4>5.2 缓存软件源列表</h4>
+
+
+
+<h5>5.2.1 缓存所有已启用软件源列表</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf repolist</code></pre>
+
+
+
+<h5>5.2.2 清除所有软件源列表缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf clean all</code></pre>
+
+
+
+<h5>5.2.3 保存所有软件源列表缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># dnf makecache</code></pre>
+
+
+
+<h3>内容六：管理相关</h3>
+
+
+
+<h4>6.1 显示 yum 历史命令</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf history</code></pre>
+
+
+
+<h4>6.2 显示 yum 安装记录</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf history info</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 脚本的管理 （通过 systemd 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/systemctl-script/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 04 Nov 2020 10:17:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11652</guid>
+
+					<description><![CDATA[步骤一：要被管理的脚本 创建以下内容： （补充：这里以创建 /etc/root/for.sh 脚本为例） 步骤二：创建 systemctl 的管理文件 创建以下内容： （补充：这里以创建 /etc/systemd/system/12456.service 来管理 ExecStart=/root/12456.sh 为例） 步骤三：加载刚刚创建的 systemctl 管理文件 步骤四：给 systemctl 的管理文件添加执行权限 步骤五：通过 systemd 管理脚本 5.1 启动脚本 5.2 关闭脚本 5.3 重启脚本 5.4 让脚本开机自启]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：要被管理的脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /root/12456.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+for i in {1..5}
+do
+echo $i
+done</code></pre>
+
+
+
+<p>（补充：这里以创建 /etc/root/for.sh 脚本为例）</p>
+
+
+
+<h3>步骤二：创建 systemctl 的管理文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/12456.service</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+Description=12345
+After=default.target
+
+&#91;Service]
+Type=oneshot
+ExecStart=/root/12456.sh
+
+&#91;Install]
+WantedBy=default.target</code></pre>
+
+
+
+<p>（补充：这里以创建 /etc/systemd/system/12456.service 来管理 ExecStart=/root/12456.sh 为例）</p>
+
+
+
+<h3>步骤三：加载刚刚创建的 systemctl 管理文件</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h3>步骤四：给 systemctl 的管理文件添加执行权限</h3>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x /etc/systemd/system/12456.service</code></pre>
+
+
+
+<h3>步骤五：通过 systemd 管理脚本</h3>
+
+
+
+<h4>5.1 启动脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start 12456.service</code></pre>
+
+
+
+<h4>5.2 关闭脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop 12456.service</code></pre>
+
+
+
+<h4>5.3 重启脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart 12456.service</code></pre>
+
+
+
+<h4>5.4 让脚本开机自启</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable 12456.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

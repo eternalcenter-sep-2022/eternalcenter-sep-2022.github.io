@@ -1,0 +1,3798 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Nginx &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/website-service/nginx/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 13 Sep 2022 12:49:32 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux SSL 证书 KEY 私钥密码的添加 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-password-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 10:00:50 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26489</guid>
+
+					<description><![CDATA[内容一：给 SSL 证书 KEY 私钥添加密码 交互式给 SSL 证书 KEY 私钥添加密码 （补充：这里以给 eternalcenter.com.key） 内容二：取消 SSL 证书 KEY 私钥添加密码 2.1 交互式取消 SSL 证书 KEY 私钥添加密码 2.2 非交互式取消 SSL 证书 KEY 私钥添加密码]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：给 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<p>交互式给 SSL 证书 KEY 私钥添加密码</p>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -des -in eternalcenter.com.key -out one.eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以给 eternalcenter.com.key）</p>
+
+
+
+<h3>内容二：取消 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<h4>2.1 交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -out two.eternalcenter.com.key</code></pre>
+
+
+
+<h4>2.2 非交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -passin pass:eternalcenter -out two.eternalcenter.com.key</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 目标网站 SSL 证书的显示 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-display-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 13:39:10 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21971</guid>
+
+					<description><![CDATA[内容一：查看完整信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例） 内容二：查看主要信息 （补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：查看完整信息</h3>
+
+
+
+<pre class="wp-block-code"><code># openssl s_client -connect eternalcenter.com:443
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFKjCCBBKgAwIBAgISAxDxly99eBiarmHggFEmDJoMMA0GCSqGSIb3DQEBCwUA
+MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD
+EwJSMzAeFw0yMTEyMTkxMzA4MzJaFw0yMjAzMTkxMzA4MzFaMBwxGjAYBgNVBAMT
+EWV0ZXJuYWxjZW50ZXIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAtCcCuOqBrWP4eo//VBEXh668EjwrE1eXz2CS4GIN4ddn0rS8LHGFOrB92R8E
+OnaYeTKpZjzNM3NA/AG/Gq5mTRZGTpyTasHEb/phwXdhrtJWdbMtQjGFSg8rXSB8
+cap5NGP/NxAy8FV0MbXftg5t9VgBoCMGUzioSHZTEjefq+/OZwlP7RzxZN3bwj1D
+61gWSw6q1X3bsi8ttwbkkiJfvjXo2KIeGOAnY10X+FPJmVa7jonhOuljrX4CYgnd
+SCxmsfgwGMUzRu27VB1rEbKqvSr6tb9KfwFiqsZd5tTi7RW6WMqA0VbDV7BbDqLP
+OzcturwRtXfzHjJxssy9zhnrQQIDAQABo4ICTjCCAkowDgYDVR0PAQH/BAQDAgWg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G
+A1UdDgQWBBQMGBCfBuZxTAS8VcBI/13ugqc2RDAfBgNVHSMEGDAWgBQULrMXt1hW
+y65QCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6
+Ly9yMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iu
+b3JnLzAcBgNVHREEFTATghFldGVybmFsY2VudGVyLmNvbTBMBgNVHSAERTBDMAgG
+BmeBDAECATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3Bz
+LmxldHNlbmNyeXB0Lm9yZzCCAQYGCisGAQQB1nkCBAIEgfcEgfQA8gB3AN+lXqto
+gk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpzAAABfdMFzUsAAAQDAEgwRgIhAMFF
+1orPZPnpCyhzwX2xZAZjJnOmDGmBjAl0tHnX4nEWAiEAqZTUwjrdwZAL+kDAgpzG
+Me2RnGMseDBY8Oy2sefUgsAAdwBGpVXrdfqRIDC1oolp9PN9ESxBdL79SbiFq/L8
+cP5tRwAAAX3TBc1zAAAEAwBIMEYCIQDLhR0nbVHEIL1uw9hRuv/ZbFjf91W/M4Jp
+od7NTMQZbAIhAKEAAfmdu0nVHklyS2At1VValwQ6vNbqd0NQ85giG606MA0GCSqG
+SIb3DQEBCwUAA4IBAQB/s+rZEaNrlUyBVnbxv5X9NTBd8buBOkR1qVswlS1R2i8B
+pRjeJmgbiMzM2z5Mvx0yTIiCyXXUc3YaqoyxvddaQam9nlLGr0nKX9T5DkE7y0Fh
+Qg0/ievRQF86XnDqQBxDR32jj5A1nKEiJrNCqugCWTAABndW3tvzK5DOsF2BfjJC
+mcjwiKaSCjFVpf+KzLWS3UEW+DRTKOLBucXpenS7QEcQu4K6ShNSL7+K6UOZEbFu
+uCRjOawCJFF7EH5vzRBy696Fu4EmzCV+c4rV8K8EcuCCQQeOTWJ/93Jv6U6kGrmE
+P6wlcHFy1tZhTAmXf/qcpE3sGeH58OlNNiVmNJdH
+-----END CERTIFICATE-----
+subject=CN = eternalcenter.com
+
+issuer=C = US, O = Let's Encrypt, CN = R3
+
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 4695 bytes and written 412 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: D63BC88824810A4D43ACE901AD4FF2D82073BC6F0D8B2DE71F6310CA1C87707F
+    Session-ID-ctx: 
+    Master-Key: A6836430C394B96DDD5552867D49802F94AAC8BF5E882100F0D27185CF5CFD6A946B94D87652E44A6684FC9781D16D90
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - bb be 55 e0 4b 6d c3 08-cd bc 45 6e 79 67 fc eb   ..U.Km....Enyg..
+    0010 - 30 d5 4c 8a 5a c8 f7 13-42 4b 1d 02 ce 94 c0 b8   0.L.Z...BK......
+    0020 - d7 cf f6 f0 ee 9d 49 5b-0a c8 a4 1a 8b dd 8a e0   ......I&#91;........
+    0030 - 66 83 52 9b 31 4d da 9e-d5 05 1a 70 ca e9 86 5e   f.R.1M.....p...^
+    0040 - f5 09 a1 1c 92 6b 64 90-b7 e1 0e ec 30 e2 26 68   .....kd.....0.&amp;h
+    0050 - 49 13 10 9e 3e a5 e0 13-a2 f1 7a 7c c5 ad 99 6c   I...&gt;.....z|...l
+    0060 - e9 f6 1d 46 5f cc f6 f9-c5 f6 05 49 53 78 7e ea   ...F_......ISx~.
+    0070 - 8c 17 eb 8d 96 c3 3f 92-fe e0 f0 f6 86 59 05 c8   ......?......Y..
+    0080 - d2 8c 27 6b 9d 65 38 20-84 d4 23 54 35 70 19 4d   ..'k.e8 ..#T5p.M
+    0090 - db 35 6d f4 44 50 d7 6e-a5 87 2b 32 e5 f8 42 88   .5m.DP.n..+2..B.
+    00a0 - 28 e2 ab 35 e1 2c 06 71-e5 b2 82 cb 3a 75 cc 72   (..5.,.q....:u.r
+    00b0 - ed ae e1 12 ff 82 6c 3a-3a 38 7a 8c 3c 9c f1 10   ......l::8z.&lt;...
+    00c0 - 78 b8 37 87 c3 a2 00 76-01 72 8c ef 3b 20 48 28   x.7....v.r..; H(
+
+    Start Time: 1644931899
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+closed</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+
+
+
+<h3>内容二：查看主要信息</h3>
+
+
+
+<pre class="wp-block-code"><code># echo | openssl s_client -connect scc.suse.com:443 | head -n 16
+CONNECTED(00000003)
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R3
+verify return:1
+depth=0 CN = eternalcenter.com
+verify return:1
+---
+Certificate chain
+ 0 s:CN = eternalcenter.com
+   i:C = US, O = Let's Encrypt, CN = R3
+ 1 s:C = US, O = Let's Encrypt, CN = R3
+   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+ 2 s:C = US, O = Internet Security Research Group, CN = ISRG Root X1
+   i:O = Digital Signature Trust Co., CN = DST Root CA X3
+---</code></pre>
+
+
+
+<p>（补充：这里以显示 eternalcenter.com 的 443 端口的 SSL 证书为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 19 Dec 2021 15:12:46 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19886</guid>
+
+					<description><![CDATA[步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上 （步骤略） 步骤二：安装 certbot （补充：这里以在 Fedora 35 上安装 certbot 为例） 步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书 （补充：这里以1) 使用 mingyu.zhu@eternalcenter.com 邮箱2) 以非交互式的方式3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证4) 给 eternalcenter.com 域名申请 Let&#8217;s Encrypt SSL 证书为例） 步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书 （补充：1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥） 步骤五：延期 Let&#8217;s Encrypt SSL 证书 5.1 显示 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-lets-encrypt-certbot/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSL 证书的生成 （Let&#8217;s Encrypt certbot 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-将要申请-let-s-encrypt-ssl-的域名解析到要进行操作的服务器-ip-地址上">步骤一：将要申请 Let&#8217;s Encrypt SSL 的域名解析到要进行操作的服务器 IP 地址上</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤二-安装-certbot">步骤二：安装 certbot</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install certbot</code></pre>
+
+
+
+<p>（补充：这里以在 Fedora 35 上安装 certbot 为例）</p>
+
+
+
+<h3 id="步骤三-使用-certbot-生成-let-s-encrypt-ssl-证书">步骤三：使用 certbot 生成 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certonly --email mingyu.zhu@eternalcenter.com -n --agree-tos --webroot -w /usr/share/nginx/html/ -d eternalcenter.com
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator webroot, Installer None
+Requesting a certificate for eternalcenter.com
+Performing the following challenges:
+http-01 challenge for eternalcenter.com
+Using the webroot path /usr/share/nginx/html for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+   Your certificate will expire on 2022-03-20. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again. To non-interactively renew *all* of your
+   certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 使用 mingyu.zhu@eternalcenter.com 邮箱<br>2) 以非交互式的方式<br>3) 通过给 /usr/share/nginx/html/ 网站目录里添加验证文件进行验证<br>4) 给 eternalcenter.com 域名<br>申请 Let&#8217;s Encrypt SSL 证书为例<br>）</p>
+
+
+
+<h3 id="步骤四-查看已经生成的-let-s-encrypt-ssl-证书">步骤四：显示已经生成的 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<pre class="wp-block-code"><code># certbot certificates
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Found the following certs:
+  Certificate Name: eternalcenter.com
+    Serial Number: 3e8cdb74a1abfbf3d535ec1c3f8cb3e4e4c
+    Key Type: RSA
+    Domains: eternalcenter.com
+    Expiry Date: 2022-03-20 13:48:48+00:00 (VALID: 89 days)
+    Certificate Path: /etc/letsencrypt/live/eternalcenter.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</code></pre>
+
+
+
+<p>（<br>补充：<br>1) /etc/letsencrypt/live/eternalcenter.com/fullchain.pem 是公钥<br>2) /etc/letsencrypt/live/eternalcenter.com/privkey.pem 是私钥<br>）</p>
+
+
+
+<h3 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">步骤五：延期 Let&#8217;s Encrypt SSL 证书</h3>
+
+
+
+<h4 id="步骤五-延期-let-s-encrypt-ssl-证书-5-1-显示-let-s-encrypt-ssl-证书的延期策略">5.1 显示 Let&#8217;s Encrypt SSL 证书的延期策略</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/letsencrypt/renewal/eternalcenter.com.conf 
+# renew_before_expiry = 30 days
+version = 1.20.0
+archive_dir = /etc/letsencrypt/archive/eternalcenter.com
+cert = /etc/letsencrypt/live/eternalcenter.com/cert.pem
+privkey = /etc/letsencrypt/live/eternalcenter.com/privkey.pem
+chain = /etc/letsencrypt/live/eternalcenter.com/chain.pem
+fullchain = /etc/letsencrypt/live/eternalcenter.com/fullchain.pem</code></pre>
+
+
+
+<p>（补充：可以看出 Let&#8217;s Encrypt SSL 证书是在过期前 30 天才能更新）</p>
+
+
+
+<h4 id="5-2-手动延期-let-s-encrypt-ssl-证书">5.2 手动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h4 id="5-3-自动延期-let-s-encrypt-ssl-证书">5.3 自动延期 Let&#8217;s Encrypt SSL 证书</h4>
+
+
+
+<pre class="wp-block-code"><code># crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 0 */30 * * /usr/bin/certbot renew</code></pre>
+
+
+
+<p>（补充：这里以每过 30 天的 0 时 0 分延期 Let&#8217;s Encrypt SSL 证书为例）</p>
+
+
+
+<h3 id="步骤六-let-s-encrypt-ssl-证书的生成限制">步骤六：Let’s Encrypt SSL 证书的生成限制</h3>
+
+
+
+<p>1) 一个域名申请次数不能超过 5 次/周<br>2) 允许申请失败次数不能超过 5 次/时<br>3) 属于同一个顶级域名的二级域名申请次数不能超过 20 次/周<br>4) 申请请求频率不能超过 20 次/秒<br>5) 一个 IP 地址创建用户个数不能超过 10 个/3 小时<br>6) 一个用户最多 pending 审核的数不能超过 300 个</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 博客 WordPress 数据去隐私化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 16:12:50 +0000</pubDate>
+				<category><![CDATA[Automation Maintenance (自动化运维)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19868</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：Shell 博客 WordPress 数据去隐私化作用：修改 WordPress 备份中某个用户的密码并再次进行备份 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份6. newfilename=clone-eternalcenter-backup #新备份的文件名7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户8. newpw=eternalcenter #新的用户密码9. dbuser=ec #用于连接数据库的用户10. dbuserpw=eternalcenter #用于连接数据库的密码11. db=ec #网站数据库数据在数据库中的库 注意 1. 本地需要已经搭建好 LNMP 平台2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 博客 WordPress 数据去隐私化"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：Shell 博客 WordPress 数据去隐私化<br>作用：修改 WordPress 备份中某个用户的密码并再次进行备份</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录<br>4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份<br>5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份<br>6. newfilename=clone-eternalcenter-backup #新备份的文件名<br>7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户<br>8. newpw=eternalcenter #新的用户密码<br>9. dbuser=ec #用于连接数据库的用户<br>10. dbuserpw=eternalcenter #用于连接数据库的密码<br>11. db=ec #网站数据库数据在数据库中的库</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限<br>3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8220;drop database $db;&#8221;“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+cpath="/srv/www/htdocs"
+sqlfile=eternalcenter/eternalcenter.sql
+tarfile=eternalcenter/eternalcenter.tar.gz
+newfilename=clone-eternalcenter-backup
+user='Mingyu Zhu'
+newpw=eternalcenter
+dbuser=ec
+dbuserpw=eternalcenter
+db=ec
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+dir=`pwd`
+
+sudo systemctl stop nginx
+sudo systemctl stop php-fpm
+
+mkdir -p $path/$newfilename-$date &amp;&gt; /dev/null
+
+mysql -uroot -p'eternalcenter' -e "drop database $db;"
+mysql -uroot -p'eternalcenter' -e "create database $db;"
+mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+mysql -uroot -p'eternalcenter' -e "grant all privileges on $db.* to \"$dbuser\"@'localhost';"
+mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+mysql -uroot -p'eternalcenter' -e "update $db.ec_users set user_pass = md5(\'$newpw\') where user_login = \'$user\';"
+sudo rm -rf $cpath/*
+sudo tar -zxvf $tarfile -C $cpath &amp;&gt; /dev/null
+cd $cpath
+sudo sed -i "s/define('DB_PASSWORD', .*);/define('DB_PASSWORD', \'$dbuserpw\');/" wp-config.php
+
+mysqldump -uroot -p'eternalcenter' $db &gt; $path/$newfilename-$date/$newfilename-$date.sql
+sudo tar -zcvf $path/$newfilename-$date/$newfilename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+cd $dir
+
+sudo systemctl start nginx
+sudo systemctl start php-fpm
+
+cd $dir</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程 LNMP 的网站数据库备份到本地</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 14:48:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19861</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程 LNMP 的网站数据库备份到本地作用：将远程 LNMP 的网站数据库备份到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥4. whost=&#8221;eternalcenter.com&#8221; #远程服务器5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录 注意 1. 远程需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程 LNMP 的网站数据库备份到本地"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程 LNMP 的网站数据库备份到本地<br>作用：将远程 LNMP 的网站数据库备份到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥<br>4. whost=&#8221;eternalcenter.com&#8221; #远程服务器<br>5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录<br>7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 远程需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限<br>4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+key="~/.ssh/eternalcenter"
+
+whost="eternalcenter.com"
+wpath="/usr/share/nginx/html"
+wcache="/cache"
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+
+echo "copy eternalcenter data from website to local server"
+ping -c3 -i0.4 $whost &gt; /dev/null
+if &#91; $? -eq 0 ];then
+
+        ssh -i $key $whost "
+        mkdir $wcache &amp;&gt; /dev/null
+        rm -rf $wcache/* &amp;&gt; /dev/null
+        mysqldump -uroot -p'eternalcenter' ec &gt; $wcache/$filename-$date.sql
+        cd $wpath
+        sudo tar -zcvf $wcache/$filename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+        "
+
+        mkdir -p $path/$date &amp;&gt; /dev/null
+        scp -i $key $whost:$wcache/$filename-$date* $path/$date
+
+fi
+echo</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （Fedora 35 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-fedora-35/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:29:31 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19844</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=”eternalcenter.com” #网站的域名，注意不要在前面加任何前缀2. webtar=”eternalcenter-backup-*.tar.gz”网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=”eternalcenter.com.crt” #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=”eternalcenter.com.key” #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=”eternalcenter-backup-*.sql” #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=”ec” #网站在数据库中库7. dbuser=”ec” &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-fedora-35/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （Fedora 35 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=”eternalcenter.com” #网站的域名，注意不要在前面加任何前缀<br>2. webtar=”eternalcenter-backup-*.tar.gz”网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=”eternalcenter.com.crt” #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=”eternalcenter.com.key” #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=”eternalcenter-backup-*.sql” #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=”ec” #网站在数据库中库<br>7. dbuser=”ec” #网站在数据库中的用户<br>8. dbuserpw=”eternalcenter” #网站在数据库中的用户密码<br>9. dbrootpw=”eternalcenter” #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 Fedora 35 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip php-pecl-imagick php-intl php-bcmath
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --reload
+
+#Limit log space
+yum -y install rsyslog
+systemctl enable --now rsyslog
+
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/rsyslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程服务器的 LNMP 备份在本地复原</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 15:05:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19609</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程服务器的 LNMP 备份还原到本地作用：将远程服务器的 LNMP 备份还原到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. tmppath=/cache #本地用于备份数据的目录2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录3. key=”~/.ssh/eternalcenter” #本地私钥4. tmpfile=tmpfile.txt #用于存储记录的文件5. dbuser=ec #网站在数据库中的用户6. ruser=eternalcenter #用于远程服务器的用户7. rhost=eternalcenter.com #远程服务器8. rcache=”/cache” #远程服务器用于备份数据的目录 注意 1. 本地需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限3. 执行此脚本的用户需要有 sudo systemctl 权限4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &#60; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程服务器的 LNMP 备份在本地复原"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程服务器的 LNMP 备份还原到本地<br>作用：将远程服务器的 LNMP 备份还原到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. tmppath=/cache #本地用于备份数据的目录<br>2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录<br>3. key=”~/.ssh/eternalcenter” #本地私钥<br>4. tmpfile=tmpfile.txt #用于存储记录的文件<br>5. dbuser=ec #网站在数据库中的用户<br>6. ruser=eternalcenter #用于远程服务器的用户<br>7. rhost=eternalcenter.com #远程服务器<br>8. rcache=”/cache” #远程服务器用于备份数据的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有 sudo systemctl 权限<br>4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &lt; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root 用户的密码，需要修改成本地 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+tmppath=/cache
+webpath=/usr/share/nginx/html
+key="~/.ssh/eternalcenter"
+tmpfile=tmpfile.txt
+dbuser=ec
+
+ruser=eternalcenter
+rhost=eternalcenter.com
+rcache="/cache"
+
+####################### Separator ########################
+
+nowdirectory=`pwd`
+
+a=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+sleep 10
+b=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+
+if &#91; $a -eq 0 ];then
+	echo "no file"
+fi
+
+if &#91; $a -ne $b ];then
+        echo "backup is running now"
+        exit
+fi
+
+c=0
+
+if &#91; -f $tmpfile ];then
+        c=`cat $tmpfile`
+fi
+
+if &#91; $a -eq $c ];then
+        echo "no new file"
+        exit
+fi
+
+echo $a &gt; $tmpfile
+
+sqlfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep sql | tail -1" | awk '{print $NF}'`
+if &#91; $? -eq 0 ]; then
+
+        tarfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep tar | tail -1" | awk '{print $NF}'`
+        if &#91; $? -eq 0 ]; then
+
+                rm -rf $tmppath/*
+                mkdir $tmppatch &amp;&gt; /dev/null
+
+                echo $sqlfile
+                echo $tarfile
+
+                scp -i $key $ruser@$rhost:$rcache/$sqlfile $tmppath
+                scp -i $key $ruser@$rhost:$rcache/$tarfile $tmppath
+
+#                sudo systemctl stop nginx
+#                sudo systemctl stop php-fpm
+
+                cd $tmppath
+
+                mysql -uroot -p'eternalcenter' -e "drop database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "create database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "grant all privileges on $dbuser.* to \"$dbuser\"@\"localhost\";"
+                mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+
+                sudo rm -rf $webpath/*
+                sudo tar -zxvf $tarfile -C $webpath/ &amp;&gt; /dev/null
+
+#                sudo systemctl start nginx
+#                sudo systemctl start php-fpm
+
+                cd $nowdirectory
+
+        fi
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell LNMP 没运行则重启系统 （systemctl 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-check-restart-systemctl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 14:26:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19607</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：LNMP 没运行则重启系统作用：LNMP 没运行则重启系统 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：LNMP 没运行则重启系统<br>作用：LNMP 没运行则重启系统</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+  
+systemctl status nginx | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi
+
+systemctl status mariadb | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi
+
+systemctl status php-fpm | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 信息的显示 （显示版本和已安装的模块） （源码安装版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-info-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 10 Aug 2021 06:22:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17309</guid>
+
+					<description><![CDATA[注意： 只有源码安装的 Nginx 才能使用此方法 步骤一：Nginx 版本的显示 步骤二：Nginx 版本和已安装模块的显示]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>只有源码安装的 Nginx 才能使用此方法</p>
+
+
+
+<h3 id="步骤一-nginx-版本的显示">步骤一：Nginx 版本的显示</h3>
+
+
+
+<pre class="wp-block-code"><code>nginx version: nginx/1.18.0</code></pre>
+
+
+
+<h3 id="步骤二-nginx-版本和已安装模块的显示">步骤二：Nginx 版本和已安装模块的显示</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/nginx/sbin/nginx -V
+nginx version: nginx/1.18.0
+built by gcc 8.3.1 20191121 (Red Hat 8.3.1-5) (GCC) 
+built with OpenSSL 1.1.1g FIPS  21 Apr 2020
+TLS SNI support enabled
+configure arguments: --prefix=/usr/local/nginx --with-http_ssl_module</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 curl （测试网页访问）</title>
+		<link>https://eternalcenter-sep-2022.github.io/curl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 28 Jul 2021 08:00:30 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17159</guid>
+
+					<description><![CDATA[内容一：测试网页可以被访问的案例 （补充：这里以直接访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容二：测试网页访问速度的案例 2.1 案例一：显示测试过程 （补充：这里以访问并测试 https://eternalcenter-sep-2022.github.io，并显示测试过程为例）/ 2.2 案例二：不显示测试过程 （补充：这里以访问并测试 https://eternalcenter-sep-2022.github.io，并不显示测试过程为例）/ 内容三：测试使用代理访问网页的案例 3.1 案例一：使用代理 （补充：这里以通过 proxy.example.com:8080 代理访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 3.2 案例二：使用代理并使用用户进行验证 （补充：这里以通过 proxy.example.com:8080 代理并使用 proxy user 和 password 进行验证访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容四： 测试使用证书访问网页的案例 （补充：这里以通过 eternalcenter.com.pem 证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例） 内容五：其他测试访问网页的案例 5.1 案例一：将网页下载后另存为别的文件 （补充：这里以下载 https://eternalcenter-sep-2022.github.io/ 并另存为 eternalcentre.com 为例） 5.2 案例二：静默下载的案例 （补充：这里以静默下载 https://eternalcenter-sep-2022.github.io/ 为例） 5.3 案例三：不使用安全证书访问网页 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/curl/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 curl （测试网页访问）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3> 内容一：测试网页可以被访问的案例 </h3>
+
+
+
+<pre class="wp-block-code"><code># curl -v -k https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p> （补充：这里以直接访问 https://eternalcenter-sep-2022.github.io/ 网页为例） </p>
+
+
+
+<h3>内容二：测试网页访问速度的案例</h3>
+
+
+
+<h4>2.1 案例一：显示测试过程</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -o /dev/null -s -w %{http_code}:%{http_connect}:%{content_type}:%{time_namelookup}:%{time_redirect}:%{time_pretransfer}:%{time_connect}:%{time_starttransfer}:%{time_total}:%{speed_download} https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以访问并测试  https://eternalcenter-sep-2022.github.io，并显示测试过程为例）/</p>
+
+
+
+<h4>2.2 案例二：不显示测试过程</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -o /dev/null -w %{http_code}:%{http_connect}:%{content_type}:%{time_namelookup}:%{time_redirect}:%{time_pretransfer}:%{time_connect}:%{time_starttransfer}:%{time_total}:%{speed_download} https://
+eternalcenter.com</code></pre>
+
+
+
+<p> （补充：这里以访问并测试   https://eternalcenter-sep-2022.github.io，并不显示测试过程为例）/ </p>
+
+
+
+<h3>内容三：测试使用代理访问网页的案例</h3>
+
+
+
+<h4>3.1 案例一：使用代理</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v --proxy proxy.example.com:8080 https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以通过 proxy.example.com:8080 代理访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h4>3.2 案例二：使用代理并使用用户进行验证</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v --&lt;proxy user&gt; user:&lt;password&gt; --proxy proxy.example.com:8080 https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>（补充：这里以通过 proxy.example.com:8080 代理并使用 proxy user 和 password 进行验证访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h3>内容四： 测试使用证书访问网页的案例 </h3>
+
+
+
+<pre class="wp-block-code"><code># curl -v -k https://eternalcenter-sep-2022.github.io/ --cacert /eternalcenter.com.pem</code></pre>
+
+
+
+<p>（补充：这里以通过 eternalcenter.com.pem 证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+
+
+
+<h3>内容五：其他测试访问网页的案例</h3>
+
+
+
+<h4>5.1 案例一：将网页下载后另存为别的文件</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v https://eternalcenter-sep-2022.github.io/ -o eternalcentre.com</code></pre>
+
+
+
+<p>（补充：这里以下载 https://eternalcenter-sep-2022.github.io/ 并另存为 eternalcentre.com 为例）</p>
+
+
+
+<h4>5.2 案例二：静默下载的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -v https://eternalcenter-sep-2022.github.io/ -o eternalcentre.com --silent</code></pre>
+
+
+
+<p>（补充：这里以静默下载 https://eternalcenter-sep-2022.github.io/ 为例）</p>
+
+
+
+<h4>5.3 案例三：不使用安全证书访问网页</h4>
+
+
+
+<pre class="wp-block-code"><code># curl -k https://eternalcenter-sep-2022.github.io/</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># curl https://eternalcenter-sep-2022.github.io/ --insecure</code></pre>
+
+
+
+<p>（补充：这里以不使用安全证书访问 https://eternalcenter-sep-2022.github.io/ 网页为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 05:53:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14333</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 开启系统的 selinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;执行本脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 开启系统的 selinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;执行本脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 openSUSE 15 版本<br>2. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#判断所需文件是否存在
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "没有网页数据备份，无法继续"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "没有网站公钥，无法继续"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "没有网站私钥，无法继续"
+	exit 2
+fi
+
+#更新系统
+zypper ref
+zypper -n update
+
+#确保必需软件已经安装
+zypper -n in tar
+zypper -n in firewalld
+
+
+#部署 Nginx
+zypper -n in nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen 443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        root /srv/www/htdocs;
+
+        location / {
+            index index.php;
+            try_files $uri $uri/ /index.php$is_args$args;
+            if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+            if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+            if (!-f $request_filename){rewrite (.) /index.php;}
+        }
+
+        location ~ \.php$ {
+            include fastcgi_params;
+	    include fastcgi.conf;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME /srv/www/htdocs/$fastcgi_script_name;
+
+        }
+	
+	location ~ ^/\.user\.ini {
+            deny all;
+        }
+
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+            expires 30d;
+        }
+
+        error_page  404              /404.html;
+    }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+
+rm -rf /srv/www/htdocs/*
+tar -xvf $webtar -C /srv/www/htdocs/ &amp;&amp; rm -rf $webtar
+
+zypper -n in policycoreutils
+
+systemctl start nginx
+systemctl enable nginx
+
+#部署 MariaDB
+zypper -n in mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf
+
+systemctl start mariadb
+systemctl enable mariadb
+
+chown -R mysql:mysql /var/lib/mysql
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+        rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#部署 PHP
+zypper -n in php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib
+useradd php-fpm -s /sbin/nologin
+groupadd php-fpm
+chown -R php-fpm:php-fpm /srv/www/htdocs
+cp /etc/php7/fpm/php-fpm.conf.default /etc/php7/fpm/php-fpm.conf
+
+sed -i /"^user =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php7/fpm/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php7/fpm/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php7/fpm/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php7/fpm/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#提高系统性能
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#打开防火墙
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#限制日志占用空间
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#删除此脚本
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#重启系统
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 端口转发的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/%e5%86%85%e5%ae%b9-nginx-%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e7%9a%84%e8%ae%be%e7%bd%ae/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Apr 2021 08:38:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14036</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 重定向之前要先安装 Nginx 正文： 将部分内容修改如下： （补充：这里以1) 将 server_name 设置为 172.16.0.2282) 监听 80 端口3) 将 8000 端口转发到 80 端口为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 重定向之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+server {
+listen 80 default_server;
+listen &#91;::]:80 default_server;
+server_name  172.16.0.228;
+......
+location / {
+proxy_pass http://127.0.0.1:8000;/
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server_name 设置为 172.16.0.228<br>2) 监听 80 端口<br>3) 将 8000 端口转发到 80 端口为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SSL 证书的生成 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Apr 2021 07:50:42 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14032</guid>
+
+					<description><![CDATA[内容一：SSL 证书简介 1.1 SSL 证书包含的文件 KEY 私钥、CRT 公钥、PFX 公私钥、CSR 证书签名请求文件 1.2 SSL 证书包含的文件简介 1.2.1 KEY 私钥 KEY 私钥，放置在服务器上，属于机密文件，不能被其他人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER 1.2.2 CRT 公钥 CRT 公钥，放置在服务器上，可以被其它人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER 1.2.3 PFX 公私钥 PFX 同时包含公钥和私钥，放置在服务器上。在 Linux 上通常会分别使用 KEY 和 CRT 两个文件，而 Windows 会使用同时包含公钥和私钥的 PFX &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssl-openssl/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux SSL 证书的生成 （OpenSSL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：SSL 证书简介</h3>
+
+
+
+<h4>1.1 SSL 证书包含的文件</h4>
+
+
+
+<p>KEY 私钥、CRT 公钥、PFX 公私钥、CSR 证书签名请求文件</p>
+
+
+
+<h4>1.2 SSL 证书包含的文件简介</h4>
+
+
+
+<h5>1.2.1 KEY 私钥</h5>
+
+
+
+<p>KEY 私钥，放置在服务器上，属于机密文件，不能被其他人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER</p>
+
+
+
+<h5>1.2.2 CRT 公钥</h5>
+
+
+
+<p>CRT 公钥，放置在服务器上，可以被其它人得到。可以是 PEM 或 DER 两种编码方式中的一种，这两种编码方式也可以相互转换。Linux 上通常使用 PEM，而 Windows 上通常使用 DER</p>
+
+
+
+<h5>1.2.3 PFX 公私钥</h5>
+
+
+
+<p>PFX 同时包含公钥和私钥，放置在服务器上。在 Linux 上通常会分别使用 KEY 和 CRT 两个文件，而 Windows 会使用同时包含公钥和私钥的 PFX 文件</p>
+
+
+
+<h5>1.2.4 CSR 证书签名请求文件</h5>
+
+
+
+<p>CSR 全名 Certificate Signing Request，即证书签名请求文件。用于提供给证书供应商申请证书</p>
+
+
+
+<h3>内容二：生成 SSL 证书</h3>
+
+
+
+<h4>2.1 生成 KEY 私钥</h4>
+
+
+
+<h5>2.1.1 同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<h5>2.1.1.1 交互式同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key -out eternalcenter.com.csr</code></pre>
+
+
+
+<p>（补充：这里以同时生成长度 4096 位，加密格式为 512 的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+
+
+
+<p>（注意：后面还有国家、州或省、城市、组织、部门、域名和邮箱地址的信息需要输入此命令后手动填写）</p>
+
+
+
+<h5 id="1-2-非交互式生成-ssl-证书">2.1.1.2 非交互式同时生成 KEY 私钥和 CSR 证书签名请求文件</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -out eternalcenter.com.csr -keyout eternalcenter.com.key -subj "/C=CN/ST=Sichuan/L=Chengdu/O=Eternal Center/OU=Mingyu Zhu/CN=eternalcenter.com/emailAddress=contact@mingyuzhu.com"</code></pre>
+
+
+
+<p>（<br>补充：这里以同时生成<br>1) 长度为 4096 位<br>2) 加密格式为 512<br>3) 国家为 CN<br>4) 州或省为 Sichuan<br>5) 城市为 Chengdu<br>6) 组织为 Eternal Center<br>7) 部门为 Mingyu Zhu<br>8) 域名为 eternalcenter.com<br>9) 邮箱地址为 contact@mingyuzhu.com<br>的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例<br>）</p>
+
+
+
+<h5>2.1.2 只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<h5>2.1.2.1 交互式只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以同时生成长度 4096 位，加密格式为 512 的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+
+
+
+<p>（注意：后面还有国家、州或省、城市、组织、部门、域名和邮箱地址的信息需要输入此命令后手动填写）</p>
+
+
+
+<h5>2.1.2.2 非交互式只生成 CSR 证书签名请求文件和 KEY 私钥</h5>
+
+
+
+<pre class="wp-block-code"><code># openssl req -nodes -newkey rsa:4096 -sha512 -keyout eternalcenter.com.key -subj "/C=CN/ST=Sichuan/L=Chengdu/O=Eternal Center/OU=Mingyu Zhu/CN=eternalcenter.com/emailAddress=contact@mingyuzhu.com"</code></pre>
+
+
+
+<p>（<br>补充：这里以同时生成<br>1) 长度为 4096 位<br>2) 加密格式为 512<br>3) 国家为 CN<br>4) 州或省为 Sichuan<br>5) 城市为 Chengdu<br>6) 组织为 Eternal Center<br>7) 部门为 Mingyu Zhu<br>8) 域名为 eternalcenter.com<br>9) 邮箱地址为 contact@mingyuzhu.com<br>的 KEY 私钥 eternalcenter.com.key 和 CSR 证书签名请求文件 eternalcenter.com.csr 为例<br>）</p>
+
+
+
+<h4>2.2 生成 CRT 公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in eternalcenter.com.key -out eternalcenter.com.crt -pubout -outform PEM</code></pre>
+
+
+
+<p>（补充：这里以使用 KEY 私钥 eternalcenter.com.key 生成 CRT 公钥 eternalcenter.com.crt 为例）</p>
+
+
+
+<h3 id="内容二-测试-ssl-证书">内容三：查看 SSL 证书</h3>
+
+
+
+<h4>3.1 查看 KEY 私钥</h4>
+
+
+
+<pre class="wp-block-code"><code># cat eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以查看 KEY 私钥 eternalcenter.com.key 为例）</p>
+
+
+
+<h4>3.2 查看 CRT 公钥</h4>
+
+
+
+<pre class="wp-block-code"><code># cat eternalcenter.com.crt</code></pre>
+
+
+
+<p>（补充：这里以查看 CRT 公钥 eternalcenter.com.crt 为例）</p>
+
+
+
+<h4>3.3 查看 CSR 证书签名请求文件</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl req -in eternalcenter.com.csr -noout -text</code></pre>
+
+
+
+<p>（补充：这里以查看 CSR 证书签名请求文件 eternalcenter.com.csr 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2021 09:24:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing and High Availability Tool (集群负载均衡加高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Keepalived]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx + Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Website Service Redundant Agent Cluster (网站服务冗余代理集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13543</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：拓扑图 1.1 服务器列表 client enp1s0: 172.16.1.99 proxy1 enp1s0: 172.16.0.101enp7s0: 172.16.1.101virtual IP: 172.16.1.100 proxy2 enp1s0: 172.16.0.102enp7s0: 172.16.1.102 web1 enp1s0: 172.16.0.11 web2 enp1s0: 172.16.0.12 1.2 拓扑图 1.3 拓扑图简介 1) web1 安装 Nginx，web2 安装 Apache 实现网站服务2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑图</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client enp1s0: 172.16.1.99</p>
+
+
+
+<p>proxy1 enp1s0: 172.16.0.101<br>enp7s0: 172.16.1.101<br>virtual IP: 172.16.1.100</p>
+
+
+
+<p>proxy2 enp1s0: 172.16.0.102<br>enp7s0: 172.16.1.102</p>
+
+
+
+<p>web1 enp1s0: 172.16.0.11</p>
+
+
+
+<p>web2 enp1s0: 172.16.0.12</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                      proxy1                                       web1
+                      enp7s0:172.16.1.101 enp1s0:172.16.0.101      enp1s0:172.16.0.11
+                      virtual IP:172.16.1.100
+client
+enp1s0:172.16.1.99
+                      proxy2                                       web2
+                      enp7s0:172.16.1.102 enp1s0:172.16.0.102      enp1s0:172.16.0.12</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>1) web1 安装 Nginx，web2 安装 Apache 实现网站服务<br>2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡<br>3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 网卡上，如果 proxy1 宕机或者检测到自己 Nginx 代理进程死掉，则虚拟 IP 172.16.1.90 则挂在 proxy2 的 enp7s0 网卡上实现高可用<br>4) 如果 web1 和 web2 中有一台服务器宕机，则 proxy1 和 proxy2 会自动不再向这台服务器请求网站服务，直到它恢复正常<br>5) 最终达到的效果是 client 向虚拟 IP 请求网站服务，此时如果 proxy1 正常就代表虚拟 IP 轮询调度 web1 和 web2 上的网站服务，再返回给 client。如果 proxy1 宕机则由 proxy2 代表虚拟 IP 完成次操作</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) client 的 enp1s0 网卡、proxy1 的 enp7s0 网卡和 proxy2 的 enp7s0 网卡要可以相互 ping 通自己和对方的 IP<br>7) proxy1 的 enp1s0 网卡、proxy2 的 enp1s0 网卡、web1 的 enp1s0 网卡和 web2 的 enp1s0 网卡要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：搭建网站服务</h3>
+
+
+
+<h4>3.1 在 web1 上搭建网站服务</h4>
+
+
+
+<h5>3.1.1 在 web1 上安装 Nginx</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 给 web1 制定网页</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web1 &gt; /usr/share/nginx/html/index.html</code></pre>
+
+
+
+<h5>3.1.3 启动 Nginx 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h4>3.2 在 web2 上搭建网站服务</h4>
+
+
+
+<h5>3.2.1 在 web2 上安装 Apache</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 给 web2 制定网页</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web2 &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 Apache 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now httpd</code></pre>
+
+
+
+<h3>步骤四：搭建代理服务</h3>
+
+
+
+<h4>4.1 安装 Nginx</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h4>4.2 修改 Nginx 配置文件</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+    upstream webserver {
+        server 172.16.0.11:80;
+        server 172.16.0.12:80;
+    }
+......
+    server {
+        listen       80;
+
+        location / {
+        proxy_pass http://webserver;/
+        }
+    }
+......
+}</code></pre>
+
+
+
+<h4>4.3 启动 Nginx 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h3>步骤五：搭建高可用服务</h3>
+
+
+
+<h4>5.1 安装 Keepalived</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install keepalived</code></pre>
+
+
+
+<h4>5.2 创建 Keepalived 检查脚本</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/keepalived/nginx_check.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+    systemctl stop nginx
+    sleep 5
+    if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+        systemctl stop keepalived
+    fi
+fi</code></pre>
+
+
+
+<p>（补充：这里以检测 Nginx 没启动就启动 Nginx，5 秒后 Nginx 要是还没有启动就关闭 keepalived 为例）</p>
+
+
+
+<h4>5.3 修改 proxy1 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 101
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 101，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.4 修改 proxy2 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 99
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 99，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.5 启动 Keepalived 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now keepalived.service</code></pre>
+
+
+
+<h3>步骤六：测试网站负载均衡加高可用</h3>
+
+
+
+<h4>6.1 正常情况下测试网站服务</h4>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+
+
+
+<h4>6.2 在单节点故障的情况下测试网站服务</h4>
+
+
+
+<h5>6.2.1 关闭 proxy1、proxy2、web1、web2 中的任意一台服务器</h5>
+
+
+
+<p>（只在 proxy1、proxy2、web1、web2 中的任意一台服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>6.2.2 测试网站服务</h5>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 的使用 （开启网页目录结构）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-index/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jul 2020 13:32:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10205</guid>
+
+					<description><![CDATA[注意： 在开启 Nginx 网页目录结构之前要先安装 Nginx 正文： 内容一：开启 Nginx 目录结构的目的 默认安装了 Nginx 之后，被访问的网页只会显示一张 Nginx 的欢迎页面或者 404有时候我们需要让网页现实网页根目录中的文件和目录，用于提供 http 下载等功能，这个时候就需要开启 Nginx 的目录结构 内容二：开启 Nginx 目录结构的方法 将部分内容修改如下： （补充：1) 这里是在 localtion 下面添加开启目录结构的参数2) 这里的 autoindex on 表示开启目录结构3) 这里的 autoindex_exact_size on 表示显示文件大小4) 这里的 autoindex_localtime on 表示显示服务器的时间5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码6) 这里的 add_header Content-Disposition attachment 表示文件可下载） 或者： 将部分内容修改如下： （补充：1) 这里是在 server 下面添加开启目录结构的参数2) 这里的 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-index/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Nginx 的使用 （开启网页目录结构）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在开启 Nginx 网页目录结构之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：开启 Nginx 目录结构的目的</h3>
+
+
+
+<p>默认安装了 Nginx 之后，被访问的网页只会显示一张 Nginx 的欢迎页面或者 404<br>有时候我们需要让网页现实网页根目录中的文件和目录，用于提供 http 下载等功能，这个时候就需要开启 Nginx 的目录结构</p>
+
+
+
+<h3>内容二：开启 Nginx 目录结构的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+server {
+......
+location /{
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+}
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 localtion 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+server {
+......
+location /{
+......
+}
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 server 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>http {
+......
+autoindex on;
+autoindex_exact_size on;
+autoindex_localtime on;
+charset utf-8,gbk,gb2312;
+add_header Content-Disposition attachment;
+......
+server {
+......
+location /{
+......
+}
+......
+}
+......
+}
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里是在 http 下面添加开启目录结构的参数<br>2) 这里的 autoindex on 表示开启目录结构<br>3) 这里的 autoindex_exact_size on 表示显示文件大小<br>4) 这里的 autoindex_localtime on 表示显示服务器的时间<br>5) 这里的 charset utf-8,gbk,gb2312 表示避免中文乱码<br>6) 这里的 add_header Content-Disposition attachment 表示文件可下载<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Apr 2020 15:29:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8720</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. dbuser=&#8221;ec&#8221; &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 CentOS 8 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#Limit log space
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 Mar 2020 14:03:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8681</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 1) 服务器的系统需要是 openSUSE 15 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本） 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）</p>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = nouser
+group = nouser
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = php-fpm
+group = users
+listen = 127.0.0.1:9000
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 以 php-fpm 用户和 users 用户组的身份启动 php-fpm<br>2) 让 php-fpm 监听本地 9000 端口为例<br>）</p>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下（/srv/www/htdocs）<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jan 2020 14:59:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8078</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例） 3.1.3 启动 nginx 网页服务 3.2 MariaDB &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<pre class="wp-block-code"><code>1) 服务器的系统需要是 CentOS Linux 8 版本
+2) 服务器要关闭防火墙
+3) 服务器要关闭 SELinux
+4) 服务器系统要配置好可用的软件源</code></pre>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;www]
+user = php-fpm
+group = php-fpm
+listen = 127.0.0.1:9000</code></pre>
+
+
+
+<p>（补充：这里以让 php-fpm 监听本地 9000 端口为例）</p>
+
+
+
+<h5>3.3.4 启动 PHP 连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start php-fpm</code></pre>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux Nginx  源码安装包的管理 （通过 systemd 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/systemctl-service/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 17 Oct 2019 14:32:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5912</guid>
+
+					<description><![CDATA[注意： 在通过 systemd 管理源码安装的软件或自制 rpm 包安装的软件（以 Nginx 为例）之前，先要源码安装 Nginx 或者自制 rpm 包安装 Nginx 正文： 步骤一：创建 Nginx 的 systemd 文件 创建以下内容： 步骤二：导入新创建的 Nginx systemd 配置文件 步骤三：使用 systemd 管理 Nginx 3.1 使用 systemd 启动 Nginx 3.2 使用 systemd 开机自启 Nginx 3.3 使用 systemd 显示 Nginx 的状态]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在通过 systemd 管理源码安装的软件或自制 rpm 包安装的软件（以 Nginx 为例）之前，先要源码安装 Nginx 或者自制 rpm 包安装 Nginx</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/rpm-make/">Linux rpm 软件包的制作<br>（通过 rpm-build 实现）<br>（Nginx 版）</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-创建-nginx-的-systemd-文件">步骤一：创建 Nginx 的 systemd 文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/nginx.service </code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+
+Description=nginx server daemon
+
+Documentation=man:nginx(8)
+
+After=network.target
+
+&#91;Service]
+
+Type=forking
+
+ExecStart=/usr/local/nginx/sbin/nginx
+
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+
+ExecStop=/usr/local/nginx/sbin/nginx -s stop
+
+PrivateTmp=true
+
+&#91;Install]
+
+WantedBy=multi-user.target</code></pre>
+
+
+
+<h3 id="步骤二-导入新创建的-nginx-systemd-配置文件">步骤二：导入新创建的 Nginx systemd 配置文件</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h3 id="步骤三-使用-systemd-管理-ngixn3-1-使用-systemd-启动-nginx">步骤三：使用 systemd 管理 Nginx</h3>
+
+
+
+<h4 id="步骤三-使用-systemd-管理-ngixn3-1-使用-systemd-启动-nginx">3.1 使用 systemd 启动 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx.service</code></pre>
+
+
+
+<h4 id="3-2-使用-systemd-开机自启-nginx">3.2 使用 systemd 开机自启 Nginx</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable nginx.service</code></pre>
+
+
+
+<h4 id="3-3-使用-systemd-显示-nginx-的状态">3.3 使用 systemd 显示 Nginx 的状态</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl status nginx.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Nginx 日志的切割</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-log-cut/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 06 Sep 2019 11:15:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5733</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 自动化日志切割并保存之前要先安装 Nginx 正文： 内容一：切割 Nginx 日志的原理 内容二：切割 Nginx 日志的 Shell 脚本 创建以下内容： 内容三：设置 Nginx 日志切割的自动化任务 （补充：这里以每周五的 3 点 3 分执行 /usr/local/nginx/nginxlog.sh 命令为例）]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 自动化日志切割并保存之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：切割 Nginx 日志的原理</h3>
+
+
+
+<pre class="wp-block-code"><code># mv access.log access2.log
+# kill -USR1 $(cat /usr/local/nginx/logs/nginx.pid)</code></pre>
+
+
+
+<h3>内容二：切割 Nginx 日志的 Shell 脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># mkdir -p /usr/local/nginx/
+# vim /usr/local/nginx/nginxlog.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+date=$(date +%Y%m%d)
+logpath=/usr/local/nginx/logs
+mv $logpath/access.log $logpath/access-$date.log
+mv $logpath/error.log   $logpath/error-$date.log
+kill -USR1 $(cat $logpath/nginx.pid)</code></pre>
+
+
+
+<h3>内容三：设置 Nginx 日志切割的自动化任务</h3>
+
+
+
+<pre class="wp-block-code"><code># crontab -e
+03 03 * * 5 /usr/local/nginx/nginxlog.sh</code></pre>
+
+
+
+<p>（补充：这里以每周五的 3 点 3 分执行 /usr/local/nginx/nginxlog.sh 命令为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Pre-boot Execution Environment (PXE) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/pre-boot-execution-environment-pxe/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 11 Jul 2022 07:59:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] PXE 装机模板中软件的删除 （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pxe-remove-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jun 2022 07:33:42 +0000</pubDate>
+				<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Pre-boot Execution Environment (PXE)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25945</guid>
+
+					<description><![CDATA[（补充：这里以删除 httpd 软件为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># mv /var/run/zypp.pid /var/run/zypp.sav
+# /usr/bin/zypper remove httpd
+# mv /var/run/zypp.sav /var/run/zypp.pid</code></pre>
+
+
+
+<p>（补充：这里以删除 httpd 软件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] PXE 新系统模板的添加</title>
+		<link>https://eternalcenter-sep-2022.github.io/pxe-template-add/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 12 Feb 2022 15:14:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Pre-boot Execution Environment (PXE)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21908</guid>
+
+					<description><![CDATA[步骤一：准备安装镜像 1.1 从官网上下载安装镜像 （步骤略） 1.2 挂载安装镜像 1.2.1 创建用于挂载安装镜像的目录 1.2.2 挂载安装镜像 步骤二：准备用于进行 PXE 安装的数据 2.1 准备系统安装数据 2.1.1 创建用于存放系统安装数据的目录 （注意：用于存放系统安装数据的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享）） 2.1.2 拷贝安装镜像里的数据到用于存放系统安装数据的目录 2.1.2.1 拷贝安装镜像里的普通数据到用于存放系统安装数据的目录 2.1.2.2 拷贝安装镜像里的 .treeinfo 文件到用于存放系统安装数据的目录 2.2 准备安装引导文件 2.2.1 创建用于存放安装引导文件的目录 2.2.1.1 创建用于存放 BIOS 安装引导文件的目录 （注意：用于存放 BIOS 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里） 2.2.1.2 创建用于存放 EFI 安装引导文件的目录 （注意：用于存放 EFI 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里） 2.2.2 拷贝安装镜像里的安装引导文件到存放安装引导文件的目录 2.2.2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pxe-template-add/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] PXE 新系统模板的添加"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-准备安装镜像1-1-从官网上下载安装镜像">步骤一：准备安装镜像</h3>
+
+
+
+<h4 id="步骤一-准备安装镜像1-1-从官网上下载安装镜像">1.1 从官网上下载安装镜像</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="1-2-挂载安装镜像1-2-1-创建用于挂载安装镜像的目录">1.2 挂载安装镜像</h4>
+
+
+
+<h5 id="1-2-挂载安装镜像1-2-1-创建用于挂载安装镜像的目录">1.2.1 创建用于挂载安装镜像的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory for mounting the image&gt;</code></pre>
+
+
+
+<h5 id="1-2-2-挂载安装镜像">1.2.2 挂载安装镜像</h5>
+
+
+
+<pre class="wp-block-code"><code># mount -t iso9660 &lt;image&gt; &lt;directory for mounting the image&gt;</code></pre>
+
+
+
+<h3 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">步骤二：准备用于进行 PXE 安装的数据</h3>
+
+
+
+<h4 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">2.1 准备系统安装数据</h4>
+
+
+
+<h5 id="步骤二-准备用于进行-pxe-安装的数据2-1-准备系统安装数据2-1-1-创建用于存放系统安装数据的目录">2.1.1 创建用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放系统安装数据的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享））</p>
+
+
+
+<h5 id="2-1-2-拷贝安装镜像里的数据到用于存放系统安装数据的目录2-1-2-1-拷贝安装镜像里的普通数据到用于存放系统安装数据的目录">2.1.2 拷贝安装镜像里的数据到用于存放系统安装数据的目录</h5>
+
+
+
+<h5 id="2-1-2-拷贝安装镜像里的数据到用于存放系统安装数据的目录2-1-2-1-拷贝安装镜像里的普通数据到用于存放系统安装数据的目录">2.1.2.1 拷贝安装镜像里的普通数据到用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cp -rp &lt;directory for mounting the image&gt;/* &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<h5 id="2-1-2-2-拷贝安装镜像里的-treeinfo-文件到用于存放系统安装数据的目录">2.1.2.2 拷贝安装镜像里的 .treeinfo 文件到用于存放系统安装数据的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cp -rp &lt;directory for mounting the image&gt;/.treeinfo &lt;directory of data for installing the system&gt;</code></pre>
+
+
+
+<h4 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2 准备安装引导文件</h4>
+
+
+
+<h5 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2.1 创建用于存放安装引导文件的目录</h5>
+
+
+
+<h5 id="2-2-准备安装引导文件2-2-1-创建用于存放安装引导文件的目录2-2-1-1-创建用于存放-bios-安装引导文件的目录">2.2.1.1 创建用于存放 BIOS 安装引导文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of BIOS boot file for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放 BIOS 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-2-1-2-创建用于存放-efi-安装引导文件的目录">2.2.1.2 创建用于存放 EFI 安装引导文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># mkdir &lt;directory of EFI boot file for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：用于存放 EFI 安装引导文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-2-2-拷贝安装镜像里的安装引导文件到存放安装引导文件的目录2-2-2-1-拷贝安装镜像里的-bios-安装引导文件到存放-bios-安装引导文件的目录">2.2.2 拷贝安装镜像里的安装引导文件到存放安装引导文件的目录</h5>
+
+
+
+<h5 id="2-2-2-拷贝安装镜像里的安装引导文件到存放安装引导文件的目录2-2-2-1-拷贝安装镜像里的-bios-安装引导文件到存放-bios-安装引导文件的目录">2.2.2.1 拷贝安装镜像里的 BIOS 安装引导文件到存放 BIOS 安装引导文件的目录</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 则拷贝 initrd.img 文件、TRANS.TBL 文件和 vmlinuz 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/initrd.img -O &lt;directory of BIOS boot file for installing the system&gt;/initrd.img
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/TRANS.TBL -O &lt;directory of BIOS boot file for installing the system&gt;/TRANS.TBL
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/vmlinuz -O &lt;directory of BIOS boot file for installing the system&gt;/vmlinuz</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE 则拷贝 linux 文件和 initrd 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/linux -O &lt;directory of BIOS boot file for installing the system&gt;/linux
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/initrd -O &lt;directory of BIOS boot file for installing the system&gt;/initrd</code></pre>
+
+
+
+<h5 id="2-2-2-2-拷贝安装镜像里的-efi-安装引导文件到存放-efi-安装引导文件的目录">2.2.2.2 拷贝安装镜像里的 EFI 安装引导文件到存放 EFI 安装引导文件的目录</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 则拷贝 initrd.img 文件、TRANS.TBL 文件和 vmlinuz 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/initrd.img -O &lt;directory of EFI boot file for installing the system&gt;/initrd.img
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/TRANS.TBL -O &lt;directory of EFI boot file for installing the system&gt;/TRANS.TBL
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/images/pxeboot/vmlinuz -O &lt;directory of EFI boot file for installing the system&gt;/vmlinuz</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE 则拷贝 linux 文件和 initrd 文件：</p>
+
+
+
+<pre class="wp-block-code"><code># curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/linux -O &lt;directory of EFI boot file for installing the system&gt;/linux
+# curl &lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/boot/x86_64/loader/initrd -O &lt;directory of EFI boot file for installing the system&gt;/initrd</code></pre>
+
+
+
+<h4 id="2-3-准备系统安装配置文件2-3-1-进入到用于存放系统安装配置文件的目录">2.3 准备系统安装配置文件</h4>
+
+
+
+<h5 id="2-3-准备系统安装配置文件2-3-1-进入到用于存放系统安装配置文件的目录">2.3.1 进入到用于存放系统安装配置文件的目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd &lt;directory of profile for installing the system&gt;</code></pre>
+
+
+
+<p>（注意：进入到用于存放系统安装配置文件的目录必须要放在能够实现 PXE 安装时网络共享的目录里（例如：通过 httpd 服务进行网络共享））</p>
+
+
+
+<h5 id="2-3-2-创建系统安装配置文件2-3-2-1-创建-bios-系统安装配置文件">2.3.2 创建系统安装配置文件</h5>
+
+
+
+<h5 id="2-3-2-创建系统安装配置文件2-3-2-1-创建-bios-系统安装配置文件">2.3.2.1 创建 BIOS 系统安装配置文件</h5>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话</p>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>1) 如果是 Rocky Linux &amp; RHEL 的话系统安装配置文件是 CFG 文件，文件名最好以 .cfg 后缀结尾<br>2) 如果是 openSUSE &amp; SLE 的话系统安装配置文件是 XML 文件，文件名最好以 .xml 后缀结尾<br>）</p>
+
+
+
+<h5 id="2-3-2-2-创建-efi-系统安装配置文件">2.3.2.2 创建 EFI 系统安装配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>1) 如果是 Rocky Linux &amp; RHEL 的话系统安装配置文件是 CFG 文件，文件名最好以 .cfg 后缀结尾<br>2) 如果是 openSUSE &amp; SLE 的话系统安装配置文件是 XML 文件，文件名最好以 .xml 后缀结尾<br>）</p>
+
+
+
+<h5 id="2-3-3-设置系统安装配置文件的权限2-3-3-1-设置-bios-系统安装配置文件的权限">2.3.3 设置系统安装配置文件的权限</h5>
+
+
+
+<h5 id="2-3-3-设置系统安装配置文件的权限2-3-3-1-设置-bios-系统安装配置文件的权限">2.3.3.1 设置 BIOS 系统安装配置文件的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 &lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<h5 id="2-3-3-2-设置-efi-系统安装配置文件的权限">2.3.3.2 设置 EFI 系统安装配置文件的权限</h5>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 &lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<h4 id="2-4-修改系统安装菜单文件-pxelinux-cfg2-4-1-修改-bios-系统安装菜单文件-pxelinux-cfg">2.4 修改系统安装菜单文件 pxelinux.cfg</h4>
+
+
+
+<h5 id="2-4-修改系统安装菜单文件-pxelinux-cfg2-4-1-修改-bios-系统安装菜单文件-pxelinux-cfg">2.4.1 修改 BIOS 系统安装菜单文件 pxelinux.cfg</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;directory of file for BIOS system installation menu&gt;/pxelinux.cfg</code></pre>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label Rocky Linux or RHEL
+  menu label ^Installation Rocky Linux or RHEL
+  kernel &lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/vmlinuz
+  append initrd=/&lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/initrd.img ks=&lt;The URL of the network share when PXE installing&gt;/&lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 vmlinuz 文件和 initrd.im 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>如果是 openSUSE &amp; SLE 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label openSUSE or SLE
+  menu label ^Installation openSUSE or SLE
+  kernel &lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/linux
+  append initrd=&lt;relative directory of pxelinux.cfg of BIOS boot file for installing the system&gt;/initrd splash=silent showopts install=&lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/ autoyast=&lt;The URL of the network share when PXE installing&gt;/&lt;BIOS system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 linux 文件和 initrd 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>（注意：用于存放 BIOS 系统安装菜单文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h5 id="2-4-2-修改-efi-系统安装菜单文件-grub-cfg">2.4.2 修改 EFI 系统安装菜单文件 grub.cfg</h5>
+
+
+
+<pre class="wp-block-code"><code># vim &lt;directory of file for EFI system installation menu&gt;/grub.cfg</code></pre>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label Rocky Linux or RHEL
+  menu label ^Installation Rocky Linux or RHEL
+  kernel &lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/vmlinuz
+  append initrd=/&lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/initrd.img ks=&lt;The URL of the network share when PXE installing&gt;/&lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 vmlinuz 文件和 initrd.im 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>如果是 openSUSE &amp; SLE 的话，添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+label openSUSE or SLE
+  menu label ^Installation openSUSE or SLE
+  kernel &lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/linux
+  append initrd=&lt;relative directory of pxelinux.cfg of EFI boot file for installing the system&gt;/initrd splash=silent showopts install=&lt;The URL of the network share when PXE installing&gt;/&lt;directory of data for installing the system&gt;/ autoyast=&lt;The URL of the network share when PXE installing&gt;/&lt;EFI system installation profile&gt;</code></pre>
+
+
+
+<p>（注意：这里的 linux 文件和 initrd 文件的位置要写 pxelinux.cfg 文件的相对路径）</p>
+
+
+
+<p>（注意：用于存放 EFI 系统安装菜单文件的目录必须要放在能够实现 TFPT 网络共享的目录里）</p>
+
+
+
+<h3 id="步骤三-取消挂载安装镜像-1">步骤三：取消挂载安装镜像</h3>
+
+
+
+<pre class="wp-block-code"><code># umount &lt;directory for mounting the image&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Git &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/git/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 05 Sep 2022 14:06:14 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] GitHub 代码的更新 （令牌版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/github-push-token/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 01 Jan 2022 13:33:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20763</guid>
+
+					<description><![CDATA[步骤一：在 GitHub 官网上生成令牌 1.1 在 https://github.com/ 上登录或注册 GitHub 用户 （步骤略） 1.2 在 GitHub 上创建仓库 右上角 + &#8211;&#62; New repository &#8211;&#62; 填写 Repository name &#8211;&#62; 勾选 Public &#8211;&#62; Create repository （注意：只有当要使用的仓库还没有创建时才需要进行此步骤） 1.3 在 GitHub 官网上生成令牌 右上角的头像 &#8211;> Settings &#8211;> Developer settings &#8211;> Personal access tokens &#8211;> Generate new token &#8211;> 填写 Note &#8211;> 勾选需要的 scopes &#8211;> &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/github-push-token/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] GitHub 代码的更新 （令牌版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-在-github-官网上生成令牌-1-1-在-https-github-com-上登录或注册-github-用户">步骤一：在 GitHub 官网上生成令牌</h3>
+
+
+
+<h4 id="步骤一-在-github-官网上生成令牌-1-1-在-https-github-com-上登录或注册-github-用户">1.1 在 https://github.com/ 上登录或注册 GitHub 用户</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="1-2-在-github-上创建仓库">1.2 在 GitHub 上创建仓库</h4>
+
+
+
+<p>右上角 + &#8211;&gt; New repository &#8211;&gt; 填写 Repository name &#8211;&gt; 勾选 Public &#8211;&gt; Create repository</p>
+
+
+
+<p>（注意：只有当要使用的仓库还没有创建时才需要进行此步骤）</p>
+
+
+
+<h4 id="1-3-在-github-官网上生成令牌">1.3 在 GitHub 官网上生成令牌</h4>
+
+
+
+<p>右上角的头像 &#8211;> Settings &#8211;> Developer settings &#8211;> Personal access tokens &#8211;> Generate new token &#8211;> 填写 Note &#8211;> 勾选需要的 scopes &#8211;> Generate token</p>
+
+
+
+<h4 id="1-4-复制生成的令牌">1.4 复制生成的令牌</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤二-更新-github-代码-2-1-进入有代码需要更新的目录">步骤二：更新 GitHub 代码</h3>
+
+
+
+<h4 id="步骤二-更新-github-代码-2-1-进入有代码需要更新的目录">2.1 进入有代码需要更新的目录</h4>
+
+
+
+<pre class="wp-block-code"><code># cd github</code></pre>
+
+
+
+<p>（补充：这里以进入 github 目录为例）</p>
+
+
+
+<h4 id="2-2-初始化-git-环境">2.2 初始化 Git 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># git init</code></pre>
+
+
+
+<h4 id="2-3-添加需要更新的代码">2.3 添加需要更新的代码</h4>
+
+
+
+<pre class="wp-block-code"><code># git add *</code></pre>
+
+
+
+<p>（补充：这里以添加当前目录下的所有文件为例）</p>
+
+
+
+<h4 id="2-4-提交刚刚的添加">2.4 提交刚刚的添加</h4>
+
+
+
+<pre class="wp-block-code"><code># git commit -m "last commit"</code></pre>
+
+
+
+<p>（补充：这里以提交时添加 “last commit” 备注为例）</p>
+
+
+
+<h4 id="2-5-创建或选择代码库的分支">2.5 创建或选择代码库的分支</h4>
+
+
+
+<pre class="wp-block-code"><code># git branch -M main</code></pre>
+
+
+
+<p>（补充：这里以创建或选择库里的 main 分支为例）</p>
+
+
+
+<h4 id="2-6-添加-github-源">2.6 添加 GitHub 源</h4>
+
+
+
+<pre class="wp-block-code"><code># git remote add origin git@github.com:eternalcenter-now/eternalcenter-now.github.io</code></pre>
+
+
+
+<p>（补充：这里以添加 GitHub 的 eternalcenter-now 用户的 eternalcenter-now.github.io 库为例）</p>
+
+
+
+<p>（注意：这里的 eternalcenter-now 用户和 eternalcenter-now.github.io 库是指在 1.1、1.2 上创建的用户和库）</p>
+
+
+
+<h4 id="2-7-通过令牌设置-github-源">2.7 通过令牌设置 GitHub 源</h4>
+
+
+
+<pre class="wp-block-code"><code># git remote set-url origin https://gafafhp_Nfaodfwiixma8hPpds4e6asdflim@github.com/eternalcenter-now/eternalcenter-now.github.io</code></pre>
+
+
+
+<p>（补充：这里以使用 GitHub 的 gafafhp_Nfaodfwiixma8hPpds4e6asdflim 令牌、eternalcenter-now 用户的 eternalcenter-now.github.io 库为例）</p>
+
+
+
+<p>（注意：这里的 eternalcenter-now 用户、eternalcenter-now.github.io 库和 gafafhp_Nfaodfwiixma8hPpds4e6asdflim 令牌是指在 1.1、1.2、1.3 上创建的用户、库和生成的令牌）</p>
+
+
+
+<h4 id="2-8-将代码更新至-github">2.8 将代码更新至 GitHub</h4>
+
+
+
+<pre class="wp-block-code"><code># git push -u origin main</code></pre>
+
+
+
+<p>（补充：这里以将代码更新至 main 分支为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 （Git LFS 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-github-replace-git-lfs/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:44:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19851</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. directory=download-eternalcenter #本地的缓冲目录2. gituser=mingyuzhu #GitHub 用户3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱4. gitrepository=download-eternalcenter #GitHub 库5. gitbranch=’master’ #GitHub 库的分支6. backupfile=all #备份后的文件7. keyword=clone #同目录下要备份目录名称的关键字 注意 需要提前安装 git 和 git-lfs，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里<br>作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. directory=download-eternalcenter #本地的缓冲目录<br>2. gituser=mingyuzhu #GitHub 用户<br>3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱<br>4. gitrepository=download-eternalcenter #GitHub 库<br>5. gitbranch=’master’ #GitHub 库的分支<br>6. backupfile=all #备份后的文件<br>7. keyword=clone #同目录下要备份目录名称的关键字</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>需要提前安装 git 和 git-lfs，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directory=download-eternalcenter
+gituser=mingyuzhu
+gitemail=mingyu.zhu@eternalcenter.com
+gitrepository=download-eternalcenter
+gitbranch='master'
+backupfile=all
+keyword=clone
+
+####################### Separator ########################
+
+backupdirectory=`ls -rtlh | grep $keyword | awk '{print $NF}' | tail -1`
+
+sqlfile=`ls $backupdirectory | grep sql`
+tarfile=`ls $backupdirectory | grep tar`
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+
+echo $gituser
+git config --global user.email "$gitemail"
+git config --global user.name "$gituser"
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git lfs install
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git lfs track *
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
+git commit -m 'cleapup'
+git push -u origin $gitbranch -f
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+cd ..
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git lfs install
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git lfs track *
+git rm *
+git commit -m 'cleapup'
+
+cd ../$backupdirectory/
+tar -zcvf ../$directory/$backupfile.tar.gz *
+cd ../$directory
+
+git lfs track *
+git add *
+git status
+git commit -m 'upload'
+git push -u origin $gitbranch -f
+cd ..</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-github-replace/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:11:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19836</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. directory=download-eternalcenter #本地的缓冲目录2. gituser=mingyuzhu #GitHub 用户3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱4. gitrepository=download-eternalcenter #GitHub 库5. gitbranch=’master’ #GitHub 库的分支6. backupfile=all #备份后的文件7. keyword=clone #同目录下要备份目录名称的关键字 注意 需要提前安装 git，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里<br>作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. directory=download-eternalcenter #本地的缓冲目录<br>2. gituser=mingyuzhu #GitHub 用户<br>3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱<br>4. gitrepository=download-eternalcenter #GitHub 库<br>5. gitbranch=’master’ #GitHub 库的分支<br>6. backupfile=all #备份后的文件<br>7. keyword=clone #同目录下要备份目录名称的关键字</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>需要提前安装 git，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directory=download-eternalcenter
+gituser=mingyuzhu
+gitemail=mingyu.zhu@eternalcenter.com
+gitrepository=download-eternalcenter
+gitbranch='master'
+backupfile=all
+keyword=clone
+
+####################### Separator ########################
+
+backupdirectory=`ls -rtlh | grep $keyword | awk '{print $NF}' | tail -1`
+
+sqlfile=`ls $backupdirectory | grep sql`
+tarfile=`ls $backupdirectory | grep tar`
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+
+echo $gituser
+git config --global user.email "$gitemail"
+git config --global user.name "$gituser"
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
+git commit -m 'cleapup'
+git push -u origin $gitbranch -f
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+cd ..
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git rm *
+git commit -m 'cleapup'
+
+cd ../$backupdirectory/
+tar -zcvf ../$directory/$backupfile.tar.gz *
+cd ../$directory
+
+git add *
+git status
+git commit -m 'upload'
+git push -u origin $gitbranch -f
+cd ..</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

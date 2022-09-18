@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>FTP &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/storage-service/ftp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 14:30:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] FTP + Pacemaker 存储服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:26:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[FTP]]></category>
+		<category><![CDATA[FTP + Pacemaker]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service High Availability Cluster (存储服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5049</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 步骤一：Pacemaker 高可用 FTP 服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 Iscasi 远程目录服务 1.2 本 Pacemaker 高可用 FTP 服务的特点 1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录2) 提供 FTP 服务4) 提供虚拟 IP 服务5) 以上三项服务器都实现高可用6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器 步骤二：前期准备所有集群主机上都安装 FTP 服务 2.1 在所有集群主机上安装 FTP （在所有集群服务器上执行以下步骤） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] FTP + Pacemaker 存储服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用 FTP 服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 Iscasi 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用 FTP 服务的特点</h4>
+
+
+
+<p>1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录<br>2) 提供 FTP 服务<br>4) 提供虚拟 IP 服务<br>5) 以上三项服务器都实现高可用<br>6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备所有集群主机上都安装 FTP 服务</h3>
+
+
+
+<h4>2.1 在所有集群主机上安装 FTP</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install vsftpd</code></pre>
+
+
+
+<h4>2.2 确保 vsftpd 服务没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop vsftpd
+# systemctl disable vsftpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的 FTP 高可用服务</h3>
+
+
+
+<h4>3.1 在 ftp 资源组中创建名为 ftpip 的虚拟 ip 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpip IPaddr2 ip=192.168.0.21 cidr_netmask=24 --group ftp</code></pre>
+
+
+
+<h4>3.2 在 ftp 资源组中创建名为 ftpfiles 挂载其他服务器的 Iscasi 服务的资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpfiles Filesystem device=192.168.8.21:/content/ftp directory=/var/ftp fstype=nfs options=ro --group ftp</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 Iscasi 服务，这个服务需要提前搭建好）</p>
+
+
+
+<h4>3.3 在 ftp 资源组中创建名为 vsftpd 的 ftp 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create vsftpd systemd:vsftpd --group ftp</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

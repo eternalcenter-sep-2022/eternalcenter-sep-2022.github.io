@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Database (数据库) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-deployment/shell-database/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 10:07:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 在 MariaDB &#038; MySQL 的配置文件里设置部分安全策略</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-mariadb-mysql-securtiy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 12 Apr 2020 08:22:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Database (数据库)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8736</guid>
+
+					<description><![CDATA[介绍： 作者:朱明宇名称:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略作用:在 MariaDB &#38; MySQL 的配置文件里设置部分安全策略 使用方法:1. 确认 MariaDB &#38; MySQL 已提前装好2. 在此脚本的分割线内写入相应的内容3. 给此脚本增加执行权限4. 执行此脚本 脚本：]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍：</h2>
+
+
+
+<p>作者:朱明宇<br>名称:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略<br>作用:在 MariaDB &amp; MySQL 的配置文件里设置部分安全策略</p>
+
+
+
+<p>使用方法:<br>1. 确认 MariaDB &amp; MySQL 已提前装好<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本增加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h2>脚本：</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+#At the system level, start the database as a MySQL user
+chown -R mysql /var/lib/mysql
+sed -i '/^user=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a user=mysql' /etc/my.cnf.d/mariadb-server.cnf
+
+#Disable client local data reading at the system level
+sed -i '/^local-infile=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a local-infile=0' /etc/my.cnf.d/mariadb-server.cnf
+
+#At the system level, remote login of database is prohibited
+sed -i '/^bind-address=/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i '/^datadir/a bind-address=127.0.0.1' /etc/my.cnf.d/mariadb-server.cnf
+
+#Restart database
+systemctl restart mariadb ; systemctl restart mysql</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量修改多个 MySQL root 的初始密码</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-mysql-password-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 16 Jan 2019 11:13:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Database (数据库)]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1259</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量修改多个 MySQL root 的初始密码作用：批量修改多个 MySQL root 的初始密码 使用方法 1. 确认 MariaDB&#38;MySQL 已提前装好2. 在此脚本的分割线内写入相应的内容3. 给此脚本添加执行权限4. 执行此脚本 脚本分割线里的变量 1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前三个网络位一定正确2. sip=51 #起始 ip，ip 的范围是 0-2553. lip=53 #结束 ip，ip 的范围是 0-2554. pd=123456 #想要修改的 MySQL 密码,至少必须要 ６ 个数 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量修改多个 MySQL root 的初始密码<br>作用：批量修改多个 MySQL root 的初始密码</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 确认 MariaDB&amp;MySQL 已提前装好<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. nm=192.168.4.0 #网段，网段必须为 C 类网段，请保证格式和前三个网络位一定正确<br>2. sip=51 #起始 ip，ip 的范围是 0-255<br>3. lip=53 #结束 ip，ip 的范围是 0-255<br>4. pd=123456 #想要修改的 MySQL 密码,至少必须要 ６ 个数</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+nm=192.168.4.0
+sip=51
+lip=53
+pd=123456
+
+####################### Separator ########################
+
+fnm=${nm%.*}
+
+set timeout 3
+
+rpm -q expect
+
+if &#91; $? -ne 0 ];then
+        yum -y install expect &amp;&gt; /dev/null
+fi
+
+for i in `seq $sip $lip`
+do
+
+        echo $fnm.$i
+
+        ssh $fnm.$i 'grep validate_password_policy=0 /etc/my.cnf'
+        if &#91; $? -ne 0 ];then
+                ssh $fnm.$i 'sed -i "/^\&#91;mysqld\]$/a validate_password_policy=0" /etc/my.cnf'
+        fi
+
+        ssh $fnm.$i 'grep validate_password_length=6 /etc/my.cnf'
+        if &#91; $? -ne 0 ];then
+                ssh $fnm.$i 'sed -i "/^\&#91;mysqld\]$/a validate_password_length=6" /etc/my.cnf'
+        fi
+
+        ssh $fnm.$i 'systemctl restart mysqld'
+
+        a=`ssh $fnm.$i "grep 'password is generated for root@localhost' /var/log/mysqld.log" |tail -1 | awk '{print $NF}'`
+
+        expect &lt;&lt; EOF
+        spawn ssh $fnm.$i "mysqladmin -uroot -p password $pd "
+        expect "Enter password:"            {send "$a\r"}
+        expect "#"                          {send "\r"}
+        EOF
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

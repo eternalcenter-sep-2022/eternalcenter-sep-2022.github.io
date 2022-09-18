@@ -1,0 +1,2340 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>VNC &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/vnc/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 23 Aug 2022 17:25:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] 远程虚拟化平台的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/remote-virtual-platform/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 26 Sep 2020 10:10:37 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[KVM]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer (系统电脑)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[Virtualization (虚拟化)]]></category>
+		<category><![CDATA[VNC]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10587</guid>
+
+					<description><![CDATA[步骤一：规划拓扑 1.1 电脑列表 1) 一台可以联接公网的电脑2) 一个 CentOS 8.2 系统的安装 U 盘3) 一台可以联接公网并且有公网 IP 地址的 VPS4) 一个可以联接公网并使用 SSH 和 VNC 的客户端 1.2 服务器列表简介 1) 电脑通过 SSH 建立联接到 VPS 的隧道，此操作会占用 VPS 的一个端口2) VPS 通过 SSH 将联接电脑的隧道端口映射到一个新的端口3) 客户端通过 SSH 联接到 VPS 映射出来的新端口，通过 SSH 或远程桌面使用虚拟化平台4) 客户端和电脑如果在同一内网里则可以通过 Samba 互传数据 步骤二：CentOS 8.2 系统的安装 U 盘给电脑安装系统 （只在电脑上执行以下步骤）（步骤略） （补充：安装系统时可选择以下选项：1) 系统起动方式：BIOS2) Keyboard：English(US)3) Language Support：English(United &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/remote-virtual-platform/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] 远程虚拟化平台的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-规划拓扑1-1-电脑列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-电脑列表">1.1 电脑列表</h4>
+
+
+
+<p>1) 一台可以联接公网的电脑<br>2) 一个 CentOS 8.2 系统的安装 U 盘<br>3) 一台可以联接公网并且有公网 IP 地址的 VPS<br>4) 一个可以联接公网并使用 SSH 和 VNC 的客户端</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 电脑通过 SSH 建立联接到 VPS 的隧道，此操作会占用 VPS 的一个端口<br>2) VPS 通过 SSH 将联接电脑的隧道端口映射到一个新的端口<br>3) 客户端通过 SSH 联接到 VPS 映射出来的新端口，通过 SSH 或远程桌面使用虚拟化平台<br>4) 客户端和电脑如果在同一内网里则可以通过 Samba 互传数据</p>
+
+
+
+<h3 id="步骤二-centos-8-2-系统的安装-u-盘给电脑安装系统">步骤二：CentOS 8.2 系统的安装 U 盘给电脑安装系统</h3>
+
+
+
+<p>（只在电脑上执行以下步骤）<br>（步骤略）</p>
+
+
+
+<p>（<br>补充：<br>安装系统时可选择以下选项：<br>1) 系统起动方式：BIOS<br>2) Keyboard：English(US)<br>3) Language Support：English(United States)<br>4) Time &amp; Date：Asia/ShangHai<br>5) Installation Source：Local media<br>6) Software Selection：Minial Install<br>7) Installation Destination：将主硬盘里的所有空间都分配给根分区<br>8) KDUMP：Kdump is disabled<br>9) Network &amp; Host Name：开启网络联接并设置好固定 DNS<br>10) SECURITY POLICY：No controller found<br>）</p>
+
+
+
+<p>（这里以将 IP 地址设置为固定 IP 地址 192.168.0.1，DNS 设置为固定 DNS 8.8.8.8 为例）</p>
+
+
+
+<h3 id="步骤三-安装图形系统桌面">步骤三：安装图形系统桌面</h3>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum groupinstall -y "Server with GUI"</code></pre>
+
+
+
+<h3 id="步骤四-安装中文输入法4-1-安装中文库">步骤四：安装中文输入法</h3>
+
+
+
+<h4 id="步骤四-安装中文输入法4-1-安装中文库">4.1 安装中文库</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install langpacks-zh_CN</code></pre>
+
+
+
+<h4 id="4-2-确认中文库已经安装">4.2 确认中文库已经安装</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># locale -a</code></pre>
+
+
+
+<h4 id="4-3-安装中文输入法">4.3 安装中文输入法</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install ibus ibus-libpinyin</code></pre>
+
+
+
+<h3 id="步骤五-创建用户用户5-1-创建用户用户">步骤五：创建用户用户</h3>
+
+
+
+<h4 id="步骤五-创建用户用户5-1-创建用户用户">5.1 创建用户用户</h4>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># useradd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里创建用户 zhumingyu 为例）</p>
+
+
+
+<h4 id="5-2-给用户用户设置密码">5.2 给用户用户设置密码</h4>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># passwd zhumingyu</code></pre>
+
+
+
+<p>（补充：这里创建用户 zhumingyu 为例）</p>
+
+
+
+<h3 id="步骤六-增加-centos-系统的稳定性6-1-延长看门狗喂狗间隔以减少系统被软锁出现-softlockup-的几率6-1-1-临时延长看门狗喂狗间隔的时间">步骤六：增加 CentOS 系统的稳定性</h3>
+
+
+
+<h4 id="步骤六-增加-centos-系统的稳定性6-1-延长看门狗喂狗间隔以减少系统被软锁出现-softlockup-的几率6-1-1-临时延长看门狗喂狗间隔的时间">6.1 延长看门狗喂狗间隔以减少系统被软锁出现 softlockup 的几率</h4>
+
+
+
+<h5 id="步骤六-增加-centos-系统的稳定性6-1-延长看门狗喂狗间隔以减少系统被软锁出现-softlockup-的几率6-1-1-临时延长看门狗喂狗间隔的时间">6.1.1 临时延长看门狗喂狗间隔的时间</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sysctl -w kernel.watchdog_thresh=60</code></pre>
+
+
+
+<h5 id="6-1-2-永久延长看门狗喂狗间隔的时间6-1-2-1-添加延长看门狗喂狗间隔的设置">6.1.2 永久延长看门狗喂狗间隔的时间</h5>
+
+
+
+<h5 id="6-1-2-永久延长看门狗喂狗间隔的时间6-1-2-1-添加延长看门狗喂狗间隔的设置">6.1.2.1 添加延长看门狗喂狗间隔的设置</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysctl.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+kernel.watchdog_thresh=60</code></pre>
+
+
+
+<h5 id="6-1-2-2-让添加延长看门狗喂狗间隔的设置生效">6.1.2.2 让添加延长看门狗喂狗间隔的设置生效</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sysctl -p</code></pre>
+
+
+
+<h5 id="6-1-3-让-softlockup-触发后直接宕机">6.1.3 让 softlockup 触发后直接宕机</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo 1 &gt; /proc/sys/kernel/softlockup_panic</code></pre>
+
+
+
+<h4 id="6-2-禁止图形系统桌面的-dns-和路由以避免系统崩溃6-2-1-添加禁止图形系统桌面的-dns-和路由的设置">6.2 禁止图形系统桌面的 DNS 和路由以避免系统崩溃</h4>
+
+
+
+<h5 id="6-2-禁止图形系统桌面的-dns-和路由以避免系统崩溃6-2-1-添加禁止图形系统桌面的-dns-和路由的设置">6.2.1 添加禁止图形系统桌面的 DNS 和路由的设置</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysconfig/network-scripts/ifcfg-enp9s0</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+PEERDNS=no
+PEERROUTES=no</code></pre>
+
+
+
+<p>（补充：这里的 ifcfg-enp9s0 是指网卡对应的配置文件，不同的网卡对应的配置文件不同，这里以网卡名 ifcfg-enp9s0 为例，需要给所有网卡添加此参数，这一步也可以在系统图形系统桌面上设置）</p>
+
+
+
+<h5 id="6-2-2-让禁止图形系统桌面的-dns-和路由的设置生效">6.2.2 让禁止图形系统桌面的 DNS 和路由的设置生效</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart NetworkManager</code></pre>
+
+
+
+<h4 id="6-3-禁止图形系统界面自动黑屏或自动挂起">6.3 禁止图形系统界面自动黑屏或自动挂起</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<h4 id="6-4-让-ssh-联接永久不超时6-4-1-让-ssh-服务端的连接不超时">6.4 让 SSH 联接永久不超时</h4>
+
+
+
+<h5 id="6-4-让-ssh-联接永久不超时6-4-1-让-ssh-服务端的连接不超时">6.4.1 让 SSH 服务端的连接不超时</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ClientAliveInterval 60
+ClientAliveCountMax 525600
+......</code></pre>
+
+
+
+<p>（补充：这样设置会让 SSH 服务端每 60s 就会尝试连接一次客户端，如果 525600 次后没有回应，则断开）</p>
+
+
+
+<h5 id="6-4-2-让用户登陆永不超时6-4-2-1-在系统文件里添加让用户登陆永不超时的设置">6.4.2 让用户登录永不超时</h5>
+
+
+
+<h5 id="6-4-2-让用户登陆永不超时6-4-2-1-在系统文件里添加让用户登陆永不超时的设置">6.4.2.1 在系统文件里添加让用户登录永不超时的设置</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/bashrc</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+export TMOUT=0</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/profile</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+export TMOUT=0</code></pre>
+
+
+
+<h5 id="6-4-2-2-让用户登陆永不超时的设置立刻生效">6.4.2.2 让用户登录永不超时的设置立刻生效</h5>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># source /etc/bashrc
+# source /etc/profile</code></pre>
+
+
+
+<h4 id="6-5-删除不需要的软件包以避免-cpu-占用过高而崩溃-选做">6.5 删除不需要的软件包以避免 CPU 占用过高而崩溃（选做）</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤七-搭建虚拟化平台">步骤七：搭建虚拟化平台</h3>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install qemu-kvm libvirt-daemon libvirt-client libvirt-daemon-driver-qemu virt-install virt-manager virt-viewer virt-v2v</code></pre>
+
+
+
+<h3 id="步骤八-实现文件共享8-1-安装-samba-服务">步骤八：实现文件共享</h3>
+
+
+
+<h4 id="步骤八-实现文件共享8-1-安装-samba-服务">8.1 安装 Samba 服务</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install samba
+</code></pre>
+
+
+
+<h4 id="8-2-配置-samba-服务的配置文件">8.2 配置 Samba 服务的配置文件</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/samba/smb.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code># See smb.conf.example for a more detailed config file or
+# read the smb.conf manpage.
+# Run 'testparm' to verify the config is correct after
+# you modified it.
+
+&#91;global]
+workgroup = WORKGROUP
+realm = zhumingyu
+netbios name = zhumingyu
+#encrypt passwords = yes
+map to guest = NEVER
+security = user
+password server = *
+name resolve order = bcast host
+restrict anonymous = 2
+#null passwords = no
+#guest account = smb_nobody
+#use spnego = yes
+client use spnego = yes
+server string = ""
+host msdfs = no
+msdfs root = no
+domain master = no
+preferred master = no
+local master = no
+os level = 0
+browse list = no
+browseable = no
+dns proxy = no
+wide links = no
+public= no
+guest ok = no
+hosts deny = ALL EXCEPT 192.168.0.2
+
+&#91;share]
+valid users = zhumingyu
+write list = zhumingyu
+read list = zhumingyu
+path = /share
+guest ok = no
+read only = no
+browseable = no
+writable = yes
+public = no
+create mask = 0755
+directory mask = 0755</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以 Samba 服务器的 IP 地址是 192.168.0.1 为例<br>2) 这里的 workgroup = WORKGROUP 是让 Samba 服务属于 WORKGROUP<br>3) 这里的 hosts deny = ALL EXCEPT 192.168.0.2 是只让客户端 192.168.0.3 能够访问服务端的 Samba<br>4) 这里的 sharetest 是这个 Samba 挂载点的名称，挂载这个挂载点的格式就是：//192.168.0.1/share<br>5) 这里的 valid users = zhumingyu 是 Samba 服务共享用户需要手动生成<br>6) 这里的 path = /share 是 Samba 服务共享目录需要手动生成<br>）</p>
+
+
+
+<h4 id="8-3-设置-samba-服务共享用户8-3-1-给-samba-服务共享用户设置-samba-共享密码">8.3 设置 Samba 服务共享用户</h4>
+
+
+
+<h5 id="8-3-设置-samba-服务共享用户8-3-1-给-samba-服务共享用户设置-samba-共享密码">8.3.1 给 Samba 服务共享用户设置 Samba 共享密码</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># smbpasswd -a zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="8-3-2-显示-samba-服务共享用户是否可用">8.3.2 显示 Samba 服务共享用户是否可用</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pdbedit -L</code></pre>
+
+
+
+<h4 id="8-4-生成-samba-服务共享目录8-4-1-生成-samba-服务共享目录">8.4 生成 Samba 服务共享目录</h4>
+
+
+
+<h5 id="8-4-生成-samba-服务共享目录8-4-1-生成-samba-服务共享目录">8.4.1 生成 Samba 服务共享目录</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /share</code></pre>
+
+
+
+<h5 id="8-4-2-给-samba-服务共享目录设置权限">8.4.2 给 Samba 服务共享目录设置权限</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod 755 /share/</code></pre>
+
+
+
+<h5 id="8-4-3-给-samba-服务共享目录设置所属主和所属组">8.4.3 给 Samba 服务共享目录设置所属主和所属组</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chown zhumingyu:zhumingyu /share/</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="8-4-4-给-samba-服务共享目录设置-selinux-标签">8.4.4 给 Samba 服务共享目录设置 selinux 标签</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># semanage fcontext -a -t samba_share_t '/share(/.*)?'</code></pre>
+
+
+
+<h5 id="8-4-5-让-samba-服务共享目录上的-selinux-标签立刻生效">8.4.5 让 Samba 服务共享目录上的 selinux 标签立刻生效</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># restorecon -RFvv /share/</code></pre>
+
+
+
+<h4 id="8-5-启动-samba-服务并设置为开机自动启动">8.5 启动 Samba 服务并设置为开机自动启动</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now smb</code></pre>
+
+
+
+<h4 id="8-6-在系统防火墙开放-samba-的端口8-6-1-在系统防火墙开放-samba-的端口">8.6 在系统防火墙开放 Samba 的端口</h4>
+
+
+
+<h5 id="8-6-在系统防火墙开放-samba-的端口8-6-1-在系统防火墙开放-samba-的端口">8.6.1 在系统防火墙开放 Samba 的端口</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --add-service=samba --permanent</code></pre>
+
+
+
+<h5 id="8-6-2-让系统防火墙重新加载">8.6.2 让系统防火墙重新加载</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --reload</code></pre>
+
+
+
+<h3 id="步骤九-实现远程桌面9-1-安装-vnc-服务">步骤九：实现远程桌面</h3>
+
+
+
+<h4 id="步骤九-实现远程桌面9-1-安装-vnc-服务">9.1 安装 vnc 服务</h4>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tigervnc tigervnc-server</code></pre>
+
+
+
+<h4 id="9-2-设置-vnc-服务共享用户9-2-1-进入用户">9.2 设置 VNC 服务共享用户</h4>
+
+
+
+<h5 id="9-2-设置-vnc-服务共享用户9-2-1-进入用户">9.2.1 进入用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="9-2-2-给-vnc-服务共享用户设置-vnc-远程密码">9.2.2 给 VNC 服务共享用户设置 VNC 远程密码</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vncpasswd</code></pre>
+
+
+
+<h5 id="9-2-3-退出用户">9.2.3 退出用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h4 id="9-3-启动-vnc-并设置为开机自动启动9-3-1-创建开启-vnc-的脚本-vnc-sh9-3-1-1-进入到用户">9.3 启动 VNC 并设置为开机自动启动</h4>
+
+
+
+<h5 id="9-3-启动-vnc-并设置为开机自动启动9-3-1-创建开启-vnc-的脚本-vnc-sh9-3-1-1-进入到用户">9.3.1 创建开启 VNC 的脚本 ~/vnc.sh</h5>
+
+
+
+<h5 id="9-3-启动-vnc-并设置为开机自动启动9-3-1-创建开启-vnc-的脚本-vnc-sh9-3-1-1-进入到用户">9.3.1.1 进入到用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="9-3-1-2-创建开启-vnc-的脚本-vnc-sh">9.3.1.2 创建开启 VNC 的脚本 ~/vnc.sh</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vim ~/vnc.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+vncserver -list | grep :1 &amp;&gt; /dev/null || vncserver :1 -localhost -nolisten tcp</code></pre>
+
+
+
+<p>（补充：此命令会检查 vncserver :1 会话是否存在，如果不存在，就以禁止非安全远程登录的方式创建一个）</p>
+
+
+
+<h5 id="9-3-1-3-退出用户">9.3.1.3 退出用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h5 id="9-3-2-执行开启-vnc-的脚本9-3-2-1-开机执行开启-vnc-的脚本9-3-2-1-1-配置开机执行的文件">9.3.2 执行开启 VNC 的脚本</h5>
+
+
+
+<h5 id="9-3-2-执行开启-vnc-的脚本9-3-2-1-开机执行开启-vnc-的脚本9-3-2-1-1-配置开机执行的文件">9.3.2.1 开机执行开启 VNC 的脚本</h5>
+
+
+
+<h5 id="9-3-2-执行开启-vnc-的脚本9-3-2-1-开机执行开启-vnc-的脚本9-3-2-1-1-配置开机执行的文件">9.3.2.1.1 配置开机执行的文件</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+su - zhumingyu -c '/home/zhumingyu/vnc.sh'</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 的身份运行）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+su - zhumingyu -c 'vncserver -list | grep :1' &amp;&gt; /dev/null || su - zhumingyu -c 'vncserver :1 -localhost -nolisten tcp'</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>2) 以用户 zhumingyu 的身份运行<br>3) 此命令会检查 vncserver :1 会话是否存在，如果不存在，就以禁止非安全远程登录的方式创建一个<br>）</p>
+
+
+
+<h5 id="9-3-2-1-2-给开机执行的文件执行权限">9.3.2.1.2 给开机执行的文件执行权限</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x /home/zhumingyu/vnc.sh</code></pre>
+
+
+
+<h5 id="9-3-2-2-定期执行开启-vnc-的脚本9-3-2-2-1-进入到用户">9.3.2.2 定期执行开启 VNC 的脚本</h5>
+
+
+
+<h5 id="9-3-2-2-定期执行开启-vnc-的脚本9-3-2-2-1-进入到用户">9.3.2.2.1 进入到用户</h5>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="9-3-2-2-2-配置定期执行的文件">9.3.2.2.2 配置定期执行的文件</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * /home/zhumingyu/vnc.sh</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * vncserver -list | grep :1' &amp;&gt; /dev/null || su - zhumingyu -c 'vncserver :1 -localhost -nolisten tcp</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以用户 zhumingyu 的身份运行<br>2) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>3) 此命令会检查 vncserver :1 会话是否存在，如果不存在，就以禁止非安全远程登录的方式创建一个<br>）</p>
+
+
+
+<h5 id="9-3-2-2-3-退出用户">9.3.2.2.3 退出用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h3 id="步骤十-设置-ssh-内网穿透10-1-生成-ssh-密钥10-1-1-进入到用户">步骤十：设置 SSH 内网穿透</h3>
+
+
+
+<h5 id="步骤十-设置-ssh-内网穿透10-1-生成-ssh-密钥10-1-1-进入到用户">10.1 生成 SSH 密钥</h5>
+
+
+
+<h5 id="步骤十-设置-ssh-内网穿透10-1-生成-ssh-密钥10-1-1-进入到用户">10.1.1 进入到用户</h5>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-1-2-生成-ssh-密钥">10.1.2 生成 SSH 密钥</h5>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ ssh-keygen -b 2048 -t rsa</code></pre>
+
+
+
+<p>（补充：建议在创建 SSH 密钥时为 SSH 密钥添加一个密码）</p>
+
+
+
+<h5 id="10-1-3-退出用户">10.1.3 退出用户</h5>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h4 id="10-2-实现无密钥-ssh10-2-1-进入到用户">10.2 实现无密钥 SSH</h4>
+
+
+
+<h5 id="10-2-实现无密钥-ssh10-2-1-进入到用户">10.2.1 进入到用户</h5>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-2-2-让电脑可以无密钥-ssh-vps">10.2.2 让电脑可以无密钥 SSH VPS</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ ssh-copy-id &lt;public IP address of VPS&gt;</code></pre>
+
+
+
+<h5 id="10-2-3-让-vps-可以无密钥-ssh-自己">10.2.3 让 VPS 可以无密钥 SSH 自己</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ ssh-copy-id localhost</code></pre>
+
+
+
+<h5 id="10-2-4-让客户端可以远程-vps-和电脑">10.2.4 让客户端可以远程 VPS 和电脑</h5>
+
+
+
+<pre class="wp-block-code"><code>$ ssh-copy-id &lt;IP address of computer&gt;
+$ ssh-copy-id &lt;public IP address of VPS&gt;</code></pre>
+
+
+
+<h5 id="10-2-5-退出用户">10.2.5 退出用户</h5>
+
+
+
+<p>（分别在电脑、VPS 和客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h4 id="10-3-建立电脑到-vps-的-ssh-隧道并设置为开机自启10-3-1-创建建立电脑到-vps-的-ssh-隧道的脚本-ssh-sh10-3-1-1-进入到用户">10.3 建立电脑到 VPS 的 SSH 隧道并设置为开机自启</h4>
+
+
+
+<h5 id="10-3-建立电脑到-vps-的-ssh-隧道并设置为开机自启10-3-1-创建建立电脑到-vps-的-ssh-隧道的脚本-ssh-sh10-3-1-1-进入到用户">10.3.1 创建建立电脑到 VPS 的 SSH 隧道的脚本 ～/ssh.sh<br>10.3.1.1 进入到用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-3-1-2-创建建立电脑到-vps-的-ssh-隧道的脚本-ssh-sh">10.3.1.2 创建建立电脑到 VPS 的 SSH 隧道的脚本 ～/ssh.sh</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vim ～/ssh.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>ps -aux | grep -v grep | grep "11000:localhost:22 &lt;IP address of computer&gt;" &amp;&gt; /dev/null || ssh -X -fCNR 11000:localhost:22 &lt;IP address of computer&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以用户 zhumingyu 的身份运行<br>2) 如果 11000 端口没有影射到 22 端口则影射<br>）</p>
+
+
+
+<h5 id="10-3-1-3-退出用户">10.3.1.3 退出用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h5 id="10-3-2-执行电脑到-vps-的-ssh-隧道的脚本10-3-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-3-2-1-1-配置开机执行的文件">10.3.2 执行电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-3-2-执行电脑到-vps-的-ssh-隧道的脚本10-3-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-3-2-1-1-配置开机执行的文件">10.3.2.1 开机执行开启电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-3-2-执行电脑到-vps-的-ssh-隧道的脚本10-3-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-3-2-1-1-配置开机执行的文件">10.3.2.1.1 配置开机执行的文件</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+su - zhumingyu -c '/home/zhumingyu/ssh.sh'</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 的身份运行）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ps -aux | grep -v grep | grep "11000:localhost:22 &lt;IP address of computer&gt;" &amp;&gt; /dev/null || su - zhumingyu -c 'ssh -X -fCNR 11000:localhost:22 &lt;IP address of computer&gt;'</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>2) 这里以用户 zhumingyu 的身份运行<br>3) 如果 11000 端口没有影射到 22 端口则影射<br>）</p>
+
+
+
+<h5 id="10-3-2-1-2-给开机执行的文件执行权限">10.3.2.1.2 给开机执行的文件执行权限</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /etc/rc.local</code></pre>
+
+
+
+<h5 id="10-3-3-定期执行电脑到-vps-的-ssh-隧道的脚本10-3-3-1-进入到用户">10.3.3 定期执行电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-3-3-定期执行电脑到-vps-的-ssh-隧道的脚本10-3-3-1-进入到用户">10.3.3.1 进入到用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-3-3-2-配置定期执行的文件">10.3.3.2 配置定期执行的文件</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * /home/zhumingyu/ssh.sh</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * ps -aux | grep -v grep | grep "11000:localhost:22 &lt;IP address of computer&gt;" &amp;&gt; /dev/null || ssh -X -fCNR 11000:localhost:22 &lt;IP address of computer&gt;</code></pre>
+
+
+
+<p>（补充：如果 11000 端口影射到 22 端口则影射）</p>
+
+
+
+<h5 id="10-3-3-3-退出用户">10.3.3.3 退出用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h4 id="10-4-建立-vps-的-ssh-隧道端口映射并设置为开机自启10-4-1-创建建立-vps-的-ssh-隧道端口映射的脚本10-4-1-1-进入到用户">10.4 建立 VPS 的 SSH 隧道端口映射并设置为开机自启</h4>
+
+
+
+<h5 id="10-4-建立-vps-的-ssh-隧道端口映射并设置为开机自启10-4-1-创建建立-vps-的-ssh-隧道端口映射的脚本10-4-1-1-进入到用户">10.4.1 创建建立 VPS 的 SSH 隧道端口映射的脚本</h5>
+
+
+
+<h5 id="10-4-建立-vps-的-ssh-隧道端口映射并设置为开机自启10-4-1-创建建立-vps-的-ssh-隧道端口映射的脚本10-4-1-1-进入到用户">10.4.1.1 进入到用户</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-4-1-2-创建建立-vps-的-ssh-隧道端口映射的脚本">10.4.1.2 创建建立 VPS 的 SSH 隧道端口映射的脚本</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vim ~/sshd.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+ps -aux | grep -v grep | grep "*:10000:localhost:11000 localhost" || ssh -X -fCNL *:10000:localhost:11000 localhost</code></pre>
+
+
+
+<p>（补充：如果 11000 端口没有影射成 10000 端口则影射）</p>
+
+
+
+<h5 id="10-4-1-3-退出用户">10.4.1.3 退出用户</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h5 id="10-4-2-执行电脑到-vps-的-ssh-隧道的脚本10-4-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-4-2-1-1-配置开机执行的文件">10.4.2 执行电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-4-2-执行电脑到-vps-的-ssh-隧道的脚本10-4-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-4-2-1-1-配置开机执行的文件">10.4.2.1 开机执行开启电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-4-2-执行电脑到-vps-的-ssh-隧道的脚本10-4-2-1-开机执行开启电脑到-vps-的-ssh-隧道的脚本10-4-2-1-1-配置开机执行的文件">10.4.2.1.1 配置开机执行的文件</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rc.local</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+su - zhumingyu -c '/home/zhumingyu/sshd.sh'</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ps -aux | grep -v grep | grep "*:10000:localhost:11000 localhost" || su - zhumingyu -c 'ssh -X -fCNL *:10000:localhost:11000 localhost'</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>2) 以用户 zhumingyu 的身份运行<br>3) 如果 11000 端口没有影射成 10000 端口则影射<br>）</p>
+
+
+
+<h5 id="10-4-2-1-2-给开机执行的文件执行权限">10.4.2.1.2 给开机执行的文件执行权限</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /etc/rc.local</code></pre>
+
+
+
+<h5 id="10-4-3-定期执行电脑到-vps-的-ssh-隧道的脚本10-4-3-1-进入到用户用户">10.4.3 定期执行电脑到 VPS 的 SSH 隧道的脚本</h5>
+
+
+
+<h5 id="10-4-3-定期执行电脑到-vps-的-ssh-隧道的脚本10-4-3-1-进入到用户用户">10.4.3.1 进入到用户用户</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="10-4-3-2-配置定期执行的文件">10.4.3.2 配置定期执行的文件</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * /home/zhumingyu/sshd.sh</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */1 * * * ps -aux | grep -v grep | grep "*:10000:localhost:11000 localhost" || ssh -X -fCNL *:10000:localhost:11000 localhost</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>2) 如果 11000 端口没有影射成 10000 端口则影射<br>）</p>
+
+
+
+<h5 id="10-4-4-退出用户">10.4.4 退出用户</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h5 id="10-4-5-打开外网-vps-对应端口的防火墙10-4-5-1-打开外网-vps-对应端口的防火墙">10.4.5 打开外网 VPS 对应端口的防火墙</h5>
+
+
+
+<h5 id="10-4-5-打开外网-vps-对应端口的防火墙10-4-5-1-打开外网-vps-对应端口的防火墙">10.4.5.1 打开外网 VPS 对应端口的防火墙</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --add-port=10000/tcp --permanent</code></pre>
+
+
+
+<p>（补充：这里打开的端口号，是根据前面的设置而定的）</p>
+
+
+
+<h5 id="10-4-5-2-让刚刚外网-vps-刚刚配置的防火墙生效">10.4.5.2 让刚刚外网 VPS 刚刚配置的防火墙生效</h5>
+
+
+
+<p>（只在 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --reload</code></pre>
+
+
+
+<h3 id="步骤十一-加强-ssh-的安全性-选做-11-1-禁止-root-被-ssh-选做">步骤十一：加强 SSH 的安全性（选做）</h3>
+
+
+
+<h4 id="步骤十一-加强-ssh-的安全性-选做-11-1-禁止-root-被-ssh-选做">11.1 禁止 root 被 SSH（选做）</h4>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+PermitRootLogin no
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+PermitRootLogin yes
+......</code></pre>
+
+
+
+<h4 id="11-2-禁止使用密码被-ssh-选做">11.2 禁止使用密码被 SSH（选做）</h4>
+
+
+
+<p>（分别在电脑和 VPS 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+# PasswordAuthentication yes
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+PasswordAuthentication no
+......</code></pre>
+
+
+
+<h3 id="步骤十二-私有远程桌面和虚拟化平台的使用12-1-客户端-ssh-联接电脑的方法12-1-1-客户端和电脑不在同一内网时">步骤十二：私有远程桌面和虚拟化平台的使用</h3>
+
+
+
+<h4 id="步骤十二-私有远程桌面和虚拟化平台的使用12-1-客户端-ssh-联接电脑的方法12-1-1-客户端和电脑不在同一内网时">12.1 客户端 SSH 联接电脑的方法</h4>
+
+
+
+<h5 id="步骤十二-私有远程桌面和虚拟化平台的使用12-1-客户端-ssh-联接电脑的方法12-1-1-客户端和电脑不在同一内网时">12.1.1 客户端和电脑不在同一内网时</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ssh -X -p &lt;SSH non standard port number&gt; &lt;user of computer&gt;@&lt;public IP address of VPS&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的 VPS 每小时会生成一个新的 SSH 非标准端口号以用于联接电脑，比如说现在是 14 点，那就会自动生成一个 11014 的 SSH 非标准端口号<br>2) 如果按照前面的步骤操作，这里的用户是 zhumingyu<br>）</p>
+
+
+
+<h5 id="12-1-2-客户端和电脑在同一内网时">12.1.2 客户端和电脑在同一内网时</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ssh -X &lt;user of computer&gt;@&lt;IP address of computer&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的用户用户是 zhumingyu<br>2) 如果按照前面的步骤操作，这里的电脑的 IP 地址是 192.168.0.1<br>）</p>
+
+
+
+<h4 id="12-2-客户端使用电脑虚拟化平台的的方法12-2-1-客户端和电脑不在同一内网时12-2-1-1-在客户端上联接电脑">12.2 客户端使用电脑虚拟化平台的的方法</h4>
+
+
+
+<h5 id="12-2-客户端使用电脑虚拟化平台的的方法12-2-1-客户端和电脑不在同一内网时12-2-1-1-在客户端上联接电脑">12.2.1 客户端和电脑不在同一内网时</h5>
+
+
+
+<h5 id="12-2-客户端使用电脑虚拟化平台的的方法12-2-1-客户端和电脑不在同一内网时12-2-1-1-在客户端上联接电脑">12.2.1.1 在客户端上联接电脑</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ssh -X -p &lt;SSH non standard port number&gt; &lt;user of computer&gt;@&lt;public IP address of VPS&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的 VPS 每小时会生成一个新的 SSH 非标准端口号以用于联接电脑，比如说现在是 14 点，那就会自动生成一个 11014 的 SSH 非标准端口号<br>2) 如果按照前面的步骤操作，这里的用户用户是 zhumingyu<br>）</p>
+
+
+
+<h5 id="12-2-1-2-通过-ssh-开启虚拟化图形管理平台">12.2.1.2 通过 ssh 开启虚拟化图形管理平台</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<p>（注意：网络带宽很小则远程桌面会比较卡，建议电脑、客户端和 VPS 的带宽 2m 以上）</p>
+
+
+
+<h5 id="12-2-2-客户端和电脑在同一内网时12-2-2-1-在客户端上联接电脑">12.2.2 客户端和电脑在同一内网时</h5>
+
+
+
+<h5 id="12-2-2-客户端和电脑在同一内网时12-2-2-1-在客户端上联接电脑">12.2.2.1 在客户端上联接电脑</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ssh -X &lt;user of computer&gt;@&lt;IP address of computer&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的用户用户是 zhumingyu<br>2) 如果按照前面的步骤操作，这里的电脑的 IP 地址是 192.168.0.1<br>）</p>
+
+
+
+<h5 id="12-2-2-2-通过-ssh-开启虚拟化图形管理平台">12.2.2.2 通过 ssh 开启虚拟化图形管理平台</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># virt-manager</code></pre>
+
+
+
+<p>（注意：网络带宽很小则远程桌面会比较卡，建议电脑、客户端和 VPS 的带宽 2m 以上）</p>
+
+
+
+<h4 id="12-3-客户端使用私有远程桌面的方法12-3-1-客户端和电脑不在同一内网时">12.3 客户端使用私有远程桌面的方法</h4>
+
+
+
+<h5 id="12-3-客户端使用私有远程桌面的方法12-3-1-客户端和电脑不在同一内网时">12.3.1 客户端和电脑不在同一内网时</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ssh -p &lt;SSH non standard port number&gt; -L &lt;port number of VNC&gt;:localhost:&lt;port number of VNC&gt; -l &lt;user of computer&gt; &lt;public IP address of VPS&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的 VPS 每小时会生成一个新的 SSH 非标准端口号以用于联接电脑，比如说现在是 14 点，那就会自动生成一个 11014 的 SSH 非标准端口号<br>2) 如果按照前面的步骤操作，这里的 VNC 的端口号是 5901<br>3) 如果按照前面的步骤操作，这里的电脑的用户用户是 zhumingyu<br>）</p>
+
+
+
+<p>另开启一个命令行终端：</p>
+
+
+
+<pre class="wp-block-code"><code># vncviewer localhost :&lt;number of VNC service&gt;</code></pre>
+
+
+
+<p>（补充：如果按照前面的步骤操作，这里的 VNC 服务的编号是 1）</p>
+
+
+
+<p>（注意：网络带宽很小则远程桌面会比较卡，建议电脑、客户端和 VPS 的带宽 2m 以上）</p>
+
+
+
+<h5 id="12-3-2-客户端和电脑在同一内网时">12.3.2 客户端和电脑在同一内网时</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vncviewer -via &lt;user of computer&gt;@&lt;IP address of computer&gt; localhost :&lt;number of VNC service&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的电脑的用户是 zhumingyu<br>2) 如果按照前面的步骤操作，这里的电脑的 IP 地址是 192.168.0.1<br>3) 如果按照前面的步骤操作，这里的 VNC 服务的编号是 1<br>）</p>
+
+
+
+<h4 id="12-4-客户端在内网和电脑互传数据的方法12-4-1-在-windows-图形客户端上和电脑互传数据的方法">12.4 客户端在内网和电脑互传数据的方法</h4>
+
+
+
+<h5 id="12-4-客户端在内网和电脑互传数据的方法12-4-1-在-windows-图形客户端上和电脑互传数据的方法">12.4.1 在 Windows 图形客户端上和电脑互传数据的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<p>在文件目录下栏输入以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>\\&lt;IP address of computer&gt;\&lt;samba directory&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的电脑的 IP 地址是 192.168.0.1<br>2) 如果按照前面的步骤操作，这里的 Samba 项目是 share<br>）</p>
+
+
+
+<p>（<br>注意：<br>1) 如果按照前面的步骤操作，只有 IP 地址是 192.168.0.2 和 192.168.0.3 的客户端才能够执行以上步骤<br>2) Windows 客户端建议安装 SecureCRT、Xmanager 和 VNC 客户端以实现 ssh、ssh 调用 virt-manager 和 VNC<br>）</p>
+
+
+
+<h5 id="12-4-2-在-linux-图形客户端上和电脑互传数据的方法">12.4.2 在 Linux 图形客户端上和电脑互传数据的方法</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<p>在文件 &#8211;&gt; 其他位置 &#8211;&gt; 连接到服务器的地址栏里输入以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>smb://&lt;IP address of computer&gt;/&lt;samba directory&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果按照前面的步骤操作，这里的电脑的 IP 地址是 192.168.0.1<br>2) 如果按照前面的步骤操作，这里的 Samba 项目是 share<br>）</p>
+
+
+
+<p>（注意：如果按照前面的步骤操作，只有 IP 地址是 192.168.0.2 和 192.168.0.3 的客户端才能够执行以上步骤）</p>
+
+
+
+<h3 id="步骤十三-客户端直接使用公网-ip-地址联接电脑13-1-实现此步骤所需环境">步骤十三：客户端直接使用公网 IP 地址联接电脑</h3>
+
+
+
+<h4 id="步骤十三-客户端直接使用公网-ip-地址联接电脑13-1-实现此步骤所需环境">13.1 实现此步骤所需环境</h4>
+
+
+
+<p>网关路由器拥有 IP 地址（可以通过给宽带申请公网 IP 地址并将光纤盒设置为桥接模式，在路由器上添加用户和密码实现）</p>
+
+
+
+<h4 id="13-2-在路由器上将电脑上的-22-端口映射到路由器上的公网-ip-地址上-这样路由器上的公网-ip-地址就变成电脑的公网-ip-地址了">13.2 在路由器上将电脑上的 22 端口映射到路由器上的公网 IP 地址上，这样路由器上的公网 IP 地址就变成电脑的公网 IP 地址了</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="13-3-将电脑的公网-ip-地址放到-vps-上13-3-1-将电脑的公网-ip-地址放到-vps-上的意义">13.3 将电脑的公网 IP 地址放到 VPS 上</h4>
+
+
+
+<h5 id="13-3-将电脑的公网-ip-地址放到-vps-上13-3-1-将电脑的公网-ip-地址放到-vps-上的意义">13.3.1 将电脑的公网 IP 地址放到 VPS 上的意义</h5>
+
+
+
+<p>由于大多数的公网 IP 地址都是动态，定期会变，所以可以通过此方法知道近期的公网 IP 地址是多少</p>
+
+
+
+<h5 id="13-3-2-创建将电脑的公网-ip-地址放到-vps-上的脚本13-3-2-1-进入到用户">13.3.2 创建将电脑的公网 IP 地址放到 VPS 上的脚本</h5>
+
+
+
+<h5 id="13-3-2-创建将电脑的公网-ip-地址放到-vps-上的脚本13-3-2-1-进入到用户">13.3.2.1 进入到用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="13-3-2-2-创建将电脑的公网-ip-地址放到-vps-上的脚本">13.3.2.2 创建将电脑的公网 IP 地址放到 VPS 上的脚本</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vim /root/computerip.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+computerip=`curl ifconfig.me`
+domain=&lt;public IP address of VPS&gt;
+
+ssh athenadb.com \"echo `curl ifconfig.me` &gt; /home/zhumingyu/serverip.txt\"</code></pre>
+
+
+
+<p>（补充：这里以将电脑的公网 IP 地址拷贝到 VPS 的 /tmp/computerip.txt 文件里为例）</p>
+
+
+
+<h5 id="13-3-2-3-退出用户用户">13.3.2.3 退出用户用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h5 id="13-3-3-执行将电脑的公网-ip-地址放到-vps-上的脚本13-3-3-1-进入到用户用户">13.3.3 执行将电脑的公网 IP 地址放到 VPS 上的脚本</h5>
+
+
+
+<h5 id="13-3-3-执行将电脑的公网-ip-地址放到-vps-上的脚本13-3-3-1-进入到用户用户">13.3.3.1 进入到用户用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以用户 zhumingyu 为例）</p>
+
+
+
+<h5 id="13-3-3-2-配置定期执行的文件">13.3.3.2 配置定期执行的文件</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ crontab -e</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+0 */10 * * * /home/zhumingyu/.crontab/computerip.txt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ssh &lt;public IP address of VPS&gt; \"echo `curl ifconfig.me` &gt; /home/zhumingyu/serverip.txt\"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果前面没有创建脚本的话，可以只添加上面“或者”后面的这一行<br>2) 将电脑的公网 IP 地址拷贝到 VPS 的 /home/zhumingyu/serverip.txt 文件里<br>）</p>
+
+
+
+<h5 id="13-3-3-3-退出用户用户">13.3.3.3 退出用户用户</h5>
+
+
+
+<p>（只在电脑上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ exit</code></pre>
+
+
+
+<h4 id="13-4-通过-ddns-服务显示电脑的公网-ip13-4-1-通过-ddns-服务显示电脑的公网-ip">13.4 通过 DDNS 服务显示电脑的公网 IP 地址</h4>
+
+
+
+<h5 id="13-4-通过-ddns-服务显示电脑的公网-ip13-4-1-通过-ddns-服务显示电脑的公网-ip">13.4.1 通过 DDNS 服务显示电脑的公网 IP 地址</h5>
+
+
+
+<p>由于大多数的公网 IP 地址都是动态，定期会变，所以可以通过此方法知道近期的公网 IP 地址是多少</p>
+
+
+
+<h5 id="13-4-2-有些-ddns-服务可以在网关路由器上设置-并且通过手机-app-显示现在的公网-ip-地址">13.4.2 有些 DDNS 服务可以在网关路由器上设置，并且通过手机 APP 显示现在的公网 IP 地址</h5>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] VNC 数据的加密 （通过 SSH 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/vnc-ssh/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 21 Sep 2020 14:56:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[VNC]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10572</guid>
+
+					<description><![CDATA[内容一：直接通过 SSH 对 VNC 进行加密 1.1 直接通过 SSH 对 VNC 进行加密的格式 1.2 直接通过 SSH 对 VNC 进行加密的案例 （补充：这里以使用 eternalcenter.com 服务器上的 zhumingyu 用户访问编号为 1 的 VNC 服务为例） 内容二：通过非标准端口的 SSH 对 VNC 进行加密 2.1 通过 SSH 对 VNC 进行加密，同时使用 SSH 隧道的格式 另开启一个命令行终端： 2.2 通过 SSH 对 VNC 进行加密，同时使用 SSH 隧道的案例 另开启一个命令行终端： （补充：这里以使用 eternalcenter.com 服务器上的 zhumingyu 用户通过 1000 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/vnc-ssh/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] VNC 数据的加密 （通过 SSH 实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：直接通过 SSH 对 VNC 进行加密</h3>
+
+
+
+<h4>1.1 直接通过 SSH 对 VNC 进行加密的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># vncviewer -via &lt;SSH user of VNC server&gt;@&lt;IP address of VNC server&gt; localhost :&lt;VNC service number&gt;</code></pre>
+
+
+
+<h4>1.2 直接通过 SSH 对 VNC 进行加密的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># vncviewer -via zhumingyu@eternalcenter.com localhost :1</code></pre>
+
+
+
+<p>（补充：这里以使用 eternalcenter.com 服务器上的 zhumingyu 用户访问编号为 1 的 VNC 服务为例）</p>
+
+
+
+<h3>内容二：通过非标准端口的 SSH 对 VNC 进行加密</h3>
+
+
+
+<h4>2.1 通过 SSH 对 VNC 进行加密，同时使用 SSH 隧道的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># ssh -p &lt;SSH non standard port number&gt; -L &lt;Port number of VNC service&gt;:localhost:&lt;Port number of VNC service&gt; -l  &lt;SSH user of VNC server&gt; &lt;IP address of VNC server&gt;</code></pre>
+
+
+
+<p>另开启一个命令行终端：</p>
+
+
+
+<pre class="wp-block-code"><code># vncviewer localhost :&lt;VNC service number&gt;</code></pre>
+
+
+
+<h4>2.2 通过 SSH 对 VNC 进行加密，同时使用 SSH 隧道的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># ssh -p 1000 -L 5901:localhost:5901 -l zhumingyu eternalcenter.com</code></pre>
+
+
+
+<p>另开启一个命令行终端：</p>
+
+
+
+<pre class="wp-block-code"><code># vncviewer localhost :1</code></pre>
+
+
+
+<p>（补充：这里以使用 eternalcenter.com 服务器上的 zhumingyu 用户通过 1000 端口号 的 SSH 访问编号为 1 的 VNC 服务为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] VNC 远程桌面服务的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/vnc-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jan 2020 11:35:17 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[VNC]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8052</guid>
+
+					<description><![CDATA[纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 RealVNC 官网上下载使用 VNC 服务所需软件 VNC View： https://www.realvnc.com/en/ 正文： 步骤一：规划拓扑 1.1 服务器列表 服务端 192.168.100.10客户端 192.168.100.11 1.2 服务器列表简介 1) 服务器提供 VNC 服务让其他设备可以远程自己的桌面2) 客户端通过 VNC 服务远程服务器的桌面 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：服务端安装 VNC 服务 3.1 服务端 VNC 环境准备 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/vnc-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] VNC 远程桌面服务的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong><strong><strong>纪念：站主于 2020 年 1 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 RealVNC 官网上下载使用 VNC 服务所需软件 VNC View：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://www.realvnc.com/en/" target="_blank" rel="noreferrer noopener">https://www.realvnc.com/en/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>服务端 192.168.100.10<br>客户端 192.168.100.11</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 服务器提供 VNC 服务让其他设备可以远程自己的桌面<br>2) 客户端通过 VNC 服务远程服务器的桌面</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">步骤三：服务端安装 VNC 服务</h3>
+
+
+
+<h4 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">3.1 服务端 VNC 环境准备</h4>
+
+
+
+<h5 id="步骤三-服务端安装-vnc-服务3-1-服务端-vnc-环境准备3-1-1-在服务端上安装桌面">3.1.1 在服务端上安装桌面</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupinstall "Server with GUI"
+# yum -y groupinstall "GNOME Desktop"</code></pre>
+
+
+
+<h5 id="3-1-2-在服务端上创建用于使用-vnc-的用户3-1-2-1-创建用户">3.1.2 在服务端上创建用于使用 VNC 的用户</h5>
+
+
+
+<h5 id="3-1-2-在服务端上创建用于使用-vnc-的用户3-1-2-1-创建用户">3.1.2.1 创建用户</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># useradd zhumingyu</code></pre>
+
+
+
+<h5 id="3-1-2-2-修改用户密码">3.1.2.2 修改用户密码</h5>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># passwd zhumingyu</code></pre>
+
+
+
+<h4 id="3-2-服务端安装-vnc-服务">3.2 服务端安装 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tigervnc tigervnc-server</code></pre>
+
+
+
+<h3 id="步骤四-配置-vnc-服务4-1-创建-vnc-服务进程文件">步骤四：配置 VNC 服务</h3>
+
+
+
+<h4 id="步骤四-配置-vnc-服务4-1-创建-vnc-服务进程文件">4.1 创建 VNC 服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp /lib/systemd/system/vncserver\@.service /lib/systemd/system/vncserver\@:1.service</code></pre>
+
+
+
+<h4 id="4-2-编辑-vnc-服务进程文件">4.2 编辑 VNC 服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /lib/systemd/system/vncserver\@:1.service</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+&#91;Service]
+Type=forking
+
+# Clean any existing files in /tmp/.X11-unix environment
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+ExecStart=/usr/sbin/runuser -l &lt;USER&gt; -c "/usr/bin/vncserver %i"
+PIDFile=/home/&lt;USER&gt;/.vnc/%H%i.pid
+ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+
+&#91;Install]
+WantedBy=multi-user.target</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+&#91;Service]
+Type=forking
+
+# Clean any existing files in /tmp/.X11-unix environment
+ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+ExecStart=/usr/sbin/runuser -l zhumingyu -c "/usr/bin/vncserver %i"
+PIDFile=/home/zhumingyu/.vnc/%H%i.pid
+ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i &gt; /dev/null 2&gt;&amp;1 || :'
+
+&#91;Install]
+WantedBy=multi-user.target</code></pre>
+
+
+
+<h3 id="步骤五-开机自启-vnc-服务5-1-刷新所有服务进程文件">步骤五：开机自启 VNC 服务</h3>
+
+
+
+<h4 id="步骤五-开机自启-vnc-服务5-1-刷新所有服务进程文件">5.1 刷新所有服务进程文件</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h4 id="5-2-开机自启-vnc-服务">5.2 开机自启 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable vncserver@:1.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/vncserver@:1.service to /usr/lib/systemd/system/vncserver@:1.service.</code></pre>
+
+
+
+<h3 id="步骤六-启动-vnc-服务6-1-切换到使用-vnc-的用户">步骤六：启动 VNC 服务</h3>
+
+
+
+<h4 id="步骤六-启动-vnc-服务6-1-切换到使用-vnc-的用户">6.1 切换到使用 VNC 的用户</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu</code></pre>
+
+
+
+<h4 id="6-2-开启-vnc-服务">6.2 开启 VNC 服务</h4>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ vncserver :1
+
+You will require a password to access your desktops.
+
+Password:
+Verify:
+Would you like to enter a view-only password (y/n)? y
+Password:
+Verify:
+
+New 'vnc:1 (zhumingyu)' desktop is vnc:1
+
+Creating default startup script /home/zhumingyu/.vnc/xstartup
+Creating default config /home/zhumingyu/.vnc/config
+Starting applications specified in /home/zhumingyu/.vnc/xstartup
+Log file is /home/zhumingyu/.vnc/vnc:1.log</code></pre>
+
+
+
+<h4 id="6-3-补充-修改-vnc-登陆密码的方法">6.3 补充：修改 VNC 登录密码的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># su - zhumingyu
+$ vncpasswd</code></pre>
+
+
+
+<h3 id="步骤七-查看-vnc-服务是否启动成功">步骤七：确认 VNC 服务是否启动成功</h3>
+
+
+
+<p>（只在服务端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>$ ss -ntulap | grep 5901
+tcp    LISTEN     0      5         *:5901                  *:*                   users:(("Xvnc",pid=1152,fd=9))
+tcp    LISTEN     0      5      &#91;::]:5901               &#91;::]:*                   users:(("Xvnc",pid=1152,fd=10))</code></pre>
+
+
+
+<h3 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">步骤八：客户端使用 VNC 服务</h3>
+
+
+
+<h4 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">8.1 客户端使用 VNC 服务的前期工作</h4>
+
+
+
+<h5 id="步骤八-客户端使用-vnc-服务8-1-客户端使用-vnc-服务的前期工作8-1-1-在客户端上安装桌面">8.1.1 在客户端上安装桌面</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y groupinstall "Server with GUI"
+# yum -y groupinstall "GNOME Desktop"</code></pre>
+
+
+
+<h5 id="8-1-2-客户端安装-vnc-服务的客户端">8.1.2 客户端安装 VNC 服务的客户端</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y localinstall VNC-Viewer-6.19.1115-Linux-x64.rpm</code></pre>
+
+
+
+<p>（补充：这里以安装 VNC-Viewer-6.19.1115-Linux-x64.rpm 为例）</p>
+
+
+
+<h5 id="8-1-3-客户端启动桌面">8.1.3 客户端启动桌面</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># startx</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1.png" alt="" class="wp-image-19755" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-1-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h4 id="8-2-客户端使用-vnc-服务8-2-1-客户端启动-vnc-服务的客户端">8.2 客户端使用 VNC 服务</h4>
+
+
+
+<h5 id="8-2-客户端使用-vnc-服务8-2-1-客户端启动-vnc-服务的客户端">8.2.1 客户端启动 VNC 服务的客户端</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2.png" alt="" class="wp-image-19756" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-2-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：2）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3.png" alt="" class="wp-image-19757" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-3-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：3）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4.png" alt="" class="wp-image-19758" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-4-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<h5 id="8-2-2-连接服务端的-vnc-ip-地址和端口号">8.2.2 连接服务端的 VNC IP 地址和端口号</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5.png" alt="" class="wp-image-19759" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-5-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：5）</figcaption></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6.png" alt="" class="wp-image-19760" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-6-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="8-2-3-输入服务端-vnc-用户的-vnc-密码">8.2.3 输入服务端 VNC 用户的 VNC 密码</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7.png" alt="" class="wp-image-19761" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h5 id="8-2-4-vnc-服务成功">8.2.4 VNC 服务成功</h5>
+
+
+
+<p>（只在客户端上执行以下步骤）</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8.png" alt="" class="wp-image-19762" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/VNC-8-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

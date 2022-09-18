@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Distributed Cloud Storage Cluster (分布式云存储集群) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/service-cluster/storage-service-cluster/storage-service-load-balancing-and-high-availability-cluster/distributed-cloud-storage-cluster/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 14:49:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>分布式存储算法介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-to-distributed-storage-algorithm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Aug 2021 07:45:22 +0000</pubDate>
+				<category><![CDATA[Ceph]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Distributed Cloud Storage Cluster (分布式云存储集群)]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service Load Balancing and High Availability Cluster (存储服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17540</guid>
+
+					<description><![CDATA[章节一：传统的 Hash 存储算法 1.1 传统的 Hash 存储算法简介 　　将数据进行切片，对每份切片进行 Hash 取值，并对获取的 Hash 值除以存储节点的数量以取余，余数是多少就将此切片存在第几个 OSD 节点里，主要是 Swift 在使用。 1.2 传统的 Hash 存储算法的缺点 　　如果要增加存或减少存储节点，需要对所有已存储数据切片的 Hash 值重新取余，大概 90% 的数据需要重新均衡数据（rebalance）。 章节二：一致性 Hash 算法 2.1 一致性 Hash 算法简介 　　1) 给电脑也计算 Hash 值（可以是给电脑名计算 Hash 值，也可以给 IP 地址计算 Hash 值）　　2) 再给数据也计算 Hash 值，将数据存到比它的 Hash 值大，且与它的差值最小的电脑上，如果没有 Hash 值比它大的电脑就直接将数据存在 Hash 值最小的电脑上　　3) 整个架构类似一个环 2.2 一致性 Hash &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/introduction-to-distributed-storage-algorithm/" class="more-link">Continue reading<span class="screen-reader-text"> "分布式存储算法介绍"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>章节一：传统的 Hash 存储算法</h3>
+
+
+
+<h4>1.1 传统的 Hash 存储算法简介</h4>
+
+
+
+<p>　　将数据进行切片，对每份切片进行 Hash 取值，并对获取的 Hash 值除以存储节点的数量以取余，余数是多少就将此切片存在第几个 OSD 节点里，主要是 Swift 在使用。</p>
+
+
+
+<h4>1.2 传统的 Hash 存储算法的缺点</h4>
+
+
+
+<p>　　如果要增加存或减少存储节点，需要对所有已存储数据切片的 Hash 值重新取余，大概 90% 的数据需要重新均衡数据（rebalance）。</p>
+
+
+
+<h3>章节二：一致性 Hash 算法</h3>
+
+
+
+<h4>2.1 一致性 Hash 算法简介</h4>
+
+
+
+<p>　　1) 给电脑也计算 Hash 值（可以是给电脑名计算 Hash 值，也可以给 IP 地址计算 Hash 值）<br>　　2) 再给数据也计算 Hash 值，将数据存到比它的 Hash 值大，且与它的差值最小的电脑上，如果没有 Hash 值比它大的电脑就直接将数据存在 Hash 值最小的电脑上<br>　　3) 整个架构类似一个环</p>
+
+
+
+<h4>2.2 一致性 Hash 算法的缺点</h4>
+
+
+
+<p>　　1) 电脑太少时切换数据也会有较大的数据量，但是可以多设置几个虚拟节点，给以后新增加的节点使用，虚拟节点里的数据会影射到对应的物理节点里面去<br>　　2) 电脑太少时，两台电脑的 Hash 值比较接近导致，数据分配极度不平均</p>
+
+
+
+<p>（注意：在开始创建数据架构时，要评估未来数据的规模，如果最后要添加的电脑数量超过了虚拟节点数量，那么这个架构就不能使用了。此时只能备份数据，然后新建 1 个架构出来）</p>
+
+
+
+<h3>章节三：CRUSH</h3>
+
+
+
+<h4>3.1 CRUSH 简介</h4>
+
+
+
+<p>　　CRUSH（Controlled Replication Under Scalable Hashing）算法，在可扩展 Hash 算法下的可控制复制，主要是 Ceph 在使用。</p>
+
+
+
+<h4>3.2 CRUSH 算法</h4>
+
+
+
+<h5>3.2.1 CRUSH 算法的第 1 层</h5>
+
+
+
+<p>　　由 Ceph 的 OSD（Object Storage Deivces）组成。</p>
+
+
+
+<h5>3.2.2 CRUSH 算法的第 2 层</h5>
+
+
+
+<h5>3.2.2.1 CRUSH 算法的第 2 层的组成</h5>
+
+
+
+<p>　　由 Ceph 的 PG（Placement Group）归置组组成。</p>
+
+
+
+<h5>3.2.2.2 CRUSH 算法的第 2 层的由来</h5>
+
+
+
+<p>　　在 OSD 节点上虚拟出多个 PG，每个 PG 默认会被指定对应 3 个 OSD 节点（每个 OSD 节点同时可以属于多个 PG），其中第一个 OSD 节点为主要（primary）的硬盘，其他两 OSD 节点为从（second）硬盘，PG 会对应几个 OSD 节点取决于 Ceph 的存储副本被设置了几份。</p>
+
+
+
+<h5>3.2.2.3 CRUSH 算法的第 2 层的算法</h5>
+
+
+
+<p>　　1) 给每个 OSD 节点设置一个权重值，OSD 节点的容量越大则其权重值越大<br>　　2) 主要（primary）硬盘的 OSD 节点：将 PG 的 ID 值和 OSD 的 ID 值组合在一起并计算 Hash 值，将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时，此 PG 就和此 OSD 绑定在一起<br>　　3) 第 1 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和 1 个随机的常数组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw）则此 PG 就和此 OSD 绑定在一起<br>　　4) 第 2 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和上 1 个随机常数加 1 的和组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw），则此 PG 就和此 OSD 绑定在一起（如果找到的 OSD 节点和前面的 OSD 节点重复，则将这个随机常数再加 1 并进行重复操作，最终获得和前面不通的 OSD 节点为止）<br>……</p>
+
+
+
+<h4>3.3 CRUSH 算法的第 3 层</h4>
+
+
+
+<h5>3.3.1 CRUSH 算法的第 3 层的组成</h5>
+
+
+
+<p>　　由池组成。</p>
+
+
+
+<h5>3.3.2 CRUSH 算法的第 3 层的由来</h5>
+
+
+
+<p>　　1) 在 PG 上虚拟出多个池，每个池对应多个 PG，数据可以存储到指定的池里<br>　　2) 总硬盘容量有多大，每个池最大可以使用的容量就有多大，但是如果如果 1 个池使用了一部分容量，其他的池就要少使用一部分容量</p>
+
+
+
+<h4>3.4 CRUSH 算法的第四层</h4>
+
+
+
+<h5>3.4.1 CRUSH 算法的第四层的组成</h5>
+
+
+
+<p>　　由数据组成。</p>
+
+
+
+<h5>3.4.2 CRUSH 算法的第四层的算法</h5>
+
+
+
+<p>　　1) 对要放入某个池里的数据进行切片，默认每片 4M<br>　　2) 对每份切片进行 Hash 取值，并对获取的 Hash 值除以这个池里 PG 节点的数量以取余，余数是多少就存在第几个 OSD 节点里</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Ceph 介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-of-ceph/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Aug 2021 07:13:01 +0000</pubDate>
+				<category><![CDATA[Ceph]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Distributed Cloud Storage Cluster (分布式云存储集群)]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service Load Balancing and High Availability Cluster (存储服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17526</guid>
+
+					<description><![CDATA[内容一：Ceph 简介 Ceph 是一种分布式存储架构和技术。此项目是 2004 年由 Sage Weil 在加州大学 Santa Cruz 分校攻读博士期间的创建和研究的课题，并于 2006 年将其开源，同时成立 Inktank 公司专注 Ceph 的研发。2014 年 5 月 Inktank 公司被 Red Hat 收购。 内容二：Ceph 的特点 1) 高性能（硬盘越多性能越高，所有硬盘可以同时读写）2) 高可用（硬盘越多高可用越高） 内容三：Ceph 使用的方式 1) 自己写程序：通过 C C++ Java Python Ruby PHP 等语言写程序调用 Ceph 底层存储 LIBRADOS，此方法性能最高2) 自己写脚本：写对象脚本，通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS，此方法性能第二高3) 挂载块存储：通过 Linux &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/introduction-of-ceph/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Ceph 介绍"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Ceph 简介</h3>
+
+
+
+<p>Ceph 是一种分布式存储架构和技术。此项目是 2004 年由 Sage Weil 在加州大学 Santa Cruz 分校攻读博士期间的创建和研究的课题，并于 2006 年将其开源，同时成立 Inktank 公司专注 Ceph 的研发。2014 年 5 月 Inktank 公司被 Red Hat 收购。</p>
+
+
+
+<h3>内容二：Ceph 的特点</h3>
+
+
+
+<p>1) 高性能（硬盘越多性能越高，所有硬盘可以同时读写）<br>2) 高可用（硬盘越多高可用越高）</p>
+
+
+
+<h3>内容三：Ceph 使用的方式</h3>
+
+
+
+<p>1) 自己写程序：通过 C C++ Java Python Ruby PHP 等语言写程序调用 Ceph 底层存储 LIBRADOS，此方法性能最高<br>2) 自己写脚本：写对象脚本，通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS，此方法性能第二高<br>3) 挂载块存储：通过 Linux 内核或者 KVM 等虚拟机存储驱动访问 Ceph 的块存储，此方法性能第三高<br>4) 挂载文件系统：通过 Linux 内核（POSIX 命令）挂载 Ceph 的文件系统存储，此方法性能最弱</p>
+
+
+
+<h3>内容四：Ceph 的组成</h3>
+
+
+
+<p>1) OSD（Object Storage Deivces）：负责存储、复制、恢复数据等，默认要有 3 台以上才能实现高可用，因为 Ceph 默认有三副本<br>2) MON（Monitor）：负责监控集群状态制作和更新存储地图（map），供客户端从下载，在生产环境里必须要有 3 台以上，且最好是奇数台，因为必须遵循过半原则<br>3) MDS（Metadata Servers）：实现文件系统存储，允许客户端通过 Linux 内核（POSIX 命令）挂载 Ceph 的文件系统存储<br>4) RGW（RADOSGW）：实现对象存储网关，允许客户端通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS<br>5) 客户端：使用从 MON 下载和更新的存储地图，通过算法，直接从 OSD 访问数据</p>
+
+
+
+<h3>内容五：Ceph 架构</h3>
+
+
+
+<h4>5.1 Ceph 使用架构</h4>
+
+
+
+<h5>5.1.1 Ceph 的上层</h5>
+
+
+
+<p>自己写程序、自己写脚本、挂载块存储、挂载文件系统 4 种使用方式。</p>
+
+
+
+<h5>5.1.2 Ceph 的下层</h5>
+
+
+
+<p>RADOS，基于对象的存储（比我们平时所说的对象存储更原始，更底层），通过软件实现自我检查、自我备份和自我修复的功能。</p>
+
+
+
+<h4>5.2 Ceph 组成架构</h4>
+
+
+
+<pre class="wp-block-code"><code>                                  File
+
+                  Cut1(Objects1) Cut2(Objects2) Cut3(Objects3)......
+
+                              choice Pool
+
+              Pool1                                   Pool2
+     PG1                PG2                  PG2               PG3
+OSD1 OSD2 OSD3    OSD2 OSD5 OSD3        OSD1 OSD4 OSD3    OSD4 OSD5 OSD3
+Disk Disk Disk    Disk Disk Disk        Disk Disk Disk    Disk Disk Disk</code></pre>
+
+
+
+<h3>内容六：Ceph 的算法：CRUSH</h3>
+
+
+
+<h4>6.1 CRUSH 简介</h4>
+
+
+
+<p>CRUSH（Controlled Replication Under Scalable Hashing）算法，在可扩展 Hash 算法下的可控制复制</p>
+
+
+
+<h4>6.2 CRUSH 算法的第 1 层</h4>
+
+
+
+<p>由 OSD（Object Storage Deivces）组成。</p>
+
+
+
+<h4>6.3 CRUSH 算法的第 2 层</h4>
+
+
+
+<h5>6.3.1 CRUSH 算法的第 2 层的组成</h5>
+
+
+
+<p>由 PG（Placement Group）归置组组成。</p>
+
+
+
+<h5>6.3.2 CRUSH 算法的第 2 层的由来</h5>
+
+
+
+<p>在 OSD 节点上虚拟出多个 PG，每个 PG 默认会被指定对应 3 个 OSD 节点（每个 OSD 节点同时可以属于多个 PG），其中第 1 个 OSD 节点为主要（primary）的硬盘，其他两 OSD 节点为从（second）硬盘，PG 会对应几个 OSD 节点取决于 Ceph 的存储副本被设置了几份。</p>
+
+
+
+<h5>6.3.3 CRUSH 算法的第 2 层的算法</h5>
+
+
+
+<p>1) 给每个 OSD 节点设置 1 个权重值，OSD 节点的容量越大则其权重值越大<br>2) 主要（primary）硬盘的 OSD 节点：将 PG 的 ID 值和 OSD 的 ID 值组合在一起并计算 Hash 值，将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时，此 PG 就和此 OSD 绑定在一起<br>3) 第 1 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和 1 个随机的常数组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw）则此 PG 就和此 OSD 绑定在一起<br>4) 第 2 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和上一个随机常数加 1 的和组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw），则此 PG 就和此 OSD 绑定在一起（如果找到的 OSD 节点和前面的 OSD 节点重复，则将这个随机常数再加 1 并进行重复操作，最终获得和前面不通的 OSD 节点为止）<br>5) 第 3 个从（second）硬盘的 OSD 节点：仿照第 2 个从（second）硬盘的 OSD 节点按此类方式以此类推</p>
+
+
+
+<h4>6.4 CRUSH 算法的第3层</h4>
+
+
+
+<h5>6.4.1 CRUSH 算法的第3层的组成</h5>
+
+
+
+<p>由池组成。</p>
+
+
+
+<h4>6.4.2 CRUSH 算法的第3层的由来</h4>
+
+
+
+<p>1) 在 PG 上虚拟出多个池，每个池对应多个 PG，数据可以存储到指定的池里<br>2) 总硬盘容量有多大，每个池最大可以使用的容量就有多大，但是如果如果 1 个池使用了一部分容量，其他的池就要少使用一部分容量</p>
+
+
+
+<h4>6.5 CRUSH 算法的第四层</h4>
+
+
+
+<h5>6.5.1 CRUSH 算法的第四层的组成</h5>
+
+
+
+<p>由数据组成。</p>
+
+
+
+<h5>6.5.2 CRUSH 算法的第四层的算法</h5>
+
+
+
+<p>1) 对要放入某个池里的数据进行切片，默认每片 4M<br>2) 对每份切片进行 Hash 取值，并对获取的 Hash 值除以这个池里 PG 节点的数量以取余，余数是多少就存在第几个 OSD 节点里</p>
+
+
+
+<h3>内容七：Ceph 的工作流程</h3>
+
+
+
+<p>1) 客户端从 MON 上下载最新的存储地图（map）<br>2) 存储地图（map）把集群里所有 MON、OSD 和 MDS 的信息告诉客户端，但是客户端依然不知道想要找的数据存放在哪<br>3) 客户端通过 CRUSH 计算出所需要读写的数据存放的 OSD 节点位置<br>4) 客户端直接在 OSD 节点位置上读写数据<br>5) 用户只需要把数据数据写入主要 OSD 节点硬盘上，然后 Ceph 自动同步给其他的从 OSD 节点硬盘上</p>
+
+
+
+<h3>内容八：Ceph 的维护</h3>
+
+
+
+<p>1) PG 的个数肯定要大于 OSD 节点的数量，在生产的环境中 PG 设计的数量往往会远远大于 OSD 节点的数量，以满足未来可能几年的需求，可能会在 3 个硬盘上添加上百个 PG<br>2) 当增加存或减少存储节点时，PG 的数量不会发生变化，只有 PG 对应 OSD 节点有变化的数据才会需要重新均衡数据（rebalance）的数据<br>3) 当增加存或减少 PG 数量时，就需要像传统的 Hash 存储算法那样，对所有已存储数据切片的 Hash 值重新取余，大概 90 % 的数据需要重新均衡数据（rebalance）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

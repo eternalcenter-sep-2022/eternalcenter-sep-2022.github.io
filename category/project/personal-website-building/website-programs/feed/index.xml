@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Website Programs (网页程序) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/project/personal-website-building/website-programs/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 06:07:20 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>WordPress 值得使用的主题和插件</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2021 14:26:53 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20391</guid>
+
+					<description><![CDATA[主题 Twenty Seventeen Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。 插件 All In One WP Security All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。 Easy WP SMTP Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。 Simply Static Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。 WP-Optimize Cache WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。 Health Check &#38; Troubleshooting &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/" class="more-link">Continue reading<span class="screen-reader-text"> "WordPress 值得使用的主题和插件"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>主题</h2>
+
+
+
+<h3>Twenty Seventeen</h3>
+
+
+
+<p>Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。</p>
+
+
+
+<h2>插件</h2>
+
+
+
+<h3>All In One WP Security</h3>
+
+
+
+<p>All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。</p>
+
+
+
+<h3>Easy WP SMTP</h3>
+
+
+
+<p>Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。</p>
+
+
+
+<h3>Simply Static</h3>
+
+
+
+<p>Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。</p>
+
+
+
+<h3>WP-Optimize Cache</h3>
+
+
+
+<p>WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。</p>
+
+
+
+<h3>Health Check &amp; Troubleshooting</h3>
+
+
+
+<p>Health Check &amp; Troubleshooting 是一个开源的 WordPress 网站健康度检测插件，可以检测网站的各项健康指标。</p>
+
+
+
+<h3>Username Changer</h3>
+
+
+
+<p>Username Changer 是一个开源的修改 WordPress 用户名的插件，可以修改用户名</p>
+
+
+
+<h3>Edit Author Slug</h3>
+
+
+
+<p>Edit Author Slug 是一个开源的修改 WordPress 用户名下文章链接的插件，可以修改用户发布文章的链接，默认情况下用户发布文章的链接是：https://&lt;domain/ name&gt;/author/&lt;username&gt;/ </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] WordPress 数据库的修复 （通过 WordPress 官方修复工具实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-db-repair/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Aug 2019 04:23:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5385</guid>
+
+					<description><![CDATA[步骤一：修改网页文件 wp-config.php 1.1 修改使用默认源码安装的 Nginx 网页文件的方法 添加以下内容： 1.2 修改使用 CentOS&#38;RHEL yum 默认安装的 Nginx 网页的方法 添加以下内容： 步骤二：在图形浏览器上输入以下网址 &#60;website&#62;/wp-admin/maint/repair.php 步骤三：根据网页提示修复数据库 （步骤略）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：修改网页文件 wp-config.php</h3>
+
+
+
+<h4>1.1 修改使用默认源码安装的 Nginx 网页文件的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+define('WP_ALLOW_REPAIR', true);
+?&gt;</code></pre>
+
+
+
+<h4>1.2 修改使用 CentOS&amp;RHEL yum 默认安装的 Nginx 网页的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/share/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+define('WP_ALLOW_REPAIR', true);
+?&gt;</code></pre>
+
+
+
+<h3>步骤二：在图形浏览器上输入以下网址</h3>
+
+
+
+<p>&lt;website&gt;/wp-admin/maint/repair.php</p>
+
+
+
+<h3>步骤三：根据网页提示修复数据库</h3>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 WordPress 更新版本或者上传文件时报错 “需要 FTP 登录凭据”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-wordpress-ftp/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Jan 2019 11:24:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1396</guid>
+
+					<description><![CDATA[错误代码 需要 FTP 登录凭据 解决方法 步骤一：在网页文件 wp-config.php 文件的末尾添加目录参数 添加以下内容： 步骤二：刷新网页 （步骤略）]]></description>
+										<content:encoded><![CDATA[
+<h2>错误代码</h2>
+
+
+
+<p>需要 FTP 登录凭据</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：在网页文件 wp-config.php 文件的末尾添加目录参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>define("FS_CHMOD_DIR", 0755);
+define("FS_CHMOD_FILE", 0755);
+?&gt;</code></pre>
+
+
+
+<h3>步骤二：刷新网页</h3>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

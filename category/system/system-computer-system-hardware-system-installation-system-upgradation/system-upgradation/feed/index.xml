@@ -1,0 +1,3097 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Upgradation (系统升级) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-computer-system-hardware-system-installation-system-upgradation/system-upgradation/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 09 Sep 2022 07:33:42 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux 软件指定版本的升级或降级 （CentOS Linux 7 版） （以系统版本作为指定维度）</title>
+		<link>https://eternalcenter-sep-2022.github.io/software-specified-version-upgarde-downgrade-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 16:00:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26495</guid>
+
+					<description><![CDATA[内容一：将软件降级到某个版本 （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 或者： （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 内容二：将软件降级到某个版本 （补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<h3>内容二：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' downgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 15:50:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26491</guid>
+
+					<description><![CDATA[步骤一：安装其他版本软件源 1.1 安装 centos-release 1.2 查看当前所有软件源 或者： 步骤二：清除 yum 缓存 2.1 除 yum 缓存 2.2 删除 yum 缓存目录 步骤三：将系统或软件升级到指定版本 3.1 方案一：将整个系统升级到指定版本 （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 或者： （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 3.2 方案二：只将系统内核或某个软件升级到指定版本 （补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例） 或者： （补充：这里以只将系统内核 kernel 升级到 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：安装其他版本软件源</h3>
+
+
+
+<h4>1.1 安装 centos-release</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install centos-release</code></pre>
+
+
+
+<h4>1.2 查看当前所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist all</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/yum.repos.d/CentOS-Vault.repo</code></pre>
+
+
+
+<h3>步骤二：清除 yum 缓存</h3>
+
+
+
+<h4>2.1 除 yum 缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h4>2.2 删除 yum 缓存目录</h4>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/cache/yum</code></pre>
+
+
+
+<h3>步骤三：将系统或软件升级到指定版本</h3>
+
+
+
+<h4>3.1 方案一：将整个系统升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<h4>3.2 方案二：只将系统内核或某个软件升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 软件源的设置 （SLE 版） （通过本地镜像版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-sle-local/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Jun 2022 08:10:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25888</guid>
+
+					<description><![CDATA[步骤一：加载本地镜像到系统光驱 （步骤略） 步骤二：挂载本地镜像 （补充：这里以挂载 /dev/sr1 到 /mnt 目录为例） 步骤三：添加本地镜里的软件源 3.1 添加本地镜里的软件源 （通过 zypper 命令） 或者： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例） 3.1 添加本地镜里的软件源 （通过创建配置文件） 创建以下内容： 创建以下内容： 创建以下内容： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>步骤一：加载本地镜像到系统光驱</h2>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h2>步骤二：挂载本地镜像</h2>
+
+
+
+<pre class="wp-block-code"><code># mount /dev/cdrom /mnt</code></pre>
+
+
+
+<p>（补充：这里以挂载 /dev/sr1 到 /mnt 目录为例）</p>
+
+
+
+<h2>步骤三：添加本地镜里的软件源</h2>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过 zypper 命令）</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ar file:/mnt/Module-Basesystem SLE15-Base
+# zypper ar file:/mnt/Module-Legacy SLE15-Legacy
+# zypper ar file:/mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -f /mnt/Module-Basesystem SLE15-Base
+# zypper ar -f /mnt/Module-Legacy SLE15-Legacy
+# zypper ar -f /mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过创建配置文件）</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Base.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Base]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Development-Tools</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Legacy.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Legacy]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Legacy</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Tools.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Tools]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Basesystem/</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 iptables 命令时报错 “iptables: No chain/target/match by that name.”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-iptables-no-chain-target-match-by-that-name/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 12:24:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23749</guid>
+
+					<description><![CDATA[分析 系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。 解决方法 步骤一：更新 kernel 内核 如果是 Rocky Linux &#38; RHEL： 如果是 openSUSE &#38; SLE： 步骤二：重启系统]]></description>
+										<content:encoded><![CDATA[
+<h2>分析</h2>
+
+
+
+<p>系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：更新 kernel 内核</h3>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update kernel*</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper update kernel*</code></pre>
+
+
+
+<h3>步骤二：重启系统</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 软件指定版本的升级 （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/specified-software-version-update-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 04 Mar 2022 08:03:40 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22350</guid>
+
+					<description><![CDATA[步骤一：解锁软件 （补充：这里以解锁 docker 软件包为例） 步骤二：显示所有可用的软件版本 （补充：这里以显示 docker 软件包的所有可用的版本为例） 步骤三：升级指定版本的软件 （补充：这里以升级 docker 软件包的指定版本为例） 步骤四：重新锁定软件 （补充：这里以重新锁定 docker 软件包为例） 步骤五：重启系统]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：解锁软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper removelocks docker</code></pre>
+
+
+
+<p>（补充：这里以解锁 docker 软件包为例）</p>
+
+
+
+<h3>步骤二：显示所有可用的软件版本</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper se -s docker</code></pre>
+
+
+
+<p>（补充：这里以显示 docker 软件包的所有可用的版本为例）</p>
+
+
+
+<h3>步骤三：升级指定版本的软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper install --oldpackage docker-&lt;version&gt;.&lt;architecture&gt;</code></pre>
+
+
+
+<p>（补充：这里以升级 docker 软件包的指定版本为例）</p>
+
+
+
+<h3>步骤四：重新锁定软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper addlock docker</code></pre>
+
+
+
+<p>（补充：这里以重新锁定 docker 软件包为例）</p>
+
+
+
+<h3>步骤五：重启系统</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 openSUSE &#038; SLE 升级系统时报错 “Can&#8217;t get available migrations from server: SUSE::Connect::ApiError: Multiple base products found:&#8230;&#8230;”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-cant-get-available-migrations-from-server-suseconnectapierror-multiple-base-products-found/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 03 Mar 2022 08:00:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22328</guid>
+
+					<description><![CDATA[报错代码 分析 当上一次升级失败或者升级回滚了以后可能会报此类错误 解决方法 方法一：通过 SUSEConnect 命令回滚 1.1 通过 SUSEConnect 命令回滚 # SUSEConnect &#8211;rollback 1.2 重新升级 （步骤略） 步骤二：取消注册再重新注册 2.1 取消注册再重新注册 （步骤略） 2.2 重新升级 （步骤略） 参考文献： https://www.suse.com/support/kb/doc/?id=000019523]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>Can't get available migrations from server: SUSE::Connect::ApiError: Multiple base products found: ......</code></pre>
+
+
+
+<h2>分析</h2>
+
+
+
+<p>当上一次升级失败或者升级回滚了以后可能会报此类错误</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>方法一：通过 SUSEConnect 命令回滚</h3>
+
+
+
+<h4>1.1 通过 SUSEConnect 命令回滚</h4>
+
+
+
+<p># SUSEConnect &#8211;rollback</p>
+
+
+
+<h4>1.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：取消注册再重新注册</h3>
+
+
+
+<h4>2.1 取消注册再重新注册</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>2.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h1>参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://www.suse.com/support/kb/doc/?id=000019523</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 生命周期</title>
+		<link>https://eternalcenter-sep-2022.github.io/lifecycle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 07:56:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21946</guid>
+
+					<description><![CDATA[RHEL English: https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase Chinese: https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase openSUSE English: https://en.opensuse.org/Lifetime Chinese: https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90 SLE https://www.suse.com/lifecycle]]></description>
+										<content:encoded><![CDATA[
+<h2 id="rhel">RHEL</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase</p>
+
+
+
+<h2 id="opensuse">openSUSE</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://en.opensuse.org/Lifetime</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90</p>
+
+
+
+<h2 id="sle">SLE</h2>
+
+
+
+<p>https://www.suse.com/lifecycle</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 系统升级 （从 openSUSE Leap 15.2 升级到 openSUSE Leap 15.3）</title>
+		<link>https://eternalcenter-sep-2022.github.io/upgrade-opensuse-leap-15-3/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 03 Oct 2021 14:46:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17771</guid>
+
+					<description><![CDATA[步骤一：显示现在的系统版本 （注意：确保显示的系统版本是 openSUSE Leap 15.2） 步骤二：准备升级 2.1 确认已使用的软件库 （补充：确保以上库已处于 Enabled 状态） 2.2 刷新已使用的软件库 （注意：确保刷新成功，否则请检查网络） 2.3 升级到 openSUSE Leap 15.2 2.4 用 releasever 变量替换所有版本号 步骤三：升级系统 3.1 将版本号设置为 15.3 并刷新 3.2 提前下载并安装 openSUSE Leap 15.3 所需的软件包 3.3 升级系统 3.4 重启系统 步骤四：后续检查 4.1 显示升级后的系统版本 4.2 显示升级后已使用的软件库 （注意：升级到 openSUSE Leap 15.3 系统后，自动新增加了 repo-backports-update 软件库和 repo-sle-update 软件库）]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-查看现在的系统版本">步骤一：显示现在的系统版本</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/*release*
+NAME="openSUSE Leap"
+VERSION="15.2"
+ID="opensuse-leap"
+ID_LIKE="suse opensuse"
+VERSION_ID="15.2"
+PRETTY_NAME="openSUSE Leap 15.2"
+ANSI_COLOR="0;32"
+CPE_NAME="cpe:/o:opensuse:leap:15.2"
+BUG_REPORT_URL="https://bugs.opensuse.org/"
+HOME_URL="https://www.opensuse.org/"</code></pre>
+
+
+
+<p>（注意：确保显示的系统版本是 openSUSE Leap 15.2）</p>
+
+
+
+<h3 id="步骤二-准备升级2-1-确认已使用的软件库">步骤二：准备升级</h3>
+
+
+
+<h4 id="步骤二-准备升级2-1-确认已使用的软件库">2.1 确认已使用的软件库</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ls -d
+#  | Alias                     | Name                               | Enabled | GPG Check | Refresh | Priority | Type   | URI
+---+---------------------------+------------------------------------+---------+-----------+---------+----------+--------+---------------------------------------------------------------------------------------------
+1  | repo-non-oss              | Non-OSS Repository                 | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/distribution/leap/15.2/repo/non-oss/
+2  | repo-oss                  | Main Repository                    | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/distribution/leap/15.2/repo/oss/
+3 | repo-update               | Main Update Repository             | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.2/oss/
+4 | repo-update-non-oss       | Update Repository (Non-Oss)        | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.2/non-oss/</code></pre>
+
+
+
+<p>（补充：确保以上库已处于 Enabled 状态）</p>
+
+
+
+<h4 id="2-2-刷新已使用的软件库">2.2 刷新已使用的软件库</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ref</code></pre>
+
+
+
+<p>（注意：确保刷新成功，否则请检查网络）</p>
+
+
+
+<h4 id="2-3-升级到-opensuse-leap-15-2">2.3 升级到 openSUSE Leap 15.2</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper -n update</code></pre>
+
+
+
+<h4 id="2-4-用-releasever-变量替换所有版本号">2.4 用 releasever 变量替换所有版本号</h4>
+
+
+
+<pre class="wp-block-code"><code># sed -i 's/15.2/${releasever}/g' /etc/zypp/repos.d/*.repo</code></pre>
+
+
+
+<h3 id="步骤三-升级系统3-1-将版本号设置为-15-3-并刷新">步骤三：升级系统</h3>
+
+
+
+<h4 id="步骤三-升级系统3-1-将版本号设置为-15-3-并刷新">3.1 将版本号设置为 15.3 并刷新</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper --releasever=15.3 refresh</code></pre>
+
+
+
+<h4 id="3-2-提前下载并安装-opensuse-leap-15-3-所需的软件包">3.2 提前下载并安装 openSUSE Leap 15.3 所需的软件包</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper --releasever=15.3 dup --download-in-advance</code></pre>
+
+
+
+<h4 id="3-3-升级系统">3.3 升级系统</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper --releasever=15.3 dup</code></pre>
+
+
+
+<h4 id="3-4-重启系统">3.4 重启系统</h4>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+
+
+
+<h3 id="步骤四-后续检查4-1-显示升级后的系统版本">步骤四：后续检查</h3>
+
+
+
+<h4 id="步骤四-后续检查4-1-显示升级后的系统版本">4.1 显示升级后的系统版本</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/*release*
+NAME="openSUSE Leap"
+VERSION="15.3"
+ID="opensuse-leap"
+ID_LIKE="suse opensuse"
+VERSION_ID="15.3"
+PRETTY_NAME="openSUSE Leap 15.3"
+ANSI_COLOR="0;32"
+CPE_NAME="cpe:/o:opensuse:leap:15.3"
+BUG_REPORT_URL="https://bugs.opensuse.org/"
+HOME_URL="https://www.opensuse.org/"</code></pre>
+
+
+
+<h4 id="4-2-显示升级后已使用的软件库">4.2 显示升级后已使用的软件库</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ls -d
+#  | Alias                     | Name                                                         | Enabled | GPG Check | Refresh | Priority | Type   | URI
+---+---------------------------+------------------------------------+---------+-----------+---------+----------+--------+---------------------------------------------------------------------------------------------
+1  | repo-non-oss              | Non-OSS Repository                                           | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/distribution/leap/15.3/repo/non-oss/
+2  | repo-oss                  | Main Repository                                              | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/distribution/leap/15.3/repo/oss/
+3 | repo-update                | Main Update Repository                                       | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.3/oss/
+4 | repo-update-non-oss        | Update Repository (Non-Oss)                                  | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.3/non-oss/
+4  | repo-backports-update     | Update repository of openSUSE Backports                      | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.3/backports/
+5  | repo-sle-update           | Update repository with updates from SUSE Linux Enterprise 15 | Yes     | (r ) Yes  | Yes     |   99     | rpm-md | http://download.opensuse.org/update/leap/15.3/sle/</code></pre>
+
+
+
+<p>（注意：升级到 openSUSE Leap 15.3 系统后，自动新增加了 repo-backports-update 软件库和 repo-sle-update 软件库）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 通过 zypper 升级内核保留旧内核数量的设置 （openSUSE &#038; SLE ）</title>
+		<link>https://eternalcenter-sep-2022.github.io/zypper-kernel-reserve-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Sep 2021 14:06:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17666</guid>
+
+					<description><![CDATA[将以下内容： 修改为： （补充：这里以使用 zypper 升级内核时保留内核的数量从 3 个增加到 5 个为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># vim /etc/zypp/zypp.conf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+multiversion.kernels = latest,latest-1,running
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+multiversion.kernels = latest,latest-1,latest-2,latest-3,running
+......</code></pre>
+
+
+
+<p>（补充：这里以使用 zypper 升级内核时保留内核的数量从 3 个增加到 5 个为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] CVE 简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/cve/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 07 Sep 2021 06:09:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17618</guid>
+
+					<description><![CDATA[内容一：什么叫 CVE CVE 全称是：Common Vulnerabilities and Exposures，翻译成中文是：常见脆弱性和暴露，是一个业界统一的脆弱性和暴露。 内容二：CVE 的常用格式 CVE-2016-4658，其中 2016-4658 是编号 内容三：CVE 的用途 用于标签系统和应用的漏洞，并实现了一个漏洞数据库以进行漏洞的查询和管理 内容四：CVE 的网站 4.1 CVE 官方网站 https://www.cvedetails.com/ 4.2 RedHat CVE 官方网站 4.2.1 RedHat CVE 官方网站 https://access.redhat.com/security/security-updates/#/cve 4.2.2 RedHat CVE 勘误官方网站 https://access.redhat.com/management/errata 4.3 openSUSE CVE 官方网站 openSUSE CVE 安全补丁官方网站 https://lists.opensuse.org/archives/list/security-announce@lists.opensuse.org/ 4.4 SUSE CVE 官方网站 SUSE CVE 安全补丁官方网站 https://www.suse.com/security/cve/ 内容五：显示软件 CVE 信息 5.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/cve/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] CVE 简介"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-什么叫-cve">内容一：什么叫 CVE</h3>
+
+
+
+<p class="has-medium-font-size">CVE 全称是：Common Vulnerabilities and Exposures，翻译成中文是：常见脆弱性和暴露，是一个业界统一的脆弱性和暴露。</p>
+
+
+
+<h3 id="内容二-cve-的常用格式">内容二：CVE 的常用格式</h3>
+
+
+
+<p class="has-medium-font-size">CVE-2016-4658，其中  2016-4658  是编号</p>
+
+
+
+<h3 id="内容三-cve-的用途">内容三：CVE 的用途</h3>
+
+
+
+<p class="has-medium-font-size">用于标签系统和应用的漏洞，并实现了一个漏洞数据库以进行漏洞的查询和管理</p>
+
+
+
+<h3>内容四：CVE 的网站</h3>
+
+
+
+<h4>4.1 CVE 官方网站</h4>
+
+
+
+<p class="has-medium-font-size">https://www.cvedetails.com/</p>
+
+
+
+<h4>4.2 RedHat CVE 官方网站</h4>
+
+
+
+<h5>4.2.1 RedHat CVE 官方网站</h5>
+
+
+
+<p>https://access.redhat.com/security/security-updates/#/cve</p>
+
+
+
+<h5>4.2.2 RedHat CVE 勘误官方网站</h5>
+
+
+
+<p>https://access.redhat.com/management/errata</p>
+
+
+
+<h4>4.3 openSUSE CVE 官方网站</h4>
+
+
+
+<p>openSUSE CVE 安全补丁官方网站</p>
+
+
+
+<p>https://lists.opensuse.org/archives/list/security-announce@lists.opensuse.org/</p>
+
+
+
+<h4>4.4 SUSE CVE 官方网站</h4>
+
+
+
+<p>SUSE CVE 安全补丁官方网站</p>
+
+
+
+<p>https://www.suse.com/security/cve/</p>
+
+
+
+<h3>内容五：显示软件 CVE 信息</h3>
+
+
+
+<h4>5.1 显示软件 CVE 信息的变更历史</h4>
+
+
+
+<pre class="wp-block-code"><code># rpm -q openssh-clients --changelog | grep -i cve</code></pre>
+
+
+
+<p>（补充：这里以显示 openssh-clients 软件的 CVE 信息的变更历史为例）</p>
+
+
+
+<h4>5.2 显示软件现在的版本是否修复 CVE 漏洞</h4>
+
+
+
+<pre class="wp-block-code"><code># rpm -qpi --changelog redis-6.0.14-6.8.1.x86_64.rpm |grep -E '32675'
+- Fix CVE-2021-32675, Denial Of Service when processing RESP request
+  (CVE-2021-32675, bsc#1191303)
+  * cve-2021-32675.patch</code></pre>
+
+
+
+<p>（补充：这里以确认 redis-6.0.14-6.8.1.x86_64.rpm 软件包是否已修复 CVE-2021-32675 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 官方软件源链接列表 （CentOS Linux 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/official-software-source-list-centos-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 27 Apr 2021 08:03:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14151</guid>
+
+					<description><![CDATA[内容一：CentOS 7 基础软件源列表 1.1 CentOS 7 基础软件源官方推荐链接列表 1.1.1 CentOS-7 &#8211; Base http://mirror.centos.org/centos/7/os/x86_64/ 1.1.2 CentOS-7 &#8211; Updates http://mirror.centos.org/centos/7/updates/x86_64/ 1.1.3 CentOS-7 &#8211; Extras http://mirror.centos.org/centos/7/extras/x86_64/ 1.1.4 CentOS-7 &#8211; Plus http://mirror.centos.org/centos/7/centosplus/x86_64/ 1.2 CentOS 7 基础软件源官方推荐链接列表 1.2.1 CentOS-7 &#8211; Base http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=os&#038;infra=$infra 1.2.2 CentOS-7 &#8211; Updates http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=updates&#038;infra=$infra 1.2.3 CentOS-7 &#8211; Extras http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=extras&#038;infra=$infra 1.2.4 CentOS-7 &#8211; Plus http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=centosplus&#038;infra=$infra 内容二：CentOS 8 基础软件源列表 2.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/official-software-source-list-centos-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 官方软件源链接列表 （CentOS Linux 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：CentOS 7 基础软件源列表</h3>
+
+
+
+<h4>1.1 CentOS 7 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>1.1.1 CentOS-7 &#8211; Base</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/os/x86_64/</p>
+
+
+
+<h5>1.1.2 CentOS-7 &#8211; Updates</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/updates/x86_64/</p>
+
+
+
+<h5>1.1.3 CentOS-7 &#8211; Extras</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/extras/x86_64/</p>
+
+
+
+<h5>1.1.4 CentOS-7 &#8211; Plus</h5>
+
+
+
+<p>http://mirror.centos.org/centos/7/centosplus/x86_64/</p>
+
+
+
+<h4>1.2 CentOS 7 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>1.2.1 CentOS-7 &#8211; Base</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=os&#038;infra=$infra</p>
+
+
+
+<h5>1.2.2 CentOS-7 &#8211; Updates</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=updates&#038;infra=$infra</p>
+
+
+
+<h5>1.2.3 CentOS-7 &#8211; Extras</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=extras&#038;infra=$infra</p>
+
+
+
+<h5>1.2.4 CentOS-7 &#8211; Plus</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=7&#038;arch=x86_64&#038;repo=centosplus&#038;infra=$infra</p>
+
+
+
+<h3>内容二：CentOS 8 基础软件源列表</h3>
+
+
+
+<h4>2.1 CentOS 8 基础软件源官方链接列表</h4>
+
+
+
+<h5>2.1.1 CentOS Linux 8 &#8211; BaseOS</h5>
+
+
+
+<p>http://mirror.centos.org/centos/8/BaseOS/x86_64/os/</p>
+
+
+
+<h5>2.1.2 CentOS-8 &#8211; Updates</h5>
+
+
+
+<p>http://mirror.centos.org/centos/8/AppStream/x86_64/os/</p>
+
+
+
+<h4>2.2 CentOS 8 基础软件源官方推荐链接列表</h4>
+
+
+
+<h5>2.2.1 CentOS Linux 8 &#8211; BaseOS</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=8&#038;arch=x86_64&#038;repo=BaseOS&#038;infra=$infra</p>
+
+
+
+<h5>2.2.2 CentOS Linux 8 &#8211; AppStream</h5>
+
+
+
+<p>http://mirrorlist.centos.org/?release=8&#038;arch=x86_64&#038;repo=AppStream&#038;infra=$infra</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量设置官方软件源 （openSUSE  Leap 15.2 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-official-repo-opensuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Feb 2021 06:21:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Others (其它)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13277</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量设置官方软件源（openSUSE 版）作用：批量设置官方软件源（openSUSE 版） 使用方法 1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下2. 在此脚本的分割线内写入相应的内容3. 给此脚本添加执行权限4. 执行此脚本 脚本分割线里的变量 add_repo_servers_list.txt #指定存放要设置官方软件源的文件 注意 1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器2. 服务器的系统需要是 openSUSE 15.2 版本3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）4. 这些远程服务器要能够连接外网 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量设置官方软件源（openSUSE 版）<br>作用：批量设置官方软件源（openSUSE 版）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $add_repo_servers_list.txt 每个服务器名占用 1 行，并和此脚本放在同一目录下<br>2. 在此脚本的分割线内写入相应的内容<br>3. 给此脚本添加执行权限<br>4. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>add_repo_servers_list.txt #指定存放要设置官方软件源的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行此脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 服务器的系统需要是 openSUSE 15.2 版本<br>3. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>4. 这些远程服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+add_repo_servers_list.txt
+
+####################### Separator ########################
+
+cat add_repo_servers_list.txt
+read -p "will add opensuse_leap_15.2 repo please input y " a
+echo $a
+
+if &#91; "$a" != "y" ];then
+        echo "you don't agree so exit now"
+        exit
+fi
+
+for i in `awk '{print $1}' add_repo_servers_list.txt`
+do
+        ssh $i '
+        sudo -u root su - root -c "zypper mr -da"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/oss/ OpenSUSE_Leap_152_x64_update-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/distribution/leap/15.2/repo/non-oss/ OpenSUSE_Leap_152_x64_update-non-oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/oss/ OpenSUSE_Leap_152_x64_oss"
+        sudo -u root su - root -c "zypper ar -fcg http://download.opensuse.org/update/leap/15.2/non-oss/ OpenSUSE_Leap_152_x64_non-oss"
+        sudo -u root su - root -c "zypper ref"
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 软件源的设置 （openSUSE 版） （本地镜像版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-opensuse-local/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Feb 2021 06:08:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13269</guid>
+
+					<description><![CDATA[步骤一：加载本地镜像到系统光驱 （步骤略） 步骤二：挂载本地镜像 （补充：这里以挂载 /dev/sr1 到 /mnt 目录为例） 步骤三：添加本地镜像里的软件源 或者： （补充：这里以将 /mnt/Module-Basesystem 添加到软件源并命名为 openSUSE15-Base 为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：加载本地镜像到系统光驱</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：挂载本地镜像</h3>
+
+
+
+<pre class="wp-block-code"><code># mount /dev/cdrom /mnt</code></pre>
+
+
+
+<p>（补充：这里以挂载 /dev/sr1 到 /mnt 目录为例）</p>
+
+
+
+<h3>步骤三：添加本地镜像里的软件源</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper ar file:///mnt/Module-Basesystem openSUSE15-Base</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -f /mnt/Module-Basesystem openSUSE15-Base</code></pre>
+
+
+
+<p>（补充：这里以将 /mnt/Module-Basesystem 添加到软件源并命名为 openSUSE15-Base 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 系统的显示 （系统版本和系统位数）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-bits-show/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Mar 2020 06:02:36 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8572</guid>
+
+					<description><![CDATA[内容一：显示系统版本 内容二：显示系统的位数]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-显示系统版本">内容一：显示系统版本</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/*release*</code></pre>
+
+
+
+<h3 id="内容二-显示系统的位数">内容二：显示系统的位数</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/version</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux DNF 的使用 （通过阿里源实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/dnf-unofficial/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 26 Oct 2019 14:24:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6356</guid>
+
+					<description><![CDATA[内容一：DNF 简介 1.1 DNF 软件简介 1) 从 CentOS8&#38;RHEL8 开始默认使用 dnf 管理软件和补丁安装2) dnf 也是 yum v43) dnf 的命令参数和 yum 一样4) dnf 软件源的配置方法和 yum 一样 1.2 DNF 软件源简介 1) BaseOS 系统和基础的软件包2) AppStream 其余所有官方的软件包 内容二：DNF 软件源的配置案例 2.1 删除原有的软件源配置文件 2.2 配置 AppStream 库 创建以下内容： 2.3 配置 Base 库 创建以下内容： 2.4 配置 Epel 库 创建以下内容： 2.5 配置 Media 库 创建以下内容： &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/dnf-unofficial/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] CentOS Linux DNF 的使用 （通过阿里源实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：DNF 简介</h3>
+
+
+
+<h4>1.1 DNF 软件简介</h4>
+
+
+
+<p>1) 从 CentOS8&amp;RHEL8 开始默认使用 dnf 管理软件和补丁安装<br>2) dnf 也是 yum v4<br>3) dnf 的命令参数和 yum 一样<br>4) dnf 软件源的配置方法和 yum 一样</p>
+
+
+
+<h4>1.2 DNF 软件源简介</h4>
+
+
+
+<p>1) BaseOS 系统和基础的软件包<br>2) AppStream 其余所有官方的软件包</p>
+
+
+
+<h3>内容二：DNF 软件源的配置案例</h3>
+
+
+
+<h4>2.1 删除原有的软件源配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/yum.repos.d/*.repo</code></pre>
+
+
+
+<h4>2.2 配置 AppStream 库</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/yum.repos.d/CentOS-AppStream.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;AppStream]
+name=CentOS-$releasever - AppStream
+baseurl=http://mirrors.aliyun.com/centos/$releasever/AppStream/$basearch/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</code></pre>
+
+
+
+<h4>2.3 配置 Base 库</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/yum.repos.d/CentOS-Base.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;BaseOS]
+name=CentOS-$releasever - Base
+baseurl=http://mirrors.aliyun.com/centos/$releasever/BaseOS/$basearch/os/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</code></pre>
+
+
+
+<h4>2.4 配置 Epel 库</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/yum.repos.d/CentOS-Epel.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;epel]
+name=CentOS-$releasever - Epel
+baseurl=http://mirrors.aliyun.com/epel/8/Everything/$basearch
+enabled=1
+gpgcheck=0</code></pre>
+
+
+
+<h4>2.5 配置 Media 库</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/yum.repos.d/CentOS-Media.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;c8-media-BaseOS]
+name=CentOS-BaseOS-$releasever - Media
+baseurl=file:///media/CentOS/BaseOS/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+&#91;c8-media-AppStream]
+name=CentOS-AppStream-$releasever - Media
+baseurl=file:///media/CentOS/AppStream/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial</code></pre>
+
+
+
+<h4>2.6 清除 DNF 缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf clean all</code></pre>
+
+
+
+<h4>2.7 刷新并列出 DNF 软件源列表</h4>
+
+
+
+<pre class="wp-block-code"><code># dnf repolist</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] CentOS Linux &#038; RHEL YUM 的使用 （让某一个软件不被更新）</title>
+		<link>https://eternalcenter-sep-2022.github.io/yum-exclude/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Oct 2019 07:32:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5888</guid>
+
+					<description><![CDATA[内容一：通过命令实现更新某一个软件（补丁）包以外其他所有软件（补丁）包的方法 （补充：这里以更新除了名字以 httpd 开头外的所有软件包为例） （注意：这种方法只在本次输入时有效） 或者： （补充：这里以更新除了名字以 kernel 开头外的所有软件包为例） （注意：这种方法只在本次输入时有效） 内容二：通过配置文件实现更新某一个软件（补丁）包以外其他所有软件（补丁）包的方法 2.1 修改 YUM 的配置文件 添加以下内容： （补充：多个不需要升级的软件可以用空格隔开） 2.2 使用 YUM （注意：1) 这种方法是永久生效2) 这个文件可能是位于 /etc/yum.conf 中，也可能是位于 /etc/yum/yum.conf）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：通过命令实现更新某一个软件（补丁）包以外其他所有软件（补丁）包的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -x httpd* updaten</code></pre>
+
+
+
+<p>（补充：这里以更新除了名字以 httpd 开头外的所有软件包为例）</p>
+
+
+
+<p>（注意：这种方法只在本次输入时有效）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --exclude=kernel* update</code></pre>
+
+
+
+<p>（补充：这里以更新除了名字以 kernel 开头外的所有软件包为例）</p>
+
+
+
+<p>（注意：这种方法只在本次输入时有效）</p>
+
+
+
+<h3>内容二：通过配置文件实现更新某一个软件（补丁）包以外其他所有软件（补丁）包的方法</h3>
+
+
+
+<h4>2.1 修改 YUM 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/yum.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+exlude=mysql* kernel*</code></pre>
+
+
+
+<p>（补充：多个不需要升级的软件可以用空格隔开）</p>
+
+
+
+<h4>2.2 使用 YUM</h4>
+
+
+
+<pre class="wp-block-code"><code># yum update</code></pre>
+
+
+
+<p>（<br>注意：<br>1) 这种方法是永久生效<br>2) 这个文件可能是位于 /etc/yum.conf 中，也可能是位于 /etc/yum/yum.conf<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 系统信息的显示 （内核和系统版本）</title>
+		<link>https://eternalcenter-sep-2022.github.io/info-kernel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 24 Aug 2019 15:01:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5511</guid>
+
+					<description><![CDATA[内容一：系统环境要求 服务器系统要配置好可用的软件源 内容二：显示内核信息 2.1 方法一 2.2 方法二 内容三：显示版本信息 3.1 方法一 （补充：1) 如果系统没有 lsb_release 命令则可以单独安装一个2) CentOS &#38; RHEL 安装 lsb_release 命令的方法： 3) openSUSE &#38; SUSE 安装 lsb_release 命令的方法： ） 3.2 方法二 3.3 方法三]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-系统环境要求">内容一：系统环境要求</h3>
+
+
+
+<p>服务器系统要配置好可用的软件源</p>
+
+
+
+<h3 id="内容二-显示内核信息2-1-方法一">内容二：显示内核信息</h3>
+
+
+
+<h4 id="内容二-显示内核信息2-1-方法一">2.1 方法一</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/version</code></pre>
+
+
+
+<h4 id="2-2-方法二">2.2 方法二</h4>
+
+
+
+<pre class="wp-block-code"><code># uname -a </code></pre>
+
+
+
+<h3 id="内容三-显示版本信息3-1-方法一">内容三：显示版本信息</h3>
+
+
+
+<h4 id="内容三-显示版本信息3-1-方法一">3.1 方法一</h4>
+
+
+
+<pre class="wp-block-code"><code># lsb_release -a</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 如果系统没有 lsb_release 命令则可以单独安装一个<br>2) CentOS &amp; RHEL 安装 lsb_release 命令的方法：</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install redhat-lsb-core</code></pre>
+
+
+
+<p>3) openSUSE &amp; SUSE 安装 lsb_release 命令的方法：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in lsb-release</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="3-2-方法二">3.2 方法二</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/*release*</code></pre>
+
+
+
+<h4 id="3-3-方法三">3.3 方法三</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/issue</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux &#038; RHEL YUM 的使用（添加软件源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/yum-repository-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 24 Aug 2019 14:53:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5506</guid>
+
+					<description><![CDATA[步骤一：移除不可用的 YUM 软件源配置文件 1.1 方法一：备份系统自带的 YUM 软件源配置文件 1.2 方法二：删除系统自带的 YUM 软件源配置文件 步骤二：添加指定的 YUM 软件源配置 2.1 方法一：使用 yum-config-manager 工具建立新配置文件 （补充：这里的 http://example.com/ 指的是官方提供的公共 yum 库链接） （注意：添加了这个源之后确保对应的 /etc/yum.repos.d/ 配置文件中的 enable=0） 2.2 方法二：手动写一个 YUM 软件源配置文件指定 YUM 软件源 创建以下内容： （补充：这里以软件仓库在 /temp 为例） 步骤三：确认新配置的 YUM 软件源可用 3.1 清理过时 YUM 库的缓存 3.2 刷新并列出所有可用的软件源]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-移除不可用的-yum-软件库配置文件1-1-方法一-备份系统自带的-yum-库配置文件">步骤一：移除不可用的 YUM 软件源配置文件</h3>
+
+
+
+<h4 id="步骤一-移除不可用的-yum-软件库配置文件1-1-方法一-备份系统自带的-yum-库配置文件">1.1 方法一：备份系统自带的 YUM 软件源配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># mkdir /etc/yum.repos.d/repobackup
+# mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/repobackup/</code></pre>
+
+
+
+<h4 id="1-2-方法二-删除系统自带的-yum-软件库配置文件">1.2 方法二：删除系统自带的 YUM 软件源配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /etc/yum.repos.d/*.repo</code></pre>
+
+
+
+<h3 id="步骤二-添加指定的-yum-软件库配置2-1-方法一-使用-yum-config-manager-工具建立新配置文件">步骤二：添加指定的 YUM 软件源配置</h3>
+
+
+
+<h4 id="步骤二-添加指定的-yum-软件库配置2-1-方法一-使用-yum-config-manager-工具建立新配置文件">2.1 方法一：使用 yum-config-manager 工具建立新配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># yum-config-manager --add-repo http://example.com/</code></pre>
+
+
+
+<p>（补充：这里的 http://example.com/ 指的是官方提供的公共 yum 库链接）</p>
+
+
+
+<p>（注意：添加了这个源之后确保对应的 /etc/yum.repos.d/ 配置文件中的 enable=0）</p>
+
+
+
+<h4 id="2-2-方法二-手动写一个-yum-软件库配置文件指定-yum-软件仓库">2.2 方法二：手动写一个 YUM 软件源配置文件指定 YUM 软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># vim  /etc/yum.repos.d/local.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;local]
+name=local
+baseurl=file:///temp
+enabled=1
+gpgcheck=0 </code></pre>
+
+
+
+<p>（补充：这里以软件仓库在 /temp 为例）</p>
+
+
+
+<h3 id="步骤三-确认新配置的-yum-源可用3-1-清理过时-yum-库的缓存">步骤三：确认新配置的 YUM 软件源可用</h3>
+
+
+
+<h4 id="步骤三-确认新配置的-yum-源可用3-1-清理过时-yum-库的缓存">3.1 清理过时 YUM 库的缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h4 id="3-2-刷新并列出所有可用的源">3.2 刷新并列出所有可用的软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist </code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] openSUSE &#038; SLE 命令 zypper （管理软件和软件源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/zypper/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 14 Jul 2019 13:07:30 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4827</guid>
+
+					<description><![CDATA[内容一： 帮助文档相关 1.1 显示 zypper 帮助信息 或者： 1.2 显示 zypper 选项的帮助信息 1.2.1 显示 zypper 选项帮助信息的格式 或者： 1.2.2 显示 zypper 选项帮助信息的案例 （补充：这里以显示 install 子选项为例） 或者： （补充：这里以显示 install 子选项为例） 内容二：软件相关 2.1 安装软件 2.1.1 安装软件的格式 2.1.1.1 交互式 或者： （补充：这里的 -f 参数是强制安装软件） 2.1.1.2 非交互式 （补充：这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断） 或者： （补充：1) 这里的 &#8211;no-gpg-checks 代表不检验证书2) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断） 2.1.2 安装软件的案例 2.1.2.1 交互式 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/zypper/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] openSUSE &#038; SLE 命令 zypper （管理软件和软件源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一： 帮助文档相关</h3>
+
+
+
+<h4>1.1 显示 zypper 帮助信息</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper help</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --h</code></pre>
+
+
+
+<h4>1.2 显示 zypper 选项的帮助信息</h4>
+
+
+
+<h5>1.2.1 显示 zypper 选项帮助信息的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper help &lt;option&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper &lt;option&gt; help</code></pre>
+
+
+
+<h5>1.2.2 显示 zypper 选项帮助信息的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper help install</code></pre>
+
+
+
+<p>（补充：这里以显示 install 子选项为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install help</code></pre>
+
+
+
+<p>（补充：这里以显示 install 子选项为例）</p>
+
+
+
+<h3>内容二：软件相关</h3>
+
+
+
+<h4>2.1 安装软件</h4>
+
+
+
+<h5>2.1.1 安装软件的格式</h5>
+
+
+
+<h5>2.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里的 -f 参数是强制安装软件）</p>
+
+
+
+<h5>2.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --no-gpg-checks --non-interactive install &lt;software&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 &#8211;no-gpg-checks 代表不检验证书<br>2) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<h4>2.1.2 安装软件的案例</h4>
+
+
+
+<h5>2.1.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in httpd</code></pre>
+
+
+
+<p>（补充：这里以交互式安装 httpd 软件为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper install httpd</code></pre>
+
+
+
+<p>（补充：这里以交互式安装 httpd 软件为例）</p>
+
+
+
+<h5>2.1.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in httpd</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以非交互式安装 httpd 软件为例<br>2) 这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --no-gpg-checks --non-interactive install httpd</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以交互式安装 httpd 软件为例<br>2) 这里的 &#8211;no-gpg-checks 代表不检验证书<br>3) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<h4>2.2 删除软件</h4>
+
+
+
+<h5>2.2.1 删除软件的格式</h5>
+
+
+
+<h5>2.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rm &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper remove &lt;software&gt;</code></pre>
+
+
+
+<h5>2.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --no-gpg-checks --gpg-auto-import-keys --non-interactive remove &lt;software&gt;</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 &#8211;no-gpg-checks 代表不检验证书<br>2) 这里的 &#8211;gpg-auto-import-keys 代表自动信任并导入新的签名密钥<br>3) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<h5>2.2.2 删除软件的案例</h5>
+
+
+
+<h5>2.2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rm httpd</code></pre>
+
+
+
+<p>（补充：这里以交互式删除 httpd 软件为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper remove httpd</code></pre>
+
+
+
+<p>（补充：这里以交互式删除 httpd 软件为例）</p>
+
+
+
+<h5>2.2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm httpd</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以非交互式删除 httpd 软件为例<br>2) 这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --no-gpg-checks --gpg-auto-import-keys --non-interactive remove httpd</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以非交互式删除 httpd 软件为例<br>2) 这里的 &#8211;no-gpg-checks 代表不检验证书<br>3) 这里的 &#8211;gpg-auto-import-keys 代表自动信任并导入新的签名密钥<br>4) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<h4>2.3 锁定软件</h4>
+
+
+
+<h5>2.3.1 锁定软件的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper addlock &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper al &lt;software&gt;</code></pre>
+
+
+
+<h5>2.3.2 锁定软件的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper addlock httpd</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper al httpd</code></pre>
+
+
+
+<p>（补充：这里以锁定 httpd 软件的周期为例）</p>
+
+
+
+<h4>2.4 显示所有已锁软件</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper locks</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ll</code></pre>
+
+
+
+<h4>2.5 解锁软件</h4>
+
+
+
+<h5>2.5.1 解锁软件的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper removelocks &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper rl &lt;software&gt;</code></pre>
+
+
+
+<h5>2.5.2 解锁软件的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper removelocks httpd</code></pre>
+
+
+
+<p>（补充：这里以解锁 httpd 为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper rl httpd</code></pre>
+
+
+
+<p>（补充：这里以解锁 httpd 为例）</p>
+
+
+
+<h5>2.5.3 清除所有已锁软件</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper cleanlocks</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper cl</code></pre>
+
+
+
+<h4>2.6 升级软件</h4>
+
+
+
+<h5>2.6.1 升级软件</h5>
+
+
+
+<h5>2.6.1.1 升级软件的格式</h5>
+
+
+
+<h5>2.6.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper update &lt;software&gt;</code></pre>
+
+
+
+<h5>2.6.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n update &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --non-interactive update &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断）</p>
+
+
+
+<h5>2.6.1.2 升级软件的案例</h5>
+
+
+
+<h5>2.6.1.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper update nginx</code></pre>
+
+
+
+<p>（补充：这里以交互式升级 nginx 为例）</p>
+
+
+
+<h5>2.6.1.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n update nginx</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以非交互式升级 nginx 为例<br>2) 这里的 -n 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper --non-interactive update nginx</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以非交互式升级 nginx 为例<br>2) 这里的 &#8211;non-interactive 代表会通过忽略交互式的步骤从而避免运行中断<br>）</p>
+
+
+
+<h5>2.6.2 升级所有软件</h5>
+
+
+
+<h5>2.6.2.1 升级所有软件</h5>
+
+
+
+<h5>2.6.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper update</code></pre>
+
+
+
+<h5>2.6.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n update</code></pre>
+
+
+
+<h5>2.6.2.2 显示所有可升级的软件</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper lp</code></pre>
+
+
+
+<h4>2.7 查找软件</h4>
+
+
+
+<h5>2.7.1 查找软件的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper se &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper search &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper search --match-exact --type package --details &lt;software&gt;</code></pre>
+
+
+
+<p>（补充：这里 &#8211;match-exact 参数的作用是精确匹配，&#8211;type package 参数的作用是指定查找的对象是软件）</p>
+
+
+
+<h5>2.7.2 查找软件的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper se httpd</code></pre>
+
+
+
+<p>（补充：这里以查找 httpd 软件为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper search httpd</code></pre>
+
+
+
+<p>（补充：这里以查找 httpd 软件为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper se --match-exact --type package --details httpd</code></pre>
+
+
+
+<p>（补充：此方法会精确查找 httpd 软件为例）</p>
+
+
+
+<h4>2.8 显示软件所有可以安装的版本</h4>
+
+
+
+<h5>2.8.1 显示软件所有可以安装版本的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper se -s &lt;software&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper search -details &lt;software&gt;</code></pre>
+
+
+
+<h5>2.8.2 显示软件所有可以安装版本的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper se -s kernel-default</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper search -details kernel-default</code></pre>
+
+
+
+<p>（补充：这里以查找 httpd 软件为例）</p>
+
+
+
+<h4>2.9 显示软件的生命周期</h4>
+
+
+
+<h5>2.9.1 显示软件的生命周期的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper lifecycle &lt;software&gt;</code></pre>
+
+
+
+<h5>2.9.2 显示软件的生命周期的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper lifecycle httpd</code></pre>
+
+
+
+<p>（补充：这里以查找 httpd 软件的周期为例）</p>
+
+
+
+<h3>内容三：软件组相关</h3>
+
+
+
+<h4>3.1 安装软件组</h4>
+
+
+
+<h5>3.1.1 安装软件组的格式</h5>
+
+
+
+<h5>3.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in -t pattern &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t pattern &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.1.2 安装软件组的案例</h5>
+
+
+
+<h5>3.1.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in -t pattern kvm_server</code></pre>
+
+
+
+<p>（补充：这里以交互式安装 kvm_server 软件组为例）</p>
+
+
+
+<h5>3.1.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t pattern kvm_server</code></pre>
+
+
+
+<p>（补充：这里以非交互式安装 kvm_server 软件组为例）</p>
+
+
+
+<h4>3.2 删除软件组</h4>
+
+
+
+<h5>3.2.1 删除软件组的格式</h5>
+
+
+
+<h5>3.2.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rm -t pattern &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.2.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm -t pattern &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.2.2 删除软件组的案例</h5>
+
+
+
+<h5>3.2.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm -t pattern kvm_server</code></pre>
+
+
+
+<p>（补充：这里以交互式删除 kvm_server 软件组为例）</p>
+
+
+
+<h5>3.2.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n rm -t pattern kvm_server</code></pre>
+
+
+
+<p>（补充：这里以非交互式删除 kvm_server 软件组为例）</p>
+
+
+
+<h5>3.3 显示所有可用软件组</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper patterns</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper pt</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper se -t pattern</code></pre>
+
+
+
+<h4>3.4 显示软件组的详细信息</h4>
+
+
+
+<h5>3.4.1 显示软件组详细信息的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper pattern-info &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.4.2 显示软件组详细信息的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper pattern-info kvm_server</code></pre>
+
+
+
+<p>（补充：这里以显示 kvm_server 软件组为例）</p>
+
+
+
+<h4>3.5 显示软件组所需要的所有软件包</h4>
+
+
+
+<h5>3.5.1 显示软件组所需要的所有软件包的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper info --requires &lt;pattern&gt;</code></pre>
+
+
+
+<h5>3.5.2 显示软件组所需要的所有软件包的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper info --requires kvm_server</code></pre>
+
+
+
+<p>（补充：这里以显示 kvm_server 软件组所需要的所有软件包为例）</p>
+
+
+
+<h3>内容四：安全相关</h3>
+
+
+
+<h4>4.1 安全补丁</h4>
+
+
+
+<h5>4.1.1 安装安全补丁</h5>
+
+
+
+<h5>4.1.1.1 安装安全补丁的格式</h5>
+
+
+
+<h5>4.1.1.1.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in -t patch &lt;patch&gt;</code></pre>
+
+
+
+<h5>4.1.1.1.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t patch &lt;patch&gt;</code></pre>
+
+
+
+<h5>4.1.1.2 安装安全补丁的案例</h5>
+
+
+
+<h5>4.1.1.2.1 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper in -t patch SUSE-SLE-SERVER-12-SP5-2022-323=1</code></pre>
+
+
+
+<p>（补充：这里以安装 SUSE-SLE-SERVER-12-SP5-2022-323=1 补丁为例）</p>
+
+
+
+<h5>4.1.1.2.2 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n in -t patch SUSE-SLE-SERVER-12-SP5-2022-323=1</code></pre>
+
+
+
+<p>（补充：这里以安装 SUSE-SLE-SERVER-12-SP5-2022-323=1 补丁为例）</p>
+
+
+
+<h5>4.1.2 所有安全补丁</h5>
+
+
+
+<h5>4.1.2 安装所有安全补丁</h5>
+
+
+
+<h5>4.1.2.1 非交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper patch</code></pre>
+
+
+
+<h5>4.1.2.2 交互式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n patch</code></pre>
+
+
+
+<h3>内容五：软件源相关</h3>
+
+
+
+<h4>5.1 新增软件源并指定软件源名</h4>
+
+
+
+<h5>5.1.1 新增软件源并指定软件源名的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -fcg &lt;software source link&gt; &lt;define software source name&gt;</code></pre>
+
+
+
+<h5>5.1.2 新增软件源并指定软件源名的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -fcg http://192.168.1.1/update-oss/ update-oss</code></pre>
+
+
+
+<p>（补充：这里以添加 http://192.168.1.1/update-oss/ 库并命名为 update-oss 为例）</p>
+
+
+
+<h4>5.2 删除软件源</h4>
+
+
+
+<h5>5.2.1 删除软件源</h5>
+
+
+
+<h5>5.2.1.1 删除软件源的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rr &lt;software source name/software source URL&gt;</code></pre>
+
+
+
+<h5>5.2.1.2 删除软件源的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rr 'Main Repository'</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper rr http://download.opensuse.org/distribution/leap/15.3/repo/oss/</code></pre>
+
+
+
+<p>（补充：这里以删除名为 Main Repository 链接为 http://download.opensuse.org/distribution/leap/15.3/repo/oss/ 的软件源为例）</p>
+
+
+
+<h5>5.2.2 删除所有软件源</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper rr -a</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper rr `zypper ls | awk '{print $1}'`</code></pre>
+
+
+
+<h4>5.3 启用软件源</h4>
+
+
+
+<h5>5.3.1 启用软件源</h5>
+
+
+
+<h5>5.3.1.1 启用软件源的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -e &lt;software source name/software source URL&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -e &lt;software source name/software source URL&gt;</code></pre>
+
+
+
+<h5>5.3.1.2 启用软件源的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -e 'Main Repository'</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -e http://download.opensuse.org/distribution/leap/15.3/repo/oss/</code></pre>
+
+
+
+<p>（补充：这里以启用名为 Main Repository 链接为 http://download.opensuse.org/distribution/leap/15.3/repo/oss/ 的软件源为例）</p>
+
+
+
+<h5>5.3.2 启用所有软件源</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -ea</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -ea</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -e `zypper ls | awk '{print $1}'`</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -e `zypper ls | awk '{print $1}'`</code></pre>
+
+
+
+<h4>5.4 禁用软件源</h4>
+
+
+
+<h5>5.4.1 禁用软件源</h5>
+
+
+
+<h5>5.4.1.1 禁用软件源的格式</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -d &lt;software source name/software source URL&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -d &lt;software source name/software source URL&gt;</code></pre>
+
+
+
+<h5>5.4.1.2 禁用软件源的案例</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -d 'Main Repository'</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -d http://download.opensuse.org/distribution/leap/15.3/repo/oss/</code></pre>
+
+
+
+<p>（补充：这里以禁用名为 Main Repository 链接为 http://download.opensuse.org/distribution/leap/15.3/repo/oss/ 的软件源为例）</p>
+
+
+
+<h5>5.4.2 禁用所有软件源</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -da</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo -da</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper mr `zypper ls | awk '{print $1}'`</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper modifyrepo `zypper ls | awk '{print $1}'`</code></pre>
+
+
+
+<h4>5.5 显示软件源</h4>
+
+
+
+<h5>5.5.1 显示所有软件源</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper ls</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper lr</code></pre>
+
+
+
+<p>（补充：zypper ls 会多显示软件源的 Type）</p>
+
+
+
+<h5>5.5.2 显示所有软件源的链接</h5>
+
+
+
+<h5>5.2.2.1 显示所有软件源的链接 （显示时进行软件源验证）</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper ls -d</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ls -u</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper repos -d</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper repos -u</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ls --details</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ls --uri</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper repos --details</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper repos --uri</code></pre>
+
+
+
+<h5>5.2.2.2 显示所有软件源的链接 （显示时不进行软件源言政）</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper --non-interactive --no-gpg-checks repos -d</code></pre>
+
+
+
+<p>（<br>补充：<br>1) &#8211;non-interactive 代表非交互式<br>2) &#8211;no-gpg-checks 代表不检查证书<br>）</p>
+
+
+
+<h4>5.6 缓存软件源列表</h4>
+
+
+
+<h5>5.6.1 缓存所有已启用软件源列表</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper ref</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper refresh</code></pre>
+
+
+
+<h5>5.6.2 清除所有软件源列表缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper clean</code></pre>
+
+
+
+<h3>内容六：系统本版相关</h3>
+
+
+
+<p>升级系统版本</p>
+
+
+
+<pre class="wp-block-code"><code># zypper migration</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 软件源的设置 （openSUSE 版） （非官方版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-opensuse-unofficial/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 23 May 2019 14:57:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4718</guid>
+
+					<description><![CDATA[步骤一：禁用所有原有的软件源 步骤二：添加阿里的 openSUSE 软件源 （补充：1) 命令中最后一个参数为每这个源指定了一个别称2) 这里以添加 openSUSE 15.0 版本的 oss、non-oss、update 和 update-now-oss 库为例） 步骤三：刷新所有处于 enable 状态的软件源]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：禁用所有原有的软件源</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper mr -da</code></pre>
+
+
+
+<h3>步骤二：添加阿里的 openSUSE 软件源</h3>
+
+
+
+<pre class="wp-block-code"><code># sudo zypper ar -fc https://mirrors.aliyun.com/opensuse/distribution/leap/15.0/repo/oss openSUSE-Aliyun-OSS
+# sudo zypper ar -fc https://mirrors.aliyun.com/opensuse/distribution/leap/15.0/repo/non-oss openSUSE-Aliyun-NON-OSS
+# sudo zypper ar -fc https://mirrors.aliyun.com/opensuse/update/leap/15.0/oss openSUSE-Aliyun-UPDATE-OSS
+# sudo zypper ar -fc https://mirrors.aliyun.com/opensuse/update/leap/15.0/non-oss openSUSE-Aliyun-UPDATE-NON-OSS</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 命令中最后一个参数为每这个源指定了一个别称<br>2) 这里以添加 openSUSE 15.0 版本的 oss、non-oss、update 和 update-now-oss 库为例<br>）</p>
+
+
+
+<h3>步骤三：刷新所有处于 enable 状态的软件源</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper ref</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

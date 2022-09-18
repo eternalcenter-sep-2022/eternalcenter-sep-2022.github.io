@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Monitor (监控) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-monitor/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 05:56:59 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 显示可以无密码登录系统的用户 （以 1 行的形式显示）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-login-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Jun 2022 13:33:07 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23846</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示可以登录系统的用户 （以 1 行到形式显示）作用：显示可以登录系统的用户 （以 1 行到形式显示） 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示可以登录系统的用户 （以 1 行到形式显示）<br>作用：显示可以登录系统的用户 （以 1 行到形式显示）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+userlist=
+n=`cat /etc/passwd | wc -l`
+i=1
+
+while &#91; $i -le $n ]
+do
+	line=`sed -n "$&#91;i]p" /etc/passwd`
+	echo $line | egrep "nologin$|false$" &amp;&gt; /dev/null
+	if &#91; $? -ne 0 ];then
+                userlist="$userlist `echo $line | awk -F: '{print $1}'`"
+	fi
+	let i++
+done
+
+echo $userlist</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测指定用户是否可以登录本地服务器</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-user-login-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 05 Jun 2022 16:21:49 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23696</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量检测指定用户是否可以登录本地服务器作用：批量检测指定用户是否可以登录本地服务器 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 directorylist=&#8221;daemon bin sys adm uucp guest nobody lpd lp&#8221; #要被检测的用户 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量检测指定用户是否可以登录本地服务器<br>作用：批量检测指定用户是否可以登录本地服务器</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>directorylist=&#8221;daemon bin sys adm uucp guest nobody lpd lp&#8221; #要被检测的用户</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directorylist="daemon bin sys adm uucp guest nobody lpd lp"
+
+####################### Separator ########################
+
+directorycheck=
+
+for i in `echo $directorylist`
+do
+        directorycheck="$directorycheck `cat /etc/passwd | egrep "^$i:" | egrep -v '/sbin/nologin|false|/bin/false' | awk -F: '{print $1}'`"
+done
+
+echo $directorycheck</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 测试 SFTP 服务</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-sftp-test/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 14 May 2022 14:11:28 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23553</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：测试 SFTP 服务作用：测试 SFTP 服务 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 IP=10.0.0.8 #要测试 SFTP 的服务器 IP 地址 注意 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程需要测试 SFTP 服务的服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：测试 SFTP 服务<br>作用：测试 SFTP 服务</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>IP=10.0.0.8 #要测试 SFTP 的服务器 IP 地址 </p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行脚本的主机能无秘钥远程需要测试 SFTP 服务的服务器</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+IP=10.0.0.8
+####################### Separator ########################
+
+set timeout 3
+
+rpm -q expect &amp;&gt; /dev/null
+if &#91; $? -ne 0 ];then
+        echo "Expect needs to be installed first"
+fi
+
+expect &lt;&lt; EOF
+spawn sftp $IP
+expect "sftp&gt;"                                   {send "cd /tmp\r" } 
+expect "sftp&gt;"                                   {send "ls -l\r"}
+expect "sftp&gt;"                                   {send "quit\r"}
+expect "&gt;"                                       {send "\r"}
+EOF</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-login-log-exclude-sftp/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 14:52:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21977</guid>
+
+					<description><![CDATA[注意： 在排除 SFTP 登录记录只监控普通登录记录前要先开启 SFTP 日志： 正文： 介绍 基本信息 作者：朱明宇名称：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）作用：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录） 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 普通登录记录会同时记录在系统日志和 $logfile 里 脚本分割线里的变量 1. logfile=logfile.txt #用户保存记录的文件2. prompt=&#8221;and no sftp info&#8221; #记录里普通登录记录的文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在排除 SFTP 登录记录只监控普通登录记录前要先开启 SFTP 日志：</p>
+
+
+
+<div class="wp-container-1 wp-block-buttons">
+<div class="wp-block-button aligncenter is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/sftp-log/" style="border-radius:0px">SFTP 日志的开启</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）<br>作用：监控普通登录记录 （排除 SFTP 登录记录只监控普通登录记录）</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 普通登录记录会同时记录在系统日志和 $logfile 里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. logfile=logfile.txt #用户保存记录的文件<br>2. prompt=&#8221;and no sftp info&#8221; #记录里普通登录记录的文件</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+logfile=logfile.txt
+prompt="and no sftp info"
+
+####################### Separator ########################
+
+checktime=`date +%Y-%m-%dT%H -d "-1 day"`
+
+for i in `cat -n /var/log/messages | grep $check_time | grep 'Started Session' | grep -v 'root' | awk '{print $1}'`
+
+do
+   line=`sed -n $&#91;i]p /var/log/messages`
+   time=`echo $line | awk '{print $1}'`
+   session=`echo $line | awk '{print $6}'`
+   user=`echo $line | awk '{print $9}'`
+   user=${user%.}
+
+   message="ACCESS CHECK LOG: Time:$time Session:$session $user has accessed `hostname`, $prompt"
+
+   let sftpline=i+3
+
+   sed -n $&#91;sftpline]p /var/log/messages | grep sftp-server &amp;&gt; /dev/null
+   if &#91; $? -ne 0 ];then
+           echo $message
+           echo $message &gt;&gt; $logfile.txt
+           logger $message
+   fi
+   echo
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量比较服务器所有正在运行进程的变化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-process-compare/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 20 Jan 2022 13:38:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21341</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量比较服务器所有正在运行进程的变化作用：批量比较服务器所有正在运行进程的变化 使用方法 1. 服务器清单 $server_list 每台服务器占用 1 行2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下3. 给此脚本添加执行权限4. 执行此脚本5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里 脚本分割线里的变量 server_list=server_list.txt #服务器清单first_time=first_time #存储第一次检结果的目录second_time=second_time #存储第二次检查结果的目录compare_file=comparison_results.txt #存储比较结果的文件 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量比较服务器所有正在运行进程的变化<br>作用：批量比较服务器所有正在运行进程的变化</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $server_list 每台服务器占用 1 行<br>2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下<br>3. 给此脚本添加执行权限<br>4. 执行此脚本<br>5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>server_list=server_list.txt #服务器清单<br>first_time=first_time #存储第一次检结果的目录<br>second_time=second_time #存储第二次检查结果的目录<br>compare_file=comparison_results.txt #存储比较结果的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+server_list=server_list.txt
+first_time=first_time
+second_time=second_time
+compare_file=comparison_results.txt
+
+####################### Separator ########################
+
+mkdir $first_time &amp;&gt; /dev/null
+mkdir $second_time &amp;&gt; /dev/null
+echo &gt; $compare_file
+
+read -p "Please input first second or compare now: " choice
+
+check(){
+        for server_name in `cat $1`
+        do
+                ssh -t $server_name "ps -A" | awk '{print $4}' &gt; $2/$server_name
+        done
+}
+
+compare(){
+        for server_name in `cat $1`
+        do
+                echo $server_name &gt;&gt; $4
+                for process in `cat $2/$server_name`
+                        do
+                        grep $process $3/$server_name &amp;&gt; /dev/null
+                        if &#91; $? -ne 0 ];then
+                                echo $process &gt;&gt; $4
+                        fi
+                done
+                echo &gt;&gt; $4
+        done
+}
+
+if &#91; $choice == first ];then
+        check $server_list $first_time
+fi
+
+if &#91; $choice == second ];then
+        check $server_list $second_time
+fi
+
+if &#91; $choice == compare ];then
+        compare $server_list $first_time $second_time $compare_file
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell LNMP 没运行则重启系统 （systemctl 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-check-restart-systemctl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 14:26:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19607</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：LNMP 没运行则重启系统作用：LNMP 没运行则重启系统 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：LNMP 没运行则重启系统<br>作用：LNMP 没运行则重启系统</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+  
+systemctl status nginx | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi
+
+systemctl status mariadb | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi
+
+systemctl status php-fpm | grep 'active (running)'
+if &#91; $? -ne 0 ];then
+        /usr/sbin/reboot
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 实时监控内存 （永久版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-real-time-monitoring-endless/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 03 Oct 2021 05:15:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17672</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：实时监控内存作用：实时监控内存，并每 3 秒钟更新 1 次状态信息 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：实时监控内存<br>作用：实时监控内存，并每 3 秒钟更新 1 次状态信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+while true
+do
+        sleep 10
+        free -m | head -1
+        free -g | grep Mem
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 实时监控内存 （进行 100 次版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-real-time-monitoring-100/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 01 Sep 2021 06:16:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17605</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：实时监控内存作用：实时监控内存，并每 3 秒钟更新 1 次状态信息，总过进行 100 次 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：实时监控内存<br>作用：实时监控内存，并每 3 秒钟更新 1 次状态信息，总过进行 100 次</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+
+free -m | head -1
+
+while &#91; $i -le 100 ]
+do
+        let i=i+1
+        free -m | grep Mem
+        sleep 3
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示所有可升级的软件版本，并自动生成相应的升级命令 （openSUSE &#038; SLE）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-rpms-info-command-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 27 Jul 2021 08:34:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17150</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：openSUSE &#38; SLE 显示所有可升级的软件版本，并自动生成相应的升级命令作用：openSUSE &#38; SLE 显示所有可升级的软件版本，并自动生成相应的升级命令 使用方法 给此脚本添加执行权限执行此脚本执行此脚本大致会生成以下内容： 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：openSUSE &amp; SLE 显示所有可升级的软件版本，并自动生成相应的升级命令<br>作用：openSUSE &amp; SLE 显示所有可升级的软件版本，并自动生成相应的升级命令</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>给此脚本添加执行权限<br>执行此脚本<br>执行此脚本大致会生成以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>zypper update  MozillaFirefox-78.12.0-lp152.2.61.1 MozillaFirefox-translations-common-78.12.0-lp152.2.61.1 alsa-oss-1.1.8-lp152.4.3.1</code></pre>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+m=''
+
+for n in `zypper list-updates | tail -n +5 | awk '{print $7"-"$11}'`
+do
+        m="$m $n"
+done
+
+echo "zypper update $m"</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 检测服务器某个端口有没有启动</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-port-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 06:23:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14314</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：检测服务器某个端口有没有启动作用：检测服务器某个端口有没有启动 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 如果被检测的端口被启动则会被记录在指定文件里 脚本分割线里的变量 1. checkport=&#8217;7111&#8242; #被检测的端口2. logfile=&#8217;checkportlog.txt&#8217; #记录文件 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：检测服务器某个端口有没有启动<br>作用：检测服务器某个端口有没有启动</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 如果被检测的端口被启动则会被记录在指定文件里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. checkport=&#8217;7111&#8242; #被检测的端口<br>2. logfile=&#8217;checkportlog.txt&#8217; #记录文件</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+checkport='7111'
+logfile='checkportlog.txt'
+####################### Separator ########################
+
+a=`/sbin/ss -ntulap | grep udp | grep $checkport | awk '{print $7}' | awk -F'"' '{print $2}'`
+
+if &#91; -n "$a" ];then
+       echo `date` &gt;&gt; $logfile
+       echo $checkport &gt;&gt; $logfile
+       echo `/sbin/ss -ntulap | grep udp | grep $checkport | awk '{print $7}' | awk -F'"' '{print $2}'` &gt;&gt; $logfile
+       echo &gt;&gt; $logfile
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 检测服务器 CPU 占用率并报警写入日志</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-cpu-monitor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 18 Mar 2021 09:32:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13622</guid>
+
+					<description><![CDATA[介绍 基本信息 名称：检测服务器 CPU 占用率并报警写入日志作用：检测服务器 CPU 占用率并报警写入日志 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 将此脚本添加到周期性计划任务里4. 如果 CPU 占用率超过了报警值则将报警信息写入 /var/log/message 脚本分割线里的变量 cputhreshold=95 #CPU 报警的占比值 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>名称：检测服务器 CPU 占用率并报警写入日志<br>作用：检测服务器 CPU 占用率并报警写入日志</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 将此脚本添加到周期性计划任务里<br>4. 如果 CPU 占用率超过了报警值则将报警信息写入 /var/log/message</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>cputhreshold=95 #CPU 报警的占比值</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+cputhreshold=95
+####################### Separator ########################
+
+cpumonitor() {
+cpu=`top -n 1 -b | grep Cpu | awk -F, '{print $1}'| awk -F: '{print $2}'| awk '{print $1}'`
+
+if &#91; `echo "$cpu &gt; $1"|bc` -ne 0 ]
+then
+        logger "CPU_Alarm CPU until $cpu"
+fi
+}
+
+cpumonitor $cputhreshold</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测服务器 TCP 端口的联通状态 （nc 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-tcp-check-nc/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Jan 2021 10:34:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13243</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量检测服务器 TCP 端口的联通状态作用：批量检测服务器 TCP 端口的联通状态 使用方法 1. 端口清单 $portlist 每 1 个端口占用 1 行，格式为：&#60;IP address corresponding to the port number to be connected>:&#60;port number to connect>:&#60;port functions>2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下3. 给此脚本添加执行权限4. 执行此脚本，并将要测试的服务器 IP 地址跟在脚本的后面，例：. &#60;script> &#60;server IP address 1> &#60;server IP address 2> &#8230;&#8230; 脚本分割线里的变量 portlist=tcp_ports.txt #存放要测试的 TCP 端口的文件 注意 1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器2. 执行此脚本前确保 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-tcp-check-nc/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 批量检测服务器 TCP 端口的联通状态 （nc 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量检测服务器 TCP 端口的联通状态<br>作用：批量检测服务器 TCP 端口的联通状态</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 端口清单 $portlist 每 1 个端口占用 1 行，格式为：&lt;IP address corresponding to the port number to be connected>:&lt;port number to connect>:&lt;port functions><br>2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下<br>3. 给此脚本添加执行权限<br>4. 执行此脚本，并将要测试的服务器 IP 地址跟在脚本的后面，例：. &lt;script> &lt;server IP address 1> &lt;server IP address 2> &#8230;&#8230;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>portlist=tcp_ports.txt #存放要测试的 TCP 端口的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 执行此脚本前确保 nc 命令已经安装</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+portlist=tcp_ports.txt
+
+####################### Separator ########################
+
+for hosts in $*
+do
+
+        echo $hosts
+        ssh $hosts "which nc" &amp;&gt; /dev/null
+
+        if &#91; $? -ne 0 ];then
+                echo -e "\033&#91;31m$hosts can not use nc !!!!!!!!!!\033&#91;0m"
+                continue
+        fi
+
+        for line in `cat $portlist`
+        do
+                ips=`echo $line | awk -F':' '{print $1}'`
+                ports=`echo $line | awk -F':' '{print $2}'`
+                remarks=`echo $line | awk -F':' '{print $3}'`
+
+                ssh $hosts "nc -z -w 3 $ips $ports"
+
+                if &#91; $? -ne 0 ];then
+                        echo -e "\033&#91;31m$ips $ports $remarks can not be connected !!!!!!!!!!\033&#91;0m"
+                else
+                        echo -e "\033&#91;32m$ips $ports $remarks can be connected\033&#91;0m"
+                fi
+
+        done
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[TOOL] Shell Check Memory Usage (15 seconds each time, 100 times in total)</title>
+		<link>https://eternalcenter-sep-2022.github.io/tool-shell-check-memory-usage-15-seconds-each-time-100-times-in-total%ef%bc%89/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Dec 2020 07:02:08 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13094</guid>
+
+					<description><![CDATA[Introduce Essential Information Author: Mingyu ZhuName: view the process using swapFunction: view the process using swap Usage 1. Add execution permission to this script2. Execute the script Script]]></description>
+										<content:encoded><![CDATA[
+<h2>Introduce</h2>
+
+
+
+<h3>Essential Information</h3>
+
+
+
+<p>Author: Mingyu Zhu<br>Name: view the process using swap<br>Function: view the process using swap</p>
+
+
+
+<h3>Usage</h3>
+
+
+
+<p>1. Add execution permission to this script<br>2. Execute the script</p>
+
+
+
+<h2>Script</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+
+while &#91; $i -le 100 ]
+do free -m
+        sleep 15
+        let i=i+1
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示可以无密码登录系统的用户</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-no-password-login-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 11 Nov 2020 15:23:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11670</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示可以无密码登录系统的用户作用：显示可以无密码登录系统的用户 使用方法 1. 给此脚本添加执行权限2. 执行此脚本 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="脚本">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示可以无密码登录系统的用户<br>作用：显示可以无密码登录系统的用户</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本</p>
+
+
+
+<h2 id="介绍">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+for name in `egrep '^.*\:!!\:.*$|^.*\:\*\:.*$' /etc/shadow | cut -d : -f 1`
+do
+        egrep '/sbin/nologin|/bin/false' /etc/passwd | egrep $name &gt; /dev/null
+
+        if &#91; $? -ne 0 ];then
+                envi=`grep $name /etc/passwd | cut -d : -f 7`
+                echo "$name has no password but maybe can access system, it is $envi"
+        fi
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 检测服务器 SSH 端口的联通状态</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-ssh-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 26 Sep 2020 15:46:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10603</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：检测服务器 SSH 端口的联通状态作用：检测服务器 SSH 端口的联通状态 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 如果联通检测失败则会将结果写入脚本同目录下的 checkserver.txt 脚本分割线里的变量 host=&#8221;8.8.8.8&#8243; #需要检测 SSH 端口联通性的服务器 IP 地址 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：检测服务器 SSH 端口的联通状态<br>作用：检测服务器 SSH 端口的联通状态</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 如果联通检测失败则会将结果写入脚本同目录下的 checkserver.txt</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>host=&#8221;8.8.8.8&#8243; #需要检测 SSH 端口联通性的服务器 IP 地址</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+host="8.8.8.8"
+
+####################### Separator ########################
+
+checktime=`date +%Y-%m-%d-%H-%M`
+sleep 2 | telnet $host 22 | grep SSH
+
+if &#91; $? -ne 0 ];then
+	echo "$checktime server timeout" &gt;&gt; checkserver.txt
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测某一个软件包的安装情况 （通过读取和生成 CSV 文件实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-rpm-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 May 2020 06:13:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8925</guid>
+
+					<description><![CDATA[介绍 使用方法 1. 将此脚本和 patch.cs 文件放在同一目录下2. patch.cs 里每个 IP 地址和每个 RPM 包名称占用一行3. 给此脚本添加执行权限4. 执行此脚本5. 此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv 里 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 补充 patch.cs 示例如下： 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和 patch.cs 文件放在同一目录下<br>2. patch.cs 里每个 IP 地址和每个 RPM 包名称占用一行<br>3. 给此脚本添加执行权限<br>4. 执行此脚本<br>5. 此脚本执行完成后，会将运行结果写入当前目录下的 checkout.csv 里</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h3>补充</h3>
+
+
+
+<p>patch.cs 示例如下：</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.100.101,kernel-4.18.0-80.el8.x86_64,other0
+192.168.100.102,kernel-4.18.0-80.el8.x86_64,other1
+192.168.100.103,kernel-4.11.0-80.el8.x86_64,other2
+192.168.100.104,kernel-4.18.0-80.el8.x86_64,other3
+192.168.100.105,kernel-4.18.0-80.el8.x86_64,other4</code></pre>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+for i in `seq 1 $(cat patch.csv | wc -l)`
+do
+
+        servername=`sed -n "$&#91;i]p" patch.csv | cut -d ',' -f 1`
+        software=`sed -n "$&#91;i]p" patch.csv | cut -d ',' -f 2`
+
+        ssh $servername "rpm -qa | grep $software" &amp;&gt; /dev/null
+
+        if &#91; $? -eq 0 ];then
+                echo "$servername,$software,have not patched"
+        else
+                echo "$servername,$software,have patched"
+        fi
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示使用 swap 的进程</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-swap-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Apr 2020 13:14:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8867</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示使用 swap 的进程作用：显示使用 swap 的进程 使用方法 1. 给此脚本添加执行权限2. 执行此脚本3. 执行结果会输出到脚本同目录下的 swapcheck.txt 目录中 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示使用 swap 的进程<br>作用：显示使用 swap 的进程</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 给此脚本添加执行权限<br>2. 执行此脚本<br>3. 执行结果会输出到脚本同目录下的 swapcheck.txt 目录中</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo &gt; swapcheck.txt
+
+for pid in `ls /proc/ | egrep ^&#91;0-9] | awk '$0 &gt; 100'`
+do 
+
+        ls /proc/$pid &amp;&gt; /dev/null
+        
+        if &#91; $? -ne 0 ];then
+                continue
+        fi
+
+        size=`awk '/Swap:/{a=a+$2}END{print a}' /proc/$pid/smaps` 
+        name=`ps -aux | egrep $pid`
+
+        if &#91; -z $size ];then
+                continue
+        fi
+
+        if &#91; $size -eq 0 ];then
+                continue
+        fi
+
+        echo "$&#91;size]k $pid \"$name\"" &gt;&gt; swapcheck.txt
+        echo  &gt;&gt; swapcheck.txt
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测服务器 TCP 端口的联通状态 （telnet 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-tcp-check-telnet/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 06:31:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7197</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量检测服务器 TCP 端口的联通状态作用：批量检测服务器 TCP 端口的联通状态，并将此服务器无法联通的端口存储到 $checklist 文件里 使用方法 1. 将此脚本和端口清单 $portlist 文件放在同一目录下2. 端口清单 $portlist 每一个端口占用一行，格式为：&#60;IP address corresponding to the port number to be connected&#62;:&#60;port number to connect&#62;:&#60;port functions&#62;，并和此脚本放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 给此脚本添加执行权限5. 执行此脚本，并将要测试的服务器 IP 地址跟在脚本的后面，例：. &#60;script&#62; &#60;server IP address 1&#62; &#60;server IP address 2&#62; &#8230;&#8230; 脚本分割线里的变量 1. portlist=tcp_ports.txt #存放要测试的 TCP 端口的文件2. checklist=tcp_ports_checklist.txt #存放测试结果的文件 注意 1. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-tcp-check-telnet/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 批量检测服务器 TCP 端口的联通状态 （telnet 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量检测服务器 TCP 端口的联通状态<br>作用：批量检测服务器 TCP 端口的联通状态，并将此服务器无法联通的端口存储到 $checklist 文件里</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和端口清单 $portlist 文件放在同一目录下<br>2. 端口清单 $portlist 每一个端口占用一行，格式为：&lt;IP address corresponding to the port number to be connected&gt;:&lt;port number to connect&gt;:&lt;port functions&gt;，并和此脚本放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 给此脚本添加执行权限<br>5. 执行此脚本，并将要测试的服务器 IP 地址跟在脚本的后面，例：. &lt;script&gt; &lt;server IP address 1&gt; &lt;server IP address 2&gt; &#8230;&#8230;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. portlist=tcp_ports.txt #存放要测试的 TCP 端口的文件<br>2. checklist=tcp_ports_checklist.txt #存放测试结果的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器<br>2. 此脚本会清空 $checklist<br>3. 执行此脚本前确保 telnet 命令已经安装<br>4. 执行此脚本可能有些慢</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+portlist=tcp_ports.txt
+checklist=tcp_ports_checklist.txt
+
+####################### Separator ########################
+
+echo  &gt; $checklist
+maxnum=`cat $portlist | wc -l`
+
+for hosts in $*
+do
+
+        echo $hosts &gt;&gt; $checklist
+
+        for i in `seq 1 $maxnum`
+        do
+
+                ips=`sed -n $&#91;i]p $portlist | awk -F':' '{print $1}'`
+                ports=`sed -n $&#91;i]p $portlist | awk -F':' '{print $2}'`
+                remarks=`sed -n $&#91;i]p $portlist | awk -F':' '{print $3}'`
+
+                ssh $hosts "(sleep 1;) | telnet $ips $ports 2&gt;&amp;1" | grep 'timed out' &gt;&gt; $checklist
+
+                if &#91; $? == 0 ];then
+                        echo "`sed -n $&#91;i]p $portlist`" &gt;&gt; $checklist
+                        echo &gt;&gt; $checklist
+                fi
+
+        done
+
+        echo &gt;&gt; $checklist
+
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量检测服务器网络的联通状态</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-ping/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Aug 2019 05:26:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5387</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量检测服务器网络的联通状态作用：批量检测服务器网络的联通状态 使用方法 1. 将此脚本和清单 $list 文件放在同一目录下2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行3. 在此脚本的分割线内写入相应的内容4. 给此脚本添加执行权限5. 执行此脚本 脚本分割线里的变量 list=&#8221;servers_all_list.txt&#8221; #指定服务器清单 脚本 （补充：清单示例如下，可直接复制粘贴，如果不更改脚本，清单请命名为 servers_all_list.txt： db1db2db3web1web2）]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量检测服务器网络的联通状态<br>作用：批量检测服务器网络的联通状态</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将此脚本和清单 $list 文件放在同一目录下<br>2. 清单 $list 里每个远程服务器名或 IP 地址占用 1 行<br>3. 在此脚本的分割线内写入相应的内容<br>4. 给此脚本添加执行权限<br>5. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>list=&#8221;servers_all_list.txt&#8221; #指定服务器清单</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+list="servers_all_list.txt"
+
+####################### Separator ########################
+
+read -p "will ping please input y " a
+echo $a
+
+if &#91; "$a" != "y" ];then
+        echo "you don't agree so exit now"
+        exit
+fi
+
+num=0
+
+for i in `awk '{print $1}' servers_all_list.txt`
+do
+        let num++
+        echo "$num $i"
+        ping -c3 -i0.4 -w0.8 $i
+        echo
+done</code></pre>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<p>（<br>补充：清单示例如下，可直接复制粘贴，如果不更改脚本，清单请命名为 servers_all_list.txt：</p>
+
+
+
+<p>db1<br>db2<br>db3<br>web1<br>web2<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

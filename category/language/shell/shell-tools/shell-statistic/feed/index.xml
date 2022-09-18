@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Statistic (统计) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-statistic/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 10:27:48 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 统计 LNMP 本月与上月的网站点击量和 IP 访问数</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-count-month/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Feb 2019 13:47:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Statistic (统计)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2718</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：统计 LNMP 本月与上月的网站点击量和 IP 访问数作用：统计 LNMP 本月与上月的网站点击量和 IP 访问数 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. user=&#8221;root&#8221; #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限2. ip=&#8221;8.8.8.8&#8243; #Web 服务器的 IP 地址 注意 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：统计 LNMP 本月与上月的网站点击量和 IP 访问数<br>作用：统计 LNMP 本月与上月的网站点击量和 IP 访问数</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. user=&#8221;root&#8221; #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限<br>2. ip=&#8221;8.8.8.8&#8243; #Web 服务器的 IP 地址</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+user="root"
+ip="8.8.8.8"
+
+####################### Separator ########################
+
+monthcache1=$(date +%m)
+case $monthcache1 in
+01)
+month=Jan
+lmonth=Dec;;
+02)
+month=Feb
+lmonth=Jan;;
+03)
+month=Mar
+lmonth=Feb;;
+04)
+month=Apr
+lmonth=Mar;;
+05)
+month=May
+lmonth=Apr;;
+06)
+month=June
+lmonth=May;;
+07)
+month=July
+lmonth=June;;
+08)
+month=Aug
+lmonth=July;;
+09)
+month=Sept
+lmonth=Aug;;
+10)
+month=Oct
+lmonth=Sept;;
+11)
+month=Nov
+lmonth=Oct;;
+12)
+month=Dec
+lmonth=Nov
+esac
+
+cmonth=`ssh $user@$ip "grep $month /usr/local/nginx/logs/access.log | wc -l"`
+clmonth=`ssh $user@$ip "grep $lmonth  /usr/local/nginx/logs/access.log | wc -l"`
+cipmonth=`ssh $user@$ip "grep $month /usr/local/nginx/logs/access.log" | awk '{a&#91;$1]++}END{for(i in a){print i}}' | wc -l `
+ciplmonth=`ssh $user@$ip "grep $lmonth /usr/local/nginx/logs/access.log" | awk '{a&#91;$1]++}END{for(i in a){print i}}' | wc -l`
+
+echo "The count of month's hits：$cmonth 次"
+echo "The count of month's IP address：$cipmonth 个"
+echo "The count of last month's hits：$clmonth 次"
+echo "The count of last month's IP address：$ciplmonth 个"</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 统计 LNMP 今天与昨天的网站点击量和 IP 访问数</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-count-day/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Feb 2019 13:44:42 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Monitor (监控)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Statistic (统计)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2716</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：统计 LNMP 今天与昨天的网站点击量和 IP 访问数作用：统计 LNMP 今天与昨天的网站点击量和 IP 访问数 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. user=&#8221;root&#8221; #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限2. ip=&#8221;8.8.8.8&#8243; #Web 服务器的 IP 注意 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：统计 LNMP 今天与昨天的网站点击量和 IP 访问数<br>作用：统计 LNMP 今天与昨天的网站点击量和 IP 访问数</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. user=&#8221;root&#8221; #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限<br>2. ip=&#8221;8.8.8.8&#8243; #Web 服务器的 IP</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+user="root"
+ip="8.8.8.8"
+
+####################### Separator ########################
+
+tday=`date +%d`
+
+sys=`uname -a | awk '{print $1}'`
+
+if &#91; $sys == 'Linux' ];then
+        yday=`date +%d -d "-1 day"`
+else
+        yday=`date -v-1d +%d`
+fi
+
+cday=`ssh $user@$ip "grep $tday/$month  /usr/local/nginx/logs/access.log | wc -l"`
+cyday=`ssh $user@$ip "grep $yday/$month  /usr/local/nginx/logs/access.log | wc -l"`
+cipday=`ssh $user@$ip "grep $tday/$month  /usr/local/nginx/logs/access.log" |awk '{a&#91;$1]++}END{for(i in a){print i}}' | wc -l`
+cipyday=`ssh $user@$ip "grep $yday/$month  /usr/local/nginx/logs/access.log" |awk '{a&#91;$1]++}END{for(i in a){print i}}' | wc -l`
+
+echo "The count of today's hits：$cday 次"
+echo "The count of today's IP address：$cipday 个"
+echo "The count of yesterday's hits：$cyday 次"
+echo "The count of yesterday's IP address：$cipyday 个"</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

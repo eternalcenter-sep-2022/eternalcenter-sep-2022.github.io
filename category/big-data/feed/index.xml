@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Big Data (大数据) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/big-data/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 14:37:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Hadoop 大数据平台的搭建 （单机版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/hadoop-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Oct 2019 12:51:44 +0000</pubDate>
+				<category><![CDATA[Big Data (大数据)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Hadoop]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5903</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 10 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Hadoop 官网上下载搭建平台所需软件 Hadoop（本次实验使用的是 hadoop-3.2.1.tar.gz）： http://hadoop.apache.org/ 正文： 步骤一：硬件环境要求 1) CPU：双核2) 内存：2G 以上3) 硬盘：10G 以上 步骤二：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统要配置好可用的软件源3) 服务器要能 ping 通自己的主机名 步骤三：软件环境要求 3.1 安装 Hadoop 所需的 Java 环境 （补充：这里安装 java-openjdk-devel 的版本是 1.8.0） 3.2 显示本机在 Java 环境下所处的角色 步骤四：安装 Hadoop 4.1 解压 Hadoop 安装包 （补充：这里要安装的 hadoop 版本是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/hadoop-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Hadoop 大数据平台的搭建 （单机版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 10 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Hadoop 官网上下载搭建平台所需软件 Hadoop（本次实验使用的是 hadoop-3.2.1.tar.gz）：</p>
+
+
+
+<p class="has-text-align-center"><a href="http://hadoop.apache.org/" target="_blank" rel="noreferrer noopener">http://hadoop.apache.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-硬件环境要求">步骤一：硬件环境要求</h3>
+
+
+
+<p>1) CPU：双核<br>2) 内存：2G 以上<br>3) 硬盘：10G 以上</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统要配置好可用的软件源<br>3) 服务器要能 ping 通自己的主机名</p>
+
+
+
+<h3 id="步骤三-软件环境要求3-1-安装-hadoop-所需的-java-环境">步骤三：软件环境要求</h3>
+
+
+
+<h4 id="步骤三-软件环境要求3-1-安装-hadoop-所需的-java-环境">3.1 安装 Hadoop 所需的 Java 环境</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install java-1.8.0-openjdk-devel</code></pre>
+
+
+
+<p>（补充：这里安装 java-openjdk-devel 的版本是 1.8.0）</p>
+
+
+
+<h4 id="3-2-显示本机在-java-环境下所处的角色">3.2 显示本机在 Java 环境下所处的角色</h4>
+
+
+
+<pre class="wp-block-code"><code># jps</code></pre>
+
+
+
+<h3 id="步骤四-安装-hadoop4-1-解压-hadoop-安装包">步骤四：安装 Hadoop</h3>
+
+
+
+<h4 id="步骤四-安装-hadoop4-1-解压-hadoop-安装包">4.1 解压 Hadoop 安装包</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf hadoop-3.2.1.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 hadoop 版本是 3.2.1）</p>
+
+
+
+<h4 id="4-2-创建-hadoop-的安装目录">4.2 创建 Hadoop 的安装目录</h4>
+
+
+
+<pre class="wp-block-code"><code># mkdir /usr/local/hadoop</code></pre>
+
+
+
+<h4 id="4-3-安装-hadoop">4.3 安装 Hadoop</h4>
+
+
+
+<pre class="wp-block-code"><code># mv hadoop-3.2.1/* /usr/local/hadoop</code></pre>
+
+
+
+<p>（补充：这里安装的是 hadoop-3.2.1.tar.gz）</p>
+
+
+
+<h4 id="4-4-第一次启动-hadoop-会提示报错">4.4 第 1 次启动 Hadoop 会提示报错</h4>
+
+
+
+<pre class="wp-block-code"><code>/usr/local/hadoop/bin/hadoop
+Error: JAVA_HOME is not set and could not be found.</code></pre>
+
+
+
+<p>（补充：造成这种原因，主要是他找不到自己的配置文件和自己所需要的配置文件）</p>
+
+
+
+<h4 id="4-5-解决第一次启动-hadoop-报错的问题4-5-1-解决第一次启动-hadoop-报错问题的思路">4.5 解决第 1 次启动 Hadoop 报错的问题</h4>
+
+
+
+<h5 id="4-5-解决第一次启动-hadoop-报错的问题4-5-1-解决第一次启动-hadoop-报错问题的思路">4.5.1 解决第 1 次启动 Hadoop 报错问题的思路</h5>
+
+
+
+<p>先确认刚刚安装的 java-1.8.0-openjdk-devel 软件的安装位置，然后再将这个位置写到 Hadoop 的配置文件里</p>
+
+
+
+<h5 id="4-5-2-显示-java-1-8-0-openjdk-devel-软件的安装位置">4.5.2 显示 java-1.8.0-openjdk-devel 软件的安装位置</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -ql java-1.8.0-openjdk
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/bin/policytool
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libawt_xawt.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libjawt.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libjsoundalsa.so
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre/lib/amd64/libsplashscreen.so
+/usr/share/applications/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64-policytool.desktop
+/usr/share/icons/hicolor/16x16/apps/java-1.8.0.png
+/usr/share/icons/hicolor/24x24/apps/java-1.8.0.png
+/usr/share/icons/hicolor/32x32/apps/java-1.8.0.png
+/usr/share/icons/hicolor/48x48/apps/java-1.8.0.png</code></pre>
+
+
+
+<p>（补充：可以看出这里是安装目录：/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre）</p>
+
+
+
+<h5 id="4-5-3-在-hadoop-的配置文件里指定-java-openjdk-devel-和-hadoop-配置文件的安装位置">4.5.3 在 Hadoop 的配置文件里指定 java-openjdk-devel 和 Hadoop 配置文件的安装位置</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/hadoop/etc/hadoop/hadoop-env.sh</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+54 # export JAVA_HOME=
+......
+68 # export HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+54 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181-7.b13.el7.x86_64/jre"
+......
+68 export HADOOP_CONF_DIR="/usr/local/hadoop/etc/hadoop"
+......</code></pre>
+
+
+
+<h3 id="步骤五-启动-hadoop">步骤五：启动 Hadoop</h3>
+
+
+
+<pre class="wp-block-code"><code># /usr/local/hadoop/bin/hadoop
+Usage: hadoop &#91;OPTIONS] SUBCOMMAND &#91;SUBCOMMAND OPTIONS]
+ or    hadoop &#91;OPTIONS] CLASSNAME &#91;CLASSNAME OPTIONS]
+  where CLASSNAME is a user-provided Java class
+
+  OPTIONS is none or any of:
+
+buildpaths                       attempt to add class files from build tree
+--config dir                     Hadoop config directory
+--debug                          turn on shell script debug mode
+--help                           usage information
+hostnames list&#91;,of,host,names]   hosts to use in slave mode
+hosts filename                   list of hosts to use in slave mode
+loglevel level                   set the log4j level for this command
+workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+daemonlog     get/set the log level for each daemon
+
+    Client Commands:
+
+archive       create a Hadoop archive
+checknative   check native Hadoop and compression libraries availability
+classpath     prints the class path needed to get the Hadoop jar and the required libraries
+conftest      validate configuration XML files
+credential    interact with credential providers
+distch        distributed metadata changer
+distcp        copy file or directories recursively
+dtutil        operations related to delegation tokens
+envvars       display computed Hadoop environment variables
+fs            run a generic filesystem user client
+gridmix       submit a mix of synthetic job, modeling a profiled from production load
+jar &lt;jar&gt;     run a jar file. NOTE: please use "yarn jar" to launch YARN applications, not this
+              command.
+jnipath       prints the java.library.path
+kdiag         Diagnose Kerberos Problems
+kerbname      show auth_to_local principal conversion
+key           manage keys via the KeyProvider
+rumenfolder   scale a rumen input trace
+rumentrace    convert logs into a rumen trace
+s3guard       manage metadata on S3
+trace         view and modify Hadoop tracing settings
+version       print the version
+
+    Daemon Commands:
+
+kms           run KMS, the Key Management Server
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Hadoop 大数据平台三种部署模式的简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/hadoop-info/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 08:13:41 +0000</pubDate>
+				<category><![CDATA[Big Data (大数据)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Hadoop]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5829</guid>
+
+					<description><![CDATA[模式一：单机模式 1) 所有 Hadoop 角色都在一台物理机上2) 只有一个物理节点3) 一般用来学习和测试 模式二：伪分布模式 1) 所有 Hadoop 角色都在一台物理机上2) 有多虚拟个节点3) 一般用来学习和测试 模式三：完全分布式模式 1) 所有 Hadoop 角色在多台物理机上2) 有多个物理节点3) 一般用在生产环境4) 有高可用和高性能的特点]]></description>
+										<content:encoded><![CDATA[
+<h3>模式一：单机模式</h3>
+
+
+
+<p>1) 所有 Hadoop 角色都在一台物理机上<br>2) 只有一个物理节点<br>3) 一般用来学习和测试</p>
+
+
+
+<h3>模式二：伪分布模式</h3>
+
+
+
+<p>1) 所有 Hadoop 角色都在一台物理机上<br>2) 有多虚拟个节点<br>3) 一般用来学习和测试</p>
+
+
+
+<h3>模式三：完全分布式模式</h3>
+
+
+
+<p>1) 所有 Hadoop 角色在多台物理机上<br>2) 有多个物理节点<br>3) 一般用在生产环境<br>4) 有高可用和高性能的特点</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>大数据与 Hadoop 的起源、特点和关系</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-origin-characteristics-and-relationship-between-big-data-and-hadoop/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 07:33:04 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Big Data (大数据)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Hadoop]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5821</guid>
+
+					<description><![CDATA[章节一：大数据的起源 在 2003 年， Google 陆续发表了 ３ 篇论文，首创了大数据这一概念，它们分别是：GFS、MapReduce、BigTable。 这三篇论文，分别介绍了 GFS、MapReduce、BigTable 三款软件，而将这三款软件组合在一起，就是世界上第一种大数据平台。 如今 GFS、MapReduce 和 BigTable 三大技术已被称为 Google 的三驾马车，虽然没有公布源码，但发布了这三个产品的详细设计。 章节二：大数据的特点 大数据，是指从各种各样类型的海量数据中，快速获得和分析出有价值的信息，并以此支撑决策的一种手段，这种手段无法使用过去的常规方法或软件工具实现。 在目前，大数据的特性是指 5V 特性：1) (V) Volume（大体量）2) (V) Variety（多样性）3) (V) Velocity（时效性）4) (V) Veracity（准确性）5) (V) Value（大价值） 章节三：开源大数据平台 Hadoop 的起源 虽然谷歌在 GFS、MapReduce、BigTable 三篇论文中详细介绍了 GFS、MapReduce 和 BigTable 三款软件的设计，但是可能出于公司发展的考虑，谷歌并没有公布这三款软件的源代码，这个大数据平台只有谷歌才能使用。 此时另一个受到雅虎资助的团队就利用谷歌这三篇论文的技术架构，使用 Java 开发了另外三个实现大数据平台的的软件，它们分别是：HDFS、MapReduce、Hbase。 它们和谷歌的软件一一对应：HDFS 对应 Google 的 GFSMapReduce 对应 Google 的 MapReduceHbase &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/the-origin-characteristics-and-relationship-between-big-data-and-hadoop/" class="more-link">Continue reading<span class="screen-reader-text"> "大数据与 Hadoop 的起源、特点和关系"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>章节一：大数据的起源</h3>
+
+
+
+<p>在 2003 年， Google 陆续发表了 ３ 篇论文，首创了大数据这一概念，它们分别是：GFS、MapReduce、BigTable。</p>
+
+
+
+<p>这三篇论文，分别介绍了 GFS、MapReduce、BigTable 三款软件，而将这三款软件组合在一起，就是世界上第一种大数据平台。</p>
+
+
+
+<p>如今 GFS、MapReduce 和 BigTable 三大技术已被称为 Google 的三驾马车，虽然没有公布源码，但发布了这三个产品的详细设计。</p>
+
+
+
+<h3>章节二：大数据的特点</h3>
+
+
+
+<p>大数据，是指从各种各样类型的海量数据中，快速获得和分析出有价值的信息，并以此支撑决策的一种手段，这种手段无法使用过去的常规方法或软件工具实现。</p>
+
+
+
+<p>在目前，大数据的特性是指 5V 特性：<br>1) (V) Volume（大体量）<br>2) (V) Variety（多样性）<br>3) (V) Velocity（时效性）<br>4) (V) Veracity（准确性）<br>5) (V) Value（大价值）</p>
+
+
+
+<h3>章节三：开源大数据平台 Hadoop 的起源</h3>
+
+
+
+<p>虽然谷歌在 GFS、MapReduce、BigTable 三篇论文中详细介绍了 GFS、MapReduce 和 BigTable 三款软件的设计，但是可能出于公司发展的考虑，谷歌并没有公布这三款软件的源代码，这个大数据平台只有谷歌才能使用。</p>
+
+
+
+<p>此时另一个受到雅虎资助的团队就利用谷歌这三篇论文的技术架构，使用 Java 开发了另外三个实现大数据平台的的软件，它们分别是：HDFS、MapReduce、Hbase。</p>
+
+
+
+<p>它们和谷歌的软件一一对应：<br>HDFS 对应 Google 的 GFS<br>MapReduce 对应 Google 的 MapReduce<br>Hbase 对应 Google 的 BigTable</p>
+
+
+
+<p>这三款软件组合在一起，就是一个新的开源的大数据平台 Hadoop。</p>
+
+
+
+<h3>章节四：开源大数据平台 Hadoop 的特点</h3>
+
+
+
+<p>1) Hadoop 可以实现分析和处理海量数据<br>2) Hadoop 是一款开源软件，全地球所有非营利性组织、个人、公司和政府都可以免费使用<br>3) 具有高可靠性、高扩展性、高效性、高容错性、低成本的优点<br>4) 性能上 Hadoop 要比 Google 的差很多</p>
+
+
+
+<h3>章节五：开源大数据平台 Hadoop 对大数据行业的影响</h3>
+
+
+
+<p>在 2003 年，很多非营利性组织、个人、公司和政府都没有人力、物力直接研发大数据技术，所以只好直接使用 Hadhoop 实现自己的大数据分析。</p>
+
+
+
+<p>由于使用 Hadoop 的非营利性组织、个人、公司和政府越来越多，Hadoop 逐渐变成了大数据行业的行业标准。</p>
+
+
+
+<p>就连大数据首创者谷歌，为了和 Hadoop 平台进行数据交互，也被迫对自己性能更好的 BigTable、GFS、MapReduce 三款软件进行修改。</p>
+
+
+
+<p>现在 Hadoop 基本已经成为了大数据的代名词。大数据行业里所指的大数据开发工程师就是指开发 Hadoop 模块的 JAVA 工程师，大数据算法工程师就是指为 Hadoop 模块创造计算模型的数学家，而大数据运维工程师就是指 Hadoop 运维工程师。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

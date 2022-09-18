@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Pacemaker &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/cluster-tool/cluster-high-available-tool/pacemaker/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:06:14 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] FTP + Pacemaker 存储服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:26:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[FTP]]></category>
+		<category><![CDATA[FTP + Pacemaker]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service High Availability Cluster (存储服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5049</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 步骤一：Pacemaker 高可用 FTP 服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 Iscasi 远程目录服务 1.2 本 Pacemaker 高可用 FTP 服务的特点 1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录2) 提供 FTP 服务4) 提供虚拟 IP 服务5) 以上三项服务器都实现高可用6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器 步骤二：前期准备所有集群主机上都安装 FTP 服务 2.1 在所有集群主机上安装 FTP （在所有集群服务器上执行以下步骤） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] FTP + Pacemaker 存储服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用 FTP 服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 Iscasi 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用 FTP 服务的特点</h4>
+
+
+
+<p>1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录<br>2) 提供 FTP 服务<br>4) 提供虚拟 IP 服务<br>5) 以上三项服务器都实现高可用<br>6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备所有集群主机上都安装 FTP 服务</h3>
+
+
+
+<h4>2.1 在所有集群主机上安装 FTP</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install vsftpd</code></pre>
+
+
+
+<h4>2.2 确保 vsftpd 服务没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop vsftpd
+# systemctl disable vsftpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的 FTP 高可用服务</h3>
+
+
+
+<h4>3.1 在 ftp 资源组中创建名为 ftpip 的虚拟 ip 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpip IPaddr2 ip=192.168.0.21 cidr_netmask=24 --group ftp</code></pre>
+
+
+
+<h4>3.2 在 ftp 资源组中创建名为 ftpfiles 挂载其他服务器的 Iscasi 服务的资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpfiles Filesystem device=192.168.8.21:/content/ftp directory=/var/ftp fstype=nfs options=ro --group ftp</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 Iscasi 服务，这个服务需要提前搭建好）</p>
+
+
+
+<h4>3.3 在 ftp 资源组中创建名为 vsftpd 的 ftp 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create vsftpd systemd:vsftpd --group ftp</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Apache + Pacemaker 网站服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:21:31 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Apache + Pacemaker]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service High Availability Cluster (网站服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5046</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群 正文： 步骤一：Pacemaker 高可用网站服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 NFS 远程目录服务 1.2 本 Pacemaker 高可用网站服务的特点 1) 使用其他服务器提供的 NFS 服务器作为网站的网页目录2) 提供网站 服务3) 提供虚拟 IP 地址服务4) 以上三项服务器都实现高可用5) 唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器 步骤二：前期准备 2.1 在所有集群服务器上安装 httpd （在所有集群服务器上执行以下步骤） 2.2 确保 httpd 不会被 SELinux 限制 （在所有集群服务器上执行以下步骤） （补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Apache + Pacemaker 网站服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的搭建</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用网站服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 NFS 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用网站服务的特点</h4>
+
+
+
+<p>1)  使用其他服务器提供的 NFS 服务器作为网站的网页目录<br>2)  提供网站 服务<br>3)  提供虚拟 IP 地址服务<br>4)  以上三项服务器都实现高可用<br>5)  唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备</h3>
+
+
+
+<h4>2.1 在所有集群服务器上安装 httpd</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h4>2.2 确保 httpd 不会被 SELinux 限制</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_use_nfs 1</code></pre>
+
+
+
+<p>（补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 NFS 服务）</p>
+
+
+
+<h4>2.3 确保 httpd 没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop httpd
+# systemctl disable httpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的网站高可用服务</h3>
+
+
+
+<h4>3.1 在 网站资源组中创建名为 webip 的虚拟 IP 地址资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webip IPaddr2 ip=192.168.0.20 cidr_netmask=24 --group=web</code></pre>
+
+
+
+<h4>3.2 在 网站资源组中创建名为 webnfs 挂载其他服务器的 NFS 服务的资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webnfs Filesystem device=192.168.8.21:/content directory=/var/www/html fstype=nfs options=ro --group web</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 NFS 服务，这个服务需要提前搭建好，可以参考 https://eternalcenter-sep-2022.github.io/nfs/ 里的内容）</p>
+
+
+
+<h4>3.3 在网站资源组中创建名为 webserver 的网站资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webserver apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status" --group web</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs resource （管理资源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-resource/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:19:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5044</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：pcs resource 命令 1.1 pcs resource 命令的常用选项 定义资源监控的时间，如果不设置的话，就使用的是 resource agent ，每 60 秒检测一次 设置操作的等待时间，如果时间结束了某项操作还没有完成，则自动失败 如果操作失败，则会执行以下动作 忽略所有失败的操作 当 fence 没有被配置时，停止执行操作 停止处于激活状态的集群 重启资源 当 fence 有被配置时，当某个资源停止时隔离运行此资源的主机 将所有资源从他正在运行的主机上移到另 1 台服务器 1.2 pcs resource 命令选项的使用案例 （补充：这里以创建1) 名为 webserver2) 配置文件是 /etc/httpd/conf/http.conf3) 状态链接是 http:?/127.0.0.1/server-status4) 组名是 myweb5) 监控间隔是 20 秒6) 延迟时间是 30 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-resource/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs resource （管理资源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-pcs-resource-命令1-1-pcs-resource-命令的常用选项">内容一：pcs resource 命令</h3>
+
+
+
+<h4 id="内容一-pcs-resource-命令1-1-pcs-resource-命令的常用选项">1.1 pcs resource 命令的常用选项</h4>
+
+
+
+<pre class="wp-block-code"><code>1) interval=value</code></pre>
+
+
+
+<p>定义资源监控的时间，如果不设置的话，就使用的是 resource agent ，每 60 秒检测一次</p>
+
+
+
+<pre class="wp-block-code"><code>2) timeout=value</code></pre>
+
+
+
+<p>设置操作的等待时间，如果时间结束了某项操作还没有完成，则自动失败</p>
+
+
+
+<pre class="wp-block-code"><code>3) on-fail=action</code></pre>
+
+
+
+<p>如果操作失败，则会执行以下动作</p>
+
+
+
+<pre class="wp-block-code"><code>4) ignore</code></pre>
+
+
+
+<p>忽略所有失败的操作</p>
+
+
+
+<pre class="wp-block-code"><code>5) block</code></pre>
+
+
+
+<p>当 fence 没有被配置时，停止执行操作</p>
+
+
+
+<pre class="wp-block-code"><code>6) stop</code></pre>
+
+
+
+<p>停止处于激活状态的集群</p>
+
+
+
+<pre class="wp-block-code"><code>7) restart</code></pre>
+
+
+
+<p>重启资源</p>
+
+
+
+<pre class="wp-block-code"><code>8) fence</code></pre>
+
+
+
+<p>当 fence 有被配置时，当某个资源停止时隔离运行此资源的主机</p>
+
+
+
+<pre class="wp-block-code"><code>9) standby</code></pre>
+
+
+
+<p>将所有资源从他正在运行的主机上移到另 1 台服务器</p>
+
+
+
+<h4 id="1-2-pcs-resource-命令选项的使用案例">1.2 pcs resource 命令选项的使用案例</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resourece create webserver apache \
+&gt; configfile="/etc/httpd/conf/http.conf" \
+&gt; statusurl="http:?/127.0.0.1/server-status" --group myweb \
+&gt; op monitor interval=20s timeout=30s</code></pre>
+
+
+
+<p>（<br>补充：这里以创建<br>1) 名为 webserver<br>2) 配置文件是 /etc/httpd/conf/http.conf<br>3) 状态链接是 http:?/127.0.0.1/server-status<br>4) 组名是 myweb<br>5) 监控间隔是 20 秒<br>6) 延迟时间是 30 秒<br>的 apache 资源为例<br>）</p>
+
+
+
+<h3 id="内容二-pcs-resource-资源显示相关的命令2-1-显示所有可用的资源列表">内容二：pcs resource 资源显示相关的命令</h3>
+
+
+
+<h4 id="内容二-pcs-resource-资源显示相关的命令2-1-显示所有可用的资源列表">2.1 显示所有可用的资源列表</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource list</code></pre>
+
+
+
+<h4 id="2-2-显示具体的某一个可用资源的介绍">2.2 显示具体的某个可用资源的介绍</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource describe &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="2-3-显示所有的-pcs-资源">2.3 显示所有的 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show</code></pre>
+
+
+
+<h4 id="2-4-显示某一个-pcs-资源">2.4 显示某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="2-5-显示所有-pcs-资源被限制的情况">2.5 显示所有 pcs 资源被限制的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint list</code></pre>
+
+
+
+<h3 id="内容三-pcs-resource-资源增-删-改相关的命令3-1-修改-pcs-资源">内容三：pcs resource 资源增、删、改相关的命令</h3>
+
+
+
+<h4 id="内容三-pcs-resource-资源增-删-改相关的命令3-1-修改-pcs-资源">3.1 修改 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource update &lt;resource&gt; &lt;option&gt;</code></pre>
+
+
+
+<h4 id="3-2-删除-pcs-资源">3.2 删除 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource delete &lt;resource&gt; </code></pre>
+
+
+
+<h4 id="3-3-在某一个组里面添加某一个资源">3.3 在某个组里面添加某个资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource group add &lt;group&gt; &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="3-4-在某一个组里面删除某一个资源">3.4 在某个组里面删除某个资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource group remove &lt;group&gt; &lt;resource&gt;</code></pre>
+
+
+
+<h3 id="内容四-pcs-resource-资源管理相关的命令4-1-停用某一个-pcs-资源">内容四：pcs resource 资源管理相关的命令</h3>
+
+
+
+<h4 id="内容四-pcs-resource-资源管理相关的命令4-1-停用某一个-pcs-资源">4.1 停用某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource disable &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="4-2-启用某一个-pcs-资源">4.2 启用某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource enable &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="4-3-移动-pcs-资源到另一个主机">4.3 移动 pcs 资源到另 1 个主机</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource move &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-4-指定某一个-pcs-资源只能在某一个主机上运行">4.4 指定某个 pcs 资源只能在某个主机上运行</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource ban &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-5-清除某一个-pcs-资源只能在某一个主机上运行的限制">4.5 清除某个 pcs 资源只能在某个主机上运行的限制</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource clear &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h3 id="内容五-pcs-resource-资源监控相关的命令5-1-删除某一个资源的监控">内容五：pcs resource 资源监控相关的命令</h3>
+
+
+
+<h4 id="内容五-pcs-resource-资源监控相关的命令5-1-删除某一个资源的监控">5.1 删除某个资源的监控</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource op remove &lt;resource&gt; monitor</code></pre>
+
+
+
+<h4 id="5-2-添加某一个资源的监控">5.2 添加某个资源的监控</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource op add &lt;resource&gt; monitor &lt;fence parameter&gt; onfail=fence</code></pre>
+
+
+
+<h3 id="内容六-pcs-resource-资源排错相关的命令6-1-显示某一个-pcs-资源失败的次数">内容六：pcs resource 资源排错相关的命令</h3>
+
+
+
+<h4 id="内容六-pcs-resource-资源排错相关的命令6-1-显示某一个-pcs-资源失败的次数">6.1 显示某个 pcs 资源失败的次数</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource failcount show &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="6-2-检查某一个资源的情况">6.2 检查某个资源的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource debug-start firstwebserver --full</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs stonith （管理隔离）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-stonith/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:18:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5042</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 的 fence 之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：fence 介绍 fence 的作用是隔离不需要的主机，当一台主机和集群失去联系时，将其隔离，以防止脑裂 内容二：pcs stonith 命令的格式 内容三：fence 管理 3.1 显示所有可用的 fence 的列表 3.2 显示某种可用 fence 的详细信息 3.3 显示所有已配置的 fence 状况 3.4 删除 fence 3.4.1 删除某个 fence 3.4.2 删除当前所有的 fencing 资源 3.5 创建 fence_vmware_soap 的案例 （补充：这里以创建1) 名为 vmfence2) fence 服务器的 IP 地址为 192.168.0.2543) &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-stonith/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs stonith （管理隔离）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 的 fence 之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-fence-介绍">内容一：fence 介绍</h3>
+
+
+
+<p>fence 的作用是隔离不需要的主机，当一台主机和集群失去联系时，将其隔离，以防止脑裂</p>
+
+
+
+<h3 id="内容二-pcs-stonith-命令的格式">内容二：pcs stonith 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith &lt;option&gt; name fencing_agent &lt;parameter&gt;</code></pre>
+
+
+
+<h3 id="内容三-fence-管理3-1-显示所有可用的-fence-的列表">内容三：fence 管理</h3>
+
+
+
+<h4 id="内容三-fence-管理3-1-显示所有可用的-fence-的列表">3.1 显示所有可用的 fence 的列表</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith list</code></pre>
+
+
+
+<h4 id="3-2-显示某一种可用-fence-的详细信息">3.2 显示某种可用 fence 的详细信息</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith describe fence_rhevm</code></pre>
+
+
+
+<h4 id="3-3-显示所有已配置的-fence-状况">3.3 显示所有已配置的 fence 状况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith fence show --full</code></pre>
+
+
+
+<h4 id="3-4-删除-fence3-4-1-删除某一个-fence">3.4 删除 fence</h4>
+
+
+
+<h5 id="3-4-删除-fence3-4-1-删除某一个-fence">3.4.1 删除某个 fence</h5>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith delete &lt;fence&gt;</code></pre>
+
+
+
+<h5 id="3-4-2-删除当前所有的-fencing-资源">3.4.2 删除当前所有的 fencing 资源</h5>
+
+
+
+<pre class="wp-block-code"><code># for i in fence_node{a..d}; do
+&gt; pcs stonith delete &amp;{I}
+&gt; done</code></pre>
+
+
+
+<h4 id="3-5-创建-fence-vmware-soap-的案例">3.5 创建 fence_vmware_soap 的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith create vmfence fence_vmware_soap ipaddr=192.168.0.254 login="vmfence" passwd="vmfence" ssl_insecure=1 pcmk_host_check="static-list" pcmk_host_list="pacemaker0 pacemaker1 pacemaker2"</code></pre>
+
+
+
+<p>（<br>补充：这里以创建<br>1) 名为 vmfence<br>2) fence 服务器的 IP 地址为 192.168.0.254<br>3) fence 服务器的用户名为<br>4) fence 服务器的密码为<br>5) 被 fence 监控的服务器为 pacemaker0、pacemaker1 和 pacemaker2<br>的 fence 为例<br>）</p>
+
+
+
+<p>（注意：fence_vmware_soap 需要在 vmware 环境下才能被使用，且需要设置好 vmfence 的用户、密码、IP 等）</p>
+
+
+
+<h3 id="内容四-使用-fence-管理主机4-1-隔离某一个台主机">内容四：使用 fence 管理服务器</h3>
+
+
+
+<h4 id="内容四-使用-fence-管理主机4-1-隔离某一个台主机">4.1 隔离某个台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith fence &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-2-从-fencing-删除某台主机">4.2 从 fencing 删除某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith delete &lt;host&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs status （显示 Pacemaker 的状态）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-status/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2019 09:33:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4971</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 命令一：只显示与集群相关的信息 命令二：只显示资源组和他们的资源 命令三：只显示资源组和它们的资源 命令四：只显示集群主机的配置状态 命令五：只显示 corosync 的状态 命令六：只显示 pcsd 在每个主机上的配置状态 命令七：显示 pcs 总共的主机数，当前的主机数，最大期望投票数，最低投票数要求，当前生效投票数 （注意：为了防止脑裂，PCS 的最低投票数必须高于总主机数的 50%） 命令八：显示最近的投票信息 （注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用 # watch -n1 corosync-quorumtool 命令） 命令九：显示所有的 pcs 资源 命令十：显示某个 pcs 资源 命令十一：显示所有 pcs 资源被限制的列表 命令十二：显示现有的资源限制信息 命令十三：显示现有的详细资源限制信息 命令十四：显示资源被限制到某台服务器的信息]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-5 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="命令一-只显示与集群相关的信息">命令一：只显示与集群相关的信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status cluster</code></pre>
+
+
+
+<h3 id="命令二-只显示资源组和他们的资源">命令二：只显示资源组和他们的资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status groups</code></pre>
+
+
+
+<h3 id="命令三-只显示资源组和它们个人的资源">命令三：只显示资源组和它们的资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status resources</code></pre>
+
+
+
+<h3 id="命令四-只显示集群主机的配置状态">命令四：只显示集群主机的配置状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status nodes</code></pre>
+
+
+
+<h3 id="命令五-只显示-corosync-的状态">命令五：只显示 corosync 的状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status corosync</code></pre>
+
+
+
+<h3 id="命令六-只显示-pcsd-在每一个主机上的配置状态">命令六：只显示 pcsd 在每个主机上的配置状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status pcsd</code></pre>
+
+
+
+<h3 id="命令七-显示-pcs-总共的主机数-当前的主机数-最大期望投票数-最低投票数要求-当前生效投票数">命令七：显示 pcs 总共的主机数，当前的主机数，最大期望投票数，最低投票数要求，当前生效投票数</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs corosync-quorumtool -m</code></pre>
+
+
+
+<p>（注意：为了防止脑裂，PCS 的最低投票数必须高于总主机数的 50%）</p>
+
+
+
+<h3 id="命令八-显示最近的投票信息">命令八：显示最近的投票信息</h3>
+
+
+
+<pre class="wp-block-code"><code># watch -n1 corosync-quorumtool</code></pre>
+
+
+
+<p>（注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用 # watch -n1 corosync-quorumtool 命令）</p>
+
+
+
+<h3 id="命令九-显示所有的-pcs-资源">命令九：显示所有的 pcs 资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show</code></pre>
+
+
+
+<h3 id="命令十-显示某一个-pcs-资源">命令十：显示某个 pcs 资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs resourece show &lt;resource&gt;</code></pre>
+
+
+
+<h3 id="命令十一-显示所有-pcs-资源被限制的列表">命令十一：显示所有 pcs 资源被限制的列表</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint list</code></pre>
+
+
+
+<h3 id="命令十二-显示现有的资源限制信息">命令十二：显示现有的资源限制信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint</code></pre>
+
+
+
+<h3 id="命令十三-显示现有的详细资源限制信息">命令十三：显示现有的详细资源限制信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint --full</code></pre>
+
+
+
+<h3 id="命令十四-显示资源被限制到某一台机器上的信息">命令十四：显示资源被限制到某台服务器的信息</h3>
+
+
+
+<pre class="wp-block-code"><code># crm_simulate -sL</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs cluster （管理节点）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2019 09:32:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4969</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：启动服务器 1.1 启动某台服务器 1.2 启动所有服务器 内容二：关闭服务器 2.1 关闭某台服务器 2.2 关闭所有的服务器 （注意：当当前主机被关闭了之后，就无法在此服务器上使用 pcs 的其他相关命令，除非先启动本服务器） 内容三：设置随 pcs 服务器启动而自动启动服务器 3.1 让某台服务器随 pcs 服务一同启动 3.2 让所有服务器都随 pcs 服务一同启动 内容四：设置取消随 pcs 服务器启动自动启动服务器 4.1 取消让某台主机随 pcs 服务器一同启动 4.2 取消让所有服务器都随 pcs 服务一同启动 内容五：在集群里新添加 1 台服务器 5.1 新添加 1 台服务器的准备工作 1) 在要被添加的服务器的防火墙上开放 pacemaker &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs cluster （管理节点）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-6 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：启动服务器</h3>
+
+
+
+<h4>1.1 启动某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start &lt;server&gt;</code></pre>
+
+
+
+<h4>1.2 启动所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start --all
+pacemaker0: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (pacemaker)...
+pacemaker1: Starting Cluster (pacemaker)...
+pacemaker0: Starting Cluster (pacemaker)...</code></pre>
+
+
+
+<h3>内容二：关闭服务器</h3>
+
+
+
+<h4>2.1 关闭某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop &lt;server&gt;</code></pre>
+
+
+
+<h4>2.2 关闭所有的服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop --all
+pacemaker1: Stopping Cluster (pacemaker)...
+pacemaker2: Stopping Cluster (pacemaker)...
+pacemaker0: Stopping Cluster (pacemaker)...
+pacemaker1: Stopping Cluster (corosync)...
+pacemaker0: Stopping Cluster (corosync)...
+pacemaker2: Stopping Cluster (corosync)...</code></pre>
+
+
+
+<p>（注意：当当前主机被关闭了之后，就无法在此服务器上使用 pcs 的其他相关命令，除非先启动本服务器）</p>
+
+
+
+<h3>内容三：设置随 pcs 服务器启动而自动启动服务器</h3>
+
+
+
+<h4>3.1 让某台服务器随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster enable &lt;server&gt;</code></pre>
+
+
+
+<h4>3.2 让所有服务器都随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster enable --all</code></pre>
+
+
+
+<h3>内容四：设置取消随 pcs 服务器启动自动启动服务器</h3>
+
+
+
+<h4>4.1 取消让某台主机随 pcs 服务器一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster diablle &lt;server&gt;</code></pre>
+
+
+
+<h4>4.2 取消让所有服务器都随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster disable --all</code></pre>
+
+
+
+<h3>内容五：在集群里新添加 1 台服务器</h3>
+
+
+
+<h4>5.1 新添加 1 台服务器的准备工作</h4>
+
+
+
+<p>1) 在要被添加的服务器的防火墙上开放 pacemaker 的端口<br>2) 在要被添加的服务器上安装 pcs fence-agents-rht 以及他的依赖包<br>3) 在要被添加的服务器上启动 pcsd 服务，并将他设置为开机自启<br>4) 在要被添加的服务器上将 hacluster 用户的密码修改为 redhat</p>
+
+
+
+<h4>5.2 在集群里添加新的服务器</h4>
+
+
+
+<p>（在任意一台集群里的服务器上输入以下命令以加入新的服务器）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster node add &lt;new server&gt;
+# pcs cluster auth
+Username: hacluster
+Password: 
+......</code></pre>
+
+
+
+<p>（补充：在这里也可以使用 -u&lt;用户&gt; 和 -p&lt;密码&gt; 参数非交互实现命令输入）</p>
+
+
+
+<h3>内容六：在集群里删除 1 台服务器</h3>
+
+
+
+<h4>6.1 在集群里删除 1 台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster node remove &lt;server&gt;</code></pre>
+
+
+
+<h4>6.2 在集群里删除 1 台服务器后，最好连 fence 监控也一同删除</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith remove fence_deletednode</code></pre>
+
+
+
+<h3>内容七：让服务器失效</h3>
+
+
+
+<h4>7.1 让某台服务器失效并处于待机状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster standby &lt;server&gt;</code></pre>
+
+
+
+<h4>7.2 让所有服务器失效并处于待机状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster standby --all</code></pre>
+
+
+
+<h3>内容八：让失效的服务器重新回到活跃状态</h3>
+
+
+
+<h4>8.1 让某台服务器从失效状态回归到活跃状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster unstandby &lt;server&gt;</code></pre>
+
+
+
+<h4>8.2 让所有服务器从失效状态回归到活跃状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster unstandby --all</code></pre>
+
+
+
+<h3>内容九：生成带配置集群的案例</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster setup --start --name testcluster --last_man_standing --wait_for_all pacemkaer10 pacemaker11 pacemaker12</code></pre>
+
+
+
+<p>（补充：这里 pacemaker 集群的成员有 pacemaker10、pacemaker11 和 pacemaker12）</p>
+
+
+
+<h3>内容十：修改集群配置的案例</h3>
+
+
+
+<h4>10.1 关闭所有的主机</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop --all</code></pre>
+
+
+
+<h4>10.2 修改 /etc/corosync/corosync.conf 文件中</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/corosync/corosync.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+quorum {
+provider: corosync_votequorum
+last_man_standing: 1
+wait_for_all: 1
+}
+......</code></pre>
+
+
+
+<h4>10.3 同步当前服务器的 /etc/corosync/corosync.conf 文件到其他所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster sync</code></pre>
+
+
+
+<h4>10.4 开启所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start --all</code></pre>
+
+
+
+<h4>补充：pcs cluster setup 命令的常用选项</h4>
+
+
+
+<pre class="wp-block-code"><code>1)  --wait_for_all</code></pre>
+
+
+
+<p>当所有集群成员都处于 online 的时候才启动集群投票，主要用于阻止被隔离的主机参与投票</p>
+
+
+
+<pre class="wp-block-code"><code>2) --auto_tie_breaker</code></pre>
+
+
+
+<p>最低投票从从总数的 50% +1 变为 50% ，如果被分割的主机群两边的数量相等，则拥有最小主机 ID 的那一边才会生效</p>
+
+
+
+<p>（补充：&#8211;auto_tie_breaker 主要用于集群主机数是双数的主机群）</p>
+
+
+
+<p>3) &#8211;last_man_standing</p>
+
+
+
+<p>有了这个参数之后每隔 10 秒钟，就重新计算一次期望投票数，主要用于人为关闭主机后快速进行重新投票<br>和 &#8211;auto_tie_breaker 选项结合可以让整个集群只有一台主机处于激活状态</p>
+
+
+
+<p>（注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用这个命令 watch -n1 corosync-quorumtool）</p>
+
+
+
+<p>4) &#8211;two_node</p>
+
+
+
+<p>设置整个集群只包含有两台主机，期望投票数是1，他会自动启用 wait_for_all 选项</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Pacemaker 集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/pacemaker-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 04 Aug 2019 14:26:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4964</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 pacemaker0 192.168.11.30pacemaker1 192.168.11.31pacemaker2 192.168.11.32 1.2 服务器列表简介 1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器 步骤二：服务器系统要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机 步骤三：安装并启用 pcs 3.1 在所有服务器上安装 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pacemaker-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Pacemaker 集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>pacemaker0 192.168.11.30<br>pacemaker1 192.168.11.31<br>pacemaker2 192.168.11.32</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker<br>2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效<br>3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器</p>
+
+
+
+<h3 id="步骤二-服务器系统要求">步骤二：服务器系统要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机</p>
+
+
+
+<h3 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">步骤三：安装并启用 pcs</h3>
+
+
+
+<h4 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">3.1 在所有服务器上安装 pcs 和 fence-agents-all 服务</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install pcs fence-agents-all</code></pre>
+
+
+
+<h4 id="3-2-在所有服务器防火墙上开放-pcs">3.2 在所有服务器防火墙上开放 pcs</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --permanent --add-service=high-availability
+# firewall-cmd --reload</code></pre>
+
+
+
+<h4 id="3-3-在所有服务器上启动-pcs-并设置开机自起">3.3 在所有服务器上启动 pcs ，并设置开机自起</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable pcsd
+# systemctl start pcsd</code></pre>
+
+
+
+<h3 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">步骤四：让服务器中的各主机通过 pcs 验证</h3>
+
+
+
+<h4 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">4.1 在所有服务器将 hacluster 用户的密码修改为 redhat</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo redhat | passwd --stdin hacluster</code></pre>
+
+
+
+<h4 id="4-2-在所有服务器上添加主机到-ip-地址的解析">4.2 在所有服务器上添加主机名到 IP 地址的解析</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "192.168.11.30 pacemaker0" &gt;&gt; /etc/hosts
+# echo "192.168.11.31 pacemaker1" &gt;&gt; /etc/hosts
+# echo "192.168.11.32 pacemaker2" &gt;&gt; /etc/hosts</code></pre>
+
+
+
+<h4 id="4-3-让集群里的所有服务器通过-pcs-验证">4.3 让集群里的所有服务器通过 pcs 验证</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster auth pacemaker0 pacemaker1 pacemaker2
+Username: hacluster
+Password: 
+pacemaker2: Authorized
+pacemaker1: Authorized
+pacemaker0: Authorized</code></pre>
+
+
+
+<p>（补充：这一步也可以使用 -u 和 -p 参数实现非交互式配置）</p>
+
+
+
+<h3 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">步骤五：通过 pcs 服务生成 1 个名为 mycluster 的 pcs 集群</h3>
+
+
+
+<h4 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">5.1 生成一个名为 mycluster 包含 pacemaker0 pacemaker1 pacemaker2 的集群组</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster pacemaker0 pacemaker1 pacemaker2
+Destroying cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Stopping Cluster (pacemaker)...
+pacemaker0: Stopping Cluster (pacemaker)...
+pacemaker1: Stopping Cluster (pacemaker)...
+pacemaker0: Successfully destroyed cluster
+pacemaker1: Successfully destroyed cluster
+pacemaker2: Successfully destroyed cluster
+
+Sending 'pacemaker_remote authkey' to 'pacemaker0', 'pacemaker1', 'pacemaker2'
+pacemaker1: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker0: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker2: successful distribution of the file 'pacemaker_remote authkey'
+Sending cluster config files to the nodes...
+pacemaker0: Succeeded
+pacemaker1: Succeeded
+pacemaker2: Succeeded
+
+Starting cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker0: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (pacemaker)...
+pacemaker0: Starting Cluster (pacemaker)...
+pacemaker2: Starting Cluster (pacemaker)...
+
+Synchronizing pcsd certificates on nodes pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success
+Restarting pcsd on the nodes in order to reload the certificates...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success</code></pre>
+
+
+
+<p>（<br>补充：这里可以通过以下方式强制重新生成集群</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster --force pacemaker0 pacemaker1 pacemaker2</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="5-2-让所有-pcs-集群都随-pcs-服务自动启动">5.2 让所有 pcs 集群都随 pcs 服务自动启动</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster enable --all</code></pre>
+
+
+
+<h4 id="5-3-显示-pcs-集群状态">5.3 显示 pcs 集群状态</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster status
+Cluster Status:
+ Stack: corosync
+ Current DC: pacemaker0 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
+ Last updated: Sun Aug  4 09:21:55 2019
+ Last change: Sun Aug  4 09:20:38 2019 by hacluster via crmd on pacemaker0
+ 3 nodes configured
+ 0 resources configured
+
+PCSD Status:
+  pacemaker1: Online
+  pacemaker2: Online
+  pacemaker0: Online</code></pre>
+
+
+
+<p>（注意：如果在 PCSD Status 中出现了 down ，则要确保他们的主机没有在 /etc/hosts 中 127.0.0.1 那一行中出现）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

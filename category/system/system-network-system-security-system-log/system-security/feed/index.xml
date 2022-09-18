@@ -1,0 +1,2518 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Security (系统安全) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-network-system-security-system-log/system-security/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 09 Sep 2022 09:42:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[内容] Linux 密码文件 /etc/shadow 的介绍 （显示用户密码相关的策略）</title>
+		<link>https://eternalcenter-sep-2022.github.io/etc-shadow/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 09 Sep 2022 09:40:25 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=28282</guid>
+
+					<description><![CDATA[内容一：/etc/shadow 文件的简介 1) /etc/shadow 文件存储着用户的密码和与之相关的信息2) /etc/shadow 文件以冒号 “:” 作为分隔符，分类 8 段 内容二：/etc/shadow 文件的作用 2.1 第 1 段内容：用户名 /etc/shadow 文件的第 1 段存储的是用户名，和 /etc/passwd 文件中的用户名是一一对应的 2.2 第 2 段内容：密码 2.2.1 内容的含义 1) 如果是奇怪的字符串则代表是加密过的密码，格式是 $id$salt$hashed，其中 $id 是指加密算法。如果字符串：以 $1$ 开头则代表是用 MD5 加密，以 $2a$ 开头则代表是用 Blowfish 加密，以 $2y$ 开头则代表是用另一种算法长度的 Blowfish 加密，以 $5$ 开头则代表是用 SHA-256 加密，以 $6$ 开头则代表是用 SHA-512 加密2) 如果是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/etc-shadow/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 密码文件 /etc/shadow 的介绍 （显示用户密码相关的策略）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：/etc/shadow 文件的简介</h3>
+
+
+
+<p>1) /etc/shadow 文件存储着用户的密码和与之相关的信息<br>2) /etc/shadow 文件以冒号 “:” 作为分隔符，分类 8 段</p>
+
+
+
+<h3>内容二：/etc/shadow 文件的作用</h3>
+
+
+
+<h4>2.1 第 1 段内容：用户名</h4>
+
+
+
+<p>/etc/shadow 文件的第 1 段存储的是用户名，和 /etc/passwd 文件中的用户名是一一对应的</p>
+
+
+
+<h4>2.2 第 2 段内容：密码</h4>
+
+
+
+<h5>2.2.1 内容的含义</h5>
+
+
+
+<p>1) 如果是奇怪的字符串则代表是加密过的密码，格式是 $id$salt$hashed，其中 $id 是指加密算法。如果字符串：以 $1$ 开头则代表是用 MD5 加密，以 $2a$ 开头则代表是用 Blowfish 加密，以 $2y$ 开头则代表是用另一种算法长度的 Blowfish 加密，以 $5$ 开头则代表是用 SHA-256 加密，以 $6$ 开头则代表是用 SHA-512 加密<br>2) 如果是 2 个感叹号 “!!” 则代表从来都没有设置过密码<br>3) 如果为空则代表没有设置密码<br>4) 如果是 1 个星号 “*” 则代表用户被锁定，但是其它登陆方式不受限制，例 SSH 登陆<br>5) 如果是 1 个感叹号 “!” 则代表用户被锁定，但是其它登陆方式不受限制，例 SSH 登陆<br>6) 如果以 1 个感叹号开头 “!” 则代表用户被锁定<br>7) 如果以 2 个感叹号开头 “!!” 则代表用户被锁定</p>
+
+
+
+<h5>2.2.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># cut -d: -f1,7</code></pre>
+
+
+
+<h5>2.2.3 修改命令</h5>
+
+
+
+<pre class="wp-block-code"><code># passwd &lt;user&gt;</code></pre>
+
+
+
+<h4>2.3 第 3 段内容：密码最后的修改日期</h4>
+
+
+
+<h5>2.3.1 内容的含义</h5>
+
+
+
+<p>密码最后修改的日期于 1970 年 1 月 1 日相距的天数</p>
+
+
+
+<h5>2.3.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,3</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Last password change'</code></pre>
+
+
+
+<h5>2.3.3 修改命令</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -d &lt;date&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --lastday &lt;date&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.4 第 4 段内容：修改密码最短天数间隔</h4>
+
+
+
+<h5>2.4.1 内容的含义</h5>
+
+
+
+<p>两次修改密码最短天数间隔</p>
+
+
+
+<p>1) 如果是 0 则代表随时可以修改密码<br>2) 如果是 99999 则代表永远都不能修改密码</p>
+
+
+
+<h5>2.4.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,4</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Minimum number of days between password change'</code></pre>
+
+
+
+<h5>2.4.3 修改命令</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -m &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --mindays &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.5 第 5 段内容：密码过期的天数</h4>
+
+
+
+<h5>2.5.1 内容的含义</h5>
+
+
+
+<p>修改密码后过多少天会过期</p>
+
+
+
+<p>1) 如果是 99999 则代表永远都不会过期<br>2) 如果密码只是过期但是没有失效的话，则可以使用过期的密码更改密码再使用新密码登陆，如果密码失效的话则此密码不能再使用</p>
+
+
+
+<h5>2.5.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,5</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Maximum number of days between password change'</code></pre>
+
+
+
+<h5>2.5.3 修改命令</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -M &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --maxdays &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.6 第 6 段内容：密码过期前提前多少天发出警告</h4>
+
+
+
+<h5>2.6.1 内容的含义</h5>
+
+
+
+<p>密码过期前，提前多少天发出警告</p>
+
+
+
+<p>如果为空则代表不发出警告</p>
+
+
+
+<h5>2.6.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,6</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Number of days of warning before password expires'</code></pre>
+
+
+
+<h5>2.6.3 修改密码</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -W &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --warndays &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.7 第 7 段内容：密码失效的天数</h4>
+
+
+
+<h5>2.7.1 内容的含义</h5>
+
+
+
+<p>密码过期后过多少天会失效</p>
+
+
+
+<p>1) 如果是 99999 则代表永远都不会失效<br>2) 如果密码只是过期但是没有失效的话，则可以使用过期的密码更改密码再使用新密码登陆，如果密码失效的话则此密码不能再使用</p>
+
+
+
+<h5>2.7.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,7</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Password inactive'</code></pre>
+
+
+
+<h5>2.7.3 修改密码</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -I &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --inactive &lt;days&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.8 第 8 段内容：用户的失效日期</h4>
+
+
+
+<h5>2.8.1 内容的含义</h5>
+
+
+
+<p>用户的失效日期于 1970 年 1 月 1 日相距的天数</p>
+
+
+
+<h5>2.8.2 查看命令</h5>
+
+
+
+<pre class="wp-block-code"><code># egrep ^&#91;^:]+:&#91;^\!*] /etc/shadow | cut -d: -f1,8</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage -l &lt;user&gt; | grep 'Account expires'</code></pre>
+
+
+
+<h5>2.8.3 修改密码</h5>
+
+
+
+<pre class="wp-block-code"><code># chage -E &lt;date&gt; &lt;user&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># chage --expiredate &lt;date&gt; &lt;user&gt;</code></pre>
+
+
+
+<h4>2.9 第 9 段内容：保留</h4>
+
+
+
+<p>这是一个保留位，目前没有作用</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux SSH 加密算法的设置 (不使用来自 crypto policies 的系统全局 SSH 加密算法) (RHEL 8 版)</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssh-encryption-algorithm-no-crypto-policies-rhel-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 29 Aug 2022 07:06:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27933</guid>
+
+					<description><![CDATA[注意： RHEL 8 的 SSH 加密算法默认会使用来自 crypto policies 系统的全局 SSH 加密算法，而此方法将让 SSH 使用单独设置的 SSH 加密算法。 正文： 步骤一：启用 SSH 加密算法 1.1 备份 /etc/sysconfig/sshd 配置文件 1.2 修改 /etc/sysconfig/sshd 配置文件 将以下内容： 修改为： 步骤二：设置 SSH 的加密算法 2.1 在 /etc/crypto-policies/back-ends/opensshserver.config 配置文件中确认要使用的 SSH 加密算法属性 2.1.1 修改 /etc/crypto-policies/back-ends/opensshserver.config 配置文件 添加需要使用的 SSH 加密算法属性： （内容略） （注意：如果需要使用的 SSH 加密算法已包含在其中了则可以不用添加） 2.1.2 显示目前正在被使用的 SSH 加密算法 （补充：这里以显示 RHEL8 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ssh-encryption-algorithm-no-crypto-policies-rhel-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux SSH 加密算法的设置 (不使用来自 crypto policies 的系统全局 SSH 加密算法) (RHEL 8 版)"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>注意：</h2>
+
+
+
+<p>RHEL 8 的 SSH 加密算法默认会使用来自 crypto policies 系统的全局 SSH 加密算法，而此方法将让 SSH 使用单独设置的 SSH 加密算法。</p>
+
+
+
+<h2>正文：</h2>
+
+
+
+<h3>步骤一：启用 SSH 加密算法</h3>
+
+
+
+<h4>1.1 备份 /etc/sysconfig/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/sysconfig/sshd /etc/sysconfig/sshd_backup</code></pre>
+
+
+
+<h4>1.2 修改 /etc/sysconfig/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysconfig/sshd</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code># CRYPTO_POLICY=</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>CRYPTO_POLICY=</code></pre>
+
+
+
+<h3>步骤二：设置 SSH 的加密算法</h3>
+
+
+
+<h4>2.1 在 /etc/crypto-policies/back-ends/opensshserver.config 配置文件中确认要使用的 SSH 加密算法属性</h4>
+
+
+
+<h5>2.1.1 修改 /etc/crypto-policies/back-ends/opensshserver.config 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/crypto-policies/back-ends/opensshserver.config</code></pre>
+
+
+
+<p>添加需要使用的 SSH 加密算法属性：</p>
+
+
+
+<p>（内容略）</p>
+
+
+
+<p>（注意：如果需要使用的 SSH 加密算法已包含在其中了则可以不用添加）</p>
+
+
+
+<h5>2.1.2 显示目前正在被使用的 SSH 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># printf "%s\n" $(source /etc/crypto-policies/back-ends/opensshserver.config; echo $CRYPTO_POLICY) | cut -c3-
+Ciphers=aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes256-cbc,aes128-gcm@openssh.com,aes128-ctr,aes128-cbc
+MACs=hmac-sha2-256-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha1,umac-128@openssh.com,hmac-sha2-512
+GSSAPIKexAlgorithms=gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-,gss-gex-sha1-,gss-group14-sha1-
+KexAlgorithms=curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+HostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com,ssh-rsa,ssh-rsa-cert-v01@openssh.com
+PubkeyAcceptedKeyTypes=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com,ssh-rsa,ssh-rsa-cert-v01@openssh.com
+CASignatureAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-256,rsa-sha2-512,ssh-rsa</code></pre>
+
+
+
+<p>（补充：这里以显示 RHEL8 默认使用的 SSH 加密算法为例）</p>
+
+
+
+<h4>2.2 在 /etc/ssh/sshd_config 配置文件中设置要使用的 SSH 加密算法</h4>
+
+
+
+<h5>2.2.1 备份 /etc/ssh/sshd_config 配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup</code></pre>
+
+
+
+<h5>2.2.2 在 /etc/ssh/sshd_config 配置文件中添加要使用的 SSH 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+Ciphers aes256-ctr,aes192-ctr,aes128-ctr
+MACs hmac-sha2-512,hmac-sha2-256
+KexAlgorithms ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256</code></pre>
+
+
+
+<p>（<br>补充：这里以使用：<br>1) aes256-ctr、aes192-ctr 和 aes128-ctr SSH Ciphers 加密算法<br>2) hmac-sha2-512 和 hmac-sha2-256 SSH MACs 加密算法<br>3) ecdh-sha2-nistp521、ecdh-sha2-nistp384、ecdh-sha2-nistp256 和 diffie-hellman-group-exchange-sha256 SSH KexAlgorithms 加密算法<br>为例<br>）</p>
+
+
+
+<h5>2.2.3 让在 /etc/ssh/sshd_config 配置文件中添加要使用的 SSH 加密算法生效</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<h3>步骤三：测试 SSH 加密算法</h3>
+
+
+
+<h4>3.1 测试 SSH Ciphers 加密算法</h4>
+
+
+
+<h5>3.1.1 测试某个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oCiphers=3des-cbc -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 3des-cbc SSH Ciphers 加密算法为例）</p>
+
+
+
+<h5>3.1.2 测试多个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oCiphers=3des-cbc,aes128-cbc,aes192-cbc,aes256-cbc -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 3des-cbc、aes128-cbc、aes192-cbc 和 aes256-cbc SSH Ciphers 加密算法为例）</p>
+
+
+
+<h4>3.2 测试 SSH MACs 加密算法</h4>
+
+
+
+<h5>3.2.1 测试某个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oMACs=hmac-md5 -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 hmac-md5 SSH MACs 加密算法为例）</p>
+
+
+
+<h5>3.2.2 测试多个 SSH Ciphers 加密算法</h5>
+
+
+
+<pre class="wp-block-code"><code># ssh -vv -oMACs=hmac-md5,hmac-md5-96,hmac-sha1,hmac-sha1-96,hmac-md5-etm@openssh.com,hmac-md5-96-etm@openssh.com -oPort=22 192.168.0.1</code></pre>
+
+
+
+<p>（补充：这里以测试 IP 地址是 192.168.0.1，端口号是 22，有没有启用 hmac-md5、hmac-md5-96、hmac-sha1、hmac-sha1-96、hmac-md5-etm@openssh.com 和 hmac-md5-96-etm@openssh.com SSH MACs 加密算法为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] nftables 防火墙策略文件的常用规则</title>
+		<link>https://eternalcenter-sep-2022.github.io/common-rules-for-nftables-firewall-policy-file/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 15 Aug 2022 03:31:10 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27551</guid>
+
+					<description><![CDATA[注意： 在给 nftables 防火墙的策略文件添加规则前，要先使用 nftables 防火墙的策略文件： 正文： 案例一：允许某个 IP 地址访问某个端口 或者： （补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口为例） 案例二：允许某个 IP 地址访问多个端口 （补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口、80 端口、443 端口和 3066 端口为例） 案例三：允许多个 IP 地址访问多个端口 （补充：这里以允许 IP 地址 192.168.0.1、192.168.0.2 和 192.168.0.3 访问 22 端口、80 端口、443 端口和 3066 端口为例） 案例四：拒绝所有 IP 地址访问多个端口 （补充：这里以拒绝所有 IP 地址的 22 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/common-rules-for-nftables-firewall-policy-file/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] nftables 防火墙策略文件的常用规则"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>注意：</h2>
+
+
+
+<p>在给 nftables 防火墙的策略文件添加规则前，要先使用 nftables 防火墙的策略文件：</p>
+
+
+
+<div class="wp-container-1 is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/nfttables-permanent/" style="border-radius:0px">nftables 防火墙的使用 <br>（永久版）</a></div>
+</div>
+
+
+
+<h2>正文：</h2>
+
+
+
+<h3>案例一：允许某个 IP 地址访问某个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport ssh accept</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport 22 accept</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口为例）</p>
+
+
+
+<h3>案例二：允许某个 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr 192.168.0.1 tcp dport {22,80,443,3306} accept comment "accept local port"</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1 访问 22 端口、80 端口、443 端口和 3066 端口为例）</p>
+
+
+
+<h3>案例三：允许多个 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>ip saddr {192.168.0.1,192.168.0.2,192.168.0.3} tcp dport {22,80,443,3306} accept comment "accept local port"</code></pre>
+
+
+
+<p>（补充：这里以允许 IP 地址 192.168.0.1、192.168.0.2 和 192.168.0.3 访问 22 端口、80 端口、443 端口和 3066 端口为例）</p>
+
+
+
+<h3>案例四：拒绝所有 IP 地址访问多个端口</h3>
+
+
+
+<pre class="wp-block-code"><code>tcp dport {22,80,443,3306} drop comment "drop remote port"</code></pre>
+
+
+
+<p>（补充：这里以拒绝所有 IP 地址的 22 端口、80 端口、443 端口和 3306 端口为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 文件系统的安全 （通过禁止执行共享内存里的程序或文件来防止恶意软件）</title>
+		<link>https://eternalcenter-sep-2022.github.io/file-system-security-dev-shm-noexec/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 02 Aug 2022 06:58:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27466</guid>
+
+					<description><![CDATA[步骤一：临时禁止 /dev/shm 目录的执行权限 步骤二：永久禁止 /dev/shm 目录的执行权限 2.1 修改 /etc/fstab 配置文件 添加以下内容： 2.2 让修改的配置生效 步骤三：确认 /dev/shm 目录的执行权限已被禁止 （补充：当没有任何输出结果时，则代表 /dev/shm 目录的执行权限已被禁止）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：临时禁止 /dev/shm 目录的执行权限</h3>
+
+
+
+<pre class="wp-block-code"><code># mount -o remount,noexec,nodev /dev/shm</code></pre>
+
+
+
+<h3>步骤二：永久禁止 /dev/shm 目录的执行权限</h3>
+
+
+
+<h4>2.1 修改 /etc/fstab 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/fstab</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+/dev/shm             /dev/shm   tmpfs  defaults,rw,remount,noexec,nodev  0  0</code></pre>
+
+
+
+<h4>2.2 让修改的配置生效</h4>
+
+
+
+<pre class="wp-block-code"><code># mount -a</code></pre>
+
+
+
+<h3>步骤三：确认 /dev/shm 目录的执行权限已被禁止</h3>
+
+
+
+<pre class="wp-block-code"><code># mount | grep -E '\s/dev/shm\s' | grep -v noexec ; mount | grep -E '\s/dev/shm\s' | grep -v nodev</code></pre>
+
+
+
+<p>（补充：当没有任何输出结果时，则代表 /dev/shm 目录的执行权限已被禁止）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 gpasswd （管理组）</title>
+		<link>https://eternalcenter-sep-2022.github.io/gpasswd/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 07:38:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27450</guid>
+
+					<description><![CDATA[内容一：组的成员管理 1.1 把用户添加到组里 1.1.1 把某个用户添加到某个组 或者： 或者： 或者： 1.1.2 把多个用户添加到某个组 或者： 或者： 或者： 2.2 把用户从组里删除 2.2.1 把某个用户从某个组里删除 或者： 2.2.2 把多个用户添加到某个组 或者： 2.3 将某个用户设置为组的管理员 或者： 内容三：组的密码管理 3.1 给某个组设置密码 3.2 删除某个组的密码 或者： 内容四：组的登录管理 限制某个组登录 或者： 内容五：显示帮助信息 或者：]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：组的成员管理</h3>
+
+
+
+<h4>1.1 把用户添加到组里</h4>
+
+
+
+<h5>1.1.1 把某个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -a &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –add &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -M &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –members &lt;group&gt;</code></pre>
+
+
+
+<h5>1.1.2 把多个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -a &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –add &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -M &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –members &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<h4>2.2 把用户从组里删除</h4>
+
+
+
+<h5>2.2.1 把某个用户从某个组里删除</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -d &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –delete &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<h5>2.2.2 把多个用户添加到某个组</h5>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -d &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –delete &lt;user1&gt;,&lt;user2&gt; &lt;group&gt;</code></pre>
+
+
+
+<h4>2.3 将某个用户设置为组的管理员</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -A &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –administrators &lt;user&gt; &lt;group&gt;</code></pre>
+
+
+
+<h3>内容三：组的密码管理</h3>
+
+
+
+<h4>3.1 给某个组设置密码</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd &lt;group&gt;</code></pre>
+
+
+
+<h4>3.2 删除某个组的密码</h4>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –r &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –remove-password &lt;group&gt;</code></pre>
+
+
+
+<h3>内容四：组的登录管理</h3>
+
+
+
+<p>限制某个组登录</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -R &lt;group&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd –restrict &lt;group&gt;</code></pre>
+
+
+
+<h3>内容五：显示帮助信息</h3>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -h</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># gpasswd -help</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 文件 profile 和 bashrc （用户登录环境的设置）</title>
+		<link>https://eternalcenter-sep-2022.github.io/profile-bashrc/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 29 Jul 2022 06:43:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27441</guid>
+
+					<description><![CDATA[内容一：profile 文件 1.1 profile 全局文件的位置 （影响所有用户） 1.2 profile 局部文件的位置 （只影响单个用户） 或者： 或者： 1.3 profile 文件的作用 在用户登录时设置用户的环境变量，只在用户登录时才会生效 1.4 登录 Linux 时执行 profile 文件的顺序 第一步，执行： 第二步，按以下顺序一一尝试执行以下 3 个文件中的 1 个，当执行成功后则停止尝试下 1 个文件： 第三步：开始调用解释器 （如果是调用 bash 解释器，则继续执行登录 bash 时执行 bashrc 文件的顺序） 内容二：bashrc 文件 2.1 bashrc 全局文件的位置 （影响所有用户） 或者： 2.2 bashrc 局部文件的位置 （只影响单个用户） 2.3 bashrc 文件的作用 在用户使用 bash 解释器或登录 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/profile-bashrc/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 文件 profile 和 bashrc （用户登录环境的设置）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：profile 文件</h3>
+
+
+
+<h4>1.1 profile 全局文件的位置 （影响所有用户）</h4>
+
+
+
+<pre class="wp-block-code"><code>/etc/profile</code></pre>
+
+
+
+<h4>1.2 profile 局部文件的位置 （只影响单个用户）</h4>
+
+
+
+<pre class="wp-block-code"><code>~/.bash_profile</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>~/.bash_login</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>~/.profile</code></pre>
+
+
+
+<h4>1.3 profile 文件的作用</h4>
+
+
+
+<p>在用户登录时设置用户的环境变量，只在用户登录时才会生效</p>
+
+
+
+<h4>1.4 登录 Linux 时执行 profile 文件的顺序</h4>
+
+
+
+<p>第一步，执行：</p>
+
+
+
+<pre class="wp-block-code"><code>/etc/profile</code></pre>
+
+
+
+<p>第二步，按以下顺序一一尝试执行以下 3 个文件中的 1 个，当执行成功后则停止尝试下 1 个文件：</p>
+
+
+
+<pre class="wp-block-code"><code>~/.bash_profile
+~/.bash_login
+~/.profile</code></pre>
+
+
+
+<p>第三步：开始调用解释器</p>
+
+
+
+<p>（如果是调用 bash 解释器，则继续执行登录 bash 时执行 bashrc 文件的顺序）</p>
+
+
+
+<h3>内容二：bashrc 文件</h3>
+
+
+
+<h4>2.1 bashrc 全局文件的位置 （影响所有用户）</h4>
+
+
+
+<pre class="wp-block-code"><code>/etc/bashrc</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>/etc/bash.bashrc</code></pre>
+
+
+
+<h4>2.2 bashrc 局部文件的位置 （只影响单个用户）</h4>
+
+
+
+<pre class="wp-block-code"><code>~/.bashrc</code></pre>
+
+
+
+<h4>2.3 bashrc 文件的作用</h4>
+
+
+
+<p>在用户使用 bash 解释器或登录 bash 解释器时设置用户的环境变量，每次调用 bash 解释器时都会生效</p>
+
+
+
+<h4>2.4 使用 bash 或登录 bash 时执行 bashrc 文件的顺序</h4>
+
+
+
+<p>第一步，执行以下 2 个文件中的 1 个：</p>
+
+
+
+<pre class="wp-block-code"><code>/etc/bashrc
+/etc/bash.bashrc</code></pre>
+
+
+
+<p>第二步，执行：</p>
+
+
+
+<pre class="wp-block-code"><code>~/.bashrc</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] AppArmor 的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/apparmor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 07:12:28 +0000</pubDate>
+				<category><![CDATA[AppArmor]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27354</guid>
+
+					<description><![CDATA[内容一：显示 AppArmor 保护进程的情况 1.1 显示所有 AppArmor 保护进程的情况 1.2 显示所有正在运行并监听网络但是没有被 AppArmor 保护的进程 内容二：设置 AppArmor 保护进程的策略 2.1 将所有 AppArmor 进程规则设置为 enforce 模式 2.2 将所有 AppArmor 进程规则设置为 complain 模式 2.3 将所有 AppArmor 进程规则设置为 disable 模式]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示 AppArmor 保护进程的情况</h3>
+
+
+
+<h4>1.1 显示所有 AppArmor 保护进程的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-status</code></pre>
+
+
+
+<h4>1.2 显示所有正在运行并监听网络但是没有被 AppArmor 保护的进程</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-unconfined</code></pre>
+
+
+
+<h3>内容二：设置 AppArmor 保护进程的策略</h3>
+
+
+
+<h4>2.1 将所有 AppArmor 进程规则设置为 enforce 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-enforce /etc/apparmor.d/*</code></pre>
+
+
+
+<h4>2.2 将所有 AppArmor 进程规则设置为 complain 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-complain /etc/apparmor.d/*</code></pre>
+
+
+
+<h4>2.3 将所有 AppArmor 进程规则设置为 disable 模式</h4>
+
+
+
+<pre class="wp-block-code"><code># aa-disable /etc/apparmor.d/*</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] audit 常用的监控规则</title>
+		<link>https://eternalcenter-sep-2022.github.io/common-monitoring-rules-of-audit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 06:22:23 +0000</pubDate>
+				<category><![CDATA[AppArmor]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27352</guid>
+
+					<description><![CDATA[内容一：监控 SELinux 配置文件 1.1 在 audit 添加监控 SELinux 配置文件的规则 添加以下内容： 1.2 让添加的监控 SELinux 配置文件的规则生效 1.3 确认添加的监控 SELinux 配置文件的规则已生效 内容二：监控 AppArmor 配置文件 2.1 在 audit 添加监控 AppArmor 配置文件的规则 添加以下内容： 2.2 让添加的监控 AppArmor 配置文件的规则生效 2.3 确认添加的监控 AppArmor 配置文件的规则已生效]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：监控 SELinux 配置文件</h3>
+
+
+
+<h4>1.1 在 audit 添加监控 SELinux 配置文件的规则</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-w /etc/selinux/ -p wa -k MAC-policy
+-w /usr/share/selinux/ -p wa -k MAC-policy</code></pre>
+
+
+
+<h4>1.2 让添加的监控 SELinux 配置文件的规则生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h4>1.3 确认添加的监控 SELinux 配置文件的规则已生效</h4>
+
+
+
+<pre class="wp-block-code"><code># auditctl -l | grep -i selinux</code></pre>
+
+
+
+<h3>内容二：监控 AppArmor 配置文件</h3>
+
+
+
+<h4>2.1 在 audit 添加监控 AppArmor 配置文件的规则</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-w /etc/apparmor/ -p wa -k MAC-policy
+-w /etc/apparmor.d/ -p wa -k MAC-policy</code></pre>
+
+
+
+<h4>2.2 让添加的监控 AppArmor 配置文件的规则生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h4>2.3 确认添加的监控 AppArmor 配置文件的规则已生效</h4>
+
+
+
+<pre class="wp-block-code"><code># auditctl -l | grep -i apparmor</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[CONTENT] The difference between SELinux and AppArmor</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-difference-between-selinux-and-apparmor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 25 Jul 2022 07:57:01 +0000</pubDate>
+				<category><![CDATA[AppArmor]]></category>
+		<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[SELinux]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27188</guid>
+
+					<description><![CDATA[Selinux 1) Default for Rocky Linux, AlmaLinux, CentOS, Red Hat2) Designed to protect the entire operating system AppArmor 1) Default for openSUSE, Debian, Ubuntu, SLE2) Designed to protect specific applications, limit the resources that particular application can use3) Uses path names]]></description>
+										<content:encoded><![CDATA[
+<h3>Selinux</h3>
+
+
+
+<p>1) Default for Rocky Linux, AlmaLinux, CentOS, Red Hat<br>2) Designed to protect the entire operating system</p>
+
+
+
+<h3>AppArmor</h3>
+
+
+
+<p>1) Default for openSUSE, Debian, Ubuntu, SLE<br>2) Designed to protect specific applications, limit the resources that particular application can use<br>3) Uses path names</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] audit 的设置 （日志保存时间）</title>
+		<link>https://eternalcenter-sep-2022.github.io/audit-log-save-time/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 01:45:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26972</guid>
+
+					<description><![CDATA[方法一：通过 audit 配置文件设置 1.1 设置 audit 日志的保存时间 确保部分内容如下： （补充：这里以1) 开启 audit 日志 （local_events = yes） （write_logs = yes）2) 将 audit 日志写入 /var/log/audit/audit.log 文件 （log_file = /var/log/audit/audit.log）3) audit 日志每达到 8M 大小就将旧的 audit 日志进行备份并创建新的 audit 日志 （max_log_file = 8） （max_log_file_action = ROTATE），也可以修改成： max_log_file_action = keep_logs4) 旧的 audit 日志保存 5 份 （num_logs =5）为例） 1.2 让设置的 audit 时间生效 方法二：通过 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/audit-log-save-time/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] audit 的设置 （日志保存时间）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：通过 audit 配置文件设置</h3>
+
+
+
+<h4>1.1 设置 audit 日志的保存时间</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/auditd.conf</code></pre>
+
+
+
+<p>确保部分内容如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+local_events = yes
+......
+write_logs = yes
+......
+log_file = /var/log/audit/audit.log
+......
+max_log_file = 8
+......
+num_logs =5
+......
+max_log_file_action = ROTATE
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 开启 audit 日志 （local_events = yes） （write_logs = yes）<br>2) 将 audit 日志写入 /var/log/audit/audit.log 文件 （log_file = /var/log/audit/audit.log）<br>3) audit 日志每达到 8M 大小就将旧的 audit 日志进行备份并创建新的 audit 日志 （max_log_file = 8） （max_log_file_action = ROTATE），也可以修改成： max_log_file_action = keep_logs<br>4) 旧的 audit 日志保存 5 份 （num_logs =5）<br>为例<br>）</p>
+
+
+
+<h4>1.2 让设置的 audit 时间生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h3>方法二：通过 logrotate 配置文件设置</h3>
+
+
+
+<h4>2.1 设置 audit 日志的保存时间</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/logrotate.d/auditd</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>/var/log/audit/*
+{
+rotate 30
+daily
+missingok
+compress
+delaycompress
+postrotate
+touch /var/log/audit/audit.log ||:
+chmod 0600 /var/log/audit/audit.log ||:
+service auditd restart
+endscript
+}</code></pre>
+
+
+
+<p>（<br>补充：这里以：<br>1) 备份的日志文件保留 30 份 （rotate 30）<br>2) 每天将现在的日志文件进行备份并生成新的日志文件 （dayly）<br>）</p>
+
+
+
+<h4>2.2 让设置的 audit 时间生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart logrotate.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 密码的安全 （本地和 SSH 输错密码次数的限制） （pam_tally2.so 版） （CentOS Linux 7 &#038; RHEL 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/password-security-local-ssh-login-attempt-pam_tally2-so-centos-linux-rhe-7l/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 16 Jul 2022 17:27:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26943</guid>
+
+					<description><![CDATA[正文： 步骤一：让 sshd 使用可插入身份验证模块 1.1 修改 sshd 的配置文件 将以下内容： 修改为： 1.2 让修改的 sshd 配置文件生效 步骤二：让本地登录和 sshd 登录使用密码认证 2.1 确认 /etc/pam.d/login 配置文件 确保包含以下内容： 2.2 确认 /etc/pam.d/sshd 配置文件 确保包含以下内容： 步骤三：在 /etc/pam.d/system-auth-ac 配置文件中添加 pam_tally2.so 模块和相关参数 添加以下内容： （补充：1) 这里的 pam_tally2.so 代表使用 pam_tally2.so 模块2) 这里的 silent 代表不会显示信息性的消息3) 这里的 deny=15 代表输错 15 次后会禁止登录4) 这里的 unlock_time=3000 代表禁止登录后 3000 毫秒后可以重新登录5) 这里的 even_deny_root 代表 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/password-security-local-ssh-login-attempt-pam_tally2-so-centos-linux-rhe-7l/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 密码的安全 （本地和 SSH 输错密码次数的限制） （pam_tally2.so 版） （CentOS Linux 7 &#038; RHEL 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>正文：</h2>
+
+
+
+<h3>步骤一：让 sshd 使用可插入身份验证模块</h3>
+
+
+
+<h4>1.1 修改 sshd 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#UsePAM no
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UsePAM yes
+......</code></pre>
+
+
+
+<h4>1.2 让修改的 sshd 配置文件生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<h3>步骤二：让本地登录和 sshd 登录使用密码认证</h3>
+
+
+
+<h4>2.1 确认 /etc/pam.d/login 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/pam.d/login | grep system-auth</code></pre>
+
+
+
+<p>确保包含以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>auth       substack     system-auth
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth</code></pre>
+
+
+
+<h4>2.2 确认 /etc/pam.d/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/pam.d/sshd | grep password-auth</code></pre>
+
+
+
+<p>确保包含以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>auth       substack     password-auth
+account    include      password-auth
+password   include      password-auth
+session    include      password-auth</code></pre>
+
+
+
+<h3>步骤三：在 /etc/pam.d/system-auth-ac 配置文件中添加 pam_tally2.so 模块和相关参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/system-auth-ac</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 pam_tally2.so 代表使用 pam_tally2.so 模块<br>2) 这里的 silent 代表不会显示信息性的消息<br>3) 这里的 deny=15 代表输错 15 次后会禁止登录<br>4) 这里的 unlock_time=3000 代表禁止登录后 3000 毫秒后可以重新登录<br>5) 这里的 even_deny_root 代表 root 用户和其它用户一样会被锁住<br>6) 这里的 root_unlock_time=3000 代表禁止 root 用户登录后 3000 毫秒后可以重新登录<br>）</p>
+
+
+
+<h3>步骤四：在 /etc/pam.d/password-auth-ac 配置文件中添加 pam_tally2.so 模块和相关参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/password-auth-ac</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 pam_tally2.so 代表使用 pam_tally2.so 模块<br>2) 这里的 silent 代表不会显示信息性的消息<br>3) 这里的 deny=15 代表输错 15 次后会禁止登录<br>4) 这里的 unlock_time=3000 代表禁止登录后 3000 毫秒后可以重新登录<br>5) 这里的 even_deny_root 代表 root 用户和其它用户一样会被锁住<br>6) 这里的 root_unlock_time=3000 代表禁止 root 用户登录后 3000 毫秒后可以重新登录<br>）</p>
+
+
+
+<h3>步骤五：部分用户输错密码次数限制的排除</h3>
+
+
+
+<h4>5.1 在 /etc/pam.d/system-auth-ac 配置文件中添加 pam_succeed_if.so 模块和相关参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/system-auth-ac</code></pre>
+
+
+
+<p>在此行：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth &#91;success=1 default=ignore] pam_succeed_if.so user in mingyuzhu1:mingyuzhu2:mingyuzhu3</code></pre>
+
+
+
+<p>（补充：这里以排除用户 zhumingyu1、zhumingyu2 和 zhumingyu3 的输错密码次数限制为例）</p>
+
+
+
+<h4>5.2 在 /etc/pam.d/password-auth-ac 配置文件中添加 pam_succeed_if.so 模块和相关参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/password-auth-ac</code></pre>
+
+
+
+<p>在此行：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth &#91;success=1 default=ignore] pam_succeed_if.so user in mingyuzhu1:mingyuzhu2:mingyuzhu3</code></pre>
+
+
+
+<p>（补充：这里以排除用户 zhumingyu1、zhumingyu2 和 zhumingyu3 的输错密码次数限制为例）</p>
+
+
+
+<h2>参考文献：</h2>
+
+
+
+<p class="has-text-align-center">https://access.redhat.com/solutions/62949</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 非 root 用户 ping 命令使用的禁止和允许</title>
+		<link>https://eternalcenter-sep-2022.github.io/non-root-user-ping-diable-enable/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 15 Jul 2022 07:00:36 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26794</guid>
+
+					<description><![CDATA[步骤一：禁止非 root 用户使用 ping 步骤二：允许非 root 用户使用 ping 补充：当禁止禁止非 root 用户使用 ping 时，非 root 用户使用 ping 命令的报错 如果是 Rocky Linux &#38; RHEL： 如果是 openSUSE &#38; SLE：]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：禁止非 root 用户使用 ping</h3>
+
+
+
+<pre class="wp-block-code"><code>#  sysctl net.ipv4.ping_group_range="1 0"</code></pre>
+
+
+
+<h3>步骤二：允许非 root 用户使用 ping</h3>
+
+
+
+<pre class="wp-block-code"><code># sysctl net.ipv4.ping_group_range="0 2147483647"</code></pre>
+
+
+
+<h3>补充：当禁止禁止非 root 用户使用 ping 时，非 root 用户使用 ping 命令的报错</h3>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code>ping: socket: Address family not supported by protocol</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code>Error: ping: socket: Operation not permitted</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 密码的安全 （本地和 SSH 输错密码次数的限制） （pam_tally2.so 版） （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/password-security-local-ssh-login-attempt-pam_tally2-so-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 14 Jul 2022 13:07:17 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26779</guid>
+
+					<description><![CDATA[正文： 步骤一：让 sshd 使用可插入身份验证模块 1.1 修改 sshd 的配置文件 将以下内容： 修改为： 1.2 让修改的 sshd 配置文件生效 步骤二：让本地登录和 sshd 登录使用密码认证 2.1 确认 /etc/pam.d/login 配置文件 确保包含以下内容： 2.2 确认 /etc/pam.d/sshd 配置文件 确保包含以下内容： 步骤三：在 /etc/pam.d/common-auth-pc 配置文件中添加 pam_tally2.so 模块和相关参数 添加以下内容： （补充：1) 这里的 pam_tally2.so 代表使用 pam_tally2.so 模块2) 这里的 silent 代表不会显示信息性的消息3) 这里的 deny=15 代表输错 15 次后会禁止登录4) 这里的 unlock_time=3000 代表禁止登录后 3000 毫秒后可以重新登录5) 这里的 even_deny_root 代表 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/password-security-local-ssh-login-attempt-pam_tally2-so-opensuse-sle/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 密码的安全 （本地和 SSH 输错密码次数的限制） （pam_tally2.so 版） （openSUSE &#038; SLE 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>正文：</h2>
+
+
+
+<h3>步骤一：让 sshd 使用可插入身份验证模块</h3>
+
+
+
+<h4>1.1 修改 sshd 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/ssh/sshd_config</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#UsePAM no
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+UsePAM yes
+......</code></pre>
+
+
+
+<h4>1.2 让修改的 sshd 配置文件生效</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart sshd</code></pre>
+
+
+
+<h3>步骤二：让本地登录和 sshd 登录使用密码认证</h3>
+
+
+
+<h4>2.1 确认 /etc/pam.d/login 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/pam.d/login | grep include</code></pre>
+
+
+
+<p>确保包含以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>auth      include    common-auth
+account   include    common-account
+password  include    common-password
+session   include    common-session</code></pre>
+
+
+
+<h4>2.2 确认 /etc/pam.d/sshd 配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/pam.d/sshd | grep include</code></pre>
+
+
+
+<p>确保包含以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>auth        include     common-auth
+account     include     common-account
+password    include     common-password
+session     include     common-session</code></pre>
+
+
+
+<h3>步骤三：在 /etc/pam.d/common-auth-pc 配置文件中添加 pam_tally2.so 模块和相关参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/common-auth-pc</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 pam_tally2.so 代表使用 pam_tally2.so 模块<br>2) 这里的 silent 代表不会显示信息性的消息<br>3) 这里的 deny=15 代表输错 15 次后会禁止登录<br>4) 这里的 unlock_time=3000 代表禁止登录后 3000 毫秒后可以重新登录<br>5) 这里的 even_deny_root 代表 root 用户和其它用户一样会被锁住<br>6) 这里的 root_unlock_time=3000 代表禁止 root 用户登录后 3000 毫秒后可以重新登录<br>）</p>
+
+
+
+<h3>步骤四：在 /etc/pam.d/common-account-pc 配置文件中添加使用 pam_tally2.so 模块和相关参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/common-account-pc</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+account required pam_tally2.so</code></pre>
+
+
+
+<p>（补充：这里的 pam_tally2.so 代表加载 pam_tally2.so 模块）</p>
+
+
+
+<h3>步骤五：用户登录失败的管理</h3>
+
+
+
+<h4>5.1 查看某个用户近期输错了几次密码</h4>
+
+
+
+<pre class="wp-block-code"><code># pam_tally2 -u &lt;user&gt;</code></pre>
+
+
+
+<h4>5.2 重制某个用户登录密码输错次数</h4>
+
+
+
+<pre class="wp-block-code"><code># pam_tally2 -u &lt;user&gt; -r --reset</code></pre>
+
+
+
+<h3>步骤六：部分用户输错密码次数限制的排除</h3>
+
+
+
+<h4>6.1 在 /etc/pam.d/common-auth-pc 配置文件中添加 pam_succeed_if.so 模块和相关参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/common-auth-pc</code></pre>
+
+
+
+<p>在此行：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth &#91;success=1 default=ignore] pam_succeed_if.so user in mingyuzhu1:mingyuzhu2:mingyuzhu3</code></pre>
+
+
+
+<p>（补充：这里以排除用户 zhumingyu1、zhumingyu2 和 zhumingyu3 的输错密码次数限制为例）</p>
+
+
+
+<h4>6.2 在 /etc/pam.d/common-account-pc 配置文件中添加 pam_succeed_if.so 模块和相关参数</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/pam.d/common-account-pc</code></pre>
+
+
+
+<p>在此行：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth required pam_tally2.so onerr=fail audit silent deny=15 unlock_time=3000 even_deny_root root_unlock_time=3000</code></pre>
+
+
+
+<p>下面添加：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+auth &#91;success=1 default=ignore] pam_succeed_if.so user in mingyuzhu1:mingyuzhu2:mingyuzhu3</code></pre>
+
+
+
+<p>（补充：这里以排除用户 zhumingyu1、zhumingyu2 和 zhumingyu3 的输错密码次数限制为例）</p>
+
+
+
+<h2>参考文献：</h2>
+
+
+
+<p class="has-text-align-center">https://access.redhat.com/solutions/62949</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 软件指定版本的升级或降级 （CentOS Linux 7 版） （以系统版本作为指定维度）</title>
+		<link>https://eternalcenter-sep-2022.github.io/software-specified-version-upgarde-downgrade-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 16:00:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26495</guid>
+
+					<description><![CDATA[内容一：将软件降级到某个版本 （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 或者： （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 内容二：将软件降级到某个版本 （补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<h3>内容二：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' downgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 15:50:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26491</guid>
+
+					<description><![CDATA[步骤一：安装其他版本软件源 1.1 安装 centos-release 1.2 查看当前所有软件源 或者： 步骤二：清除 yum 缓存 2.1 除 yum 缓存 2.2 删除 yum 缓存目录 步骤三：将系统或软件升级到指定版本 3.1 方案一：将整个系统升级到指定版本 （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 或者： （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 3.2 方案二：只将系统内核或某个软件升级到指定版本 （补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例） 或者： （补充：这里以只将系统内核 kernel 升级到 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：安装其他版本软件源</h3>
+
+
+
+<h4>1.1 安装 centos-release</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install centos-release</code></pre>
+
+
+
+<h4>1.2 查看当前所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist all</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/yum.repos.d/CentOS-Vault.repo</code></pre>
+
+
+
+<h3>步骤二：清除 yum 缓存</h3>
+
+
+
+<h4>2.1 除 yum 缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h4>2.2 删除 yum 缓存目录</h4>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/cache/yum</code></pre>
+
+
+
+<h3>步骤三：将系统或软件升级到指定版本</h3>
+
+
+
+<h4>3.1 方案一：将整个系统升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<h4>3.2 方案二：只将系统内核或某个软件升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux SSL 证书 KEY 私钥密码的添加 （OpenSSL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ssl-password-openssl/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 10:00:50 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Basic Guidelines for Website building (网站建设基础指南)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Security (安全)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[Tomcat]]></category>
+		<category><![CDATA[Web Application Firewall (WAF)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26489</guid>
+
+					<description><![CDATA[内容一：给 SSL 证书 KEY 私钥添加密码 交互式给 SSL 证书 KEY 私钥添加密码 （补充：这里以给 eternalcenter.com.key） 内容二：取消 SSL 证书 KEY 私钥添加密码 2.1 交互式取消 SSL 证书 KEY 私钥添加密码 2.2 非交互式取消 SSL 证书 KEY 私钥添加密码]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：给 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<p>交互式给 SSL 证书 KEY 私钥添加密码</p>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -des -in eternalcenter.com.key -out one.eternalcenter.com.key</code></pre>
+
+
+
+<p>（补充：这里以给 eternalcenter.com.key）</p>
+
+
+
+<h3>内容二：取消 SSL 证书 KEY 私钥添加密码</h3>
+
+
+
+<h4>2.1 交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -out two.eternalcenter.com.key</code></pre>
+
+
+
+<h4>2.2 非交互式取消 SSL 证书 KEY 私钥添加密码</h4>
+
+
+
+<pre class="wp-block-code"><code># openssl rsa -in one.eternalcenter.com.key -passin pass:eternalcenter -out two.eternalcenter.com.key</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] audit 日志时间格式的转换</title>
+		<link>https://eternalcenter-sep-2022.github.io/time-format-conversion/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 Jul 2022 08:00:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SFTP]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26438</guid>
+
+					<description><![CDATA[步骤一：创建用于 audit 转换日志时间格式的脚本 创建以下内容： （补充：这里以创建名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例） 步骤二：转换 audit 日志时间格式 或者： 或者： 或者： 或者： 或者： （补充：这里以使用名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：创建用于 audit 转换日志时间格式的脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># vim time_format_conversion.pl</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>s/(1\d{9})/localtime($1)/e</code></pre>
+
+
+
+<p>（补充：这里以创建名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）</p>
+
+
+
+<h3>步骤二：转换 audit 日志时间格式</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># less /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># more /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># head /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># tail /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># tail -f /var/log/audit/audit.log | perl -p time_format_conversion.pl</code></pre>
+
+
+
+<p>（补充：这里以使用名为 time_format_conversion.pl 的用于转换 audit 日志时间格式的脚本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 文件或目录的监控 （audit 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/monitor-directory-file-audit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 05 Jul 2022 10:18:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26264</guid>
+
+					<description><![CDATA[步骤一：使用 audit 监控文件或目录 1.1 在 audit 的策略里添加要监控的目录或文件 1.1.1 案例一：监控某个目录以及目录下的目录和文件 添加以下内容： （补充：这里以监控目录 /tmp 里的目录和文件为例） 1.1.2 案例二：监控某个文件 添加以下内容： （补充：这里以监控目录 /dev/null 文件为例） 1.2 让监控目录或文件的配置生效 步骤二：显示 audit 监控记录 （补充：记录里的1) nametype=CREATE 字段代表创建2) nametype=NORMAL 字段代表普通3) nametype=DELETE 字段代表删除） 或者： （补充：这里以显示文件被修改的记录为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：使用 audit 监控文件或目录</h3>
+
+
+
+<h4>1.1 在 audit 的策略里添加要监控的目录或文件</h4>
+
+
+
+<h5>1.1.1 案例一：监控某个目录以及目录下的目录和文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-a exit,always -F dir=/tmp -F perm=rwxa</code></pre>
+
+
+
+<p>（补充：这里以监控目录 /tmp 里的目录和文件为例）</p>
+
+
+
+<h5>1.1.2 案例二：监控某个文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/audit/rules.d/audit.rules</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+-a exit,always -S unlink -S unlinkat -S rmdir -S rename -S renameat -F path=/dev/null</code></pre>
+
+
+
+<p>（补充：这里以监控目录 /dev/null 文件为例）</p>
+
+
+
+<h4>1.2 让监控目录或文件的配置生效</h4>
+
+
+
+<pre class="wp-block-code"><code># service auditd restart</code></pre>
+
+
+
+<h3>步骤二：显示 audit 监控记录</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/audit</code></pre>
+
+
+
+<p>（<br>补充：记录里的<br>1) nametype=CREATE 字段代表创建<br>2) nametype=NORMAL 字段代表普通<br>3) nametype=DELETE 字段代表删除<br>）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># sudo ausearch -i -k user-modify</code></pre>
+
+
+
+<p>（补充：这里以显示文件被修改的记录为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 命令安全的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/command-secure/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 25 Jun 2022 13:37:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26174</guid>
+
+					<description><![CDATA[确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：]]></description>
+										<content:encoded><![CDATA[
+<p>确保以下目录的所属主和所属组是 root，且其它用户没有写入权限：</p>
+
+
+
+<pre class="wp-block-code"><code># ls -ld /usr/local/bin /usr/local/sbin /usr/bin/ /usr/sbin
+dr-xr-xr-x. 2 root root 53248 Jun 24 15:09 /usr/bin/
+drwxr-xr-x. 3 root root  4096 Jun 21  2021 /usr/local/bin
+drwxr-xr-x. 2 root root     6 Jun 21  2021 /usr/local/sbin
+dr-xr-xr-x. 2 root root 20480 Jun 24 15:09 /usr/sbin</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Creations (创作) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/creations/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:17:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 启动顺序</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-start-sequence/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 05:45:40 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26977</guid>
+
+					<description><![CDATA[第一步启动：BIOS/UEFI BIOS （Basic Input Output System） 即基本输入输出系统。 UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。 它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。 第二步启动：MBR/GPT MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。 GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。 它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。 第三步启动：GRUB2 GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。 第四步启动：initrd/Kernel initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/linux-start-sequence/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 启动顺序"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>第一步启动：BIOS/UEFI</h3>
+
+
+
+<p>BIOS （Basic Input Output System） 即基本输入输出系统。</p>
+
+
+
+<p>UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。</p>
+
+
+
+<p>它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。</p>
+
+
+
+<h3>第二步启动：MBR/GPT</h3>
+
+
+
+<p>MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。</p>
+
+
+
+<p>GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。</p>
+
+
+
+<p>它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。</p>
+
+
+
+<h3>第三步启动：GRUB2</h3>
+
+
+
+<p>GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。</p>
+
+
+
+<h3>第四步启动：initrd/Kernel</h3>
+
+
+
+<p>initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 （vmlinuz） 没有提供的驱动模块。2. 通过引导加载程序加载内存，将内存视为临时根目录，从中运行程序，之后再将根目录转移到硬盘上真正的根目录上。</p>
+
+
+
+<h3>第五步启动：systemdprocess</h3>
+
+
+
+<p>systemdprocess，即启动各类程序和进程。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 18</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-18/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 09 Jul 2022 15:49:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26550</guid>
+
+					<description><![CDATA[人们会在迷路彷徨的时候，时不时地看一下自己模糊的影子，世界总是残酷多变，视线所及之处也总是迷雾重重 但就算这个世界是胜者为王，也不会只剩精明算计和希望不再的人，梦想、勇气、羁绊的魔法在不同的空间和时间闪烁着，忠于自己的人们依旧在试图为人类创造奇迹 在生命曲折幽深小径的尽头，会是闪耀着怎样光芒的海市蜃楼，肉体必定腐烂消失，灵魂却在渴望永恒]]></description>
+										<content:encoded><![CDATA[
+<p>人们会在迷路彷徨的时候，时不时地看一下自己模糊的影子，世界总是残酷多变，视线所及之处也总是迷雾重重</p>
+
+
+
+<p>但就算这个世界是胜者为王，也不会只剩精明算计和希望不再的人，梦想、勇气、羁绊的魔法在不同的空间和时间闪烁着，忠于自己的人们依旧在试图为人类创造奇迹</p>
+
+
+
+<p>在生命曲折幽深小径的尽头，会是闪耀着怎样光芒的海市蜃楼，肉体必定腐烂消失，灵魂却在渴望永恒</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 17</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-17/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 28 Jun 2022 15:37:17 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Emotional Essays (感情类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26228</guid>
+
+					<description><![CDATA[如果，这个世界上有 “圣女贞德” 在祈求 “自由、平等、博爱”，那我肯定会去追随。如果这个世界上没有，那我会去成为 “亚瑟王”，亲自为这个世界独自立起 “自由、平等、博爱” 的旗帜。很多时候，就和 《美国队长 2》 里的台词一样：“就算只有我一个人也没有关系，但我相信绝对不会只有我一个”]]></description>
+										<content:encoded><![CDATA[
+<p>如果，这个世界上有 “圣女贞德” 在祈求 “自由、平等、博爱”，那我肯定会去追随。如果这个世界上没有，那我会去成为 “亚瑟王”，亲自为这个世界独自立起 “自由、平等、博爱” 的旗帜。很多时候，就和 《美国队长 2》 里的台词一样：“就算只有我一个人也没有关系，但我相信绝对不会只有我一个”</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 16</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-16/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 05 Jun 2022 16:39:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Emotional Essays (感情类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23698</guid>
+
+					<description><![CDATA[这片天空，这份宁静，这个时代。总有些什么值得去坚持，总有些什么需要马上杜绝。感觉自己在守望的，是时间和空间：在大洋的彼岸，法国启蒙运动的自由、平等、博爱闪耀在新大陆，而顺着丝绸之路一直西望到尽头，是曾经的欧洲民族，在德国三十年战争中融合交融。培根在平静之中学会了洞察，又在洞察之中学会了思索。而甘地在暴力之中学会了平静，又在平静之中学会了成功]]></description>
+										<content:encoded><![CDATA[
+<p>这片天空，这份宁静，这个时代。总有些什么值得去坚持，总有些什么需要马上杜绝。感觉自己在守望的，是时间和空间：在大洋的彼岸，法国启蒙运动的自由、平等、博爱闪耀在新大陆，而顺着丝绸之路一直西望到尽头，是曾经的欧洲民族，在德国三十年战争中融合交融。培根在平静之中学会了洞察，又在洞察之中学会了思索。而甘地在暴力之中学会了平静，又在平静之中学会了成功</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>问题排查的方法</title>
+		<link>https://eternalcenter-sep-2022.github.io/troubleshooting-methods/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 23 May 2022 15:30:26 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Management Articles (管理类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23610</guid>
+
+					<description><![CDATA[方法一：按时间顺序分析 （Chronological Analysis） 根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因 方法二：深度价值分析 （Pain Value Analysis） 根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心 方法三：KTKT 分析 （Kepner and Tregoe） 对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因 方法四：头脑风暴 （Brainstorming） 大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观 方法五：鱼骨图 （Ishikawa Diagrams） 将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上 方法六：帕累托分析 （Pareto Analysis） 分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果 方法七：5 个为什么 （5 Why） 5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：1) 避免使用借口回答问题2) 避免在追问的过程中牵扯到人的心理3) 避免回答问题时推卸责任4) 避免各个问题之间没有层级关系]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：按时间顺序分析 （Chronological Analysis）</h3>
+
+
+
+<p>根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因</p>
+
+
+
+<h3>方法二：深度价值分析 （Pain Value Analysis）</h3>
+
+
+
+<p>根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心</p>
+
+
+
+<h3>方法三：KTKT 分析 （Kepner and Tregoe）</h3>
+
+
+
+<p>对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因</p>
+
+
+
+<h3>方法四：头脑风暴 （Brainstorming）</h3>
+
+
+
+<p>大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观</p>
+
+
+
+<h3>方法五：鱼骨图 （Ishikawa Diagrams）</h3>
+
+
+
+<p>将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上</p>
+
+
+
+<h3>方法六：帕累托分析 （Pareto Analysis）</h3>
+
+
+
+<p>分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果</p>
+
+
+
+<h3>方法七：5 个为什么 （5 Why）</h3>
+
+
+
+<p>5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：<br>1) 避免使用借口回答问题<br>2) 避免在追问的过程中牵扯到人的心理<br>3) 避免回答问题时推卸责任<br>4) 避免各个问题之间没有层级关系</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>世界的方向</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-direction-of-the-world/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 04 May 2022 04:19:26 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Poetry (诗歌)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23464</guid>
+
+					<description><![CDATA[这个世界最早只有时间与空间的起点信仰、爱情、梦想……在宇宙大爆炸亿万年后的今天一个个奇迹相继从本是无穷无尽的宇宙尘埃中诞生 生命本是一种奇迹希望、信念、理想……就算面对无法抗争的命运一个个崇高的传奇也能够从不屈中诞生 选择为什么而生存下去又选择为什么而牺牲选择去指引谁又选择去追随谁 在平凡生活中不经意的小事里似乎有人在某处悄悄地坚守着美好的未来从遥远土地传来的消息里有人毅然选择了和不可接受的未来决斗 就算看似已毫无胜算就算看似已毫无意义双手也会握紧最后的希望和决心因为在历史的答案中只有这个方向的未来才会美好 人类的人生在因为共同的三观而一同燃烧不论是喜悦还是悲伤最终都会守望着同样的光芒]]></description>
+										<content:encoded><![CDATA[
+<p>这个世界最早只有时间与空间的起点<br>信仰、爱情、梦想……<br>在宇宙大爆炸亿万年后的今天<br>一个个奇迹相继从本是无穷无尽的宇宙尘埃中诞生</p>
+
+
+
+<p>生命本是一种奇迹<br>希望、信念、理想……<br>就算面对无法抗争的命运<br>一个个崇高的传奇也能够从不屈中诞生</p>
+
+
+
+<p>选择为什么而生存下去<br>又选择为什么而牺牲<br>选择去指引谁<br>又选择去追随谁</p>
+
+
+
+<p>在平凡生活中不经意的小事里<br>似乎有人在某处悄悄地坚守着美好的未来<br>从遥远土地传来的消息里<br>有人毅然选择了和不可接受的未来决斗</p>
+
+
+
+<p>就算看似已毫无胜算<br>就算看似已毫无意义<br>双手也会握紧最后的希望和决心<br>因为在历史的答案中只有这个方向的未来才会美好</p>
+
+
+
+<p>人类的人生<br>在因为共同的三观而一同燃烧<br>不论是喜悦还是悲伤<br>最终都会守望着同样的光芒</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>最后一个特洛伊战士</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-last-trojan-warrior/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 13 Feb 2022 15:49:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Micro Fictions (微小说)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21920</guid>
+
+					<description><![CDATA[众神之晨曦，在东方升起，圣洁的阳光普照大地。雅典娜在歌唱，歌唱胜利的来临。 木马里的士兵，冒着特洛伊人的诅咒，打开了城门，让希腊联军一拥而入。 正义不属于特洛伊，雅典娜的手杖，散发着耀眼的智慧之光，照亮了希腊士兵前进的方向，映照着光明的来临。 “光明？”一个小特洛伊在我身边小声地说了一句。 我在追随着最后一支特洛伊队伍进入城市的密道时，回望着雅典娜在空中的身影。 “埃涅阿斯！” 当我们从密道出来时，与一支巡逻的希腊队伍撞在了一起，我鼓起全部勇气颤抖着冲向一个希腊士兵，却发现他毫不畏惧。 我憎恨自己所要面对的一切，憎恨雅典的自以为是，憎恨斯巴达的残暴，憎恨战俘是奴隶，女人是战利品的制度。 我憎恨宙斯的闪电划破宁静的天空，憎恨哈克斯的火球漫天飞舞，憎恨雅典娜的智慧，憎恨阿瑞斯的强大，憎恨他们以不死之身与人类战斗。 我增恨海伦花枝招展地卖弄自己的身体，憎恨她美丽，憎恨她笑容，憎恨她不以自己所引起的战争感到羞愧而是以之为自豪。 风吹走了浅浅的云层，明媚的阳光再次直射大地，透过稀稀疏疏的树林，形成了一束束的光明。 终于冲破了重围。血在剑刃上凝固，整个队伍都默不作声，“特洛伊，你到底代表着什么？” 不论天空再明在暗，海永远都是蓝色，终于快到了爱琴海，清新的空气扑面而来。 在海边，整齐地排列着一队希腊重装步兵，银色的铠甲和盾牌反射着耀眼的秩序之光，直射入特洛伊人的眼里。 “光明？”一个小特洛伊在我身边小声地说了一句。 此时，一个身影从希腊队伍中走了出来映入了我们的眼帘：阿喀琉斯！没有人能与希腊第一勇士阿喀琉斯单独抗衡。 我抬起了头，看见雅典娜在空中得意地笑了：要么失去自由，要么失去生命。 我低下了头，为什么是我，来面对这一切。 “埃涅阿斯？” 我拔出了剑。为了自由，饱经沧桑的特洛伊军队再次向希腊的铁墙冲去。 我无法面对阿喀琉斯，我用尽全力挥舞着利剑，却怎么也无法穿透他的铠甲，而每次用盾牌格挡攻击时，却能被随之而来的剑击震麻整个手臂…… 但一个声音中断了战斗，阿喀琉斯：“让他们走，他们不是特洛伊人。” 我困惑得看着阿喀琉斯，他似乎在同情特洛伊人最后的勇气。我没吭声，慢慢地向他走去。 谁也无法想象，阿喀琉斯慢慢地在我面前倒下了，他的鲜血沾在了我的身上…… 最后一个希腊士兵死在了一个小特洛伊的剑下，他举目四望，却发现埃涅阿斯正站在海边哭泣，他独自说道：“宙斯想让他指定的人创造奇迹，他以为他什么都懂，但是他根本不知道一个奇迹的价值到底有多大。” 我们抢走了希腊人的船只，向着西方航行，在那里我们将找到一片新的土地——意大利，我们将在那里创建一个新的国家——罗马。 （续写自 《伊利亚特》）]]></description>
+										<content:encoded><![CDATA[
+<p>众神之晨曦，在东方升起，圣洁的阳光普照大地。雅典娜在歌唱，歌唱胜利的来临。</p>
+
+
+
+<p>木马里的士兵，冒着特洛伊人的诅咒，打开了城门，让希腊联军一拥而入。</p>
+
+
+
+<p>正义不属于特洛伊，雅典娜的手杖，散发着耀眼的智慧之光，照亮了希腊士兵前进的方向，映照着光明的来临。</p>
+
+
+
+<p>“光明？”一个小特洛伊在我身边小声地说了一句。</p>
+
+
+
+<p>我在追随着最后一支特洛伊队伍进入城市的密道时，回望着雅典娜在空中的身影。</p>
+
+
+
+<p class="has-medium-font-size">“埃涅阿斯！”</p>
+
+
+
+<p>当我们从密道出来时，与一支巡逻的希腊队伍撞在了一起，我鼓起全部勇气颤抖着冲向一个希腊士兵，却发现他毫不畏惧。</p>
+
+
+
+<p>我憎恨自己所要面对的一切，憎恨雅典的自以为是，憎恨斯巴达的残暴，憎恨战俘是奴隶，女人是战利品的制度。</p>
+
+
+
+<p>我憎恨宙斯的闪电划破宁静的天空，憎恨哈克斯的火球漫天飞舞，憎恨雅典娜的智慧，憎恨阿瑞斯的强大，憎恨他们以不死之身与人类战斗。</p>
+
+
+
+<p>我增恨海伦花枝招展地卖弄自己的身体，憎恨她美丽，憎恨她笑容，憎恨她不以自己所引起的战争感到羞愧而是以之为自豪。</p>
+
+
+
+<p>风吹走了浅浅的云层，明媚的阳光再次直射大地，透过稀稀疏疏的树林，形成了一束束的光明。</p>
+
+
+
+<p>终于冲破了重围。血在剑刃上凝固，整个队伍都默不作声，“特洛伊，你到底代表着什么？”</p>
+
+
+
+<p>不论天空再明在暗，海永远都是蓝色，终于快到了爱琴海，清新的空气扑面而来。</p>
+
+
+
+<p>在海边，整齐地排列着一队希腊重装步兵，银色的铠甲和盾牌反射着耀眼的秩序之光，直射入特洛伊人的眼里。</p>
+
+
+
+<p>“光明？”一个小特洛伊在我身边小声地说了一句。</p>
+
+
+
+<p>此时，一个身影从希腊队伍中走了出来映入了我们的眼帘：阿喀琉斯！没有人能与希腊第一勇士阿喀琉斯单独抗衡。</p>
+
+
+
+<p>我抬起了头，看见雅典娜在空中得意地笑了：要么失去自由，要么失去生命。</p>
+
+
+
+<p>我低下了头，为什么是我，来面对这一切。</p>
+
+
+
+<p>“埃涅阿斯？”</p>
+
+
+
+<p>我拔出了剑。为了自由，饱经沧桑的特洛伊军队再次向希腊的铁墙冲去。</p>
+
+
+
+<p>我无法面对阿喀琉斯，我用尽全力挥舞着利剑，却怎么也无法穿透他的铠甲，而每次用盾牌格挡攻击时，却能被随之而来的剑击震麻整个手臂……</p>
+
+
+
+<p>但一个声音中断了战斗，阿喀琉斯：“让他们走，他们不是特洛伊人。”</p>
+
+
+
+<p>我困惑得看着阿喀琉斯，他似乎在同情特洛伊人最后的勇气。我没吭声，慢慢地向他走去。</p>
+
+
+
+<p>谁也无法想象，阿喀琉斯慢慢地在我面前倒下了，他的鲜血沾在了我的身上……</p>
+
+
+
+<p>最后一个希腊士兵死在了一个小特洛伊的剑下，他举目四望，却发现埃涅阿斯正站在海边哭泣，他独自说道：“宙斯想让他指定的人创造奇迹，他以为他什么都懂，但是他根本不知道一个奇迹的价值到底有多大。”</p>
+
+
+
+<p>我们抢走了希腊人的船只，向着西方航行，在那里我们将找到一片新的土地——意大利，我们将在那里创建一个新的国家——罗马。</p>
+
+
+
+<p>（续写自 《伊利亚特》）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>盾牌和铠甲</title>
+		<link>https://eternalcenter-sep-2022.github.io/shield-and-armor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 17 Jan 2022 15:23:22 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Poetry (诗歌)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21250</guid>
+
+					<description><![CDATA[在用经验拼凑的盾牌上扎满了纷乱错综的谎言在用梦想打造的铠甲上布满了恶毒欺诈的伤痕 在战火之中的坚持在孤独尽头的珍视该相信什么是唯一的希望该决定什么是生命绝对不应该如此 梦想之上的梦想逆风而上的飞翔判断之后的判断逆光而向的洞察 过去无意间犯下的错误就算会辗转反侧悔恨终身也绝不会为了内心安稳而放弃的那份善念将会成为人们在这颗星球上最后的盾牌 理想之上的理想不会后悔的牺牲选择之后的选择不会后怕的勇敢 如今必须要去面对的那些邪恶就算会因毫无安全感而变得焦躁不安也绝不会为了内心安稳而抛弃的那份公正将会成为人们在这颗星球上最后的铠甲 稍纵即逝的人生生命的价值从来都不是曾存在于世共同理想的创造人类会因为拥有彼此而变得无所畏惧]]></description>
+										<content:encoded><![CDATA[
+<p>在用经验拼凑的盾牌上<br>扎满了纷乱错综的谎言<br>在用梦想打造的铠甲上<br>布满了恶毒欺诈的伤痕</p>
+
+
+
+<p>在战火之中的坚持<br>在孤独尽头的珍视<br>该相信什么是唯一的希望<br>该决定什么是生命绝对不应该如此</p>
+
+
+
+<p>梦想之上的梦想<br>逆风而上的飞翔<br>判断之后的判断<br>逆光而向的洞察</p>
+
+
+
+<p>过去无意间犯下的错误<br>就算会辗转反侧悔恨终身<br>也绝不会为了内心安稳而放弃的那份善念<br>将会成为人们在这颗星球上最后的盾牌</p>
+
+
+
+<p>理想之上的理想<br>不会后悔的牺牲<br>选择之后的选择<br>不会后怕的勇敢</p>
+
+
+
+<p>如今必须要去面对的那些邪恶<br>就算会因毫无安全感而变得焦躁不安<br>也绝不会为了内心安稳而抛弃的那份公正<br>将会成为人们在这颗星球上最后的铠甲</p>
+
+
+
+<p>稍纵即逝的人生<br>生命的价值从来都不是曾存在于世<br>共同理想的创造<br>人类会因为拥有彼此而变得无所畏惧</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WordPress 值得使用的主题和插件</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2021 14:26:53 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20391</guid>
+
+					<description><![CDATA[主题 Twenty Seventeen Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。 插件 All In One WP Security All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。 Easy WP SMTP Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。 Simply Static Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。 WP-Optimize Cache WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。 Health Check &#38; Troubleshooting &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/" class="more-link">Continue reading<span class="screen-reader-text"> "WordPress 值得使用的主题和插件"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>主题</h2>
+
+
+
+<h3>Twenty Seventeen</h3>
+
+
+
+<p>Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。</p>
+
+
+
+<h2>插件</h2>
+
+
+
+<h3>All In One WP Security</h3>
+
+
+
+<p>All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。</p>
+
+
+
+<h3>Easy WP SMTP</h3>
+
+
+
+<p>Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。</p>
+
+
+
+<h3>Simply Static</h3>
+
+
+
+<p>Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。</p>
+
+
+
+<h3>WP-Optimize Cache</h3>
+
+
+
+<p>WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。</p>
+
+
+
+<h3>Health Check &amp; Troubleshooting</h3>
+
+
+
+<p>Health Check &amp; Troubleshooting 是一个开源的 WordPress 网站健康度检测插件，可以检测网站的各项健康指标。</p>
+
+
+
+<h3>Username Changer</h3>
+
+
+
+<p>Username Changer 是一个开源的修改 WordPress 用户名的插件，可以修改用户名</p>
+
+
+
+<h3>Edit Author Slug</h3>
+
+
+
+<p>Edit Author Slug 是一个开源的修改 WordPress 用户名下文章链接的插件，可以修改用户发布文章的链接，默认情况下用户发布文章的链接是：https://&lt;domain/ name&gt;/author/&lt;username&gt;/ </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 15</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 29 Aug 2021 10:21:45 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17598</guid>
+
+					<description><![CDATA[什么样的触动和沉寂，会让人们因为生活在这个时代而感到幸运？什么样的微笑和眼神，会让人们坚定化解相互仇视的决心？ 死板的思维会因包容非我族类的异己而变得梦幻多彩死寂的社会会因无数不同的团队怀揣相同的梦想而充满奇迹 开启黄金时代的钥匙，从来都在每个人自己的手中如果，勇气将是深思熟虑后的选择，而不是会后怕的一时逞能或法律的强迫如果，智慧将是为了个体与集体的共同受益，而不是为了个体先破坏集体，再因集体的被破坏牵连个体如果，会带着勇气和智慧在自己有限的人生中去自我成就，并能享受和沉寂在这份自我成就中]]></description>
+										<content:encoded><![CDATA[
+<p>什么样的触动和沉寂，会让人们因为生活在这个时代而感到幸运？<br>什么样的微笑和眼神，会让人们坚定化解相互仇视的决心？</p>
+
+
+
+<p>死板的思维会因包容非我族类的异己而变得梦幻多彩<br>死寂的社会会因无数不同的团队怀揣相同的梦想而充满奇迹</p>
+
+
+
+<p>开启黄金时代的钥匙，从来都在每个人自己的手中<br>如果，勇气将是深思熟虑后的选择，而不是会后怕的一时逞能或法律的强迫<br>如果，智慧将是为了个体与集体的共同受益，而不是为了个体先破坏集体，再因集体的被破坏牵连个体<br>如果，会带着勇气和智慧在自己有限的人生中去自我成就，并能享受和沉寂在这份自我成就中</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 14</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-14/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 28 May 2021 07:01:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14443</guid>
+
+					<description><![CDATA[每个人都是在没有意识的情况下被动降临到这个世界 在动漫《EVA》中有一句类似这样的台词：出生是死亡的开始……当辩证学之父柏拉图在被判死刑喝下毒药等待死亡的时候，并没能和身边的人讨论出：人死后是否有灵魂 每个人的母亲为他（她）带来了一次生命一次生命换来了一次人生我们是否应该想一想，自己的人生应该有怎样的价值？ 雨果完成世界名著《悲惨世界》用了三十年时间贝多芬一直沉浸在自己音乐的幻象中拿破仑也许是在想穷尽自己的一生以治愈大革命给法国带来的创伤 他们最初都是一些最普通的人，但都是在为了自己觉得有意义的事情在一直努力，每个人在人类的历史留下的痕迹有大有小，但只要是一直朝着自己觉得有意义的方向前进，人生就算是有价值，至少我是这样认为的]]></description>
+										<content:encoded><![CDATA[
+<p>每个人都是在没有意识的情况下被动降临到这个世界</p>
+
+
+
+<p>在动漫《EVA》中有一句类似这样的台词：出生是死亡的开始……<br>当辩证学之父柏拉图在被判死刑喝下毒药等待死亡的时候，并没能和身边的人讨论出：人死后是否有灵魂</p>
+
+
+
+<p>每个人的母亲为他（她）带来了一次生命<br>一次生命换来了一次人生<br>我们是否应该想一想，自己的人生应该有怎样的价值？</p>
+
+
+
+<p>雨果完成世界名著《悲惨世界》用了三十年时间<br>贝多芬一直沉浸在自己音乐的幻象中<br>拿破仑也许是在想穷尽自己的一生以治愈大革命给法国带来的创伤</p>
+
+
+
+<p>他们最初都是一些最普通的人，但都是在为了自己觉得有意义的事情在一直努力，每个人在人类的历史留下的痕迹有大有小，但只要是一直朝着自己觉得有意义的方向前进，人生就算是有价值，至少我是这样认为的</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 13</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-13/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 27 May 2021 13:55:15 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Historical Essays (历史类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14435</guid>
+
+					<description><![CDATA[我从历史中，比较有感触的一点是：人类明知道自己的结局终是死亡，但是依旧能对很多事物和事情，充满难以想象的热情、喜悦和执着。于是，我理解，生命的本质，就是尽量开心和充实地过好每一天，并最终将它们汇聚成某些能够指引后世的成就。祝大家心中，都有认为值得自己去劳动的人和事！]]></description>
+										<content:encoded><![CDATA[
+<p>我从历史中，比较有感触的一点是：人类明知道自己的结局终是死亡，但是依旧能对很多事物和事情，充满难以想象的热情、喜悦和执着。于是，我理解，生命的本质，就是尽量开心和充实地过好每一天，并最终将它们汇聚成某些能够指引后世的成就。祝大家心中，都有认为值得自己去劳动的人和事！</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 12</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-12/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 27 May 2021 13:52:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Historical Essays (历史类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14433</guid>
+
+					<description><![CDATA[热爱过去，憧憬未来那些因极具逻辑说服力的思想而使人们信仰高尚品质的时代那些因奇迹般的科技而让世人们对未来充满无限期待和崇拜的时代都将让未来的时代，更像是会无限可能]]></description>
+										<content:encoded><![CDATA[
+<p>热爱过去，憧憬未来<br>那些因极具逻辑说服力的思想而使人们信仰高尚品质的时代<br>那些因奇迹般的科技而让世人们对未来充满无限期待和崇拜的时代<br>都将让未来的时代，更像是会无限可能</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 11</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-11/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 12 Mar 2021 14:25:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Emotional Essays (感情类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13619</guid>
+
+					<description><![CDATA[为给我勇气之人而勇敢……为给我指引之人而智慧……为给我希望之人而博爱……]]></description>
+										<content:encoded><![CDATA[
+<p>为给我勇气之人而勇敢……<br>为给我指引之人而智慧……<br>为给我希望之人而博爱……</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 10</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-10/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 14 Feb 2021 13:40:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13540</guid>
+
+					<description><![CDATA[人类曾因为各种原因，表现出了对同类的忠诚和自我牺牲。而在人类所有的忠诚和自我牺牲中，最为坚固的，莫过于，对此人人格魅力、优秀品质或出众能力的认可和崇敬，同时与此人拥有共同的人生目标和美好的理想，并愿意共同为这些目标和理想而努力。这一现象，会让爱情、友情、亲情以及普世的博爱变得无比牢固，任凭海枯石烂也屹立不倒。 所以，祝大家对他（她）人的忠诚，以及他（她）人对你的忠诚不仅仅是出于共同的经历和责任，还包括我以上所述的内容。既是指爱情，也是指友情，也是指亲情，也是指博爱……]]></description>
+										<content:encoded><![CDATA[
+<p>人类曾因为各种原因，表现出了对同类的忠诚和自我牺牲。而在人类所有的忠诚和自我牺牲中，最为坚固的，莫过于，对此人人格魅力、优秀品质或出众能力的认可和崇敬，同时与此人拥有共同的人生目标和美好的理想，并愿意共同为这些目标和理想而努力。这一现象，会让爱情、友情、亲情以及普世的博爱变得无比牢固，任凭海枯石烂也屹立不倒。</p>
+
+
+
+<p>所以，祝大家对他（她）人的忠诚，以及他（她）人对你的忠诚不仅仅是出于共同的经历和责任，还包括我以上所述的内容。既是指爱情，也是指友情，也是指亲情，也是指博爱……</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 9</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-9/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 10 Feb 2021 11:51:30 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Emotional Essays (感情类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13512</guid>
+
+					<description><![CDATA[银色的细雨敲打着充满叹息的大地起起伏伏的声线，努力表达着自己心中那份苦涩的温柔唯美的风景被交替的四季驱使， 无法坚持住自己最美丽的样子守望着那些看不见的星辰，那些消失了的宇宙。该以什么之名，幻想出一种怎样的梦境？不管是清晰还是模糊，不管是胸有成竹还是力不从心。诞生于这个世界的意义，应从当下开始去创造心中的启明星，会在静谧中，开始自己璀璨亦朦胧的闪耀]]></description>
+										<content:encoded><![CDATA[
+<p>银色的细雨敲打着充满叹息的大地<br>起起伏伏的声线，努力表达着自己心中那份苦涩的温柔<br>唯美的风景被交替的四季驱使， 无法坚持住自己最美丽的样子<br>守望着那些看不见的星辰，那些消失了的宇宙。该以什么之名，幻想出一种怎样的梦境？<br>不管是清晰还是模糊，不管是胸有成竹还是力不从心。诞生于这个世界的意义，应从当下开始去创造<br>心中的启明星，会在静谧中，开始自己璀璨亦朦胧的闪耀</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 8</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 12 Nov 2020 13:15:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Emotional Essays (感情类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11710</guid>
+
+					<description><![CDATA[每个人都有自己的世界。梦幻般五彩的光芒，神秘幽暗的寂静，洞穿天地的深邃，令憎恨释怀的温柔。有些时候，就算冷风刺穿了皮肤上最后一层微薄的温暖，也还会继续孤独坚守在原处。守护着各自心中的正义，期盼着各自心中的英雄。但又曾想过，那样的英雄，他（她）又会有怎样的世界，他（她）又会一直守望着怎样的星辰，他（她）又会一直凝视着怎样的感动。]]></description>
+										<content:encoded><![CDATA[
+<p>每个人都有自己的世界。梦幻般五彩的光芒，神秘幽暗的寂静，洞穿天地的深邃，令憎恨释怀的温柔。有些时候，就算冷风刺穿了皮肤上最后一层微薄的温暖，也还会继续孤独坚守在原处。守护着各自心中的正义，期盼着各自心中的英雄。但又曾想过，那样的英雄，他（她）又会有怎样的世界，他（她）又会一直守望着怎样的星辰，他（她）又会一直凝视着怎样的感动。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 7</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2020 13:44:23 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Historical Essays (历史类随笔)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11595</guid>
+
+					<description><![CDATA[从现代教育被发明以来，欧洲很多君主都清楚地意识到了教育的重要性。但在推行教育时，却又都遇到了严重的矛盾，君主的统治根基在于不平等地压迫。而让每个人都平等地接受教育，这似乎触犯了统治阶级的特权利益（至少表面上看是这样）。最终，不少君主在国民教育上的努力，变成了极少数贵族才能受益的精英教育。这些集中全部教育资源去服务所谓的优越阶级的国家，都慢慢输给了将全部教育资源尽可能分配给每一位公民的国家。]]></description>
+										<content:encoded><![CDATA[
+<p>从现代教育被发明以来，欧洲很多君主都清楚地意识到了教育的重要性。但在推行教育时，却又都遇到了严重的矛盾，君主的统治根基在于不平等地压迫。而让每个人都平等地接受教育，这似乎触犯了统治阶级的特权利益（至少表面上看是这样）。最终，不少君主在国民教育上的努力，变成了极少数贵族才能受益的精英教育。这些集中全部教育资源去服务所谓的优越阶级的国家，都慢慢输给了将全部教育资源尽可能分配给每一位公民的国家。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>随笔 6</title>
+		<link>https://eternalcenter-sep-2022.github.io/informal-6/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2020 13:34:43 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Informal Essays (随笔)]]></category>
+		<category><![CDATA[Summary Essays (总结类随笔)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11591</guid>
+
+					<description><![CDATA[如果能够用睡前玩手机的时间，换成睡前看书的时间。那一年下来也能看完不少令人崇敬和感慨的人生。降生于世的意义，需要自己去谱写，而越是为了自己认为正确的事情而不妥协的人，越是可能创造传奇。愿我们的文明，能多诞生几位苏格拉底、柏拉图、亚里士多德，多诞生几位卢梭、孟德斯鸠、伏尔泰&#8230;&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p>如果能够用睡前玩手机的时间，换成睡前看书的时间。那一年下来也能看完不少令人崇敬和感慨的人生。降生于世的意义，需要自己去谱写，而越是为了自己认为正确的事情而不妥协的人，越是可能创造传奇。愿我们的文明，能多诞生几位苏格拉底、柏拉图、亚里士多德，多诞生几位卢梭、孟德斯鸠、伏尔泰&#8230;&#8230;</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

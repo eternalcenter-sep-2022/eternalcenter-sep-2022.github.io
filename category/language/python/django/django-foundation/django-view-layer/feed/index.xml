@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Django View Layer (视图层) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/python/django/django-foundation/django-view-layer/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 10:56:48 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] Django 常见错误的解决</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-debug/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Jun 2021 06:17:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=15440</guid>
+
+					<description><![CDATA[报错代码 在网页上出现的报错信息 解决方法 将以下内容： 修改为：]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<p>在网页上出现的报错信息</p>
+
+
+
+<pre class="wp-block-code"><code>DisallowedHost at /
+
+Invalid HTTP_HOST header: '192.168.102.2:8000'. You may need to add '192.168.102.2' to ALLOWED_HOSTS.
+
+Request Method: 	GET
+Request URL: 	http://192.168.102.2:8000/
+Django Version: 	1.11.6
+Exception Type: 	DisallowedHost
+Exception Value: 	
+
+Invalid HTTP_HOST header: '192.168.102.2:8000'. You may need to add '192.168.102.2' to ALLOWED_HOSTS.
+
+Exception Location: 	/root/project/django_env/lib64/python3.6/site-packages/django/http/request.py in get_host, line 113
+Python Executable: 	/root/project/django_env/bin/python
+Python Version: 	3.6.8
+Python Path: 	
+
+&#91;'/root/project/mysite',
+ '/usr/lib64/python36.zip',
+ '/usr/lib64/python3.6',
+ '/usr/lib64/python3.6/lib-dynload',
+ '/root/project/django_env/lib64/python3.6/site-packages',
+ '/root/project/django_env/lib/python3.6/site-packages']
+
+Server time: 	Thu, 27 Feb 2020 06:08:45 +0000</code></pre>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@python mysite]# vi mysite/settings.py</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ALLOWED_HOSTS = &#91;]
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ALLOWED_HOSTS = &#91;'*']
+......</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] pip 工具的安装 （MacBook Air 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/macbook-air-pip/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 06:17:53 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Python Basic (基础)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer (系统电脑)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14337</guid>
+
+					<description><![CDATA[内容一：安装 pip2 1.1 下载 pip2 1.2 安装 pip2 1.3 删除 pip2 1.4 显示安装的 pip2 1.4.1 显示在 python 里有没有 pip 安装包 （补充：这里以 Python 版本是 2.7 为例） 1.4.2 显示有没有 pip2 命令 1.4.3 升级 pip2 内容二：安装 pip3 2.1 准备安装 pip3 所需的环境 2.1.1 安装 python3 2.1.1.1 输入 python3 命令 2.1.1.2 在弹出的对话框里安装 python3 （步骤略） 2.1.2 安装 xcode 2.1.2.1 输入 xcode-select &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/macbook-air-pip/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] pip 工具的安装 （MacBook Air 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-安装-pip2-1-1-下载-pip2">内容一：安装 pip2</h3>
+
+
+
+<h4 id="内容一-安装-pip2-1-1-下载-pip2">1.1 下载 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ curl 'https://bootstrap.pypa.io/pip/2.7/get-pip.py' &gt; get-pip.py
+</code></pre>
+
+
+
+<h4 id="1-2-安装-pip2">1.2 安装 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ sudo python get-pip.py</code></pre>
+
+
+
+<h4 id="1-3-删除-pip2">1.3 删除 pip2</h4>
+
+
+
+<pre class="wp-block-code"><code>$ rm get-pip.py</code></pre>
+
+
+
+<h4 id="1-4-显示安装的-pip2-1-4-1-显示在-python-里有没有-pip-安装包">1.4 显示安装的 pip2</h4>
+
+
+
+<h5 id="1-4-显示安装的-pip2-1-4-1-显示在-python-里有没有-pip-安装包">1.4.1 显示在 python 里有没有 pip 安装包</h5>
+
+
+
+<pre class="wp-block-code"><code>$ ls /Library/Python/2.7/site-packages/</code></pre>
+
+
+
+<p>（补充：这里以 Python 版本是 2.7 为例）</p>
+
+
+
+<h5 id="1-4-2-显示有没有-pip2-命令">1.4.2 显示有没有 pip2 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ which pip2</code></pre>
+
+
+
+<h5 id="1-4-3-升级-pip2">1.4.3 升级 pip2</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo pip2 install --upgrade pip</code></pre>
+
+
+
+<h3 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">内容二：安装 pip3</h3>
+
+
+
+<h4 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1 准备安装 pip3 所需的环境</h4>
+
+
+
+<h5 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1.1 安装 python3</h5>
+
+
+
+<h5 id="内容二-安装-pip3-2-1-准备安装-pip3-所需的环境-2-1-1-安装-python3-2-1-1-1-输入-python3-命令">2.1.1.1 输入 python3 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ python3</code></pre>
+
+
+
+<h5 id="2-1-1-2-在弹出的对话框里安装-python3">2.1.1.2 在弹出的对话框里安装 python3</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h5 id="2-1-2-安装-xcode-2-1-2-1-输入-xcode-select-install-命令">2.1.2 安装 xcode</h5>
+
+
+
+<h5 id="2-1-2-安装-xcode-2-1-2-1-输入-xcode-select-install-命令">2.1.2.1 输入 xcode-select &#8211;install 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ xcode-select --install</code></pre>
+
+
+
+<h5 id="2-1-2-2-在弹出的对话框里安装-xcode">2.1.2.2 在弹出的对话框里安装 xcode</h5>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4 id="2-2-安装-pip3-2-2-1-下载-pip3">2.2 安装 pip3</h4>
+
+
+
+<h5 id="2-2-安装-pip3-2-2-1-下载-pip3">2.2.1 下载 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ curl 'https://bootstrap.pypa.io/pip/get-pip.py' &gt; get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-2-安装-pip3">2.2.2 安装 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo python get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-3-删除-pip3">2.2.3 删除 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ rm get-pip.py</code></pre>
+
+
+
+<h5 id="2-2-4-显示安装的-pip3-2-2-4-1-显示在-python-里有没有-pip-安装包">2.2.4 显示安装的 pip3</h5>
+
+
+
+<h5 id="2-2-4-显示安装的-pip3-2-2-4-1-显示在-python-里有没有-pip-安装包">2.2.4.1 显示在 python 里有没有 pip 安装包</h5>
+
+
+
+<pre class="wp-block-code"><code>$ ls /Library/Python/3.8/site-packages/</code></pre>
+
+
+
+<p>（补充：这里以 Python 版本是 3.8 为例）</p>
+
+
+
+<h5 id="2-2-4-2-显示有没有-pip3-命令">2.2.4.2 显示有没有 pip3 命令</h5>
+
+
+
+<pre class="wp-block-code"><code>$ which pip3</code></pre>
+
+
+
+<h5 id="2-2-4-3-升级-pip3">2.2.4.3 升级 pip3</h5>
+
+
+
+<pre class="wp-block-code"><code>$ sudo pip3 install --upgrade pip</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Django MVT 模式简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-mvt/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 30 Apr 2021 08:06:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Service (服务)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14196</guid>
+
+					<description><![CDATA[内容一：Django MVT 模式的视图 内容二：Django MVT 模式简介 2.1 访问页面 Browser &#8211;&#62; URL Dispatcher &#8211;&#62; Views Models &#8211;&#62; Database 2.2 应答页面 Database &#8211;&#62; Views Models &#8211;&#62; URL Dispatcher &#8211;&#62; Browser]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Django MVT 模式的视图</h3>
+
+
+
+<pre class="wp-block-code"><code>         URL Dispatcher
+
+Browser                  Views Models database
+
+         Cache Templates</code></pre>
+
+
+
+<h3>内容二：Django MVT 模式简介</h3>
+
+
+
+<h4>2.1 访问页面</h4>
+
+
+
+<p>Browser &#8211;&gt; URL Dispatcher &#8211;&gt; Views Models &#8211;&gt; Database</p>
+
+
+
+<h4>2.2 应答页面</h4>
+
+
+
+<p>Database &#8211;&gt; Views Models &#8211;&gt; URL Dispatcher &#8211;&gt; Browser</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Linux Django 项目的制作 （PyCharm 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/django-pycharm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 May 2020 12:51:08 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Django]]></category>
+		<category><![CDATA[Django Foundation (基础)]]></category>
+		<category><![CDATA[Django Model Layer (模型层)]]></category>
+		<category><![CDATA[Django Template Layer (模版层)]]></category>
+		<category><![CDATA[Django View Layer (视图层)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8937</guid>
+
+					<description><![CDATA[注意： 文中的 python 系统名、mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称 正文： 步骤一：系统环境要求 （1）服务器的系统需要是 CentOS Linux 8 版本（2）服务器要关闭防火墙（3）服务器要关闭 SELinux（4）服务器系统要配置好可用的软件源（5）服务器要能够连接外网 步骤二：安装图形化界面 （注意：如果要到远程服务器上使用 PyCharm，则在 ssh 的时候需要添加 -X 参数：# ssh -X &#60;用户&#62;@） 步骤三：安装 Django 3.1 升级 pip 环境 3.2 安装 Django 3.3 将 Django 项目的目录指定为 Django 环境 步骤四：创建 Django 项目 4.1 进入 Django 环境 4.2 创建 Django 项目 4.3 显示已创建的 Django 项目 步骤五：部署 PyCharm &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/django-pycharm/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Linux Django 项目的制作 （PyCharm 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>文中的 python 系统名、mysite 项目只是站主在本次操作中随意取的名称，读者可以根据自己的喜好换成任意别的名称</p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>（1）服务器的系统需要是 CentOS Linux 8 版本<br>（2）服务器要关闭防火墙<br>（3）服务器要关闭 SELinux<br>（4）服务器系统要配置好可用的软件源<br>（5）服务器要能够连接外网</p>
+
+
+
+<h3 id="步骤二-安装图形化界面">步骤二：安装图形化界面</h3>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@django ~]# yum -y groupinstall 'Server with GUI'
+&#91;root@django ~]# systemctl set-default graphical.target
+&#91;root@django ~]# reboot</code></pre>
+
+
+
+<p>（注意：如果要到远程服务器上使用 PyCharm，则在 ssh 的时候需要添加 -X 参数：# ssh -X &lt;用户&gt;@）</p>
+
+
+
+<h3 id="步骤三-安装-django3-1-升级-pip-环境">步骤三：安装 Django</h3>
+
+
+
+<h4 id="步骤三-安装-django3-1-升级-pip-环境">3.1 升级 pip 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@django ~]# pip3 install --upgrade pip</code></pre>
+
+
+
+<h4 id="3-2-安装-django">3.2 安装 Django</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@django ~]# pip3 install django</code></pre>
+
+
+
+<h4 id="3-3-将-django-项目的目录指定为-django-环境">3.3 将 Django 项目的目录指定为 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@django ~]# python3 -m venv django_env</code></pre>
+
+
+
+<h3 id="步骤四-创建-django-项目4-1-进入-django-环境">步骤四：创建 Django 项目</h3>
+
+
+
+<h4 id="步骤四-创建-django-项目4-1-进入-django-环境">4.1 进入 Django 环境</h4>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@django ~]# source django_env/bin/activate</code></pre>
+
+
+
+<h4 id="4-2-创建-django-项目">4.2 创建 Django 项目</h4>
+
+
+
+<pre class="wp-block-code"><code>(django_env) &#91;root@django ~]# django-admin startproject mysite</code></pre>
+
+
+
+<h4 id="4-3-显示已创建的-django-项目">4.3 显示已创建的 Django 项目</h4>
+
+
+
+<pre class="wp-block-code"><code># cd mysite/
+(django_env) &#91;root@django mysite]# tree
+.
+|-- manage.py
+`-- mysite
+    |-- __init__.py
+    |-- asgi.py
+    |-- settings.py
+    |-- urls.py
+    `-- wsgi.py
+
+1 directory, 6 files</code></pre>
+
+
+
+<h3 id="步骤五-部署-pycharm5-1-解压-pycharm">步骤五：部署 PyCharm</h3>
+
+
+
+<h4 id="步骤五-部署-pycharm5-1-解压-pycharm">5.1 解压 PyCharm</h4>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf pycharm-community-2020.1.tar.gz</code></pre>
+
+
+
+<h4 id="5-2-修改-pycharm-占用的内存以提高性能5-2-1-64-位系统修改-pycharm-占用的内存以提高性能">5.2 修改 PyCharm 占用的内存以提高性能</h4>
+
+
+
+<h5 id="5-2-修改-pycharm-占用的内存以提高性能5-2-1-64-位系统修改-pycharm-占用的内存以提高性能">5.2.1 64 位系统修改 PyCharm 占用的内存以提高性能</h5>
+
+
+
+<pre class="wp-block-code"><code># vim pycharm-community-2020.1/bin/pycharm64.vmoptions</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>-Xms128m
+-Xmx750m
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>-Xms2048m
+-Xmx4096m
+......</code></pre>
+
+
+
+<h5 id="5-2-1-32-位系统修改-pycharm-占用的内存以提高性能">5.2.1 32 位系统修改 PyCharm 占用的内存以提高性能</h5>
+
+
+
+<pre class="wp-block-code"><code># vim pycharm-community-2020.1/bin/pycharm.vmoptions</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>-Xms128m
+-Xmx750m
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>-Xms2048m
+-Xmx4096m
+......</code></pre>
+
+
+
+<h4 id="5-3-启动-pycharm">5.3 启动 PyCharm</h4>
+
+
+
+<pre class="wp-block-code"><code># ./pycharm-community-2020.1/bin/pycharm.sh</code></pre>
+
+
+
+<h4 id="5-4-初始化-pycharm5-4-1-勾选-i-confirm-that-之后点击-continue">5.4 初始化 PyCharm</h4>
+
+
+
+<h5 id="5-4-初始化-pycharm5-4-1-勾选-i-confirm-that-之后点击-continue">5.4.1 勾选 “I confirm that ……”，之后点击 “Continue”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="600" height="479" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-1.png" alt="" class="wp-image-19764" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-1.png 600w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-1-300x240.png 300w" sizes="(max-width: 600px) 100vw, 600px" /><figcaption>（图：1）</figcaption></figure></div>
+
+
+<h5 id="5-4-2-点击-don-t-send">5.4.2 点击 “Don&#8217;t Send”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="600" height="479" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-2.png" alt="" class="wp-image-19765" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-2.png 600w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-2-300x240.png 300w" sizes="(max-width: 600px) 100vw, 600px" /><figcaption>（图：2）</figcaption></figure></div>
+
+
+<h5 id="5-4-3-选择-light-之后点击-next-launcher-script">5.4.3 选择 “Light” 之后点击 “Next:Launcher Script”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="645" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-3.png" alt="" class="wp-image-19766" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-3.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-3-300x252.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：3）</figcaption></figure></div>
+
+
+<h5 id="5-4-4-点击-open">5.4.4 点击 “Open”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="666" height="497" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-4.png" alt="" class="wp-image-19767" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-4.png 666w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-4-300x224.png 300w" sizes="(max-width: 666px) 100vw, 666px" /><figcaption>（图：4）</figcaption></figure></div>
+
+
+<h5 id="5-4-5-选择刚刚创建的-django-项目目录-并点击-ok">5.4.5 选择刚刚创建的 Django 项目目录，并点击 “OK”</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="424" height="491" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-5.png" alt="" class="wp-image-19768" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-5.png 424w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-5-259x300.png 259w" sizes="(max-width: 424px) 100vw, 424px" /><figcaption>（图：5）</figcaption></figure></div>
+
+
+<h5 id="5-4-6-关闭提示">5.4.6 关闭提示</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="623" height="345" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-6.png" alt="" class="wp-image-19769" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-6.png 623w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-6-300x166.png 300w" sizes="(max-width: 623px) 100vw, 623px" /><figcaption>（图：6）</figcaption></figure></div>
+
+
+<h5 id="5-4-7-此时就可以开始制作-django-网页">5.4.7 此时就可以开始制作 Django 网页</h5>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="466" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-7.png" alt="" class="wp-image-19770" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-7.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-7-300x182.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：7）</figcaption></figure></div>
+
+
+<h3 id="步骤六-pycharm-卡顿的处理方法6-1-方法一-关闭-pycharm-的代码自动补全">步骤六：PyCharm 卡顿的处理方法</h3>
+
+
+
+<h4 id="步骤六-pycharm-卡顿的处理方法6-1-方法一-关闭-pycharm-的代码自动补全">6.1 方法一：关闭 PyCharm 的代码自动补全</h4>
+
+
+
+<p>（1）选择左上角的 “File” 点击 “Settings”<br>（2）选择 “Editor” 下的 “Code Completion”<br>（3）建议将 “Code Completion” 设置成如下图所示</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="768" height="562" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-8.png" alt="" class="wp-image-19772" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-8.png 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/PyCharm-CentOS-8-8-300x220.png 300w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>（图：8）</figcaption></figure></div>
+
+
+<pre id="block-6232ea92-f592-4251-affc-d1d1c03bde34" class="wp-block-code"><code>（4）点击 OK</code></pre>
+
+
+
+<h4 id="6-2-方法二-开启-pycharm-的省电模式">6.2 方法二：开启 “PyCharm” 的省电模式</h4>
+
+
+
+<pre id="block-6232ea92-f592-4251-affc-d1d1c03bde34" class="wp-block-code"><code>选择左上角的 "File" 点击 “Invalidate and Restart”</code></pre>
+
+
+
+<h3 id="补充-补充一-django-创建项目的命令">补充一：Django 创建项目的命令</h3>
+
+
+
+<pre class="wp-block-code"><code># django-admin startproject &lt;project&gt;</code></pre>
+
+
+
+<h3 id="补充二-django-创建子项目的命令">补充二：Django 创建子项目的命令</h3>
+
+
+
+<pre class="wp-block-code"><code># django-admin startapp &lt;subproject&gt;</code></pre>
+
+
+
+<h3 id="补充三-django-开启-web-服务的命令">补充三：Django 开启 Web 服务的命令</h3>
+
+
+
+<pre class="wp-block-code"><code># python3 manage.py runserver &lt;local IP address&gt;:&lt;port&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

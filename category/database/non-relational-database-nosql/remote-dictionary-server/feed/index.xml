@@ -1,0 +1,2212 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Redis &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/database/non-relational-database-nosql/remote-dictionary-server/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:00:33 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Redis 数据库集群 Redis 数据库的添加和删除</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster-node/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 13:37:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7234</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 现有的 Redis 集群redis7 IP 地址:192.168.1.57 端口号：1057redis8 IP 地址:192.168.1.58 端口号：1058 （补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057） 1.2 服务器列表简介 redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中 步骤二：系统环境要求 1) 所有服务器的系统都需要是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster-node/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群 Redis 数据库的添加和删除"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-left has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-cluster/">Redis 数据库集群的搭建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>现有的 Redis 集群<br>redis7 IP 地址:192.168.1.57 端口号：1057<br>redis8 IP 地址:192.168.1.58 端口号：1058</p>
+
+
+
+<p>（补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057）</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<p>（注意：现有的 Redis 集群因为已经是创建好了的，所以不用执行以上操作）</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-安装软件包">3.2.6 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：将 Redis 数据库添加到别的集群</h3>
+
+
+
+<h4 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis7 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.57
+......
+port 1057
+......
+daemonize yes
+......
+pidfile /var/run/redis_1057.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1057.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.57 是本机的 IP 地址<br>3) 这里的 port 1057 代表数据库使用到的端口是 1057，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1057.pid 代表使用的 PID 文件是 /var/run/redis_1057.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1057.conf 代表使用的数据库配置文件是 nodes-1057.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.58
+......
+port 1058
+......
+daemonize yes
+......
+pidfile /var/run/redis_1058.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1058.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.58 是本机的 IP 地址<br>3) 这里的 port 1058 代表数据库使用到的端口是 1058，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1058.pid 代表使用的 PID 文件是 /var/run/redis_1058.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1058.conf 代表使用的数据库配置文件是 nodes-1058.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3 将 redis7 和 redis8 添加到现有的 Redis 集群中</h4>
+
+
+
+<h5 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3.1 显示现有集群的状况</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-2-添加-redis7-并将其视为主数据库">4.3.2 添加 redis7 并将其视为主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.57:1057 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-3-添加-redis8-并将其视为从数据库">4.3.3 添加 redis8 并将其视为从数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.58:1058 192.168.1.51:1051 --cluster-slave</code></pre>
+
+
+
+<h5 id="4-3-4-确认-redis7-和-redis8-已经加入到了集群中">4.3.4 确认 redis7 和 redis8 已经加入到了集群中</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 2 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 0 keys | 0 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots: (0 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4 让新加入的 redis 数据库也能存储数据</h4>
+
+
+
+<h5 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4.1 重新分配集群的存储块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 10bb6a5732f629ee62801417cb44ddb670e99e86
+......
+Source node #1: all
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h5 id="4-4-2-确认集群的存储块已经覆盖所有主数据库">4.4.2 确认集群的存储块已经覆盖所有主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 2 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;1365-5460] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots:&#91;0-1364],&#91;5461-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-将部分-redis-数据库从集群中删除">步骤五：将部分 Redis 数据库从集群中删除</h3>
+
+
+
+<p>（这里以删除 redis7 和 redis8 为例）</p>
+
+
+
+<h4 id="5-1-将存储块从要被删除的-redis-主数据库里拿走">5.1 将存储块从要被删除的 redis 主数据库里拿走</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+......
+Source node #1: 10bb6a5732f629ee62801417cb44ddb670e99e86
+Source node #2: done
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h4 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2 将部分 Redis 数据库从集群中删除</h4>
+
+
+
+<h5 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2.1 将作为主库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.57:1057 10bb6a5732f629ee62801417cb44ddb670e99e86
+&gt;&gt;&gt; Removing node 10bb6a5732f629ee62801417cb44ddb670e99e86 from cluster 192.168.1.57:1057
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</code></pre>
+
+
+
+<h5 id="5-2-2-将作为从库的-redis-数据库从集群中删除">5.2.2 将作为从库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.58:1058 023abbc600cd4fb1ca8bb7ce8c45099e186041f8
+&gt;&gt;&gt; Removing node 023abbc600cd4fb1ca8bb7ce8c45099e186041f8 from cluster 192.168.1.58:1058
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...
+&gt;&gt;&gt; SHUTDOWN the node.</code></pre>
+
+
+
+<h4 id="5-3-确认部分-redis-数据库已经从集群中删除">5.3 确认部分 Redis 数据库已经从集群中删除</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Nov 2019 14:55:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6867</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 redis1 IP 地址:192.168.1.51 端口号：1051redis2 IP 地址:192.168.1.52 端口号：1052redis3 IP 地址:192.168.1.53 端口号：1053redis4 IP 地址:192.168.1.54 端口号：1054redis5 IP 地址:192.168.1.55 端口号：1055redis6 IP 地址:192.168.1.56 端口号：1056 1.2 服务器列表简介 1) 总共 6 个数据库，3 个为主库，3 个为从库2) 如果 1 个主库宕掉则它的从库自动成为主库3) 宕掉的主库修复好后会成为新主库的从库4) 如果半数或者半数以上的主库宕掉，集群则无法使用 （注意： Redis 集群最少要有 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a rel="noreferrer noopener" href="https://redis.io/" target="_blank">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>redis1 IP 地址:192.168.1.51 端口号：1051<br>redis2 IP 地址:192.168.1.52 端口号：1052<br>redis3 IP 地址:192.168.1.53 端口号：1053<br>redis4 IP 地址:192.168.1.54 端口号：1054<br>redis5 IP 地址:192.168.1.55 端口号：1055<br>redis6 IP 地址:192.168.1.56 端口号：1056</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 总共 6 个数据库，3 个为主库，3 个为从库<br>2) 如果 1 个主库宕掉则它的从库自动成为主库<br>3) 宕掉的主库修复好后会成为新主库的从库<br>4) 如果半数或者半数以上的主库宕掉，集群则无法使用</p>
+
+
+
+<p>（注意： Redis 集群最少要有 3 个主库）</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名<br>7) 至少要有一台服务器可以访问外网</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-配置软件包">3.2.6 配置软件包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：搭建 Redis 数据库集群</h3>
+
+
+
+<h4 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 1051
+......
+daemonize yes
+......
+pidfile /var/run/redis_1051.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1051.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.51 是本机的 IP 地址<br>3) 这里的 port 1051 代表数据库使用到的端口是 1051，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1051.pid 代表使用的 PID 文件是 /var/run/redis_1051.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1051.conf 代表使用的数据库配置文件是 nodes-1051.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.52
+......
+port 1052
+......
+daemonize yes
+......
+pidfile /var/run/redis_1052.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1052.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.52 是本机的 IP 地址<br>3) 这里的 port 1052 代表数据库使用到的端口是 1052，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1052.pid 代表使用的 PID 文件是 /var/run/redis_1052.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1052.conf 代表使用的数据库配置文件是 nodes-1052.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.53
+......
+port 1053
+......
+daemonize yes
+......
+pidfile /var/run/redis_1053.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1053.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.53 是本机的 IP 地址<br>3) 这里的 port 1053 代表数据库使用到的端口是 1053，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1053.pid 代表使用的 PID 文件是 /var/run/redis_1053.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1053.conf 代表使用的数据库配置文件是 nodes-1053.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.54
+......
+port 1054
+......
+daemonize yes
+......
+pidfile /var/run/redis_1054.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1054.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.54 是本机的 IP 地址<br>3) 这里的 port 1054 代表数据库使用到的端口是 1054，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1054.pid 代表使用的 PID 文件是 /var/run/redis_1054.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1054.conf 代表使用的数据库配置文件是 nodes-1054.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.55
+......
+port 1055
+......
+daemonize yes
+......
+pidfile /var/run/redis_1055.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1055.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.55 是本机的 IP 地址<br>3) 这里的 port 1055 代表数据库使用到的端口是 1055，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1055.pid 代表使用的 PID 文件是 /var/run/redis_1055.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1055.conf 代表使用的数据库配置文件是 nodes-1055.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.56
+......
+port 1056
+......
+daemonize yes
+......
+pidfile /var/run/redis_1056.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1056.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.56 是本机的 IP 地址<br>3) 这里的 port 1056 代表数据库使用到的端口是 1056，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1056.pid 代表使用的 PID 文件是 /var/run/redis_1056.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1056.conf 代表使用的数据库配置文件是 nodes-1056.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-显示目前的集群信息">4.3 显示目前的集群信息</h4>
+
+
+
+<p>（此步骤可以在任意服务器上操作，这里以在 redis1 上操作为例）</p>
+
+
+
+<h5 id="4-3-1-进入数据库">4.3.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-3-2-显示数据库是否可用">4.3.2 显示数据库是否可用</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; ping
+PONG</code></pre>
+
+
+
+<h5 id="4-3-3-显示集群信息">4.3.3 显示集群信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:fail
+cluster_slots_assigned:0
+cluster_slots_ok:0
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:1
+cluster_size:0
+cluster_current_epoch:0
+cluster_my_epoch:0
+cluster_stats_messages_sent:0
+cluster_stats_messages_received:0</code></pre>
+
+
+
+<h4 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4 部署 Redis 集群环境</h4>
+
+
+
+<h5 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4.1 部署 Ruby 脚本运行环境</h5>
+
+
+
+<p>（此步骤可以在任意服务器上操作，但是这台服务器必须要可以访问外网，这里以在 redisA 上操作为例）</p>
+
+
+
+<h5 id="4-4-1-1-安装-ruby">4.4.1.1 安装 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install ruby rubygems ruby-devel</code></pre>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2 升级 Ruby</h5>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2.1 解压 Ruby 安装包</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf rubygems-3.0.6.tgz </code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-2-进入-ruby-安装包目录">4.4.1.2.2 进入 Ruby 安装包目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd rubygems-3.0.6</code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-3-升级-ruby">4.4.1.2.3 升级 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ruby setup.rb</code></pre>
+
+
+
+<h5 id="4-4-1-3-安装-redis-模块">4.4.1.3 安装 Redis 模块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># gem install redis -v 3.3.5
+Fetching: redis-3.3.5.gem (100%)
+Successfully installed redis-3.3.5
+Parsing documentation for redis-3.3.5
+Installing ri documentation for redis-3.3.5
+1 gem installed</code></pre>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2 部署 Redis 集群文件</h5>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2.1 创建 Redis 集群文件的目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-2-复制-redis-集群文件">4.4.2.2 复制 Redis 集群文件</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp redis-5.0.5/src/redis-trib.rb /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-3-给-redis-集群文件添加执行权限">4.4.2.3 给 Redis 集群文件添加执行权限</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /root/bin/redis-trib.rb</code></pre>
+
+
+
+<h4 id="4-5-创建-redis-集群">4.5 创建 Redis 集群</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster create 192.168.1.51:1051 192.168.1.52:1052 192.168.1.53:1053 192.168.1.54:1054 192.168.1.55:1055 192.168.1.56:1056 --cluster-replicas 1
+&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...
+Master&#91;0] -&gt; Slots 0 - 5460
+Master&#91;1] -&gt; Slots 5461 - 10922
+Master&#91;2] -&gt; Slots 10923 - 16383
+Adding replica 192.168.1.55:1055 to 192.168.1.51:1051
+Adding replica 192.168.1.56:1056 to 192.168.1.52:1052
+Adding replica 192.168.1.54:1054 to 192.168.1.53:1053
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+...
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6 显示集群中主机状态信息的方法</h4>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1 方法一</h5>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-6-1-2-显示集群整体信息">4.6.1.2 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:1
+cluster_stats_messages_ping_sent:30858
+cluster_stats_messages_pong_sent:29942
+cluster_stats_messages_sent:60800
+cluster_stats_messages_ping_received:29937
+cluster_stats_messages_pong_received:30858
+cluster_stats_messages_meet_received:5
+cluster_stats_messages_received:60800</code></pre>
+
+
+
+<h5 id="4-6-1-3-显示集群主从关系">4.6.1.3 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; cluster nodes
+eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055@11055 slave 5d030ec05f9de86ebeedc1b035b2122addaa61d8 0 1574754846521 5 connected
+a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054@11054 slave c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 0 1574754846000 4 connected
+fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056@11056 slave 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 0 1574754845819 6 connected
+5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051@11051 master - 0 1574754846822 1 connected 0-5460
+7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052@11052 master - 0 1574754846000 2 connected 5461-10922
+c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053@11053 myself,master - 0 1574754844000 3 connected 10923-16383</code></pre>
+
+
+
+<h5 id="4-6-1-4-退出数据库">4.6.1.4 退出数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; quit</code></pre>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2 方法二</h5>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2.1 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster info 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.</code></pre>
+
+
+
+<h5 id="4-6-2-2-显示集群主从关系">4.6.2.2 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">步骤五：Redis 集群创建失败的解决办法</h3>
+
+
+
+<h4 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">5.1 关闭所有 Redis服务器的 Redis 服务</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdowm</code></pre>
+
+
+
+<h4 id="5-2-删除所有原来的-redis-数据">5.2 删除所有原来的 Redis 数据</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/lib/redis/6379/*</code></pre>
+
+
+
+<h4 id="5-3-重启-redis-数据库">5.3 重启 Redis 数据库</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="5-4-按照前面的步骤重新执行创建集群">5.4 按照前面的步骤重新执行创建集群</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">步骤六：测试 Redis 集群</h3>
+
+
+
+<h4 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1 数据同步测试</h4>
+
+
+
+<h5 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.52 -p 1052</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.53 -p 1053</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.54 -p 1054</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.55 -p 1055</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.56 -p 1056</code></pre>
+
+
+
+<h5 id="6-1-2-确认现在的-redis-数据库都是空的">6.1.2 确认现在的 Redis 数据库都是空的</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *</code></pre>
+
+
+
+<h5 id="6-1-3-在主-redis-数据库上插入数据">6.1.3 在主 Redis 数据库上插入数据</h5>
+
+
+
+<p>（补充：本次的主数据库是 redis1、redis2、redis3）</p>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; set aa 101
+-&gt; Redirected to slot &#91;15495] located at 192.168.1.53:1053
+OK</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.52:1052&gt; set bb 102
+-&gt; Redirected to slot &#91;3300] located at 192.168.1.51:1051
+OK</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; set ff 103
+-&gt; Redirected to slot &#91;7365] located at 192.168.1.52:1052
+OK</code></pre>
+
+
+
+<h5 id="6-1-4-查看刚插入的数据">6.1.4 查看刚插入的数据</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 对应的从库会自动同步主库的数据<br>2) 本次的主数据库是 redis1（从库是 redis5）、redis2（从库是 redis6）、redis3（从库是 redis4)<br>)</p>
+
+
+
+<h4 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2 高可用测试</h4>
+
+
+
+<h5 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2.1 模拟此时主库宕机后，对应的从库会自动升级为主库但需要 5 分钟的时间</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdown</code></pre>
+
+
+
+<h5 id="6-2-2-等待-5-分钟后显示集群主从关系">6.2.2 等待 5 分钟后显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+
+
+
+<h5 id="6-2-3-主库恢复后会成为新主库的从库">6.2.3 主库恢复后会成为新主库的从库</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h5 id="6-2-4-再次显示集群主从关系">6.2.4 再次显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 的设置 （端口号、IP 地址、登录密码）</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-change/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 06:20:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5817</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在设置 Redis 端口号、IP 地址、登录密码之前需要先安装 Redis 正文： 步骤一：在设置 Redis 端口号、IP 地址和登录密码之前的准备工作 1.1 备份 Redis的 原配置文件 1.2 停止正在运行的 Redis 配置服务 步骤二：设置 Redis 端口号、 IP 地址和登录密码 2.1 修改 Redis 的配置文件 将部分内容修改如下： (补充：1) 这里的本地的 IP 地址是 192.168.1.512) 这里自定义的端口号是 63703) 这里设置的密码是 123456) 2.2 启动修改配置文件之后的 Redis 服务 2.3 显示新启动的 Redis 所使用的端口号 （补充：这里显示到的端口号是 6370） 步骤三：登录自定义了端口号、IP 地址和密码的 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-change/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 的设置 （端口号、IP 地址、登录密码）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在设置 Redis 端口号、IP 地址、登录密码之前需要先安装 Redis</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-install/">Redis 的安装方法</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="具体的操作步骤-步骤一-在设置-redis-端口号-ip-地址和登陆密码之前的准备工作1-1-备份-redis的-原配置文件">步骤一：在设置 Redis 端口号、IP 地址和登录密码之前的准备工作</h3>
+
+
+
+<h4 id="具体的操作步骤-步骤一-在设置-redis-端口号-ip-地址和登陆密码之前的准备工作1-1-备份-redis的-原配置文件">1.1 备份 Redis的 原配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/redis/6379.conf /root/6379.conf.bak</code></pre>
+
+
+
+<h4 id="1-2-停止正在运行的-redis-配置服务">1.2 停止正在运行的 Redis 配置服务</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 stop</code></pre>
+
+
+
+<h3 id="步骤二-设置-redis-端口号-ip-地址和登陆密码2-1-修改-redis-的配置文件">步骤二：设置 Redis 端口号、 IP 地址和登录密码</h3>
+
+
+
+<h4 id="步骤二-设置-redis-端口号-ip-地址和登陆密码2-1-修改-redis-的配置文件">2.1 修改 Redis 的配置文件</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 6370
+......
+requirepass 123456
+......</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里自定义的端口号是 6370<br>3) 这里设置的密码是 123456<br>)</p>
+
+
+
+<h4 id="2-2-启动修改配置文件之后的-redis-服务">2.2 启动修改配置文件之后的 Redis 服务</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start
+Starting Redis server...</code></pre>
+
+
+
+<h4 id="2-3-显示新启动的-redis-所使用的端口号">2.3 显示新启动的 Redis 所使用的端口号</h4>
+
+
+
+<pre class="wp-block-code"><code># ss -antul | grep 6370
+tcp    LISTEN     0      128    192.168.4.51:6370       *:*</code></pre>
+
+
+
+<p>（补充：这里显示到的端口号是 6370）</p>
+
+
+
+<h3 id="步骤三-登陆自定义了端口号-ip-地址和密码的-redis-数据库的方法3-1-登陆方法一-在连接-redis-数据库时加上端口号-ip-地址之后再输入密码">步骤三：登录自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h3>
+
+
+
+<h4 id="步骤三-登陆自定义了端口号-ip-地址和密码的-redis-数据库的方法3-1-登陆方法一-在连接-redis-数据库时加上端口号-ip-地址之后再输入密码">3.1 登录方法一：在连接 Redis 数据库时加上端口号、IP 地址之后再输入密码</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370
+192.168.1.51:6370&gt; ping
+(error) NOAUTH Authentication required.
+192.168.1.51:6370&gt; auth 123456
+OK
+192.168.1.51:6370&gt; ping
+PONG</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+
+
+
+<h4 id="3-2-登陆方法二-在连接-redis-数据库时同时加上端口号-ip-地址和密码">3.2 登录方法二：在连接 Redis 数据库时同时加上端口号、IP 地址和密码</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370 -a 123456
+192.168.4.51:6370&gt; ping
+PONG</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+
+
+
+<h3 id="步骤四-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法4-1-使用默认的方法停止自定义了端口号-ip-地址和密码的-redis-数据库会报错">步骤四：停止自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h3>
+
+
+
+<h4 id="步骤四-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法4-1-使用默认的方法停止自定义了端口号-ip-地址和密码的-redis-数据库会报错">4.1 使用默认的方法停止自定义了端口号、IP 地址和密码的 Redis 数据库会报错</h4>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 stop
+Stopping ...
+Could not connect to Redis at 127.0.0.1:6370: Connection refused
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+Waiting for Redis to shutdown ...
+...</code></pre>
+
+
+
+<h4 id="4-2-停止自定义了端口号-ip-地址和密码的-redis-数据库的方法">4.2 停止自定义了端口号、IP 地址和密码的 Redis 数据库的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 6370 -a 123456 shutdown
+# ss -antul | grep 6370</code></pre>
+
+
+
+<p>(<br>补充：<br>1) 这里的本地的 IP 地址是 192.168.1.51<br>2) 这里的端口号是 6370<br>3) 这里使用的密码是 123456<br>)</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Redis 的使用</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-use/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 06:12:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5812</guid>
+
+					<description><![CDATA[注意： 在使用 Redis 之前需要先安装 Redis 正文： 内容一：启动 Redis 服务 内容二：显示 Redis 正在使用的端口 内容三：显示 Redis 状态 （注意：只有在 Redis 启动时才会有此命令才会有效，否则的话会提示：cat: /var/run/redis_6379.pid: No such file or directory） 内容四：停止 Redis 服务 内容五：连接 Redis 服务 （补充：这里出现 PONG 说明服务正常）]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Redis 之前需要先安装 Redis</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-install/">Redis 的安装方法</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-启动-redis-服务">内容一：启动 Redis 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start
+Starting Redis server...</code></pre>
+
+
+
+<h3 id="内容二-显示-redis-正在使用的端口">内容二：显示 Redis 正在使用的端口</h3>
+
+
+
+<pre class="wp-block-code"><code># netstat -antupl |grep :6379
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      15203/redis-server
+# ps  -C redis-server
+  PID TTY          TIME CMD
+15203 ?        00:00:00 redis-server</code></pre>
+
+
+
+<h3 id="内容三-显示-redis-状态">内容三：显示 Redis 状态</h3>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 status
+Redis is running (15203)</code></pre>
+
+
+
+<p>（注意：只有在 Redis 启动时才会有此命令才会有效，否则的话会提示：cat: /var/run/redis_6379.pid: No such file or directory）</p>
+
+
+
+<h3 id="内容四-停止-redis-服务">内容四：停止 Redis 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 stop
+Stopping ...
+Waiting for Redis to shutdown ...
+Redis stopped</code></pre>
+
+
+
+<h3 id="内容五-连接-redis-服务">内容五：连接 Redis 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># redis-cli 
+127.0.0.1:6379&gt; ping
+PONG</code></pre>
+
+
+
+<p>（补充：这里出现 PONG 说明服务正常）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 的安装</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-install/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 06:04:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5808</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 正文： 步骤一：系统环境要求 1) 服务器的系统需要是 CentOS Linux 7 版本2) 服务器系统需要有软件源 步骤二：安装 Redis 数据库 2.1 安装 Redis 数据库的相关依赖包 2.2 安装 Redis 数据库 2.2.1 解压安装包 （补充：这里要安装的 Redis 版本是 5.0.5） 2.2.2 进入安装包目录 （补充：这里要安装的 Redis 版本是 5.0.5） 2.2.3 编译安装包 2.2.4 安装软件包 2.2.5 进入配置目录 2.2.6 配置软件包]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 9 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 CentOS Linux 7 版本<br>2) 服务器系统需要有软件源</p>
+
+
+
+<h3>步骤二：安装 Redis 数据库</h3>
+
+
+
+<h4>2.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4>2.2 安装 Redis 数据库</h4>
+
+
+
+<h5>2.2.1 解压安装包</h5>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5>2.2.2 进入安装包目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5>2.2.3 编译安装包</h5>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5>2.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5>2.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5>2.2.6 配置软件包</h5>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Redis 简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-info/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 11 Sep 2019 06:25:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5782</guid>
+
+					<description><![CDATA[内容一：什么是 Redis Redis 全名叫 Remote Dictionary Server (远程字典服务器) 内容二：Redis 的特点 1. Redis 是一个非关系性数据库2. Redis 是一个键值数据库3. Redis 性能很高4. Redis 是分布式的5. Redis 的数据是存入内存中的，断电后就丢失6. Redis 可以通过数据持久化把内存里的数据保存到硬盘中，但是断电后最新的数据还是会丢失]]></description>
+										<content:encoded><![CDATA[
+<h2>内容一：什么是 Redis</h2>
+
+
+
+<p>Redis 全名叫 Remote Dictionary Server (远程字典服务器)</p>
+
+
+
+<h2>内容二：Redis 的特点</h2>
+
+
+
+<p>1. Redis 是一个非关系性数据库<br>2. Redis 是一个键值数据库<br>3. Redis 性能很高<br>4. Redis 是分布式的<br>5. Redis 的数据是存入内存中的，断电后就丢失<br>6. Redis 可以通过数据持久化把内存里的数据保存到硬盘中，但是断电后最新的数据还是会丢失</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

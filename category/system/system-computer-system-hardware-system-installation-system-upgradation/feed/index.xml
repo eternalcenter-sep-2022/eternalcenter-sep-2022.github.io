@@ -1,0 +1,1690 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Computer &amp; System Hardware &amp; System Installation &amp; System Upgradation (系统电脑 &amp; 系统硬件 &amp; 系统安装 &amp; 系统升级) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-computer-system-hardware-system-installation-system-upgradation/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Mon, 15 Aug 2022 03:35:38 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[步骤] Wake On Lan （WOL） 功能的开启 （ Rocky Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/wol-rocky-linux-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 31 Jul 2022 15:01:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27458</guid>
+
+					<description><![CDATA[步骤一：在 BIOS 开启 Wake On Lan （WOL） 功能 （步骤略） 步骤二：在系统开启 Wake On Lan （WOL） 功能 2.1 确保 net-tools 已经安装 2.2 查看网卡的 Wake On Lan （WOL） 功能状态 2.2.1 Wake On Lan （WOL） 功能状态列表 1) p, Wake on PHY activity2) u, Wake on unicast messages3) m, Wake on multicast messages4) b, Wake on broadcast messages5) a, Wake &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wol-rocky-linux-rhel/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Wake On Lan （WOL） 功能的开启 （ Rocky Linux &#038; RHEL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：在 BIOS 开启 Wake On Lan （WOL） 功能</h3>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：在系统开启 Wake On Lan （WOL） 功能</h3>
+
+
+
+<h4>2.1 确保 net-tools 已经安装</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install net-tools</code></pre>
+
+
+
+<h4>2.2 查看网卡的 Wake On Lan （WOL） 功能状态</h4>
+
+
+
+<h5>2.2.1 Wake On Lan （WOL） 功能状态列表</h5>
+
+
+
+<p>1) p, Wake on PHY activity<br>2) u, Wake on unicast messages<br>3) m, Wake on multicast messages<br>4) b, Wake on broadcast messages<br>5) a, Wake on ARP<br>6) g, Wake on MagicPacket<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br>7) s, Enable SecureOn<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /> password for MagicPacket<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2122.png" alt="™" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br>8) d, Disable (wake on nothing). This option clears all previous options</p>
+
+
+
+<h5>2.2.2 查看网卡的 Wake On Lan （WOL） 功能状态</h5>
+
+
+
+<pre class="wp-block-code"><code># ethtool enp16s0
+Settings for enp16s0:
+	Supported ports: &#91; TP ]
+	Supported link modes:   10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	Supported pause frame use: Symmetric
+	Supports auto-negotiation: Yes
+	Supported FEC modes: Not reported
+	Advertised link modes:  10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	Advertised pause frame use: Symmetric
+	Advertised auto-negotiation: Yes
+	Advertised FEC modes: Not reported
+	Speed: 1000Mb/s
+	Duplex: Full
+	Auto-negotiation: on
+	Port: Twisted Pair
+	PHYAD: 1
+	Transceiver: internal
+	MDI-X: off (auto)
+	Supports Wake-on: pumbg
+	Wake-on: g
+        Current message level: 0x00000007 (7)
+                               drv probe link
+	Link detected: yes</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以使用 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例<br>2) 这里的 Wake On Lan （WOL） 功能状态是 g<br>）</p>
+
+
+
+<h4>2.3 临时开启 Wake On Lan （WOL） 功能</h4>
+
+
+
+<pre class="wp-block-code"><code># ethtool -s enp16s0 wol p</code></pre>
+
+
+
+<p>（补充：这里以给 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例）</p>
+
+
+
+<h4>2.4 永久开启 Wake On Lan （WOL） 功能</h4>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/sysconfig/network-scripts/ifcfg-enp16s0</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+ETHTOOL_OPTS="-s ${DEVICE} wol p"</code></pre>
+
+
+
+<p>（补充：这里以给 enp16s0 网卡开启 Wake On Lan （WOL） 功能为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 启动顺序</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-start-sequence/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 05:45:40 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26977</guid>
+
+					<description><![CDATA[第一步启动：BIOS/UEFI BIOS （Basic Input Output System） 即基本输入输出系统。 UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。 它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。 第二步启动：MBR/GPT MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。 GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。 它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。 第三步启动：GRUB2 GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。 第四步启动：initrd/Kernel initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/linux-start-sequence/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 启动顺序"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>第一步启动：BIOS/UEFI</h3>
+
+
+
+<p>BIOS （Basic Input Output System） 即基本输入输出系统。</p>
+
+
+
+<p>UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。</p>
+
+
+
+<p>它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。</p>
+
+
+
+<h3>第二步启动：MBR/GPT</h3>
+
+
+
+<p>MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。</p>
+
+
+
+<p>GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。</p>
+
+
+
+<p>它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。</p>
+
+
+
+<h3>第三步启动：GRUB2</h3>
+
+
+
+<p>GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。</p>
+
+
+
+<h3>第四步启动：initrd/Kernel</h3>
+
+
+
+<p>initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 （vmlinuz） 没有提供的驱动模块。2. 通过引导加载程序加载内存，将内存视为临时根目录，从中运行程序，之后再将根目录转移到硬盘上真正的根目录上。</p>
+
+
+
+<h3>第五步启动：systemdprocess</h3>
+
+
+
+<p>systemdprocess，即启动各类程序和进程。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 uname （显示系统信息）</title>
+		<link>https://eternalcenter-sep-2022.github.io/uname/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 15 Jul 2022 08:13:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26799</guid>
+
+					<description><![CDATA[内容一：uname 命令的格式 内容二：uname 命令的选项 1) -a 或者 &#8211;all，显示所有系统信息 （补充：如果系统处理器类型和系统硬件平台处于未知状态则不显示） 2) -s 或者 &#8211;kernel-name，显示系统内核3) -n 或者 &#8211;nodename，显示系统节点名称4) -r 或者 &#8211;kernel-release，显示系统内核发布版本5) -m 或者 &#8211;machine，显示系统硬件名称6) -p 或者 &#8211;processor，显示系统处理器类型7) -i 或者 &#8211;hardware-platform，显示系统硬件平台8) &#8211;help，显示帮助信息9) &#8211;version，显示 uname 命令版本]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：uname 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># uname &lt;option&gt;</code></pre>
+
+
+
+<h3>内容二：uname 命令的选项</h3>
+
+
+
+<p>1) -a 或者 &#8211;all，显示所有系统信息</p>
+
+
+
+<p>（补充：如果系统处理器类型和系统硬件平台处于未知状态则不显示）</p>
+
+
+
+<p>2) -s 或者 &#8211;kernel-name，显示系统内核<br>3) -n 或者 &#8211;nodename，显示系统节点名称<br>4) -r 或者 &#8211;kernel-release，显示系统内核发布版本<br>5) -m 或者 &#8211;machine，显示系统硬件名称<br>6) -p 或者 &#8211;processor，显示系统处理器类型<br>7) -i 或者 &#8211;hardware-platform，显示系统硬件平台<br>8) &#8211;help，显示帮助信息<br>9) &#8211;version，显示 uname 命令版本</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 多路径存储的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/multipath-storage-display/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 11 Jul 2022 02:43:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26667</guid>
+
+					<description><![CDATA[或者：]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># multipath -ll</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># rpm -qa | grep device-mapper</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 hwclock （硬件时钟的管理）</title>
+		<link>https://eternalcenter-sep-2022.github.io/hwclock/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 11 Jul 2022 02:13:30 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26664</guid>
+
+					<description><![CDATA[内容一：hwclock 命令的格式 内容二：hwclock 命令的功能 1) &#8211;adjust，以前每次更改硬件时钟的记录，都会被写入到 /etc/adjtime 文件中。使用 &#8211;adjust 功能可以根据过往来记录估算和校正硬件时钟2) &#8211;debug，显示执行 hwclock 命令时的详细过程3) &#8211;directisa，hwclock 默认从 /dev/rtc 存取硬件时钟，&#8211;directisa 功能可以直接从 I/O 存取硬件时钟4) &#8211;hctosys，将硬件时钟调整到和系统时钟一致5) &#8211;help，显示帮助信息6) &#8211;set &#8211;date=，设置硬件时钟的时间7) &#8211;show，显示硬件时钟的时间8) &#8211;systohc，当硬件时钟和系统时钟一致时，将硬件时钟的时区调整到和系统时钟一致9) &#8211;test，测试命令10) &#8211;localtime，将硬件时钟视为本地时间11) &#8211;version，显示命令的版本]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：hwclock 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># hwclock &lt;function&gt; &lt;option...&gt;</code></pre>
+
+
+
+<h3>内容二：hwclock 命令的功能</h3>
+
+
+
+<p>1) &#8211;adjust，以前每次更改硬件时钟的记录，都会被写入到 /etc/adjtime 文件中。使用 &#8211;adjust 功能可以根据过往来记录估算和校正硬件时钟<br>2) &#8211;debug，显示执行 hwclock 命令时的详细过程<br>3) &#8211;directisa，hwclock 默认从 /dev/rtc 存取硬件时钟，&#8211;directisa 功能可以直接从 I/O 存取硬件时钟<br>4) &#8211;hctosys，将硬件时钟调整到和系统时钟一致<br>5) &#8211;help，显示帮助信息<br>6) &#8211;set &#8211;date=，设置硬件时钟的时间<br>7) &#8211;show，显示硬件时钟的时间<br>8) &#8211;systohc，当硬件时钟和系统时钟一致时，将硬件时钟的时区调整到和系统时钟一致<br>9) &#8211;test，测试命令<br>10) &#8211;localtime，将硬件时钟视为本地时间<br>11) &#8211;version，显示命令的版本</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 软件指定版本的升级或降级 （CentOS Linux 7 版） （以系统版本作为指定维度）</title>
+		<link>https://eternalcenter-sep-2022.github.io/software-specified-version-upgarde-downgrade-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 16:00:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26495</guid>
+
+					<description><![CDATA[内容一：将软件降级到某个版本 （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 或者： （补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例） 内容二：将软件降级到某个版本 （补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件升级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+
+
+
+<h3>内容二：将软件降级到某个版本</h3>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' downgrade openssh</code></pre>
+
+
+
+<p>（补充：这里以将 openssh 软件降级到 CentOS Linux 7.6 系统版本里的最新版本为例为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Jul 2022 15:50:03 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26491</guid>
+
+					<description><![CDATA[步骤一：安装其他版本软件源 1.1 安装 centos-release 1.2 查看当前所有软件源 或者： 步骤二：清除 yum 缓存 2.1 除 yum 缓存 2.2 删除 yum 缓存目录 步骤三：将系统或软件升级到指定版本 3.1 方案一：将整个系统升级到指定版本 （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 或者： （补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例） （注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本） 3.2 方案二：只将系统内核或某个软件升级到指定版本 （补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例） 或者： （补充：这里以只将系统内核 kernel 升级到 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/system-specified-version-upgarde-centos-linux-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[步骤] Linux 系统指定版本的升级 （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：安装其他版本软件源</h3>
+
+
+
+<h4>1.1 安装 centos-release</h4>
+
+
+
+<pre class="wp-block-code"><code># yum install centos-release</code></pre>
+
+
+
+<h4>1.2 查看当前所有软件源</h4>
+
+
+
+<pre class="wp-block-code"><code># yum repolist all</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># cat /etc/yum.repos.d/CentOS-Vault.repo</code></pre>
+
+
+
+<h3>步骤二：清除 yum 缓存</h3>
+
+
+
+<h4>2.1 除 yum 缓存</h4>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h4>2.2 删除 yum 缓存目录</h4>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/cache/yum</code></pre>
+
+
+
+<h3>步骤三：将系统或软件升级到指定版本</h3>
+
+
+
+<h4>3.1 方案一：将整个系统升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade</code></pre>
+
+
+
+<p>（补充：这里以将整个系统升级到 CentOS Linux 7.6 版本为例）</p>
+
+
+
+<p>（注意：系统中其他所有软件都会升级到 CentOS Linux 7.6 系统版本中的最新版本）</p>
+
+
+
+<h4>3.2 方案二：只将系统内核或某个软件升级到指定版本</h4>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' update kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># yum --disablerepo='*' --enablerepo='C7.6*' upgrade kernel</code></pre>
+
+
+
+<p>（补充：这里以只将系统内核 kernel 升级到 CentOS Linux 7.6 系统版本里的最新版本为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 系统 UUID 的显示 （主板 UUID）</title>
+		<link>https://eternalcenter-sep-2022.github.io/uuid/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 22 Jun 2022 08:30:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26096</guid>
+
+					<description><![CDATA[内容一：系统 UUID 1) UUID 全名 Universally Unique Identifier，即通用唯一识别码2) 系统 UUID 是主板产品的 UUID 内容二：系统 UUID 的显示 如果是虚拟机： 如果是虚拟机或物理机：]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：系统 UUID</h3>
+
+
+
+<p>1) UUID 全名 Universally Unique Identifier，即通用唯一识别码<br>2) 系统 UUID 是主板产品的 UUID</p>
+
+
+
+<h3>内容二：系统 UUID 的显示</h3>
+
+
+
+<p>如果是虚拟机：</p>
+
+
+
+<pre class="wp-block-code"><code># cat /sys/devices/virtual/dmi/id/product_uuid</code></pre>
+
+
+
+<p>如果是虚拟机或物理机：</p>
+
+
+
+<pre class="wp-block-code"><code># dmidecode -s system-uuid</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] 软件源的设置 （SLE 版） （通过本地镜像版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/repository-sle-local/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 20 Jun 2022 08:10:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=25888</guid>
+
+					<description><![CDATA[步骤一：加载本地镜像到系统光驱 （步骤略） 步骤二：挂载本地镜像 （补充：这里以挂载 /dev/sr1 到 /mnt 目录为例） 步骤三：添加本地镜里的软件源 3.1 添加本地镜里的软件源 （通过 zypper 命令） 或者： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例） 3.1 添加本地镜里的软件源 （通过创建配置文件） 创建以下内容： 创建以下内容： 创建以下内容： （补充：这里以将1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>步骤一：加载本地镜像到系统光驱</h2>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h2>步骤二：挂载本地镜像</h2>
+
+
+
+<pre class="wp-block-code"><code># mount /dev/cdrom /mnt</code></pre>
+
+
+
+<p>（补充：这里以挂载 /dev/sr1 到 /mnt 目录为例）</p>
+
+
+
+<h2>步骤三：添加本地镜里的软件源</h2>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过 zypper 命令）</h4>
+
+
+
+<pre class="wp-block-code"><code># zypper ar file:/mnt/Module-Basesystem SLE15-Base
+# zypper ar file:/mnt/Module-Legacy SLE15-Legacy
+# zypper ar file:/mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper ar -f /mnt/Module-Basesystem SLE15-Base
+# zypper ar -f /mnt/Module-Legacy SLE15-Legacy
+# zypper ar -f /mnt/Module-Development-Tools SLE15-Tools</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+
+
+
+<h4>3.1 添加本地镜里的软件源 （通过创建配置文件）</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Base.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Base]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Development-Tools</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Legacy.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Legacy]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Legacy</code></pre>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/zypp/repos.d/SLE15-Tools.repo</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;SLE15-Tools]
+enabled=1
+autorefresh=0
+baseurl=file:/mnt/Module-Basesystem/</code></pre>
+
+
+
+<p>（<br>补充：这里以将<br>1) /mnt/Module-Basesystem 添加到软件源并命名为 SLE15-Base<br>2) /mnt/Module-Legacy 添加到软件源并命名为 SLE15-Legacy<br>3) /mnt/Module-Development-Tools 添加到软件源并命名为 SLE15-Tools<br>为例<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 iptables 命令时报错 “iptables: No chain/target/match by that name.”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-iptables-no-chain-target-match-by-that-name/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 12:24:34 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23749</guid>
+
+					<description><![CDATA[分析 系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。 解决方法 步骤一：更新 kernel 内核 如果是 Rocky Linux &#38; RHEL： 如果是 openSUSE &#38; SLE： 步骤二：重启系统]]></description>
+										<content:encoded><![CDATA[
+<h2>分析</h2>
+
+
+
+<p>系统运行的 kernel 内核已经被删除，此 kernel 内核相关的文件集都已经被删除，包括 ko 文件。安装新版本的 kernel 内核，并重启选择新版本的 kernel 内核，就能修复相关 kernel 内核文件集。</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：更新 kernel 内核</h3>
+
+
+
+<p>如果是 Rocky Linux &amp; RHEL：</p>
+
+
+
+<pre class="wp-block-code"><code># yum update kernel*</code></pre>
+
+
+
+<p>如果是 openSUSE &amp; SLE：</p>
+
+
+
+<pre class="wp-block-code"><code># zypper update kernel*</code></pre>
+
+
+
+<h3>步骤二：重启系统</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 虚拟机和物理机的区分</title>
+		<link>https://eternalcenter-sep-2022.github.io/virtual-machine-physical-check/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 09 Jun 2022 11:10:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23731</guid>
+
+					<description><![CDATA[如果是虚拟机： （补充：从输出结果可以看出此为 VMware7,1 虚拟机） 或者： （补充：从输出结果可以看出此为 vmware 虚拟机） 如果是物理机： （补充：从输出结果可以看出此为 PowerEdge R940 物理机） 或者： （补充：从输出结果可以看出此为物理机）]]></description>
+										<content:encoded><![CDATA[
+<p>如果是虚拟机：</p>
+
+
+
+<pre class="wp-block-code"><code># dmidecode -s system-product-name
+VMware7,1</code></pre>
+
+
+
+<p>（补充：从输出结果可以看出此为 VMware7,1 虚拟机）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># systemd-detect-virt
+vmware</code></pre>
+
+
+
+<p>（补充：从输出结果可以看出此为 vmware 虚拟机）</p>
+
+
+
+<p>如果是物理机：</p>
+
+
+
+<pre class="wp-block-code"><code># dmidecode -s system-product-name
+PowerEdge R940</code></pre>
+
+
+
+<p>（补充：从输出结果可以看出此为 PowerEdge R940 物理机）</p>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># systemd-detect-virt 
+none</code></pre>
+
+
+
+<p>（补充：从输出结果可以看出此为物理机）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 网卡的显示</title>
+		<link>https://eternalcenter-sep-2022.github.io/network-card/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Apr 2022 15:36:01 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23346</guid>
+
+					<description><![CDATA[方法一：ip 命令 方法二：ifconfig 命令 方法三：iwconfig 命令]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：ip 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># ip a s
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:1c:42:c9:3c:81 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.129/24 brd 10.10.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fdb2:2c26:f4e4:0:55da:1265:541f:8007/64 scope global temporary dynamic 
+       valid_lft 563315sec preferred_lft 44695sec
+    inet6 fdb2:2c26:f4e4:0:21c:42ff:fec9:3c81/64 scope global dynamic mngtmpaddr 
+       valid_lft 2591846sec preferred_lft 604646sec
+    inet6 fe80::21c:42ff:fec9:3c81/64 scope link 
+       valid_lft forever preferred_lft forever</code></pre>
+
+
+
+<h3>方法二：ifconfig 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># ifconfig
+eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.10.10.129  netmask 255.255.255.0  broadcast 10.10.10.255
+        inet6 fdb2:2c26:f4e4:0:21c:42ff:fec9:3c81  prefixlen 64  scopeid 0x0&lt;global&gt;
+        inet6 fe80::21c:42ff:fec9:3c81  prefixlen 64  scopeid 0x20&lt;link&gt;
+        inet6 fdb2:2c26:f4e4:0:55da:1265:541f:8007  prefixlen 64  scopeid 0x0&lt;global&gt;
+        ether 00:1c:42:c9:3c:81  txqueuelen 1000  (Ethernet)
+        RX packets 698666  bytes 485434755 (462.9 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 372557  bytes 699406543 (667.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 73792  bytes 394285172 (376.0 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 73792  bytes 394285172 (376.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code></pre>
+
+
+
+<h3>方法三：iwconfig 命令</h3>
+
+
+
+<pre class="wp-block-code"><code># iwconfig 
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 lsscsi （查看硬盘类型，例：SSD、HD、SATA、FC &#8230;&#8230;）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lsscsi/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 17 Apr 2022 07:52:04 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23173</guid>
+
+					<description><![CDATA[内容一：lsscsi 命令的格式 内容二：lsscsi 命令的选项 1) -c 以硬盘全称的形式显示硬盘默认信息2) -d 显示硬盘主设备号和次设备号3) -g 显示硬盘对应的 sg 设备4) -H 显示硬盘的控制器列表5) -i 显示硬盘的 udev 信息6) -l 显示硬盘状态7) -ll 显示硬盘状态，比 -l 选项能显示更多信息8) -lll 或者 -L 显示硬盘状态，比 -ll 选项能显示更多信息9) -p 显示硬盘的 DIF DIX 保护类型10) -P 显示硬盘有效的保护类型11) -s 显示硬盘容量12) -v 显示硬盘设备所在目录13) -w 显示硬盘的 WWN 信息14) -x 以 16 进制显示硬盘的 lun 号]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：lsscsi 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># lsscsi &lt;option&gt;</code></pre>
+
+
+
+<h3>内容二：lsscsi 命令的选项</h3>
+
+
+
+<p>1) -c 以硬盘全称的形式显示硬盘默认信息<br>2) -d 显示硬盘主设备号和次设备号<br>3) -g 显示硬盘对应的 sg 设备<br>4) -H 显示硬盘的控制器列表<br>5) -i 显示硬盘的 udev 信息<br>6) -l 显示硬盘状态<br>7) -ll 显示硬盘状态，比 -l 选项能显示更多信息<br>8) -lll 或者 -L 显示硬盘状态，比 -ll 选项能显示更多信息<br>9) -p 显示硬盘的 DIF DIX 保护类型<br>10) -P 显示硬盘有效的保护类型<br>11) -s 显示硬盘容量<br>12) -v 显示硬盘设备所在目录<br>13) -w 显示硬盘的 WWN 信息<br>14) -x 以 16 进制显示硬盘的 lun 号</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 常用日志 （openSUSE &#038; SUSE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/log-opensusesuse/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 07 Apr 2022 09:24:12 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Statistic Log (系统统计日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22930</guid>
+
+					<description><![CDATA[1) /var/log/boot.msg，包含系统启动时显示在屏幕上的信息（补充：当进入系统时，可以同时按下 “ctrl” 键和 “alt” 键和 “f10” 键切换到显示日志的界面，之后可以再通过 KVM 显示系统启动时显示在屏幕上的信息。）2) /var/log/boot.omsg，包含上一次系统启动时显示在屏幕上的信息3) /var/log/messages，包含几乎所有日志4) /var/log/warn，包含 WARNING 也就是级别 4 以上的所有日志5) /var/log/wtmp，包含和系统登录和重启的所有日志（补充：可以通过 last 命令读取）6) /var/log/YaST2/y2log，包含 YaST 的所有日志7) /var/log/xinetd.log，包含 xinetd 服务的所有日志8) /var/log/dump/，包含 Kdump 工具在系统宕机时收集的所有故障信息9) /var/log/atop，包含 Atop 工具收集的系统资源 （CPU、内存、系统进程、IO） 的所有使用信息]]></description>
+										<content:encoded><![CDATA[
+<p>1) /var/log/boot.msg，包含系统启动时显示在屏幕上的信息<br>（补充：当进入系统时，可以同时按下 “ctrl” 键和 “alt” 键和 “f10” 键切换到显示日志的界面，之后可以再通过 KVM 显示系统启动时显示在屏幕上的信息。）<br>2) /var/log/boot.omsg，包含上一次系统启动时显示在屏幕上的信息<br>3) /var/log/messages，包含几乎所有日志<br>4) /var/log/warn，包含 WARNING 也就是级别 4 以上的所有日志<br>5) /var/log/wtmp，包含和系统登录和重启的所有日志<br>（补充：可以通过 last 命令读取）<br>6) /var/log/YaST2/y2log，包含 YaST 的所有日志<br>7) /var/log/xinetd.log，包含 xinetd 服务的所有日志<br>8) /var/log/dump/，包含 Kdump 工具在系统宕机时收集的所有故障信息<br>9) /var/log/atop，包含 Atop 工具收集的系统资源 （CPU、内存、系统进程、IO） 的所有使用信息</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux CPU 温度的显示 （直接显示）</title>
+		<link>https://eternalcenter-sep-2022.github.io/cpu-temperature/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Apr 2022 15:53:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22845</guid>
+
+					<description><![CDATA[内容一：显示 CPU 的瞬时温度 （补充：1) 这里以显示第 1 个 CPU 的瞬时温度为例2) 将显示的数值除以 1000 就是以摄氏为单位的温度3) 如果显示第 2 个 CPU 的瞬时温度则将 thermal_zone0 换成 thermal_zone1） 内容二：显示 CPU 的瞬时温度，并对数值进行处理 （补充：1) 这里以显示第 1 个 CPU 的瞬时温度为例2) 如果显示第 2 个 CPU 的瞬时温度则将 thermal_zone0 换成 thermal_zone1）]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示 CPU 的瞬时温度</h3>
+
+
+
+<pre class="wp-block-code"><code># cat /sys/class/thermal/thermal_zone0/temp</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以显示第 1 个 CPU 的瞬时温度为例<br>2) 将显示的数值除以 1000 就是以摄氏为单位的温度<br>3) 如果显示第 2 个 CPU 的瞬时温度则将 thermal_zone0 换成 thermal_zone1<br>）</p>
+
+
+
+<h3>内容二：显示 CPU 的瞬时温度，并对数值进行处理</h3>
+
+
+
+<pre class="wp-block-code"><code># echo "CPU Temperature: $&#91;$(cat /sys/class/thermal/thermal_zone0/temp)/1000]"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里以显示第 1 个 CPU 的瞬时温度为例<br>2) 如果显示第 2 个 CPU 的瞬时温度则将 thermal_zone0 换成 thermal_zone1<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 处理器详细信息的显示 （显示 /proc/cpuinfo 文件里的信息）</title>
+		<link>https://eternalcenter-sep-2022.github.io/cpu/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Apr 2022 14:04:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22767</guid>
+
+					<description><![CDATA[内容一：显示处理器详细信息 1.1 显示处理器详细信息 或者： 1.2 /proc/cpuinfo 文件里或者 lscpu 命令里重要参数 1) processor，进程 （虚拟核心） ID2) core ID，物理核心 ID3) physical id，物理封装处理器 ID （CPU socket ID）4) cpu cores， 每 1 个物理封装处理器 ID （CPU socket ID） 里的物理核心数量5) siblings， 每 1 个物理封装处理器 ID （CPU socket ID） 里的进程 （虚拟核心） 数量 内容二：显示 Linux 处理器详细信息的案例 2.1 案例一：显示处理器所有信息 2.2 案例二：显示处理器进程 （虚拟核心） 数 2.3 案例三：显示处理器物理核心数 2.4 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/cpu/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 处理器详细信息的显示 （显示 /proc/cpuinfo 文件里的信息）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示处理器详细信息</h3>
+
+
+
+<h4>1.1 显示处理器详细信息</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># lscpu</code></pre>
+
+
+
+<h4>1.2 /proc/cpuinfo 文件里或者 lscpu 命令里重要参数</h4>
+
+
+
+<p>1) processor，进程 （虚拟核心）  ID<br>2) core ID，物理核心 ID<br>3) physical id，物理封装处理器 ID （CPU socket ID）<br>4) cpu cores， 每 1 个物理封装处理器 ID （CPU socket ID） 里的物理核心数量<br>5) siblings， 每 1 个物理封装处理器 ID （CPU socket ID） 里的进程 （虚拟核心） 数量</p>
+
+
+
+<h3>内容二：显示 Linux 处理器详细信息的案例</h3>
+
+
+
+<h4>2.1 案例一：显示处理器所有信息</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo
+processor	: 0
+vendor_id	: AuthenticAMD
+cpu family	: 23
+model		: 1
+model name	: AMD Ryzen 7 1700 Eight-Core Processor
+stepping	: 1
+microcode	: 0x8001138
+cpu MHz		: 1371.214
+cache size	: 512 KB
+physical id	: 0
+siblings	: 16
+core id		: 0
+cpu cores	: 8
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb hw_pstate sme ssbd sev ibpb vmmcall fsgsbase bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 xsaves clzero irperf xsaveerptr arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif overflow_recov succor smca
+bugs		: sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 5987.93
+TLB size	: 2560 4K pages
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 43 bits physical, 48 bits virtual
+power management: ts ttp tm hwpstate eff_freq_ro &#91;13] &#91;14]
+
+......</code></pre>
+
+
+
+<h4>2.2 案例二：显示处理器进程 （虚拟核心） 数</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | egrep "core id|physical id|processor" | tr -d "\n" | sed s/processor/\\nprocessor/g | sed 's/physical/     physical/' | sed 's/core/     core/' | grep -v ^$ | wc -l</code></pre>
+
+
+
+<h4>2.3 案例三：显示处理器物理核心数</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | egrep "core id|physical id" | tr -d "\n" | sed s/physical/\\nphysical/g | grep -v ^$ | sort | uniq | wc -l</code></pre>
+
+
+
+<h4>2.4 案例四：显示物理封装处理器 （处理器 socket） 数</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l</code></pre>
+
+
+
+<h4>2.5 案例五：显示处理器所有进程 （虚拟核心）  ID</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep processor
+processor	: 0
+processor	: 1
+processor	: 2
+processor	: 3
+processor	: 4
+processor	: 5
+processor	: 6
+processor	: 7
+processor	: 8
+processor	: 9
+processor	: 10
+processor	: 11
+processor	: 12
+processor	: 13
+processor	: 14
+processor	: 15</code></pre>
+
+
+
+<h4>2.6 案例六：显示处理器所有物理核心 ID</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep 'core id'
+core id		: 0
+core id		: 1
+core id		: 2
+core id		: 3
+core id		: 4
+core id		: 5
+core id		: 6
+core id		: 7
+core id		: 0
+core id		: 1
+core id		: 2
+core id		: 3
+core id		: 4
+core id		: 5
+core id		: 6
+core id		: 7</code></pre>
+
+
+
+<h4>2.7 案例七：显示处理器所有物理封装处理器 ID （处理器 socket ID）</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep 'physical id'
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0
+physical id	: 0</code></pre>
+
+
+
+<h4>2.8 案例八：显示处理器所有物理封装处理器 ID （处理器 socket ID） 和物理核心 ID 以及对应关系</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | egrep "core id|physical id" | tr -d "\n" | sed s/physical/\\nphysical/g | sed 's/core/ core/'g |  grep -v ^$ | sort | uniq
+physical id	: 0 core id		: 0
+physical id	: 0 core id		: 1
+physical id	: 0 core id		: 2
+physical id	: 0 core id		: 3
+physical id	: 0 core id		: 4
+physical id	: 0 core id		: 5
+physical id	: 0 core id		: 6
+physical id	: 0 core id		: 7</code></pre>
+
+
+
+<h4>2.9 案例九：显示处理器所有进程 （虚拟核心）  ID、物理封装处理器 ID （处理器 socket ID） 、物理核心 ID 以及对应关系</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | egrep "core id|physical id|processor" | tr -d "\n" | sed s/processor/\\nprocessor/g | sed 's/physical/     physical/' | sed 's/core/     core/' | grep -v ^$
+processor	: 0     physical id	: 0     core id		: 0
+processor	: 1     physical id	: 0     core id		: 1
+processor	: 2     physical id	: 0     core id		: 2
+processor	: 3     physical id	: 0     core id		: 3
+processor	: 4     physical id	: 0     core id		: 4
+processor	: 5     physical id	: 0     core id		: 5
+processor	: 6     physical id	: 0     core id		: 6
+processor	: 7     physical id	: 0     core id		: 7
+processor	: 8     physical id	: 0     core id		: 0
+processor	: 9     physical id	: 0     core id		: 1
+processor	: 10     physical id	: 0     core id		: 2
+processor	: 11     physical id	: 0     core id		: 3
+processor	: 12     physical id	: 0     core id		: 4
+processor	: 13     physical id	: 0     core id		: 5
+processor	: 14     physical id	: 0     core id		: 6
+processor	: 15     physical id	: 0     core id		: 7</code></pre>
+
+
+
+<h4>2.10 案例十：显示每 1 个物理封装处理器 （处理器 socket） 里物理核心数</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep 'cpu cores'
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8
+cpu cores	: 8</code></pre>
+
+
+
+<h4>2.11 案例十一：显示每 1 个物理封装处理器 （处理器 socket） 里进程 （虚拟核心） 核心数</h4>
+
+
+
+<pre class="wp-block-code"><code># cat /proc/cpuinfo | grep 'siblings'
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16
+siblings	: 16</code></pre>
+
+
+
+<h3>内容二：理解显示的处理器详细信息</h3>
+
+
+
+<p>1) processor 的数字从 0 到 15，代表有 16 个进程 （虚拟核心）  <br>2) core id 的数字从 0 到 7，代表有 8 个物理核心<br>3) physical id 的数字都是 0，代表只有 1 个物理封装处理器 （处理器 socket）<br>4) cpu cores 的数字都是 8，代表每 1 个物理封装处理器 （处理器 socket） 里有 8 个物理核心<br>5) siblings 的数字都是 16，代表每 1 个物理封装处理器 （处理器 socket） 里有 16 个进程 （虚拟核心）  <br>6) 总结：1 个处理器，8 个物理核心，16 个进程 （虚拟核心）  </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 软件指定版本的升级 （openSUSE &#038; SLE 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/specified-software-version-update-opensuse-sle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 04 Mar 2022 08:03:40 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22350</guid>
+
+					<description><![CDATA[步骤一：解锁软件 （补充：这里以解锁 docker 软件包为例） 步骤二：显示所有可用的软件版本 （补充：这里以显示 docker 软件包的所有可用的版本为例） 步骤三：升级指定版本的软件 （补充：这里以升级 docker 软件包的指定版本为例） 步骤四：重新锁定软件 （补充：这里以重新锁定 docker 软件包为例） 步骤五：重启系统]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：解锁软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper removelocks docker</code></pre>
+
+
+
+<p>（补充：这里以解锁 docker 软件包为例）</p>
+
+
+
+<h3>步骤二：显示所有可用的软件版本</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper se -s docker</code></pre>
+
+
+
+<p>（补充：这里以显示 docker 软件包的所有可用的版本为例）</p>
+
+
+
+<h3>步骤三：升级指定版本的软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper install --oldpackage docker-&lt;version&gt;.&lt;architecture&gt;</code></pre>
+
+
+
+<p>（补充：这里以升级 docker 软件包的指定版本为例）</p>
+
+
+
+<h3>步骤四：重新锁定软件</h3>
+
+
+
+<pre class="wp-block-code"><code># zypper addlock docker</code></pre>
+
+
+
+<p>（补充：这里以重新锁定 docker 软件包为例）</p>
+
+
+
+<h3>步骤五：重启系统</h3>
+
+
+
+<pre class="wp-block-code"><code># reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 openSUSE &#038; SLE 升级系统时报错 “Can&#8217;t get available migrations from server: SUSE::Connect::ApiError: Multiple base products found:&#8230;&#8230;”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-cant-get-available-migrations-from-server-suseconnectapierror-multiple-base-products-found/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 03 Mar 2022 08:00:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SUSE Repository Mirroring Tool (RMT)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=22328</guid>
+
+					<description><![CDATA[报错代码 分析 当上一次升级失败或者升级回滚了以后可能会报此类错误 解决方法 方法一：通过 SUSEConnect 命令回滚 1.1 通过 SUSEConnect 命令回滚 # SUSEConnect &#8211;rollback 1.2 重新升级 （步骤略） 步骤二：取消注册再重新注册 2.1 取消注册再重新注册 （步骤略） 2.2 重新升级 （步骤略） 参考文献： https://www.suse.com/support/kb/doc/?id=000019523]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>Can't get available migrations from server: SUSE::Connect::ApiError: Multiple base products found: ......</code></pre>
+
+
+
+<h2>分析</h2>
+
+
+
+<p>当上一次升级失败或者升级回滚了以后可能会报此类错误</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>方法一：通过 SUSEConnect 命令回滚</h3>
+
+
+
+<h4>1.1 通过 SUSEConnect 命令回滚</h4>
+
+
+
+<p># SUSEConnect &#8211;rollback</p>
+
+
+
+<h4>1.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3>步骤二：取消注册再重新注册</h3>
+
+
+
+<h4>2.1 取消注册再重新注册</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h4>2.2 重新升级</h4>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h1>参考文献：</h1>
+
+
+
+<p class="has-text-align-center">https://www.suse.com/support/kb/doc/?id=000019523</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 生命周期</title>
+		<link>https://eternalcenter-sep-2022.github.io/lifecycle/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 07:56:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Upgradation (系统升级)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21946</guid>
+
+					<description><![CDATA[RHEL English: https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase Chinese: https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase openSUSE English: https://en.opensuse.org/Lifetime Chinese: https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90 SLE https://www.suse.com/lifecycle]]></description>
+										<content:encoded><![CDATA[
+<h2 id="rhel">RHEL</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://access.redhat.com/support/policy/updates/errata/#Extended_Life_Cycle_Phase</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://access.redhat.com/zh_CN/support/policy/updates/errata#Extended_Life_Cycle_Phase</p>
+
+
+
+<h2 id="opensuse">openSUSE</h2>
+
+
+
+<p>English:</p>
+
+
+
+<p>https://en.opensuse.org/Lifetime</p>
+
+
+
+<p>Chinese:</p>
+
+
+
+<p>https://zh.opensuse.org/%E4%BD%BF%E7%94%A8%E6%9C%9F%E9%99%90</p>
+
+
+
+<h2 id="sle">SLE</h2>
+
+
+
+<p>https://www.suse.com/lifecycle</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

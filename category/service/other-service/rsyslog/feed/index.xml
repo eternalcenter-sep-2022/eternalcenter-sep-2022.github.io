@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Rsyslog &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/service/other-service/rsyslog/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 06:49:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Linux 远程日志的集中管理和分文件存储 （通过 Rsyslog 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/rsyslog-set/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2020 14:20:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Rsyslog]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11535</guid>
+
+					<description><![CDATA[步骤一：规划拓扑 1.1 服务器列表 rsyslog 服务端 IP 地址:192.168.0.11rsyslog 客户端 IP 地址:192.168.0.12 1.2 服务器列表简介 rsyslog 客户端将日志发送给 rsyslog 服务端，并实现分文件存储 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 8 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：配置 rsyslog 服务端 3.1 修改 rsyslog 配置文件的案例 3.1.1 案例一 （只在 rsyslog 服务端执行以下步骤） 添加以下内容： （补充：1) 使用 UDP 的 514 端口接收日志2) 使用 TCP 的 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/rsyslog-set/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Linux 远程日志的集中管理和分文件存储 （通过 Rsyslog 实现）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>rsyslog 服务端 IP 地址:192.168.0.11<br>rsyslog 客户端 IP 地址:192.168.0.12</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>rsyslog 客户端将日志发送给 rsyslog 服务端，并实现分文件存储</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>5) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-配置-rsyslog-服务端3-1-修改-rsyslog-配置文件的案例3-1-1-案例一">步骤三：配置 rsyslog 服务端</h3>
+
+
+
+<h4 id="步骤三-配置-rsyslog-服务端3-1-修改-rsyslog-配置文件的案例3-1-1-案例一">3.1 修改 rsyslog 配置文件的案例</h4>
+
+
+
+<h5 id="步骤三-配置-rsyslog-服务端3-1-修改-rsyslog-配置文件的案例3-1-1-案例一">3.1.1 案例一</h5>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+module(load="imudp")
+input(type="imudp" port="514")
+module(load="imtcp")
+input(type="imtcp" port="514")</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 此配置会将所有 rsyslog 客户端的日志存储在 rsyslog 服务端的 /var/log/message 里<br>）</p>
+
+
+
+<h5 id="3-1-2-案例二">3.1.2 案例二</h5>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+module(load="imudp")
+input(type="imudp" port="514")
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+$template DynFile,"/var/log/%HOSTNAME%.log"
+*.* -?DynFile
+&amp; ~</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 此配置会将每个 rsyslog 客户端的日志单独存储在 /var/log/ 下的一个文件里，此文件会以其所属系统名命名<br>）</p>
+
+
+
+<h5 id="3-1-3-案例三">3.1.3 案例三</h5>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+module(load="imudp")
+input(type="imudp" port="514")
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+$template DynFile,"/var/log/remotelog/%HOSTNAME%-%$YEAR%-%$MONTH%-%$DAY%-messages.log"
+*.* -?DynFile
+&amp; ~</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 此配置会将每个 rsyslog 客户端的日志单独存储在 /var/log/remotelog 下的一个文件里，此文件会以其创建时间和其所属系统名命名<br>）</p>
+
+
+
+<h5 id="3-1-4-案例四">3.1.4 案例四</h5>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+module(load="imudp")
+input(type="imudp" port="514")
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+$template DynFile,"/var/log/remotelog/%HOSTNAME%-%$YEAR%-%$MONTH%-%$DAY%-messages.log"
+:fromhost-ip,!isequal,"127.0.0.1" -?DynFile
+&amp; ~</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 此配置会将每个 rsyslog 客户端的日志单独存储在 /var/log/ 下的一个文件里，此文件会以其创建时间和其所属系统名命名<br>4) 此配置不会单独存储 rsyslog 服务端的日志<br>）</p>
+
+
+
+<h5 id="3-1-5-案例五">3.1.5 案例五</h5>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+module(load="imudp")
+input(type="imudp" port="514")
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+$template DynFile,"/var/log/syslog/system-%HOSTNAME%/messages.log"
+*.* -?DynFile
+&amp; ~</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 此配置会将每个 rsyslog 客户端的日志单独存储在 /var/log/ 下某个目录的 messages 文件里，此目录会以其所属系统名命名<br>）</p>
+
+
+
+<h4 id="3-2-重启-rsyslog-服务">3.2 重启 rsyslog 服务</h4>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart rsyslog</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 使用 UDP 的 514 端口接收日志<br>2) 使用 TCP 的 514 端口接收日志<br>3) 需要在 3.1 修改 rsyslog 配置文件的案例中任选其一完成后在执行此步骤<br>）</p>
+
+
+
+<h3 id="步骤四-配置-rsyslog-客户端4-1-修改-rsyslog-客户端的案例">步骤四：配置 rsyslog 客户端</h3>
+
+
+
+<h4 id="步骤四-配置-rsyslog-客户端4-1-修改-rsyslog-客户端的案例">4.1 修改 rsyslog 客户端的案例</h4>
+
+
+
+<p>（只在 rsyslog 客户端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/rsyslog.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+*.emerg;*.alert;*.crit;*.err;*.warning;*.notice;*.info  @192.168.0.11</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+*.emerg;*.alert;*.crit;*.err;*.warning;*.notice;*.info  @@192.168.0.11</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 192.168.0.11 是指 rsyslog 服务端的 IP 地址<br>2) IP 地址前一个 “@” 符后是指使用 UDP 端口 514 传输日志<br>3) IP 地址前两个 “@” 符后是指使用 TCP 端口 514 传输日志<br>）</p>
+
+
+
+<h4 id="4-2-重启-rsyslog-服务">4.2 重启 rsyslog 服务</h4>
+
+
+
+<p>（只在 rsyslog 客户端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart rsyslog</code></pre>
+
+
+
+<h3 id="步骤五-测试-rsyslog-服务5-1-在-rsyslog-客户端上发送日志">步骤五：测试 rsyslog 服务</h3>
+
+
+
+<h4 id="步骤五-测试-rsyslog-服务5-1-在-rsyslog-客户端上发送日志">5.1 在 rsyslog 客户端上发送日志</h4>
+
+
+
+<p>（只在 rsyslog 客户端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># logger "This is our test log"</code></pre>
+
+
+
+<p>（补充：这里以发送 This is our test log 信息为例）</p>
+
+
+
+<h4 id="5-2-在-rsyslog-服务端上显示日志">5.2 在 rsyslog 服务端上显示日志</h4>
+
+
+
+<p>（只在 rsyslog 服务端执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cat /var/log/* | grep test</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

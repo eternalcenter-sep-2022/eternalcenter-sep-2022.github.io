@@ -1,0 +1,1704 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>System Process &amp; System Performance (系统进程 &amp; 系统性能) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/system/system-process-system-performance/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 01 Sep 2022 06:00:49 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[命令] Linux 命令 systemd-analyze （显示系统和服务启动）</title>
+		<link>https://eternalcenter-sep-2022.github.io/systemd-analyze/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 11 Jul 2022 01:56:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26662</guid>
+
+					<description><![CDATA[内容一：显示系统启动时间 内容二：显示服务启动时间]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：显示系统启动时间</h3>
+
+
+
+<pre class="wp-block-code"><code># systemd-analyze</code></pre>
+
+
+
+<h3>内容二：显示服务启动时间</h3>
+
+
+
+<pre class="wp-block-code"><code># systemd-analyze blame</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 lsof （显示进程）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lsof/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 23 Jun 2022 10:06:50 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System File (系统文件)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26135</guid>
+
+					<description><![CDATA[内容一：lsof 命令输出结果 内容二：lsof 命令输出结果简介 1) COMMAND 进程名2) PID （Process Id） PID 号3) USER 用户4) FD 文件描述信息（补充：cwd 代表当前目录，txt 代表 txt 文件，rtd 代表 root 目录，mem 代表内存映射文件）5) TYPE 文件类型（补充：DIR 代表当前目录，REG 代表普通文件，CHR 代表字符，a_inode 代表 Inode 文件，FIFO 代表管道或者 socket文件，netlink 代表网络，unkonwn 代表未知）6) DEVICE 设备 ID7) SIZE/OFF 进程大小8) NODE 文件的 Inode 号9) NAME 路径或链接 内容三：lsof 使用案例 3.1 案例一：显示已经被删除的文件 3.2 案例二：显示用户已打开的案例 3.2.1 显示某用户已打开的文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lsof/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Linux 命令 lsof （显示进程）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：lsof 命令输出结果</h3>
+
+
+
+<pre class="wp-block-code"><code># lsof | more
+COMMAND     PID   TID    USER   FD      TYPE             DEVICE  SIZE/OFF       NODE NAME
+systemd       1          root  cwd       DIR              251,1      4096          1 /
+......</code></pre>
+
+
+
+<h3>内容二：lsof 命令输出结果简介</h3>
+
+
+
+<p>1) COMMAND 进程名<br>2) PID （Process Id） PID 号<br>3) USER 用户<br>4) FD 文件描述信息<br>（补充：cwd 代表当前目录，txt 代表 txt 文件，rtd 代表 root 目录，mem 代表内存映射文件）<br>5) TYPE 文件类型<br>（补充：DIR 代表当前目录，REG 代表普通文件，CHR 代表字符，a_inode 代表 Inode 文件，FIFO 代表管道或者 socket文件，netlink 代表网络，unkonwn 代表未知）<br>6) DEVICE 设备 ID<br>7) SIZE/OFF 进程大小<br>8) NODE 文件的 Inode 号<br>9) NAME 路径或链接</p>
+
+
+
+<h3>内容三：lsof 使用案例</h3>
+
+
+
+<h4>3.1 案例一：显示已经被删除的文件</h4>
+
+
+
+<pre class="wp-block-code"><code># lsof | grep deleted</code></pre>
+
+
+
+<h4>3.2 案例二：显示用户已打开的案例</h4>
+
+
+
+<h5>3.2.1 显示某用户已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -u zhumingyu mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以显示用户 zhumingyu 和 mingyuzhu 已打开的文件为例）</p>
+
+
+
+<h5>3.2.2 不显示某用户已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -u mingyuzhu</code></pre>
+
+
+
+<p>（补充：这里以不显示用户 mingyuzhu 已打开的文件为例）</p>
+
+
+
+<h4>3.3 案例三：显示进程已打开的文件</h4>
+
+
+
+<h5>3.3.1 显示某进程已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p 1024</code></pre>
+
+
+
+<p>（补充：这里以显示 PID 号是 1024 已打开的文件为例）</p>
+
+
+
+<h5>3.3.2 不显示某进程已打开的所有文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p ^1024</code></pre>
+
+
+
+<p>（补充：这里以不显示 PID 号是 1024 已打开的文件为例）</p>
+
+
+
+<h5>3.3.3 显示某几个进程已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -p 1,2,3</code></pre>
+
+
+
+<p>（补充：这里以显示 PID 号是 1、2 和 3 已打开的文件为例）</p>
+
+
+
+<h4>3.4 案例四：显示已打开的网络文件</h4>
+
+
+
+<h5>3.4.1 显示所有已打开的网络文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i</code></pre>
+
+
+
+<h5>3.4.2 显示所有 IPv4 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i 4</code></pre>
+
+
+
+<h5>3.4.3 显示所有 IPv6 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i 6</code></pre>
+
+
+
+<h5>3.4.4 显示所有 TCP 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP</code></pre>
+
+
+
+<h5>3.4.5 显示所有 TCP 协议已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i UDP</code></pre>
+
+
+
+<h5>3.4.6 显示某个 TCP 端口或者 UDP 端口已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i:22</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 或者 UPD 的 22 端口已打开的文件为例）</p>
+
+
+
+<h5>3.4.7 显示某个 TCP 端口已打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP:22</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 的 22 端口已打开的文件为例）</p>
+
+
+
+<h5>3.4.8 显示某几个 TCP 端口打开的文件</h5>
+
+
+
+<pre class="wp-block-code"><code># lsof -i TCP:1-1024</code></pre>
+
+
+
+<p>（补充：这里以显示 TCP 的 1 端口到 1024 端口打开的文件为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 执行 crontab -e 命令时报错 “You (&#8230;&#8230;) are not allowed to use this program (crontab)”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-you-are-not-allowed-to-use-this-program-crontab/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Jun 2022 10:07:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege (系统权限)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23780</guid>
+
+					<description><![CDATA[解决方法 如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户 添加以下内容： （补充：这里以添加用户 zhumingyu 为例） 如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户 删除以下内容： （补充：这里以删除用户 zhumingyu 为例）]]></description>
+										<content:encoded><![CDATA[
+<h2>解决方法</h2>
+
+
+
+<p>如果在系统中没有 /etc/cron.deny 配置文件，在 /etc/cron.allow 配置文件中添加要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu</code></pre>
+
+
+
+<p>（补充：这里以添加用户 zhumingyu 为例）</p>
+
+
+
+<p>如果在系统中没有 /etc/cron.allow 配置文件，在 /etc/cron.allow 配置文件中删除要使用 crontab -e 命令的用户</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/cron.allow</code></pre>
+
+
+
+<p>删除以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+zhumingyu
+......</code></pre>
+
+
+
+<p>（补充：这里以删除用户 zhumingyu 为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 time （显示其它命令所需执行时间）</title>
+		<link>https://eternalcenter-sep-2022.github.io/time/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 May 2022 06:44:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23640</guid>
+
+					<description><![CDATA[（补充：这里以显示 sosreport 命令所需执行时间为例）]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code># time sosreport</code></pre>
+
+
+
+<p>（补充：这里以显示 sosreport 命令所需执行时间为例）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 显示系统常用信息</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-display-system-common-information/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 26 Apr 2022 16:14:48 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Directory (系统目录)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23311</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：显示系统常用信息作用：显示系统常用信息 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. times=5 #显示系统常用信息的次数2. sleeptime=0.3 #大部分行与行之间显示的间隔时间 注意 1. 需要安装 sysstat 软件2. 执行此脚本的用户能够使用 sudo ip a s 命令3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：显示系统常用信息<br>作用：显示系统常用信息</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. times=5 #显示系统常用信息的次数<br>2. sleeptime=0.3 #大部分行与行之间显示的间隔时间</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 需要安装 sysstat 软件<br>2. 执行此脚本的用户能够使用 sudo  ip a s 命令<br>3. 执行此脚本的用户能够使用 sudo ss -ntulap 命令<br>4. 搭建了 KVM 虚拟化平台后执行此脚本的用户能够使用 sudo virsh list 命令后才能实现</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+times=5
+sleeptime=0.3
+####################### Separator ########################
+
+nowtime=1
+
+while (( nowtime &lt;= times))
+do
+        echo -e "Start Monitoring: \c"
+	for i in {1..94}
+	do
+	        echo -e "#\c"
+		sleep 0.01
+        done
+	echo
+
+	sleep $sleeptime
+        host=`hostname`
+        echo -e "Name:\t\t\t\t\t\t\t \033&#91;1m$host\033&#91;0m"
+
+        ip=`sudo ip a s | awk '/&#91;1-2]?&#91;0-9]{0,2}\.&#91;1-2]?&#91;0-9]{0,2}/&amp;&amp;!/127.0.0.1/{print $2}' | awk -F/ '{print $1}'`
+	for iip in $(echo $ip)
+        do
+		sleep $sleeptime
+                echo -e "IP Address:\t\t\t\t\t\t \033&#91;1m$iip\033&#91;0m"
+        done
+
+        sleep $sleeptime
+
+        cpu=`top -bn 1 | awk -F',' '/^%Cpu/{print $4 }' | awk '{print $1}' | awk '{print 100-$1}'`
+        echo -e "CPU Usage (Total):\t\t\t\t\t \033&#91;1m$cpu%\033&#91;0m"
+
+        sleep $sleeptime
+
+        mem=`free | grep Mem | awk '{print $3/$2 * 100.0}' | egrep -o "&#91;1]?&#91;0-9]{0,2}\.&#91;0-9]"`
+        echo -e "Memory Usage (Total):\t\t\t\t\t \033&#91;1m$mem%\033&#91;0m"
+
+	directory=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print $6}'`
+        for idirectory in `echo $directory`
+        do
+                sleep $sleeptime
+                directoryusage=`df -h | grep -v run | grep -v boot | awk '$1~/\/dev/{print}' | grep $idirectory$ | awk '{print $5}'`
+		if &#91; $idirectory == / -o $idirectory == /sda -o $idirectory == /sdb  ];then
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+	        else
+                        echo -e "Directory Usage ($idirectory):\t\t\t\t \033&#91;1m$directoryusage\033&#91;0m"
+		fi
+        done
+
+	sudo -l | grep 'virsh list' &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        sleep $sleeptime
+	        virtual=`sudo virsh list | egrep &#91;0-9] | wc -l`
+	        echo -e "Number of Virtual Machines (Total):\t\t\t \033&#91;1m$virtual\033&#91;0m"
+        fi
+
+        sleep $sleeptime
+
+        user=`who | wc -l`
+        echo -e "Number of User Logins (Total):\t\t\t\t \033&#91;1m$user\033&#91;0m"
+
+        soft=`rpm -qa | wc -l`
+        echo -e "Number of Softwares (Total):\t\t\t\t \033&#91;1m$soft\033&#91;0m"
+
+        sleep $sleeptime
+
+        port=`sudo ss -ntulap | wc -l`
+        echo -e "Number of Open Ports (Total):\t\t\t\t \033&#91;1m$port\033&#91;0m"
+
+        which sar &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+                networkcard=`ifconfig | awk -F: '/flags/&amp;&amp;!/lo/{print $1}'`
+                for inetworkcard in `echo $networkcard`
+                do
+                        networkread="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $3/1000}'` m/s"
+                        networkwrite="`sar -n DEV 1 1 | grep $inetworkcard | awk '/&#91;0-9]&#91;0-9]:&#91;0-9]&#91;0-9]/{print $4/1000}'` m/s"
+			echo $inetworkcard | grep eth &amp;&gt; /dev/null
+			if &#91; $?  -ne 0 ];then
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+		        else
+	                echo -e "Network Card IO ($inetworkcard):\t\t\t\t\t \033&#91;1m$networkread\033&#91;0m (Read)\t\033&#91;1m$networkwrite\033&#91;0m (Write)"
+			fi
+                done
+        fi
+
+        which iostat &amp;&gt; /dev/null
+        if &#91; $? -eq 0 ];then
+	        disk=`iostat -d -k 1 1 | awk '!/^$/&amp;&amp;!/Device/&amp;&amp;!/Linux/{print $1}'`
+                for idisk in `echo $disk`
+	        do
+			sleep $sleeptime
+		        diskread="`iostat -d -k 1 1 | grep $idisk |  awk '{print $3/1000}'` m/s"
+		        diskwrite="`iostat -d -k 1 1 | grep $idisk |  awk '{print $4/1000}'` m/s"
+			echo $idisk | grep 'nvme' &amp;&gt; /dev/null
+			if &#91; $? -eq 0 ];then
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+		        else
+		                echo -e "Disk IO (/dev/$idisk):\t\t\t\t\t \033&#91;1m$diskread\033&#91;0m (Read)\t\033&#91;1m$diskwrite\033&#91;0m (Write)"
+			fi
+	        done
+
+        fi
+
+        echo -e "Complete Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+        echo
+        sleep $sleeptime
+
+        let nowtime++
+done
+
+        echo -e "Terminal Monitoring: \c"
+        for i in {1..91}
+        do
+                echo -e "#\c"
+                sleep 0.01
+        done
+
+exit</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] 解决 Linux 运行时报错 “watchdog: Bug: soft lockup &#8211; CPU&#8230;&#8230;” （CPU 软锁）</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-watchdog-bug-soft-lockup-cpu/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 15 Feb 2022 07:35:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21928</guid>
+
+					<description><![CDATA[报错代码 分析 当 CPU 的负载过高时，一个 CPU 在运行某一个进程时，在内核模式下超过 20 秒没有回应，则看门狗程序会将系统所有 CPU 软锁住，然后会让这些 CPU 显示各自正在运行的进程堆栈跟踪 缓解方法 方法一：通过 /proc/sys/kernel/watchdog_thresh 文件延长看门狗软锁 CPU 的时间 （补充：这里以将看门狗的值延长到 20 为例，也可以根据自己的需求延长更多，默认值为 10） 方法二：通过新建文件延长看门狗软所 CPU 的时间 2.1 通过新建文件延长看门狗软所 CPU 的时间 （补充：这里以将看门狗的值延长到 20 为例，也可以根据自己的需求延长更多，默认值为 10） 2.2 让新建文件立刻生效 深究方法 开启 Kdump，等此报错再次发生时分析 Kdump 在内核崩溃时搜集信息 vmcore]]></description>
+										<content:encoded><![CDATA[
+<h2 id="报错代码">报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>watchdog: Bug: soft lockup - CPU......</code></pre>
+
+
+
+<h2 id="分析">分析</h2>
+
+
+
+<p>当 CPU 的负载过高时，一个 CPU 在运行某一个进程时，在内核模式下超过 20 秒没有回应，则看门狗程序会将系统所有 CPU 软锁住，然后会让这些 CPU 显示各自正在运行的进程堆栈跟踪</p>
+
+
+
+<h2 id="缓解方法">缓解方法</h2>
+
+
+
+<h3 id="缓解方法">方法一：通过 /proc/sys/kernel/watchdog_thresh 文件延长看门狗软锁 CPU 的时间</h3>
+
+
+
+<pre class="wp-block-code"><code># echo 20 &gt; /proc/sys/kernel/watchdog_thresh</code></pre>
+
+
+
+<p>（补充：这里以将看门狗的值延长到 20 为例，也可以根据自己的需求延长更多，默认值为 10）</p>
+
+
+
+<h3 id="方法二-通过新建文件提高看门狗软所-cpu-的时间2-1-通过新建文件提高看门狗软所-cpu-的时间">方法二：通过新建文件延长看门狗软所 CPU 的时间</h3>
+
+
+
+<h4 id="方法二-通过新建文件提高看门狗软所-cpu-的时间2-1-通过新建文件提高看门狗软所-cpu-的时间">2.1 通过新建文件延长看门狗软所 CPU 的时间</h4>
+
+
+
+<pre class="wp-block-code"><code># echo "kernel.watchdog_thresh = 20" >> /etc/sysctl.conf</code></pre>
+
+
+
+<p>（补充：这里以将看门狗的值延长到 20 为例，也可以根据自己的需求延长更多，默认值为 10）</p>
+
+
+
+<h4 id="2-2-让新建文件立刻生效">2.2 让新建文件立刻生效</h4>
+
+
+
+<pre class="wp-block-code"><code># sysctl -p /etc/sysctl.conf</code></pre>
+
+
+
+<h2 id="深究方法">深究方法</h2>
+
+
+
+<p>开启 Kdump，等此报错再次发生时分析 Kdump 在内核崩溃时搜集信息 vmcore</p>
+
+
+
+<div class="wp-container-1 is-content-justification-center wp-block-buttons">
+<div class="wp-block-button aligncenter is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/kdump/">Linux Kdump 的开启 <br>（用于收集内核崩溃时的信息）</a></div>
+
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="https://eternalcenter-sep-2022.github.io/kdump-analysis/" style="border-radius:0px">Linux Kdump 内核奔溃信息的分析</a></div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 批量比较服务器所有正在运行进程的变化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-process-compare/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 20 Jan 2022 13:38:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=21341</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：批量比较服务器所有正在运行进程的变化作用：批量比较服务器所有正在运行进程的变化 使用方法 1. 服务器清单 $server_list 每台服务器占用 1 行2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下3. 给此脚本添加执行权限4. 执行此脚本5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里 脚本分割线里的变量 server_list=server_list.txt #服务器清单first_time=first_time #存储第一次检结果的目录second_time=second_time #存储第二次检查结果的目录compare_file=comparison_results.txt #存储比较结果的文件 注意 此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2 id="介绍">介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：批量比较服务器所有正在运行进程的变化<br>作用：批量比较服务器所有正在运行进程的变化</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 服务器清单 $server_list 每台服务器占用 1 行<br>2. 在此脚本的分割线内写入相应的内容，并和此脚本放在同一目录下<br>3. 给此脚本添加执行权限<br>4. 执行此脚本<br>5. 此脚本执行完成后，会将运行结果写入当前目录下的 $compare_file 里</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>server_list=server_list.txt #服务器清单<br>first_time=first_time #存储第一次检结果的目录<br>second_time=second_time #存储第二次检查结果的目录<br>compare_file=comparison_results.txt #存储比较结果的文件</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>此脚本执行前必须要先保证执行本脚本的用户能无密码 ssh 远程这些远程服务器</p>
+
+
+
+<h2 id="脚本">脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+server_list=server_list.txt
+first_time=first_time
+second_time=second_time
+compare_file=comparison_results.txt
+
+####################### Separator ########################
+
+mkdir $first_time &amp;&gt; /dev/null
+mkdir $second_time &amp;&gt; /dev/null
+echo &gt; $compare_file
+
+read -p "Please input first second or compare now: " choice
+
+check(){
+        for server_name in `cat $1`
+        do
+                ssh -t $server_name "ps -A" | awk '{print $4}' &gt; $2/$server_name
+        done
+}
+
+compare(){
+        for server_name in `cat $1`
+        do
+                echo $server_name &gt;&gt; $4
+                for process in `cat $2/$server_name`
+                        do
+                        grep $process $3/$server_name &amp;&gt; /dev/null
+                        if &#91; $? -ne 0 ];then
+                                echo $process &gt;&gt; $4
+                        fi
+                done
+                echo &gt;&gt; $4
+        done
+}
+
+if &#91; $choice == first ];then
+        check $server_list $first_time
+fi
+
+if &#91; $choice == second ];then
+        check $server_list $second_time
+fi
+
+if &#91; $choice == compare ];then
+        compare $server_list $first_time $second_time $compare_file
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 进程修正值 （nice 值） 的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/nice/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 04 Nov 2021 15:38:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=18158</guid>
+
+					<description><![CDATA[内容一：进程优先级和修正值（nice 值）的关系 1.1 进程优先级的作用 进程的真正优先级越小，则此进程则越能优先被执行 1.2 进程优先级和修正值（nice 值）的关系 进程的真正优先级 = 进程默认优先级 + 修正值（nice 值） 1.3 修正值（nice 值）的范围 从 -20 到 +19 内容二：修正值（nice 值）的设置 2.1 设置修正值（nice 值）的格式 或者： 或者： 2.2 设置修正值（nice 值）的案例 或者： 或者： （注意：这里的 -10 不是指负数 10 而是指正数 10） （补充：这里以修正值为 10 启动 top 命令为例） 内容三：显示进程的修正值 或者： （补充：1) PRI 代表进程默认的优先级2) NI 代表进程的修正值（nice 值）3) 进程的真正优先级 = PRI &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nice/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 进程修正值 （nice 值） 的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-进程优先级和修正值-nice-值-的关系-1-1-进程优先级的作用">内容一：进程优先级和修正值（nice 值）的关系</h3>
+
+
+
+<h4 id="内容一-进程优先级和修正值-nice-值-的关系-1-1-进程优先级的作用">1.1 进程优先级的作用</h4>
+
+
+
+<p>进程的真正优先级越小，则此进程则越能优先被执行</p>
+
+
+
+<h4 id="1-2-进程优先级和修正值-nice-值-的关系">1.2 进程优先级和修正值（nice 值）的关系</h4>
+
+
+
+<p>进程的真正优先级 = 进程默认优先级 + 修正值（nice 值）</p>
+
+
+
+<h4 id="1-3-修正值-nice-值-的范围">1.3 修正值（nice 值）的范围</h4>
+
+
+
+<p>从 -20 到 +19</p>
+
+
+
+<h3 id="内容二-修正值-nice-值-的设置-2-1-设置修正值-nice-值-的格式">内容二：修正值（nice 值）的设置</h3>
+
+
+
+<h4 id="内容二-修正值-nice-值-的设置-2-1-设置修正值-nice-值-的格式">2.1 设置修正值（nice 值）的格式</h4>
+
+
+
+<pre class="wp-block-code"><code># nice -n &lt;correction value&gt; &lt;command&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nice --adjustment=&lt;correction value&gt; &lt;command&gt;</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nice -&lt;correction value&gt; &lt;command&gt;</code></pre>
+
+
+
+<h4 id="2-2-设置修正值-nice-值-的案例">2.2 设置修正值（nice 值）的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># nice -n 10 top</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nice --adjustment=10 top</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># nice -10 top</code></pre>
+
+
+
+<p>（注意：这里的 -10 不是指负数 10 而是指正数 10）</p>
+
+
+
+<p>（补充：这里以修正值为 10 启动 top 命令为例）</p>
+
+
+
+<h3 id="内容三-显示进程的修正值-1">内容三：显示进程的修正值</h3>
+
+
+
+<pre class="wp-block-code"><code># top</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># ps -ef</code></pre>
+
+
+
+<p>（<br>补充：<br>1) PRI 代表进程默认的优先级<br>2) NI 代表进程的修正值（nice 值）<br>3) 进程的真正优先级 = PRI + NI<br>4) 如果多个进程的真正优先级一样，则 root 用户的进程被优先执行<br>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 system-analyze （显示服务启动时间）</title>
+		<link>https://eternalcenter-sep-2022.github.io/system-analyze/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Aug 2021 06:41:33 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17236</guid>
+
+					<description><![CDATA[内容一：显示所有服务启动的时间 内容二：显示某一个服务启动的时间]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-显示所有服务启动的时间">内容一：显示所有服务启动的时间</h3>
+
+
+
+<pre class="wp-block-code"><code># system-analyze</code></pre>
+
+
+
+<h3 id="内容二-显示某一个服务启动的时间">内容二：显示某一个服务启动的时间</h3>
+
+
+
+<pre class="wp-block-code"><code># system-analyze &lt;service&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 内存机制</title>
+		<link>https://eternalcenter-sep-2022.github.io/memory-mechanism/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 20 Apr 2021 07:37:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Hardware (系统硬件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14027</guid>
+
+					<description><![CDATA[内容一：Linux 显示内存的命令 内容二：Linux 内存机制 1) total 内存的总大小2) used 正在被使用的内存大小3) free 没有被使用的内存大小4) shared 正在被多个进程共享的内存大小5) buffers 内存中被系统分配但是还没有被使用的 buffers 大小。这些数据暂时存储在内存中，当下次再此使用时可以在内存中被快速调用。buffers （buffer page） 代表块设备 （硬盘等设备） 所占用的缓存页，对应从硬盘中直接获取的数据，处于内存和硬盘之间，由内核使用 （当 free 状态的内存不够时，它会自动释放出来，也可以手动释放出来）6) cached 内存中被系统分配但是还没有被使用的 cached 大小。这些数据暂时存储在内容中，当下次再此使用时可以在内存中被快速调用。cached （cache page） 代表普通文件数据 （硬盘里的数据） 所占用的缓存页，对应 vfs 页缓冲层的数据，处于内存和 CPU （处理器） 之间，由应用程序使用 （当 free 状态的内存不够时，它会自动释放出来，也可以手动释放出来）7) -buffers/cached = used &#8211; buffers &#8211; cached，也就是真实的内存使用量8) +buffers/cached = free + buffers + &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/memory-mechanism/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Linux 内存机制"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-linux-显示内存的命令">内容一：Linux 显示内存的命令</h3>
+
+
+
+<pre class="wp-block-code"><code># free -m</code></pre>
+
+
+
+<h3 id="内容二-linux-内存机制">内容二：Linux 内存机制</h3>
+
+
+
+<p>1) total 内存的总大小<br>2) used 正在被使用的内存大小<br>3) free 没有被使用的内存大小<br>4) shared 正在被多个进程共享的内存大小<br>5) buffers 内存中被系统分配但是还没有被使用的 buffers 大小。这些数据暂时存储在内存中，当下次再此使用时可以在内存中被快速调用。buffers （buffer page） 代表块设备 （硬盘等设备） 所占用的缓存页，对应从硬盘中直接获取的数据，处于内存和硬盘之间，由内核使用 （当 free 状态的内存不够时，它会自动释放出来，也可以手动释放出来）<br>6) cached 内存中被系统分配但是还没有被使用的 cached 大小。这些数据暂时存储在内容中，当下次再此使用时可以在内存中被快速调用。cached （cache page） 代表普通文件数据 （硬盘里的数据） 所占用的缓存页，对应 vfs 页缓冲层的数据，处于内存和 CPU （处理器） 之间，由应用程序使用 （当 free 状态的内存不够时，它会自动释放出来，也可以手动释放出来）<br>7) -buffers/cached = used &#8211; buffers &#8211; cached，也就是真实的内存使用量<br>8) +buffers/cached = free + buffers + cached，也就是真实的内存剩余量<br>9) available = free + buffers + cached，也就是真实的内存剩余量</p>
+
+
+
+<p>（<br>补充：释放处于 buffers 和 cached 状态内存的方法</p>
+
+
+
+<p>1) 释放 page cache：</p>
+
+
+
+<pre class="wp-block-code"><code># echo 1 &gt; /proc/sys/vm/drop_caches</code></pre>
+
+
+
+<p>2) 释放 dentries 和 inodes：</p>
+
+
+
+<pre class="wp-block-code"><code># echo 2 &gt; /proc/sys/vm/drop_caches</code></pre>
+
+
+
+<p>3) 同时释放 pagecache、dentries 和 inodes：</p>
+
+
+
+<pre class="wp-block-code"><code># echo 3 &gt; /proc/sys/vm/drop_caches</code></pre>
+
+
+
+<p>）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 检测服务器 CPU 占用率并报警写入日志</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-cpu-monitor/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 18 Mar 2021 09:32:19 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13622</guid>
+
+					<description><![CDATA[介绍 基本信息 名称：检测服务器 CPU 占用率并报警写入日志作用：检测服务器 CPU 占用率并报警写入日志 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 将此脚本添加到周期性计划任务里4. 如果 CPU 占用率超过了报警值则将报警信息写入 /var/log/message 脚本分割线里的变量 cputhreshold=95 #CPU 报警的占比值 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>名称：检测服务器 CPU 占用率并报警写入日志<br>作用：检测服务器 CPU 占用率并报警写入日志</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 将此脚本添加到周期性计划任务里<br>4. 如果 CPU 占用率超过了报警值则将报警信息写入 /var/log/message</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>cputhreshold=95 #CPU 报警的占比值</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+cputhreshold=95
+####################### Separator ########################
+
+cpumonitor() {
+cpu=`top -n 1 -b | grep Cpu | awk -F, '{print $1}'| awk -F: '{print $2}'| awk '{print $1}'`
+
+if &#91; `echo "$cpu &gt; $1"|bc` -ne 0 ]
+then
+        logger "CPU_Alarm CPU until $cpu"
+fi
+}
+
+cpumonitor $cputhreshold</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[TOOL] Shell Check Memory Usage (15 seconds each time, 100 times in total)</title>
+		<link>https://eternalcenter-sep-2022.github.io/tool-shell-check-memory-usage-15-seconds-each-time-100-times-in-total%ef%bc%89/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Dec 2020 07:02:08 +0000</pubDate>
+				<category><![CDATA[English (英文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Monitor (监控)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13094</guid>
+
+					<description><![CDATA[Introduce Essential Information Author: Mingyu ZhuName: view the process using swapFunction: view the process using swap Usage 1. Add execution permission to this script2. Execute the script Script]]></description>
+										<content:encoded><![CDATA[
+<h2>Introduce</h2>
+
+
+
+<h3>Essential Information</h3>
+
+
+
+<p>Author: Mingyu Zhu<br>Name: view the process using swap<br>Function: view the process using swap</p>
+
+
+
+<h3>Usage</h3>
+
+
+
+<p>1. Add execution permission to this script<br>2. Execute the script</p>
+
+
+
+<h2>Script</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+i=1
+
+while &#91; $i -le 100 ]
+do free -m
+        sleep 15
+        let i=i+1
+done</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] Linux 脚本的管理 （通过 systemd 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/systemctl-script/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 04 Nov 2020 10:17:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11652</guid>
+
+					<description><![CDATA[步骤一：要被管理的脚本 创建以下内容： （补充：这里以创建 /etc/root/for.sh 脚本为例） 步骤二：创建 systemctl 的管理文件 创建以下内容： （补充：这里以创建 /etc/systemd/system/12456.service 来管理 ExecStart=/root/12456.sh 为例） 步骤三：加载刚刚创建的 systemctl 管理文件 步骤四：给 systemctl 的管理文件添加执行权限 步骤五：通过 systemd 管理脚本 5.1 启动脚本 5.2 关闭脚本 5.3 重启脚本 5.4 让脚本开机自启]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：要被管理的脚本</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /root/12456.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+for i in {1..5}
+do
+echo $i
+done</code></pre>
+
+
+
+<p>（补充：这里以创建 /etc/root/for.sh 脚本为例）</p>
+
+
+
+<h3>步骤二：创建 systemctl 的管理文件</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/systemd/system/12456.service</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;Unit]
+Description=12345
+After=default.target
+
+&#91;Service]
+Type=oneshot
+ExecStart=/root/12456.sh
+
+&#91;Install]
+WantedBy=default.target</code></pre>
+
+
+
+<p>（补充：这里以创建 /etc/systemd/system/12456.service 来管理 ExecStart=/root/12456.sh 为例）</p>
+
+
+
+<h3>步骤三：加载刚刚创建的 systemctl 管理文件</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl daemon-reload</code></pre>
+
+
+
+<h3>步骤四：给 systemctl 的管理文件添加执行权限</h3>
+
+
+
+<pre class="wp-block-code"><code># chmod u+x /etc/systemd/system/12456.service</code></pre>
+
+
+
+<h3>步骤五：通过 systemd 管理脚本</h3>
+
+
+
+<h4>5.1 启动脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl start 12456.service</code></pre>
+
+
+
+<h4>5.2 关闭脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop 12456.service</code></pre>
+
+
+
+<h4>5.3 重启脚本</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart 12456.service</code></pre>
+
+
+
+<h4>5.4 让脚本开机自启</h4>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable 12456.service</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[排错] Linux 解决运行时报错 “oom-killer &#8230;&#8230;”、“Out of memory &#8230;&#8230;” 或者 “mems_allowed=0”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-oom-killer-out-of-memory-or-mems_allowed0/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2020 13:23:27 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11525</guid>
+
+					<description><![CDATA[报错代码 或者： 或者： 分析 1) 系统出现了内存不足的情况2) 占用内存最大的进程被系统杀死了 解决方法 1) 增加内存2) 限制应用可使用的最大内存]]></description>
+										<content:encoded><![CDATA[
+<h2>报错代码</h2>
+
+
+
+<pre class="wp-block-code"><code>oom-killer ......</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>Out of memory: Kill process ......</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>mems_allowed=0</code></pre>
+
+
+
+<h2>分析</h2>
+
+
+
+<p>1) 系统出现了内存不足的情况<br>2) 占用内存最大的进程被系统杀死了</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<p>1) 增加内存<br>2) 限制应用可使用的最大内存</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux &#038; RHEL 系统的优化 （通过 tuned 实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/tuned/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 24 Jul 2020 13:07:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10254</guid>
+
+					<description><![CDATA[步骤一：系统环境要求 服务器系统要配置好可用的软件源 步骤二：安装 tuned 系统优化软件 步骤三：显示 tuned 推荐的优化模式 步骤四：切换至 tuned 推荐的优化模式 步骤五：显示当前的优化模式 补充：取消 tuned 系统优化的方法]]></description>
+										<content:encoded><![CDATA[
+<h3 id="步骤一-系统环境要求">步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统要配置好可用的软件源</p>
+
+
+
+<h3 id="步骤二-安装-tuned-系统优化软件">步骤二：安装 tuned 系统优化软件</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install tuned</code></pre>
+
+
+
+<h3 id="步骤三-显示-tuned-推荐的优化模式">步骤三：显示 tuned 推荐的优化模式</h3>
+
+
+
+<pre class="wp-block-code"><code># tuned-adm recommend
+virtual-guest</code></pre>
+
+
+
+<h3 id="步骤四-切换至-tuned-推荐的优化模式">步骤四：切换至 tuned 推荐的优化模式</h3>
+
+
+
+<pre class="wp-block-code"><code># tuned-adm profile virtual-guest</code></pre>
+
+
+
+<h3 id="步骤五-显示当前的优化模式">步骤五：显示当前的优化模式</h3>
+
+
+
+<pre class="wp-block-code"><code># tuned-adm active
+Current active profile: virtual-guest</code></pre>
+
+
+
+<h3 id="补充-取消-tuned-系统优化的方法">补充：取消 tuned 系统优化的方法</h3>
+
+
+
+<pre class="wp-block-code"><code># tuned-adm off</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 service （管理程序单元）</title>
+		<link>https://eternalcenter-sep-2022.github.io/service-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jul 2020 09:14:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10158</guid>
+
+					<description><![CDATA[内容一：列出所有受 systemctl 管理的单元 内容二：启动某一个单元 内容三：停止某一个单元]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：列出所有受 systemctl 管理的单元</h3>
+
+
+
+<pre class="wp-block-code"><code># service -–status-all</code></pre>
+
+
+
+<h3>内容二：启动某一个单元</h3>
+
+
+
+<pre class="wp-block-code"><code># service &lt;unit&gt; start</code></pre>
+
+
+
+<h3>内容三：停止某一个单元</h3>
+
+
+
+<pre class="wp-block-code"><code># service &lt;unit&gt; stop</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Linux 进程状态介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/process-status/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 17 Jul 2020 02:53:57 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10079</guid>
+
+					<description><![CDATA[内容一：Linux 的第一进程状态 （1）R 处于运行状态或者等待运行状态（2）S 处于休眠状态（3）T 处于停止状态或者处于被追踪的状态（4）Z 处于僵尸进程的状态（5）W 处于进入内存交换的状态（6）X 处于被杀死进程的状态（7）D 处于不可中断的休眠状态 （注意：D 状态通常由存储进程中断导致，无法被 kill 命令杀死，但可以通过重启系统清除） 内容二：Linux 的第二进程状态 （1）&#60; 代表此进程具有高优先级（2）N 代表此进程具有低优先级（3）L 代表此进程有些部分被所进了内存（4）s 代表此进程包含子进程（5）+ 代表此进程处于后台的状态（6）l 代表此进程是被克隆出来的多线程 内容三：Linux 显示进程状态的命令]]></description>
+										<content:encoded><![CDATA[
+<h4 id="内容一-linux-的第一进程状态">内容一：Linux 的第一进程状态</h4>
+
+
+
+<p>（1）R 处于运行状态或者等待运行状态<br>（2）S 处于休眠状态<br>（3）T 处于停止状态或者处于被追踪的状态<br>（4）Z 处于僵尸进程的状态<br>（5）W 处于进入内存交换的状态<br>（6）X 处于被杀死进程的状态<br>（7）D 处于不可中断的休眠状态</p>
+
+
+
+<p>（注意：D 状态通常由存储进程中断导致，无法被 kill 命令杀死，但可以通过重启系统清除）</p>
+
+
+
+<h4 id="内容二-linux-的第二进程状态">内容二：Linux 的第二进程状态</h4>
+
+
+
+<p>（1）&lt; 代表此进程具有高优先级<br>（2）N 代表此进程具有低优先级<br>（3）L 代表此进程有些部分被所进了内存<br>（4）s 代表此进程包含子进程<br>（5）+ 代表此进程处于后台的状态<br>（6）l 代表此进程是被克隆出来的多线程</p>
+
+
+
+<h4 id="内容三-linux-显示进程状态的命令">内容三：Linux 显示进程状态的命令</h4>
+
+
+
+<pre class="wp-block-code"><code># ps -aux</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] CentOS Linux &#038; RHEL 网页图形化管理工具 cockpit</title>
+		<link>https://eternalcenter-sep-2022.github.io/cockpit/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 06 Jun 2020 09:07:39 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System General Log (系统普通日志)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network (系统网络)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<category><![CDATA[System Setting (系统设置)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[System Statistic Log (系统统计日志)]]></category>
+		<category><![CDATA[System User (系统用户)]]></category>
+		<category><![CDATA[System User & System Privilege (系统用户 & 系统权限)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9718</guid>
+
+					<description><![CDATA[步骤一：系统环境要求 服务器系统配置好可用的软件源 步骤二：安装 cockpit （补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序） 步骤三：启动 cockpit 步骤四：登录 cockpit 使用浏览器登录：https://&/#60;server IP address&#62;:9090]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：系统环境要求</h3>
+
+
+
+<p>服务器系统配置好可用的软件源</p>
+
+
+
+<h3>步骤二：安装 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># yum -y install cockpit cockpit-dashaboard</code></pre>
+
+
+
+<p>（补充：cockpit 是管理单台主机的程序，cockpit-dashaboard 是管理多台主机的程序）</p>
+
+
+
+<h3>步骤三：启动 cockpit</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now cockpit.socket</code></pre>
+
+
+
+<h3>步骤四：登录 cockpit</h3>
+
+
+
+<p>使用浏览器登录：https://&lt;server/ IP address&gt;:9090</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 ps （显示进程） （转载）</title>
+		<link>https://eternalcenter-sep-2022.github.io/ps/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 05 Jun 2020 07:46:58 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9679</guid>
+
+					<description><![CDATA[注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来]]></description>
+										<content:encoded><![CDATA[
+<pre class="wp-block-code"><code>ps 命令的使用
+
+Ps命令是Linux中最常使用的进程查看工具，主要用于显示包含当前运行的各进程完整信息的静态快照（查看静态的进程统计信息）。通过不同的命令选项可以有选择性的查看进程信息。
+
+a：显示当前终端下的所有进行信息，包括其他用户的进程。与x选项结合时将显示系统中所有的进程信息。
+
+u：使用以用户为主的格式输出进程信息。
+
+x：显示当前用户在所有终端下的进程信息。
+
+-e：显示系统内的所有进程信息。
+
+-l：使用长格式显示进程信息。
+
+-f：使用完整的格式显示进程信息。</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img width="622" height="170" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1.png" alt="" class="wp-image-19781" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1.png 622w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-1-300x82.png 300w" sizes="(max-width: 622px) 100vw, 622px" /></figure></div>
+
+
+<pre class="wp-block-code"><code># ps aux
+
+解释:
+
+USER：启动该进程的用户账号名称
+
+PID：该进程在系统中的数字ID号，在当前系统中是唯一的。
+
+TTY：表明该进程在哪个终端上运行。“？”表示未知或者不需要终端。
+
+STAT：显示了进程当前的状态，如S（休眠）、R（运行）、Z（僵死）、&lt;（高优先级）、N（低优先级）、s（父进程）、+（前台进程）。对于僵死的进程，应该手动处理掉。（问：为什么？）
+
+START：启动该进程的时间
+
+TIME：该进程占用CPU的时间
+
+COMMAND：启用该进程的命令名称
+
+%CPU：CPU占用百分比
+
+%MEM：内存占用百分比
+
+VSZ：占用虚拟内存（swap空间）大小
+
+RSS：占用常驻空间（物理内存）的大小</code></pre>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" width="706" height="150" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2.png" alt="" class="wp-image-19782" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2.png 706w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/ps-2-300x64.png 300w" sizes="(max-width: 706px) 100vw, 706px" /></figure></div>
+
+
+<pre class="wp-block-code"><code>————————————————
+版权声明：本文为CSDN博主「秃头阿鑫」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_47763101/java/article/details/106391154</code></pre>
+
+
+
+<p>注明：所有转载内容皆直接从被转载文章网页的标题和内容的文本和图片中复制而来</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" width="1010" height="161" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps.png" alt="" class="wp-image-9682" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps.png 1010w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps-300x48.png 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2020/06/版权申明证明-ps-768x122.png 768w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /><figcaption>CC 4.0 BY-SA 版权协议网址：https://creativecommons.org/licenses/by-sa/4.0/deed.z</figcaption></figure></div>
+
+
+<pre class="wp-block-code"><code>站主补充：
+补充一：D 状态的进程
+D 状态的进程代表处于不可以被杀死的休眠状态。D 状态的进程就算是用 kill -9 命令也无法杀死
+
+补充二：将 ps 的输出工整
+# ps -T
+
+补充三：ps 显示 SELinux 标签
+# ps -M
+或者：
+# ps -Z
+</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Linux 命令 kill （进程杀死）</title>
+		<link>https://eternalcenter-sep-2022.github.io/kill/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 30 May 2020 05:19:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Operation (系统操作)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Performance (系统性能)]]></category>
+		<category><![CDATA[System Process (系统进程)]]></category>
+		<category><![CDATA[System Process & System Performance (系统进程 & 系统性能)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=9614</guid>
+
+					<description><![CDATA[内容一：显示 kill 所有可用的选项 内容二：kill 的常用案例 2.1 案例一：强杀某一个 PID 号 或者： 2.2 案例二：正常退出某一个 PID 号 2.3 案例三：杀死某一个进程名称下的所有 PID 号]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-查看-kill-所有可用的选项">内容一：显示 kill 所有可用的选项</h3>
+
+
+
+<pre class="wp-block-code"><code># kill --help</code></pre>
+
+
+
+<h3 id="内容二-kill-的常用案例2-1-案例一-强杀某一个-pid-号">内容二：kill 的常用案例</h3>
+
+
+
+<h4 id="内容二-kill-的常用案例2-1-案例一-强杀某一个-pid-号">2.1 案例一：强杀某一个 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># kill -9 &lt;PID number></code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code># kill -&lt;kill option> &lt;PID number></code></pre>
+
+
+
+<h4 id="2-2-案例二-正常退出某一个-pid-号">2.2 案例二：正常退出某一个 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># kill -15 &lt;PID number></code></pre>
+
+
+
+<h4 id="2-3-案例三-杀死某一个进程名称下的所有-pid-号">2.3 案例三：杀死某一个进程名称下的所有 PID 号</h4>
+
+
+
+<pre class="wp-block-code"><code># killall &lt;process name&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

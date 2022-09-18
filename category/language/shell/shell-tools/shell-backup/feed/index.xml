@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Shell Backup (备份) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/shell/shell-tools/shell-backup/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Wed, 06 Jul 2022 10:26:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[工具] Shell 博客 WordPress 数据去隐私化</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 16:12:50 +0000</pubDate>
+				<category><![CDATA[Automation Maintenance (自动化运维)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19868</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：Shell 博客 WordPress 数据去隐私化作用：修改 WordPress 备份中某个用户的密码并再次进行备份 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份6. newfilename=clone-eternalcenter-backup #新备份的文件名7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户8. newpw=eternalcenter #新的用户密码9. dbuser=ec #用于连接数据库的用户10. dbuserpw=eternalcenter #用于连接数据库的密码11. db=ec #网站数据库数据在数据库中的库 注意 1. 本地需要已经搭建好 LNMP 平台2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-blog-wordpress-de-privacy/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 博客 WordPress 数据去隐私化"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：Shell 博客 WordPress 数据去隐私化<br>作用：修改 WordPress 备份中某个用户的密码并再次进行备份</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. cpath=&#8221;/srv/www/htdocs&#8221; #网站程序目录<br>4. sqlfile=eternalcenter/eternalcenter.sql #网站数据库数据备份<br>5. tarfile=eternalcenter/eternalcenter.tar.gz #网站网页数据备份<br>6. newfilename=clone-eternalcenter-backup #新备份的文件名<br>7. user=&#8217;Mingyu Zhu&#8217; #要修改密码的用户<br>8. newpw=eternalcenter #新的用户密码<br>9. dbuser=ec #用于连接数据库的用户<br>10. dbuserpw=eternalcenter #用于连接数据库的密码<br>11. db=ec #网站数据库数据在数据库中的库</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 执行此脚本的用户需要有远程服务器的 sudo tar 和 sudo rm 权限<br>3. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; -e &#8220;drop database $db;&#8221;“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+cpath="/srv/www/htdocs"
+sqlfile=eternalcenter/eternalcenter.sql
+tarfile=eternalcenter/eternalcenter.tar.gz
+newfilename=clone-eternalcenter-backup
+user='Mingyu Zhu'
+newpw=eternalcenter
+dbuser=ec
+dbuserpw=eternalcenter
+db=ec
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+dir=`pwd`
+
+sudo systemctl stop nginx
+sudo systemctl stop php-fpm
+
+mkdir -p $path/$newfilename-$date &amp;&gt; /dev/null
+
+mysql -uroot -p'eternalcenter' -e "drop database $db;"
+mysql -uroot -p'eternalcenter' -e "create database $db;"
+mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+mysql -uroot -p'eternalcenter' -e "grant all privileges on $db.* to \"$dbuser\"@'localhost';"
+mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+mysql -uroot -p'eternalcenter' -e "update $db.ec_users set user_pass = md5(\'$newpw\') where user_login = \'$user\';"
+sudo rm -rf $cpath/*
+sudo tar -zxvf $tarfile -C $cpath &amp;&gt; /dev/null
+cd $cpath
+sudo sed -i "s/define('DB_PASSWORD', .*);/define('DB_PASSWORD', \'$dbuserpw\');/" wp-config.php
+
+mysqldump -uroot -p'eternalcenter' $db &gt; $path/$newfilename-$date/$newfilename-$date.sql
+sudo tar -zcvf $path/$newfilename-$date/$newfilename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+cd $dir
+
+sudo systemctl start nginx
+sudo systemctl start php-fpm
+
+cd $dir</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程 LNMP 的网站数据库备份到本地</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 14:48:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19861</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程 LNMP 的网站数据库备份到本地作用：将远程 LNMP 的网站数据库备份到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. path=/home/zhumingyu/EternalCenter #本地备份目录2. filename=eternalcenter-backup #本地备份文件3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥4. whost=&#8221;eternalcenter.com&#8221; #远程服务器5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录 注意 1. 远程需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-backup/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程 LNMP 的网站数据库备份到本地"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程 LNMP 的网站数据库备份到本地<br>作用：将远程 LNMP 的网站数据库备份到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. path=/home/zhumingyu/EternalCenter #本地备份目录<br>2. filename=eternalcenter-backup #本地备份文件<br>3. key=&#8221;~/.ssh/eternalcenter&#8221; #本地备份本地私钥<br>4. whost=&#8221;eternalcenter.com&#8221; #远程服务器<br>5. wpath=&#8221;/usr/share/nginx/html&#8221; #远程服务器网站程序目录<br>7. wcache=&#8221;/cache&#8221; #远程服务器临时备份目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 远程需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于本地数据的备份目录和远程服务器的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有远程服务器的 sudo tar 权限<br>4. 脚本 ”mysqldump -uroot -p&#8217;eternalcenter&#8217; ec > $wcache/$filename-$date.sql“ 中 “eternalcenter“ 是指远程 MariaDB 数据库 root 用户的密码，需要修改成远程 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+path=/home/zhumingyu/EternalCenter
+filename=eternalcenter-backup
+key="~/.ssh/eternalcenter"
+
+whost="eternalcenter.com"
+wpath="/usr/share/nginx/html"
+wcache="/cache"
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+
+echo "copy eternalcenter data from website to local server"
+ping -c3 -i0.4 $whost &gt; /dev/null
+if &#91; $? -eq 0 ];then
+
+        ssh -i $key $whost "
+        mkdir $wcache &amp;&gt; /dev/null
+        rm -rf $wcache/* &amp;&gt; /dev/null
+        mysqldump -uroot -p'eternalcenter' ec &gt; $wcache/$filename-$date.sql
+        cd $wpath
+        sudo tar -zcvf $wcache/$filename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null
+        "
+
+        mkdir -p $path/$date &amp;&gt; /dev/null
+        scp -i $key $whost:$wcache/$filename-$date* $path/$date
+
+fi
+echo</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 （Git LFS 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-github-replace-git-lfs/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:44:56 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19851</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. directory=download-eternalcenter #本地的缓冲目录2. gituser=mingyuzhu #GitHub 用户3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱4. gitrepository=download-eternalcenter #GitHub 库5. gitbranch=’master’ #GitHub 库的分支6. backupfile=all #备份后的文件7. keyword=clone #同目录下要备份目录名称的关键字 注意 需要提前安装 git 和 git-lfs，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里<br>作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. directory=download-eternalcenter #本地的缓冲目录<br>2. gituser=mingyuzhu #GitHub 用户<br>3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱<br>4. gitrepository=download-eternalcenter #GitHub 库<br>5. gitbranch=’master’ #GitHub 库的分支<br>6. backupfile=all #备份后的文件<br>7. keyword=clone #同目录下要备份目录名称的关键字</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>需要提前安装 git 和 git-lfs，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directory=download-eternalcenter
+gituser=mingyuzhu
+gitemail=mingyu.zhu@eternalcenter.com
+gitrepository=download-eternalcenter
+gitbranch='master'
+backupfile=all
+keyword=clone
+
+####################### Separator ########################
+
+backupdirectory=`ls -rtlh | grep $keyword | awk '{print $NF}' | tail -1`
+
+sqlfile=`ls $backupdirectory | grep sql`
+tarfile=`ls $backupdirectory | grep tar`
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+
+echo $gituser
+git config --global user.email "$gitemail"
+git config --global user.name "$gituser"
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git lfs install
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git lfs track *
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
+git commit -m 'cleapup'
+git push -u origin $gitbranch -f
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+cd ..
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git lfs install
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git lfs track *
+git rm *
+git commit -m 'cleapup'
+
+cd ../$backupdirectory/
+tar -zcvf ../$directory/$backupfile.tar.gz *
+cd ../$directory
+
+git lfs track *
+git add *
+git status
+git commit -m 'upload'
+git push -u origin $gitbranch -f
+cd ..</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-github-replace/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 18 Dec 2021 13:11:35 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Git]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Other Service (其它服务)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19836</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. directory=download-eternalcenter #本地的缓冲目录2. gituser=mingyuzhu #GitHub 用户3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱4. gitrepository=download-eternalcenter #GitHub 库5. gitbranch=’master’ #GitHub 库的分支6. backupfile=all #备份后的文件7. keyword=clone #同目录下要备份目录名称的关键字 注意 需要提前安装 git，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥 脚本]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里<br>作用：将同目录下最新的某个目录里的所有文件替换到 GitHub 库里</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. directory=download-eternalcenter #本地的缓冲目录<br>2. gituser=mingyuzhu #GitHub 用户<br>3. gitemail=mingyu.zhu@eternalcenter.com #GitHub 邮箱<br>4. gitrepository=download-eternalcenter #GitHub 库<br>5. gitbranch=’master’ #GitHub 库的分支<br>6. backupfile=all #备份后的文件<br>7. keyword=clone #同目录下要备份目录名称的关键字</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>需要提前安装 git，注册 GitHub，创建相应的 GitHub 库，并且创建和设置了对应的 ssh 密钥</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+directory=download-eternalcenter
+gituser=mingyuzhu
+gitemail=mingyu.zhu@eternalcenter.com
+gitrepository=download-eternalcenter
+gitbranch='master'
+backupfile=all
+keyword=clone
+
+####################### Separator ########################
+
+backupdirectory=`ls -rtlh | grep $keyword | awk '{print $NF}' | tail -1`
+
+sqlfile=`ls $backupdirectory | grep sql`
+tarfile=`ls $backupdirectory | grep tar`
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+
+echo $gituser
+git config --global user.email "$gitemail"
+git config --global user.name "$gituser"
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch *' --prune-empty --tag-name-filter cat -- --all
+git commit -m 'cleapup'
+git push -u origin $gitbranch -f
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+cd ..
+
+rm -rf $directory
+mkdir -p $directory &amp;&gt; /dev/null
+cd $directory
+git init
+git remote add origin git@github.com:$gituser/$gitrepository
+git pull --rebase origin $gitbranch -f
+git rm *
+git commit -m 'cleapup'
+
+cd ../$backupdirectory/
+tar -zcvf ../$directory/$backupfile.tar.gz *
+cd ../$directory
+
+git add *
+git status
+git commit -m 'upload'
+git push -u origin $gitbranch -f
+cd ..</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 将远程服务器的 LNMP 备份在本地复原</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 10 Dec 2021 15:05:51 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=19609</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将远程服务器的 LNMP 备份还原到本地作用：将远程服务器的 LNMP 备份还原到本地 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本 脚本分割线里的变量 1. tmppath=/cache #本地用于备份数据的目录2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录3. key=”~/.ssh/eternalcenter” #本地私钥4. tmpfile=tmpfile.txt #用于存储记录的文件5. dbuser=ec #网站在数据库中的用户6. ruser=eternalcenter #用于远程服务器的用户7. rhost=eternalcenter.com #远程服务器8. rcache=”/cache” #远程服务器用于备份数据的目录 注意 1. 本地需要已经搭建好 LNMP 平台2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限3. 执行此脚本的用户需要有 sudo systemctl 权限4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &#60; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-remote-lnmp-restore/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 将远程服务器的 LNMP 备份在本地复原"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将远程服务器的 LNMP 备份还原到本地<br>作用：将远程服务器的 LNMP 备份还原到本地</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. tmppath=/cache #本地用于备份数据的目录<br>2. webpath=/usr/share/nginx/html #本地用于存放网站文件的目录<br>3. key=”~/.ssh/eternalcenter” #本地私钥<br>4. tmpfile=tmpfile.txt #用于存储记录的文件<br>5. dbuser=ec #网站在数据库中的用户<br>6. ruser=eternalcenter #用于远程服务器的用户<br>7. rhost=eternalcenter.com #远程服务器<br>8. rcache=”/cache” #远程服务器用于备份数据的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 本地需要已经搭建好 LNMP 平台<br>2. 用于远程服务器的用户，需要能免密钥 ssh 远程服务器，且对于本地用于备份数据的目录和远程服务器用于备份数据的目录拥有读和执行的权限<br>3. 执行此脚本的用户需要有 sudo systemctl 权限<br>4. 脚本 ”mysql -uroot -p&#8217;eternalcenter&#8217; ec &lt; $sqlfile“ 中 “eternalcenter“ 是指本地 MariaDB 数据库 root 用户的密码，需要修改成本地 MariaDB 数据库的 root 用户密码</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+tmppath=/cache
+webpath=/usr/share/nginx/html
+key="~/.ssh/eternalcenter"
+tmpfile=tmpfile.txt
+dbuser=ec
+
+ruser=eternalcenter
+rhost=eternalcenter.com
+rcache="/cache"
+
+####################### Separator ########################
+
+nowdirectory=`pwd`
+
+a=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+sleep 10
+b=`ssh -i $key $ruser@$rhost "du -s $rcache" | awk '{print $1}'`
+
+if &#91; $a -eq 0 ];then
+	echo "no file"
+fi
+
+if &#91; $a -ne $b ];then
+        echo "backup is running now"
+        exit
+fi
+
+c=0
+
+if &#91; -f $tmpfile ];then
+        c=`cat $tmpfile`
+fi
+
+if &#91; $a -eq $c ];then
+        echo "no new file"
+        exit
+fi
+
+echo $a &gt; $tmpfile
+
+sqlfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep sql | tail -1" | awk '{print $NF}'`
+if &#91; $? -eq 0 ]; then
+
+        tarfile=`ssh -i $key $ruser@$rhost "ls -rtlh $rcache | grep tar | tail -1" | awk '{print $NF}'`
+        if &#91; $? -eq 0 ]; then
+
+                rm -rf $tmppath/*
+                mkdir $tmppatch &amp;&gt; /dev/null
+
+                echo $sqlfile
+                echo $tarfile
+
+                scp -i $key $ruser@$rhost:$rcache/$sqlfile $tmppath
+                scp -i $key $ruser@$rhost:$rcache/$tarfile $tmppath
+
+#                sudo systemctl stop nginx
+#                sudo systemctl stop php-fpm
+
+                cd $tmppath
+
+                mysql -uroot -p'eternalcenter' -e "drop database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "create database $dbuser;"
+                mysql -uroot -p'eternalcenter' -e "grant all privileges on $dbuser.* to \"$dbuser\"@\"localhost\";"
+                mysql -uroot -p'eternalcenter' ec &lt; $sqlfile
+
+                sudo rm -rf $webpath/*
+                sudo tar -zxvf $tarfile -C $webpath/ &amp;&gt; /dev/null
+
+#                sudo systemctl start nginx
+#                sudo systemctl start php-fpm
+
+                cd $nowdirectory
+
+        fi
+fi</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[生产] Shell 将网站的全量数据备份到本电脑并运行 （Mac 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-backup-mac/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 04 Feb 2019 16:25:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Backup (备份)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=2546</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：将网站的全量数据备份到本电脑并运行（Mac 版）作用：将一台 Web 服务器上的网页文件和数据库数据全量备份到本地 Mac 主机，再通过本地的 Mac 主机 Web 服务将它跑起来 使用方法 1. 在此脚本的分割线内写入相应的内容2. 给此脚本添加执行权限3. 执行此脚本4. 可以设置定时任务让他定期自动执行，也就是（sudo crontab -e） 脚本分割线里的变量 1. user=root #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限2. ip=8.8.8.8 # Web 服务器的 IP3. dbadmin=root #Web 服务器备份 MariaDB 数据库的数据库用户4. dbpassword=&#8221;&#8216;123456&#8242;&#8221; #Web 服务器备份MariaDB 数据库的用户的密码5. path=/backup #本地主机放置备份的目录6. filename=backup #备份文件的中间名7. cache=/cache #Web服务器用来缓存备份的目录，请确保这个目录没有其他用途，且能被登录 Web 服务器的用户创建8. html=/web-file #本地主机存放网页文件的目录，请确保当前的 Mac 系统用户对他有写和执行权限否则请更改网页文件的目录 注意 1. 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-backup-mac/" class="more-link">Continue reading<span class="screen-reader-text"> "[生产] Shell 将网站的全量数据备份到本电脑并运行 （Mac 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：将网站的全量数据备份到本电脑并运行（Mac 版）<br>作用：将一台 Web 服务器上的网页文件和数据库数据全量备份到本地 Mac 主机，再通过本地的 Mac 主机 Web 服务将它跑起来</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 在此脚本的分割线内写入相应的内容<br>2. 给此脚本添加执行权限<br>3. 执行此脚本<br>4. 可以设置定时任务让他定期自动执行，也就是（sudo crontab -e）</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. user=root #登录 Web 服务器的用户，请确保这个用户有创建缓存备份目录的权限<br>2. ip=8.8.8.8 # Web 服务器的 IP<br>3. dbadmin=root #Web 服务器备份 MariaDB 数据库的数据库用户<br>4. dbpassword=&#8221;&#8216;123456&#8242;&#8221; #Web 服务器备份MariaDB 数据库的用户的密码<br>5. path=/backup #本地主机放置备份的目录<br>6. filename=backup #备份文件的中间名<br>7. cache=/cache #Web服务器用来缓存备份的目录，请确保这个目录没有其他用途，且能被登录 Web 服务器的用户创建<br>8. html=/web-file #本地主机存放网页文件的目录，请确保当前的 Mac 系统用户对他有写和执行权限否则请更改网页文件的目录</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 此脚本执行前必须要先保证执行脚本的主机能无秘钥远程这台 Web 服务器<br>2. 请保证本机的 MariaDB 并没有设置密码<br>3. 此脚本执行前必须要先保证执行脚本的主机 MAMP 平台已经搭建好了<br>4. 本地 MairaDB 的密码为空<br>5. 此脚本备份的网页文件是 WordPress</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+
+user=root
+ip=8.8.8.8
+dbadmin=root
+dbpassword="'123456'"
+path=/backup
+filename=backup
+cache=/cache
+html=/web-file
+
+####################### Separator ########################
+
+date=$(date +%Y-%m-%d-%H)
+
+ping -c3 -i0.8 $ip &gt; /dev/null
+
+if &#91; $? -eq 0 ];then
+
+        ssh $user@$ip "mkdir $cache &amp;&gt; /dev/null"
+        ssh $user@$ip "mysqldump -u$dbadmin -p"$dbpassword" -A &gt; $cache/$filename-$date.sql"
+        ssh $user@$ip "cd /usr/local/nginx/html/
+        tar -cvf $cache/$filename-$date.tar.gz .&#91;!.]* * &amp;&gt; /dev/null"
+
+        mkdir -p $path/$date &amp;&gt; /dev/null
+        scp $user@$ip:$cache/$filename-$date.sql $path/$date
+        scp $user@$ip:$cache/$filename-$date.tar.gz $path/$date
+        ssh $user@$ip "rm -rf $cache\*"
+
+fi
+
+rm -rf $html/*
+tar -xvf $path/$date/$filename-$date.tar.gz -C $html/
+mysql -u$dbadmin &lt; $path/$date/$filename-$date.sql
+rm -rf $html/index.html
+
+sed -i "" s/"'DB_USER', '.*'"/"'DB_USER', 'root'"/ $html/wp-config.php
+sed -i "" s/"'DB_PASSWORD', '.*'"/"'DB_PASSWORD', ''"/ $html/wp-config.php
+sed -i "" s/"'DB_HOST', '.*'"/"'DB_HOST', '127.0.0.1:3306'"/ $html/wp-config.php
+mysqladmin -uroot password ''</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

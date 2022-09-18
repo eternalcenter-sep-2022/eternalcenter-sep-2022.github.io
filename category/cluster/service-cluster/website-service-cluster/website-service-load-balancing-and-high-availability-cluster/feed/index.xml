@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/service-cluster/website-service-cluster/website-service-load-balancing-and-high-availability-cluster/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 14:39:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2021 09:24:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing and High Availability Tool (集群负载均衡加高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Keepalived]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx + Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Website Service Redundant Agent Cluster (网站服务冗余代理集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13543</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：拓扑图 1.1 服务器列表 client enp1s0: 172.16.1.99 proxy1 enp1s0: 172.16.0.101enp7s0: 172.16.1.101virtual IP: 172.16.1.100 proxy2 enp1s0: 172.16.0.102enp7s0: 172.16.1.102 web1 enp1s0: 172.16.0.11 web2 enp1s0: 172.16.0.12 1.2 拓扑图 1.3 拓扑图简介 1) web1 安装 Nginx，web2 安装 Apache 实现网站服务2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑图</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client enp1s0: 172.16.1.99</p>
+
+
+
+<p>proxy1 enp1s0: 172.16.0.101<br>enp7s0: 172.16.1.101<br>virtual IP: 172.16.1.100</p>
+
+
+
+<p>proxy2 enp1s0: 172.16.0.102<br>enp7s0: 172.16.1.102</p>
+
+
+
+<p>web1 enp1s0: 172.16.0.11</p>
+
+
+
+<p>web2 enp1s0: 172.16.0.12</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                      proxy1                                       web1
+                      enp7s0:172.16.1.101 enp1s0:172.16.0.101      enp1s0:172.16.0.11
+                      virtual IP:172.16.1.100
+client
+enp1s0:172.16.1.99
+                      proxy2                                       web2
+                      enp7s0:172.16.1.102 enp1s0:172.16.0.102      enp1s0:172.16.0.12</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>1) web1 安装 Nginx，web2 安装 Apache 实现网站服务<br>2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡<br>3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 网卡上，如果 proxy1 宕机或者检测到自己 Nginx 代理进程死掉，则虚拟 IP 172.16.1.90 则挂在 proxy2 的 enp7s0 网卡上实现高可用<br>4) 如果 web1 和 web2 中有一台服务器宕机，则 proxy1 和 proxy2 会自动不再向这台服务器请求网站服务，直到它恢复正常<br>5) 最终达到的效果是 client 向虚拟 IP 请求网站服务，此时如果 proxy1 正常就代表虚拟 IP 轮询调度 web1 和 web2 上的网站服务，再返回给 client。如果 proxy1 宕机则由 proxy2 代表虚拟 IP 完成次操作</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) client 的 enp1s0 网卡、proxy1 的 enp7s0 网卡和 proxy2 的 enp7s0 网卡要可以相互 ping 通自己和对方的 IP<br>7) proxy1 的 enp1s0 网卡、proxy2 的 enp1s0 网卡、web1 的 enp1s0 网卡和 web2 的 enp1s0 网卡要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：搭建网站服务</h3>
+
+
+
+<h4>3.1 在 web1 上搭建网站服务</h4>
+
+
+
+<h5>3.1.1 在 web1 上安装 Nginx</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 给 web1 制定网页</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web1 &gt; /usr/share/nginx/html/index.html</code></pre>
+
+
+
+<h5>3.1.3 启动 Nginx 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h4>3.2 在 web2 上搭建网站服务</h4>
+
+
+
+<h5>3.2.1 在 web2 上安装 Apache</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 给 web2 制定网页</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web2 &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 Apache 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now httpd</code></pre>
+
+
+
+<h3>步骤四：搭建代理服务</h3>
+
+
+
+<h4>4.1 安装 Nginx</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h4>4.2 修改 Nginx 配置文件</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+    upstream webserver {
+        server 172.16.0.11:80;
+        server 172.16.0.12:80;
+    }
+......
+    server {
+        listen       80;
+
+        location / {
+        proxy_pass http://webserver;/
+        }
+    }
+......
+}</code></pre>
+
+
+
+<h4>4.3 启动 Nginx 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h3>步骤五：搭建高可用服务</h3>
+
+
+
+<h4>5.1 安装 Keepalived</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install keepalived</code></pre>
+
+
+
+<h4>5.2 创建 Keepalived 检查脚本</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/keepalived/nginx_check.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+    systemctl stop nginx
+    sleep 5
+    if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+        systemctl stop keepalived
+    fi
+fi</code></pre>
+
+
+
+<p>（补充：这里以检测 Nginx 没启动就启动 Nginx，5 秒后 Nginx 要是还没有启动就关闭 keepalived 为例）</p>
+
+
+
+<h4>5.3 修改 proxy1 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 101
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 101，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.4 修改 proxy2 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 99
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 99，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.5 启动 Keepalived 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now keepalived.service</code></pre>
+
+
+
+<h3>步骤六：测试网站负载均衡加高可用</h3>
+
+
+
+<h4>6.1 正常情况下测试网站服务</h4>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+
+
+
+<h4>6.2 在单节点故障的情况下测试网站服务</h4>
+
+
+
+<h5>6.2.1 关闭 proxy1、proxy2、web1、web2 中的任意一台服务器</h5>
+
+
+
+<p>（只在 proxy1、proxy2、web1、web2 中的任意一台服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>6.2.2 测试网站服务</h5>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

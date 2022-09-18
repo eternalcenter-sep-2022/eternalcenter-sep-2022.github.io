@@ -1,0 +1,5115 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Cluster (集群) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cluster/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:06:14 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>分布式存储算法介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-to-distributed-storage-algorithm/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Aug 2021 07:45:22 +0000</pubDate>
+				<category><![CDATA[Ceph]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Distributed Cloud Storage Cluster (分布式云存储集群)]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service Load Balancing and High Availability Cluster (存储服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17540</guid>
+
+					<description><![CDATA[章节一：传统的 Hash 存储算法 1.1 传统的 Hash 存储算法简介 　　将数据进行切片，对每份切片进行 Hash 取值，并对获取的 Hash 值除以存储节点的数量以取余，余数是多少就将此切片存在第几个 OSD 节点里，主要是 Swift 在使用。 1.2 传统的 Hash 存储算法的缺点 　　如果要增加存或减少存储节点，需要对所有已存储数据切片的 Hash 值重新取余，大概 90% 的数据需要重新均衡数据（rebalance）。 章节二：一致性 Hash 算法 2.1 一致性 Hash 算法简介 　　1) 给电脑也计算 Hash 值（可以是给电脑名计算 Hash 值，也可以给 IP 地址计算 Hash 值）　　2) 再给数据也计算 Hash 值，将数据存到比它的 Hash 值大，且与它的差值最小的电脑上，如果没有 Hash 值比它大的电脑就直接将数据存在 Hash 值最小的电脑上　　3) 整个架构类似一个环 2.2 一致性 Hash &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/introduction-to-distributed-storage-algorithm/" class="more-link">Continue reading<span class="screen-reader-text"> "分布式存储算法介绍"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>章节一：传统的 Hash 存储算法</h3>
+
+
+
+<h4>1.1 传统的 Hash 存储算法简介</h4>
+
+
+
+<p>　　将数据进行切片，对每份切片进行 Hash 取值，并对获取的 Hash 值除以存储节点的数量以取余，余数是多少就将此切片存在第几个 OSD 节点里，主要是 Swift 在使用。</p>
+
+
+
+<h4>1.2 传统的 Hash 存储算法的缺点</h4>
+
+
+
+<p>　　如果要增加存或减少存储节点，需要对所有已存储数据切片的 Hash 值重新取余，大概 90% 的数据需要重新均衡数据（rebalance）。</p>
+
+
+
+<h3>章节二：一致性 Hash 算法</h3>
+
+
+
+<h4>2.1 一致性 Hash 算法简介</h4>
+
+
+
+<p>　　1) 给电脑也计算 Hash 值（可以是给电脑名计算 Hash 值，也可以给 IP 地址计算 Hash 值）<br>　　2) 再给数据也计算 Hash 值，将数据存到比它的 Hash 值大，且与它的差值最小的电脑上，如果没有 Hash 值比它大的电脑就直接将数据存在 Hash 值最小的电脑上<br>　　3) 整个架构类似一个环</p>
+
+
+
+<h4>2.2 一致性 Hash 算法的缺点</h4>
+
+
+
+<p>　　1) 电脑太少时切换数据也会有较大的数据量，但是可以多设置几个虚拟节点，给以后新增加的节点使用，虚拟节点里的数据会影射到对应的物理节点里面去<br>　　2) 电脑太少时，两台电脑的 Hash 值比较接近导致，数据分配极度不平均</p>
+
+
+
+<p>（注意：在开始创建数据架构时，要评估未来数据的规模，如果最后要添加的电脑数量超过了虚拟节点数量，那么这个架构就不能使用了。此时只能备份数据，然后新建 1 个架构出来）</p>
+
+
+
+<h3>章节三：CRUSH</h3>
+
+
+
+<h4>3.1 CRUSH 简介</h4>
+
+
+
+<p>　　CRUSH（Controlled Replication Under Scalable Hashing）算法，在可扩展 Hash 算法下的可控制复制，主要是 Ceph 在使用。</p>
+
+
+
+<h4>3.2 CRUSH 算法</h4>
+
+
+
+<h5>3.2.1 CRUSH 算法的第 1 层</h5>
+
+
+
+<p>　　由 Ceph 的 OSD（Object Storage Deivces）组成。</p>
+
+
+
+<h5>3.2.2 CRUSH 算法的第 2 层</h5>
+
+
+
+<h5>3.2.2.1 CRUSH 算法的第 2 层的组成</h5>
+
+
+
+<p>　　由 Ceph 的 PG（Placement Group）归置组组成。</p>
+
+
+
+<h5>3.2.2.2 CRUSH 算法的第 2 层的由来</h5>
+
+
+
+<p>　　在 OSD 节点上虚拟出多个 PG，每个 PG 默认会被指定对应 3 个 OSD 节点（每个 OSD 节点同时可以属于多个 PG），其中第一个 OSD 节点为主要（primary）的硬盘，其他两 OSD 节点为从（second）硬盘，PG 会对应几个 OSD 节点取决于 Ceph 的存储副本被设置了几份。</p>
+
+
+
+<h5>3.2.2.3 CRUSH 算法的第 2 层的算法</h5>
+
+
+
+<p>　　1) 给每个 OSD 节点设置一个权重值，OSD 节点的容量越大则其权重值越大<br>　　2) 主要（primary）硬盘的 OSD 节点：将 PG 的 ID 值和 OSD 的 ID 值组合在一起并计算 Hash 值，将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时，此 PG 就和此 OSD 绑定在一起<br>　　3) 第 1 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和 1 个随机的常数组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw）则此 PG 就和此 OSD 绑定在一起<br>　　4) 第 2 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和上 1 个随机常数加 1 的和组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw），则此 PG 就和此 OSD 绑定在一起（如果找到的 OSD 节点和前面的 OSD 节点重复，则将这个随机常数再加 1 并进行重复操作，最终获得和前面不通的 OSD 节点为止）<br>……</p>
+
+
+
+<h4>3.3 CRUSH 算法的第 3 层</h4>
+
+
+
+<h5>3.3.1 CRUSH 算法的第 3 层的组成</h5>
+
+
+
+<p>　　由池组成。</p>
+
+
+
+<h5>3.3.2 CRUSH 算法的第 3 层的由来</h5>
+
+
+
+<p>　　1) 在 PG 上虚拟出多个池，每个池对应多个 PG，数据可以存储到指定的池里<br>　　2) 总硬盘容量有多大，每个池最大可以使用的容量就有多大，但是如果如果 1 个池使用了一部分容量，其他的池就要少使用一部分容量</p>
+
+
+
+<h4>3.4 CRUSH 算法的第四层</h4>
+
+
+
+<h5>3.4.1 CRUSH 算法的第四层的组成</h5>
+
+
+
+<p>　　由数据组成。</p>
+
+
+
+<h5>3.4.2 CRUSH 算法的第四层的算法</h5>
+
+
+
+<p>　　1) 对要放入某个池里的数据进行切片，默认每片 4M<br>　　2) 对每份切片进行 Hash 取值，并对获取的 Hash 值除以这个池里 PG 节点的数量以取余，余数是多少就存在第几个 OSD 节点里</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Ceph 介绍</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-of-ceph/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Aug 2021 07:13:01 +0000</pubDate>
+				<category><![CDATA[Ceph]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Distributed Cloud Storage Cluster (分布式云存储集群)]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service Load Balancing and High Availability Cluster (存储服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=17526</guid>
+
+					<description><![CDATA[内容一：Ceph 简介 Ceph 是一种分布式存储架构和技术。此项目是 2004 年由 Sage Weil 在加州大学 Santa Cruz 分校攻读博士期间的创建和研究的课题，并于 2006 年将其开源，同时成立 Inktank 公司专注 Ceph 的研发。2014 年 5 月 Inktank 公司被 Red Hat 收购。 内容二：Ceph 的特点 1) 高性能（硬盘越多性能越高，所有硬盘可以同时读写）2) 高可用（硬盘越多高可用越高） 内容三：Ceph 使用的方式 1) 自己写程序：通过 C C++ Java Python Ruby PHP 等语言写程序调用 Ceph 底层存储 LIBRADOS，此方法性能最高2) 自己写脚本：写对象脚本，通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS，此方法性能第二高3) 挂载块存储：通过 Linux &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/introduction-of-ceph/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] Ceph 介绍"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>内容一：Ceph 简介</h3>
+
+
+
+<p>Ceph 是一种分布式存储架构和技术。此项目是 2004 年由 Sage Weil 在加州大学 Santa Cruz 分校攻读博士期间的创建和研究的课题，并于 2006 年将其开源，同时成立 Inktank 公司专注 Ceph 的研发。2014 年 5 月 Inktank 公司被 Red Hat 收购。</p>
+
+
+
+<h3>内容二：Ceph 的特点</h3>
+
+
+
+<p>1) 高性能（硬盘越多性能越高，所有硬盘可以同时读写）<br>2) 高可用（硬盘越多高可用越高）</p>
+
+
+
+<h3>内容三：Ceph 使用的方式</h3>
+
+
+
+<p>1) 自己写程序：通过 C C++ Java Python Ruby PHP 等语言写程序调用 Ceph 底层存储 LIBRADOS，此方法性能最高<br>2) 自己写脚本：写对象脚本，通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS，此方法性能第二高<br>3) 挂载块存储：通过 Linux 内核或者 KVM 等虚拟机存储驱动访问 Ceph 的块存储，此方法性能第三高<br>4) 挂载文件系统：通过 Linux 内核（POSIX 命令）挂载 Ceph 的文件系统存储，此方法性能最弱</p>
+
+
+
+<h3>内容四：Ceph 的组成</h3>
+
+
+
+<p>1) OSD（Object Storage Deivces）：负责存储、复制、恢复数据等，默认要有 3 台以上才能实现高可用，因为 Ceph 默认有三副本<br>2) MON（Monitor）：负责监控集群状态制作和更新存储地图（map），供客户端从下载，在生产环境里必须要有 3 台以上，且最好是奇数台，因为必须遵循过半原则<br>3) MDS（Metadata Servers）：实现文件系统存储，允许客户端通过 Linux 内核（POSIX 命令）挂载 Ceph 的文件系统存储<br>4) RGW（RADOSGW）：实现对象存储网关，允许客户端通过 RGW（RADOSGW）对象存储网关的 Rest API 接口去访问 Ceph 的底层存储 LIBRADOS<br>5) 客户端：使用从 MON 下载和更新的存储地图，通过算法，直接从 OSD 访问数据</p>
+
+
+
+<h3>内容五：Ceph 架构</h3>
+
+
+
+<h4>5.1 Ceph 使用架构</h4>
+
+
+
+<h5>5.1.1 Ceph 的上层</h5>
+
+
+
+<p>自己写程序、自己写脚本、挂载块存储、挂载文件系统 4 种使用方式。</p>
+
+
+
+<h5>5.1.2 Ceph 的下层</h5>
+
+
+
+<p>RADOS，基于对象的存储（比我们平时所说的对象存储更原始，更底层），通过软件实现自我检查、自我备份和自我修复的功能。</p>
+
+
+
+<h4>5.2 Ceph 组成架构</h4>
+
+
+
+<pre class="wp-block-code"><code>                                  File
+
+                  Cut1(Objects1) Cut2(Objects2) Cut3(Objects3)......
+
+                              choice Pool
+
+              Pool1                                   Pool2
+     PG1                PG2                  PG2               PG3
+OSD1 OSD2 OSD3    OSD2 OSD5 OSD3        OSD1 OSD4 OSD3    OSD4 OSD5 OSD3
+Disk Disk Disk    Disk Disk Disk        Disk Disk Disk    Disk Disk Disk</code></pre>
+
+
+
+<h3>内容六：Ceph 的算法：CRUSH</h3>
+
+
+
+<h4>6.1 CRUSH 简介</h4>
+
+
+
+<p>CRUSH（Controlled Replication Under Scalable Hashing）算法，在可扩展 Hash 算法下的可控制复制</p>
+
+
+
+<h4>6.2 CRUSH 算法的第 1 层</h4>
+
+
+
+<p>由 OSD（Object Storage Deivces）组成。</p>
+
+
+
+<h4>6.3 CRUSH 算法的第 2 层</h4>
+
+
+
+<h5>6.3.1 CRUSH 算法的第 2 层的组成</h5>
+
+
+
+<p>由 PG（Placement Group）归置组组成。</p>
+
+
+
+<h5>6.3.2 CRUSH 算法的第 2 层的由来</h5>
+
+
+
+<p>在 OSD 节点上虚拟出多个 PG，每个 PG 默认会被指定对应 3 个 OSD 节点（每个 OSD 节点同时可以属于多个 PG），其中第 1 个 OSD 节点为主要（primary）的硬盘，其他两 OSD 节点为从（second）硬盘，PG 会对应几个 OSD 节点取决于 Ceph 的存储副本被设置了几份。</p>
+
+
+
+<h5>6.3.3 CRUSH 算法的第 2 层的算法</h5>
+
+
+
+<p>1) 给每个 OSD 节点设置 1 个权重值，OSD 节点的容量越大则其权重值越大<br>2) 主要（primary）硬盘的 OSD 节点：将 PG 的 ID 值和 OSD 的 ID 值组合在一起并计算 Hash 值，将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时，此 PG 就和此 OSD 绑定在一起<br>3) 第 1 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和 1 个随机的常数组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw）则此 PG 就和此 OSD 绑定在一起<br>4) 第 2 个从（second）硬盘的 OSD 节点：将 PG 的 ID 值逐一和 OSD 的 ID 值和上一个随机常数加 1 的和组合在一起并计算 Hash 值（这个值在 Ceph 的代码里被叫做 draw），将得到的 Hash 值乘以此 OSD 节点的权重，当最终获得的值最大时（这个值在 Ceph 的源代码里叫做 straw），则此 PG 就和此 OSD 绑定在一起（如果找到的 OSD 节点和前面的 OSD 节点重复，则将这个随机常数再加 1 并进行重复操作，最终获得和前面不通的 OSD 节点为止）<br>5) 第 3 个从（second）硬盘的 OSD 节点：仿照第 2 个从（second）硬盘的 OSD 节点按此类方式以此类推</p>
+
+
+
+<h4>6.4 CRUSH 算法的第3层</h4>
+
+
+
+<h5>6.4.1 CRUSH 算法的第3层的组成</h5>
+
+
+
+<p>由池组成。</p>
+
+
+
+<h4>6.4.2 CRUSH 算法的第3层的由来</h4>
+
+
+
+<p>1) 在 PG 上虚拟出多个池，每个池对应多个 PG，数据可以存储到指定的池里<br>2) 总硬盘容量有多大，每个池最大可以使用的容量就有多大，但是如果如果 1 个池使用了一部分容量，其他的池就要少使用一部分容量</p>
+
+
+
+<h4>6.5 CRUSH 算法的第四层</h4>
+
+
+
+<h5>6.5.1 CRUSH 算法的第四层的组成</h5>
+
+
+
+<p>由数据组成。</p>
+
+
+
+<h5>6.5.2 CRUSH 算法的第四层的算法</h5>
+
+
+
+<p>1) 对要放入某个池里的数据进行切片，默认每片 4M<br>2) 对每份切片进行 Hash 取值，并对获取的 Hash 值除以这个池里 PG 节点的数量以取余，余数是多少就存在第几个 OSD 节点里</p>
+
+
+
+<h3>内容七：Ceph 的工作流程</h3>
+
+
+
+<p>1) 客户端从 MON 上下载最新的存储地图（map）<br>2) 存储地图（map）把集群里所有 MON、OSD 和 MDS 的信息告诉客户端，但是客户端依然不知道想要找的数据存放在哪<br>3) 客户端通过 CRUSH 计算出所需要读写的数据存放的 OSD 节点位置<br>4) 客户端直接在 OSD 节点位置上读写数据<br>5) 用户只需要把数据数据写入主要 OSD 节点硬盘上，然后 Ceph 自动同步给其他的从 OSD 节点硬盘上</p>
+
+
+
+<h3>内容八：Ceph 的维护</h3>
+
+
+
+<p>1) PG 的个数肯定要大于 OSD 节点的数量，在生产的环境中 PG 设计的数量往往会远远大于 OSD 节点的数量，以满足未来可能几年的需求，可能会在 3 个硬盘上添加上百个 PG<br>2) 当增加存或减少存储节点时，PG 的数量不会发生变化，只有 PG 对应 OSD 节点有变化的数据才会需要重新均衡数据（rebalance）的数据<br>3) 当增加存或减少 PG 数量时，就需要像传统的 Hash 存储算法那样，对所有已存储数据切片的 Hash 值重新取余，大概 90 % 的数据需要重新均衡数据（rebalance）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2021 09:24:24 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing and High Availability Tool (集群负载均衡加高可用工具)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Keepalived]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx + Nginx + Keepalived]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service Load Balancing and High Availability Cluster (网站服务负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Website Service Redundant Agent Cluster (网站服务冗余代理集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13543</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：拓扑图 1.1 服务器列表 client enp1s0: 172.16.1.99 proxy1 enp1s0: 172.16.0.101enp7s0: 172.16.1.101virtual IP: 172.16.1.100 proxy2 enp1s0: 172.16.0.102enp7s0: 172.16.1.102 web1 enp1s0: 172.16.0.11 web2 enp1s0: 172.16.0.12 1.2 拓扑图 1.3 拓扑图简介 1) web1 安装 Nginx，web2 安装 Apache 实现网站服务2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/nginx-keepalived-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Nginx + Keepalived 网站服务负载均衡加高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑图</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client enp1s0: 172.16.1.99</p>
+
+
+
+<p>proxy1 enp1s0: 172.16.0.101<br>enp7s0: 172.16.1.101<br>virtual IP: 172.16.1.100</p>
+
+
+
+<p>proxy2 enp1s0: 172.16.0.102<br>enp7s0: 172.16.1.102</p>
+
+
+
+<p>web1 enp1s0: 172.16.0.11</p>
+
+
+
+<p>web2 enp1s0: 172.16.0.12</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                      proxy1                                       web1
+                      enp7s0:172.16.1.101 enp1s0:172.16.0.101      enp1s0:172.16.0.11
+                      virtual IP:172.16.1.100
+client
+enp1s0:172.16.1.99
+                      proxy2                                       web2
+                      enp7s0:172.16.1.102 enp1s0:172.16.0.102      enp1s0:172.16.0.12</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>1) web1 安装 Nginx，web2 安装 Apache 实现网站服务<br>2) proxy1 和 proxy2 安装 Nginx 实现网站代理，轮询代理 web1、web2 上的网站服务实现负载均衡<br>3) 虚拟 IP 172.16.1.90 通过 Keepalived 默认放在 proxy1 的 enp7s0 网卡上，如果 proxy1 宕机或者检测到自己 Nginx 代理进程死掉，则虚拟 IP 172.16.1.90 则挂在 proxy2 的 enp7s0 网卡上实现高可用<br>4) 如果 web1 和 web2 中有一台服务器宕机，则 proxy1 和 proxy2 会自动不再向这台服务器请求网站服务，直到它恢复正常<br>5) 最终达到的效果是 client 向虚拟 IP 请求网站服务，此时如果 proxy1 正常就代表虚拟 IP 轮询调度 web1 和 web2 上的网站服务，再返回给 client。如果 proxy1 宕机则由 proxy2 代表虚拟 IP 完成次操作</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 8 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) client 的 enp1s0 网卡、proxy1 的 enp7s0 网卡和 proxy2 的 enp7s0 网卡要可以相互 ping 通自己和对方的 IP<br>7) proxy1 的 enp1s0 网卡、proxy2 的 enp1s0 网卡、web1 的 enp1s0 网卡和 web2 的 enp1s0 网卡要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：搭建网站服务</h3>
+
+
+
+<h4>3.1 在 web1 上搭建网站服务</h4>
+
+
+
+<h5>3.1.1 在 web1 上安装 Nginx</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 给 web1 制定网页</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web1 &gt; /usr/share/nginx/html/index.html</code></pre>
+
+
+
+<h5>3.1.3 启动 Nginx 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h4>3.2 在 web2 上搭建网站服务</h4>
+
+
+
+<h5>3.2.1 在 web2 上安装 Apache</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 给 web2 制定网页</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo web2 &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 Apache 并将它设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now httpd</code></pre>
+
+
+
+<h3>步骤四：搭建代理服务</h3>
+
+
+
+<h4>4.1 安装 Nginx</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h4>4.2 修改 Nginx 配置文件</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+    upstream webserver {
+        server 172.16.0.11:80;
+        server 172.16.0.12:80;
+    }
+......
+    server {
+        listen       80;
+
+        location / {
+        proxy_pass http://webserver;/
+        }
+    }
+......
+}</code></pre>
+
+
+
+<h4>4.3 启动 Nginx 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now nginx</code></pre>
+
+
+
+<h3>步骤五：搭建高可用服务</h3>
+
+
+
+<h4>5.1 安装 Keepalived</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install keepalived</code></pre>
+
+
+
+<h4>5.2 创建 Keepalived 检查脚本</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/keepalived/nginx_check.sh</code></pre>
+
+
+
+<p>创建以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+    systemctl stop nginx
+    sleep 5
+    if &#91; `ps -C nginx --no-header | wc -l` -eq 0 ];then
+        systemctl stop keepalived
+    fi
+fi</code></pre>
+
+
+
+<p>（补充：这里以检测 Nginx 没启动就启动 Nginx，5 秒后 Nginx 要是还没有启动就关闭 keepalived 为例）</p>
+
+
+
+<h4>5.3 修改 proxy1 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 101
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 101，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.4 修改 proxy2 上的 Keepalived 配置文件</h4>
+
+
+
+<p>（只在 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/keepalived/keepalived.conf</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     acassen@firewall.loc
+     failover@firewall.loc
+     sysadmin@firewall.loc
+   }
+   notification_email_from Alexandre.Cassen@firewall.loc
+   smtp_server 192.168.200.1
+   smtp_connect_timeout 30
+   router_id proxy1
+   vrrp_skip_check_adv_addr
+   vrrp_strict
+   vrrp_garp_interval 0
+   vrrp_gna_interval 0
+}
+
+vrrp_script chk_nginx {
+script "/etc/keepalived/nginx_check.sh"
+interval 2
+weight 20
+}
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp7s0
+    virtual_router_id 90
+    priority 99
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    track_script {
+    chk_nginx
+    }
+    virtual_ipaddress {
+        172.16.1.100
+    }
+}</code></pre>
+
+
+
+<p>（<br>补充：<br>1) script &#8220;/etc/keepalived/nginx_check.sh&#8221; 代表使用的检测脚本是 /etc/keepalived/nginx_check.sh<br>2) interface enp7s0 代表虚拟 IP 将挂载在 enp7s0 网卡上<br>3) priority 代表修建级是 99，数字越大优先级越高<br>4) 172.16.1.100 代表虚拟 IP 是 172.16.1.100<br>）</p>
+
+
+
+<h4>5.5 启动 Keepalived 并将它设置为开机自启</h4>
+
+
+
+<p>（分别在 proxy1 和 proxy2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable --now keepalived.service</code></pre>
+
+
+
+<h3>步骤六：测试网站负载均衡加高可用</h3>
+
+
+
+<h4>6.1 正常情况下测试网站服务</h4>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+
+
+
+<h4>6.2 在单节点故障的情况下测试网站服务</h4>
+
+
+
+<h5>6.2.1 关闭 proxy1、proxy2、web1、web2 中的任意一台服务器</h5>
+
+
+
+<p>（只在 proxy1、proxy2、web1、web2 中的任意一台服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># poweroff</code></pre>
+
+
+
+<h5>6.2.2 测试网站服务</h5>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 172.16.1.100</code></pre>
+
+
+
+<p>（补充：重复以上命令会发现重复显示 web1 和 web2）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] HAproxy 代理的设置</title>
+		<link>https://eternalcenter-sep-2022.github.io/haproxy-agent/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 21 Jan 2021 14:28:29 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[HAProxy]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=13237</guid>
+
+					<description><![CDATA[纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程 步骤一：拓扑规划 1.1 服务器列表 client eth0:10.0.0.10/24proxy eth0:10.0.0.5/24eth1:10.0.1.5/24web1 eth1:10.0.1.100/24web2 eht1:10.0.1.200/24 1.2 拓扑图 1.3 拓扑图简介 （1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client（4）最终实现单点代理器，双网站热备份 步骤二： 系统环境要求 （1）所有服务器的系统都需要是 CentOS 8 版本（2）所有服务器都要关闭防火墙（3）所有服务器都要关闭 SELinux（4）所有服务器系统都要配置好可用的软件源（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址 步骤三：部署集群环境 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/haproxy-agent/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] HAproxy 代理的设置"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2021 年 2 月完成了此开源实验，并将过程中的所有命令经过整理和主是以后，形成以下教程</strong></p>
+
+
+
+<h3>步骤一：拓扑规划</h3>
+
+
+
+<h4>1.1 服务器列表</h4>
+
+
+
+<p>client eth0:10.0.0.10/24<br>proxy eth0:10.0.0.5/24<br>eth1:10.0.1.5/24<br>web1 eth1:10.0.1.100/24<br>web2 eht1:10.0.1.200/24</p>
+
+
+
+<h4>1.2 拓扑图</h4>
+
+
+
+<pre class="wp-block-code"><code>                                           web1
+                                           eth1:10.0.1.100/24
+     client                proxy     
+eth0:10.0.0.10/24    eth0:10.0.0.5/24  
+                     eth1:10.0.1.5/24
+                                           web2
+                                           eht2:10.0.1.200/24</code></pre>
+
+
+
+<h4>1.3 拓扑图简介</h4>
+
+
+
+<p>（1）client 向 proxy 的 eth0:10.0.0.5/24 发送 web 请求<br>（2）proxy 收到 web 请求后通过 eth1:10.0.1.5/24 将请求发往 web1 或 web2<br>（3）web1 或 web2 回应 web 请求，并通过 proxy 返回给 client<br>（4）最终实现单点代理器，双网站热备份</p>
+
+
+
+<h3>步骤二： 系统环境要求</h3>
+
+
+
+<p>（1）所有服务器的系统都需要是 CentOS 8 版本<br>（2）所有服务器都要关闭防火墙<br>（3）所有服务器都要关闭 SELinux<br>（4）所有服务器系统都要配置好可用的软件源<br>（5）需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>（6）所有服务器都要可以相互 ping 通自己和对方的 IP 地址</p>
+
+
+
+<h3>步骤三：部署集群环境</h3>
+
+
+
+<h4>3.1 在 proxy 上安装 HAporxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install haproxy</code></pre>
+
+
+
+<h4>3.2 在 web1 上安装 web 服务</h4>
+
+
+
+<h5>3.2.1 安装 httpd</h5>
+
+
+
+<p>(只在 web1 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.2.2 创建网页文件</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.100" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.2.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h4>3.3 在 web2 上安装 web 服务</h4>
+
+
+
+<h5>3.3.1 安装 httpd</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h5>3.3.2 创建网页文件</h5>
+
+
+
+<p>(只在 web2 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># echo "10.0.1.200" &gt; /var/www/html/index.html</code></pre>
+
+
+
+<h5>3.3.3 启动 web 服务并设置为开机自启</h5>
+
+
+
+<p>（只在 web2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start httpd ; systemctl enable httpd</code></pre>
+
+
+
+<h3>步骤四：配置 HAproxy 实现 web 负载均衡代理集群</h3>
+
+
+
+<h4>4.1 开启 proxy 的路由转发</h4>
+
+
+
+<h5>4.1.1 在 sysctl.conf 文件里添加路由转发功能</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/sysctl.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>net.ipv4.ip_forward = 1</code></pre>
+
+
+
+<h5>4.1.2 使刚刚添加的功能生效</h5>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># sysctl -p</code></pre>
+
+
+
+<h4>4.2 修改 proxy 上的 HAproxy 配置文件</h4>
+
+
+
+<p>(只在 proxy 上执行以下步骤)</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/haproxy/haproxy.cfg</code></pre>
+
+
+
+<p>将全部内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>#---------------------------------------------------------------------
+# Example configuration for a possible web application.  See the
+# full configuration options online.
+#
+#   https://www.haproxy.org/download/1.8/doc/configuration.txt
+#
+#---------------------------------------------------------------------
+
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    # to have these messages end up in /var/log/haproxy.log you will
+    # need to:
+    #
+    # 1) configure syslog to accept network log events.  This is done
+    #    by adding the '-r' option to the SYSLOGD_OPTIONS in
+    #    /etc/sysconfig/syslog
+    #
+    # 2) configure local2 events to go to the /var/log/haproxy.log
+    #   file. A line like the following can be added to
+    #   /etc/sysconfig/syslog
+    #
+    #    local2.*                       /var/log/haproxy.log
+    #
+    log         127.0.0.1 local2
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+
+    # turn on stats unix socket
+    stats socket /var/lib/haproxy/stats
+
+    # utilize system-wide crypto-policies
+    ssl-default-bind-ciphers PROFILE=SYSTEM
+    ssl-default-server-ciphers PROFILE=SYSTEM
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+
+#---------------------------------------------------------------------
+# main frontend which proxys to the backends
+#---------------------------------------------------------------------
+frontend main
+    bind *:80
+    acl url_static       path_beg       -i /static /images /javascript /stylesheets
+    acl url_static       path_end       -i .jpg .gif .png .css .js
+
+    use_backend static          if url_static
+    default_backend             app
+
+#---------------------------------------------------------------------
+# static backend for serving up images, stylesheets and such
+#---------------------------------------------------------------------
+backend static
+    balance     roundrobin
+    server      static 127.0.0.1:80 check
+
+#---------------------------------------------------------------------
+# round robin balancing between the various backends
+#---------------------------------------------------------------------
+backend app
+    balance     roundrobin
+    server  app1 10.0.1.100:80 check
+    server  app2 10.0.1.200:80 check</code></pre>
+
+
+
+<h4>4.3 设置开机自动启动 HAproxy</h4>
+
+
+
+<p>（只在 proxy 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start haproxy ; systemctl enable haproxy</code></pre>
+
+
+
+<h3>步骤五：测试 Haproxy 代理集群</h3>
+
+
+
+<p>（只在 client 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># curl 10.10.10.5</code></pre>
+
+
+
+<p>（注意：这一步需要多做几次）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群 Redis 数据库的添加和删除</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster-node/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 13:37:46 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=7234</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 现有的 Redis 集群redis7 IP 地址:192.168.1.57 端口号：1057redis8 IP 地址:192.168.1.58 端口号：1058 （补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057） 1.2 服务器列表简介 redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中 步骤二：系统环境要求 1) 所有服务器的系统都需要是 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster-node/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群 Redis 数据库的添加和删除"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-text-align-left has-vivid-red-color has-text-color has-medium-font-size"><strong><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></strong></p>
+
+
+
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在给 Redis 数据库集群添加和删除 Redis 数据库之前要先搭建 Redis 数据库集群</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/redis-cluster/">Redis 数据库集群的搭建</a></div>
+</div>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a href="https://redis.io/" target="_blank" rel="noreferrer noopener">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>现有的 Redis 集群<br>redis7 IP 地址:192.168.1.57 端口号：1057<br>redis8 IP 地址:192.168.1.58 端口号：1058</p>
+
+
+
+<p>（补充：在本次实验中现有的 redis 集群管理服务器是 redis1，IP 地址是 192.168.1.57，端口号是 1057）</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>redis7 作为主库 redis8 作为从库加入到一个现有的 Redis 集群中</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<p>（注意：现有的 Redis 集群因为已经是创建好了的，所以不用执行以上操作）</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-安装软件包">3.2.6 安装软件包</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：将 Redis 数据库添加到别的集群</h3>
+
+
+
+<h4 id="步骤四-将-redis-数据库添加到别的集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis7 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.57
+......
+port 1057
+......
+daemonize yes
+......
+pidfile /var/run/redis_1057.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1057.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.57 是本机的 IP 地址<br>3) 这里的 port 1057 代表数据库使用到的端口是 1057，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1057.pid 代表使用的 PID 文件是 /var/run/redis_1057.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1057.conf 代表使用的数据库配置文件是 nodes-1057.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.58
+......
+port 1058
+......
+daemonize yes
+......
+pidfile /var/run/redis_1058.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1058.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.58 是本机的 IP 地址<br>3) 这里的 port 1058 代表数据库使用到的端口是 1058，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1058.pid 代表使用的 PID 文件是 /var/run/redis_1058.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1058.conf 代表使用的数据库配置文件是 nodes-1058.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis7 和 redis8 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3 将 redis7 和 redis8 添加到现有的 Redis 集群中</h4>
+
+
+
+<h5 id="4-3-将-redis7-和-redis8-添加到现有的-redis-集群中4-3-1-显示现有集群的状况">4.3.1 显示现有集群的状况</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-2-添加-redis7-并将其视为主数据库">4.3.2 添加 redis7 并将其视为主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.57:1057 192.168.1.51:1051</code></pre>
+
+
+
+<h5 id="4-3-3-添加-redis8-并将其视为从数据库">4.3.3 添加 redis8 并将其视为从数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster add-node 192.168.1.58:1058 192.168.1.51:1051 --cluster-slave</code></pre>
+
+
+
+<h5 id="4-3-4-确认-redis7-和-redis8-已经加入到了集群中">4.3.4 确认 redis7 和 redis8 已经加入到了集群中</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 2 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 0 keys | 0 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots: (0 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4 让新加入的 redis 数据库也能存储数据</h4>
+
+
+
+<h5 id="4-4-让新加入的-redis-数据库也能存储数据4-4-1-重新分配集群的存储块">4.4.1 重新分配集群的存储块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 10bb6a5732f629ee62801417cb44ddb670e99e86
+......
+Source node #1: all
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h5 id="4-4-2-确认集群的存储块已经覆盖所有主数据库">4.4.2 确认集群的存储块已经覆盖所有主数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.57:1057 (10bb6a57...) -&gt; 2 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 4 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;1365-5460] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: 93d8988475c754a3b58d5172522163664c391da2 192.168.1.58:1058
+   slots: (0 slots) slave
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+M: 10bb6a5732f629ee62801417cb44ddb670e99e86 192.168.1.57:1057
+   slots:&#91;0-1364],&#91;5461-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-将部分-redis-数据库从集群中删除">步骤五：将部分 Redis 数据库从集群中删除</h3>
+
+
+
+<p>（这里以删除 redis7 和 redis8 为例）</p>
+
+
+
+<h4 id="5-1-将存储块从要被删除的-redis-主数据库里拿走">5.1 将存储块从要被删除的 redis 主数据库里拿走</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster reshard 192.168.1.51:1051
+......
+How many slots do you want to move (from 1 to 16384)? 4096
+What is the receiving node ID? 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+......
+Source node #1: 10bb6a5732f629ee62801417cb44ddb670e99e86
+Source node #2: done
+......
+Do you want to proceed with the proposed reshard plan (yes/no)? yes
+......</code></pre>
+
+
+
+<h4 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2 将部分 Redis 数据库从集群中删除</h4>
+
+
+
+<h5 id="5-2-将部分-redis-数据库从集群中删除5-2-1-将作为主库的-redis-数据库从集群中删除">5.2.1 将作为主库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.57:1057 10bb6a5732f629ee62801417cb44ddb670e99e86
+&gt;&gt;&gt; Removing node 10bb6a5732f629ee62801417cb44ddb670e99e86 from cluster 192.168.1.57:1057
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...</code></pre>
+
+
+
+<h5 id="5-2-2-将作为从库的-redis-数据库从集群中删除">5.2.2 将作为从库的 Redis 数据库从集群中删除</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster del-node 192.168.1.58:1058 023abbc600cd4fb1ca8bb7ce8c45099e186041f8
+&gt;&gt;&gt; Removing node 023abbc600cd4fb1ca8bb7ce8c45099e186041f8 from cluster 192.168.1.58:1058
+&gt;&gt;&gt; Sending CLUSTER FORGET messages to the cluster...
+&gt;&gt;&gt; SHUTDOWN the node.</code></pre>
+
+
+
+<h4 id="5-3-确认部分-redis-数据库已经从集群中删除">5.3 确认部分 Redis 数据库已经从集群中删除</h4>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51:1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 0 keys | 4096 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 4096 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 4096 slots | 1 slaves.
+&#91;OK] 4 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-6826],&#91;10923-12287] (4096 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+   replicates 10bb6a5732f629ee62801417cb44ddb670e99e86
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;12288-16383] (4096 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;6827-10922] (4096 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Redis 数据库集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/redis-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 27 Nov 2019 14:55:52 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[Non Relational Database (NoSQL) (非关系型数据库)]]></category>
+		<category><![CDATA[Other Database Cluster (其它数据库集群)]]></category>
+		<category><![CDATA[Other Database Load Balancing and High Availability Cluster (其它数据库负载均衡加高可用集群)]]></category>
+		<category><![CDATA[Redis]]></category>
+		<category><![CDATA[Redis Load Balancing and High Availability (负载均衡加高可用)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6867</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 软件准备： 在 Redis 的官网上下载软件 Redis： https://redis.io/ 在 rubygems 的官网上下载软件 rubygems https://rubygems.org/ 正文： 步骤一：规划拓扑 1.1 服务器列表 redis1 IP 地址:192.168.1.51 端口号：1051redis2 IP 地址:192.168.1.52 端口号：1052redis3 IP 地址:192.168.1.53 端口号：1053redis4 IP 地址:192.168.1.54 端口号：1054redis5 IP 地址:192.168.1.55 端口号：1055redis6 IP 地址:192.168.1.56 端口号：1056 1.2 服务器列表简介 1) 总共 6 个数据库，3 个为主库，3 个为从库2) 如果 1 个主库宕掉则它的从库自动成为主库3) 宕掉的主库修复好后会成为新主库的从库4) 如果半数或者半数以上的主库宕掉，集群则无法使用 （注意： Redis 集群最少要有 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/redis-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Redis 数据库集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1 id="软件准备">软件准备：</h1>
+
+
+
+<p>在 Redis 的官网上下载软件 Redis：</p>
+
+
+
+<p class="has-text-align-center"><a rel="noreferrer noopener" href="https://redis.io/" target="_blank">https://redis.io/</a></p>
+
+
+
+<p>在 rubygems 的官网上下载软件 rubygems</p>
+
+
+
+<p class="has-text-align-center"><a href="https://rubygems.org/" target="_blank" rel="noreferrer noopener">https://rubygems.org/</a></p>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>redis1 IP 地址:192.168.1.51 端口号：1051<br>redis2 IP 地址:192.168.1.52 端口号：1052<br>redis3 IP 地址:192.168.1.53 端口号：1053<br>redis4 IP 地址:192.168.1.54 端口号：1054<br>redis5 IP 地址:192.168.1.55 端口号：1055<br>redis6 IP 地址:192.168.1.56 端口号：1056</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) 总共 6 个数据库，3 个为主库，3 个为从库<br>2) 如果 1 个主库宕掉则它的从库自动成为主库<br>3) 宕掉的主库修复好后会成为新主库的从库<br>4) 如果半数或者半数以上的主库宕掉，集群则无法使用</p>
+
+
+
+<p>（注意： Redis 集群最少要有 3 个主库）</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名<br>7) 至少要有一台服务器可以访问外网</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">步骤三：所有数据库服务器安装 Redis 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-redis-数据库3-1-安装-redis-数据库的相关依赖包">3.1 安装 Redis 数据库的相关依赖包</h4>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install gcc gcc-c++ make</code></pre>
+
+
+
+<h4 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2 安装 Redis 数据库</h4>
+
+
+
+<h5 id="3-2-安装-redis-数据库3-2-1-解压安装包">3.2.1 解压安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -zxf redis-5.0.5.tar.gz</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-2-进入安装包目录">3.2.2 进入安装包目录</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd redis-5.0.5/</code></pre>
+
+
+
+<p>（补充：这里要安装的 Redis 版本是 5.0.5）</p>
+
+
+
+<h5 id="3-2-3-编译安装包">3.2.3 编译安装包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># make</code></pre>
+
+
+
+<h5 id="3-2-4-安装软件包">3.2.4 安装软件包</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># make install</code></pre>
+
+
+
+<h5 id="3-2-5-进入配置目录">3.2.5 进入配置目录</h5>
+
+
+
+<pre class="wp-block-code"><code>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</code></pre>
+
+
+
+<pre class="wp-block-code"><code># cd utils/</code></pre>
+
+
+
+<h5 id="3-2-6-配置软件包">3.2.6 配置软件包</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ./install_server.sh
+Welcome to the redis service installer
+This script will help you easily set up a running redis server
+Please select the redis port for this instance: &#91;6379] 
+Selecting default: 6379
+Please select the redis config file name &#91;/etc/redis/6379.conf] 
+Selected default - /etc/redis/6379.conf
+Please select the redis log file name &#91;/var/log/redis_6379.log] 
+Selected default - /var/log/redis_6379.log
+Please select the data directory for this instance &#91;/var/lib/redis/6379] 
+Selected default - /var/lib/redis/6379
+Please select the redis executable path &#91;/usr/local/bin/redis-server] 
+Selected config:
+Port           : 6379
+Config file    : /etc/redis/6379.conf
+Log file       : /var/log/redis_6379.log
+Data dir       : /var/lib/redis/6379
+Executable     : /usr/local/bin/redis-server
+Cli Executable : /usr/local/bin/redis-cli
+Is this ok? Then press ENTER to go on or Ctrl-C to abort.
+Copied /tmp/6379.conf =&gt; /etc/init.d/redis_6379
+Installing service...
+Successfully added to chkconfig!
+Successfully added to runlevels 345!
+Starting Redis server...
+Installation successful!</code></pre>
+
+
+
+<h3 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">步骤四：搭建 Redis 数据库集群</h3>
+
+
+
+<h4 id="步骤四-搭建-redis-数据库集群4-1-修改所有服务器上的-redis-数据库配置文件">4.1 修改所有服务器上的 Redis 数据库配置文件</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.51
+......
+port 1051
+......
+daemonize yes
+......
+pidfile /var/run/redis_1051.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1051.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.51 是本机的 IP 地址<br>3) 这里的 port 1051 代表数据库使用到的端口是 1051，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1051.pid 代表使用的 PID 文件是 /var/run/redis_1051.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1051.conf 代表使用的数据库配置文件是 nodes-1051.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.52
+......
+port 1052
+......
+daemonize yes
+......
+pidfile /var/run/redis_1052.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1052.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.52 是本机的 IP 地址<br>3) 这里的 port 1052 代表数据库使用到的端口是 1052，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1052.pid 代表使用的 PID 文件是 /var/run/redis_1052.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1052.conf 代表使用的数据库配置文件是 nodes-1052.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.53
+......
+port 1053
+......
+daemonize yes
+......
+pidfile /var/run/redis_1053.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1053.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.53 是本机的 IP 地址<br>3) 这里的 port 1053 代表数据库使用到的端口是 1053，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1053.pid 代表使用的 PID 文件是 /var/run/redis_1053.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1053.conf 代表使用的数据库配置文件是 nodes-1053.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.54
+......
+port 1054
+......
+daemonize yes
+......
+pidfile /var/run/redis_1054.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1054.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.54 是本机的 IP 地址<br>3) 这里的 port 1054 代表数据库使用到的端口是 1054，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1054.pid 代表使用的 PID 文件是 /var/run/redis_1054.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1054.conf 代表使用的数据库配置文件是 nodes-1054.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.55
+......
+port 1055
+......
+daemonize yes
+......
+pidfile /var/run/redis_1055.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1055.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.55 是本机的 IP 地址<br>3) 这里的 port 1055 代表数据库使用到的端口是 1055，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1055.pid 代表使用的 PID 文件是 /var/run/redis_1055.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1055.conf 代表使用的数据库配置文件是 nodes-1055.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/redis/6379.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+#bind 127.0.0.1
+bind 192.168.1.56
+......
+port 1056
+......
+daemonize yes
+......
+pidfile /var/run/redis_1056.pid
+......
+cluster-enabled yes
+......
+cluster-config-file nodes-1056.conf
+......
+cluster-node-timeout 5000
+......</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 这里的 #bind 127.0.0.1 代表取消数据库可以被本地登录<br>2) 这里的 bind 192.168.1.56 是本机的 IP 地址<br>3) 这里的 port 1056 代表数据库使用到的端口是 1056，集群里的各个数据库端口号不能一样<br>4) 这里的 daemonize yes 代表以进程的形式启动<br>5) 这里的 pidfile /var/run/redis_1056.pid 代表使用的 PID 文件是 /var/run/redis_1056.pid，集群里的各个数据库 PID 文件不能一样<br>6) 这里的 cluster-enabled yes 代表启用集群，但是前面的 daemonize 必须也启用<br>7) 这里的 cluster-config-file nodes-1056.conf 代表使用的数据库配置文件是 nodes-1056.conf，集群里的各个数据库的配置文件不能一样<br>8) 这里的 cluster-node-timeout 5000 代表集群通信超时时间为 5000<br>）</p>
+
+
+
+<h4 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2 重启所有服务器上的 Redis 数据库</h4>
+
+
+
+<h5 id="4-2-重启所有服务器上的-redis-数据库4-2-1-关闭-redis-数据库">4.2.1 关闭 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli shutdown</code></pre>
+
+
+
+<h5 id="4-2-2-开启-redis-数据库">4.2.2 开启 Redis 数据库</h5>
+
+
+
+<p>（分别在 redis1、redis2、redis3、redis4、redis5 和 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="4-3-显示目前的集群信息">4.3 显示目前的集群信息</h4>
+
+
+
+<p>（此步骤可以在任意服务器上操作，这里以在 redis1 上操作为例）</p>
+
+
+
+<h5 id="4-3-1-进入数据库">4.3.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-3-2-显示数据库是否可用">4.3.2 显示数据库是否可用</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; ping
+PONG</code></pre>
+
+
+
+<h5 id="4-3-3-显示集群信息">4.3.3 显示集群信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:fail
+cluster_slots_assigned:0
+cluster_slots_ok:0
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:1
+cluster_size:0
+cluster_current_epoch:0
+cluster_my_epoch:0
+cluster_stats_messages_sent:0
+cluster_stats_messages_received:0</code></pre>
+
+
+
+<h4 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4 部署 Redis 集群环境</h4>
+
+
+
+<h5 id="4-4-部署-redis-集群环境4-4-1-部署-ruby-脚本运行环境">4.4.1 部署 Ruby 脚本运行环境</h5>
+
+
+
+<p>（此步骤可以在任意服务器上操作，但是这台服务器必须要可以访问外网，这里以在 redisA 上操作为例）</p>
+
+
+
+<h5 id="4-4-1-1-安装-ruby">4.4.1.1 安装 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install ruby rubygems ruby-devel</code></pre>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2 升级 Ruby</h5>
+
+
+
+<h5 id="4-4-1-2-升级-ruby4-4-1-2-1-解压-ruby-安装包">4.4.1.2.1 解压 Ruby 安装包</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># tar -xvf rubygems-3.0.6.tgz </code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-2-进入-ruby-安装包目录">4.4.1.2.2 进入 Ruby 安装包目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cd rubygems-3.0.6</code></pre>
+
+
+
+<p>（补充：这里要安装的 rubygems 版本是 3.0.6）</p>
+
+
+
+<h5 id="4-4-1-2-3-升级-ruby">4.4.1.2.3 升级 Ruby</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># ruby setup.rb</code></pre>
+
+
+
+<h5 id="4-4-1-3-安装-redis-模块">4.4.1.3 安装 Redis 模块</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># gem install redis -v 3.3.5
+Fetching: redis-3.3.5.gem (100%)
+Successfully installed redis-3.3.5
+Parsing documentation for redis-3.3.5
+Installing ri documentation for redis-3.3.5
+1 gem installed</code></pre>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2 部署 Redis 集群文件</h5>
+
+
+
+<h5 id="4-4-2-部署-redis-集群文件4-4-2-1-创建-redis-集群文件的目录">4.4.2.1 创建 Redis 集群文件的目录</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mkdir /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-2-复制-redis-集群文件">4.4.2.2 复制 Redis 集群文件</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># cp redis-5.0.5/src/redis-trib.rb /root/bin</code></pre>
+
+
+
+<h5 id="4-4-2-3-给-redis-集群文件添加执行权限">4.4.2.3 给 Redis 集群文件添加执行权限</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># chmod +x /root/bin/redis-trib.rb</code></pre>
+
+
+
+<h4 id="4-5-创建-redis-集群">4.5 创建 Redis 集群</h4>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster create 192.168.1.51:1051 192.168.1.52:1052 192.168.1.53:1053 192.168.1.54:1054 192.168.1.55:1055 192.168.1.56:1056 --cluster-replicas 1
+&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...
+Master&#91;0] -&gt; Slots 0 - 5460
+Master&#91;1] -&gt; Slots 5461 - 10922
+Master&#91;2] -&gt; Slots 10923 - 16383
+Adding replica 192.168.1.55:1055 to 192.168.1.51:1051
+Adding replica 192.168.1.56:1056 to 192.168.1.52:1052
+Adding replica 192.168.1.54:1054 to 192.168.1.53:1053
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+Can I set the above configuration? (type 'yes' to accept): yes
+&gt;&gt;&gt; Nodes configuration updated
+&gt;&gt;&gt; Assign a different config epoch to each node
+&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+...
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h4 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6 显示集群中主机状态信息的方法</h4>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1 方法一</h5>
+
+
+
+<h5 id="4-6-显示集群中主机状态信息的方法4-6-1-方法一4-6-1-1-进入数据库">4.6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<h5 id="4-6-1-2-显示集群整体信息">4.6.1.2 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; cluster info
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:6
+cluster_my_epoch:1
+cluster_stats_messages_ping_sent:30858
+cluster_stats_messages_pong_sent:29942
+cluster_stats_messages_sent:60800
+cluster_stats_messages_ping_received:29937
+cluster_stats_messages_pong_received:30858
+cluster_stats_messages_meet_received:5
+cluster_stats_messages_received:60800</code></pre>
+
+
+
+<h5 id="4-6-1-3-显示集群主从关系">4.6.1.3 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; cluster nodes
+eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055@11055 slave 5d030ec05f9de86ebeedc1b035b2122addaa61d8 0 1574754846521 5 connected
+a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054@11054 slave c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 0 1574754846000 4 connected
+fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056@11056 slave 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 0 1574754845819 6 connected
+5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051@11051 master - 0 1574754846822 1 connected 0-5460
+7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052@11052 master - 0 1574754846000 2 connected 5461-10922
+c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053@11053 myself,master - 0 1574754844000 3 connected 10923-16383</code></pre>
+
+
+
+<h5 id="4-6-1-4-退出数据库">4.6.1.4 退出数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; quit</code></pre>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2 方法二</h5>
+
+
+
+<h5 id="4-6-2-方法二4-6-2-1-显示集群整体信息">4.6.2.1 显示集群整体信息</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster info 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.</code></pre>
+
+
+
+<h5 id="4-6-2-2-显示集群主从关系">4.6.2.2 显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051
+192.168.1.51:1051 (5d030ec0...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.53:1053 (c4f884e7...) -&gt; 1 keys | 5461 slots | 1 slaves.
+192.168.1.52:1052 (7477c04d...) -&gt; 1 keys | 5462 slots | 1 slaves.
+&#91;OK] 3 keys in 3 masters.
+0.00 keys per slot on average.
+&gt;&gt;&gt; Performing Cluster Check (using node 192.168.1.51:1051)
+M: 5d030ec05f9de86ebeedc1b035b2122addaa61d8 192.168.1.51:1051
+   slots:&#91;0-5460] (5461 slots) master
+   1 additional replica(s)
+S: eac6a0586ad00375bea9aa352951c784be57e9ad 192.168.1.55:1055
+   slots: (0 slots) slave
+   replicates 5d030ec05f9de86ebeedc1b035b2122addaa61d8
+M: c4f884e7e4ce6adb4f5bc4f6eb398680beb26089 192.168.1.53:1053
+   slots:&#91;10923-16383] (5461 slots) master
+   1 additional replica(s)
+M: 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30 192.168.1.52:1052
+   slots:&#91;5461-10922] (5462 slots) master
+   1 additional replica(s)
+S: fd973bbcc376bfccf5888ba06dba97feb9ef1273 192.168.1.56:1056
+   slots: (0 slots) slave
+   replicates 7477c04d8ebf9d498ed5586d5f4e6d513fdb3c30
+S: a5cddda6c1bc7c6d3397e17e1ba29571bb7a1657 192.168.1.54:1054
+   slots: (0 slots) slave
+   replicates c4f884e7e4ce6adb4f5bc4f6eb398680beb26089
+&#91;OK] All nodes agree about slots configuration.
+&gt;&gt;&gt; Check for open slots...
+&gt;&gt;&gt; Check slots coverage...
+&#91;OK] All 16384 slots covered.</code></pre>
+
+
+
+<h3 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">步骤五：Redis 集群创建失败的解决办法</h3>
+
+
+
+<h4 id="步骤五-redis-集群创建失败的解决办法5-1-关闭所有-redis服务器的-redis-服务">5.1 关闭所有 Redis服务器的 Redis 服务</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdowm</code></pre>
+
+
+
+<h4 id="5-2-删除所有原来的-redis-数据">5.2 删除所有原来的 Redis 数据</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># rm -rf /var/lib/redis/6379/*</code></pre>
+
+
+
+<h4 id="5-3-重启-redis-数据库">5.3 重启 Redis 数据库</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h4 id="5-4-按照前面的步骤重新执行创建集群">5.4 按照前面的步骤重新执行创建集群</h4>
+
+
+
+<p>（只在加入集群失败的服务器上执行以下步骤）</p>
+
+
+
+<p>（步骤略）</p>
+
+
+
+<h3 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">步骤六：测试 Redis 集群</h3>
+
+
+
+<h4 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1 数据同步测试</h4>
+
+
+
+<h5 id="步骤六-测试-redis-集群6-1-数据同步测试6-1-1-进入数据库">6.1.1 进入数据库</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.51 -p 1051</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.52 -p 1052</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.53 -p 1053</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.54 -p 1054</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.55 -p 1055</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h 192.168.1.56 -p 1056</code></pre>
+
+
+
+<h5 id="6-1-2-确认现在的-redis-数据库都是空的">6.1.2 确认现在的 Redis 数据库都是空的</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *</code></pre>
+
+
+
+<h5 id="6-1-3-在主-redis-数据库上插入数据">6.1.3 在主 Redis 数据库上插入数据</h5>
+
+
+
+<p>（补充：本次的主数据库是 redis1、redis2、redis3）</p>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; set aa 101
+-&gt; Redirected to slot &#91;15495] located at 192.168.1.53:1053
+OK</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.52:1052&gt; set bb 102
+-&gt; Redirected to slot &#91;3300] located at 192.168.1.51:1051
+OK</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.53:1053&gt; set ff 103
+-&gt; Redirected to slot &#91;7365] located at 192.168.1.52:1052
+OK</code></pre>
+
+
+
+<h5 id="6-1-4-查看刚插入的数据">6.1.4 查看刚插入的数据</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1051&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1052&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（只在 redis3 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1053&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis4 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1054&gt; keys *
+1) "ff"</code></pre>
+
+
+
+<p>（只在 redis5 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1055&gt; keys *
+1) "aa"</code></pre>
+
+
+
+<p>（只在 redis6 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>192.168.1.51:1056&gt; keys *
+1) "bb"</code></pre>
+
+
+
+<p>（<br>补充：<br>1) 对应的从库会自动同步主库的数据<br>2) 本次的主数据库是 redis1（从库是 redis5）、redis2（从库是 redis6）、redis3（从库是 redis4)<br>)</p>
+
+
+
+<h4 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2 高可用测试</h4>
+
+
+
+<h5 id="6-2-高可用测试6-2-1-模拟此时主库宕机后-对应的从库会自动升级为主库但需要-5-分钟的时间">6.2.1 模拟此时主库宕机后，对应的从库会自动升级为主库但需要 5 分钟的时间</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli -h &lt;IP address of this server&gt; -p &lt;port number used by redis of this server&gt; shutdown</code></pre>
+
+
+
+<h5 id="6-2-2-等待-5-分钟后显示集群主从关系">6.2.2 等待 5 分钟后显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+
+
+
+<h5 id="6-2-3-主库恢复后会成为新主库的从库">6.2.3 主库恢复后会成为新主库的从库</h5>
+
+
+
+<p>（只在模拟宕机的主库服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># /etc/init.d/redis_6379 start</code></pre>
+
+
+
+<h5 id="6-2-4-再次显示集群主从关系">6.2.4 再次显示集群主从关系</h5>
+
+
+
+<p>（只在 redis1 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># redis-cli --cluster check 192.168.1.51 1051</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] MariaDB &#038; MySQL 主从同步的搭建 （互为主从）</title>
+		<link>https://eternalcenter-sep-2022.github.io/mariadb-mysql-master-master/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 15:48:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Database Cluster (数据库集群)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MariaDB & MySQL Database Cluster (MariaDB & MySQL 数据库集群)]]></category>
+		<category><![CDATA[MariaDB & MySQL Database High Availability Cluster (MariaDB & MySQL 数据库高可用集群)]]></category>
+		<category><![CDATA[MariaDB & MySQL High Availability (高可用)]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=6576</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 数据库服务器 21 IP 地址:192.168.1.21数据库服务器 22 IP 地址:192.168.1.22 1.2 服务器列表简介 数据库服务器 21 和 数据库服务器 22 相互同步对方的数据 步骤二：系统环境要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名 步骤三：所有数据库服务器安装 MariaDB 或 MySQL 数据库 3.1 所有数据库服务器安装 MariaDB 或 MySQL （分别在数据库服务器 21 和数据库服务器 22 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/mariadb-mysql-master-master/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] MariaDB &#038; MySQL 主从同步的搭建 （互为主从）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 11 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>数据库服务器 21 IP 地址:192.168.1.21<br>数据库服务器 22 IP 地址:192.168.1.22</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>数据库服务器 21 和 数据库服务器 22 相互同步对方的数据</p>
+
+
+
+<h3 id="步骤二-系统环境要求">步骤二：系统环境要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机名<br>6) 所有服务器都要可以相互 ping 通自己和对方的 IP 地址和主机名</p>
+
+
+
+<h3 id="步骤三-所有数据库服务器安装-mariadb-或-mysql-数据库3-1-所有数据库服务器安装-mariadb-或-mysql">步骤三：所有数据库服务器安装 MariaDB 或 MySQL 数据库</h3>
+
+
+
+<h4 id="步骤三-所有数据库服务器安装-mariadb-或-mysql-数据库3-1-所有数据库服务器安装-mariadb-或-mysql">3.1 所有数据库服务器安装 MariaDB 或 MySQL</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb-server</code></pre>
+
+
+
+<p>（补充：这里以安装 MariaDB 数据库为例）</p>
+
+
+
+<h4 id="3-2-设置所有数据库服务器开机自启-mariadb-或-mysql">3.2 设置所有数据库服务器开机自启 MariaDB 或 MySQL</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable mariadb</code></pre>
+
+
+
+<p>（补充：这里以开机自启 MariaDB 数据库为例）</p>
+
+
+
+<h3 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">步骤四：配置 MairaDB &amp; MySQL 互为主从结构</h3>
+
+
+
+<h4 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">4.1 将数据库服务器 22 设置为数据库服务器 21 的从库</h4>
+
+
+
+<h5 id="步骤四-配置-mairadb-mysql-互为主从结构4-1-将数据库服务器-22-设置为数据库服务器-21-的从库4-1-1-开启数据库服务器-21-的-server-id-和-binlog-日志">4.1.1 开启数据库服务器 21 的 server-id 和 binlog 日志</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/my.cnf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;mysqld]
+server-id=1
+log-bin=mariadb-bin
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server-id 设置为 1<br>2) 启动 binlog 日志，并将 binlog 日志的前缀设置为 mariadb-bin<br>为例<br>）</p>
+
+
+
+<p>（注意： 集群里的各个数据库的 server id 不能一样）</p>
+
+
+
+<h5 id="4-1-2-重启数据库服务器-21-的数据库">4.1.2 重启数据库服务器 21 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-1-3-在数据库服务器-21-的数据库中创建用于同步的用户4-1-3-1-进入数据库">4.1.3 在数据库服务器 21 的数据库中创建用于同步的用户</h5>
+
+
+
+<h5 id="4-1-3-在数据库服务器-21-的数据库中创建用于同步的用户4-1-3-1-进入数据库">4.1.3.1 进入数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-1-3-2-创建数据库服务器-21-用于被数据库服务器-22-同步的-mariadb-用户">4.1.3.2 创建数据库服务器 21 用于被数据库服务器 22 同步的 MariaDB 用户</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant replication slave on *.* to 'backup'@'192.168.1.22' identified by 'backup';</code></pre>
+
+
+
+<h5 id="4-1-3-3-刷新数据库服务器-21-里所有用户的权限">4.1.3.3 刷新数据库服务器 21 里所有用户的权限</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; flush privileges;</code></pre>
+
+
+
+<h5 id="4-1-3-4-显示数据库服务器-21-的-mariadb-的主库参数">4.1.3.4 显示数据库服务器 21 的 MariaDB 的主库参数</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show master status;
++--------------------+----------+--------------+------------------+
+| File               | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++--------------------+----------+--------------+------------------+
+| mariadb-bin.000003 |      475 |              |                  |
++--------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)</code></pre>
+
+
+
+<p>（补充：这里显示的 master_log_file 和 master_log_pos 的参数会在后面配置从库中使用）</p>
+
+
+
+<h5 id="4-1-4-让数据库服务器-22-同步数据库服务器-214-1-4-1-启动数据库服务器-22">4.1.4 让数据库服务器 22 同步数据库服务器 21</h5>
+
+
+
+<h5 id="4-1-4-让数据库服务器-22-同步数据库服务器-214-1-4-1-启动数据库服务器-22">4.1.4.1 启动数据库服务器 22</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<p>（补充：这里以启动 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-1-4-2-进入数据库服务器-22-的数据库">4.1.4.2 进入数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-1-4-3-同步主库">4.1.4.3 同步主库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; change master to master_host="192.168.1.21",master_user='backup',master_password='backup',master_log_file='mariadb-bin.000003',master_log_pos=475;</code></pre>
+
+
+
+<h5 id="4-1-4-4-启动从库状态">4.1.4.4 启动从库状态</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; start slave;</code></pre>
+
+
+
+<h5 id="4-1-4-5-显示从库状态">4.1.4.5 显示从库状态</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show slave status\G;
+          Master_Host: 192.168.1.21
+              ......
+          Slave_IO_Running: Yes  
+          Last_IO_Error: ......
+              ......
+          Slave_SQL_Running: Yes
+          Last_SQL_Error: ......
+              ......</code></pre>
+
+
+
+<p>（补充：这里显示它的主服务器是 192.168.1.21）</p>
+
+
+
+<p>（注意：这里要确保 Slave_IO_Running: 和 Slave_SQL_Running: 后面没有报错信息）</p>
+
+
+
+<h4 id="4-2-将数据库服务器-21-设置为数据库服务器-22-的从库4-2-1-关闭数据库服务器-22-的数据库">4.2 将数据库服务器 21 设置为数据库服务器 22 的从库</h4>
+
+
+
+<h5 id="4-2-将数据库服务器-21-设置为数据库服务器-22-的从库4-2-1-关闭数据库服务器-22-的数据库">4.2.1 关闭数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop mariadb</code></pre>
+
+
+
+<p>（补充：这里以停止 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-2-2-开启数据库服务器-21-的-server-id-和-binlog-日志">4.2.2 开启数据库服务器 21 的 server-id 和 binlog 日志</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/my.cnf</code></pre>
+
+
+
+<p>（将部分内容修改如下）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;mysqld]
+server-id=2
+log-bin=mariadb-bin
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 将 server-id 设置为 2<br>2) 启动 binlog 日志，并将 binlog 日志的前缀设置为 mariadb-bin<br>为例<br>）</p>
+
+
+
+<p>（注意： 集群里的各个数据库的 server id 不能一样）</p>
+
+
+
+<h5 id="4-2-3-启动数据库服务器-22-的数据库">4.2.3 启动数据库服务器 22 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<p>（补充：这里以重启 MariaDB 数据库为例）</p>
+
+
+
+<h5 id="4-2-4-在数据库服务器-22-的数据库中创建用于同步的用户4-2-4-1-进入数据库">4.2.4 在数据库服务器 22 的数据库中创建用于同步的用户</h5>
+
+
+
+<h5 id="4-2-4-在数据库服务器-22-的数据库中创建用于同步的用户4-2-4-1-进入数据库">4.2.4.1 进入数据库</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-2-4-2-创建数据库服务器-21-用于被数据库服务器-22-同步的-mariadb-用户">4.2.4.2 创建数据库服务器 21 用于被数据库服务器 22 同步的 MariaDB 用户</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; grant replication slave on *.* to 'backup'@'192.168.1.21' identified by 'backup';</code></pre>
+
+
+
+<h5 id="4-2-4-3-刷新数据库服务器-22-数据库里所有用户的权限">4.2.4.3 刷新数据库服务器 22 数据库里所有用户的权限</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; flush privileges;</code></pre>
+
+
+
+<h5 id="4-2-4-4-显示数据库服务器-22-的-mariadb-的主库参数">4.2.4.4 显示数据库服务器 22 的 MariaDB 的主库参数</h5>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show master status;
++--------------------+----------+--------------+------------------+
+| File               | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++--------------------+----------+--------------+------------------+
+| mariadb-bin.000003 |      475 |              |                  |
++--------------------+----------+--------------+------------------+
+1 row in set (0.00 sec)</code></pre>
+
+
+
+<p>（补充：这里显示的 master_log_file 和 master_log_pos 的参数会在后面配置从库中使用）</p>
+
+
+
+<h5 id="4-2-5-让数据库服务器-21-同步数据库服务器-224-2-5-1-进入数据库服务器-21-的数据库">4.2.5 让数据库服务器 21 同步数据库服务器 22</h5>
+
+
+
+<h5 id="4-2-5-让数据库服务器-21-同步数据库服务器-224-2-5-1-进入数据库服务器-21-的数据库">4.2.5.1 进入数据库服务器 21 的数据库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -p</code></pre>
+
+
+
+<h5 id="4-2-5-2-同步主库">4.2.5.2 同步主库</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; change master to master_host="192.168.1.22",master_user='backup',master_password='backup',master_log_file='mariadb-bin.000003',master_log_pos=475;</code></pre>
+
+
+
+<h5 id="4-2-5-3-启动从库状态">4.2.5.3 启动从库状态</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; start slave;</code></pre>
+
+
+
+<h5 id="4-2-5-4-显示从库状态">4.2.5.4 显示从库状态</h5>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; show slave status\G;
+          Master_Host: 192.168.1.22
+              ......
+          Slave_IO_Running: Yes  
+          Last_IO_Error: ......
+              ......
+          Slave_SQL_Running: Yes
+          Last_SQL_Error: ......
+              ......</code></pre>
+
+
+
+<p>（补充：这里显示它的主服务器是 192.168.1.21）</p>
+
+
+
+<p>（注意：这里要确保 Slave_IO_Running: 和 Slave_SQL_Running: 后面没有报错信息）</p>
+
+
+
+<h3 id="步骤五-测试-mariadb-mysql-互为主从集群5-1-进入数据库">步骤五：测试 MariaDB &amp; MySQL 互为主从集群</h3>
+
+
+
+<h4 id="步骤五-测试-mariadb-mysql-互为主从集群5-1-进入数据库">5.1 进入数据库</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># mysql -uroot -p</code></pre>
+
+
+
+<h4 id="5-2-创建测试库">5.2 创建测试库</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; create database test1;</code></pre>
+
+
+
+<h4 id="5-3-进入测试库">5.3 进入测试库</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; use test1;</code></pre>
+
+
+
+<h4 id="5-4-创建测试表">5.4 创建测试表</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; create table test1a(id int(10),name char(100),age int(10));</code></pre>
+
+
+
+<p>（补充：这里随意创建了一张表格）</p>
+
+
+
+<h4 id="5-5-在数据库服务器-21-上插入测试数据">5.5 在数据库服务器 21 上插入测试数据</h4>
+
+
+
+<p>（只在数据库服务器 21 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; insert into test1a(id,name,age) values('1','zmy','10');</code></pre>
+
+
+
+<p>（补充：这里随意插入了一条数据）</p>
+
+
+
+<h4 id="5-6-在数据库服务器-22-上插入测试数据">5.6 在数据库服务器 22 上插入测试数据</h4>
+
+
+
+<p>（只在数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; insert into test1a(id,name,age) values('2','ming','20');</code></pre>
+
+
+
+<p>（补充：这里随意插入了一条数据）</p>
+
+
+
+<h4 id="5-7-在两个数据库里都可以看到对方插入的测试数据">5.7 在两个数据库里都可以看到对方插入的测试数据</h4>
+
+
+
+<p>（分别在数据库服务器 21 和数据库服务器 22 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&gt; select * from test1a;
++------+------+------+
+| id   | name | age  |
++------+------+------+
+|    1 | zmy  |   10 |
+|    2 | ming |   20 |
++------+------+------+
+2 rows in set (0.00 sec)</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] Nginx 代理的设置 （HTTP 和 SSH）</title>
+		<link>https://eternalcenter-sep-2022.github.io/nginx-agent-set/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 05 Sep 2019 06:04:47 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster Load Balancing Tool (集群负载均衡工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Agent (代理)]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[Other Service Cluster (其它服务集群)]]></category>
+		<category><![CDATA[Other Service Load Balancing Cluster (其它服务负载均衡集群)]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[SSH + Nginx]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5698</guid>
+
+					<description><![CDATA[注意： 在设置 Nginx 代理之前要先安装 Nginx 正文： 内容一：设置 Nginx HTTP 代理 将部分内容修改如下： 或者： 内容二：设置 Nginx SSH 代理 将部分内容修改如下：]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在设置 Nginx 代理之前要先安装 Nginx</p>
+
+
+
+<div class="wp-container-2 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/nginx-install-source/">Nginx 源码软件包的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：设置 Nginx HTTP 代理</h3>
+
+
+
+<pre class="wp-block-code"><code># vi /usr/local/nginx/conf/nginx.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+upstream webserver {
+   server 192.168.1.100:80;
+   server 192.168.1.200:80;
+}
+.....
+server {
+listen 80;
+server_name www.eternalcenter.com;
+location / {
+proxy_pass http://webserver;/
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<p>或者：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+http {
+.....
+upstream webserver {
+Server    192.168.2.100    weight=1    max_fails=1  fail_timeout=30;
+Server    192.168.2.200    weight=2    max_fails=2  fail_timeout=30;
+Server    192.168.2.101    down;
+}
+.....
+server {
+listen 80;
+server_name www.eternalcenter.com;
+location / {
+proxy_pass http://webserver;/
+}
+......
+}
+......
+}</code></pre>
+
+
+
+<h3>内容二：设置 Nginx SSH 代理</h3>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>stream {
+upstream backend {
+server 192.168.1.100:22;
+server 192.168.1.200:22;
+}
+server{
+listen 222;
+proxy_connect_timeout 1s;
+proxy_pass backend;
+}
+}
+
+http{
+......
+}</code></pre>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] FTP + Pacemaker 存储服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:26:00 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[FTP]]></category>
+		<category><![CDATA[FTP + Pacemaker]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Storage Service (存储服务)]]></category>
+		<category><![CDATA[Storage Service Cluster (存储服务集群)]]></category>
+		<category><![CDATA[Storage Service High Availability Cluster (存储服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5049</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 步骤一：Pacemaker 高可用 FTP 服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 Iscasi 远程目录服务 1.2 本 Pacemaker 高可用 FTP 服务的特点 1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录2) 提供 FTP 服务4) 提供虚拟 IP 服务5) 以上三项服务器都实现高可用6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器 步骤二：前期准备所有集群主机上都安装 FTP 服务 2.1 在所有集群主机上安装 FTP （在所有集群服务器上执行以下步骤） &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/ftp-pacemaker-storage/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] FTP + Pacemaker 存储服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 FTP + Pacemaker 存储服务高可用之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-3 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用 FTP 服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 Iscasi 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用 FTP 服务的特点</h4>
+
+
+
+<p>1) 使用其他服务器提供的 Iscasi 服务器作为 FTP 的共享目录<br>2) 提供 FTP 服务<br>4) 提供虚拟 IP 服务<br>5) 以上三项服务器都实现高可用<br>6) 唯一的单点故障在于额外的那台服务器提供的 Iscasi 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备所有集群主机上都安装 FTP 服务</h3>
+
+
+
+<h4>2.1 在所有集群主机上安装 FTP</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install vsftpd</code></pre>
+
+
+
+<h4>2.2 确保 vsftpd 服务没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop vsftpd
+# systemctl disable vsftpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的 FTP 高可用服务</h3>
+
+
+
+<h4>3.1 在 ftp 资源组中创建名为 ftpip 的虚拟 ip 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpip IPaddr2 ip=192.168.0.21 cidr_netmask=24 --group ftp</code></pre>
+
+
+
+<h4>3.2 在 ftp 资源组中创建名为 ftpfiles 挂载其他服务器的 Iscasi 服务的资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create ftpfiles Filesystem device=192.168.8.21:/content/ftp directory=/var/ftp fstype=nfs options=ro --group ftp</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 Iscasi 服务，这个服务需要提前搭建好）</p>
+
+
+
+<h4>3.3 在 ftp 资源组中创建名为 vsftpd 的 ftp 资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create vsftpd systemd:vsftpd --group ftp</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Apache + Pacemaker 网站服务高可用的实现</title>
+		<link>https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:21:31 +0000</pubDate>
+				<category><![CDATA[Apache]]></category>
+		<category><![CDATA[Apache + Pacemaker]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Service Cluster (服务集群)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<category><![CDATA[Website Service Cluster (网站服务集群)]]></category>
+		<category><![CDATA[Website Service High Availability Cluster (网站服务高可用集群)]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5046</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 注意： 在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群 正文： 步骤一：Pacemaker 高可用网站服务的解析 1.1 集群本身需要的服务 需要额外一台服务器提供 NFS 远程目录服务 1.2 本 Pacemaker 高可用网站服务的特点 1) 使用其他服务器提供的 NFS 服务器作为网站的网页目录2) 提供网站 服务3) 提供虚拟 IP 地址服务4) 以上三项服务器都实现高可用5) 唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器 步骤二：前期准备 2.1 在所有集群服务器上安装 httpd （在所有集群服务器上执行以下步骤） 2.2 确保 httpd 不会被 SELinux 限制 （在所有集群服务器上执行以下步骤） （补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/apache-pacemaker-website/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Apache + Pacemaker 网站服务高可用的实现"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h1>注意：</h1>
+
+
+
+<p>在实现 Apache + Pacemaker 网站服务高可用之前要先安装 Pacemaker 集群</p>
+
+
+
+<div class="wp-container-4 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的搭建</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>步骤一：Pacemaker 高可用网站服务的解析</h3>
+
+
+
+<h4>1.1 集群本身需要的服务</h4>
+
+
+
+<p>需要额外一台服务器提供 NFS 远程目录服务</p>
+
+
+
+<h4>1.2 本 Pacemaker 高可用网站服务的特点</h4>
+
+
+
+<p>1)  使用其他服务器提供的 NFS 服务器作为网站的网页目录<br>2)  提供网站 服务<br>3)  提供虚拟 IP 地址服务<br>4)  以上三项服务器都实现高可用<br>5)  唯一的单点故障在于额外的那台服务器提供的 NFS 远程目录服务器</p>
+
+
+
+<h3>步骤二：前期准备</h3>
+
+
+
+<h4>2.1 在所有集群服务器上安装 httpd</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum -y install httpd</code></pre>
+
+
+
+<h4>2.2 确保 httpd 不会被 SELinux 限制</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># setsebool -P httpd_use_nfs 1</code></pre>
+
+
+
+<p>（补充：这里是要求 SELinux 的布尔值让 httpd 也可以使用 NFS 服务）</p>
+
+
+
+<h4>2.3 确保 httpd 没有启动</h4>
+
+
+
+<p>（在所有集群服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop httpd
+# systemctl disable httpd</code></pre>
+
+
+
+<h3>步骤三：部署 Pacemaker 的网站高可用服务</h3>
+
+
+
+<h4>3.1 在 网站资源组中创建名为 webip 的虚拟 IP 地址资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webip IPaddr2 ip=192.168.0.20 cidr_netmask=24 --group=web</code></pre>
+
+
+
+<h4>3.2 在 网站资源组中创建名为 webnfs 挂载其他服务器的 NFS 服务的资源</h4>
+
+
+
+<p>（只在一台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webnfs Filesystem device=192.168.8.21:/content directory=/var/www/html fstype=nfs options=ro --group web</code></pre>
+
+
+
+<p>（注意：这里的 Filesystem 指的是其他服务器搭建的 NFS 服务，这个服务需要提前搭建好，可以参考 https://eternalcenter-sep-2022.github.io/nfs/ 里的内容）</p>
+
+
+
+<h4>3.3 在网站资源组中创建名为 webserver 的网站资源</h4>
+
+
+
+<p>（只在 1 台集群里的服务器上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs resource create webserver apache configfile="/etc/httpd/conf/httpd.conf" statusurl="http://127.0.0.1/server-status" --group web</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs resource （管理资源）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-resource/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:19:59 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5044</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：pcs resource 命令 1.1 pcs resource 命令的常用选项 定义资源监控的时间，如果不设置的话，就使用的是 resource agent ，每 60 秒检测一次 设置操作的等待时间，如果时间结束了某项操作还没有完成，则自动失败 如果操作失败，则会执行以下动作 忽略所有失败的操作 当 fence 没有被配置时，停止执行操作 停止处于激活状态的集群 重启资源 当 fence 有被配置时，当某个资源停止时隔离运行此资源的主机 将所有资源从他正在运行的主机上移到另 1 台服务器 1.2 pcs resource 命令选项的使用案例 （补充：这里以创建1) 名为 webserver2) 配置文件是 /etc/httpd/conf/http.conf3) 状态链接是 http:?/127.0.0.1/server-status4) 组名是 myweb5) 监控间隔是 20 秒6) 延迟时间是 30 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-resource/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs resource （管理资源）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-5 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-pcs-resource-命令1-1-pcs-resource-命令的常用选项">内容一：pcs resource 命令</h3>
+
+
+
+<h4 id="内容一-pcs-resource-命令1-1-pcs-resource-命令的常用选项">1.1 pcs resource 命令的常用选项</h4>
+
+
+
+<pre class="wp-block-code"><code>1) interval=value</code></pre>
+
+
+
+<p>定义资源监控的时间，如果不设置的话，就使用的是 resource agent ，每 60 秒检测一次</p>
+
+
+
+<pre class="wp-block-code"><code>2) timeout=value</code></pre>
+
+
+
+<p>设置操作的等待时间，如果时间结束了某项操作还没有完成，则自动失败</p>
+
+
+
+<pre class="wp-block-code"><code>3) on-fail=action</code></pre>
+
+
+
+<p>如果操作失败，则会执行以下动作</p>
+
+
+
+<pre class="wp-block-code"><code>4) ignore</code></pre>
+
+
+
+<p>忽略所有失败的操作</p>
+
+
+
+<pre class="wp-block-code"><code>5) block</code></pre>
+
+
+
+<p>当 fence 没有被配置时，停止执行操作</p>
+
+
+
+<pre class="wp-block-code"><code>6) stop</code></pre>
+
+
+
+<p>停止处于激活状态的集群</p>
+
+
+
+<pre class="wp-block-code"><code>7) restart</code></pre>
+
+
+
+<p>重启资源</p>
+
+
+
+<pre class="wp-block-code"><code>8) fence</code></pre>
+
+
+
+<p>当 fence 有被配置时，当某个资源停止时隔离运行此资源的主机</p>
+
+
+
+<pre class="wp-block-code"><code>9) standby</code></pre>
+
+
+
+<p>将所有资源从他正在运行的主机上移到另 1 台服务器</p>
+
+
+
+<h4 id="1-2-pcs-resource-命令选项的使用案例">1.2 pcs resource 命令选项的使用案例</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resourece create webserver apache \
+&gt; configfile="/etc/httpd/conf/http.conf" \
+&gt; statusurl="http:?/127.0.0.1/server-status" --group myweb \
+&gt; op monitor interval=20s timeout=30s</code></pre>
+
+
+
+<p>（<br>补充：这里以创建<br>1) 名为 webserver<br>2) 配置文件是 /etc/httpd/conf/http.conf<br>3) 状态链接是 http:?/127.0.0.1/server-status<br>4) 组名是 myweb<br>5) 监控间隔是 20 秒<br>6) 延迟时间是 30 秒<br>的 apache 资源为例<br>）</p>
+
+
+
+<h3 id="内容二-pcs-resource-资源显示相关的命令2-1-显示所有可用的资源列表">内容二：pcs resource 资源显示相关的命令</h3>
+
+
+
+<h4 id="内容二-pcs-resource-资源显示相关的命令2-1-显示所有可用的资源列表">2.1 显示所有可用的资源列表</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource list</code></pre>
+
+
+
+<h4 id="2-2-显示具体的某一个可用资源的介绍">2.2 显示具体的某个可用资源的介绍</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource describe &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="2-3-显示所有的-pcs-资源">2.3 显示所有的 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show</code></pre>
+
+
+
+<h4 id="2-4-显示某一个-pcs-资源">2.4 显示某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="2-5-显示所有-pcs-资源被限制的情况">2.5 显示所有 pcs 资源被限制的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint list</code></pre>
+
+
+
+<h3 id="内容三-pcs-resource-资源增-删-改相关的命令3-1-修改-pcs-资源">内容三：pcs resource 资源增、删、改相关的命令</h3>
+
+
+
+<h4 id="内容三-pcs-resource-资源增-删-改相关的命令3-1-修改-pcs-资源">3.1 修改 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource update &lt;resource&gt; &lt;option&gt;</code></pre>
+
+
+
+<h4 id="3-2-删除-pcs-资源">3.2 删除 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource delete &lt;resource&gt; </code></pre>
+
+
+
+<h4 id="3-3-在某一个组里面添加某一个资源">3.3 在某个组里面添加某个资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource group add &lt;group&gt; &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="3-4-在某一个组里面删除某一个资源">3.4 在某个组里面删除某个资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource group remove &lt;group&gt; &lt;resource&gt;</code></pre>
+
+
+
+<h3 id="内容四-pcs-resource-资源管理相关的命令4-1-停用某一个-pcs-资源">内容四：pcs resource 资源管理相关的命令</h3>
+
+
+
+<h4 id="内容四-pcs-resource-资源管理相关的命令4-1-停用某一个-pcs-资源">4.1 停用某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource disable &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="4-2-启用某一个-pcs-资源">4.2 启用某个 pcs 资源</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource enable &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="4-3-移动-pcs-资源到另一个主机">4.3 移动 pcs 资源到另 1 个主机</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource move &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-4-指定某一个-pcs-资源只能在某一个主机上运行">4.4 指定某个 pcs 资源只能在某个主机上运行</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource ban &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-5-清除某一个-pcs-资源只能在某一个主机上运行的限制">4.5 清除某个 pcs 资源只能在某个主机上运行的限制</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource clear &lt;resource&gt; &lt;host&gt;</code></pre>
+
+
+
+<h3 id="内容五-pcs-resource-资源监控相关的命令5-1-删除某一个资源的监控">内容五：pcs resource 资源监控相关的命令</h3>
+
+
+
+<h4 id="内容五-pcs-resource-资源监控相关的命令5-1-删除某一个资源的监控">5.1 删除某个资源的监控</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource op remove &lt;resource&gt; monitor</code></pre>
+
+
+
+<h4 id="5-2-添加某一个资源的监控">5.2 添加某个资源的监控</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource op add &lt;resource&gt; monitor &lt;fence parameter&gt; onfail=fence</code></pre>
+
+
+
+<h3 id="内容六-pcs-resource-资源排错相关的命令6-1-显示某一个-pcs-资源失败的次数">内容六：pcs resource 资源排错相关的命令</h3>
+
+
+
+<h4 id="内容六-pcs-resource-资源排错相关的命令6-1-显示某一个-pcs-资源失败的次数">6.1 显示某个 pcs 资源失败的次数</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource failcount show &lt;resource&gt;</code></pre>
+
+
+
+<h4 id="6-2-检查某一个资源的情况">6.2 检查某个资源的情况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs resource debug-start firstwebserver --full</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs stonith （管理隔离）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-stonith/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 06 Aug 2019 09:18:38 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5042</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 的 fence 之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：fence 介绍 fence 的作用是隔离不需要的主机，当一台主机和集群失去联系时，将其隔离，以防止脑裂 内容二：pcs stonith 命令的格式 内容三：fence 管理 3.1 显示所有可用的 fence 的列表 3.2 显示某种可用 fence 的详细信息 3.3 显示所有已配置的 fence 状况 3.4 删除 fence 3.4.1 删除某个 fence 3.4.2 删除当前所有的 fencing 资源 3.5 创建 fence_vmware_soap 的案例 （补充：这里以创建1) 名为 vmfence2) fence 服务器的 IP 地址为 192.168.0.2543) &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-stonith/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs stonith （管理隔离）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 的 fence 之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-6 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-fence-介绍">内容一：fence 介绍</h3>
+
+
+
+<p>fence 的作用是隔离不需要的主机，当一台主机和集群失去联系时，将其隔离，以防止脑裂</p>
+
+
+
+<h3 id="内容二-pcs-stonith-命令的格式">内容二：pcs stonith 命令的格式</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith &lt;option&gt; name fencing_agent &lt;parameter&gt;</code></pre>
+
+
+
+<h3 id="内容三-fence-管理3-1-显示所有可用的-fence-的列表">内容三：fence 管理</h3>
+
+
+
+<h4 id="内容三-fence-管理3-1-显示所有可用的-fence-的列表">3.1 显示所有可用的 fence 的列表</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith list</code></pre>
+
+
+
+<h4 id="3-2-显示某一种可用-fence-的详细信息">3.2 显示某种可用 fence 的详细信息</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith describe fence_rhevm</code></pre>
+
+
+
+<h4 id="3-3-显示所有已配置的-fence-状况">3.3 显示所有已配置的 fence 状况</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith fence show --full</code></pre>
+
+
+
+<h4 id="3-4-删除-fence3-4-1-删除某一个-fence">3.4 删除 fence</h4>
+
+
+
+<h5 id="3-4-删除-fence3-4-1-删除某一个-fence">3.4.1 删除某个 fence</h5>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith delete &lt;fence&gt;</code></pre>
+
+
+
+<h5 id="3-4-2-删除当前所有的-fencing-资源">3.4.2 删除当前所有的 fencing 资源</h5>
+
+
+
+<pre class="wp-block-code"><code># for i in fence_node{a..d}; do
+&gt; pcs stonith delete &amp;{I}
+&gt; done</code></pre>
+
+
+
+<h4 id="3-5-创建-fence-vmware-soap-的案例">3.5 创建 fence_vmware_soap 的案例</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith create vmfence fence_vmware_soap ipaddr=192.168.0.254 login="vmfence" passwd="vmfence" ssl_insecure=1 pcmk_host_check="static-list" pcmk_host_list="pacemaker0 pacemaker1 pacemaker2"</code></pre>
+
+
+
+<p>（<br>补充：这里以创建<br>1) 名为 vmfence<br>2) fence 服务器的 IP 地址为 192.168.0.254<br>3) fence 服务器的用户名为<br>4) fence 服务器的密码为<br>5) 被 fence 监控的服务器为 pacemaker0、pacemaker1 和 pacemaker2<br>的 fence 为例<br>）</p>
+
+
+
+<p>（注意：fence_vmware_soap 需要在 vmware 环境下才能被使用，且需要设置好 vmfence 的用户、密码、IP 等）</p>
+
+
+
+<h3 id="内容四-使用-fence-管理主机4-1-隔离某一个台主机">内容四：使用 fence 管理服务器</h3>
+
+
+
+<h4 id="内容四-使用-fence-管理主机4-1-隔离某一个台主机">4.1 隔离某个台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith fence &lt;host&gt;</code></pre>
+
+
+
+<h4 id="4-2-从-fencing-删除某台主机">4.2 从 fencing 删除某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith delete &lt;host&gt;</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs status （显示 Pacemaker 的状态）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-status/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2019 09:33:32 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4971</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 命令一：只显示与集群相关的信息 命令二：只显示资源组和他们的资源 命令三：只显示资源组和它们的资源 命令四：只显示集群主机的配置状态 命令五：只显示 corosync 的状态 命令六：只显示 pcsd 在每个主机上的配置状态 命令七：显示 pcs 总共的主机数，当前的主机数，最大期望投票数，最低投票数要求，当前生效投票数 （注意：为了防止脑裂，PCS 的最低投票数必须高于总主机数的 50%） 命令八：显示最近的投票信息 （注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用 # watch -n1 corosync-quorumtool 命令） 命令九：显示所有的 pcs 资源 命令十：显示某个 pcs 资源 命令十一：显示所有 pcs 资源被限制的列表 命令十二：显示现有的资源限制信息 命令十三：显示现有的详细资源限制信息 命令十四：显示资源被限制到某台服务器的信息]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-7 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="命令一-只显示与集群相关的信息">命令一：只显示与集群相关的信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status cluster</code></pre>
+
+
+
+<h3 id="命令二-只显示资源组和他们的资源">命令二：只显示资源组和他们的资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status groups</code></pre>
+
+
+
+<h3 id="命令三-只显示资源组和它们个人的资源">命令三：只显示资源组和它们的资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status resources</code></pre>
+
+
+
+<h3 id="命令四-只显示集群主机的配置状态">命令四：只显示集群主机的配置状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status nodes</code></pre>
+
+
+
+<h3 id="命令五-只显示-corosync-的状态">命令五：只显示 corosync 的状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status corosync</code></pre>
+
+
+
+<h3 id="命令六-只显示-pcsd-在每一个主机上的配置状态">命令六：只显示 pcsd 在每个主机上的配置状态</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs status pcsd</code></pre>
+
+
+
+<h3 id="命令七-显示-pcs-总共的主机数-当前的主机数-最大期望投票数-最低投票数要求-当前生效投票数">命令七：显示 pcs 总共的主机数，当前的主机数，最大期望投票数，最低投票数要求，当前生效投票数</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs corosync-quorumtool -m</code></pre>
+
+
+
+<p>（注意：为了防止脑裂，PCS 的最低投票数必须高于总主机数的 50%）</p>
+
+
+
+<h3 id="命令八-显示最近的投票信息">命令八：显示最近的投票信息</h3>
+
+
+
+<pre class="wp-block-code"><code># watch -n1 corosync-quorumtool</code></pre>
+
+
+
+<p>（注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用 # watch -n1 corosync-quorumtool 命令）</p>
+
+
+
+<h3 id="命令九-显示所有的-pcs-资源">命令九：显示所有的 pcs 资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs resource show</code></pre>
+
+
+
+<h3 id="命令十-显示某一个-pcs-资源">命令十：显示某个 pcs 资源</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs resourece show &lt;resource&gt;</code></pre>
+
+
+
+<h3 id="命令十一-显示所有-pcs-资源被限制的列表">命令十一：显示所有 pcs 资源被限制的列表</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint list</code></pre>
+
+
+
+<h3 id="命令十二-显示现有的资源限制信息">命令十二：显示现有的资源限制信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint</code></pre>
+
+
+
+<h3 id="命令十三-显示现有的详细资源限制信息">命令十三：显示现有的详细资源限制信息</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs constraint --full</code></pre>
+
+
+
+<h3 id="命令十四-显示资源被限制到某一台机器上的信息">命令十四：显示资源被限制到某台服务器的信息</h3>
+
+
+
+<pre class="wp-block-code"><code># crm_simulate -sL</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] Pacemaker 命令 pcs cluster （管理节点）</title>
+		<link>https://eternalcenter-sep-2022.github.io/pcs-cluster/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2019 09:32:18 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4969</guid>
+
+					<description><![CDATA[注意： 在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限 正文： 内容一：启动服务器 1.1 启动某台服务器 1.2 启动所有服务器 内容二：关闭服务器 2.1 关闭某台服务器 2.2 关闭所有的服务器 （注意：当当前主机被关闭了之后，就无法在此服务器上使用 pcs 的其他相关命令，除非先启动本服务器） 内容三：设置随 pcs 服务器启动而自动启动服务器 3.1 让某台服务器随 pcs 服务一同启动 3.2 让所有服务器都随 pcs 服务一同启动 内容四：设置取消随 pcs 服务器启动自动启动服务器 4.1 取消让某台主机随 pcs 服务器一同启动 4.2 取消让所有服务器都随 pcs 服务一同启动 内容五：在集群里新添加 1 台服务器 5.1 新添加 1 台服务器的准备工作 1) 在要被添加的服务器的防火墙上开放 pacemaker &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pcs-cluster/" class="more-link">Continue reading<span class="screen-reader-text"> "[命令] Pacemaker 命令 pcs cluster （管理节点）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h1>注意：</h1>
+
+
+
+<p>在使用 Pacemaker 命令之前要先安装 Pacemaker 集群 ，并且需要 root 权限</p>
+
+
+
+<div class="wp-container-8 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/pacemaker-build/">Pacemaker 集群的安装</a></div>
+</div>
+
+
+
+<h1>正文：</h1>
+
+
+
+<h3>内容一：启动服务器</h3>
+
+
+
+<h4>1.1 启动某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start &lt;server&gt;</code></pre>
+
+
+
+<h4>1.2 启动所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start --all
+pacemaker0: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (pacemaker)...
+pacemaker1: Starting Cluster (pacemaker)...
+pacemaker0: Starting Cluster (pacemaker)...</code></pre>
+
+
+
+<h3>内容二：关闭服务器</h3>
+
+
+
+<h4>2.1 关闭某台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop &lt;server&gt;</code></pre>
+
+
+
+<h4>2.2 关闭所有的服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop --all
+pacemaker1: Stopping Cluster (pacemaker)...
+pacemaker2: Stopping Cluster (pacemaker)...
+pacemaker0: Stopping Cluster (pacemaker)...
+pacemaker1: Stopping Cluster (corosync)...
+pacemaker0: Stopping Cluster (corosync)...
+pacemaker2: Stopping Cluster (corosync)...</code></pre>
+
+
+
+<p>（注意：当当前主机被关闭了之后，就无法在此服务器上使用 pcs 的其他相关命令，除非先启动本服务器）</p>
+
+
+
+<h3>内容三：设置随 pcs 服务器启动而自动启动服务器</h3>
+
+
+
+<h4>3.1 让某台服务器随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster enable &lt;server&gt;</code></pre>
+
+
+
+<h4>3.2 让所有服务器都随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster enable --all</code></pre>
+
+
+
+<h3>内容四：设置取消随 pcs 服务器启动自动启动服务器</h3>
+
+
+
+<h4>4.1 取消让某台主机随 pcs 服务器一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster diablle &lt;server&gt;</code></pre>
+
+
+
+<h4>4.2 取消让所有服务器都随 pcs 服务一同启动</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster disable --all</code></pre>
+
+
+
+<h3>内容五：在集群里新添加 1 台服务器</h3>
+
+
+
+<h4>5.1 新添加 1 台服务器的准备工作</h4>
+
+
+
+<p>1) 在要被添加的服务器的防火墙上开放 pacemaker 的端口<br>2) 在要被添加的服务器上安装 pcs fence-agents-rht 以及他的依赖包<br>3) 在要被添加的服务器上启动 pcsd 服务，并将他设置为开机自启<br>4) 在要被添加的服务器上将 hacluster 用户的密码修改为 redhat</p>
+
+
+
+<h4>5.2 在集群里添加新的服务器</h4>
+
+
+
+<p>（在任意一台集群里的服务器上输入以下命令以加入新的服务器）</p>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster node add &lt;new server&gt;
+# pcs cluster auth
+Username: hacluster
+Password: 
+......</code></pre>
+
+
+
+<p>（补充：在这里也可以使用 -u&lt;用户&gt; 和 -p&lt;密码&gt; 参数非交互实现命令输入）</p>
+
+
+
+<h3>内容六：在集群里删除 1 台服务器</h3>
+
+
+
+<h4>6.1 在集群里删除 1 台服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster node remove &lt;server&gt;</code></pre>
+
+
+
+<h4>6.2 在集群里删除 1 台服务器后，最好连 fence 监控也一同删除</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs stonith remove fence_deletednode</code></pre>
+
+
+
+<h3>内容七：让服务器失效</h3>
+
+
+
+<h4>7.1 让某台服务器失效并处于待机状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster standby &lt;server&gt;</code></pre>
+
+
+
+<h4>7.2 让所有服务器失效并处于待机状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster standby --all</code></pre>
+
+
+
+<h3>内容八：让失效的服务器重新回到活跃状态</h3>
+
+
+
+<h4>8.1 让某台服务器从失效状态回归到活跃状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster unstandby &lt;server&gt;</code></pre>
+
+
+
+<h4>8.2 让所有服务器从失效状态回归到活跃状态</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster unstandby --all</code></pre>
+
+
+
+<h3>内容九：生成带配置集群的案例</h3>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster setup --start --name testcluster --last_man_standing --wait_for_all pacemkaer10 pacemaker11 pacemaker12</code></pre>
+
+
+
+<p>（补充：这里 pacemaker 集群的成员有 pacemaker10、pacemaker11 和 pacemaker12）</p>
+
+
+
+<h3>内容十：修改集群配置的案例</h3>
+
+
+
+<h4>10.1 关闭所有的主机</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster stop --all</code></pre>
+
+
+
+<h4>10.2 修改 /etc/corosync/corosync.conf 文件中</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /etc/corosync/corosync.conf</code></pre>
+
+
+
+<p>将部分内容修改如下：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+quorum {
+provider: corosync_votequorum
+last_man_standing: 1
+wait_for_all: 1
+}
+......</code></pre>
+
+
+
+<h4>10.3 同步当前服务器的 /etc/corosync/corosync.conf 文件到其他所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster sync</code></pre>
+
+
+
+<h4>10.4 开启所有服务器</h4>
+
+
+
+<pre class="wp-block-code"><code># pcs cluster start --all</code></pre>
+
+
+
+<h4>补充：pcs cluster setup 命令的常用选项</h4>
+
+
+
+<pre class="wp-block-code"><code>1)  --wait_for_all</code></pre>
+
+
+
+<p>当所有集群成员都处于 online 的时候才启动集群投票，主要用于阻止被隔离的主机参与投票</p>
+
+
+
+<pre class="wp-block-code"><code>2) --auto_tie_breaker</code></pre>
+
+
+
+<p>最低投票从从总数的 50% +1 变为 50% ，如果被分割的主机群两边的数量相等，则拥有最小主机 ID 的那一边才会生效</p>
+
+
+
+<p>（补充：&#8211;auto_tie_breaker 主要用于集群主机数是双数的主机群）</p>
+
+
+
+<p>3) &#8211;last_man_standing</p>
+
+
+
+<p>有了这个参数之后每隔 10 秒钟，就重新计算一次期望投票数，主要用于人为关闭主机后快速进行重新投票<br>和 &#8211;auto_tie_breaker 选项结合可以让整个集群只有一台主机处于激活状态</p>
+
+
+
+<p>（注意:当期望投票数发生变化时， # pcs corosync-quorumtool -m 命令不会自动更新，所以最好使用这个命令 watch -n1 corosync-quorumtool）</p>
+
+
+
+<p>4) &#8211;two_node</p>
+
+
+
+<p>设置整个集群只包含有两台主机，期望投票数是1，他会自动启用 wait_for_all 选项</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] Pacemaker 集群的搭建</title>
+		<link>https://eternalcenter-sep-2022.github.io/pacemaker-build/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 04 Aug 2019 14:26:20 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cluster (集群)]]></category>
+		<category><![CDATA[Cluster High Available Tool (集群高可用工具)]]></category>
+		<category><![CDATA[Cluster Tool (集群工具)]]></category>
+		<category><![CDATA[Pacemaker]]></category>
+		<category><![CDATA[纪念 Anniversary]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4964</guid>
+
+					<description><![CDATA[纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程 步骤一：规划拓扑 1.1 服务器列表 pacemaker0 192.168.11.30pacemaker1 192.168.11.31pacemaker2 192.168.11.32 1.2 服务器列表简介 1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器 步骤二：服务器系统要求 1) 所有服务器的系统都需要是 CentOS 7 版本2) 所有服务器都要关闭防火墙3) 所有服务器都要关闭 SELinux4) 所有服务器系统都要配置好可用的软件源5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机 步骤三：安装并启用 pcs 3.1 在所有服务器上安装 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/pacemaker-build/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] Pacemaker 集群的搭建"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<p class="has-vivid-red-color has-text-color has-medium-font-size"><strong>纪念：站主于 2019 年 8 月完成了此开源实验，并将过程中的所有命令经过整理和注释以后，形成以下教程</strong></p>
+
+
+
+<h3 id="步骤一-规划拓扑1-1-服务器列表">步骤一：规划拓扑</h3>
+
+
+
+<h4 id="步骤一-规划拓扑1-1-服务器列表">1.1 服务器列表</h4>
+
+
+
+<p>pacemaker0 192.168.11.30<br>pacemaker1 192.168.11.31<br>pacemaker2 192.168.11.32</p>
+
+
+
+<h4 id="1-2-服务器列表简介">1.2 服务器列表简介</h4>
+
+
+
+<p>1) pacemaker0、pacemaker1、pacemaker2 都启用 pcs 服务，通过 pcs 实现 pacemaker<br>2) 3 台服务器都可通过 pcs 服务提供 web、nfs 等服务，但是 web、nfs 等服务在同一时间里只在一台服务器上生效<br>3) 如果正在提供 web、nfs 服务的服务器 down 掉了，则正在它上面运行的 web nfs 等服务将无缝自动迁移到另外两台服务器</p>
+
+
+
+<h3 id="步骤二-服务器系统要求">步骤二：服务器系统要求</h3>
+
+
+
+<p>1) 所有服务器的系统都需要是 CentOS 7 版本<br>2) 所有服务器都要关闭防火墙<br>3) 所有服务器都要关闭 SELinux<br>4) 所有服务器系统都要配置好可用的软件源<br>5) 需要按照拓扑图给对应的服务器配置好 IP 地址和主机</p>
+
+
+
+<h3 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">步骤三：安装并启用 pcs</h3>
+
+
+
+<h4 id="步骤三-安装并启用-pcs3-1-在所有服务器上安装-pcs-和-fence-agents-all-服务">3.1 在所有服务器上安装 pcs 和 fence-agents-all 服务</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># yum install pcs fence-agents-all</code></pre>
+
+
+
+<h4 id="3-2-在所有服务器防火墙上开放-pcs">3.2 在所有服务器防火墙上开放 pcs</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># firewall-cmd --permanent --add-service=high-availability
+# firewall-cmd --reload</code></pre>
+
+
+
+<h4 id="3-3-在所有服务器上启动-pcs-并设置开机自起">3.3 在所有服务器上启动 pcs ，并设置开机自起</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># systemctl enable pcsd
+# systemctl start pcsd</code></pre>
+
+
+
+<h3 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">步骤四：让服务器中的各主机通过 pcs 验证</h3>
+
+
+
+<h4 id="步骤四-让服务器中的各主机通过-pcs-验证4-1-在所有服务器将-hacluster-用户的密码修改为-redhat">4.1 在所有服务器将 hacluster 用户的密码修改为 redhat</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo redhat | passwd --stdin hacluster</code></pre>
+
+
+
+<h4 id="4-2-在所有服务器上添加主机到-ip-地址的解析">4.2 在所有服务器上添加主机名到 IP 地址的解析</h4>
+
+
+
+<p>（分别在 pacemaker0 pacemaker1 pacemaker2 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code># echo "192.168.11.30 pacemaker0" &gt;&gt; /etc/hosts
+# echo "192.168.11.31 pacemaker1" &gt;&gt; /etc/hosts
+# echo "192.168.11.32 pacemaker2" &gt;&gt; /etc/hosts</code></pre>
+
+
+
+<h4 id="4-3-让集群里的所有服务器通过-pcs-验证">4.3 让集群里的所有服务器通过 pcs 验证</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster auth pacemaker0 pacemaker1 pacemaker2
+Username: hacluster
+Password: 
+pacemaker2: Authorized
+pacemaker1: Authorized
+pacemaker0: Authorized</code></pre>
+
+
+
+<p>（补充：这一步也可以使用 -u 和 -p 参数实现非交互式配置）</p>
+
+
+
+<h3 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">步骤五：通过 pcs 服务生成 1 个名为 mycluster 的 pcs 集群</h3>
+
+
+
+<h4 id="步骤五-通过-pcs-服务生成一个名为-mycluster-的-pcs-集群5-1-生成一个名为-mycluster-包含-pacemaker0-pacemaker1-pacemaker2-的集群组">5.1 生成一个名为 mycluster 包含 pacemaker0 pacemaker1 pacemaker2 的集群组</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster pacemaker0 pacemaker1 pacemaker2
+Destroying cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Stopping Cluster (pacemaker)...
+pacemaker0: Stopping Cluster (pacemaker)...
+pacemaker1: Stopping Cluster (pacemaker)...
+pacemaker0: Successfully destroyed cluster
+pacemaker1: Successfully destroyed cluster
+pacemaker2: Successfully destroyed cluster
+
+Sending 'pacemaker_remote authkey' to 'pacemaker0', 'pacemaker1', 'pacemaker2'
+pacemaker1: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker0: successful distribution of the file 'pacemaker_remote authkey'
+pacemaker2: successful distribution of the file 'pacemaker_remote authkey'
+Sending cluster config files to the nodes...
+pacemaker0: Succeeded
+pacemaker1: Succeeded
+pacemaker2: Succeeded
+
+Starting cluster on nodes: pacemaker0, pacemaker1, pacemaker2...
+pacemaker0: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (corosync)...
+pacemaker2: Starting Cluster (corosync)...
+pacemaker1: Starting Cluster (pacemaker)...
+pacemaker0: Starting Cluster (pacemaker)...
+pacemaker2: Starting Cluster (pacemaker)...
+
+Synchronizing pcsd certificates on nodes pacemaker0, pacemaker1, pacemaker2...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success
+Restarting pcsd on the nodes in order to reload the certificates...
+pacemaker2: Success
+pacemaker1: Success
+pacemaker0: Success</code></pre>
+
+
+
+<p>（<br>补充：这里可以通过以下方式强制重新生成集群</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster setup --start --name mycluster --force pacemaker0 pacemaker1 pacemaker2</code></pre>
+
+
+
+<p>）</p>
+
+
+
+<h4 id="5-2-让所有-pcs-集群都随-pcs-服务自动启动">5.2 让所有 pcs 集群都随 pcs 服务自动启动</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster enable --all</code></pre>
+
+
+
+<h4 id="5-3-显示-pcs-集群状态">5.3 显示 pcs 集群状态</h4>
+
+
+
+<p>（只在 pacemaker0 上执行以下步骤）</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;root@pacemaker0 ~]# pcs cluster status
+Cluster Status:
+ Stack: corosync
+ Current DC: pacemaker0 (version 1.1.19-8.el7-c3c624ea3d) - partition with quorum
+ Last updated: Sun Aug  4 09:21:55 2019
+ Last change: Sun Aug  4 09:20:38 2019 by hacluster via crmd on pacemaker0
+ 3 nodes configured
+ 0 resources configured
+
+PCSD Status:
+  pacemaker1: Online
+  pacemaker2: Online
+  pacemaker0: Online</code></pre>
+
+
+
+<p>（注意：如果在 PCSD Status 中出现了 down ，则要确保他们的主机没有在 /etc/hosts 中 127.0.0.1 那一行中出现）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

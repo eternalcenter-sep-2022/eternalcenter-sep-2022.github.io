@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>WordPress &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/project/personal-website-building/website-programs/wordpress/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Fri, 29 Jul 2022 06:07:20 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>[排错] 解决 WordPress 更新版本或者上传文件时报错 “需要 FTP 登录凭据”</title>
+		<link>https://eternalcenter-sep-2022.github.io/debug-wordpress-ftp/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 18 Jan 2019 11:24:14 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<category><![CDATA[WordPress]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1396</guid>
+
+					<description><![CDATA[错误代码 需要 FTP 登录凭据 解决方法 步骤一：在网页文件 wp-config.php 文件的末尾添加目录参数 添加以下内容： 步骤二：刷新网页 （步骤略）]]></description>
+										<content:encoded><![CDATA[
+<h2>错误代码</h2>
+
+
+
+<p>需要 FTP 登录凭据</p>
+
+
+
+<h2>解决方法</h2>
+
+
+
+<h3>步骤一：在网页文件 wp-config.php 文件的末尾添加目录参数</h3>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>define("FS_CHMOD_DIR", 0755);
+define("FS_CHMOD_FILE", 0755);
+?&gt;</code></pre>
+
+
+
+<h3>步骤二：刷新网页</h3>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

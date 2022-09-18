@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Articles (文章) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/creations/articles/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Thu, 25 Aug 2022 15:17:46 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Linux 防范黑客入侵的思路</title>
+		<link>https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 28 Jul 2022 08:33:56 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System and System Software's Update and Patch (系统和系统软件的更新和补丁)]]></category>
+		<category><![CDATA[System File Security (系统文件安全)]]></category>
+		<category><![CDATA[System Firewall (系统防火墙)]]></category>
+		<category><![CDATA[System Log (系统日志)]]></category>
+		<category><![CDATA[System Login Security (系统登录安全)]]></category>
+		<category><![CDATA[System Network & System Security & System Log (系统网络 & 系统安全 & 系统日志)]]></category>
+		<category><![CDATA[System Port Security (系统端口安全)]]></category>
+		<category><![CDATA[System Privilege Security (系统权限安全)]]></category>
+		<category><![CDATA[System Process Security (系统进程安全)]]></category>
+		<category><![CDATA[System Security (系统安全)]]></category>
+		<category><![CDATA[System Security Log (系统安全日志)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=27358</guid>
+
+					<description><![CDATA[黑客发现阶段 黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有： 1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统2) 关闭所有不需要的端口3) 通过防火墙只让允许访问的 IP 地址访问对应的端口4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求 黑客列举阶段和黑客立足阶段 黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有： 1) 不使用盗版的系统和软件2) 不使用有漏洞的系统和软件3) 尽量将所有的系统和软件升级到最新的版本4) 删除所有非必须的软件5) 在用户尝试登录系统时，取消显示系统的版本6) 删除或禁用所有不需要的用户7) 让所有的用户都使用复杂的密码8) 定期检查和修改所有用户的密码9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥10) 限制错误密码尝试的次数，以防止暴力破解11) 定期检查系统防火墙策略12) 定期检查系统开启的所有端口13) 定期检查系统开启的所有进程14) 定期查看 /var/log/message 中的尝试登录失败的日志记录 黑客保持持久性阶段 黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有： 1) 定期检查系统中的所有用户的名称和数量2) 定期检查系统中所有拥有 root 权限的名称和数量3) 定期检查和修改所有用户的密码4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥5) 定期检查系统防火墙策略6) 定期检查系统开启的所有端口7) 定期检查系统开启的所有进程8) 缩小重要文件的权限9) 定期检查所有用户的登录日志10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/thoughts-on-preventing-hacker-intrusion-in-linux/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 防范黑客入侵的思路"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>黑客发现阶段</h3>
+
+
+
+<p>黑客在入侵前往往会先对整个网络进行扫描，尝试发现我们的系统。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 关闭 ICMP 协议，让黑客无法通过 ping 发现我们的系统<br>2) 关闭所有不需要的端口<br>3) 通过防火墙只让允许访问的 IP 地址访问对应的端口<br>4) 让防火墙使用 drop 操作丢掉所有没有被允许的访问请求</p>
+
+
+
+<h3>黑客列举阶段和黑客立足阶段</h3>
+
+
+
+<p>黑客在发现了我们的系统之后。会根据我们系统和软件的版本，列举不同的破解方法并进行取舍，并最终会选择一种或多种方法进行尝试。在这两个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 不使用盗版的系统和软件<br>2) 不使用有漏洞的系统和软件<br>3) 尽量将所有的系统和软件升级到最新的版本<br>4) 删除所有非必须的软件<br>5) 在用户尝试登录系统时，取消显示系统的版本<br>6) 删除或禁用所有不需要的用户<br>7) 让所有的用户都使用复杂的密码<br>8) 定期检查和修改所有用户的密码<br>9) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>10) 限制错误密码尝试的次数，以防止暴力破解<br>11) 定期检查系统防火墙策略<br>12) 定期检查系统开启的所有端口<br>13) 定期检查系统开启的所有进程<br>14) 定期查看 /var/log/message 中的尝试登录失败的日志记录</p>
+
+
+
+<h3>黑客保持持久性阶段</h3>
+
+
+
+<p>黑客在成功进入系统以后，会尝试为自己下次进入系统准备方法，以让入侵保持持久性。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志</p>
+
+
+
+<h3>黑客掩盖痕迹阶段</h3>
+
+
+
+<p>黑客让入侵保持持久性后，会尝试掩盖自己的痕迹。在这个阶段我们可以尝试的防范措施有：</p>
+
+
+
+<p>1) 定期检查系统中的所有用户的名称和数量<br>2) 定期检查系统中所有拥有 root 权限的名称和数量<br>3) 定期检查和修改所有用户的密码<br>4) 定期检查和修改所有用户 ~/.ssh/ 目录中的密钥<br>5) 定期检查系统防火墙策略<br>6) 定期检查系统开启的所有端口<br>7) 定期检查系统开启的所有进程<br>8) 缩小重要文件的权限<br>9) 定期检查所有用户的登录日志，注意日志的时间是否连贯<br>10) 通过 auditd 服务监控所有重要配置文件，并定期检查监控日志，注意日志的时间是否连贯</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Linux 启动顺序</title>
+		<link>https://eternalcenter-sep-2022.github.io/linux-start-sequence/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2022 05:45:40 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Computer & System Hardware & System Installation & System Upgradation (系统电脑 & 系统硬件 & 系统安装 & 系统升级)]]></category>
+		<category><![CDATA[System Installation (系统安装)]]></category>
+		<category><![CDATA[System Storage (系统存储)]]></category>
+		<category><![CDATA[System Storage & System Directory & System File (系统存储 & 系统目录 & 系统文件)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=26977</guid>
+
+					<description><![CDATA[第一步启动：BIOS/UEFI BIOS （Basic Input Output System） 即基本输入输出系统。 UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。 它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。 第二步启动：MBR/GPT MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。 GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。 它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。 第三步启动：GRUB2 GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。 第四步启动：initrd/Kernel initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/linux-start-sequence/" class="more-link">Continue reading<span class="screen-reader-text"> "Linux 启动顺序"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>第一步启动：BIOS/UEFI</h3>
+
+
+
+<p>BIOS （Basic Input Output System） 即基本输入输出系统。</p>
+
+
+
+<p>UEFI （Unified Extensible Firmware Interface） 即可扩展固件接口。</p>
+
+
+
+<p>它们的主要作用是为计算机提供直接、底层的硬件控制和设置。UEFT 是 BIOS 的升级替代方案。</p>
+
+
+
+<h3>第二步启动：MBR/GPT</h3>
+
+
+
+<p>MBR （Master Boot Record） 即主引导记录。MBR 通常和 BIOS 搭配，最大分区容量不能超过 2T，最多可以有 3 个主分区，1 个扩展分区，不过扩展分区里可以有多个逻辑分区。</p>
+
+
+
+<p>GPT （GUID Partition Table） 即全局唯一标识分区表。GPT 通常和 UEFI 搭配。</p>
+
+
+
+<p>它们都是读取硬盘时最先读取的分区，里面有各自的启动代码。</p>
+
+
+
+<h3>第三步启动：GRUB2</h3>
+
+
+
+<p>GRUB2 （GRand Unified Bootloader version 2） 即多操作系统启动程序，可以选择系统分区上不同的系统内核，同时也可以向启动的内核传递参数。</p>
+
+
+
+<h3>第四步启动：initrd/Kernel</h3>
+
+
+
+<p>initrd （init ramdisk） 即初始化内存盘，作用是：1. 提供开机必备的单 kernel 文件 （vmlinuz） 没有提供的驱动模块。2. 通过引导加载程序加载内存，将内存视为临时根目录，从中运行程序，之后再将根目录转移到硬盘上真正的根目录上。</p>
+
+
+
+<h3>第五步启动：systemdprocess</h3>
+
+
+
+<p>systemdprocess，即启动各类程序和进程。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>问题排查的方法</title>
+		<link>https://eternalcenter-sep-2022.github.io/troubleshooting-methods/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 23 May 2022 15:30:26 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Ideas (思路)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Management Articles (管理类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=23610</guid>
+
+					<description><![CDATA[方法一：按时间顺序分析 （Chronological Analysis） 根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因 方法二：深度价值分析 （Pain Value Analysis） 根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心 方法三：KTKT 分析 （Kepner and Tregoe） 对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因 方法四：头脑风暴 （Brainstorming） 大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观 方法五：鱼骨图 （Ishikawa Diagrams） 将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上 方法六：帕累托分析 （Pareto Analysis） 分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果 方法七：5 个为什么 （5 Why） 5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：1) 避免使用借口回答问题2) 避免在追问的过程中牵扯到人的心理3) 避免回答问题时推卸责任4) 避免各个问题之间没有层级关系]]></description>
+										<content:encoded><![CDATA[
+<h3>方法一：按时间顺序分析 （Chronological Analysis）</h3>
+
+
+
+<p>根据问题发生的时间线，回溯最近发生了哪些情况和做了哪些变更，通过回溯找到发生问题的原因</p>
+
+
+
+<h3>方法二：深度价值分析 （Pain Value Analysis）</h3>
+
+
+
+<p>根据事件的重要性和特点找到其核心点，并根据核心点分析产生问题的核心</p>
+
+
+
+<h3>方法三：KTKT 分析 （Kepner and Tregoe）</h3>
+
+
+
+<p>对发生的问题进行定义，对问题的特征进行描述，通过定义和特征逐一排查，找到可能导致问题的原因</p>
+
+
+
+<h3>方法四：头脑风暴 （Brainstorming）</h3>
+
+
+
+<p>大家一起什么都想，快速获得任何和问题相关的信息，但是得到信息往往不够客观</p>
+
+
+
+<h3>方法五：鱼骨图 （Ishikawa Diagrams）</h3>
+
+
+
+<p>将发生的问题看成一个主线，分析每一条汇入这条主线的分线，这些分线都有可能导致最后出现在主线上的问题，最终找到导致主线问题的原因在哪条分线上</p>
+
+
+
+<h3>方法六：帕累托分析 （Pareto Analysis）</h3>
+
+
+
+<p>分析哪些问题影响最大，先解决所有问题中最重要的那 20%，因为往往解决最重要的 20% 问题可能就会达到 80% 的效果</p>
+
+
+
+<h3>方法七：5 个为什么 （5 Why）</h3>
+
+
+
+<p>5 个为什么只是一个抽象的概念，真实情况是对发生问题的原因一只追问下去，先问导致问题的原因是什么，根据这个原因再问导致这个原因的原因是什么，直到问到根本原因以后才停止，此方法由日本丰田公司大野耐一发明。使用此方法需要注意：<br>1) 避免使用借口回答问题<br>2) 避免在追问的过程中牵扯到人的心理<br>3) 避免回答问题时推卸责任<br>4) 避免各个问题之间没有层级关系</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WordPress 值得使用的主题和插件</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2021 14:26:53 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20391</guid>
+
+					<description><![CDATA[主题 Twenty Seventeen Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。 插件 All In One WP Security All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。 Easy WP SMTP Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。 Simply Static Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。 WP-Optimize Cache WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。 Health Check &#38; Troubleshooting &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/" class="more-link">Continue reading<span class="screen-reader-text"> "WordPress 值得使用的主题和插件"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>主题</h2>
+
+
+
+<h3>Twenty Seventeen</h3>
+
+
+
+<p>Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。</p>
+
+
+
+<h2>插件</h2>
+
+
+
+<h3>All In One WP Security</h3>
+
+
+
+<p>All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。</p>
+
+
+
+<h3>Easy WP SMTP</h3>
+
+
+
+<p>Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。</p>
+
+
+
+<h3>Simply Static</h3>
+
+
+
+<p>Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。</p>
+
+
+
+<h3>WP-Optimize Cache</h3>
+
+
+
+<p>WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。</p>
+
+
+
+<h3>Health Check &amp; Troubleshooting</h3>
+
+
+
+<p>Health Check &amp; Troubleshooting 是一个开源的 WordPress 网站健康度检测插件，可以检测网站的各项健康指标。</p>
+
+
+
+<h3>Username Changer</h3>
+
+
+
+<p>Username Changer 是一个开源的修改 WordPress 用户名的插件，可以修改用户名</p>
+
+
+
+<h3>Edit Author Slug</h3>
+
+
+
+<p>Edit Author Slug 是一个开源的修改 WordPress 用户名下文章链接的插件，可以修改用户发布文章的链接，默认情况下用户发布文章的链接是：https://&lt;domain/ name&gt;/author/&lt;username&gt;/ </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>云计算简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-to-cloud-computing/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2020 11:17:59 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Container Cloud (容器云)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Kubernetes (K8s)]]></category>
+		<category><![CDATA[OpenShift]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11583</guid>
+
+					<description><![CDATA[云计算最早起源于亚马逊公司，后来 NASA（美国国家航空航天局）模仿亚马逊云做了一个开源的 OpenStack 云计算平台，之后又将这个项目交给了 Apache 基金会管理。如今 OpenStack 已成为云计算的代名词之一。 云计算的种类分为三种： IaaS 全名为：Infrastructure as a Service，基础设施即服务。是硬件的云，类似于 CPU、内存、硬盘等硬件的资源池。主要技术架构是开源的 OpenStack，同时也存在亚马逊云、谷歌云、阿里云等非开源的云。 PaaS 全名为：Platform as a Service，基础即服务。是服务的云，类似于 Tomcat、Nginx 等服务的资源池。主要技术架构是开源的 OpenShift 和 kubernetes 等。 SaaS 全名为：Software as a Service，软件即服务。是软件的云，相关的软件已经完全开发完成并进行云部署，例如微软的 OneDrive。]]></description>
+										<content:encoded><![CDATA[
+<p>云计算最早起源于亚马逊公司，后来 NASA（美国国家航空航天局）模仿亚马逊云做了一个开源的 OpenStack 云计算平台，之后又将这个项目交给了 Apache 基金会管理。如今 OpenStack 已成为云计算的代名词之一。</p>
+
+
+
+<p>云计算的种类分为三种：</p>
+
+
+
+<h3>IaaS</h3>
+
+
+
+<p>全名为：Infrastructure as a Service，基础设施即服务。是硬件的云，类似于 CPU、内存、硬盘等硬件的资源池。主要技术架构是开源的 OpenStack，同时也存在亚马逊云、谷歌云、阿里云等非开源的云。</p>
+
+
+
+<h3>PaaS</h3>
+
+
+
+<p>全名为：Platform as a Service，基础即服务。是服务的云，类似于 Tomcat、Nginx 等服务的资源池。主要技术架构是开源的 OpenShift 和 kubernetes 等。</p>
+
+
+
+<h3>SaaS</h3>
+
+
+
+<p>全名为：Software as a Service，软件即服务。是软件的云，相关的软件已经完全开发完成并进行云部署，例如微软的 OneDrive。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Docker 容器简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-of-docker-container/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 04 Oct 2020 09:31:51 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Container (容器)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Docker]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=10621</guid>
+
+					<description><![CDATA[章节一：什么是容器 Docker 主要是由 Linux 内核的三个部分组成：1) namesapce 用于将各个服务隔离开，并按需求分成一个个隔离组，每个隔离组就可以看作一个容器，各个隔离组之间相互隔离2) CGroup 用于限制各个隔离组的可用资源，避免各个隔离组之间进行硬件资源争抢3) SELinux 用于安全，也可以不要让资源裸奔 章节二：容器和虚拟机 容器和虚拟机类似，但是容器有很多部分公用着宿主机系统的环境和软件，而虚拟机系统和宿主机系统之间是完全隔离的]]></description>
+										<content:encoded><![CDATA[
+<h3>章节一：什么是容器</h3>
+
+
+
+<p style="font-size:16px">Docker 主要是由 Linux 内核的三个部分组成：<br>1) namesapce 用于将各个服务隔离开，并按需求分成一个个隔离组，每个隔离组就可以看作一个容器，各个隔离组之间相互隔离<br>2) CGroup 用于限制各个隔离组的可用资源，避免各个隔离组之间进行硬件资源争抢<br>3) SELinux 用于安全，也可以不要让资源裸奔</p>
+
+
+
+<h3>章节二：容器和虚拟机</h3>
+
+
+
+<p style="font-size:16px">容器和虚拟机类似，但是容器有很多部分公用着宿主机系统的环境和软件，而虚拟机系统和宿主机系统之间是完全隔离的</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>碧空之歌</title>
+		<link>https://eternalcenter-sep-2022.github.io/song-of-blue-sky/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 07 Oct 2019 15:12:00 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Sentimental Articles (感悟类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5885</guid>
+
+					<description><![CDATA[碧蓝的天空如此清澈，一眼望去似乎就找不到任何瑕疵。但碧空下的生命却总是带着缺失而生，需要各种感情和经历将它填满才算完整。而那些带着哭啼声降临于世的生灵们，又会为自己谱写一曲怎样的永恒生命之歌？ 饥饿、自私、恐惧、怜悯、开心……每一次来自生物本能的潜意识行为和潜意识感受，一点点地组成了真实却又常被忽略的本我。 成就、事业、自我价值、性格取向、自我目标……每一次对自己的探索、认知、认同和抉择，逐渐组成了真实却又含糊不清的自我。 自由、平等、博爱、道德、信仰……个人与世界之间到底是怎样的一种关系？每次对此的理解、评判和选择，逐步形成了多种多样、概括不清并且会为此流血冲突的超我。 在自私和平等中来回冲撞遍体鳞伤的雅典人，通过民主投票的制度控制他人和自己贪得无厌的心魔。 在自由和死亡面前驻足不前的斯巴达人，依靠荣誉获得着自我认同，并最终使用生命去成就自由。 前人们沧桑背影后的五线谱如此多样，生灵们又打算用哪一种旋律创造出怎样的一首新的优美之歌，能够像亚里士多德、黑格尔的歌一样，让其他的人也会充满希望、认同和感动地轻轻跟着哼。]]></description>
+										<content:encoded><![CDATA[
+<p>碧蓝的天空如此清澈，一眼望去似乎就找不到任何瑕疵。但碧空下的生命却总是带着缺失而生，需要各种感情和经历将它填满才算完整。而那些带着哭啼声降临于世的生灵们，又会为自己谱写一曲怎样的永恒生命之歌？</p>
+
+
+
+<p>饥饿、自私、恐惧、怜悯、开心……每一次来自生物本能的潜意识行为和潜意识感受，一点点地组成了真实却又常被忽略的本我。</p>
+
+
+
+<p>成就、事业、自我价值、性格取向、自我目标……每一次对自己的探索、认知、认同和抉择，逐渐组成了真实却又含糊不清的自我。</p>
+
+
+
+<p>自由、平等、博爱、道德、信仰……个人与世界之间到底是怎样的一种关系？每次对此的理解、评判和选择，逐步形成了多种多样、概括不清并且会为此流血冲突的超我。</p>
+
+
+
+<p>在自私和平等中来回冲撞遍体鳞伤的雅典人，通过民主投票的制度控制他人和自己贪得无厌的心魔。</p>
+
+
+
+<p>在自由和死亡面前驻足不前的斯巴达人，依靠荣誉获得着自我认同，并最终使用生命去成就自由。</p>
+
+
+
+<p>前人们沧桑背影后的五线谱如此多样，生灵们又打算用哪一种旋律创造出怎样的一首新的优美之歌，能够像亚里士多德、黑格尔的歌一样，让其他的人也会充满希望、认同和感动地轻轻跟着哼。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>大数据与 Hadoop 的起源、特点和关系</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-origin-characteristics-and-relationship-between-big-data-and-hadoop/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 20 Sep 2019 07:33:04 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Big Data (大数据)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Hadoop]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5821</guid>
+
+					<description><![CDATA[章节一：大数据的起源 在 2003 年， Google 陆续发表了 ３ 篇论文，首创了大数据这一概念，它们分别是：GFS、MapReduce、BigTable。 这三篇论文，分别介绍了 GFS、MapReduce、BigTable 三款软件，而将这三款软件组合在一起，就是世界上第一种大数据平台。 如今 GFS、MapReduce 和 BigTable 三大技术已被称为 Google 的三驾马车，虽然没有公布源码，但发布了这三个产品的详细设计。 章节二：大数据的特点 大数据，是指从各种各样类型的海量数据中，快速获得和分析出有价值的信息，并以此支撑决策的一种手段，这种手段无法使用过去的常规方法或软件工具实现。 在目前，大数据的特性是指 5V 特性：1) (V) Volume（大体量）2) (V) Variety（多样性）3) (V) Velocity（时效性）4) (V) Veracity（准确性）5) (V) Value（大价值） 章节三：开源大数据平台 Hadoop 的起源 虽然谷歌在 GFS、MapReduce、BigTable 三篇论文中详细介绍了 GFS、MapReduce 和 BigTable 三款软件的设计，但是可能出于公司发展的考虑，谷歌并没有公布这三款软件的源代码，这个大数据平台只有谷歌才能使用。 此时另一个受到雅虎资助的团队就利用谷歌这三篇论文的技术架构，使用 Java 开发了另外三个实现大数据平台的的软件，它们分别是：HDFS、MapReduce、Hbase。 它们和谷歌的软件一一对应：HDFS 对应 Google 的 GFSMapReduce 对应 Google 的 MapReduceHbase &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/the-origin-characteristics-and-relationship-between-big-data-and-hadoop/" class="more-link">Continue reading<span class="screen-reader-text"> "大数据与 Hadoop 的起源、特点和关系"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>章节一：大数据的起源</h3>
+
+
+
+<p>在 2003 年， Google 陆续发表了 ３ 篇论文，首创了大数据这一概念，它们分别是：GFS、MapReduce、BigTable。</p>
+
+
+
+<p>这三篇论文，分别介绍了 GFS、MapReduce、BigTable 三款软件，而将这三款软件组合在一起，就是世界上第一种大数据平台。</p>
+
+
+
+<p>如今 GFS、MapReduce 和 BigTable 三大技术已被称为 Google 的三驾马车，虽然没有公布源码，但发布了这三个产品的详细设计。</p>
+
+
+
+<h3>章节二：大数据的特点</h3>
+
+
+
+<p>大数据，是指从各种各样类型的海量数据中，快速获得和分析出有价值的信息，并以此支撑决策的一种手段，这种手段无法使用过去的常规方法或软件工具实现。</p>
+
+
+
+<p>在目前，大数据的特性是指 5V 特性：<br>1) (V) Volume（大体量）<br>2) (V) Variety（多样性）<br>3) (V) Velocity（时效性）<br>4) (V) Veracity（准确性）<br>5) (V) Value（大价值）</p>
+
+
+
+<h3>章节三：开源大数据平台 Hadoop 的起源</h3>
+
+
+
+<p>虽然谷歌在 GFS、MapReduce、BigTable 三篇论文中详细介绍了 GFS、MapReduce 和 BigTable 三款软件的设计，但是可能出于公司发展的考虑，谷歌并没有公布这三款软件的源代码，这个大数据平台只有谷歌才能使用。</p>
+
+
+
+<p>此时另一个受到雅虎资助的团队就利用谷歌这三篇论文的技术架构，使用 Java 开发了另外三个实现大数据平台的的软件，它们分别是：HDFS、MapReduce、Hbase。</p>
+
+
+
+<p>它们和谷歌的软件一一对应：<br>HDFS 对应 Google 的 GFS<br>MapReduce 对应 Google 的 MapReduce<br>Hbase 对应 Google 的 BigTable</p>
+
+
+
+<p>这三款软件组合在一起，就是一个新的开源的大数据平台 Hadoop。</p>
+
+
+
+<h3>章节四：开源大数据平台 Hadoop 的特点</h3>
+
+
+
+<p>1) Hadoop 可以实现分析和处理海量数据<br>2) Hadoop 是一款开源软件，全地球所有非营利性组织、个人、公司和政府都可以免费使用<br>3) 具有高可靠性、高扩展性、高效性、高容错性、低成本的优点<br>4) 性能上 Hadoop 要比 Google 的差很多</p>
+
+
+
+<h3>章节五：开源大数据平台 Hadoop 对大数据行业的影响</h3>
+
+
+
+<p>在 2003 年，很多非营利性组织、个人、公司和政府都没有人力、物力直接研发大数据技术，所以只好直接使用 Hadhoop 实现自己的大数据分析。</p>
+
+
+
+<p>由于使用 Hadoop 的非营利性组织、个人、公司和政府越来越多，Hadoop 逐渐变成了大数据行业的行业标准。</p>
+
+
+
+<p>就连大数据首创者谷歌，为了和 Hadoop 平台进行数据交互，也被迫对自己性能更好的 BigTable、GFS、MapReduce 三款软件进行修改。</p>
+
+
+
+<p>现在 Hadoop 基本已经成为了大数据的代名词。大数据行业里所指的大数据开发工程师就是指开发 Hadoop 模块的 JAVA 工程师，大数据算法工程师就是指为 Hadoop 模块创造计算模型的数学家，而大数据运维工程师就是指 Hadoop 运维工程师。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>苏格拉底之死 （由雅克-路易·大卫创作）</title>
+		<link>https://eternalcenter-sep-2022.github.io/the-death-of-socrates/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 29 Jul 2019 13:09:25 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Arts (艺术)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Classics (经典)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Famous Books & Arts & Music & Movies & Games & Cultural Relics (名著 & 艺术 & 音乐 & 电影 & 游戏 & 文物)]]></category>
+		<category><![CDATA[Great Human Articles (伟人类文章)]]></category>
+		<category><![CDATA[Jacques-Louis David (雅克-路易·大卫)]]></category>
+		<category><![CDATA[图片 Picture]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4906</guid>
+
+					<description><![CDATA[被判死刑的苏格拉底，拒绝逃亡选择了遵守他所认同的法律并走向死亡。如果连自己所认同的法律都不去遵守，那法律就会失去他的权威和功能。如果法律失去了权威和功能，正义也就不复存在。如果正义不复存在，那社会就再也没有秩序和文明可言，主体道德、文化、经济、艺术、科学都将被连根拔起。这位人类文明的逻辑学之父，在用生命诠释法律的真正含义。这是一首能为后世带来无限财富的挽歌。这是一个某些理念值得用生命去守护的铁证。]]></description>
+										<content:encoded><![CDATA[<div class="wp-block-image">
+<figure class="aligncenter size-large"><img width="1024" height="671" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/Death-of-Socrates-1024x671.jpeg" alt="" class="wp-image-19646" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/Death-of-Socrates-1024x671.jpeg 1024w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/Death-of-Socrates-300x197.jpeg 300w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/Death-of-Socrates-768x503.jpeg 768w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2021/12/Death-of-Socrates.jpeg 1080w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></figure></div>
+
+
+<p>被判死刑的苏格拉底，拒绝逃亡选择了遵守他所认同的法律并走向死亡。如果连自己所认同的法律都不去遵守，那法律就会失去他的权威和功能。如果法律失去了权威和功能，正义也就不复存在。如果正义不复存在，那社会就再也没有秩序和文明可言，主体道德、文化、经济、艺术、科学都将被连根拔起。这位人类文明的逻辑学之父，在用生命诠释法律的真正含义。这是一首能为后世带来无限财富的挽歌。这是一个某些理念值得用生命去守护的铁证。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>开源简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-of-open-source/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Thu, 17 Jan 2019 10:30:47 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=1319</guid>
+
+					<description><![CDATA[开源对于人们而言，意味着免费使用，可随意进行二次开发，但是二次开发的内容、代码也属于开源项目的一部分必须无偿公开，且开源项目里的所有东西都不能当作商品进行买卖。而开源项目本身就像是一个爱好者们的盛会，全世界的所有爱好者和从业者们，利用业余时间或者在工作中为同一个项目添砖加瓦，发展到后来，也有人以公司的形式参与其中或者直接以公司的形式经营开源项目。 兴趣才是最好的老师， 所以在开源的领域总是充满了活力和创造力。从 Linux 和 Windows、Mariadb 和 Oracle 等开源和闭源软件的比较中，我们都能看到开源的力量。Windows 在服务区领域的市场份额不断被 Linux 压缩，Mariadb 的快速提升，阿里巴巴的去 Oracle 运动都在提醒 IT 的从业人员们，最好跟着开源走，不要让自己的职业生涯被某一家公司绑定得太死，可能诺基亚放弃 Meego 只会让自己的财务报表不好看，但是对于相关软件的开发者而言，这就以为着很多努力和光阴都要从头再来…… 永恒中心会为访问者带来很多开源软件的信息和使用方法，不管你是相关行业的从业人员，还是相关方面的爱好者，你都可以关注永恒中心。]]></description>
+										<content:encoded><![CDATA[
+<p>开源对于人们而言，意味着免费使用，可随意进行二次开发，但是二次开发的内容、代码也属于开源项目的一部分必须无偿公开，且开源项目里的所有东西都不能当作商品进行买卖。而开源项目本身就像是一个爱好者们的盛会，全世界的所有爱好者和从业者们，利用业余时间或者在工作中为同一个项目添砖加瓦，发展到后来，也有人以公司的形式参与其中或者直接以公司的形式经营开源项目。</p>
+
+
+
+<p>兴趣才是最好的老师， 所以在开源的领域总是充满了活力和创造力。从 Linux 和 Windows、Mariadb 和 Oracle 等开源和闭源软件的比较中，我们都能看到开源的力量。Windows 在服务区领域的市场份额不断被 Linux 压缩，Mariadb 的快速提升，阿里巴巴的去 Oracle 运动都在提醒 IT 的从业人员们，最好跟着开源走，不要让自己的职业生涯被某一家公司绑定得太死，可能诺基亚放弃 Meego 只会让自己的财务报表不好看，但是对于相关软件的开发者而言，这就以为着很多努力和光阴都要从头再来……</p>
+
+
+
+<p>永恒中心会为访问者带来很多开源软件的信息和使用方法，不管你是相关行业的从业人员，还是相关方面的爱好者，你都可以关注永恒中心。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

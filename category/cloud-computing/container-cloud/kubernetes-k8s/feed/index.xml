@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Kubernetes (K8s) &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/cloud-computing/container-cloud/kubernetes-k8s/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Sun, 19 Jun 2022 11:19:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>云计算简介</title>
+		<link>https://eternalcenter-sep-2022.github.io/introduction-to-cloud-computing/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2020 11:17:59 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Cloud Computing (云计算)]]></category>
+		<category><![CDATA[Container Cloud (容器云)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Kubernetes (K8s)]]></category>
+		<category><![CDATA[OpenShift]]></category>
+		<category><![CDATA[OpenStack]]></category>
+		<category><![CDATA[Virtualization Clouds (虚拟化云)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=11583</guid>
+
+					<description><![CDATA[云计算最早起源于亚马逊公司，后来 NASA（美国国家航空航天局）模仿亚马逊云做了一个开源的 OpenStack 云计算平台，之后又将这个项目交给了 Apache 基金会管理。如今 OpenStack 已成为云计算的代名词之一。 云计算的种类分为三种： IaaS 全名为：Infrastructure as a Service，基础设施即服务。是硬件的云，类似于 CPU、内存、硬盘等硬件的资源池。主要技术架构是开源的 OpenStack，同时也存在亚马逊云、谷歌云、阿里云等非开源的云。 PaaS 全名为：Platform as a Service，基础即服务。是服务的云，类似于 Tomcat、Nginx 等服务的资源池。主要技术架构是开源的 OpenShift 和 kubernetes 等。 SaaS 全名为：Software as a Service，软件即服务。是软件的云，相关的软件已经完全开发完成并进行云部署，例如微软的 OneDrive。]]></description>
+										<content:encoded><![CDATA[
+<p>云计算最早起源于亚马逊公司，后来 NASA（美国国家航空航天局）模仿亚马逊云做了一个开源的 OpenStack 云计算平台，之后又将这个项目交给了 Apache 基金会管理。如今 OpenStack 已成为云计算的代名词之一。</p>
+
+
+
+<p>云计算的种类分为三种：</p>
+
+
+
+<h3>IaaS</h3>
+
+
+
+<p>全名为：Infrastructure as a Service，基础设施即服务。是硬件的云，类似于 CPU、内存、硬盘等硬件的资源池。主要技术架构是开源的 OpenStack，同时也存在亚马逊云、谷歌云、阿里云等非开源的云。</p>
+
+
+
+<h3>PaaS</h3>
+
+
+
+<p>全名为：Platform as a Service，基础即服务。是服务的云，类似于 Tomcat、Nginx 等服务的资源池。主要技术架构是开源的 OpenShift 和 kubernetes 等。</p>
+
+
+
+<h3>SaaS</h3>
+
+
+
+<p>全名为：Software as a Service，软件即服务。是软件的云，相关的软件已经完全开发完成并进行云部署，例如微软的 OneDrive。</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

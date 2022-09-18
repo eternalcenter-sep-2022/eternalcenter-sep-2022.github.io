@@ -1,0 +1,1942 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>PHP &#8211; Eternal Center</title>
+	<atom:link href="https://eternalcenter-sep-2022.github.io/category/language/php/feed/" rel="self" type="application/rss+xml" />
+	<link>https://eternalcenter-sep-2022.github.io/</link>
+	<description></description>
+	<lastBuildDate>Tue, 13 Sep 2022 12:51:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>WordPress 值得使用的主题和插件</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 27 Dec 2021 14:26:53 +0000</pubDate>
+				<category><![CDATA[Articles (文章)]]></category>
+		<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Creations (创作)]]></category>
+		<category><![CDATA[Information Technology (IT) Articles (信息技术类文章)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=20391</guid>
+
+					<description><![CDATA[主题 Twenty Seventeen Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。 插件 All In One WP Security All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。 Easy WP SMTP Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。 Simply Static Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。 WP-Optimize Cache WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。 Health Check &#38; Troubleshooting &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/wordpress-theme-plugins/" class="more-link">Continue reading<span class="screen-reader-text"> "WordPress 值得使用的主题和插件"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>主题</h2>
+
+
+
+<h3>Twenty Seventeen</h3>
+
+
+
+<p>Twenty Seventeen 是一个开源的 WordPress 主题，非常适合目录较多的网站，首页能够巧妙地将图片和文字结合在一起。</p>
+
+
+
+<h2>插件</h2>
+
+
+
+<h3>All In One WP Security</h3>
+
+
+
+<p>All In One WP Security 是一个开源的 WordPress 安全插件，比较全面地对 WordPress 进行安全加强，安装了这个插件以后，基本上就不需要再安装其他安全插件。</p>
+
+
+
+<h3>Easy WP SMTP</h3>
+
+
+
+<p>Easy WP SMTP 是一个开源的 WordPress 邮件插件，可以实现 WordPress 通过 SMTP 发送邮件。</p>
+
+
+
+<h3>Simply Static</h3>
+
+
+
+<p>Simply Static 是一个开源的 WordPress 动态网站转静态网站插件，可以将动态网站转换成静态网站。</p>
+
+
+
+<h3>WP-Optimize Cache</h3>
+
+
+
+<p>WP-Optimize Cache 是一个开源的 WordPress 网站性能优化插件，可以删除无用数据等等。</p>
+
+
+
+<h3>Health Check &amp; Troubleshooting</h3>
+
+
+
+<p>Health Check &amp; Troubleshooting 是一个开源的 WordPress 网站健康度检测插件，可以检测网站的各项健康指标。</p>
+
+
+
+<h3>Username Changer</h3>
+
+
+
+<p>Username Changer 是一个开源的修改 WordPress 用户名的插件，可以修改用户名</p>
+
+
+
+<h3>Edit Author Slug</h3>
+
+
+
+<p>Edit Author Slug 是一个开源的修改 WordPress 用户名下文章链接的插件，可以修改用户发布文章的链接，默认情况下用户发布文章的链接是：https://&lt;domain/ name&gt;/author/&lt;username&gt;/ </p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Mon, 24 May 2021 05:53:21 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=14333</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 开启系统的 selinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;执行本脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 开启系统的 selinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;执行本脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221; #网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSl 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 openSUSE 15 版本<br>2. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#判断所需文件是否存在
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "没有网页数据备份，无法继续"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "没有网站公钥，无法继续"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "没有网站私钥，无法继续"
+	exit 2
+fi
+
+#更新系统
+zypper ref
+zypper -n update
+
+#确保必需软件已经安装
+zypper -n in tar
+zypper -n in firewalld
+
+
+#部署 Nginx
+zypper -n in nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen 443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        root /srv/www/htdocs;
+
+        location / {
+            index index.php;
+            try_files $uri $uri/ /index.php$is_args$args;
+            if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+            if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+            if (!-f $request_filename){rewrite (.) /index.php;}
+        }
+
+        location ~ \.php$ {
+            include fastcgi_params;
+	    include fastcgi.conf;
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME /srv/www/htdocs/$fastcgi_script_name;
+
+        }
+	
+	location ~ ^/\.user\.ini {
+            deny all;
+        }
+
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+            expires 30d;
+        }
+
+        error_page  404              /404.html;
+    }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+
+rm -rf /srv/www/htdocs/*
+tar -xvf $webtar -C /srv/www/htdocs/ &amp;&amp; rm -rf $webtar
+
+zypper -n in policycoreutils
+
+systemctl start nginx
+systemctl enable nginx
+
+#部署 MariaDB
+zypper -n in mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf
+
+systemctl start mariadb
+systemctl enable mariadb
+
+chown -R mysql:mysql /var/lib/mysql
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+        rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#部署 PHP
+zypper -n in php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib
+useradd php-fpm -s /sbin/nologin
+groupadd php-fpm
+chown -R php-fpm:php-fpm /srv/www/htdocs
+cp /etc/php7/fpm/php-fpm.conf.default /etc/php7/fpm/php-fpm.conf
+
+sed -i /"^user =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php7/fpm/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php7/fpm/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php7/fpm/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php7/fpm/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php7/fpm/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php7/fpm/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php7/fpm/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#提高系统性能
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#打开防火墙
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#限制日志占用空间
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#删除此脚本
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#重启系统
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 11 Apr 2020 15:29:16 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8720</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇名称：自动化部署 LNMP + SSL 平台作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS 使用方法 1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下3. 在此脚本的分割线内写入相应的内容4. 服务器都要开启 SELinux5. 给此脚本添加执行权限6. 执行此脚本：./&#60;此脚本&#62; 脚本分割线里的变量 1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空6. db=&#8221;ec&#8221; #网站在数据库中库7. dbuser=&#8221;ec&#8221; &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-install-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 自动化部署 LNMP + SSL 平台 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>名称：自动化部署 LNMP + SSL 平台<br>作用：自动化安装 LNMP + SSL，即通过 Linux、Nginx、MariaDB、PHP、php-fpm、SSL，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>1. 将网站的网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥、网站的数据库备份和本脚本，5 个文件放在同一目录下<br>2. 如果没有网站的数据库备份则将网页数据备份、网站的 SSL 公钥、网站的 SSL 私钥和本脚本，4 个文件放在同一目录下<br>3. 在此脚本的分割线内写入相应的内容<br>4. 服务器都要开启 SELinux<br>5. 给此脚本添加执行权限<br>6. 执行此脚本：./&lt;此脚本&gt;</p>
+
+
+
+<h3>脚本分割线里的变量</h3>
+
+
+
+<p>1. webdomain=&#8221;eternalcenter.com&#8221; #网站的域名，注意不要在前面加任何前缀<br>2. webtar=&#8221;eternalcenter-backup-*.tar.gz&#8221;网站的网页数据备份，如果没有这个备份，可以下载一个开源的 WordPress 网页程序<br>3. webcrt=&#8221;eternalcenter.com.crt&#8221; #网站 SSL 的公钥，可以自己创建也可以在 FreeSSL 上申请<br>4. webkey=&#8221;eternalcenter.com.key&#8221; #网站 SSL 的私钥，可以自己创建也可以在 FreeSSL 上申请<br>5. sqlbackup=&#8221;eternalcenter-backup-*.sql&#8221; #网站数据库数据备份，如果没有这个备份（数据库是全量备份），则这里可以为空<br>6. db=&#8221;ec&#8221; #网站在数据库中库<br>7. dbuser=&#8221;ec&#8221; #网站在数据库中的用户<br>8. dbuserpw=&#8221;eternalcenter&#8221; #网站在数据库中的用户密码<br>9. dbrootpw=&#8221;eternalcenter&#8221; #数据库的 root 密码</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 服务器的系统需要是 CentOS 8 版本<br>2. 服务器系统要配置好可用的软件源<br>3. 服务器要能够连接外网</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+####################### Separator ########################
+webdomain="eternalcenter.com"
+webtar="eternalcenter-backup-*.tar.gz"
+webcrt="eternalcenter.com.crt"
+webkey="eternalcenter.com.key"
+sqlbackup="eternalcenter-backup-*.sql"
+db="ec"
+dbuser="ec"
+dbuserpw="eternalcenter"
+dbrootpw="eternalcenter"
+####################### Separator ########################
+
+#Determine whether SELinux is on
+getenforce | grep Enforcing
+if &#91; $? -ne 0 ];then
+	echo "SELinux is not set to enforcing mode and cannot continue"
+	exit 2
+fi
+
+#Determine whether the required file exists
+ls $webtar
+if &#91; $? -ne 0 ];then
+	echo "No web page data backup, unable to continue"
+	exit 2
+fi
+
+ls $webcrt
+if &#91; $? -ne 0 ];then
+	echo "Cannot continue without site public key"
+	exit 2
+fi
+
+ls $webkey
+if &#91; $? -ne 0 ];then
+	echo "Unable to continue without site private key"
+	exit 2
+fi
+
+#Update system
+yum clean all
+yum repolist
+yum makecache
+yum -y update
+
+#Make sure the required software is installed
+yum -y install tar
+yum -y install firewalld
+
+#Deploying Nginx
+yum -y install nginx
+
+echo 'worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  60;
+    client_body_timeout 20s;
+    client_header_timeout 10s;
+    send_timeout 30s;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /etc/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /etc/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+            fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html/$fastcgi_script_name;
+            include fastcgi_params;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+
+        if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+        if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+        if (!-f $request_filename){rewrite (.) /index.php;}
+        
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /etc/nginx/nginx.conf
+
+sed -i "s/server_name www.eternalcenter.com eternalcenter.com;/server_name www.$webdomain $webdomain;/" /etc/nginx/nginx.conf
+sed -i "s@rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/\$1 permanent@rewrite ^/(.*)$ https://$webdomain/\$1 permanent@" /etc/nginx/nginx.conf;
+sed -i "s/eternalcenter.com.crt/$webcrt/" /etc/nginx/nginx.conf
+sed -i "s/eternalcenter.com.key/$webkey/" /etc/nginx/nginx.conf
+
+mkdir /etc/nginx/ssl
+mv $webcrt /etc/nginx/ssl
+mv $webkey /etc/nginx/ssl
+chcon -t httpd_config_t /etc/nginx/ssl/$webcrt
+chcon -t httpd_config_t /etc/nginx/ssl/$webkey
+chcon -t httpd_config_t /etc/nginx/ssl/
+
+rm -rf /usr/share/nginx/html/*
+tar -xvf $webtar -C /usr/share/nginx/html/ &amp;&amp; rm -rf $webtar
+chcon -t httpd_sys_content_t -R /usr/share/nginx/html/*
+
+yum -y install sendmail
+yum -y install policycoreutils
+setsebool -P httpd_can_network_connect 1
+setsebool -P httpd_can_network_connect_db 1
+setsebool -P httpd_can_sendmail 1
+setsebool -P httpd_can_connect_ftp 1
+setsebool -P httpd_unified 1
+setsebool -P httpd_enable_cgi 1
+setsebool -P httpd_builtin_scripting 1
+setsebool -P mysql_connect_http 1
+
+systemctl start nginx
+systemctl enable nginx
+
+#Deploy MariaDB
+yum -y install mariadb mariadb-server
+
+grep "^log_bin=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a log_bin=ec' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^binlog_format=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a binlog_format=\"mixed\"' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+grep "^server_id=" /etc/my.cnf.d/mariadb-server.cnf
+if &#91; $? -ne 0 ];then
+	sed -i '/^datadir/a server_id=51' /etc/my.cnf.d/mariadb-server.cnf
+fi
+
+sed -i 's/^plugin-load-add=auth_gssapi.so/#plugin-load-add=auth_gssapi.so/' /etc/my.cnf.d/auth_gssapi.cnf
+
+sed -i '/^user=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a user=mysql" /etc/my.cnf.d/mariadb-server.cnf
+
+sed -i '/^bind-address=.*/d' /etc/my.cnf.d/mariadb-server.cnf
+sed -i "/\&#91;mysqld\]/a bind-address=127.0.0.1" /etc/my.cnf.d/mariadb-server.cnf
+
+chown -R mysql /var/lib/mysql
+
+systemctl start mariadb
+systemctl enable mariadb
+
+ls $sqlbackup
+if &#91; $? -ne 0 ];then
+        mysql -uroot -e "create database $db;"
+        mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+        mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+else
+        mysql -uroot -e "create database $db;"
+        mysql -uroot $db &lt; $sqlbackup
+	mysql -uroot -e "create user \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "grant all privileges on $db.* to \"$dbuser\"@\"localhost\" identified by \"$dbuserpw\";"
+	mysql -uroot -e "set password for 'root'@'localhost'=password(\"$dbrootpw\")"
+	rm -rf $sqlbackup
+fi
+	
+systemctl restart mariadb
+
+#Deploy PHP
+yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml php-xmlrpc php-pecl-zip
+useradd php-fpm -s /sbin/nologin
+chown -R php-fpm:php-fpm /usr/share/nginx/html
+
+sed -i /"^user =.*"/d /etc/php-fpm.conf
+sed -i /"^group =.*"/d /etc/php-fpm.conf
+sed -i /"^listen =.*"/d /etc/php-fpm.conf
+sed -i /"^&#91;www]"/d /etc/php-fpm.conf
+sed -i /"^pm = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.start_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.min_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_spare_servers = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_children = .*"/d /etc/php-fpm.conf
+sed -i /"^pm.max_requests = .*"/d /etc/php-fpm.conf
+sed -i /"^request_terminate_timeout = .*"/d /etc/php-fpm.conf
+
+echo '&#91;www]' >> /etc/php-fpm.conf
+echo 'user = php-fpm' >> /etc/php-fpm.conf
+echo 'group = php-fpm' >> /etc/php-fpm.conf
+echo 'listen = 127.0.0.1:9000' >> /etc/php-fpm.conf
+echo 'pm = dynamic' >> /etc/php-fpm.conf
+echo 'pm.start_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.min_spare_servers = 2' >> /etc/php-fpm.conf
+echo 'pm.max_spare_servers = 4' >> /etc/php-fpm.conf
+echo 'pm.max_children = 4' >> /etc/php-fpm.conf
+echo 'pm.max_requests = 1024' >> /etc/php-fpm.conf
+echo 'request_terminate_timeout = 300' >> /etc/php-fpm.conf
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
+#Improve system performance
+grep "^* soft nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* soft nofile 1024' >> /etc/security/limits.conf
+fi
+
+grep "^* hard nofile" /etc/security/limits.conf
+if &#91; $? -ne 0 ];then
+	echo '* hard nofile 1024' >> /etc/security/limits.conf
+fi
+
+#Open firewall
+systemctl start firewalld
+systemctl enable firewalld
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --reload
+
+#Limit log space
+echo "/var/log/mariadb/mariadb.log {
+        create 600 mysql mysql
+        notifempty
+	daily
+        rotate 3
+        missingok
+        compress
+    postrotate
+	# just if mysqld is really running
+        if &#91; -e /run/mariadb/mariadb.pid ]
+        then
+           kill -1 $(&lt;/run/mariadb/mariadb.pid)
+        fi
+    endscript
+}" > /etc/logrotate.d/mariadb
+
+echo "/var/log/nginx/*log {
+    create 0664 nginx root
+    size 1024M
+    rotate 1
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/nginx
+
+echo "/var/log/php-fpm/*log {
+    size 100M
+    rotate 1
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}" > /etc/logrotate.d/php-fpm
+
+echo "/var/log/cron
+/var/log/maillog
+/var/log/messages
+/var/log/secure
+/var/log/spooler
+{
+    size 100M
+    rotate 1
+    missingok
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&amp;1 || true
+    endscript
+}" > /etc/logrotate.d/syslog
+
+#Delete this script
+scriptwhere=`readlink -f "$0"`
+rm -rf $scriptwhere
+
+#Restart the system
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Fri, 27 Mar 2020 14:03:55 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8681</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 1) 服务器的系统需要是 openSUSE 15 版本2) 服务器要关闭防火墙3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本） 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-opensuse-leap-15/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （openSUSE Leap 15 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<p>1) 服务器的系统需要是 openSUSE 15 版本<br>2) 服务器要关闭防火墙<br>3) 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）</p>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># zypper -n install php7 php7-fpm php7-mysql php7-gd php7-mbstring php7-opcache php7-json php7-xmlrpc php7-zlib</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>将以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = nouser
+group = nouser
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+user = php-fpm
+group = users
+listen = 127.0.0.1:9000
+......</code></pre>
+
+
+
+<p>（<br>补充：这里以<br>1) 以 php-fpm 用户和 users 用户组的身份启动 php-fpm<br>2) 让 php-fpm 监听本地 9000 端口为例<br>）</p>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下（/srv/www/htdocs）<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[实验] LNMP 平台的搭建 （CentOS Linux 8 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 21 Jan 2020 14:59:13 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=8078</guid>
+
+					<description><![CDATA[步骤一：LNMP 简介 LNMP 是一个实现网站服务的方法，它由 4 样东西组成：1) Linux 系统2) Nginx 网页服务3) MariaDB 数据库4) PHP 网页程序 步骤二：系统环境要求 步骤三：搭建 LNMP 3.1 Nginx 网页服务 3.1.1 安装 Nginx 网页服务 3.1.2 配置 Nginx 网页服务的配置文件 3.1.2.1 删除原有的 Nginx 服务的配置文件 3.1.2.2 创建新的 Nginx 网页服务的配置文件 3.1.2.3 配置 Nginx 网页服务的配置文件 将其中的： 修改为： （补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例） 3.1.3 启动 nginx 网页服务 3.2 MariaDB &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/lnmp-build-centos-linux-8/" class="more-link">Continue reading<span class="screen-reader-text"> "[实验] LNMP 平台的搭建 （CentOS Linux 8 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：LNMP 简介</h3>
+
+
+
+<p>LNMP 是一个实现网站服务的方法，它由 4 样东西组成：<br>1) Linux 系统<br>2) Nginx 网页服务<br>3) MariaDB 数据库<br>4) PHP 网页程序</p>
+
+
+
+<h3>步骤二：系统环境要求</h3>
+
+
+
+<pre class="wp-block-code"><code>1) 服务器的系统需要是 CentOS Linux 8 版本
+2) 服务器要关闭防火墙
+3) 服务器要关闭 SELinux
+4) 服务器系统要配置好可用的软件源</code></pre>
+
+
+
+<h3>步骤三：搭建 LNMP</h3>
+
+
+
+<h4>3.1 Nginx 网页服务</h4>
+
+
+
+<h5>3.1.1 安装 Nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install nginx</code></pre>
+
+
+
+<h5>3.1.2 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<h5>3.1.2.1 删除原有的 Nginx 服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># rm /etc/nginx/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.2 创建新的 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># cp /etc/nginx/nginx.conf.default /etc/nginx.conf</code></pre>
+
+
+
+<h5>3.1.2.3 配置 Nginx 网页服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/nginx/nginx.conf</code></pre>
+
+
+
+<p>将其中的：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+......
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+......</code></pre>
+
+
+
+<p>修改为：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+        location / {
+            root   html;
+            index  index.php index.html index.htm;
+        }
+......
+        location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+        #   fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+            include        fastcgi.conf;
+        }
+......</code></pre>
+
+
+
+<p>（补充：这里以让 Nginx 将对于 PHP 的请求传递到本机的 9000 端口为例）</p>
+
+
+
+<h5>3.1.3 启动 nginx 网页服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start nginx</code></pre>
+
+
+
+<h4>3.2 MariaDB 数据库</h4>
+
+
+
+<h5>3.2.1 安装 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install mariadb mariadb-server</code></pre>
+
+
+
+<h5>3.2.2 启动 MariaDB 数据库</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start mariadb</code></pre>
+
+
+
+<h4>3.3 PHP 环境和连接服务</h4>
+
+
+
+<h5>3.3.1 安装 PHP 环境和连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># yum -y install php php-fpm php-mysqlnd php-gd php-mbstring php-opcache php-json php-xml</code></pre>
+
+
+
+<h5>3.3.2 创建提供 PHP 连接服务的用户</h5>
+
+
+
+<pre class="wp-block-code"><code># useradd php-fpm -s /sbin/nologin</code></pre>
+
+
+
+<h5>3.3.3 配置 PHP 连接服务的配置文件</h5>
+
+
+
+<pre class="wp-block-code"><code># vi /etc/php-fpm.conf</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+&#91;www]
+user = php-fpm
+group = php-fpm
+listen = 127.0.0.1:9000</code></pre>
+
+
+
+<p>（补充：这里以让 php-fpm 监听本地 9000 端口为例）</p>
+
+
+
+<h5>3.3.4 启动 PHP 连接服务</h5>
+
+
+
+<pre class="wp-block-code"><code># systemctl start php-fpm</code></pre>
+
+
+
+<h3>步骤四：后续工作</h3>
+
+
+
+<p>1) 给 MariaDB 数据库设置用于存储网页数据的用户和密码<br>2) 将 PHP 网页程序放到 Nginx 的网页目录下<br>3) 给 PHP 网页程序设置用于连接 MariaDB 数据库的用户和密码</p>
+
+
+
+<h3>步骤五：测试 LNMP 平台</h3>
+
+
+
+<p>使用浏览器访问服务器 IP 地址就可以看到对应 PHP 网页了</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[命令] php-fpm 相关命令</title>
+		<link>https://eternalcenter-sep-2022.github.io/php-fpm-command/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2019 13:06:54 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Management (管理)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5682</guid>
+
+					<description><![CDATA[注意： 在使用 php-fpm 命令之前要先安装 php-fpm 正文： 内容一：启动 php-fpm 服务 内容二：停止 php-fpm 服务 内容三：启动 php-fpm 服务 内容四：显示被安装 php-fpm 的版本和模块 内容五：显示 php-fpm 的安装目录]]></description>
+										<content:encoded><![CDATA[
+<h1 id="注意">注意：</h1>
+
+
+
+<p>在使用 php-fpm 命令之前要先安装 php-fpm</p>
+
+
+
+<div class="wp-container-1 is-horizontal is-content-justification-center wp-block-buttons">
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link no-border-radius" href="https://eternalcenter-sep-2022.github.io/lnmp-build-centos-8/">LNMP 平台的搭建 <br>（CentOS 8 版）</a></div>
+</div>
+
+
+
+<h1 id="正文">正文：</h1>
+
+
+
+<h3 id="内容一-启动-php-fpm-服务">内容一：启动 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl start php-fpm</code></pre>
+
+
+
+<h3 id="内容二-停止-php-fpm-服务">内容二：停止 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl stop php-fpm</code></pre>
+
+
+
+<h3 id="内容三-启动-php-fpm-服务">内容三：启动 php-fpm 服务</h3>
+
+
+
+<pre class="wp-block-code"><code># systemctl restart php-fpm</code></pre>
+
+
+
+<h3 id="内容四-显示被安装-php-fpm-的版本和模块">内容四：显示被安装 php-fpm 的版本和模块</h3>
+
+
+
+<pre class="wp-block-code"><code># php -m</code></pre>
+
+
+
+<h3 id="内容五-显示-php-fpm-的安装目录">内容五：显示 php-fpm 的安装目录</h3>
+
+
+
+<pre class="wp-block-code"><code># whereis php</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[步骤] WordPress 数据库的修复 （通过 WordPress 官方修复工具实现）</title>
+		<link>https://eternalcenter-sep-2022.github.io/wordpress-db-repair/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Wed, 21 Aug 2019 04:23:11 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Personal Website Building (个人网站建设)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Project (项目)]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Website Programs (网页程序)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=5385</guid>
+
+					<description><![CDATA[步骤一：修改网页文件 wp-config.php 1.1 修改使用默认源码安装的 Nginx 网页文件的方法 添加以下内容： 1.2 修改使用 CentOS&#38;RHEL yum 默认安装的 Nginx 网页的方法 添加以下内容： 步骤二：在图形浏览器上输入以下网址 &#60;website&#62;/wp-admin/maint/repair.php 步骤三：根据网页提示修复数据库 （步骤略）]]></description>
+										<content:encoded><![CDATA[
+<h3>步骤一：修改网页文件 wp-config.php</h3>
+
+
+
+<h4>1.1 修改使用默认源码安装的 Nginx 网页文件的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/local/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+define('WP_ALLOW_REPAIR', true);
+?&gt;</code></pre>
+
+
+
+<h4>1.2 修改使用 CentOS&amp;RHEL yum 默认安装的 Nginx 网页的方法</h4>
+
+
+
+<pre class="wp-block-code"><code># vim /usr/share/nginx/html/wp-config.php</code></pre>
+
+
+
+<p>添加以下内容：</p>
+
+
+
+<pre class="wp-block-code"><code>......
+define('WP_ALLOW_REPAIR', true);
+?&gt;</code></pre>
+
+
+
+<h3>步骤二：在图形浏览器上输入以下网址</h3>
+
+
+
+<p>&lt;website&gt;/wp-admin/maint/repair.php</p>
+
+
+
+<h3>步骤三：根据网页提示修复数据库</h3>
+
+
+
+<p>（步骤略）</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[工具] Shell 半自动化部署 LNMP 平台 + SSL （CentOS Linux 7 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/shell-lnmp-installation-linux-centos-7/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sat, 27 Jul 2019 14:33:02 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Database (数据库)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[MariaDB]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Installation (安装)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Relational Database (SQL) (关系型数据库 )]]></category>
+		<category><![CDATA[Shell]]></category>
+		<category><![CDATA[Shell Deployment (部署)]]></category>
+		<category><![CDATA[Shell Tools (工具)]]></category>
+		<category><![CDATA[Shell Website (网站)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4896</guid>
+
+					<description><![CDATA[介绍 基本信息 作者：朱明宇脚本名称：半自动化部署 LNMP 平台 + SSL作用：半自动化安装 LNMP，即 Nginx、Mariadb、PHP、php-fpm，实现 HTTPS 使用方法 为了安全起见，设置系统用户和数据库用户和数据库权限的工作请按照脚本最后的步骤进行手动设置 注意 1. 执行本脚本之前请确保 Nginx、PHP、网站程序文件、SQL、SSL 的公钥、SSL 的私钥、shell、本脚本 8 个文件，如果是新建网站的话，不用准备 SQL 文件2. Nginx 文件：请将 Nginx 源码安装包放在 /root/3. PHP 文件：请将 PHP 源码安装包放在 /root/4. 网站程序文件:请将网站程序文件的名字中包含“eternalcenter-backup-”字段，并且是 tar 包，并放在 /root/5. SQL 文件:如果是恢复网站的话,请将备份的数据文件 *.sql 放在 /root/，注意这是一个 MySQL 备份文件6. SSL 的公钥文件和 SSL 私钥文件:请将网站安全证书的公钥和私钥分别命名为：eternalcenter.com.crt 和 eternalcenter.com.key，并放在 /root/7. shell 文件:请将监控脚本命名为 port_monitoring.sh 并放在 /root/8. &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/shell-lnmp-installation-linux-centos-7/" class="more-link">Continue reading<span class="screen-reader-text"> "[工具] Shell 半自动化部署 LNMP 平台 + SSL （CentOS Linux 7 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h2>介绍</h2>
+
+
+
+<h3>基本信息</h3>
+
+
+
+<p>作者：朱明宇<br>脚本名称：半自动化部署 LNMP 平台 + SSL<br>作用：半自动化安装 LNMP，即 Nginx、Mariadb、PHP、php-fpm，实现 HTTPS</p>
+
+
+
+<h3>使用方法</h3>
+
+
+
+<p>为了安全起见，设置系统用户和数据库用户和数据库权限的工作请按照脚本最后的步骤进行手动设置</p>
+
+
+
+<h3>注意</h3>
+
+
+
+<p>1. 执行本脚本之前请确保 Nginx、PHP、网站程序文件、SQL、SSL 的公钥、SSL 的私钥、shell、本脚本 8 个文件，如果是新建网站的话，不用准备 SQL 文件<br>2. Nginx 文件：请将 Nginx 源码安装包放在 /root/<br>3. PHP 文件：请将 PHP 源码安装包放在 /root/<br>4. 网站程序文件:请将网站程序文件的名字中包含“eternalcenter-backup-”字段，并且是 tar 包，并放在 /root/<br>5. SQL 文件:如果是恢复网站的话,请将备份的数据文件 *.sql 放在 /root/，注意这是一个 MySQL 备份文件<br>6. SSL 的公钥文件和 SSL 私钥文件:请将网站安全证书的公钥和私钥分别命名为：eternalcenter.com.crt 和 eternalcenter.com.key，并放在 /root/<br>7. shell 文件:请将监控脚本命名为 port_monitoring.sh 并放在 /root/<br>8. 除此之外 /root/ 目录下请不要放任何文件<br>9. 服务器的系统需要是 CentOS 7 版本<br>10. 服务器系统要配置好可用的软件源（最好是软件数量最多的官方版本）<br>11. 服务器要能够连接外网<br></p>
+
+
+
+<h3>补充</h3>
+
+
+
+<p>1. Nginx 下载网址：https://nginx.org/<br>2. PHP 下载网址：https://www.php.net/downloads.php<br>3. WordPress 是一款开源的 php 网站程序，建议使用，下载网址：https://cn.wordpress.org/download/<br>4. 网站安全证书的公钥和私钥可以在这里申请：https://freessl.cn/</p>
+
+
+
+<h3>其他</h3>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter"><img width="734" height="564" src="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/08/lnmp-install-shell.png" alt="" class="wp-image-5184" srcset="https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/08/lnmp-install-shell.png 734w, https://eternalcenter-sep-2022.github.io/wp-content/uploads/2019/08/lnmp-install-shell-300x231.png 300w" sizes="(max-width: 734px) 100vw, 734px" /></figure></div>
+
+
+<p>　　运行此脚本所需要的文件如下，请尽量使用图中的命名规则给他们命名，并将他们全部放在 /root/ 目录下，请保证 /root/ 下有且仅有这些文件，并以 root 的身份运行，否则脚本会执行失败。其中：</p>
+
+
+
+<p>　　eternalcenter-backup-2019-08-12-13.sql 指的是 mariadb 的数据库备份文件，如果是新建网站的话可以不要。</p>
+
+
+
+<p>　　eternalcenter-backup-2019-08-13.tar 指的是网页程序的压缩包，必须是 tar 格式，如果是新建的网站的话，这个也可以换成，新网站的网页程序。</p>
+
+
+
+<p>　　eternalcenter.com.crt 指的是网站的公钥，需要单独申请，方法可以在搜索引擎上搜索。</p>
+
+
+
+<p>　　eternalcenter.com.key 指的是网站的私钥，需要单独申请，方法可以在搜索引擎上搜索。</p>
+
+
+
+<p>　　install.sh 就是指的本脚本。</p>
+
+
+
+<p>　　nginx-1.16.0.tar.gz 指的是 nginx 的源码安装包，这里的 -1.16.0.tar.gz 可以任意命名，只用保证这个文件名字里包含 nginx 就行了，这个文件可以在 nginx 官网上下载。</p>
+
+
+
+<p>　　php-7.2.2-.tar.xz 指的是 php 的源码安装包，同样 这里的 -7.2.2-tar.xz 可以任意命名，只用保证这个文件名字包含 php 就行了，这个文件可以在 php 官网上下载。</p>
+
+
+
+<p>　　port_monitoring.sh 只是一个监控端口的脚本，可以不要，使用者可以根据自我需求写一个，站主是通过这个脚本定期检查并自动启动需要启动但是没有启动的端口，关闭不需要但是启动了的端口。</p>
+
+
+
+<h2>脚本</h2>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+# variable initialization
+cd
+nginxp=`ls | grep "nginx"`
+phpp=`ls | grep "php"`
+webp=`ls | egrep "eternalcenter-backup-.*tar$"`
+nginxr=${nginxp%%.tar*}
+phpr=${phpp%%.tar*}
+
+
+# upgrade system
+yum makecache
+yum -y update
+
+yum clean all
+yum repolist
+
+
+# remove useless software
+yum -y remove php*
+
+yum -y remove mariadb*
+
+systemctl stop postfix
+yum -y remove postfix
+
+systemctl stop chronyd
+yum -y remove chrony
+
+yum -y update
+
+
+# install dependency package
+yum -y install gcc pcre-devel openssl-devel libxml2-devel curl-devel libpng libpng-devel
+
+
+# install nginx
+cd
+tar -xvf $nginxp -C /root/
+cd $nginxr
+
+useradd -s /sbin/nologin nginx
+./configure --user=nginx --group=nginx --with-http_ssl_module
+make &amp;&amp; make install
+echo 'worker_processes  1;
+
+events {
+    worker_connections  65536;
+}
+
+http {
+    limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        limit_req zone=one burst=5;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        rewrite ^/(.*)$ https://eternalcenter-sep-2022.github.io/$1 permanent;
+      
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        }
+
+    server {
+        listen       443 ssl;
+        server_name www.eternalcenter.com eternalcenter.com;
+
+        if ($request_method !~ ^(GET|POST)$){
+        return 444;
+        }
+
+        ssl_certificate      /usr/local/nginx/ssl/eternalcenter.com.crt;
+        ssl_certificate_key  /usr/local/nginx/ssl/eternalcenter.com.key;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            include fastcgi.conf;
+        } 
+
+        location / {
+        root html;
+        index index.php index.html index.htm;
+        }
+
+        location ~ ^/\.user\.ini {
+        deny all;
+        }
+    
+        location ~*\.(jpd|jpeg|gif|png|css|js|ico|xml)$ {
+        expires 30d;
+        }
+
+        error_page  404              /404.html;
+        }
+
+        gzip on;
+	gzip_min_length 1000;
+	gzip_comp_level 4;
+	gzip_types text/plain test/css application/json application/x-javascript text/xml application/xml
+	application/xml+rss text/javascripts;
+
+	client_header_buffer_size 1k;
+	large_client_header_buffers 4 4k;
+
+	open_file_cache max=2000 inactive=20s;
+	open_file_cache_valid  60s;
+	open_file_cache_min_uses 5;
+	open_file_cache_errors off;
+
+}' > /usr/local/nginx/conf/nginx.conf
+cd
+mkdir /usr/local/nginx/ssl
+mv eternalcenter.com.crt /usr/local/nginx/ssl
+mv eternalcenter.com.key /usr/local/nginx/ssl
+
+# install php
+cd
+tar -xvf $phpp -C /root/
+cd $phpr
+useradd -s /sbin/nologin php-fpm 
+./configure --with-config-file-path=/usr/local/php/etc --enable-fpm --with-fpm-user=php-fpm --with-fpm-group=php-fpm --prefix=/usr/local/php --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-mysqlnd --enable-mbstring --with-curl --with-gd --with-zlib
+make &amp;&amp; make install
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
+chown -R php-fpm:php-fpm /usr/local/nginx/html/
+
+# install mariadb
+yum -y install mariadb mariadb-server mariadb-devel
+sed -i "/^datadir/a log_bin=ec" /etc/my.cnf
+sed -i "/^datadir/a binlog_format="mixed"" /etc/my.cnf
+sed -i "/^datadir/a server_id=51" /etc/my.cnf
+systemctl enable mariadb
+
+# deploy web software
+cd
+rm -rf /usr/local/nginx/html/*
+mkdir websoftcache
+tar -xvf $webp -C websoftcache
+cd websoftcache
+websoftcachen=`ls | wc -l`
+
+if &#91; $websoftcachen -ne 1 ];then
+        cd
+        tar -xvf $webp -C /usr/local/nginx/html/
+else
+        webdir=`ls`
+        cd $webdir
+        mv * /usr/local/nginx/html/
+fi
+
+chown -R php-fpm:php-fpm /usr/local/nginx/html
+
+# recover database
+systemctl start mariadb
+cd
+mysql -uroot &lt; *.sql &amp;> /dev/null
+systemctl stop mariadb
+
+# set the concurrency number accepted by the system to 65535
+echo '* soft nofile 65535
+* hard nofile 65535' >> /etc/security/limits.conf
+
+# open firewall port
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
+systemctl restart firewalld
+
+# move the monitoring scripts that need to be used regularly to the specified location(/root/shell/port_monitoring.sh you need to write it yourself)
+mkdir /shell
+mv port_monitoring.sh /shell
+chmod u+x /shell/*
+
+# set up regular automatic running monitoring script(/root/shell/port_monitoring.sh you need to write it yourself)
+echo '*/1 * * * * root /shell/port_monitoring.sh' >> /etc/crontab
+
+# add another user（for data backup）
+useradd zhumingyu
+mkdir /cache
+chown -R zhumingyu:zhumingyu /cache
+
+# delete redundant files
+cd
+rm -rf *
+
+# restart the server
+reboot</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>[内容] 第三方软件源的使用 （通过 webtatic 安装 php）（CentOS Linux &#038; RHEL 版）</title>
+		<link>https://eternalcenter-sep-2022.github.io/webtatic-centos-rhel/</link>
+		
+		<dc:creator><![CDATA[Mingyu Zhu]]></dc:creator>
+		<pubDate>Sun, 14 Apr 2019 08:45:44 +0000</pubDate>
+				<category><![CDATA[Chinese (中文)]]></category>
+		<category><![CDATA[Language (语言)]]></category>
+		<category><![CDATA[Nginx]]></category>
+		<category><![CDATA[Nginx Function (功能)]]></category>
+		<category><![CDATA[PHP]]></category>
+		<category><![CDATA[Service (服务)]]></category>
+		<category><![CDATA[System (系统)]]></category>
+		<category><![CDATA[System Operation & System Setting & System Software (系统操作 & 系统设置 & 系统软件)]]></category>
+		<category><![CDATA[System Software (系统软件)]]></category>
+		<category><![CDATA[Website Service (网站服务)]]></category>
+		<guid isPermaLink="false">https://eternalcenter-sep-2022.github.io/?p=4074</guid>
+
+					<description><![CDATA[内容一：为什么使用第三方软件源 本地搭建的软件源往往会有以下缺点： 1) 软件不够全，需要使用的软件没有2) 软件版本不够高，在功能、性能和安全方面达不到要求3) 使用第三方网络软件源有时可以解决以上问题 内容二：webtatic 2.1 webtatic 源简介 1) webtatic 是一个致力于将实现 web 服务的各类软件2) webtatic 通过 yum 安装3) webtatic 是一个免费的开源 yum 源项目 （注意：1) webtatic 项目并没有在社区认可的软件源列表中：2) 社区认可的软件源列表网址：https://wiki.centos.org/zh/AdditionalResources/Repositories） 2.2 使用 webtatic 的方法 （注意：1) 如果过去已经使用了其他的第三方 yum 源，最好先删除原来的第三方 yum 源2) 如果过去已经安装了相应的软件，最好先删除这些软件而不是使用第三方 yum 源对他们进行升级） 2.2.1 安装 webtatic 的 epel 2.2.2 安装 webtatic 2.2.3 清理原来的 yum 源缓存 2.2.4 此时可以开始安装软件了 2.2.4.1 &#8230; <p class="link-more"><a href="https://eternalcenter-sep-2022.github.io/webtatic-centos-rhel/" class="more-link">Continue reading<span class="screen-reader-text"> "[内容] 第三方软件源的使用 （通过 webtatic 安装 php）（CentOS Linux &#038; RHEL 版）"</span></a></p>]]></description>
+										<content:encoded><![CDATA[
+<h3 id="内容一-为什么使用第三方软件源">内容一：为什么使用第三方软件源</h3>
+
+
+
+<p>本地搭建的软件源往往会有以下缺点：</p>
+
+
+
+<p>1) 软件不够全，需要使用的软件没有<br>2) 软件版本不够高，在功能、性能和安全方面达不到要求<br>3) 使用第三方网络软件源有时可以解决以上问题</p>
+
+
+
+<h3 id="内容二-webtatic-2-1-webtatic-源简介">内容二：webtatic</h3>
+
+
+
+<h4 id="内容二-webtatic-2-1-webtatic-源简介">2.1 webtatic 源简介</h4>
+
+
+
+<p>1) webtatic 是一个致力于将实现 web 服务的各类软件<br>2) webtatic 通过 yum 安装<br>3) webtatic 是一个免费的开源 yum 源项目</p>
+
+
+
+<p>（<br>注意：<br>1) webtatic 项目并没有在社区认可的软件源列表中：<br>2) 社区认可的软件源列表网址：https://wiki.centos.org/zh/AdditionalResources/Repositories<br>）</p>
+
+
+
+<h4 id="2-2-使用-webtatic-的方法">2.2 使用 webtatic 的方法</h4>
+
+
+
+<p>（<br>注意：<br>1) 如果过去已经使用了其他的第三方 yum 源，最好先删除原来的第三方 yum 源<br>2) 如果过去已经安装了相应的软件，最好先删除这些软件而不是使用第三方 yum 源对他们进行升级<br>）</p>
+
+
+
+<h5 id="2-2-1-安装-webtatic-的-epel">2.2.1 安装 webtatic 的 epel</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm</code></pre>
+
+
+
+<h5 id="2-2-2-安装-webtatic">2.2.2 安装 webtatic</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</code></pre>
+
+
+
+<h5 id="2-2-3-清理原来的-yum-源缓存">2.2.3 清理原来的 yum 源缓存</h5>
+
+
+
+<pre class="wp-block-code"><code># yum clean all</code></pre>
+
+
+
+<h5 id="2-2-4-此时可以开始安装软件了-2-2-4-1-显示所有软件列表">2.2.4 此时可以开始安装软件了</h5>
+
+
+
+<h5 id="2-2-4-此时可以开始安装软件了-2-2-4-1-显示所有软件列表">2.2.4.1 显示所有软件列表</h5>
+
+
+
+<pre class="wp-block-code"><code># yum list all</code></pre>
+
+
+
+<h5 id="2-2-4-2-安装想要的软件爱你">2.2.4.2 安装想要的软件爱你</h5>
+
+
+
+<p># yum install &lt;softeware&gt;</p>
+
+
+
+<h5 id="2-2-5-删除-webtatic">2.2.5 删除 webtatic</h5>
+
+
+
+<pre class="wp-block-code"><code># rpm -e epel-release ;; rpm -e webtatic-release</code></pre>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
